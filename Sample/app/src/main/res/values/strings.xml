@@ -1,0 +1,15 @@
+<resources>
+    <!-- Please refer to https://www.projectoxford.ai/ to get your subscription key -->
+    <!-- If you have one subscription key, you can add it here to use the service -->
+    <string name="subscription_key">Please_add_the_subscription_key_here</string>
+
+    <string name="add_subscription_key_tip_title">Subscription Key is Needed</string>
+    <string name="add_subscription_key_tip">Please put your subscription key to source file \"app/res/values/strings.xml\" to enable Face API calls.</string>
+
+    <string name="app_name">Project Oxford TTS Sample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="tts_text">This is a demo of Microsoft Text to Speech.</string>
+</resources>

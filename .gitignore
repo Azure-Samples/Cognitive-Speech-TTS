@@ -1,0 +1,18 @@
+# Generated files
+bin/
+gen/
+out/
+build/
+
+# OS specific files
+.DS_Store
+
+# IntelliJ / Android studio configuration files
+.idea/
+*.iml
+
+# Gradle generated files
+.gradle/
+
+# Local config (e.g. sdk path)
+local.properties
