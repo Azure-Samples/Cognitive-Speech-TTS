@@ -14,9 +14,9 @@ Getting started
 
 To get started, select the platform for which you're developing.
 
--   [Android](</Speech/TextToSpeech/Android/>)
+-   [Android](</Android/>)
 
--   [Http samples](</Speech/TextToSpeech/Samples-Http/>)
+-   [Http samples](</Samples-Http/>)
 
 Contributing
 ============
