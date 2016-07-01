@@ -1,18 +1,14 @@
-Contributing to Microsoft Cognitive Services Client Libraries
+Contributing to Microsoft Cognitive Services Client Libraries & Samples
 ===============================================
-
-So, you want to contribute on a client SDK for one of the Microsoft Cognitive Services.
+So, you want to contribute on a client library or sample for one of the Microsoft Cognitive Services.
 Here's what you need to know.
 
-1.  Each SDK must include both a client library and a sample showing the API in
+1.  Each SDK should include both a client library and a sample showing the API in
     action
 
-2.  When building an SDK, it's important you support the most common development
-    platforms and that we are consistent from project to project. We require you
-    to build the following, using the associated coding guidelines, in priority
-    order:
+2.  When working on an SDK, it's important that we are consistent from project to project, so we ask you to follow the coding guidelines below:
 
-    -   .NET (Coding guidelines below)
+    -   Windows [(Coding guidelines for C#)](https://msdn.microsoft.com/en-us/library/ff926074.aspx) -- also reference our [common Windows code](https://github.com/Microsoft/Cognitive-common-windows) for building samples
 
     -   Android [(Coding guidelines for
         Java)](<http://source.android.com/source/code-style.html>)
@@ -26,29 +22,24 @@ Here's what you need to know.
 3.  Samples are important for illustrating how to actually call into the API.
     Samples should be as visual and reusable as possible.
 
-    Do:
+    - Do:
 
-    -   Create a UI sample when possible.
+        -   Create a UI sample when possible.
 
-    -   Make your sample user friendly. Expect that developers will want to try
+        -   Make your sample user friendly. Expect that developers will want to try
         different mainline scenarios and key APIs.
 
-    -   Create code that's easy for other developers to copy/paste into their
+        -   Create code that's easy for other developers to copy/paste into their
         own solutions
 
-    Consider:
+    - Consider:
 
-    -   Adding UI to allow devs to quickly copy/paste subscription keys, instead
+        -   Adding UI to allow devs to quickly copy/paste subscription keys, instead
         of updating them in the code or using a config file. The
         FaceAPI-WPF-Samples.sln provides an example.
 
-    Don't:
+    - Don't:
 
-    -   Leave your subscription key in the source of samples. You do not want
-        your key to be abused by others.
+        -   Leave your subscription key in the source of samples. You do not want your key to be abused by others.
 
-4.  Always create a README.md for your top-level API root and for each platform.
-
-    -   Use the existing README.md files as a reference for what information is
-        useful here. In general, you want to describe the functionality of the
-        API as well as specifics for how to build and run the project(s).
+Happy coding!
