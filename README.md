@@ -1,5 +1,5 @@
-# Microsoft Bing Speech API: Android Text-to-Speech Sample
-This repo contains an Android sample for using Text-to-Speech in the Microsoft Bing Speech API, part of [Cognitive Services](https://www.microsoft.com/cognitive-services).
+# Microsoft Bing Speech API: Text-to-Speech Samples
+This repo contains sample in various languages for using Text-to-Speech in the Microsoft Bing Speech API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.
 * [Learn about the Bing Speech API](https://www.microsoft.com/cognitive-services/en-us/speech-api)
 * [Read the documentation](https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/overview)
 * [Find more SDKs & Samples]()
@@ -46,3 +46,7 @@ All Microsoft Cognitive Services SDKs and samples are licensed with the MIT Lice
 [LICENSE](</LICENSE.md>).
 
 Sample images are licensed separately, please refer to [LICENSE-IMAGE](</LICENSE-IMAGE.md>).
+
+
+## Developer Code of Conduct
+Developers using Cognitive Services, including this client library & sample, are expected to follow the “Developer Code of Conduct for Microsoft Cognitive Services”, found at [http://go.microsoft.com/fwlink/?LinkId=698895](http://go.microsoft.com/fwlink/?LinkId=698895).
