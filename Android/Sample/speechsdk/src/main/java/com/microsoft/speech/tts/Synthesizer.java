@@ -5,7 +5,7 @@
 // Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
 //
 // Microsoft Cognitive Services (formerly Project Oxford) GitHub:
-// https://github.com/Microsoft/ProjectOxford-ClientSDK
+// https://github.com/Microsoft/Cognitive-Speech-TTS
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.
