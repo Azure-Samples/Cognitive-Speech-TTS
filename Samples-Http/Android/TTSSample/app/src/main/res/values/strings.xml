@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TTSSample</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="status">Status message</string>
+    <string name="hits">Input text to synthesize here</string>
+</resources>
