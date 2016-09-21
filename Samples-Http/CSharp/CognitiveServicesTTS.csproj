@@ -7,8 +7,8 @@
     <ProjectGuid>{2D0DB2A1-0A63-472E-ADB5-13FDC50D7350}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TTSHttpOxford</RootNamespace>
-    <AssemblyName>TTSHttpOxford</AssemblyName>
+    <RootNamespace>CognitiveServicesTTS</RootNamespace>
+    <AssemblyName>CognitiveServicesTTS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

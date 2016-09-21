@@ -62,9 +62,10 @@ public class TTSHttpOxfordMainActivity extends ActionBarActivity {
         txtContent.setMovementMethod(new ScrollingMovementMethod());
         btnSynthesize = (Button)findViewById(R.id.btnSynthesize);
 
-        // Note: Sign up at http://www.projectoxford.ai for the client credentials.
-//        m_syn = new Synthesizer("Your Client Id", "Your Client Secret");
-        m_syn = new Synthesizer("Your Client Id", "5a838e59c9884f85b4cc44f6b7118225");
+        // Note: The way to get api key:
+        // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+        // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+        m_syn = new Synthesizer("Your api key");
         Voice v = new Voice("en-US", "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)", Voice.Gender.Female, true);
         m_syn.SetVoice(v, null);
         btnSynthesize.setOnClickListener(new View.OnClickListener() {
@@ -79,27 +80,5 @@ public class TTSHttpOxfordMainActivity extends ActionBarActivity {
                 }
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_ttshttp_oxford_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

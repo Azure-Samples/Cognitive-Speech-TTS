@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTSHttpOxford", "TTSHttpOxford.csproj", "{2D0DB2A1-0A63-472E-ADB5-13FDC50D7350}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CognitiveServicesTTS", "CognitiveServicesTTS.csproj", "{2D0DB2A1-0A63-472E-ADB5-13FDC50D7350}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

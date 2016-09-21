@@ -12,49 +12,39 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <?php
 
-$AccessTokenUri = "https://oxford-speech.cloudapp.net:443/token/issueToken";
+$AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
-// Note: Sign up at http://www.projectoxford.ai to get a subscription key.  
-// Search for Speech APIs from Azure Marketplace.  
-// Use the subscription key as Client secret below.
-$clientId = "Your ClientId goes here";
-$clientSecret = "Your Client Secret goes here";
+// Note: The way to get api key:
+// Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+// Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+$apiKey = "Your api key goes here";
 $ttsHost = "https://speech.platform.bing.com";
-
-$data = array('grant_type' => 'client_credentials', 'client_id' => $clientId,
-'client_secret' => $clientSecret, 'scope' => $ttsHost);
-$data = http_build_query($data);
-//echo "post data: ". $data;
 
 // use key 'http' even if you send the request to https://...
 $options = array(
     'http' => array(
-        'header'  => "Content-type: application/x-www-form-urlencoded\r\n" .
-        "content-length: ".strlen($data)."\r\n",
+        'header'  => "Ocp-Apim-Subscription-Key: ".$apiKey."\r\n" .
+        "content-length: 0\r\n",
         'method'  => 'POST',
-        'content' => $data,
     ),
 );
+
 $context  = stream_context_create($options);
 
-//get the Oxford Access Token in json
-$result = file_get_contents($AccessTokenUri, false, $context);
+//get the Access Token
+$access_token = file_get_contents($AccessTokenUri, false, $context);
 
-if (!$result) {
+if (!$access_token) {
     throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
   }
 else{
-   echo "Oxford Access Token: ". $result. "\n";
-  
-   // decode the json to get the Oxford Access Token object.
-   $OxfordAcessToken = json_decode($result);
-   $access_token = $OxfordAcessToken->{'access_token'};
+   echo "Access Token: ". $access_token. "<br>";
 
    $ttsServiceUri = "https://speech.platform.bing.com:443/synthesize";
 
    //$SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
    $data = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speach service in php.</voice></speak>";
-   echo "tts post data: ". $data . "\n";
+   echo "tts post data: ". $data . "<br>";
    $options = array(
     'http' => array(
         'header'  => "Content-type: application/ssml+xml\r\n" .
@@ -74,7 +64,7 @@ else{
     // get the wave data
     $result = file_get_contents($ttsServiceUri, false, $context);
     if (!$result) {
-        throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
+        throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
       }
     else{
         echo "Wave data length: ". strlen($result);

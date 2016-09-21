@@ -32,10 +32,7 @@
 //
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 
@@ -62,15 +59,16 @@ namespace QueuingMachine
     public class TtsService
     {
 
-        // Note: Sign up at http://www.projectoxford.ai for the client credentials.
-        private static Authentication auth = new Authentication("Your ClientId goes here", "Your Client Secret goes here");
+        // Note: The way to get api key:
+        // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+        // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+        private static Authentication auth = new Authentication("Your api key goes here");
 
         public static byte[] TtsAudioOutput(string lang, string voiceName, AudioFormat format, string text, float prosodyRate = 1.0f)
         {
             byte[] output = null;
 
-            AccessTokenInfo token = auth.GetAccessToken();
-            string accessToken = token.access_token;
+            string accessToken = auth.GetAccessToken();
             string uri = "https://speech.platform.bing.com/synthesize";
 
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(uri);
@@ -83,7 +81,7 @@ namespace QueuingMachine
             webRequest.Headers.Add("X-Search-AppId", "07D3234E49CE426DAA29772419F436CA");
             webRequest.Headers.Add("X-Search-ClientID", "1ECFAE91408841A480F00935DC390960");
 
-            webRequest.Headers.Add("Authorization", "Bearer " + token.access_token);
+            webRequest.Headers.Add("Authorization", "Bearer " + accessToken);
             webRequest.Method = "POST";
 
             string bodyTemplate = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xmlns:emo=\"http://www.w3.org/2009/10/emotionml\" xml:lang=\"{0}\">{1}<emo:emotion><emo:category name=\"CALM\" value=\"1.0\"/><prosody rate=\"{2:F1}\">{3}</prosody></emo:emotion></voice></speak>";

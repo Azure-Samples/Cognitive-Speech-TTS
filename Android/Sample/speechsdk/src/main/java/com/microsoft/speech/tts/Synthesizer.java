@@ -38,8 +38,6 @@ import android.media.AudioTrack;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.microsoft.bing.dss.baselib.silk.SilkWrapper;
-
 public class Synthesizer {
 
     private Voice m_serviceVoice;
@@ -64,7 +62,6 @@ public class Synthesizer {
                     audioTrack.write(sound, 0, sound.length);
                     audioTrack.stop();
                     audioTrack.release();
-                } else {
                 }
 
                 if (callback != null) {
@@ -79,12 +76,12 @@ public class Synthesizer {
         AlwaysService//, WiFiOnly, WiFi3G4GOnly, NoService
     }
 
-    public Synthesizer(String serviceClientId, String serviceClientSecret)
+    public Synthesizer(String apiKey)
     {
         m_serviceVoice = new Voice("en-US");
         m_localVoice = null;
         m_eServiceStrategy = ServiceStrategy.AlwaysService;
-        m_ttsServiceClient = new TtsServiceClient(serviceClientId, serviceClientSecret);
+        m_ttsServiceClient = new TtsServiceClient(apiKey);
     }
 
     public void SetVoice(Voice serviceVoice, Voice localVoice)
@@ -130,21 +127,15 @@ public class Synthesizer {
         // to do...
         //
         if (m_eServiceStrategy == ServiceStrategy.AlwaysService){
-            byte[] ret = m_ttsServiceClient.SpeakSSML(ssml);
-            if(ret == null || ret.length == 0){
+            result = m_ttsServiceClient.SpeakSSML(ssml);
+            if(result == null || result.length == 0){
                 return null;
             }
 
-            String audioSegmentSSML = new String(ret);
-            int nStart = audioSegmentSSML.indexOf("<mstts:audiosegment data=\"");
-            int nEnd = audioSegmentSSML.indexOf("\">", nStart);
-            audioSegmentSSML = audioSegmentSSML.substring(nStart + "<mstts:audiosegment data=\"".length(), nEnd);
-            result = m_silkDecoder.decode(audioSegmentSSML);
         }
         return result;
     }
 
     private TtsServiceClient m_ttsServiceClient;
-    private SilkWrapper m_silkDecoder = new SilkWrapper();
     private ServiceStrategy m_eServiceStrategy;
 }
