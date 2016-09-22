@@ -45,13 +45,13 @@ class TtsServiceClient{
     private static String s_contentType = "application/ssml+xml";
     private final String m_serviceUri;
     private String m_outputFormat;
-    private OxfordAuthentication m_auth;
+    private Authentication m_auth;
     private byte[] m_result;
 
-    public TtsServiceClient(String clientId, String clientSecret) {
-        m_outputFormat = "ssml-16khz-16bit-mono-silk";
+    public TtsServiceClient(String apiKey) {
+        m_outputFormat = "raw-16khz-16bit-mono-pcm";
         m_serviceUri = "https://speech.platform.bing.com/synthesize";
-        m_auth = new OxfordAuthentication(clientId, clientSecret);
+        m_auth = new Authentication(apiKey);
     }
 
     public void Authentication() {
@@ -61,7 +61,7 @@ class TtsServiceClient{
     protected void doWork(String ssml){
         int code = -1;
         synchronized(m_auth) {
-            OxfordAccessToken token = m_auth.GetAccessToken();
+            String accessToken = m_auth.GetAccessToken();
             try {
                 URL url = new URL(m_serviceUri);
                 HttpsURLConnection urlConnection = (HttpsURLConnection)url.openConnection();
@@ -72,7 +72,7 @@ class TtsServiceClient{
                 urlConnection.setRequestMethod("POST");
                 urlConnection.setRequestProperty("Content-Type", s_contentType);
                 urlConnection.setRequestProperty("X-MICROSOFT-OutputFormat", m_outputFormat);
-                urlConnection.setRequestProperty("Authorization", "Bearer " + token.access_token);
+                urlConnection.setRequestProperty("Authorization", "Bearer " + accessToken);
                 urlConnection.setRequestProperty("X-Search-AppId", "07D3234E49CE426DAA29772419F436CA");
                 urlConnection.setRequestProperty("X-Search-ClientID", "1ECFAE91408841A480F00935DC390960");
                 urlConnection.setRequestProperty("User-Agent", "TTSAndroid");

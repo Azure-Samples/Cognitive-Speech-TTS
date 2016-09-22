@@ -14,30 +14,29 @@ require 'json'
 # A note to fix an SSL error
 puts "if encounter the Error: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed, find the fix in https://gist.github.com/fnichol/867550\n"
 
-# Note: Sign up at http://www.projectoxford.ai to get a subscription key.  
-# Search for Speech APIs from Azure Marketplace.  
-# Use the subscription key as Client secret below.
-clientId = "Your ClientId goes here"
-clientSecret = "Your Client Secret goes here"
-speechHost = "https://speech.platform.bing.com"
-post_data = "grant_type=client_credentials&client_id=" + URI.encode(clientId) + "&client_secret=" + URI.encode(clientSecret) + "&scope=" + URI.encode(speechHost)
+# Note: The way to get api key:
+# Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+# Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+apiKey = "Your api key goes here"
+
+post_data = ""
 
 #print (post_data)
-url = URI.parse("https://oxford-speech.cloudapp.net:443/token/issueToken")
+url = URI.parse("https://api.cognitive.microsoft.com/sts/v1.0/issueToken")
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
 
 headers = {
-  'content-type' => 'application/x-www-form-urlencoded'
+  'Ocp-Apim-Subscription-Key' => apiKey
 }
 
-# get the Oxford Access Token in json
+# get the Access Token
+puts "get the Access Token"
 resp = http.post(url.path, post_data, headers)
-puts "Oxford Access Token: ", resp.body, "\n"
+puts "Access Token: ", resp.body, "\n"
 
-# decode the json to get the Oxford Access Token object.
-OxfordAccessToken = JSON.parse(resp.body)
+accessToken = resp.body
 
 ttsServiceUri = "https://speech.platform.bing.com:443/synthesize"
 url = URI.parse(ttsServiceUri)
@@ -47,7 +46,7 @@ http.use_ssl = true
 headers = {
 	'content-type' => 'application/ssml+xml',
 	'X-Microsoft-OutputFormat' => 'riff-16khz-16bit-mono-pcm',
-	'Authorization' => 'Bearer ' + OxfordAccessToken["access_token"],
+	'Authorization' => 'Bearer ' + accessToken,
 	'X-Search-AppId' => '07D3234E49CE426DAA29772419F436CA',
 	'X-Search-ClientID' => '1ECFAE91408841A480F00935DC390960',
 	'User-Agent' => 'TTSRuby'
@@ -57,6 +56,7 @@ headers = {
 data = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speach service in php.</voice></speak>"
 
 # get the wave data
+puts "get the wave data"
 resp = http.post(url.path, data, headers)
 
 puts "wave data length: ", resp.body.length

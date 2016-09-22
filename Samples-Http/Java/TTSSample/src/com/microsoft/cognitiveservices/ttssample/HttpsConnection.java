@@ -31,14 +31,18 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-package com.microsoft.ttshttpoxford.ttssample;
+package com.microsoft.cognitiveservices.ttssample;
 
-/**
- * Access token structure..
- */
-public class OxfordAccessToken {
-    public String access_token;
-    public String token_type;
-    public String expires_in;
-    public String scope;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
+public class HttpsConnection {
+
+    public static HttpsURLConnection getHttpsConnection (String connectingUrl) throws Exception {
+    
+        URL url = new URL(connectingUrl);
+        HttpsURLConnection webRequest = (HttpsURLConnection) url.openConnection();
+        return webRequest;
+    }
 }

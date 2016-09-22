@@ -31,7 +31,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-package com.microsoft.ttshttpoxford.ttssample;
+package com.microsoft.cognitiveservices.ttssample;
 
 import java.io.DataOutputStream;
 import java.io.InputStream;
@@ -47,9 +47,12 @@ public class TTSService {
      */
     public static byte[] Synthesize(String textToSynthesize, String outputFormat, String locale, String genderName, String voiceName) throws Exception {
 
-        // Note: Sign up at http://www.projectoxford.ai for the client credentials.
-    	OxfordAuthentication auth = new OxfordAuthentication("Your ClientId goes here", "Your Client Secret goes here");
-        OxfordAccessToken token = auth.GetAccessToken();
+    	// Note: The way to get api key:
+        // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+        // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+    	
+    	Authentication auth = new Authentication("Your api key goes here");
+        String accessToken = auth.GetAccessToken();
 
         HttpsURLConnection webRequest = HttpsConnection.getHttpsConnection(ttsServiceUri);
         webRequest.setDoInput(true);
@@ -60,7 +63,7 @@ public class TTSService {
 
         webRequest.setRequestProperty("Content-Type", "application/ssml+xml");
         webRequest.setRequestProperty("X-Microsoft-OutputFormat", outputFormat);
-        webRequest.setRequestProperty("Authorization", "Bearer " + token.access_token);
+        webRequest.setRequestProperty("Authorization", "Bearer " + accessToken);
         webRequest.setRequestProperty("X-Search-AppId", "07D3234E49CE426DAA29772419F436CA");
         webRequest.setRequestProperty("X-Search-ClientID", "1ECFAE91408841A480F00935DC390960");
         webRequest.setRequestProperty("User-Agent", "TTSAndroid");

@@ -51,7 +51,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (getString(R.string.subscription_key).startsWith("Please")) {
+        if (getString(R.string.api_key).startsWith("Please")) {
             new AlertDialog.Builder(this)
                     .setTitle(getString(R.string.add_subscription_key_tip_title))
                     .setMessage(getString(R.string.add_subscription_key_tip))
@@ -61,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 
             if (m_syn == null) {
                 // Create Text To Speech Synthesizer.
-                m_syn = new Synthesizer("clientid", getString(R.string.subscription_key));
+                m_syn = new Synthesizer(getString(R.string.api_key));
             }
 
             Toast.makeText(this, "If the wave is not played, please see the log for more information.", Toast.LENGTH_LONG).show();
@@ -79,28 +79,5 @@ public class MainActivity extends ActionBarActivity {
             String text = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xml:lang=\"en-US\"><voice name=\"Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)\">You can also use SSML markup for text to speech.</voice></speak>";
             m_syn.SpeakSSMLToAudio(text);
         }
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 }

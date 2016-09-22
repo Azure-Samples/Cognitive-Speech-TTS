@@ -31,7 +31,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-package com.microsoft.ttshttpoxford.ttssample;
+package com.microsoft.cognitiveservices.ttssample;
 
 /// <summary>
 /// Gender of the voice.

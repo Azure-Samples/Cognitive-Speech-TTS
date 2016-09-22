@@ -12,42 +12,38 @@ var util = require('util'),
 
  exports.Synthesize = function Synthesize(){
 
-	// Note: Sign up at http://www.projectoxford.ai to get a subscription key.  
-	// Search for Speech APIs from Azure Marketplace.  
-    // Use the subscription key as Client secret below.
-	var clientId = "Your ClientId goes here";
-	var clientSecret = "Your Client Secret goes here";
-	var speechHost = "https://speech.platform.bing.com";
-	var post_data = "grant_type=client_credentials&client_id=" + encodeURIComponent(clientId) + "&client_secret=" + encodeURIComponent(clientSecret) + "&scope=" + encodeURI(speechHost);
+	// Note: The way to get api key:
+        // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+        // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+	var apiKey = "Your api key goes here";
+	var post_data = "";
 
-	var AccessTokenUri = "https://oxford-speech.cloudapp.net/token/issueToken";
+	var AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
 	var post_option = {
-		hostname: 'oxford-speech.cloudapp.net',
+		hostname: 'api.cognitive.microsoft.com',
 		port: 443,
-		path: '/token/issueToken',
+		path: '/sts/v1.0/issueToken',
 		method: 'POST'
 	};
 
 	post_option.headers = {
-		'content-type' : 'application/x-www-form-urlencoded',
+		'Ocp-Apim-Subscription-Key' : apiKey,
 		'Content-Length' : post_data.length	
 	};
 
 	var post_req = https.request(post_option, function(res){
-	  var _data="";
+	  var accessToken="";
 	   res.on('data', function(buffer){
-		 _data += buffer;
+		 accessToken += buffer;
 		 });
 		 
 		 // end callback
 		res.on('end', function(){
-		console.log("json string result: ",_data);
-		OxfordAccessToken = eval ('(' + _data + ')');
-		
+		console.log("Access token: ", accessToken);
+
 		// call tts service
 		var https = require('https');
-
 
 	var ttsServiceUri = "https://speech.platform.bing.com/synthesize";
 
@@ -59,14 +55,13 @@ var util = require('util'),
 	};
 
 	var SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
-	var post_data = util.format(SsmlTemplate, 'en-US', 'Female', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', 'This is a demo to call microsoft text to speach service in javascript.');
-	console.log('\n\ntts post_data: ' + post_data + '\n');
+	var post_speak_data = util.format(SsmlTemplate, 'en-US', 'Female', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', 'This is a demo to call microsoft text to speach service in javascript.');
 	
 	post_option.headers = {
 		'content-type' : 'application/ssml+xml',
-		'Content-Length' : post_data.length,
+		'Content-Length' : post_speak_data.length,
 		'X-Microsoft-OutputFormat' : 'riff-16khz-16bit-mono-pcm',
-		'Authorization': 'Bearer ' + OxfordAccessToken.access_token,
+		'Authorization': 'Bearer ' + accessToken,
 		'X-Search-AppId': '07D3234E49CE426DAA29772419F436CA',
 		'X-Search-ClientID': '1ECFAE91408841A480F00935DC390960',
 		"User-Agent": "TTSNodeJS"
@@ -90,18 +85,19 @@ var util = require('util'),
 		});
 	});
 	
-	 post_req.write(post_data);
-	 post_req.end();
+	console.log('\n\ntts post_speak_data: ' + post_speak_data + '\n');
+	post_req.write(post_speak_data);
+	post_req.end();
 	 
 		});
 
 		post_req.on('error', function(e) {
 		console.log('problem with request: ' + e.message);
-		OxfordAccessToken = null;
-		//return OxfordAccessToken;
+		accessToken = null;
+
 		});
 	});
 	
-	 post_req.write(post_data);
-	 post_req.end();
+	post_req.write(post_data);
+	post_req.end();
 }

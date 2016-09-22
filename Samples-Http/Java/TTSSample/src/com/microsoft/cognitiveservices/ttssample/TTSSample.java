@@ -31,7 +31,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-package com.microsoft.ttshttpoxford.ttssample;
+package com.microsoft.cognitiveservices.ttssample;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,7 +45,6 @@ import javax.sound.sampled.SourceDataLine;
 public class TTSSample {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String textToSynthesize = "This is a demo to call microsoft text to speach service in java.";
 		String outputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm;
         String deviceLanguage = "en-US";

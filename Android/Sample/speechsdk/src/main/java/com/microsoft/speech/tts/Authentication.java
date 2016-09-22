@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
@@ -30,59 +30,60 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+package com.microsoft.speech.tts;
 
-package com.microsoft.ttshttpoxford.ttssample;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.json.*;
+
 /*
-     * This class demonstrates how to get a valid O-auth token from
+     * This class demonstrates how to get a valid O-auth accessToken from
      * Azure Data Market.
      */
-public class OxfordAuthentication
+class Authentication
 {
-    public static final String AccessTokenUri = "https://oxford-speech.cloudapp.net/token/issueToken";
+    private static final String LOG_TAG = "Authentication";
+    public static final String AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
-    private String clientId;
-    private String clientSecret;
-    private String request;
-    private OxfordAccessToken token;
+    private String apiKey;
+    private String accessToken;
     private Timer accessTokenRenewer;
 
-    //Access token expires every 10 minutes. Renew it every 9 minutes only.
+    // Access Token expires every 10 minutes. Renew it every 9 minutes only.
     private final int RefreshTokenDuration = 9 * 60 * 1000;
-    private final String charsetName = "utf-8";
     private TimerTask nineMinitesTask = null;
 
-    public OxfordAuthentication(String clientId, String clientSecret)
+    public Authentication(String apiKey)
     {
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
+        this.apiKey = apiKey;
 
-            /*
-             * If clientid or client secret has special characters, encode before sending request
-             */
-        try{
-        this.request = String.format("grant_type=client_credentials&client_id=%s&client_secret=%s&scope=%s",
-                URLEncoder.encode(clientId,charsetName),
-                URLEncoder.encode(clientSecret, charsetName),
-                URLEncoder.encode("https://speech.platform.bing.com",charsetName));
+        Thread th = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                RenewAccessToken();
+            }
+        });
 
-        }catch (Exception e){
+        try {
+            th.start();
+            th.join();
+        }
+        catch (Exception e) {
             e.printStackTrace();
         }
-        this.token = HttpPost(AccessTokenUri, this.request);
 
-        // renew the token every specified minutes
+        // renew the accessToken every specified minutes
         accessTokenRenewer = new Timer();
         nineMinitesTask = new TimerTask(){
             public void run(){
@@ -90,39 +91,44 @@ public class OxfordAuthentication
             }
         };
 
-        accessTokenRenewer.schedule(nineMinitesTask, 0, RefreshTokenDuration);
+        accessTokenRenewer.schedule(nineMinitesTask, RefreshTokenDuration, RefreshTokenDuration);
     }
 
-    public OxfordAccessToken GetAccessToken()
+    public String GetAccessToken()
     {
-        return this.token;
+        return this.accessToken;
     }
 
     private void RenewAccessToken()
     {
-        OxfordAccessToken newAccessToken = HttpPost(AccessTokenUri, this.request);
-        //swap the new token with old one
-        //Note: the swap is thread unsafe
-        System.out.println("new access token: " + newAccessToken.access_token);
-        this.token = newAccessToken;
+        synchronized(this) {
+            HttpPost(AccessTokenUri, this.apiKey);
+
+            if(this.accessToken != null){
+                Log.d(LOG_TAG, "new Access Token: " + this.accessToken);
+            }
+        }
     }
 
-    private OxfordAccessToken HttpPost(String AccessTokenUri, String requestDetails)
+    private void HttpPost(String AccessTokenUri, String apiKey)
     {
         InputStream inSt = null;
         HttpsURLConnection webRequest = null;
 
+        this.accessToken = null;
         //Prepare OAuth request
         try{
-            webRequest = HttpsConnection.getHttpsConnection(AccessTokenUri);
+            URL url = new URL(AccessTokenUri);
+            webRequest = (HttpsURLConnection) url.openConnection();
             webRequest.setDoInput(true);
             webRequest.setDoOutput(true);
             webRequest.setConnectTimeout(5000);
             webRequest.setReadTimeout(5000);
-            webRequest.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+            webRequest.setRequestProperty("Ocp-Apim-Subscription-Key", apiKey);
             webRequest.setRequestMethod("POST");
 
-            byte[] bytes = requestDetails.getBytes();
+            String request = "";
+            byte[] bytes = request.getBytes();
             webRequest.setRequestProperty("content-length", String.valueOf(bytes.length));
             webRequest.connect();
 
@@ -145,20 +151,10 @@ public class OxfordAuthentication
             inSt.close();
             webRequest.disconnect();
 
-            // parse the access token from the json format
-            String result = strBuffer.toString();
-            
-            OxfordAccessToken token = new OxfordAccessToken();
-            token.access_token = Util.getJsonValue(result, "access_token");
-            token.token_type = Util.getJsonValue(result, "token_type");
-            token.expires_in = Util.getJsonValue(result, "expires_in");
-            token.scope = Util.getJsonValue(result, "scope");
+            this.accessToken = strBuffer.toString();
 
-            return token;
         }catch (Exception e){
-            e.printStackTrace();
+            Log.e(LOG_TAG, "Exception error", e);
         }
-
-        return null;
     }
 }
