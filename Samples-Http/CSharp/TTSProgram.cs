@@ -215,8 +215,8 @@ namespace TTSSample
                                   new XElement("voice",
                                       new XAttribute(XNamespace.Xml + "lang", locale),
                                       new XAttribute(XNamespace.Xml + "gender", gender),
-                                      new XAttribute("name", name)),
-                                  text));
+                                      new XAttribute("name", name),
+                                      text)));
             return ssmlDoc.ToString();
         }
 
