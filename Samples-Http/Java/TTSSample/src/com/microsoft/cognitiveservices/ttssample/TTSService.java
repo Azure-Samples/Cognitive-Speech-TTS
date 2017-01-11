@@ -69,8 +69,7 @@ public class TTSService {
         webRequest.setRequestProperty("User-Agent", "TTSAndroid");
         webRequest.setRequestProperty("Accept", "*/*");
 
-        String SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
-        String body = String.format(SsmlTemplate, locale, genderName, voiceName, textToSynthesize);
+        String body = XmlDom.createDom(locale, genderName, voiceName, textToSynthesize);
         byte[] bytes = body.getBytes();
         webRequest.setRequestProperty("content-length", String.valueOf(bytes.length));
         webRequest.connect();
