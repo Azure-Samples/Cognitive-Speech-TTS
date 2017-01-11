@@ -6,8 +6,8 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 **/
-var util = require('util'),
-  https = require('https');
+var https = require('https'),
+  xmlbuilder = require('xmlbuilder');
  
 
  exports.Synthesize = function Synthesize(){
@@ -54,8 +54,17 @@ var util = require('util'),
 		method: 'POST'
 	};
 
-	var SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
-	var post_speak_data = util.format(SsmlTemplate, 'en-US', 'Female', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', 'This is a demo to call microsoft text to speach service in javascript.');
+	var ssml_doc = xmlbuilder.create('speak')
+		.att('version', '1.0')
+		.att('xml:lang', 'en-us')
+		.ele('voice')
+			.att('xml:lang', 'en-us')
+			.att('xml:gender', 'Female')
+			.att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
+			.txt('This is a demo to call Microsoft text to speach service in JavaScript.')
+		.end();
+
+	var post_speak_data = ssml_doc.toString();
 	
 	post_option.headers = {
 		'content-type' : 'application/ssml+xml',
