@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "speaker": "^0.3.0",
+    "wav": "^1.0.1",
+    "xmlbuilder": "^8.2.2"
+  }
+}
