@@ -70,7 +70,7 @@ var https = require('https'),
 	
 	post_option.headers = {
 		'content-type' : 'application/ssml+xml',
-		'Content-Length' : post_speak_data.length,
+		'Content-Length' : Buffer.byteLength(post_speak_data, 'utf-8'),
 		'X-Microsoft-OutputFormat' : 'riff-16khz-16bit-mono-pcm',
 		'Authorization': 'Bearer ' + accessToken,
 		'X-Search-AppId': '07D3234E49CE426DAA29772419F436CA',
