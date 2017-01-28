@@ -45,7 +45,7 @@ import javax.sound.sampled.SourceDataLine;
 public class TTSSample {
 
 	public static void main(String[] args) {
-		String textToSynthesize = "This is a demo to call microsoft text to speach service in java.";
+		String textToSynthesize = "This is a demo to call microsoft text to speech service in java.";
 		String outputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm;
         String deviceLanguage = "en-US";
         String genderName = Gender.Female;

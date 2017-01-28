@@ -33,7 +33,7 @@ conn.close()
 accesstoken = data.decode("UTF-8")
 print ("Access Token: " + accesstoken)
 
-body = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-us' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speach service in python.</voice></speak>"
+body = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-us' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speech service in python.</voice></speak>"
 
 headers = {"Content-type": "application/ssml+xml", 
 			"X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm", 

@@ -55,7 +55,7 @@ var util = require('util'),
 	};
 
 	var SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
-	var post_speak_data = util.format(SsmlTemplate, 'en-US', 'Female', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', 'This is a demo to call microsoft text to speach service in javascript.');
+	var post_speak_data = util.format(SsmlTemplate, 'en-US', 'Female', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', 'This is a demo to call microsoft text to speech service in javascript.');
 	
 	post_option.headers = {
 		'content-type' : 'application/ssml+xml',
