@@ -38,9 +38,8 @@ using System.Text;
 using System.Threading;
 using System.Net;
 using System.Net.Http;
-using System.Media;
 using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Runtime.InteropServices;
 
 namespace TTSSample
 {
@@ -60,8 +59,10 @@ namespace TTSSample
         public Authentication(string apiKey)
         {
             this.apiKey = apiKey;
-           
-            this.accessToken = HttpPost(AccessUri, this.apiKey);
+
+            var getAccessTokenTask = HttpPost(AccessUri, this.apiKey);
+            getAccessTokenTask.Wait();
+            this.accessToken = getAccessTokenTask.Result;
 
             // renew the token every specfied minutes
             accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
@@ -75,9 +76,9 @@ namespace TTSSample
             return this.accessToken;
         }
 
-        private void RenewAccessToken()
+        private async Task RenewAccessToken()
         {
-            string newAccessToken = HttpPost(AccessUri, this.apiKey);
+            string newAccessToken = await HttpPost(AccessUri, this.apiKey);
             //swap the new token with old one
             //Note: the swap is thread unsafe
             this.accessToken = newAccessToken;
@@ -109,15 +110,14 @@ namespace TTSSample
             }
         }
 
-        private string HttpPost(string accessUri, string apiKey)
+        private async Task<string> HttpPost(string accessUri, string apiKey)
         {
             // Prepare OAuth request 
             WebRequest webRequest = WebRequest.Create(accessUri);
             webRequest.Method = "POST";
-            webRequest.ContentLength = 0;
             webRequest.Headers["Ocp-Apim-Subscription-Key"] = apiKey;
 
-            using (WebResponse webResponse = webRequest.GetResponse())
+            using (WebResponse webResponse = await webRequest.GetResponseAsync())
             {
                 using (Stream stream = webResponse.GetResponseStream())
                 {
@@ -200,25 +200,9 @@ namespace TTSSample
     public class Synthesize
     {
         /// <summary>
-        /// Generates SSML.
+        /// The ssml template
         /// </summary>
-        /// <param name="locale">The locale.</param>
-        /// <param name="gender">The gender.</param>
-        /// <param name="name">The voice name.</param>
-        /// <param name="text">The text input.</param>
-        private string GenerateSsml(string locale, string gender, string name, string text)
-        {
-            var ssmlDoc = new XDocument(
-                              new XElement("speak",
-                                  new XAttribute("version", "1.0"),
-                                  new XAttribute(XNamespace.Xml + "lang", "en-US"),
-                                  new XElement("voice",
-                                      new XAttribute(XNamespace.Xml + "lang", locale),
-                                      new XAttribute(XNamespace.Xml + "gender", gender),
-                                      new XAttribute("name", name),
-                                      text)));
-            return ssmlDoc.ToString();
-        }
+        private const string SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='{0}' xml:gender='{1}' name='{2}'>{3}</voice></speak>";
 
         /// <summary>
         /// The input options
@@ -275,7 +259,7 @@ namespace TTSSample
 
             var request = new HttpRequestMessage(HttpMethod.Post, this.inputOptions.RequestUri)
             {
-                Content = new StringContent(GenerateSsml(this.inputOptions.Locale, genderValue, this.inputOptions.VoiceName, this.inputOptions.Text))
+                Content = new StringContent(String.Format(SsmlTemplate, this.inputOptions.Locale, genderValue, this.inputOptions.VoiceName, this.inputOptions.Text))
             };
 
             var httpTask = client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
@@ -303,7 +287,6 @@ namespace TTSSample
                     }
                     finally
                     {
-                        responseMessage.Dispose();
                         request.Dispose();
                         client.Dispose();
                         handler.Dispose();
@@ -451,15 +434,14 @@ namespace TTSSample
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="args">The <see cref="GenericEventArgs{Stream}"/> instance containing the event data.</param>
-        static void PlayAudio(object sender, GenericEventArgs<Stream> args)
+        static void StoreAudio(object sender, GenericEventArgs<Stream> args)
         {
             Console.WriteLine(args.EventData);
-
-            // For SoundPlayer to be able to play the wav file, it has to be encoded in PCM.
-            // Use output audio format AudioOutputFormat.Riff16Khz16BitMonoPcm to do that.
-            SoundPlayer player = new SoundPlayer(args.EventData);
-            player.PlaySync();
-            args.EventData.Dispose();
+            using (var file = File.OpenWrite(Path.Combine(Directory.GetCurrentDirectory(), $"{ Guid.NewGuid() }.wav")))
+            {
+                args.EventData.CopyTo(file);
+                file.Flush();
+            }
         }
 
         /// <summary>
@@ -494,7 +476,7 @@ namespace TTSSample
                 Console.WriteLine(ex.Message);
                 return;
             }
-            
+
             Console.WriteLine("Starting TTSSample request code execution.");
 
             string requestUri = "https://speech.platform.bing.com/synthesize";
@@ -515,7 +497,7 @@ namespace TTSSample
                 AuthorizationToken = "Bearer " + accessToken,
             });
 
-            cortana.OnAudioAvailable += PlayAudio;
+            cortana.OnAudioAvailable += StoreAudio;
             cortana.OnError += ErrorHandler;
             cortana.Speak(CancellationToken.None).Wait();
         }

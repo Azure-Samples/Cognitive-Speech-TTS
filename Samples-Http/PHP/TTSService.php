@@ -43,7 +43,24 @@ else{
    $ttsServiceUri = "https://speech.platform.bing.com:443/synthesize";
 
    //$SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
-   $data = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speech service in php.</voice></speak>";
+   $doc = new DOMDocument();
+
+   $root = $doc->createElement( "speak" );
+   $root->setAttribute( "version" , "1.0" );
+   $root->setAttribute( "xml:lang" , "en-us" );
+
+   $voice = $doc->createElement( "voice" );
+   $voice->setAttribute( "xml:lang" , "en-us" );
+   $voice->setAttribute( "xml:gender" , "Female" );
+   $voice->setAttribute( "name" , "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" );
+
+   $text = $doc->createTextNode( "This is a demo to call microsoft text to speech service in php." );
+
+   $voice->appendChild( $text );
+   $root->appendChild( $voice );
+   $doc->appendChild( $root );
+   $data = $doc->saveXML();
+
    echo "tts post data: ". $data . "<br>";
    $options = array(
     'http' => array(

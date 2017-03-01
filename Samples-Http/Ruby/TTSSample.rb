@@ -10,6 +10,7 @@ require 'net/http'
 require 'net/https'
 require 'uri'
 require 'json'
+require 'ruby_speech'
 
 # A note to fix an SSL error
 puts "if encounter the Error: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed, find the fix in https://gist.github.com/fnichol/867550\n"
@@ -53,10 +54,14 @@ headers = {
 }
 
 # SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>"
-data = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speech service in ruby.</voice></speak>"
+data = RubySpeech::SSML.draw do
+  voice gender: :female, name: 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', language: 'en-US' do
+    string 'This is a demo to call microsoft text to speech service in ruby'
+  end
+end
 
 # get the wave data
 puts "get the wave data"
-resp = http.post(url.path, data, headers)
+resp = http.post(url.path, data.to_s, headers)
 
 puts "wave data length: ", resp.body.length

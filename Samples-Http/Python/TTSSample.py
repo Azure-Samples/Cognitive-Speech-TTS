@@ -7,6 +7,7 @@
 #THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ###
 import http.client, urllib.parse, json
+from xml.etree import ElementTree
 
 #Note: The way to get api key:
 #Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
@@ -33,7 +34,13 @@ conn.close()
 accesstoken = data.decode("UTF-8")
 print ("Access Token: " + accesstoken)
 
-body = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='en-us' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>This is a demo to call microsoft text to speech service in python.</voice></speak>"
+body = ElementTree.Element('speak', version='1.0')
+body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
+voice = ElementTree.SubElement(body, 'voice')
+voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
+voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
+voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
+voice.text = 'This is a demo to call microsoft text to speech service in Python.'
 
 headers = {"Content-type": "application/ssml+xml", 
 			"X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm", 
@@ -45,7 +52,7 @@ headers = {"Content-type": "application/ssml+xml",
 #Connect to server to synthesize the wave
 print ("\nConnect to server to synthesize the wave")
 conn = http.client.HTTPSConnection("speech.platform.bing.com")
-conn.request("POST", "/synthesize", body, headers)
+conn.request("POST", "/synthesize", ElementTree.tostring(body), headers)
 response = conn.getresponse()
 print(response.status, response.reason)
 
