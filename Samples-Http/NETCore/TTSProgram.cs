@@ -40,6 +40,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace TTSSample
 {
@@ -200,9 +201,25 @@ namespace TTSSample
     public class Synthesize
     {
         /// <summary>
-        /// The ssml template
+        /// Generates SSML.
         /// </summary>
-        private const string SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='{0}' xml:gender='{1}' name='{2}'>{3}</voice></speak>";
+        /// <param name="locale">The locale.</param>
+        /// <param name="gender">The gender.</param>
+        /// <param name="name">The voice name.</param>
+        /// <param name="text">The text input.</param>
+        private string GenerateSsml(string locale, string gender, string name, string text)
+        {
+            var ssmlDoc = new XDocument(
+                              new XElement("speak",
+                                  new XAttribute("version", "1.0"),
+                                  new XAttribute(XNamespace.Xml + "lang", "en-US"),
+                                  new XElement("voice",
+                                      new XAttribute(XNamespace.Xml + "lang", locale),
+                                      new XAttribute(XNamespace.Xml + "gender", gender),
+                                      new XAttribute("name", name),
+                                      text)));
+            return ssmlDoc.ToString();
+        }
 
         /// <summary>
         /// The input options
@@ -259,7 +276,7 @@ namespace TTSSample
 
             var request = new HttpRequestMessage(HttpMethod.Post, this.inputOptions.RequestUri)
             {
-                Content = new StringContent(String.Format(SsmlTemplate, this.inputOptions.Locale, genderValue, this.inputOptions.VoiceName, this.inputOptions.Text))
+                Content = new StringContent(GenerateSsml(this.inputOptions.Locale, genderValue, this.inputOptions.VoiceName, this.inputOptions.Text))
             };
 
             var httpTask = client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
