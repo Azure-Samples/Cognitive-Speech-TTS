@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TTSClient.cs" />
     <Compile Include="TTSProgram.cs" />
   </ItemGroup>
   <ItemGroup>
