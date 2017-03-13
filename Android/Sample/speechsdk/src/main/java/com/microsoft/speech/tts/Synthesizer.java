@@ -96,7 +96,7 @@ public class Synthesizer {
 
     public byte[] Speak(String text)
     {
-        String ssml = "<speak version='1.0' xml:lang='" + m_serviceVoice.lang + "'><voice xml:gender='" + m_serviceVoice.gender + "'";
+        String ssml = "<speak version='1.0' xml:lang='" + m_serviceVoice.lang + "'><voice xml:lang='" + m_serviceVoice.lang + "' xml:gender='" + m_serviceVoice.gender + "'";
         if (m_eServiceStrategy == ServiceStrategy.AlwaysService) {
             if (m_serviceVoice.voiceName.length() > 0){
                 ssml += " name='" + m_serviceVoice.voiceName + "'>";
