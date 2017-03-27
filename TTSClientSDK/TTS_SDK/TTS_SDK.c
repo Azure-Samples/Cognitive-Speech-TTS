@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<time.h>
 #include"TTS_SDK.h"
-#include"iconv\iconv.h"
 #include"azure_c_shared_utility\httpheaders.h"
 #include"azure_c_shared_utility\httpapi.h"
 #include"azure_c_shared_utility\audio_sys.h"
