@@ -27,6 +27,8 @@ extern "C" {
 
 typedef struct HTTP_HANDLE_DATA_TAG* HTTP_HANDLE;
 
+typedef void **REQUESTHANDLE;
+
 #define AMBIGUOUS_STATUS_CODE           (300)
 
 #define HTTPAPI_RESULT_VALUES                \
@@ -66,6 +68,12 @@ DEFINE_ENUM(HTTPAPI_RESULT, HTTPAPI_RESULT_VALUES);
  */
 DEFINE_ENUM(HTTPAPI_REQUEST_TYPE, HTTPAPI_REQUEST_TYPE_VALUES);
 
+#define HTTPAPI_READEVENT_TYPE_VALUES\
+    HTTPAPI_START_READ,            \
+    HTTPAPI_GOON_READ,           \
+    HTTPAPI_READ_END
+
+DEFINE_ENUM(HTTPAPI_READEVENT_TYPE, HTTPAPI_READEVENT_TYPE_VALUES);
 /**
  * @brief	Global initialization for the HTTP API component.
  *
@@ -187,6 +195,14 @@ MOCKABLE_FUNCTION(, HTTPAPI_RESULT, HTTPAPI_SetOption, HTTP_HANDLE, handle, cons
  * 			code in case it fails.
  */
 MOCKABLE_FUNCTION(, HTTPAPI_RESULT, HTTPAPI_CloneOption, const char*, optionName, const void*, value, const void**, savedValue);
+
+MOCKABLE_FUNCTION(, HTTPAPI_RESULT, HTTPAPI_Request, HTTP_HANDLE, handle, HTTPAPI_REQUEST_TYPE, requestType, const char*, relativePath,
+	HTTP_HEADERS_HANDLE, httpHeadersHandle, const unsigned char*, content,
+	size_t, contentLength, REQUESTHANDLE, httpRequestHandle);
+
+MOCKABLE_FUNCTION(, HTTPAPI_RESULT, HTTPAPI_Rsponse, unsigned int*, statusCode,
+	HTTP_HEADERS_HANDLE, responseHeadersHandle, BUFFER_HANDLE, responseContent,
+	REQUESTHANDLE, httpRequestHandle, HTTPAPI_READEVENT_TYPE*, ReadEvery);
 
 #ifdef __cplusplus
 }
