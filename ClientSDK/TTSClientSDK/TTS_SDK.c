@@ -1,17 +1,38 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<time.h>
 #include"TTS_SDK.h"
 #include"azure_c_shared_utility\httpheaders.h"
 #include"azure_c_shared_utility\httpapi.h"
 #include"azure_c_shared_utility\audio_sys.h"
 #include "SKP_Silk_SDK_API.h"
+#ifdef __Linux__
+#include<pthread.h>
+#else //WIN32
 #include<windows.h>
+#endif
 
 const unsigned char* cVoiceName = "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)";
 const unsigned char* cLang = "zh-CN";
 
+typedef enum MSTTSAudioSYSStatusType
+{
+	MSTTSAudioSYS_WAIT,
+	MSTTSAudioSYS_RUN,
+	MSTTSAudioSYS_STOP
+}MSTTSAudioSYSStatus;
+
+typedef struct MSTTSOUTPUT_TAG
+{
+	LPMSTTS_RECEIVE_WAVESAMPLES_ROUTINE pfWriteBack;
+	void* pCallBackStat;
+}MSTTS_OUTPUT;
+
 typedef struct MSTTSHANDLE_TAG
 {
+	MSTTS_OUTPUT* outputCallback;
+	AUDIO_SYS_HANDLE audioHandle;
+	MSTTSAudioSYSStatus AudioSYSRunFlag;
 	MSTTSVoiceInfo* VoiceInfo;
 	unsigned char* ApiKey;
 	unsigned char* Token;
@@ -48,6 +69,74 @@ static void*   hEncoder = NULL;
 static uint8_t encoderBuffer[SILK_MAXBYTESPERBLOCK];
 static size_t  encoderBufferOffset = 0;
 #pragma endregion
+/////////////////////////////////////////////////////////////////////////////////////////////////
+static void* CreatRWLock() {
+#ifdef __Linux__
+	pthread_rwlock_t rwlock;
+	pthread_rwlock_init(&rwlock, NULL);
+	void* handle = &rwlock;
+	return handle;
+#else //WIN32
+	HANDLE hMutex = CreateMutex(NULL, FALSE, NULL);
+	return hMutex;
+#endif
+}
+
+static int ReadLock(void * handle) {
+	if (handle) {
+#ifdef __Linux__
+		pthread_rwlock_rdlock(handle);
+#else //WIN32
+		WaitForSingleObject(handle, INFINITE);
+#endif
+		return 0;
+	}
+	else {
+		return -1;
+	}
+}
+
+static int WriteLock(void * handle) {
+	if (handle) {
+#ifdef __Linux__
+		pthread_rwlock_wrlock(handle);
+#else //WIN32
+		WaitForSingleObject(handle, INFINITE);
+#endif
+		return 0;
+	}
+	else {
+		return -1;
+	}
+}
+
+static int ReleaseLock(void * handle) {
+	if (handle) {
+#ifdef __Linux__
+		pthread_rwlock_unlock(handle);
+#else //WIN32
+		ReleaseMutex(handle);
+#endif
+		return 0;
+	}
+	else {
+		return -1;
+	}
+}
+
+static int DestroyLock(void * handle) {
+	if (handle) {
+#ifdef __Linux__
+		pthread_rwlock_destroy(handle);
+#else //WIN32
+		CloseHandle(handle);
+#endif
+		return 0;
+}
+	else {
+		return -1;
+	}
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma region TRUE_SILK_DECODE
 static void*     hDecoder = NULL;
@@ -130,9 +219,12 @@ static void audio_decoder_uninitialize(void)
 #pragma region AUDIO_CALLBACK
 typedef struct _AsyncAudio
 {
+	MSTTSAudioSYSStatus* AudioSYSRunFlag;
+	LPMSTTS_RECEIVE_WAVESAMPLES_ROUTINE pfWriteBack;
+	void* pCallBackStat;
 	BUFFER_HANDLE       pBuffer;
 	size_t				offset;
-	void*				hSpeech;
+	void*				memeryLockHandle;
 } AsyncAudio;
 
 static int AsyncRead(void* pContext, uint8_t* pBuffer, size_t size)
@@ -143,11 +235,17 @@ static int AsyncRead(void* pContext, uint8_t* pBuffer, size_t size)
 	int			ret;
 	size_t		decodedBytes = 0;
 	size_t		bufferSize;
+	unsigned char *wave_output = pBuffer;
+
+	if (*aAudio->AudioSYSRunFlag == MSTTSAudioSYS_STOP) {
+		*aAudio->AudioSYSRunFlag = MSTTSAudioSYS_WAIT;
+		return -1;
+	}
 
 	//Get pBuffer size
 	ret = BUFFER_size(aAudio->pBuffer, &bufferSize);
 	if (ret) {
-		return -1;
+		return ret;
 	}
 
 	if (!aAudio || aAudio->offset == bufferSize) {
@@ -167,9 +265,11 @@ static int AsyncRead(void* pContext, uint8_t* pBuffer, size_t size)
 	}
 
 	unsigned char *content = NULL;
-	ret = BUFFER_content(aAudio->pBuffer, &content);
+	ReadLock(aAudio->memeryLockHandle);
+	ret = BUFFER_content(aAudio->pBuffer, (const unsigned char**)&content);
+	ReleaseLock(aAudio->memeryLockHandle);
 	if (ret) {
-		return -1;
+		return ret;
 	}
 
 	if (aAudio->offset < bufferSize && (decodedBytes + SILK_MAXBYTESPERBLOCK) <= size) {
@@ -184,9 +284,12 @@ static int AsyncRead(void* pContext, uint8_t* pBuffer, size_t size)
 			&nBytes);
 
 		if (ret) {
-			return -1;
+			return ret;
 		}
 
+		if (aAudio->pCallBackStat && aAudio->pfWriteBack) {
+			aAudio->pfWriteBack(aAudio->pCallBackStat, wave_output, (int32_t)decodedBytes);
+		}
 		aAudio->offset += (sizeof(uint16_t) + len);
 		decodedBytes += nBytes;
 	}
@@ -203,9 +306,6 @@ static void AsyncComplete(void* pContext)
 		audio_decoder_uninitialize();
 		if (aAudio->pBuffer) {
 			BUFFER_delete(aAudio->pBuffer);
-		}
-		if (aAudio->hSpeech) {
-			//audio_destroy(aAudio->hSpeech);
 		}
 
 		free(aAudio);
@@ -251,7 +351,7 @@ MSTTS_RESULT getKeyValue(const unsigned char* ApiKey, unsigned char** KeyValue) 
 							size_t ContentSize;
 							if (!BUFFER_size(responseContent, &ContentSize)) {
 								unsigned char *content = NULL;
-								if (!BUFFER_content(responseContent, &content)) {
+								if (!BUFFER_content(responseContent, (const unsigned char**)&content)) {
 									unsigned char* KeyValue_tmp = malloc(ContentSize + 1);
 									if (KeyValue_tmp) {
 										memset(KeyValue_tmp, 0, ContentSize + 1);
@@ -315,28 +415,39 @@ MSTTS_RESULT getSSML(MSTTSHANDLE hSynthesizerHandle, const char* pszContent, enu
 	MSTTS_HANDLE *SynthesizerHandle = (MSTTS_HANDLE *)hSynthesizerHandle;
 
 	if (eContentType == MSTTSContentType_SSML) {
-		size_t len = 10240;
+		size_t len = strlen(pszContent);
 
 		*body = malloc(len + 1);
-		memset(*body, 0, len + 1);
-		snprintf(*body, len+1, "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>",
-			SynthesizerHandle->VoiceInfo->lang,
-			SynthesizerHandle->VoiceInfo->lang,
-			"male",
-			SynthesizerHandle->VoiceInfo->voiceName,
-			pszContent);
+		if (*body) {
+			memset(*body, 0, len + 1);
+			strcpy(*body, pszContent);
+			result = MSTTS_OK;
+		}
+		else {
+			result = MSTTS_ALLOC_FAILED;
+		}
 	}
 	else {
-		size_t len = 10240;
+		const unsigned char* SSMLFormat = "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' name='%s'>%s</voice></speak>";
+		size_t len = strlen(SSMLFormat) +
+			strlen(SynthesizerHandle->VoiceInfo->lang) +
+			strlen(SynthesizerHandle->VoiceInfo->lang) +
+			strlen(SynthesizerHandle->VoiceInfo->voiceName) +
+			strlen(pszContent);
 
 		*body = malloc(len + 1);
-		memset(*body, 0, len + 1);
-		snprintf(*body, len + 1, "<speak version='1.0' xml:lang='%s'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>",
-			SynthesizerHandle->VoiceInfo->lang,
-			SynthesizerHandle->VoiceInfo->lang,
-			"male",
-			SynthesizerHandle->VoiceInfo->voiceName,
-			pszContent);
+		if (*body) {
+			memset(*body, 0, len + 1);
+			snprintf(*body, len + 1, SSMLFormat,
+				SynthesizerHandle->VoiceInfo->lang,
+				SynthesizerHandle->VoiceInfo->lang,
+				SynthesizerHandle->VoiceInfo->voiceName,
+				pszContent);
+			result = MSTTS_OK;
+		}
+		else {
+			result = MSTTS_ALLOC_FAILED;
+		}
 	}
 
 	return MSTTS_OK;
@@ -391,14 +502,14 @@ MSTTS_RESULT MSTTS_CreateSpeechSynthesizerHandler(MSTTSHANDLE* phSynthesizerHand
 	MSTTSVoiceInfo* MSTTSvoicehandle = (MSTTSVoiceInfo*)malloc(sizeof(MSTTSVoiceInfo));
 	if (MSTTSvoicehandle) {
 		//set default lang
-		unsigned char* lang = malloc(strlen(cLang)+1);
+		unsigned char* lang = malloc(strlen(cLang) + 1);
 		if (lang) {
-			memset(lang, 0, strlen(cLang)+1);
+			memset(lang, 0, strlen(cLang) + 1);
 			strcpy(lang, cLang);
 			MSTTSvoicehandle->lang = lang;
 
 			//set default voiceName
-			unsigned char* voiceName = malloc(strlen(cVoiceName)+1);
+			unsigned char* voiceName = malloc(strlen(cVoiceName) + 1);
 			if (voiceName) {
 				memset(voiceName, 0, strlen(cVoiceName) + 1);
 				strcpy(voiceName, cVoiceName);
@@ -408,22 +519,32 @@ MSTTS_RESULT MSTTS_CreateSpeechSynthesizerHandler(MSTTSHANDLE* phSynthesizerHand
 				MSTTS_HANDLE* MSTTShandle = (MSTTS_HANDLE*)malloc(sizeof(MSTTS_HANDLE));
 				if (MSTTShandle) {
 					//init ApiKey
-					unsigned char* ApiKey = malloc(strlen(MSTTS_ApiKey)+1);
+					unsigned char* ApiKey = malloc(strlen(MSTTS_ApiKey) + 1);
 					if (ApiKey) {
 						memset(ApiKey, 0, strlen(MSTTS_ApiKey) + 1);
 						strcpy(ApiKey, MSTTS_ApiKey);
 
-						//init Token
-						unsigned char* token;
+						AUDIO_SYS_HANDLE audio_handle = audio_create();
+						if (audio_handle) {
+							//init Token
+							unsigned char* token;
 
-						//Get token
-						if (getKeyValue(ApiKey, &token) == MSTTS_OK) {
-							MSTTShandle->ApiKey = ApiKey;
-							MSTTShandle->VoiceInfo = MSTTSvoicehandle;
-							MSTTShandle->Token = token;
-							time(&MSTTShandle->timeStamp);
-							*phSynthesizerHandle = MSTTShandle;
-							return MSTTS_OK;
+							//Get token
+							if (getKeyValue(ApiKey, &token) == MSTTS_OK) {
+								MSTTShandle->AudioSYSRunFlag = MSTTSAudioSYS_WAIT;
+								MSTTShandle->outputCallback = NULL;
+								MSTTShandle->audioHandle = audio_handle;
+								MSTTShandle->VoiceInfo = MSTTSvoicehandle;
+								MSTTShandle->ApiKey = ApiKey;
+								MSTTShandle->Token = token;
+								time(&MSTTShandle->timeStamp);
+								*phSynthesizerHandle = MSTTShandle;
+								return MSTTS_OK;
+							}
+							audio_destroy(audio_handle);
+						}
+						else {
+							result = MSTTS_AUDIOHANDLE_FAILED;
 						}
 						free(ApiKey);
 					}
@@ -453,7 +574,7 @@ MSTTS_RESULT MSTTS_CreateSpeechSynthesizerHandler(MSTTSHANDLE* phSynthesizerHand
 	return result;
 }
 
-MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent, enum MSTTSContentType eContentType){
+MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent, enum MSTTSContentType eContentType) {
 	if (hSynthesizerHandle == NULL || pszContent == NULL) {
 		return MSTTS_INVALID_ARG;
 	}
@@ -499,28 +620,46 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 								httpHeadersHandle, body,
 								strlen(body), &httpRequestHandle);
 							if (ret == HTTPAPI_OK) {
-								AUDIO_SYS_HANDLE hAudioDevice = audio_create();
+								AUDIO_SYS_HANDLE hAudioDevice = SynthesizerHandle->audioHandle;
 								if (hAudioDevice) {
 									AsyncAudio *aAudio = (AsyncAudio*)malloc(sizeof(AsyncAudio));
 									if (aAudio) {
-										aAudio->pBuffer = responseContent;
-										aAudio->offset = 0;
-										aAudio->hSpeech = hAudioDevice;
-
-										if (audio_output_startasync(hAudioDevice, &kSilkFormat, AsyncRead, AsyncComplete, aAudio)){
-											AsyncComplete(aAudio);
-										}
-
-										HTTPAPI_READEVENT_TYPE ReadEvery = HTTPAPI_START_READ;
-										do {
-											ret = HTTPAPI_Rsponse(&statusCode,
-												responseHeadersHandle, responseContent,
-												&httpRequestHandle, &ReadEvery);
-											if (ret != HTTPAPI_OK || statusCode != 200) {
-												result = MSTTS_HTTP_ERROR;
-												break;
+										void* handle = CreatRWLock();
+										if (handle) {
+											aAudio->pCallBackStat = NULL;
+											aAudio->pfWriteBack = NULL;
+											if (SynthesizerHandle->outputCallback) {
+												if (SynthesizerHandle->outputCallback->pCallBackStat && SynthesizerHandle->outputCallback->pfWriteBack) {
+													aAudio->pCallBackStat = SynthesizerHandle->outputCallback->pCallBackStat;
+													aAudio->pfWriteBack = SynthesizerHandle->outputCallback->pfWriteBack;
+												}
 											}
-										} while (ReadEvery != HTTPAPI_READ_END);
+											aAudio->AudioSYSRunFlag = &SynthesizerHandle->AudioSYSRunFlag;
+											aAudio->pBuffer = responseContent;
+											aAudio->offset = 0;
+											aAudio->memeryLockHandle = handle;
+											SynthesizerHandle->AudioSYSRunFlag = MSTTSAudioSYS_RUN;
+											if (audio_output_startasync(hAudioDevice, &kSilkFormat, AsyncRead, AsyncComplete, aAudio)) {
+												AsyncComplete(aAudio);
+											}
+
+											HTTPAPI_READEVENT_TYPE ReadEvery = HTTPAPI_START_READ;
+											do {
+												WriteLock(handle);
+												ret = HTTPAPI_Rsponse(&statusCode,
+													responseHeadersHandle, responseContent,
+													&httpRequestHandle, &ReadEvery);
+												ReleaseLock(handle);
+												if (ret != HTTPAPI_OK || statusCode != 200) {
+													result = MSTTS_HTTP_ERROR;
+													break;
+												}
+											} while (ReadEvery != HTTPAPI_READ_END);
+											DestroyLock(handle);
+										}
+										else {
+											result = MSTTS_MUTEX_ERROR;
+										}
 										//free(aAudio);
 									}
 									else {
@@ -528,7 +667,7 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 									}
 								}
 								else {
-									result = MSTTS_ALLOC_FAILED;
+									result = MSTTS_AUDIOHANDLE_FAILED;
 								}
 							}
 							else {
@@ -548,7 +687,7 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 				else {
 					result = MSTTS_ERROR;
 				}
-GetTokenError:
+			GetTokenError:
 				if (httpHeadersHandle) {
 					HTTPHeaders_Free(httpHeadersHandle);
 				}
@@ -572,7 +711,33 @@ GetTokenError:
 	return result;
 }
 
-MSTTS_RESULT MSTTS_SetVoice(MSTTSHANDLE hSynthesizerHandle, const MSTTSVoiceInfo* pVoiceInfo){
+MSTTS_RESULT MSTTS_Stop(MSTTSHANDLE hSynthesizerHandle) {
+	if (hSynthesizerHandle == NULL) {
+		return MSTTS_INVALID_ARG;
+	}
+
+	MSTTS_HANDLE *SynthesizerHandle = (MSTTS_HANDLE *)hSynthesizerHandle;
+
+	if (SynthesizerHandle->AudioSYSRunFlag == MSTTSAudioSYS_RUN) {
+		SynthesizerHandle->AudioSYSRunFlag = MSTTSAudioSYS_STOP;
+		if (SynthesizerHandle->audioHandle) {
+			if (audio_output_stop(SynthesizerHandle->audioHandle)) {
+				return MSTTS_AUDIOHANDLE_FAILED;
+			}
+			else {
+				return MSTTS_OK;
+			}
+		}
+		else {
+			return MSTTS_INVALID_ARG;
+		}
+	}
+	else {
+		return MSTTS_ERROR;
+	}
+}
+
+MSTTS_RESULT MSTTS_SetVoice(MSTTSHANDLE hSynthesizerHandle, const MSTTSVoiceInfo* pVoiceInfo) {
 	if (hSynthesizerHandle == NULL || pVoiceInfo->voiceName == NULL || pVoiceInfo->lang == NULL) {
 		return MSTTS_INVALID_ARG;
 	}
@@ -587,13 +752,13 @@ MSTTS_RESULT MSTTS_SetVoice(MSTTSHANDLE hSynthesizerHandle, const MSTTSVoiceInfo
 	size_t voiceNameLen = strlen(pVoiceInfo->voiceName);
 	size_t langLen = strlen(pVoiceInfo->lang);
 
-	unsigned char* newVoiceName = malloc(voiceNameLen+1);
+	unsigned char* newVoiceName = malloc(voiceNameLen + 1);
 	if (newVoiceName) {
 		memset(newVoiceName, 0, voiceNameLen + 1);
 		strcpy(newVoiceName, pVoiceInfo->voiceName);
 
 		unsigned char* newLang = malloc(langLen + 1);
-		if(newLang){
+		if (newLang) {
 			memset(newLang, 0, langLen + 1);
 			strcpy(newLang, pVoiceInfo->lang);
 
@@ -617,12 +782,52 @@ MSTTS_RESULT MSTTS_SetVoice(MSTTSHANDLE hSynthesizerHandle, const MSTTSVoiceInfo
 	return result;
 }
 
+MSTTS_RESULT MSTTS_SetOutput(MSTTSHANDLE hSynthesizerHandle, const MSTTSWAVEFORMATEX* pWaveFormat, LPMSTTS_RECEIVE_WAVESAMPLES_ROUTINE pfWriteBack, void* pCallBackStat) {
+	if (hSynthesizerHandle == NULL || pfWriteBack == NULL || pCallBackStat == NULL) {
+		return MSTTS_INVALID_ARG;
+	}
+
+	MSTTS_HANDLE *SynthesizerHandle = (MSTTS_HANDLE *)hSynthesizerHandle;
+
+	if (SynthesizerHandle->outputCallback) {
+		SynthesizerHandle->outputCallback->pCallBackStat = pCallBackStat;
+		SynthesizerHandle->outputCallback->pfWriteBack = pfWriteBack;
+		return MSTTS_OK;
+	}
+	else {
+		MSTTS_OUTPUT* outputCallback = (MSTTS_OUTPUT*)malloc(sizeof(MSTTS_OUTPUT));
+		if (outputCallback) {
+			outputCallback->pCallBackStat = pCallBackStat;
+			outputCallback->pfWriteBack = pfWriteBack;
+			SynthesizerHandle->outputCallback = outputCallback;
+			return MSTTS_OK;
+		}
+		else {
+			return MSTTS_ALLOC_FAILED;
+		}
+	}
+}
+
+const MSTTSWAVEFORMATEX* MSTTS_GetOutputFormat(MSTTSHANDLE hSynthesizerHandle) {
+	MSTTSWAVEFORMATEX* waveFormat = (MSTTSWAVEFORMATEX*)malloc(sizeof(MSTTSWAVEFORMATEX));
+	if (waveFormat) {
+		waveFormat->wFormatTag = WAVE_FORMAT_PCM;
+		waveFormat->nChannels = AUDIO_CHANNEL;
+		waveFormat->nSamplesPerSec = AUDIO_SAMPLE_RATE;
+		waveFormat->wBitsPerSample = AUDIO_BITS;
+		waveFormat->nAvgBytesPerSec = AUDIO_BYTE_RATE;
+		waveFormat->nBlockAlign = AUDIO_BLOCK_ALIGN;
+	}
+
+	return waveFormat;
+}
+
 void MSTTS_CloseSynthesizer(MSTTSHANDLE hSynthesizerHandle) {
 	if (hSynthesizerHandle) {
 		MSTTS_HANDLE *SynthesizerHandle = (MSTTS_HANDLE *)hSynthesizerHandle;
 
 		if (SynthesizerHandle->VoiceInfo) {
-			MSTTSVoiceInfo* MSTTSvoicehandle = (MSTTS_HANDLE *)SynthesizerHandle->VoiceInfo;
+			MSTTSVoiceInfo* MSTTSvoicehandle = (MSTTSVoiceInfo *)SynthesizerHandle->VoiceInfo;
 
 			if (MSTTSvoicehandle->voiceName) {
 				free(MSTTSvoicehandle->voiceName);
@@ -633,6 +838,17 @@ void MSTTS_CloseSynthesizer(MSTTSHANDLE hSynthesizerHandle) {
 			free(MSTTSvoicehandle);
 		}
 
+		if (SynthesizerHandle->outputCallback) {
+			free(SynthesizerHandle->outputCallback);
+		}
+		if (SynthesizerHandle->audioHandle) {
+			if (SynthesizerHandle->AudioSYSRunFlag == MSTTSAudioSYS_RUN) {
+				SynthesizerHandle->AudioSYSRunFlag = MSTTSAudioSYS_STOP;
+				audio_output_stop(SynthesizerHandle->audioHandle);
+				Sleep(100);
+			}
+			audio_destroy(SynthesizerHandle->audioHandle);
+		}
 		if (SynthesizerHandle->ApiKey) {
 			free(SynthesizerHandle->ApiKey);
 		}

@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linux", "Linux", "{0D8310CC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DC3A751E-B694-4BD8-9127-3C7F31ACF148}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TTSClientSDK", "TTSClientSDK\TTSClientSDK.vcxproj", "{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -51,6 +53,18 @@ Global
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|Win32.Build.0 = Release|Win32
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|x64.ActiveCfg = Release|x64
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|x64.Build.0 = Release|x64
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|ARM.ActiveCfg = Debug|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Linux.ActiveCfg = Debug|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Win32.Build.0 = Debug|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|x64.ActiveCfg = Debug|x64
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|x64.Build.0 = Debug|x64
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|ARM.ActiveCfg = Release|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Linux.ActiveCfg = Release|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Win32.ActiveCfg = Release|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Win32.Build.0 = Release|Win32
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|x64.ActiveCfg = Release|x64
+		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
