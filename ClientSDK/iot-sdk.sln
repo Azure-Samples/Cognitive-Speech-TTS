@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "azure-c-shared-utility-linux", "azure-c-shared-utility\azure-c-shared-utility-linux.vcxproj", "{D4A84FC6-5C80-4A0C-9C4C-343D23FCF0B4}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linux", "Linux", "{0D8310CC-9A16-4E39-BD7B-365377C7774F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DC3A751E-B694-4BD8-9127-3C7F31ACF148}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TTSClientSDK", "TTSClientSDK\TTSClientSDK.vcxproj", "{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,18 +51,6 @@ Global
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|Win32.Build.0 = Release|Win32
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|x64.ActiveCfg = Release|x64
 		{2FEB90A0-E50D-48B1-B2C3-AE4AF21218BC}.Release|x64.Build.0 = Release|x64
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|ARM.ActiveCfg = Debug|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Linux.ActiveCfg = Debug|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Win32.ActiveCfg = Debug|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|Win32.Build.0 = Debug|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|x64.ActiveCfg = Debug|x64
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Debug|x64.Build.0 = Debug|x64
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|ARM.ActiveCfg = Release|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Linux.ActiveCfg = Release|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Win32.ActiveCfg = Release|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|Win32.Build.0 = Release|Win32
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|x64.ActiveCfg = Release|x64
-		{0103DA51-99EA-4F11-AD0B-4A6D8780BD79}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
