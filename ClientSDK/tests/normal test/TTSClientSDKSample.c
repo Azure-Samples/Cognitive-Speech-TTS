@@ -3,7 +3,7 @@
 #include"TTSClientSDK.h"
 
 
-const unsigned char* ApiKey = "f2c0453f2e0e448584f76e3d25989df1";
+const unsigned char* ApiKey = "";
 
 const char* text = "This is the Microsoft TTS Client SDK test program";
 
