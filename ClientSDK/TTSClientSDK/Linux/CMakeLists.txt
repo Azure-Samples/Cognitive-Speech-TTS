@@ -17,7 +17,7 @@ set(CMAKE_C_FLAGS_RELEASE "${Compiler_Flags_C} ${Compile_Options_Release}")
 include_directories("/usr/include" "../inc" "../../public/inc")
 add_definitions(-DCURL_VERBOSE -DNO_SSL_VERIFYPEER -D_GNU_SOURCE -DCURL_STATICLIB)
 
-link_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../public/lib/Windows/Win32/Release")
+link_directories("${CMAKE_CURRENT_SOURCE_DIR}/../../public/lib/Linux/x86_64/Release")
 
 ADD_EXECUTABLE(TTSSDKsample ../src/TTSClientSDKSample.c ../src/TTSClientSDK.c )
 TARGET_LINK_LIBRARIES(TTSSDKsample silk curl)
