@@ -40,7 +40,7 @@ import java.net.*;
 
 import javax.net.ssl.*;
 
-class TtsServiceClient{
+class TtsServiceClient {
     private static final String LOG_TAG = "SpeechSDKTTS";
     private static String s_contentType = "application/ssml+xml";
     private final String m_serviceUri;
@@ -58,7 +58,7 @@ class TtsServiceClient{
 
     }
 
-    protected void doWork(String ssml){
+    protected void doWork(String ssml) {
         int code = -1;
         synchronized(m_auth) {
             String accessToken = m_auth.GetAccessToken();
@@ -94,9 +94,7 @@ class TtsServiceClient{
                     m_result = bout.toByteArray();
                 }
                 urlConnection.disconnect();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Log.e(LOG_TAG, "Exception error", e);
             }
         }
@@ -112,8 +110,7 @@ class TtsServiceClient{
         try {
             th.start();
             th.join();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.e(LOG_TAG, "Exception error", e);
         }
 

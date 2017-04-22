@@ -34,8 +34,9 @@
 package com.microsoft.sdksample;
 
 import android.app.AlertDialog;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.microsoft.speech.tts.Synthesizer;
@@ -77,6 +78,20 @@ public class MainActivity extends ActionBarActivity {
             // Use SSML for speech.
             String text = "<speak version=\"1.0\" xmlns=\"http://www.w3.org/2001/10/synthesis\" xmlns:mstts=\"http://www.w3.org/2001/mstts\" xml:lang=\"en-US\"><voice xml:lang=\"en-US\" name=\"Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)\">You can also use SSML markup for text to speech.</voice></speak>";
             m_syn.SpeakSSMLToAudio(text);
+
+            findViewById(R.id.stop_btn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    m_syn.stopSound();
+                }
+            });
+
+            findViewById(R.id.play_btn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    m_syn.SpeakToAudio(getString(R.string.tts_text));
+                }
+            });
         }
     }
 }

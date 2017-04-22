@@ -33,18 +33,18 @@
 package com.microsoft.speech.tts;
 
 public class Voice {
-    public enum Gender{
+    public enum Gender {
         Male, Female
     }
 
-    public Voice(String lang){
+    public Voice(String lang) {
         this.lang = lang;
         this.voiceName = "";
         this.gender = Gender.Female;
         this.isServiceVoice = true;
     }
 
-    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice){
+    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice) {
         this.lang = lang;
         this.voiceName = voiceName;
         this.gender = gender;

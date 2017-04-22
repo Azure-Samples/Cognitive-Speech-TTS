@@ -11,4 +11,7 @@
     <string name="app_name">Cognitive TTS Sample</string>
 
     <string name="tts_text">This is a demo of Microsoft Cognitive Services Text to Speech API.</string>
+
+    <string name="play_button_name">Play</string>
+    <string name="stop_button_name">Stop</string>
 </resources>
