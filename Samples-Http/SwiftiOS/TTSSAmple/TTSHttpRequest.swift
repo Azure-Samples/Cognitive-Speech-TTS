@@ -30,29 +30,27 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-package com.microsoft.speech.tts;
 
-public class Voice {
-    public enum Gender {
-        Male, Female
+import Foundation
+
+class TTSHttpRequest {
+    
+    typealias Callback = (data: Data?, response: URLResponse?, error: Error?)
+    
+    static func submit(withUrl url: String, andHeaders headers: [String: String]? = nil, andBody body: Data? = nil, _ callback: @escaping (Callback) -> ()) {
+        guard let url = URL(string: url) else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        headers?.forEach({ (header: (key: String, value: String)) in
+            request.setValue(header.value, forHTTPHeaderField: header.key)
+        })
+        if let body = body {
+            request.httpBody = body
+        }
+        let task = URLSession.shared.dataTask(with: request) { (c: Callback) in
+            callback(c)
+        }
+        task.resume()
     }
-
-    public Voice(String lang) {
-        this.lang = lang;
-        this.voiceName = "";
-        this.gender = Gender.Female;
-        this.isServiceVoice = true;
-    }
-
-    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice) {
-        this.lang = lang;
-        this.voiceName = voiceName;
-        this.gender = gender;
-        this.isServiceVoice = isServiceVoice;
-    }
-
-    public final String lang;
-    public final String voiceName;
-    public final Gender gender;
-    public final Boolean isServiceVoice;
+    
 }

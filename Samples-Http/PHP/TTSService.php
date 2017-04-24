@@ -54,7 +54,7 @@ else{
    $voice->setAttribute( "xml:gender" , "Female" );
    $voice->setAttribute( "name" , "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" );
 
-   $text = $doc->createTextNode( "This is a demo to call microsoft text to speach service in php." );
+   $text = $doc->createTextNode( "This is a demo to call microsoft text to speech service in php." );
 
    $voice->appendChild( $text );
    $root->appendChild( $voice );

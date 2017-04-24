@@ -30,29 +30,27 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-package com.microsoft.speech.tts;
 
-public class Voice {
-    public enum Gender {
-        Male, Female
+import UIKit
+
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 
-    public Voice(String lang) {
-        this.lang = lang;
-        this.voiceName = "";
-        this.gender = Gender.Female;
-        this.isServiceVoice = true;
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = textField.text {
+            DispatchQueue.global().async {
+                TTSVocalizer.sharedInstance.vocalize(text)
+            }
+        }
+        return false
     }
 
-    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice) {
-        this.lang = lang;
-        this.voiceName = voiceName;
-        this.gender = gender;
-        this.isServiceVoice = isServiceVoice;
-    }
-
-    public final String lang;
-    public final String voiceName;
-    public final Gender gender;
-    public final Boolean isServiceVoice;
 }

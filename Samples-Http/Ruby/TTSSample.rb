@@ -56,7 +56,7 @@ headers = {
 # SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>"
 data = RubySpeech::SSML.draw do
   voice gender: :female, name: 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', language: 'en-US' do
-    string 'This is a demo to call microsoft text to speach service in ruby'
+    string 'This is a demo to call microsoft text to speech service in ruby'
   end
 end
 

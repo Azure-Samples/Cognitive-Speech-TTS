@@ -1,3 +1,7 @@
+#! /usr/bin/env python3
+
+# -*- coding: utf-8 -*-
+
 ###
 #Copyright (c) Microsoft Corporation
 #All rights reserved. 
@@ -40,7 +44,7 @@ voice = ElementTree.SubElement(body, 'voice')
 voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
 voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
 voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
-voice.text = 'This is a demo to call microsoft text to speach service in Python.'
+voice.text = 'This is a demo to call microsoft text to speech service in Python.'
 
 headers = {"Content-type": "application/ssml+xml", 
 			"X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm", 

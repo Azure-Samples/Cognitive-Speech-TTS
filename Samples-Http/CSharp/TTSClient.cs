@@ -32,17 +32,16 @@
 //
 
 using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
+using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 using System.Xml.Linq;
 
-namespace TTSSample
+namespace CognitiveServicesTTS
 {
     /// <summary>
     /// This class demonstrates how to get a valid O-auth token
@@ -61,9 +60,7 @@ namespace TTSSample
         {
             this.apiKey = apiKey;
 
-            var getAccessTokenTask = HttpPost(AccessUri, this.apiKey);
-            getAccessTokenTask.Wait();
-            this.accessToken = getAccessTokenTask.Result;
+            this.accessToken = HttpPost(AccessUri, this.apiKey);
 
             // renew the token every specfied minutes
             accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
@@ -77,9 +74,9 @@ namespace TTSSample
             return this.accessToken;
         }
 
-        private async Task RenewAccessToken()
+        private void RenewAccessToken()
         {
-            string newAccessToken = await HttpPost(AccessUri, this.apiKey);
+            string newAccessToken = HttpPost(AccessUri, this.apiKey);
             //swap the new token with old one
             //Note: the swap is thread unsafe
             this.accessToken = newAccessToken;
@@ -111,14 +108,15 @@ namespace TTSSample
             }
         }
 
-        private async Task<string> HttpPost(string accessUri, string apiKey)
+        private string HttpPost(string accessUri, string apiKey)
         {
-            // Prepare OAuth request 
+            // Prepare OAuth request
             WebRequest webRequest = WebRequest.Create(accessUri);
             webRequest.Method = "POST";
+            webRequest.ContentLength = 0;
             webRequest.Headers["Ocp-Apim-Subscription-Key"] = apiKey;
 
-            using (WebResponse webResponse = await webRequest.GetResponseAsync())
+            using (WebResponse webResponse = webRequest.GetResponse())
             {
                 using (Stream stream = webResponse.GetResponseStream())
                 {
@@ -181,18 +179,64 @@ namespace TTSSample
         /// raw-8khz-8bit-mono-mulaw request output audio format type.
         /// </summary>
         Raw8Khz8BitMonoMULaw,
+
         /// <summary>
         /// raw-16khz-16bit-mono-pcm request output audio format type.
         /// </summary>
         Raw16Khz16BitMonoPcm,
+
         /// <summary>
         /// riff-8khz-8bit-mono-mulaw request output audio format type.
         /// </summary>
         Riff8Khz8BitMonoMULaw,
+
         /// <summary>
         /// riff-16khz-16bit-mono-pcm request output audio format type.
         /// </summary>
         Riff16Khz16BitMonoPcm,
+
+        // <summary>
+        /// ssml-16khz-16bit-mono-silk request output audio format type.
+        /// It is a SSML with audio segment, with audio compressed by SILK codec
+        /// </summary>
+        Ssml16Khz16BitMonoSilk,
+
+        /// <summary>
+        /// raw-16khz-16bit-mono-truesilk request output audio format type.
+        /// Audio compressed by SILK codec
+        /// </summary>
+        Raw16Khz16BitMonoTrueSilk,
+
+        /// <summary>
+        /// ssml-16khz-16bit-mono-tts request output audio format type.
+        /// It is a SSML with audio segment, and it needs tts engine to play out
+        /// </summary>
+        Ssml16Khz16BitMonoTts,
+
+        /// <summary>
+        /// audio-16khz-128kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio16Khz128KBitRateMonoMp3,
+
+        /// <summary>
+        /// audio-16khz-64kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio16Khz64KBitRateMonoMp3,
+
+        /// <summary>
+        /// audio-16khz-32kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio16Khz32KBitRateMonoMp3,
+
+        /// <summary>
+        /// audio-16khz-16kbps-mono-siren request output audio format type.
+        /// </summary>
+        Audio16Khz16KbpsMonoSiren,
+
+        /// <summary>
+        /// riff-16khz-16kbps-mono-siren request output audio format type.
+        /// </summary>
+        Riff16Khz16KbpsMonoSiren,
     }
 
     /// <summary>
@@ -209,30 +253,35 @@ namespace TTSSample
         /// <param name="text">The text input.</param>
         private string GenerateSsml(string locale, string gender, string name, string text)
         {
-            var ssmlDoc = new XDocument(
-                              new XElement("speak",
-                                  new XAttribute("version", "1.0"),
-                                  new XAttribute(XNamespace.Xml + "lang", "en-US"),
-                                  new XElement("voice",
-                                      new XAttribute(XNamespace.Xml + "lang", locale),
-                                      new XAttribute(XNamespace.Xml + "gender", gender),
-                                      new XAttribute("name", name),
-                                      text)));
+            var ssmlDoc = new XDocument(
+                              new XElement("speak",
+                                  new XAttribute("version", "1.0"),
+                                  new XAttribute(XNamespace.Xml + "lang", "en-US"),
+                                  new XElement("voice",
+                                      new XAttribute(XNamespace.Xml + "lang", locale),
+                                      new XAttribute(XNamespace.Xml + "gender", gender),
+                                      new XAttribute("name", name),
+                                      text)));
             return ssmlDoc.ToString();
         }
 
-        /// <summary>
-        /// The input options
-        /// </summary>
-        private InputOptions inputOptions;
+        private HttpClient client;
+        private HttpClientHandler handler;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Synthesize"/> class.
         /// </summary>
-        /// <param name="input">The input.</param>
-        public Synthesize(InputOptions input)
+        public Synthesize()
         {
-            this.inputOptions = input;
+            var cookieContainer = new CookieContainer();
+            handler = new HttpClientHandler() { CookieContainer = new CookieContainer(), UseProxy = false };
+            client = new HttpClient(handler);
+        }
+
+        ~Synthesize()
+        {
+            client.Dispose();
+            handler.Dispose();
         }
 
         /// <summary>
@@ -250,33 +299,30 @@ namespace TTSSample
         /// </summary>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>A Task</returns>
-        public Task Speak(CancellationToken cancellationToken)
+        public Task Speak(CancellationToken cancellationToken, InputOptions inputOptions)
         {
-            var cookieContainer = new CookieContainer();
-            var handler = new HttpClientHandler() { CookieContainer = cookieContainer };
-            var client = new HttpClient(handler);
-
-            foreach (var header in this.inputOptions.Headers)
+            client.DefaultRequestHeaders.Clear();
+            foreach (var header in inputOptions.Headers)
             {
                 client.DefaultRequestHeaders.TryAddWithoutValidation(header.Key, header.Value);
             }
 
             var genderValue = "";
-            switch (this.inputOptions.VoiceType)
+            switch (inputOptions.VoiceType)
             {
                 case Gender.Male:
                     genderValue = "Male";
                     break;
+
                 case Gender.Female:
                 default:
                     genderValue = "Female";
                     break;
-
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Post, this.inputOptions.RequestUri)
+            var request = new HttpRequestMessage(HttpMethod.Post, inputOptions.RequestUri)
             {
-                Content = new StringContent(GenerateSsml(this.inputOptions.Locale, genderValue, this.inputOptions.VoiceName, this.inputOptions.Text))
+                Content = new StringContent(GenerateSsml(inputOptions.Locale, genderValue, inputOptions.VoiceName, inputOptions.Text))
             };
 
             var httpTask = client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
@@ -289,7 +335,6 @@ namespace TTSSample
                     {
                         if (responseMessage.IsCompleted && responseMessage.Result != null && responseMessage.Result.IsSuccessStatusCode)
                         {
-
                             var httpStream = await responseMessage.Result.Content.ReadAsStreamAsync().ConfigureAwait(false);
                             this.AudioAvailable(new GenericEventArgs<Stream>(httpStream));
                         }
@@ -304,9 +349,8 @@ namespace TTSSample
                     }
                     finally
                     {
+                        responseMessage.Dispose();
                         request.Dispose();
-                        client.Dispose();
-                        handler.Dispose();
                     }
                 },
                 TaskContinuationOptions.AttachedToParent,
@@ -383,15 +427,51 @@ namespace TTSSample
                         case AudioOutputFormat.Raw16Khz16BitMonoPcm:
                             outputFormat = "raw-16khz-16bit-mono-pcm";
                             break;
+
                         case AudioOutputFormat.Raw8Khz8BitMonoMULaw:
                             outputFormat = "raw-8khz-8bit-mono-mulaw";
                             break;
+
                         case AudioOutputFormat.Riff16Khz16BitMonoPcm:
                             outputFormat = "riff-16khz-16bit-mono-pcm";
                             break;
+
                         case AudioOutputFormat.Riff8Khz8BitMonoMULaw:
                             outputFormat = "riff-8khz-8bit-mono-mulaw";
                             break;
+
+                        case AudioOutputFormat.Ssml16Khz16BitMonoSilk:
+                            outputFormat = "ssml-16khz-16bit-mono-silk";
+                            break;
+
+                        case AudioOutputFormat.Raw16Khz16BitMonoTrueSilk:
+                            outputFormat = "raw-16khz-16bit-mono-truesilk";
+                            break;
+
+                        case AudioOutputFormat.Ssml16Khz16BitMonoTts:
+                            outputFormat = "ssml-16khz-16bit-mono-tts";
+                            break;
+
+                        case AudioOutputFormat.Audio16Khz128KBitRateMonoMp3:
+                            outputFormat = "audio-16khz-128kbitrate-mono-mp3";
+                            break;
+
+                        case AudioOutputFormat.Audio16Khz64KBitRateMonoMp3:
+                            outputFormat = "audio-16khz-64kbitrate-mono-mp3";
+                            break;
+
+                        case AudioOutputFormat.Audio16Khz32KBitRateMonoMp3:
+                            outputFormat = "audio-16khz-32kbitrate-mono-mp3";
+                            break;
+
+                        case AudioOutputFormat.Audio16Khz16KbpsMonoSiren:
+                            outputFormat = "audio-16khz-16kbps-mono-siren";
+                            break;
+
+                        case AudioOutputFormat.Riff16Khz16KbpsMonoSiren:
+                            outputFormat = "riff-16khz-16kbps-mono-siren";
+                            break;
+
                         default:
                             outputFormat = "riff-16khz-16bit-mono-pcm";
                             break;
@@ -439,84 +519,6 @@ namespace TTSSample
             /// Gets or sets the text.
             /// </summary>
             public string Text { get; set; }
-        }
-    }
-
-    class Program
-    {
-        /// <summary>
-        /// This method is called once the audio returned from the service.
-        /// It will then attempt to play that audio file.
-        /// Note that the playback will fail if the output audio format is not pcm encoded.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="args">The <see cref="GenericEventArgs{Stream}"/> instance containing the event data.</param>
-        static void StoreAudio(object sender, GenericEventArgs<Stream> args)
-        {
-            Console.WriteLine(args.EventData);
-            using (var file = File.OpenWrite(Path.Combine(Directory.GetCurrentDirectory(), $"{ Guid.NewGuid() }.wav")))
-            {
-                args.EventData.CopyTo(file);
-                file.Flush();
-            }
-        }
-
-        /// <summary>
-        /// Handler an error when a TTS request failed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="GenericEventArgs{Exception}"/> instance containing the event data.</param>
-        static void ErrorHandler(object sender, GenericEventArgs<Exception> e)
-        {
-            Console.WriteLine("Unable to complete the TTS request: [{0}]", e.ToString());
-        }
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Starting Authtentication");
-            string accessToken;
-
-            // Note: The way to get api key:
-            // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-            // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-            Authentication auth = new Authentication("Your api key goes here");
-
-            try
-            {
-                accessToken = auth.GetAccessToken();
-                Console.WriteLine("Token: {0}\n", accessToken);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failed authentication.");
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine(ex.Message);
-                return;
-            }
-
-            Console.WriteLine("Starting TTSSample request code execution.");
-
-            string requestUri = "https://speech.platform.bing.com/synthesize";
-
-            var cortana = new Synthesize(new Synthesize.InputOptions()
-            {
-                RequestUri = new Uri(requestUri),
-                // Text to be spoken.
-                Text = "Hi, how are you doing?",
-                VoiceType = Gender.Female,
-                // Refer to the documentation for complete list of supported locales.
-                Locale = "en-US",
-                // You can also customize the output voice. Refer to the documentation to view the different
-                // voices that the TTS service can output.
-                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
-                // Service can return audio in different output format. 
-                OutputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm,
-                AuthorizationToken = "Bearer " + accessToken,
-            });
-
-            cortana.OnAudioAvailable += StoreAudio;
-            cortana.OnError += ErrorHandler;
-            cortana.Speak(CancellationToken.None).Wait();
         }
     }
 }

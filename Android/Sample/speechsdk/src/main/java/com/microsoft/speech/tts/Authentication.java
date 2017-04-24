@@ -39,20 +39,16 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import org.json.*;
-
 /*
      * This class demonstrates how to get a valid O-auth accessToken from
      * Azure Data Market.
      */
-class Authentication
-{
+class Authentication {
     private static final String LOG_TAG = "Authentication";
     public static final String AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
@@ -64,8 +60,7 @@ class Authentication
     private final int RefreshTokenDuration = 9 * 60 * 1000;
     private TimerTask nineMinitesTask = null;
 
-    public Authentication(String apiKey)
-    {
+    public Authentication(String apiKey) {
         this.apiKey = apiKey;
 
         Thread th = new Thread(new Runnable() {
@@ -78,15 +73,14 @@ class Authentication
         try {
             th.start();
             th.join();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         // renew the accessToken every specified minutes
         accessTokenRenewer = new Timer();
-        nineMinitesTask = new TimerTask(){
-            public void run(){
+        nineMinitesTask = new TimerTask() {
+            public void run() {
                 RenewAccessToken();
             }
         };
@@ -94,13 +88,11 @@ class Authentication
         accessTokenRenewer.schedule(nineMinitesTask, RefreshTokenDuration, RefreshTokenDuration);
     }
 
-    public String GetAccessToken()
-    {
+    public String GetAccessToken() {
         return this.accessToken;
     }
 
-    private void RenewAccessToken()
-    {
+    private void RenewAccessToken() {
         synchronized(this) {
             HttpPost(AccessTokenUri, this.apiKey);
 
@@ -110,8 +102,7 @@ class Authentication
         }
     }
 
-    private void HttpPost(String AccessTokenUri, String apiKey)
-    {
+    private void HttpPost(String AccessTokenUri, String apiKey) {
         InputStream inSt = null;
         HttpsURLConnection webRequest = null;
 
@@ -153,7 +144,7 @@ class Authentication
 
             this.accessToken = strBuffer.toString();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.e(LOG_TAG, "Exception error", e);
         }
     }

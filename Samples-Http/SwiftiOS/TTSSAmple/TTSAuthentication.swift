@@ -30,29 +30,48 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-package com.microsoft.speech.tts;
 
-public class Voice {
-    public enum Gender {
-        Male, Female
+import Foundation
+
+class TTSAuthentication {
+    
+    static let accessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken"
+    
+    private let apiKey: String
+    private var accessToken: String?
+    
+    //Access token expires every 10 minutes. Renew it every 9 minutes only.
+    private static let refreshTokenDuration: Double = 9 * 60
+    
+    init(apiKey: String) {
+        self.apiKey = apiKey
+        self.refreshToken()
+    }
+    
+    func getAccessToken(_ callback: @escaping (String) -> ()) {
+        if let token = self.accessToken {
+            callback(token)
+        } else {
+            self.refreshToken({ (token: String) in
+                callback(token)
+            })
+        }
+    }
+    
+    private func refreshToken(_ callback: ((String) -> ())? = nil) {
+        TTSHttpRequest.submit(withUrl: TTSAuthentication.accessTokenUri, andHeaders: ["Ocp-Apim-Subscription-Key": apiKey]) { [weak self] (c: TTSHttpRequest.Callback) in
+            defer {
+                // renew the token every specified minutes
+                DispatchQueue.global().asyncAfter(deadline: .now() + TTSAuthentication.refreshTokenDuration) {
+                    self?.refreshToken()
+                }
+            }
+            guard let data = c.data, let accessToken = String(data: data, encoding: String.Encoding.utf8) else {
+                return
+            }
+            self?.accessToken = accessToken
+            callback?(accessToken)
+        }
     }
 
-    public Voice(String lang) {
-        this.lang = lang;
-        this.voiceName = "";
-        this.gender = Gender.Female;
-        this.isServiceVoice = true;
-    }
-
-    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice) {
-        this.lang = lang;
-        this.voiceName = voiceName;
-        this.gender = gender;
-        this.isServiceVoice = isServiceVoice;
-    }
-
-    public final String lang;
-    public final String voiceName;
-    public final Gender gender;
-    public final Boolean isServiceVoice;
 }

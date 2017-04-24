@@ -26,6 +26,8 @@ repositories {
 }
 
 dependencies {
-    compile(name: 'speechsdk', ext: 'aar')
+    releaseCompile(name: 'speechsdk', ext: 'aar')
+    debugCompile project(path: ':speechsdk')
+
     compile 'com.android.support:appcompat-v7:22.1.0'
 }

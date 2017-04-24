@@ -30,29 +30,33 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-package com.microsoft.speech.tts;
 
-public class Voice {
-    public enum Gender {
-        Male, Female
+import Foundation
+import AVFoundation
+
+class TTSVocalizer: NSObject, AVAudioPlayerDelegate {
+    
+    static let sharedInstance = TTSVocalizer()
+    
+    private let synthesizer = TTSSynthesizer()
+    
+    private var player: AVAudioPlayer?
+        
+    private override init() {
     }
 
-    public Voice(String lang) {
-        this.lang = lang;
-        this.voiceName = "";
-        this.gender = Gender.Female;
-        this.isServiceVoice = true;
+    func vocalize(_ text: String) {
+        self.synthesizer.synthesize(text: text) { [weak self] (data: Data) in
+            guard let player = try? AVAudioPlayer(data: data) else { return }
+            player.delegate = self
+            self?.player = player
+            self?.player?.prepareToPlay()
+            self?.player?.play()
+        }
     }
-
-    public Voice(String lang, String voiceName, Gender gender, Boolean isServiceVoice) {
-        this.lang = lang;
-        this.voiceName = voiceName;
-        this.gender = gender;
-        this.isServiceVoice = isServiceVoice;
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        self.player = nil
     }
-
-    public final String lang;
-    public final String voiceName;
-    public final Gender gender;
-    public final Boolean isServiceVoice;
+    
 }
