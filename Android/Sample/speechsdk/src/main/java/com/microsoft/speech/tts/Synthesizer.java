@@ -73,10 +73,18 @@ public class Synthesizer {
         });
     }
 
+    //stop playing audio data
+    // if use STREAM mode, will wait for the end of the last write buffer data will stop.
+    // if you stop immediately, call the pause() method and then call the flush() method to discard the data that has not yet been played
     public void stopSound() {
-        if (audioTrack != null && audioTrack.getState() == AudioTrack.PLAYSTATE_PLAYING) {
-            audioTrack.stop();
-            audioTrack.release();
+        try {
+            if (audioTrack != null && audioTrack.getState() == AudioTrack.STATE_INITIALIZED) {
+                audioTrack.pause();
+                audioTrack.flush();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
