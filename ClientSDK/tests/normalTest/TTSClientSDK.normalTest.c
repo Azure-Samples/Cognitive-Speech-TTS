@@ -14,19 +14,19 @@ const char* text = "This is the Microsoft TTS Client SDK test program";
 
 typedef struct _wave_pcm_hdr
 {
-	char            riff[4];
-	int				size_8;
-	char            wave[4];
-	char            fmt[4];
-	int				fmt_size;
-	short int       format_tag;
-	short int       channels;
-	int				samples_per_sec;
-	int				avg_bytes_per_sec;
-	short int       block_align;
-	short int       bits_per_sample;
-	char            data[4];
-	int				data_size;
+	char         riff[4];
+	int          size_8;
+	char         wave[4];
+	char         fmt[4];
+	int          fmt_size;
+	short int    format_tag;
+	short int    channels;
+	int          samples_per_sec;
+	int          avg_bytes_per_sec;
+	short int    block_align;
+	short int    bits_per_sample;
+	char         data[4];
+	int          data_size;
 } wave_pcm_hdr;
 
 wave_pcm_hdr default_wav_hdr =
