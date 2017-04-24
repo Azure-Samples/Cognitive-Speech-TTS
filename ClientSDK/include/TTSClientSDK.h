@@ -1,3 +1,6 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 #ifndef _PUBLIC_MSTTS_CLIENT_SDK_
 #define _PUBLIC_MSTTS_CLIENT_SDK_
 
@@ -14,10 +17,10 @@ extern "C"
 		MSTTS_INVALID_ARG,
 		MSTTS_GET_HEADER_ERROR,
 		MSTTS_MALLOC_FAILED,
-		MSTTS_CURL_INIT_ERROR,
-		MSTTS_CURL_SET_ERROR,
-		MSTTS_CURL_PERFORM_ERROR,
-		MSTTS_CURL_GETINFO_ERROR,
+		MSTTS_HTTP_INIT_ERROR,
+		MSTTS_HTTP_SETOPT_ERROR,
+		MSTTS_HTTP_PERFORM_ERROR,
+		MSTTS_HTTP_GETINFO_ERROR,
 		MSTTS_CAN_NOT_STOP,
 		MSTTS_SILK_INIT_ERROR,
 		MSTTS_GET_SSML_ERROR,
@@ -65,12 +68,34 @@ extern "C"
 	typedef int(*LPMSTTS_RECEIVE_WAVESAMPLES_ROUTINE)(void* pCallBackStat, const char* pWaveSamples, int32_t nBytes);
 
 	/*
-	* Create a synthesizer instance, return the instance handle.
+	* Create a synthesizer instance.
+	* Parameters:
+	*   hSynthesizerHandle: The handle of the synthesizer instance.
+	*   MSTTSApiKey: Request the token's api key.
 	* Return value:
-	*  > 0: handle of the new synthesizer instance.
-	*  < 0: failed to create the instance, error code.
+	*  MSTTS_RESULT
 	*/
 	MSTTS_RESULT MSTTS_CreateSpeechSynthesizerHandler(MSTTSHANDLE* phSynthesizerHandle, const unsigned char* ApiKey);
+
+	/*
+	* Do text rendering.
+	* Parameters:
+	*   hSynthesizerHandle: The handle of the synthesizer instance.
+	*   pszContent: Text.
+	*   eContentType: Typr of SSML or text.
+	* Return value:
+	*  MSTTS_RESULT
+	*/
+	MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent, enum MSTTSContentType eContentType);
+
+	/*
+	* Stop speaking
+	* Parameters:
+	*   hSynthesizerHandle: The handle of the synthesizer instance.
+	* Return value:
+	*  MSTTS_RESULT
+	*/
+	MSTTS_RESULT MSTTS_Stop(MSTTSHANDLE hSynthesizerHandle);
 
 	/*
 	* Set the default voice of the current synthesizer instance,
@@ -80,48 +105,32 @@ extern "C"
 	*   hSynthesizerHandle: The handle of the synthesizer instance.
 	*   pVoiceInfo: This is the voice information in voice token file.
 	* Return value:
-	*  = 0: success
-	*  < 0: failed, error code
+	*  MSTTS_RESULT
 	*/
 	MSTTS_RESULT MSTTS_SetVoice(MSTTSHANDLE hSynthesizerHandle, const MSTTSVoiceInfo* pVoiceInfo);
 
 	/*
-	* Do text rendering.
-	* Return value:
-	*  = 0: success
-	*  < 0: failed, error code
-	*/
-	MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent, enum MSTTSContentType eContentType);
-
-	/*
-	* Stop speaking
-	* Return value:
-	*  = 0: success
-	*  < 0: failed, error code
-	*/
-	MSTTS_RESULT MSTTS_Stop(MSTTSHANDLE hSynthesizerHandle);
-
-	/*
 	* Set the output format for the synthesizer instance.
 	* All voices loaded by this instance will use the output format.
-	* Return error code if failed to set or can’t support the format.
+	* Now, only supports raw-16khz-16bit-mono-truesilk,
+	* setting pWaveFormat is not implemented, just provied an interface for ecpansion.
 	* Parameters:
 	*  hSynthesizerHandle: the handle of the synthesizer instance
 	*  pWaveFormat: wave format to be set, if set to NULL, use TTS engine's default format.
 	*  pfWriteBack: Call back to output the wave samples, and return <0 for error code and abort speaking.
 	*  void* pCallBackStat: The call back stat for the call back.
 	* Return value:
-	*  = 0: success
-	*  < 0: failed, error code
+	*  MSTTS_RESULT
 	*/
 	MSTTS_RESULT MSTTS_SetOutput(MSTTSHANDLE hSynthesizerHandle, const MSTTSWAVEFORMATEX* pWaveFormat, LPMSTTS_RECEIVE_WAVESAMPLES_ROUTINE pfWriteBack, void* pCallBackStat);
 
 	/*
-	* Get the current synthesizer’s output format.
+	* Get the current synthesizer output format.
+	* Now only supports raw-16khz-16bit-mono format
 	* Parameters:
 	*  hSynthesizerHandle: the handle of the synthesizer instance.
 	* Return value:
-	*  The pointer of the wave format structure.
+	*  MSTTS_RESULT
 	*/
 	const MSTTSWAVEFORMATEX* MSTTS_GetOutputFormat(MSTTSHANDLE hSynthesizerHandle);
 

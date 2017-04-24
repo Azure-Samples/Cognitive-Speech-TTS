@@ -1,9 +1,14 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 #include<stdio.h>
 #include<stdlib.h>
 #include"TTSClientSDK.h"
 
-
-const unsigned char* ApiKey = "";
+//Note: The way to get api key :
+//Free : https ://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+//Paid : https ://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+const unsigned char* ApiKey = "Your api key";
 
 const char* text = "This is the Microsoft TTS Client SDK test program";
 
@@ -41,7 +46,8 @@ wave_pcm_hdr default_wav_hdr =
 	0
 };
 
-int pfWriteBack(void* pCallBackStat, const char* pWaveSamples, int32_t nBytes) {
+int pfWriteBack(void* pCallBackStat, const char* pWaveSamples, int32_t nBytes)
+{
 	FILE *fp;
 	fp = fopen("./TTSSample.pcm", "ab");
 	fwrite(pWaveSamples, sizeof(char), nBytes, fp);
@@ -49,7 +55,8 @@ int pfWriteBack(void* pCallBackStat, const char* pWaveSamples, int32_t nBytes) {
 	return 0;
 }
 
-int addWaveHeader(char* targetFile, char* soourceFile, const MSTTSWAVEFORMATEX* waveFormat) {
+int addWaveHeader(char* targetFile, char* soourceFile, const MSTTSWAVEFORMATEX* waveFormat)
+{
 	int rc;
 	unsigned char buf[1024];
 	wave_pcm_hdr wav_hdr = default_wav_hdr;
@@ -69,7 +76,8 @@ int addWaveHeader(char* targetFile, char* soourceFile, const MSTTSWAVEFORMATEX* 
 
 	fwrite(&wav_hdr, sizeof(wav_hdr), 1, targetFp);
 
-	while ((rc = fread(buf, sizeof(unsigned char), 1024, sourceFp)) != 0) {
+	while ((rc = fread(buf, sizeof(unsigned char), 1024, sourceFp)) != 0)
+	{
 		fwrite(buf, sizeof(unsigned char), rc, targetFp);
 	}
 
@@ -78,37 +86,43 @@ int addWaveHeader(char* targetFile, char* soourceFile, const MSTTSWAVEFORMATEX* 
 	return 0;
 }
 
-int main() {
+int main()
+{
 
 	MSTTS_RESULT result;
 	MSTTSHANDLE MSTTShandle;
 	const MSTTSWAVEFORMATEX* waveFormat = NULL;
 
 	result = MSTTS_CreateSpeechSynthesizerHandler(&MSTTShandle, ApiKey);
-	if (result != MSTTS_OK) {
+	if (result != MSTTS_OK)
+	{
 		printf("Creat speech synthesizer handler error\r\n");
 		return 0;
 	}
 
 	result = MSTTS_SetOutput(MSTTShandle, waveFormat, pfWriteBack, NULL);
-	if (result != MSTTS_OK) {
+	if (result != MSTTS_OK)
+	{
 		printf("set output callback error\r\n");
 		return 0;
 	}
 
 	result = MSTTS_Speak(MSTTShandle, text, MSTTSContentType_PlainText);
-	if (result != MSTTS_OK) {
+	if (result != MSTTS_OK)
+	{
 		printf("speak error\r\n");
 		return 0;
 	}
 
 	waveFormat = MSTTS_GetOutputFormat(MSTTShandle);
-	if (waveFormat == NULL) {
+	if (waveFormat == NULL)
+	{
 		printf("get wave format error\r\n");
 		return 0;
 	}
 
-	if (!addWaveHeader("./TTSSample.wav", "./TTSSample.pcm", waveFormat)) {
+	if (!addWaveHeader("./TTSSample.wav", "./TTSSample.pcm", waveFormat))
+	{
 		printf("Generate wav file success\r\n");
 	}
 
