@@ -100,6 +100,9 @@ int main()
 		return 0;
 	}
 
+	//waveFormat is not being set.
+	//Now only supports raw-16khz-16bit-mono format.
+	//This parameter is only for expansion
 	result = MSTTS_SetOutput(MSTTShandle, waveFormat, pfWriteBack, NULL);
 	if (result != MSTTS_OK)
 	{
@@ -129,6 +132,7 @@ int main()
 		return 0;
 	}
 
+	//You can use this function to get the complete wav header information
 	waveFormat = MSTTS_GetOutputFormat(MSTTShandle);
 	if (waveFormat == NULL)
 	{

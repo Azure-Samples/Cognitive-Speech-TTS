@@ -905,7 +905,7 @@ MSTTS_RESULT MSTTS_SetOutput(MSTTSHANDLE hSynthesizerHandle, const MSTTSWAVEFORM
 
 /*
 * Get the current synthesizer output format.
-* Now only supports raw-16khz-16bit-mono format
+* Now only supports raw-16khz-16bit-mono format.
 * Parameters:
 *  hSynthesizerHandle: the handle of the synthesizer instance.
 * Return value:
