@@ -8,7 +8,7 @@
 //Note: The way to get api key :
 //Free : https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
 //Paid : https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-const unsigned char* ApiKey = "45c1e5930f2b463d9dbef34301fd2f94";
+const unsigned char* ApiKey = "Your api key";
 
 const char* text = "This is the Microsoft TTS Client SDK test program";
 
