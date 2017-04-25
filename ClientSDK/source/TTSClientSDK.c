@@ -921,7 +921,7 @@ const MSTTSWAVEFORMATEX* MSTTS_GetOutputFormat(MSTTSHANDLE hSynthesizerHandle)
 		return NULL;
 	}
 
-	return (const)SynthesizerHandle->waveFormat;
+	return (const MSTTSWAVEFORMATEX*)SynthesizerHandle->waveFormat;
 }
 
 /*

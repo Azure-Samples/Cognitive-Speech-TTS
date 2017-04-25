@@ -115,7 +115,7 @@ int main()
 	pVoiceInfo->lang = "en-US";
 	pVoiceInfo->voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)";
 
-	result = MSTTS_SetVoice(MSTTShandle, (const)pVoiceInfo);
+	result = MSTTS_SetVoice(MSTTShandle, (const MSTTSVoiceInfo*)pVoiceInfo);
 	if (result != MSTTS_OK)
 	{
 		printf("set voice error\r\n");

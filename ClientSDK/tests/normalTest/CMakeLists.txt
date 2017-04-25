@@ -75,7 +75,7 @@ set(TTSClientSDK_src ${TTSClientSDK_src} ${CMAKE_CURRENT_SOURCE_DIR}/TTSClientSD
 ADD_EXECUTABLE(TTSSDK_normalTest ${TTSClientSDK_src})
 
 IF (CMAKE_SYSTEM_NAME MATCHES "Linux")
-    TARGET_LINK_LIBRARIES(TTSSDKsample silk curl)
+    TARGET_LINK_LIBRARIES(TTSSDK_normalTest silk curl)
 ELSEIF (CMAKE_SYSTEM_NAME MATCHES "Windows")
     TARGET_LINK_LIBRARIES(TTSSDK_normalTest silk.lib libcurl.lib ws2_32.lib wldap32.lib libcrypto.lib libssl.lib)
 ELSE ()
