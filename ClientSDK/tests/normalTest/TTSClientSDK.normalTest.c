@@ -6,9 +6,9 @@
 #include"TTSClientSDK.h"
 
 //Note: The way to get api key :
-//Free : https ://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-//Paid : https ://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-const unsigned char* ApiKey = "Your api key";
+//Free : https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
+//Paid : https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+const unsigned char* ApiKey = "45c1e5930f2b463d9dbef34301fd2f94";
 
 const char* text = "This is the Microsoft TTS Client SDK test program";
 
@@ -104,6 +104,21 @@ int main()
 	if (result != MSTTS_OK)
 	{
 		printf("set output callback error\r\n");
+		return 0;
+	}
+
+	//MSTTSVoiceInfo must set the correct match voice information
+	//Otherwise MSTTS_Speak will return MSTTS_HTTP_GETINFO_ERROR
+	//You can view the language you can set up at the following URL
+	//https://docs.microsoft.com/zh-cn/azure/cognitive-services/Speech/API-Reference-REST/BingVoiceOutput
+	MSTTSVoiceInfo* pVoiceInfo = (MSTTSVoiceInfo*)malloc(sizeof(MSTTSVoiceInfo));
+	pVoiceInfo->lang = "en-US";
+	pVoiceInfo->voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)";
+
+	result = MSTTS_SetVoice(MSTTShandle, (const)pVoiceInfo);
+	if (result != MSTTS_OK)
+	{
+		printf("set voice error\r\n");
 		return 0;
 	}
 

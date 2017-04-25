@@ -41,6 +41,7 @@ typedef struct MSTTSHANDLE_TAG
 	MSTTSVoiceInfo* VoiceInfo;      //Voice info.
 	MSTTS_OUTPUT* outputCallback;   //Output call back.
 	MSTTSWAVEFORMATEX* waveFormat;  //output wave format
+	void* hDecoder;                 //silk decode handle
 }MSTTS_HANDLE;
 
 typedef struct HTTPRESPONSECONTENTHANDLE_TAG
@@ -51,14 +52,13 @@ typedef struct HTTPRESPONSECONTENTHANDLE_TAG
 	uint32_t* waveSamplesSize;      //Wave samples size.
 	MSTTSSpeakStatus* Speakstatus;  //Status of speak.
 	MSTTS_OUTPUT* outputCallback;   //Output call back.
+	void* hDecoder;                 //silk decode handle
 } HTTPRESPONSECONTENT_HANDLE;
 
 //
 //Silk decode source
 //
-static void* hDecoder = NULL;
-
-static int silk_decode_frame(const SKP_uint8* inData, SKP_int nBytesIn, SKP_int16* outData,size_t* nBytesOut)
+static int silk_decode_frame(void* hDecoder, const SKP_uint8* inData, SKP_int nBytesIn, SKP_int16* outData, size_t* nBytesOut)
 {
 	SKP_int16 len;
 	int       tot_len = 0;
@@ -97,10 +97,10 @@ static int silk_decode_frame(const SKP_uint8* inData, SKP_int nBytesIn, SKP_int1
 	return ret;
 }
 
-static int initdecoder()
+static int initdecoder(void** hDecoder)
 {
 	SKP_int ret;
-	if (!hDecoder)
+	if (!*hDecoder)
 	{
 		SKP_int32 decsize = 0;
 		ret = SKP_Silk_SDK_Get_Decoder_Size(&decsize);
@@ -109,8 +109,8 @@ static int initdecoder()
 			return ret;
 		}
 
-		hDecoder = malloc((size_t)decsize);
-		if (!hDecoder)
+		*hDecoder = malloc((size_t)decsize);
+		if (!*hDecoder)
 		{
 			return -1;
 		}
@@ -119,12 +119,12 @@ static int initdecoder()
 	return 0;
 }
 
-static void audio_decoder_uninitialize(void)
+static void audio_decoder_uninitialize(void** hDecoder)
 {
-	if (hDecoder)
+	if (*hDecoder)
 	{
-		free(hDecoder);
-		hDecoder = NULL;
+		free(*hDecoder);
+		*hDecoder = NULL;
 	}
 }
 
@@ -179,7 +179,7 @@ static size_t HandleWaveSamples(void *ptr, size_t size, size_t nmemb, void *resp
 		{
 			*response->Speakstatus = MSTTSAudioSYS_RUNNING;
 			*response->waveSamplesSize = 0;
-			if (SKP_Silk_SDK_InitDecoder(hDecoder))
+			if (SKP_Silk_SDK_InitDecoder(response->hDecoder))
 			{
 				return 0;
 			}
@@ -215,6 +215,7 @@ static size_t HandleWaveSamples(void *ptr, size_t size, size_t nmemb, void *resp
 			{
 				nBytes = TEMP_WAVE_DATA_LENGTH - decodedBytes;
 				if (silk_decode_frame(
+					response->hDecoder,
 					response->buffer + response->offset + sizeof(uint16_t),
 					len,
 					(short*)(waveOutput + decodedBytes),
@@ -370,7 +371,7 @@ MSTTS_RESULT GetToken(const unsigned char* ApiKey, unsigned char** KeyValue)
 
 /*
 * Verify that Token is valid
-* Token will expire every ten minutes,  
+* Token will expire every ten minutes,
 * and if the requested token is more than 9 minutes,
 * it will be requested again.
 * Parameters:
@@ -545,7 +546,8 @@ MSTTS_RESULT MSTTS_CreateSpeechSynthesizerHandler(MSTTSHANDLE* phSynthesizerHand
 								MSTTShandle->Speakstatus = MSTTSAudioSYS_STOP;
 								MSTTShandle->VoiceInfo = MSTTSVoiceHandle;
 								MSTTShandle->outputCallback = NULL;
-								MSTTShandle->waveFormat = waveFormat;	
+								MSTTShandle->waveFormat = waveFormat;
+								MSTTShandle->hDecoder = NULL;
 								*phSynthesizerHandle = MSTTShandle;
 								return MSTTS_OK;
 							}
@@ -649,7 +651,7 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 					{
 						if (GetSSML(SynthesizerHandle, pszContent, eContentType, &body) == MSTTS_OK)
 						{
-							if (!initdecoder())
+							if (!initdecoder(&SynthesizerHandle->hDecoder))
 							{
 								HTTPRESPONSECONTENT_HANDLE *responsecontent = malloc(sizeof(HTTPRESPONSECONTENT_HANDLE));
 								if (responsecontent)
@@ -661,6 +663,7 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 									responsecontent->waveSamplesSize = &SynthesizerHandle->waveFormat->cbSize;
 									responsecontent->Speakstatus = &SynthesizerHandle->Speakstatus;
 									responsecontent->outputCallback = SynthesizerHandle->outputCallback;
+									responsecontent->hDecoder = SynthesizerHandle->hDecoder;
 
 									if (curl_easy_setopt(curl, CURLOPT_WRITEDATA, responsecontent) != CURLE_OK)
 									{
@@ -730,7 +733,7 @@ MSTTS_RESULT MSTTS_Speak(MSTTSHANDLE hSynthesizerHandle, const char* pszContent,
 								{
 									result = MSTTS_MALLOC_FAILED;
 								}
-								audio_decoder_uninitialize();
+								audio_decoder_uninitialize(&SynthesizerHandle->hDecoder);
 							}
 							else
 							{
@@ -918,19 +921,7 @@ const MSTTSWAVEFORMATEX* MSTTS_GetOutputFormat(MSTTSHANDLE hSynthesizerHandle)
 		return NULL;
 	}
 
-	MSTTSWAVEFORMATEX* waveFormat = (MSTTSWAVEFORMATEX*)malloc(sizeof(MSTTSWAVEFORMATEX));
-	if (waveFormat)
-	{
-		waveFormat->wFormatTag = SynthesizerHandle->waveFormat->wFormatTag;
-		waveFormat->nChannels = SynthesizerHandle->waveFormat->nChannels;
-		waveFormat->nSamplesPerSec = SynthesizerHandle->waveFormat->nSamplesPerSec;
-		waveFormat->wBitsPerSample = SynthesizerHandle->waveFormat->wBitsPerSample;
-		waveFormat->nAvgBytesPerSec = SynthesizerHandle->waveFormat->nAvgBytesPerSec;
-		waveFormat->nBlockAlign = SynthesizerHandle->waveFormat->nBlockAlign;
-		waveFormat->cbSize = SynthesizerHandle->waveFormat->cbSize;
-	}
-
-	return waveFormat;
+	return (const)SynthesizerHandle->waveFormat;
 }
 
 /*
