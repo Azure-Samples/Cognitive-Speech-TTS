@@ -78,7 +78,7 @@ namespace TTSSample
             // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
             // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
             Authentication auth = new Authentication("Your api key goes here");
-
+            
             try
             {
                 accessToken = auth.GetAccessToken();
@@ -93,9 +93,7 @@ namespace TTSSample
             }
 
             Console.WriteLine("Starting TTSSample request code execution.");
-
             string requestUri = "https://speech.platform.bing.com/synthesize";
-
             var cortana = new Synthesize();
 
             cortana.OnAudioAvailable += PlayAudio;
@@ -106,15 +104,18 @@ namespace TTSSample
             {
                 RequestUri = new Uri(requestUri),
                 // Text to be spoken.
-                Text = "Hi, how are you doing?",
+                Text = "Hello, how are you doing?",
                 VoiceType = Gender.Female,
                 // Refer to the documentation for complete list of supported locales.
                 Locale = "en-US",
                 // You can also customize the output voice. Refer to the documentation to view the different
                 // voices that the TTS service can output.
-                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)",
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
+            
                 // Service can return audio in different output format.
-                OutputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm,
+                OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm,
                 AuthorizationToken = "Bearer " + accessToken,
             }).Wait();
         }
