@@ -48,7 +48,7 @@ public class TTSSample {
 		String textToSynthesize = "This is a demo to call microsoft text to speech service in java.";
 		String outputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
         String deviceLanguage = "en-US";
-        String genderName = Gender.Female;
+        String genderName = Gender.Male;
         String voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)";
 
         try{
