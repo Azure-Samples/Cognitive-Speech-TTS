@@ -46,7 +46,7 @@ http.use_ssl = true
 
 headers = {
 	'content-type' => 'application/ssml+xml',
-	'X-Microsoft-OutputFormat' => 'riff-16khz-16bit-mono-pcm',
+	'X-Microsoft-OutputFormat' => 'riff-24khz-16bit-mono-pcm',
 	'Authorization' => 'Bearer ' + accessToken,
 	'X-Search-AppId' => '07D3234E49CE426DAA29772419F436CA',
 	'X-Search-ClientID' => '1ECFAE91408841A480F00935DC390960',
@@ -55,7 +55,7 @@ headers = {
 
 # SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>"
 data = RubySpeech::SSML.draw do
-  voice gender: :female, name: 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)', language: 'en-US' do
+  voice gender: :male, name: 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)', language: 'en-US' do
     string 'This is a demo to call microsoft text to speech service in ruby'
   end
 end
