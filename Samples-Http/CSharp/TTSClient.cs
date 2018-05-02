@@ -237,6 +237,36 @@ namespace CognitiveServicesTTS
         /// riff-16khz-16kbps-mono-siren request output audio format type.
         /// </summary>
         Riff16Khz16KbpsMonoSiren,
+
+        /// <summary>
+        /// raw-24khz-16bit-mono-truesilk request output audio format type.
+        /// </summary>
+        Raw24Khz16BitMonoTrueSilk,
+
+        /// <summary>
+        /// raw-24khz-16bit-mono-pcm request output audio format type.
+        /// </summary>
+        Raw24Khz16BitMonoPcm,
+
+        /// <summary>
+        /// riff-24khz-16bit-mono-pcm request output audio format type.
+        /// </summary>
+        Riff24Khz16BitMonoPcm,
+
+        /// <summary>
+        /// audio-24khz-48kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio24Khz48KBitRateMonoMp3,
+
+        /// <summary>
+        /// audio-24khz-96kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio24Khz96KBitRateMonoMp3,
+
+        /// <summary>
+        /// audio-24khz-160kbitrate-mono-mp3 request output audio format type.
+        /// </summary>
+        Audio24Khz160KBitRateMonoMp3
     }
 
     /// <summary>
@@ -471,7 +501,21 @@ namespace CognitiveServicesTTS
                         case AudioOutputFormat.Riff16Khz16KbpsMonoSiren:
                             outputFormat = "riff-16khz-16kbps-mono-siren";
                             break;
-
+                        case AudioOutputFormat.Raw24Khz16BitMonoPcm:
+                            outputFormat = "raw-24khz-16bit-mono-pcm";
+                            break;
+                        case AudioOutputFormat.Riff24Khz16BitMonoPcm:
+                            outputFormat = "riff-24khz-16bit-mono-pcm";
+                            break;
+                        case AudioOutputFormat.Audio24Khz48KBitRateMonoMp3:
+                            outputFormat = "audio-24khz-48kbitrate-mono-mp3";
+                            break;
+                        case AudioOutputFormat.Audio24Khz96KBitRateMonoMp3:
+                            outputFormat = "audio-24khz-96kbitrate-mono-mp3";
+                            break;
+                        case AudioOutputFormat.Audio24Khz160KBitRateMonoMp3:
+                            outputFormat = "audio-24khz-160kbitrate-mono-mp3";
+                            break;
                         default:
                             outputFormat = "riff-16khz-16bit-mono-pcm";
                             break;
