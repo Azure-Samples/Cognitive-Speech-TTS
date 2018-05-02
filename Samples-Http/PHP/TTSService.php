@@ -51,8 +51,8 @@ else{
 
    $voice = $doc->createElement( "voice" );
    $voice->setAttribute( "xml:lang" , "en-us" );
-   $voice->setAttribute( "xml:gender" , "Female" );
-   $voice->setAttribute( "name" , "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)" );
+   $voice->setAttribute( "xml:gender" , "Male" );
+   $voice->setAttribute( "name" , "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)" );
 
    $text = $doc->createTextNode( "This is a demo to call microsoft text to speech service in php." );
 
@@ -65,7 +65,7 @@ else{
    $options = array(
     'http' => array(
         'header'  => "Content-type: application/ssml+xml\r\n" .
-                    "X-Microsoft-OutputFormat: riff-16khz-16bit-mono-pcm\r\n" .
+                    "X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm\r\n" .
                     "Authorization: "."Bearer ".$access_token."\r\n" .
                     "X-Search-AppId: 07D3234E49CE426DAA29772419F436CA\r\n" .
                     "X-Search-ClientID: 1ECFAE91408841A480F00935DC390960\r\n" .
