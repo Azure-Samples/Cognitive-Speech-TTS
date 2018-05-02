@@ -46,10 +46,10 @@ public class TTSSample {
 
 	public static void main(String[] args) {
 		String textToSynthesize = "This is a demo to call microsoft text to speech service in java.";
-		String outputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm;
+		String outputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
         String deviceLanguage = "en-US";
         String genderName = Gender.Female;
-        String voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)";
+        String voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)";
 
         try{
         	byte[] audioBuffer = TTSService.Synthesize(textToSynthesize, outputFormat, deviceLanguage, genderName, voiceName);
@@ -66,11 +66,11 @@ public class TTSSample {
             // specify the audio format 
            	AudioFormat audioFormat = new AudioFormat(
            			AudioFormat.Encoding.PCM_SIGNED,
-               		16000,
+               		24000,
                		16,
                		1,
                		1 * 2,
-               		16000,
+               		24000,
                		false);
            	
                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(outputWave));
