@@ -357,7 +357,7 @@ namespace TTSSample
             {
                 this.Locale = "en-us";
                 this.VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)";
-                // Default to Riff16Khz16BitMonoPcm output format.
+                // Default to Riff24Khz16BitMonoPcm output format.
                 this.OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
             }
 
