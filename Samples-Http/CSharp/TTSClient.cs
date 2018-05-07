@@ -48,7 +48,7 @@ namespace CognitiveServicesTTS
     /// </summary>
     public class Authentication
     {
-        public static readonly string AccessUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+        private string AccessUri;
         private string apiKey;
         private string accessToken;
         private Timer accessTokenRenewer;
@@ -56,11 +56,12 @@ namespace CognitiveServicesTTS
         //Access token expires every 10 minutes. Renew it every 9 minutes only.
         private const int RefreshTokenDuration = 9;
 
-        public Authentication(string apiKey)
+        public Authentication(string issueTokenUri, string apiKey)
         {
+            this.AccessUri = issueTokenUri;
             this.apiKey = apiKey;
 
-            this.accessToken = HttpPost(AccessUri, this.apiKey);
+            this.accessToken = HttpPost(issueTokenUri, this.apiKey);
 
             // renew the token every specfied minutes
             accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
