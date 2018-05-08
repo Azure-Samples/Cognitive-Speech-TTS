@@ -22,8 +22,8 @@ exports.Synthesize = function Synthesize(){
         .att('xml:lang', 'en-us')
         .ele('voice')
         .att('xml:lang', 'en-us')
-        .att('xml:gender', 'Female')
-        .att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
+        .att('xml:gender', 'Male')
+        .att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
         .txt('This is a demo to call Microsoft text to speech service.')
         .end();
     var post_speak_data = ssml_doc.toString();
@@ -43,7 +43,7 @@ exports.Synthesize = function Synthesize(){
                     body: post_speak_data,
                     headers: {
                         'content-type' : 'application/ssml+xml',
-                        'X-Microsoft-OutputFormat' : 'riff-16khz-16bit-mono-pcm',
+                        'X-Microsoft-OutputFormat' : 'riff-24khz-16bit-mono-pcm',
                         'Authorization': 'Bearer ' + access_token,
                         'X-Search-AppId': '07D3234E49CE426DAA29772419F436CA',
                         'X-Search-ClientID': '1ECFAE91408841A480F00935DC390960',

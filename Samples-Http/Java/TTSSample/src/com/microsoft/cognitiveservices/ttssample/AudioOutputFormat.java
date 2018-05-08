@@ -49,9 +49,13 @@ public class AudioOutputFormat {
         /// <summary>
         /// riff-8khz-8bit-mono-mulaw request output audio format type.
         /// </summary>
-        public static final String Riff8Khz8BitMonoMULaw = "riff-16khz-16bit-mono-pcm";
+        public static final String Riff8Khz8BitMonoMULaw = "riff-8khz-8bit-mono-mulaw";
         /// <summary>
         /// riff-16khz-16bit-mono-pcm request output audio format type.
         /// </summary>
         public static final String Riff16Khz16BitMonoPcm = "riff-16khz-16bit-mono-pcm";
+        /// <summary>
+        /// riff-24khz-16bit-mono-pcm request output audio format type.
+        /// </summary>
+        public static final String Riff24Khz16BitMonoPcm = "riff-24khz-16bit-mono-pcm";
 }
