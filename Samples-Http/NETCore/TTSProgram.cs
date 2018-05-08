@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
@@ -37,10 +37,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Net;
+
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Xml.Linq;
+
 
 namespace TTSSample
 {
@@ -193,6 +195,10 @@ namespace TTSSample
         /// riff-16khz-16bit-mono-pcm request output audio format type.
         /// </summary>
         Riff16Khz16BitMonoPcm,
+        /// <summary>
+        /// riff-24khz-16bit-mono-pcm request output audio format type.
+        /// </summary>
+        Riff24Khz16BitMonoPcm,
     }
 
     /// <summary>
@@ -288,10 +294,9 @@ namespace TTSSample
                     try
                     {
                         if (responseMessage.IsCompleted && responseMessage.Result != null && responseMessage.Result.IsSuccessStatusCode)
-                        {
-
+                        {      
                             var httpStream = await responseMessage.Result.Content.ReadAsStreamAsync().ConfigureAwait(false);
-                            this.AudioAvailable(new GenericEventArgs<Stream>(httpStream));
+                            this.AudioAvailable(new GenericEventArgs<Stream>(httpStream));          
                         }
                         else
                         {
@@ -352,8 +357,8 @@ namespace TTSSample
             {
                 this.Locale = "en-us";
                 this.VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)";
-                // Default to Riff16Khz16BitMonoPcm output format.
-                this.OutputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm;
+                // Default to Riff24Khz16BitMonoPcm output format.
+                this.OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
             }
 
             /// <summary>
@@ -391,6 +396,9 @@ namespace TTSSample
                             break;
                         case AudioOutputFormat.Riff8Khz8BitMonoMULaw:
                             outputFormat = "riff-8khz-8bit-mono-mulaw";
+                            break;
+                        case AudioOutputFormat.Riff24Khz16BitMonoPcm:
+                            outputFormat = "riff-24khz-16bit-mono-pcm";
                             break;
                         default:
                             outputFormat = "riff-16khz-16bit-mono-pcm";
@@ -457,6 +465,7 @@ namespace TTSSample
             using (var file = File.OpenWrite(Path.Combine(Directory.GetCurrentDirectory(), $"{ Guid.NewGuid() }.wav")))
             {
                 args.EventData.CopyTo(file);
+
                 file.Flush();
             }
         }
@@ -479,7 +488,7 @@ namespace TTSSample
             // Note: The way to get api key:
             // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
             // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-            Authentication auth = new Authentication("Your api key goes here");
+            Authentication auth = new Authentication("Your api keys goes here");
 
             try
             {
@@ -508,9 +517,11 @@ namespace TTSSample
                 Locale = "en-US",
                 // You can also customize the output voice. Refer to the documentation to view the different
                 // voices that the TTS service can output.
-                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
+                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+
                 // Service can return audio in different output format. 
-                OutputFormat = AudioOutputFormat.Riff16Khz16BitMonoPcm,
+                OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm,
                 AuthorizationToken = "Bearer " + accessToken,
             });
 
