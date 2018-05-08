@@ -13,9 +13,10 @@ var request = require('request'),
 
 exports.Synthesize = function Synthesize(){
 
-    // Note: The way to get api key:
-    // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-    // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+    // Note: new unified SpeechService API key and issue token uri is per region
+    // New unified SpeechService key
+    // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+    // Paid: https://go.microsoft.com/fwlink/?LinkId=872236
     var apiKey = "Your api key goes here";
     var ssml_doc = xmlbuilder.create('speak')
         .att('version', '1.0')
@@ -29,7 +30,7 @@ exports.Synthesize = function Synthesize(){
     var post_speak_data = ssml_doc.toString();
 
     request.post({
-    	url: 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken',
+        url: 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken',
         headers: {
             'Ocp-Apim-Subscription-Key' : apiKey
         }
@@ -39,7 +40,7 @@ exports.Synthesize = function Synthesize(){
         } else {
             try {
                 request.post({
-                    url: 'https://speech.platform.bing.com/synthesize',
+                    url: 'https://westus.tts.speech.microsoft.com/cognitiveservices/v1',
                     body: post_speak_data,
                     headers: {
                         'content-type' : 'application/ssml+xml',
