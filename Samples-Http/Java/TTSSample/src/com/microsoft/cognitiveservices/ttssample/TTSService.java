@@ -40,17 +40,18 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class TTSService {
 
-    private static String ttsServiceUri = "https://speech.platform.bing.com/synthesize";
+    private static String ttsServiceUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 
     /**
      * Synthesize the voice through the specified parameters.
      */
     public static byte[] Synthesize(String textToSynthesize, String outputFormat, String locale, String genderName, String voiceName) throws Exception {
 
-    	// Note: The way to get api key:
-        // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-        // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-    	
+        // Note: new unified SpeechService API key and issue token uri is per region
+        // New unified SpeechService key
+        // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+        // Paid: https://go.microsoft.com/fwlink/?LinkId=872236
+
     	Authentication auth = new Authentication("Your api key goes here");
         String accessToken = auth.GetAccessToken();
 
