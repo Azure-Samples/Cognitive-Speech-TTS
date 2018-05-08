@@ -15,15 +15,16 @@ require 'ruby_speech'
 # A note to fix an SSL error
 puts "if encounter the Error: SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed, find the fix in https://gist.github.com/fnichol/867550\n"
 
-# Note: The way to get api key:
-# Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-# Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+# Note: new unified SpeechService API key and issue token uri is per region
+# New unified SpeechService key
+# Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+# Paid: https://go.microsoft.com/fwlink/?LinkId=872236
 apiKey = "Your api key goes here"
 
 post_data = ""
 
 #print (post_data)
-url = URI.parse("https://api.cognitive.microsoft.com/sts/v1.0/issueToken")
+url = URI.parse("https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken")
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
 
@@ -39,7 +40,7 @@ puts "Access Token: ", resp.body, "\n"
 
 accessToken = resp.body
 
-ttsServiceUri = "https://speech.platform.bing.com:443/synthesize"
+ttsServiceUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1"
 url = URI.parse(ttsServiceUri)
 http = Net::HTTP.new(url.host, url.port)
 http.use_ssl = true
