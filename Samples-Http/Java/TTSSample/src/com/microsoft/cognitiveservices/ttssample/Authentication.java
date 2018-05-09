@@ -50,7 +50,7 @@ import javax.net.ssl.HttpsURLConnection;
      */
 public class Authentication
 {
-    public static final String AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    public static final String AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
     private String apiKey;
     private String accessToken;

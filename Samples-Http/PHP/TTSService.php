@@ -12,11 +12,11 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <?php
 
-$AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
-
-// Note: The way to get api key:
-// Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-// Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+// Note: new unified SpeechService API key and issue token uri is per region
+// New unified SpeechService key
+// Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+// Paid: https://go.microsoft.com/fwlink/?LinkId=872236
+$AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
 $apiKey = "Your api key goes here";
 $ttsHost = "https://speech.platform.bing.com";
 
@@ -40,7 +40,7 @@ if (!$access_token) {
 else{
    echo "Access Token: ". $access_token. "<br>";
 
-   $ttsServiceUri = "https://speech.platform.bing.com:443/synthesize";
+   $ttsServiceUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 
    //$SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
    $doc = new DOMDocument();
