@@ -13,16 +13,17 @@
 import http.client, urllib.parse, json
 from xml.etree import ElementTree
 
-#Note: The way to get api key:
-#Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-#Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+# Note: new unified SpeechService API key and issue token uri is per region
+# New unified SpeechService key
+# Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+# Paid: https://go.microsoft.com/fwlink/?LinkId=872236
 apiKey = "Your api key goes here"
 
 params = ""
 headers = {"Ocp-Apim-Subscription-Key": apiKey}
 
-#AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
-AccessTokenHost = "api.cognitive.microsoft.com"
+#AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+AccessTokenHost = "westus.api.cognitive.microsoft.com"
 path = "/sts/v1.0/issueToken"
 
 # Connect to server to get the Access Token
@@ -42,12 +43,12 @@ body = ElementTree.Element('speak', version='1.0')
 body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
 voice = ElementTree.SubElement(body, 'voice')
 voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Female')
-voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)')
+voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Male')
+voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
 voice.text = 'This is a demo to call microsoft text to speech service in Python.'
 
 headers = {"Content-type": "application/ssml+xml", 
-			"X-Microsoft-OutputFormat": "riff-16khz-16bit-mono-pcm", 
+			"X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
 			"Authorization": "Bearer " + accesstoken, 
 			"X-Search-AppId": "07D3234E49CE426DAA29772419F436CA", 
 			"X-Search-ClientID": "1ECFAE91408841A480F00935DC390960", 
@@ -55,8 +56,8 @@ headers = {"Content-type": "application/ssml+xml",
 			
 #Connect to server to synthesize the wave
 print ("\nConnect to server to synthesize the wave")
-conn = http.client.HTTPSConnection("speech.platform.bing.com")
-conn.request("POST", "/synthesize", ElementTree.tostring(body), headers)
+conn = http.client.HTTPSConnection("westus.tts.speech.microsoft.com")
+conn.request("POST", "/cognitiveservices/v1", ElementTree.tostring(body), headers)
 response = conn.getresponse()
 print(response.status, response.reason)
 
