@@ -119,7 +119,7 @@ class Authentication {
             webRequest.setRequestMethod("POST");
 
             String request = "";
-            byte[] bytes = request.getBytes();
+            byte[] bytes = request.getBytes("UTF-8");
             webRequest.setRequestProperty("content-length", String.valueOf(bytes.length));
             webRequest.connect();
 

@@ -71,7 +71,7 @@ public class TTSService {
         webRequest.setRequestProperty("Accept", "*/*");
 
         String body = XmlDom.createDom(locale, genderName, voiceName, textToSynthesize);
-        byte[] bytes = body.getBytes();
+        byte[] bytes = body.getBytes("UTF-8");
         webRequest.setRequestProperty("content-length", String.valueOf(bytes.length));
         webRequest.connect();
 
