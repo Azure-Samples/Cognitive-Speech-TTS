@@ -77,7 +77,7 @@ class TtsServiceClient {
                 urlConnection.setRequestProperty("X-Search-ClientID", "1ECFAE91408841A480F00935DC390960");
                 urlConnection.setRequestProperty("User-Agent", "TTSAndroid");
                 urlConnection.setRequestProperty("Accept", "*/*");
-                byte[] ssmlBytes = ssml.getBytes();
+                byte[] ssmlBytes = ssml.getBytes("UTF-8");
                 urlConnection.setRequestProperty("content-length", String.valueOf(ssmlBytes.length));
                 urlConnection.connect();
                 urlConnection.getOutputStream().write(ssmlBytes);
