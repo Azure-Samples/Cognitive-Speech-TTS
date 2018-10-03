@@ -90,11 +90,11 @@ namespace TTSSample
                               this.accessToken));
         }
 
-        private void OnTokenExpiredCallback(object stateInfo)
+        private async void OnTokenExpiredCallback(object stateInfo)
         {
             try
             {
-                RenewAccessToken();
+                await RenewAccessToken();
             }
             catch (Exception ex)
             {
