@@ -4,6 +4,8 @@ This repo contains sample in various languages for using Text-to-Speech.
 
 Microsoft also offers [Neural TTS preview](<https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/>) which can be invoked following the samples in this repo as well. What you need is to use a neural TTS endpoint.  
 
+Recommend to run the CSharp example first which is always kept up to date. 
+
 ## Contributing
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
 
