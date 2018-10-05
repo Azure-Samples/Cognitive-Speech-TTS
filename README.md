@@ -2,7 +2,7 @@
 This repo contains sample in various languages for using Text-to-Speech.
 [Unified Speech Service](<https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/>) is generally avaliable since [2018.9](<https://azure.microsoft.com/en-us/updates/azure-cognitive-services-speech-service-is-now-generally-available/>)
 
-Microsoft also offers [Neural TTS preview](<https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/>) which can be invoked following the samples in this repo as well. What you need is to use an neural TTS endpoint.  
+Microsoft also offers [Neural TTS preview](<https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/>) which can be invoked following the samples in this repo as well. What you need is to use a neural TTS endpoint.  
 
 ## Contributing
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
