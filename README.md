@@ -1,8 +1,8 @@
-# Microsoft Bing Speech API: Text-to-Speech Samples
-This repo contains sample in various languages for using Text-to-Speech in the Microsoft Bing Speech API, an offering within [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services), formerly known as Project Oxford.
-* [Learn about the Bing Speech API](https://www.microsoft.com/cognitive-services/en-us/speech-api)
-* [Read the documentation](https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/overview)
-* [Find more SDKs & Samples](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech)
+# Microsoft Unified Speech Service API: Text-to-Speech Samples
+This repo contains sample in various languages for using Text-to-Speech.
+[Unified Speech Service](<https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/>) is generally avaliable since [2018.9](<https://azure.microsoft.com/en-us/updates/azure-cognitive-services-speech-service-is-now-generally-available/>)
+
+Microsoft also offers [Neural TTS preview](<https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/>) which can be invoked following the samples in this repo as well. What you need is to use an neural TTS endpoint.  
 
 ## Contributing
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
