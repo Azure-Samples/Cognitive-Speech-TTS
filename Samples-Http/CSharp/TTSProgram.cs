@@ -79,10 +79,7 @@ namespace TTSSample
             // Note: new unified SpeechService API key and issue token uri is per region
 
             // The way to get api key:
-            // Old Bing Speech key
-            // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-            // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
-            // New unified SpeechService key
+            // Unified Speech Service key
             // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
             // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409 
             Authentication auth = new Authentication("https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken", "input your key here");
@@ -101,9 +98,8 @@ namespace TTSSample
             }
 
             Console.WriteLine("Starting TTSSample request code execution.");
-            // Synthesis endpoint for old Bing Speech API: https://speech.platform.bing.com/synthesize
-            // For new unified SpeechService API: https://westus.tts.speech.microsoft.com/cognitiveservices/v1
-            // Note: new unified SpeechService API synthesis endpoint is per region
+            // For Unified SpeechService API: https://westus.tts.speech.microsoft.com/cognitiveservices/v1
+            // Note: new unified SpeechService API synthesis endpoint is per region,  choose the region close to your service to minimize the latency 
             string requestUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
             var cortana = new Synthesize();
 
