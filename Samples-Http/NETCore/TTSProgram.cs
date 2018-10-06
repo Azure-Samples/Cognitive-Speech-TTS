@@ -51,7 +51,9 @@ namespace TTSSample
     /// </summary>
     public class Authentication
     {
-        public static readonly string AccessUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
+        // Issue token uri for new unified SpeechService API "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken". 
+        // Note: new unified SpeechService API key and issue token uri is per region
+        public static readonly string AccessUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string apiKey;
         private string accessToken;
         private Timer accessTokenRenewer;
@@ -485,9 +487,10 @@ namespace TTSSample
             Console.WriteLine("Starting Authtentication");
             string accessToken;
 
-            // Note: The way to get api key:
-            // Free: https://www.microsoft.com/cognitive-services/en-us/subscriptions?productId=/products/Bing.Speech.Preview
-            // Paid: https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/Bing.Speech/pricingtier/S0
+            // The way to get api key:
+            // Unified Speech Service key
+            // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
+            // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409 
             Authentication auth = new Authentication("Your api keys goes here");
 
             try
@@ -505,7 +508,9 @@ namespace TTSSample
 
             Console.WriteLine("Starting TTSSample request code execution.");
 
-            string requestUri = "https://speech.platform.bing.com/synthesize";
+            // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
+            // Also must use the same region in request as authentication, e.g. both westus 
+            string requestUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 
             var cortana = new Synthesize(new Synthesize.InputOptions()
             {

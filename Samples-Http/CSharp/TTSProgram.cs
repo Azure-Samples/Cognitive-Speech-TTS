@@ -99,7 +99,7 @@ namespace TTSSample
 
             Console.WriteLine("Starting TTSSample request code execution.");
             // For Unified SpeechService API: https://westus.tts.speech.microsoft.com/cognitiveservices/v1
-            // Note: new unified SpeechService API synthesis endpoint is per region,  choose the region close to your service to minimize the latency 
+            // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
             string requestUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
             var cortana = new Synthesize();
 
