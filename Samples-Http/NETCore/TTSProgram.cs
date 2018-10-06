@@ -51,6 +51,8 @@ namespace TTSSample
     /// </summary>
     public class Authentication
     {
+        // Issue token uri for new unified SpeechService API "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken". 
+        // Note: new unified SpeechService API key and issue token uri is per region
         public static readonly string AccessUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string apiKey;
         private string accessToken;
@@ -507,6 +509,7 @@ namespace TTSSample
             Console.WriteLine("Starting TTSSample request code execution.");
 
             // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
+            // Also must use the same region in request as authentication, e.g. both westus 
             string requestUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 
             var cortana = new Synthesize(new Synthesize.InputOptions()
