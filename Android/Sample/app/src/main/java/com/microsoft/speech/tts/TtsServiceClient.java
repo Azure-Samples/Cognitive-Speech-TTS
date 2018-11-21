@@ -36,9 +36,9 @@ import android.util.Log;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.net.*;
+import java.net.URL;
 
-import javax.net.ssl.*;
+import javax.net.ssl.HttpsURLConnection;
 
 class TtsServiceClient {
     private static final String LOG_TAG = "SpeechSDKTTS";
@@ -50,7 +50,7 @@ class TtsServiceClient {
 
     public TtsServiceClient(String apiKey) {
         m_outputFormat = "raw-16khz-16bit-mono-pcm";
-        m_serviceUri = "https://speech.platform.bing.com/synthesize";
+        m_serviceUri = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1?traffictype=HuaweiTest";
         m_auth = new Authentication(apiKey);
     }
 
