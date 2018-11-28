@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 21
     buildToolsVersion '21.1.2'
 
     defaultConfig {
-        applicationId "com.microsoft.sdksample"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
@@ -26,8 +25,5 @@ repositories {
 }
 
 dependencies {
-    releaseCompile(name: 'speechsdk', ext: 'aar')
-    debugCompile project(path: ':speechsdk')
-
     compile 'com.android.support:appcompat-v7:22.1.0'
 }
