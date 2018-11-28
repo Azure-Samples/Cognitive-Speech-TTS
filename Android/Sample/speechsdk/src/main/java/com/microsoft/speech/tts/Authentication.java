@@ -50,7 +50,7 @@ import javax.net.ssl.HttpsURLConnection;
      */
 class Authentication {
     private static final String LOG_TAG = "Authentication";
-    public static final String AccessTokenUri = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    public static final String AccessTokenUri = "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
     private String apiKey;
     private String accessToken;
