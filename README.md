@@ -3,6 +3,7 @@ This repo contains sample in various languages for using Text-to-Speech.
 [Speech Service](<https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/>) is generally avaliable since [2018.9](<https://azure.microsoft.com/en-us/updates/azure-cognitive-services-speech-service-is-now-generally-available/>). Please be sure you have a subscription key for the new Speech Service, not a subcription key from the retiring Bing Speech. 
 
 Microsoft also offers [Neural TTS preview](<https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/>) which can be invoked following the samples in this repo as well. What you need is to use a neural TTS endpoint.  
+Neural TTS uses Deep Neural Networks in matching patterns of stress and intonation in spoken language called prosody. So, it does prosody prediction and voice synthesis simultaneously. While traditional TTS break down prosody into separate linguistic analysis and the predictions are governed by independent models, that results in obscure voice synthesis. And therefore, Neural TTS perform much better than traditional TTS.
 
 Recommend to run the CSharp example first which is always kept up to date. 
 
