@@ -1,11 +1,29 @@
-# How to run the sample
+# Text-to-speech (TTS) - Python Samples
 
-## Dependency
+This repository includes Python code samples for text-to-speech, a REST endpoint made available through Microsoft Speech Services.
+Each sample corresponds to a **Quickstart** activity on docs.microsoft.com:
 
-Python 3.X is required at present. If both Python 2 and 3 are installed, perhaps you'll need to run the command with `python3` in case.
+* [Convert text-to-speech using Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python-text-to-speech)
 
-## Usage
+## Prerequisites
 
-1. Get unified api key for [Free](https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services) or [Paid](https://go.microsoft.com/fwlink/?LinkId=872236)
-1. Fill the key to the line in code `apiKey = "Your api key goes here"`
-1. Run `python TTSSample.py` or just `./TTSSample.py` to get the result
+Here's what you'll need to run these samples:
+
+* Your favorite IDE or text editor
+* Python 2.7.x or 3.x
+* An Azure subscription with Speech Services enabled. [Get one for free!](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)
+
+## Code samples
+
+To use these samples, follow these instructions:
+
+* Create a new project using your favorite IDE or text editor
+* Copy the code from the sample into a file named `TTSSample.py`
+* Set your subscription key
+* Run the sample: python `TTSSample.py`
+
+## Resources
+
+* [REST API reference](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Create custom voice fonts](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font)
+* [Record voice samples](https://docs.microsoft.com/azure/cognitive-services/speech-service/record-custom-voice-samples)

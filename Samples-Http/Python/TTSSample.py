@@ -1,66 +1,62 @@
-#! /usr/bin/env python3
+'''
+This sample demonstrates how to call the text-to-speech endpoint, capture
+a user input, and write the respone to file. Each file is saved as .wav, and is
+timestamped. For additional voices, and output formats, please use the API
+reference: https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api
+'''
 
-# -*- coding: utf-8 -*-
+# Make sure to install requests before running this script: pip install requests.
 
-###
-#Copyright (c) Microsoft Corporation
-#All rights reserved. 
-#MIT License
-#Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-#The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-#THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-###
-import http.client, urllib.parse, json
-from xml.etree import ElementTree
+import os, requests, time
 
-# Note: new unified SpeechService API key and issue token uri is per region
-# New unified SpeechService key
-# Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
-# Paid: https://go.microsoft.com/fwlink/?LinkId=872236
-apiKey = "Your api key goes here"
+try: input = raw_input
+except NameError: pass
 
-params = ""
-headers = {"Ocp-Apim-Subscription-Key": apiKey}
+class TextToSpeech(object):
+    def __init__(self, subscription_key):
+        self.subscription_key = subscription_key
+        self.tts = input("What would you like to convert to speech: ")
+        self.timestr = time.strftime("%Y%m%d-%H%M")
+        self.access_token = None
 
-#AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-AccessTokenHost = "westus.api.cognitive.microsoft.com"
-path = "/sts/v1.0/issueToken"
+    # This function performs the token exchange.
+    def get_token(self):
+        fetch_token_url = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+        headers = {
+            'Ocp-Apim-Subscription-Key': self.subscription_key
+        }
+        response = requests.post(fetch_token_url, headers=headers)
+        self.access_token = str(response.text)
 
-# Connect to server to get the Access Token
-print ("Connect to server to get the Access Token")
-conn = http.client.HTTPSConnection(AccessTokenHost)
-conn.request("POST", path, params, headers)
-response = conn.getresponse()
-print(response.status, response.reason)
+    # This function calls the TTS endpoint with the access token.
+    def save_audio(self):
+        base_url = 'https://westus.tts.speech.microsoft.com/'
+        path = 'cognitiveservices/v1'
+        constructed_url = base_url + path
+        headers = {
+            'Authorization': 'Bearer ' + self.access_token,
+            'Content-Type': 'application/ssml+xml',
+            'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
+            'User-Agent': 'YOUR_RESOURCE_NAME',
+            'cache-control': 'no-cache'
+        }
+        body = "<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" + self.tts + "</voice></speak>"
 
-data = response.read()
-conn.close()
+        response = requests.post(constructed_url, headers=headers, data=body)
+        # Write the response as a wav file for playback. The file is located
+        # in the same directory where this sample is run.
+        if response.status_code == 200:
+            with open('sample-' + self.timestr + '.wav', 'wb') as audio:
+                audio.write(response.content)
+                print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
+        else:
+            print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
 
-accesstoken = data.decode("UTF-8")
-print ("Access Token: " + accesstoken)
-
-body = ElementTree.Element('speak', version='1.0')
-body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
-voice = ElementTree.SubElement(body, 'voice')
-voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-voice.set('{http://www.w3.org/XML/1998/namespace}gender', 'Male')
-voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
-voice.text = 'This is a demo to call microsoft text to speech service in Python.'
-
-headers = {"Content-type": "application/ssml+xml", 
-			"X-Microsoft-OutputFormat": "riff-24khz-16bit-mono-pcm",
-			"Authorization": "Bearer " + accesstoken, 
-			"X-Search-AppId": "07D3234E49CE426DAA29772419F436CA", 
-			"X-Search-ClientID": "1ECFAE91408841A480F00935DC390960", 
-			"User-Agent": "TTSForPython"}
-			
-#Connect to server to synthesize the wave
-print ("\nConnect to server to synthesize the wave")
-conn = http.client.HTTPSConnection("westus.tts.speech.microsoft.com")
-conn.request("POST", "/cognitiveservices/v1", ElementTree.tostring(body), headers)
-response = conn.getresponse()
-print(response.status, response.reason)
-
-data = response.read()
-conn.close()
-print("The synthesized wave length: %d" %(len(data)))
+if __name__ == "__main__":
+    # This reads from an environment variable. You can replace the value with
+    # your key as a string. For example:
+	# subscription_key = "YOUR_KEY_GOES_HERE"
+    subscription_key = os.environ['SPEECH_SERVICE_KEY']
+    app = TextToSpeech(subscription_key)
+    app.get_token()
+    app.save_audio()
