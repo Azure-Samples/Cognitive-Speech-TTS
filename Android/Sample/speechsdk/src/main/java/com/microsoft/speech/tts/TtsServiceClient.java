@@ -50,7 +50,7 @@ class TtsServiceClient {
 
     public TtsServiceClient(String apiKey) {
         m_outputFormat = "raw-16khz-16bit-mono-pcm";
-        m_serviceUri = "https://speech.platform.bing.com/synthesize";
+        m_serviceUri = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1?traffictype=AndroidTest";
         m_auth = new Authentication(apiKey);
     }
 
