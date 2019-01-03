@@ -3,7 +3,7 @@
 This repository includes Node.js samples for text-to-speech, a REST endpoint made available through Microsoft Speech Services.
 Each sample corresponds to a **Quickstart** activity on docs.microsoft.com:
 
-* [Convert text-to-speech using Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-nodejs-text-to-speech)
+* [Convert text-to-speech using Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-nodejs-text-to-speech)
 
 ## Prerequisites
 
