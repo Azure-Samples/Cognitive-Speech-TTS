@@ -1,10 +1,70 @@
-/**
-Copyright (c) Microsoft Corporation
-All rights reserved. 
-MIT License
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-**/
-var tts = require('./TTSService.js');  
- tts.Synthesize(); 
+const request = require('request');
+const fs = require('fs');
+// Run: npm install readline-sync
+const readline = require('readline-sync');
+
+// Add your subscriptionKey here.
+const subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+
+// Prompts the user to input text.
+let text = readline.question('What would you like to convert to speech? ');
+
+// This samples assumes your resource was created in the WEST US region.
+function textToSpeech(subscriptionKey, saveAudio) {
+    let options = {
+        method: 'POST',
+        uri: 'https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken',
+        headers: {
+            'Ocp-Apim-Subscription-Key': subscriptionKey
+        }
+    };
+    // This function retrieve the access token and is passed as callback
+    // to request below.
+    function getToken(error, response, body) {
+        console.log("Getting your token...\n")
+        if (!error && response.statusCode == 200) {
+            //This is the callback to our saveAudio function.
+            // It takes a single argument, which is the returned accessToken.
+            saveAudio(body)
+        }
+        else {
+          throw new Error(error);
+        }
+    }
+    request(options, getToken)
+}
+
+// Make sure to update User-Agent with the name of your resource.
+// You can also change the voice and output formats. See:
+// https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech
+function saveAudio(accessToken) {
+    let options = {
+        method: 'POST',
+        baseUrl: 'https://westus.tts.speech.microsoft.com/',
+        url: 'cognitiveservices/v1',
+        headers: {
+            'Authorization': 'Bearer ' + accessToken,
+            'cache-control': 'no-cache',
+            'User-Agent': 'YOUR_RESOURCE_NAME',
+            'X-Microsoft-OutputFormat': 'riff-24khz-16bit-mono-pcm',
+            'Content-Type': 'application/ssml+xml'
+        },
+        body: '<speak version=\'1.0\' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang=\'en-US\'>\n<voice  name=\'Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)\'>' + text + '</voice> </speak>'
+    };
+    // This function makes the request to convert speech to text.
+    // The speech is returned as the response.
+    function convertText(error, response, body){
+      if (!error && response.statusCode == 200) {
+        console.log("Converting text-to-speech. Please hold...\n")
+      }
+      else {
+        throw new Error(error);
+      }
+      console.log("Your file is ready.\n")
+    }
+    // Pipe the response to file.
+    request(options, convertText).pipe(fs.createWriteStream('sample.wav'));
+}
+
+// Starts the sample.
+textToSpeech(subscriptionKey, saveAudio);
