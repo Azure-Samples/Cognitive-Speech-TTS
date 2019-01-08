@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "request": "^2.79.0",
-    "speaker": "^0.3.0",
-    "wav": "^1.0.1",
-    "xmlbuilder": "^8.2.2"
+    "fs": "0.0.1-security",
+    "readline-sync": "^1.4.9",
+    "request": "^2.88.0",
+    "xmlbuilder": "^10.1.1"
   }
 }
