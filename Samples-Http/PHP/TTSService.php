@@ -18,7 +18,6 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 // Paid: https://go.microsoft.com/fwlink/?LinkId=872236
 $AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
 $apiKey = "Your api key goes here";
-$ttsHost = "https://speech.platform.bing.com";
 
 // use key 'http' even if you send the request to https://...
 $options = array(
