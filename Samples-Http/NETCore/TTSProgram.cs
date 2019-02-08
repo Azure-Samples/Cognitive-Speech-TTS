@@ -100,6 +100,7 @@ namespace TTSSample
 
             string host = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 
+            // Create SSML document.
             XDocument body = new XDocument(
                     new XElement("speak",
                         new XAttribute("version", "1.0"),
