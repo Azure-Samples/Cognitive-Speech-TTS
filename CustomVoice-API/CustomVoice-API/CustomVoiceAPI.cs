@@ -7,6 +7,7 @@ using System.Text;
 using System.Security;
 using ConsoleApp1.VoiceAPI;
 using System.IO;
+using Microsoft.WindowsAzure.Storage;
 
 namespace ConsoleApp1
 {
@@ -14,6 +15,7 @@ namespace ConsoleApp1
     {
         public string endpoint { get; private set; } = null;
         public string ibizaStsUrl { get; private set; } = null;
+        public string subscriptionKey { get; private set; } = null;
 
         private string GetDatasetsUrl => endpoint + @"api/texttospeech/v2.0/datasets";
         private string GetModelsUrl => endpoint + @"api/texttospeech/v2.0/models";
@@ -27,49 +29,53 @@ namespace ConsoleApp1
         private string DeleteModelsUrl => endpoint + "api/texttospeech/v2.0/models/{0}";
         private string DeleteEndpointsUrl => endpoint + "api/texttospeech/v2.0/endpoints/{0}";
         private string DeleteVoiceTestsUrl => endpoint + "api/texttospeech/v2.0/tests/{0}";
+        private string GetVoicesUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/voices";
+        private string DeleteSynthesisUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/{0}";
+        private string VoiceSynthesisUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/";
 
-        public CustomVoiceAPI(string endpoint, string ibizaStsUrl)
+        public CustomVoiceAPI(string endpoint, string ibizaStsUrl, string subscriptionKey)
         {
             this.endpoint = endpoint;
             this.ibizaStsUrl = ibizaStsUrl;
+            this.subscriptionKey = subscriptionKey;
         }
         //Get Dataset
-        public List<Dataset> GetDatasets(string SubscriptionKey)
+        public IEnumerable<Dataset> GetDatasets()
         {
-            return VoiceAPIHelper.Get<Dataset>(SubscriptionKey, GetDatasetsUrl);
+            return VoiceAPIHelper.Get<Dataset>(this.subscriptionKey, GetDatasetsUrl);
         }
 
         //Get Model
-        public List<Model> GetModels(string SubscriptionKey)
+        public IEnumerable<Model> GetModels()
         {
-            return VoiceAPIHelper.Get<Model>(SubscriptionKey, GetModelsUrl);
+            return VoiceAPIHelper.Get<Model>(this.subscriptionKey, GetModelsUrl);
         }
 
         //Get Endpoint
-        public List<Endpoint> GetEndpoints(string SubscriptionKey)
+        public IEnumerable<Endpoint> GetEndpoints()
         {
-            return VoiceAPIHelper.Get<Endpoint>(SubscriptionKey, GetEndpointsUrl);
+            return VoiceAPIHelper.Get<Endpoint>(this.subscriptionKey, GetEndpointsUrl);
         }
 
         //Get VoiceTest
-        public List<VoiceTest> GetVoiceTests(string SubscriptionKey, string modelID)
+        public IEnumerable<VoiceTest> GetVoiceTests(string modelID)
         {
-            return VoiceAPIHelper.Get<VoiceTest>(SubscriptionKey, string.Format(CultureInfo.InvariantCulture, GetVoiceTestsUrl, modelID));
+            return VoiceAPIHelper.Get<VoiceTest>(this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, GetVoiceTestsUrl, modelID));
         }
 
         //Create Dataset
-        public void UpdateDataset(string SubscriptionKey, string waveUpload, string scriptUpload, string name, string description, string locale, string gender)
+        public void UpdateDataset(string waveUpload, string scriptUpload, string name, string description, string locale, string gender)
         {
             var properties = new Dictionary<string, string>
             {
                 { "Gender", gender }
             };
             var datasetDefinition = new DatasetDefinition(name, description, locale, properties, "CustomVoice");
-            var submitResponse = VoiceAPIHelper.SubmitDataset(datasetDefinition, waveUpload, scriptUpload, CreateDatasetUrl, SubscriptionKey);
+            var submitResponse = VoiceAPIHelper.SubmitDataset(datasetDefinition, waveUpload, scriptUpload, CreateDatasetUrl, this.subscriptionKey);
         }
 
         //Create Models
-        public void CreateModel(string SubscriptionKey, string name, string description, string locale, string gender, List<DatasetIdentity> DatasetIds)
+        public void CreateModel(string name, string description, string locale, string gender, List<DatasetIdentity> DatasetIds)
         {
             var properties = new Dictionary<string, string>();
             properties.Add("Gender", gender);
@@ -80,11 +86,11 @@ namespace ConsoleApp1
                 null,
                 DatasetIds,
                 properties);
-            var submitResponse = VoiceAPIHelper.Submit<ModelDefinition>(modelDefinition, CreateModelUrl, SubscriptionKey);
+            var submitResponse = VoiceAPIHelper.Submit<ModelDefinition>(modelDefinition, CreateModelUrl, this.subscriptionKey);
         }
 
         //Create Endpoint
-        public void CreateEndpoint(string SubscriptionKey, string name, string description, string locale, List<ModelIdentity> ModelIds)
+        public void CreateEndpoint(string name, string description, string locale, List<ModelIdentity> ModelIds)
         {
             var endpointDefinition = new EndpointDefinition(name,
                 description,
@@ -93,11 +99,11 @@ namespace ConsoleApp1
                 null,
                 0,
                 false);
-            var submitResponse = VoiceAPIHelper.Submit<EndpointDefinition>(endpointDefinition, CreateEndpointUrl, SubscriptionKey);
+            var submitResponse = VoiceAPIHelper.Submit<EndpointDefinition>(endpointDefinition, CreateEndpointUrl, this.subscriptionKey);
         }
 
         //Create Voice Test
-        public void CreateVoiceTest(string SubscriptionKey, string ModelId, string script, bool isSSML)
+        public void CreateVoiceTest(string ModelId, string script, bool isSSML)
         {
             VoiceTestDefinition testDefinition;
 
@@ -114,17 +120,17 @@ namespace ConsoleApp1
                 "Text");
             }
 
-            var submitResponse = VoiceAPIHelper.Submit<VoiceTestDefinition>(testDefinition, CreateVoiceTestUrl, SubscriptionKey);
+            var submitResponse = VoiceAPIHelper.Submit<VoiceTestDefinition>(testDefinition, CreateVoiceTestUrl, this.subscriptionKey);
         }
 
         //Invoked Endpoint
-        public void InvokeEndpoint(string subscriptionKey, string endpointUrl, string local, string voiceName, string script, bool isSSML, string outputFile)
+        public void InvokeEndpoint(string endpointUrl, string local, string voiceName, string script, bool isSSML, string outputFile)
         {
             const string SsmlPattern = @"<speak version=""1.0"" xmlns=""http://www.w3.org/2001/10/synthesis"" xmlns:mstts=""http://www.w3.org/2001/mstts"" xml:lang=""{0}"">" +
             @"<voice name = ""{1}"">{2}</voice>" +
             @"</speak>";
 
-            var authentication = new Authentication(new Uri(this.ibizaStsUrl), subscriptionKey);
+            var authentication = new Authentication(new Uri(this.ibizaStsUrl), this.subscriptionKey);
             string token = authentication.RetrieveNewTokenAsync();
 
             WebRequest webRequest = WebRequest.Create(endpointUrl);
@@ -168,6 +174,50 @@ namespace ConsoleApp1
             }
 
             return string.Format(CultureInfo.InvariantCulture, format, arg);
+        }
+
+        public IEnumerable<Voice> GetVoices()
+        {
+            return VoiceAPIHelper.Get<Voice>(this.subscriptionKey, GetVoicesUrl);
+        }
+
+        public IEnumerable<Synthesis> GetSyntheses()
+        {
+            return VoiceAPIHelper.Get<Synthesis>(this.subscriptionKey, VoiceSynthesisUrl);
+        }
+
+        public void DeleteSynthesis(Guid id)
+        {
+            VoiceAPIHelper.Delete(this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
+        }
+
+        public void UpdateSynthesis(Guid id, string newName, string newDesc)
+        {
+            VoiceAPIHelper.PatchVoiceSynthesis(VoiceSynthesisUpdate.Create(newName, newDesc), this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
+        }
+
+        public void CreateBatchSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId, string azureStorageConnectionString)
+        {
+            Console.WriteLine($"upload text to azure storage blob : {inputTextPath}");
+            var containerName = "voicesynthesisinputfiles";
+
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
+            var blobClient = storageAccount.CreateCloudBlobClient();
+            var containerReference = blobClient.GetContainerReference(containerName);
+
+            containerReference.CreateIfNotExists();
+
+            var fileName = $"SubscriptionKey_{Guid.NewGuid().ToString()}.txt";
+
+            StorageHelper.UploadFileAsync(containerReference, fileName, inputTextPath);
+
+            var textUrl = StorageHelper.GetBlobSas(blobClient, containerName, fileName, DateTime.MaxValue);
+
+
+            Console.WriteLine("Creating batch synthesiss.");
+            var model = ModelIdentity.Create(modelId);
+            var batchSynthesisDefinition = BatchSynthesisDefinition.Create(name, description, locale, new Uri($"{ textUrl }"), model);
+            var submitResponse = VoiceAPIHelper.Submit<BatchSynthesisDefinition>(batchSynthesisDefinition, VoiceSynthesisUrl, this.subscriptionKey);
         }
     }
 }

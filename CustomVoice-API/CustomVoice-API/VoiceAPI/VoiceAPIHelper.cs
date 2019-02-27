@@ -7,12 +7,13 @@ namespace Microsoft.SpeechServices.Cris.Http
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
+    using System.Text;
     using System.Threading;
     using Newtonsoft.Json;
 
     public static class VoiceAPIHelper
     {
-        public static List<T> Get<T>(string token, string endpoint)
+        public static IEnumerable<T> Get<T>(string token, string endpoint)
         {
             var response = GetData(token, endpoint);
 
@@ -20,8 +21,8 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var streamReader = new StreamReader(responseStream))
             {
                 string responseJson = streamReader.ReadToEnd();
-                var voiceTests = JsonConvert.DeserializeObject<List<T>>(responseJson);
-                return voiceTests;
+                var items = JsonConvert.DeserializeObject<IEnumerable<T>>(responseJson);
+                return items;
             }
         }
 
@@ -84,6 +85,16 @@ namespace Microsoft.SpeechServices.Cris.Http
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
                 return client.DeleteAsync(endpoint, CancellationToken.None).Result;
+            }
+        }
+
+        public static HttpResponseMessage PatchVoiceSynthesis(VoiceSynthesisUpdate definition, string token, string endpoint)
+        {
+            using (var client = new HttpClient())
+            using (var content = new StringContent(JsonConvert.SerializeObject(definition), Encoding.UTF8, "application/json"))
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                return client.PatchAsync(endpoint, content).Result;
             }
         }
 
