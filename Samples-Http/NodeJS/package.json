@@ -3,6 +3,7 @@
     "fs": "0.0.1-security",
     "readline-sync": "^1.4.9",
     "request": "^2.88.0",
+    "request-promise": "^4.2.4",
     "xmlbuilder": "^10.1.1"
   }
 }
