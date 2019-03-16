@@ -71,19 +71,62 @@ namespace TTSSample
 
         private static void Main(string[] args)
         {
-            Console.WriteLine("Starting Authtentication");
-            string accessToken;
+            bool useNeuralVoice = true;
+            if (!useNeuralVoice)
+            {
 
-            // Issue token uri for old Bing Speech API "https://api.cognitive.microsoft.com/sts/v1.0/issueToken";
-            // Issue token uri for new unified SpeechService API "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken". 
-            // Note: new unified SpeechService API key and issue token uri is per region
+                // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
+                // the request URI region must match with the token URI region . 
+                string tokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                string endpointUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
+                string key = "input your key here";
+
+                // To use a standard voice, make sure you set the correct locale and voice name as below
+                // see full list here https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)",
+                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)",
+                SpeakWithVoice(tokenUri, endpointUri, key,
+                                "en-US",
+                                "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                                AudioOutputFormat.Riff24Khz16BitMonoPcm);
+            }
+            else
+            {
+                // To use neural voice, select a right DC, set the right proper locale and voice name
+                // Neural voice is currently avaliable in eastUS, southEastAsia, westEurope
+                // see https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
+                string tokenUri = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                string endpointUri = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
+                string key = "input your key here";
+                SpeakWithVoice(tokenUri, endpointUri, key,
+                                "en-US",
+                                "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
+                                AudioOutputFormat.Riff16Khz16BitMonoPcm);
+
+                //string tokenUri = "https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                //string endpointUri = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
+                //string key = "input your key here";
+                //SpeakWithVoice(tokenUri, endpointUri, key,
+                //                "zh-CN",
+                //                "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+                //                AudioOutputFormat.Riff16Khz16BitMonoPcm,
+                //                "你好， 我是晓晓!");
+            }
+        }
+
+        private static void SpeakWithVoice(string tokeUri, string endpointUri, string key, string locale, string voiceName, AudioOutputFormat format, string text = "Hello, how are you doing?")
+        {
+            string accessToken;
 
             // The way to get api key:
             // Unified Speech Service key
             // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
             // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409 
-            Authentication auth = new Authentication("https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken", "input your key here");
-            
+
+            Console.WriteLine("Starting Authtentication");
+            Authentication auth = new Authentication(tokeUri, key);
+
             try
             {
                 accessToken = auth.GetAccessToken();
@@ -98,9 +141,8 @@ namespace TTSSample
             }
 
             Console.WriteLine("Starting TTSSample request code execution.");
-            // For Unified SpeechService API: https://westus.tts.speech.microsoft.com/cognitiveservices/v1
-            // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
-            string requestUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
+
+            string requestUri = endpointUri;
             var cortana = new Synthesize();
 
             cortana.OnAudioAvailable += PlayAudio;
@@ -111,18 +153,16 @@ namespace TTSSample
             {
                 RequestUri = new Uri(requestUri),
                 // Text to be spoken.
-                Text = "Hello, how are you doing?",
+                Text = text,
                 VoiceType = Gender.Female,
+
                 // Refer to the documentation for complete list of supported locales.
-                Locale = "en-US",
-                // You can also customize the output voice. Refer to the documentation to view the different
-                // voices that the TTS service can output.
-                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
-                VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)",
-                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)",
-            
-                // Service can return audio in different output format.
-                OutputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm,
+                // Please note locale must be matched with voice locales. 
+                Locale = locale,
+                VoiceName = voiceName,
+                OutputFormat = format,
+
+                // For onpremise container, auth token is optional 
                 AuthorizationToken = "Bearer " + accessToken,
             }).Wait();
         }
