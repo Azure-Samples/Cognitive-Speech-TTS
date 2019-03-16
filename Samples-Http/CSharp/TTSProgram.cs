@@ -60,6 +60,24 @@ namespace TTSSample
         }
 
         /// <summary>
+        /// save the output to a file
+        /// </summary>
+        /// <param name="sender">source</param>
+        /// <param name="args">args</param>
+        /// <param name="outputFile">output file</param>
+        private static void SaveAudio(object sender, GenericEventArgs<Stream> args, string outputFile)
+        {
+            Console.WriteLine(args.EventData);
+
+            using (FileStream fs = File.Open(outputFile, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+            {
+                args.EventData.CopyTo(fs);
+            }
+
+            args.EventData.Dispose();
+        }
+
+        /// <summary>
         /// Handler an error when a TTS request failed.
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -71,81 +89,112 @@ namespace TTSSample
 
         private static void Main(string[] args)
         {
-            bool useNeuralVoice = true;
+            // set this var to true, if you want to use neural voice
+            bool useNeuralVoice = false;
             if (!useNeuralVoice)
             {
-
                 // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
                 // the request URI region must match with the token URI region . 
-                string tokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-                string endpointUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
-                string key = "input your key here";
 
-                // To use a standard voice, make sure you set the correct locale and voice name as below
-                // see full list here https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
-                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
-                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)",
-                // VoiceName = "Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)",
-                SpeakWithVoice(tokenUri, endpointUri, key,
-                                "en-US",
-                                "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
-                                AudioOutputFormat.Riff24Khz16BitMonoPcm);
+                {
+                    string tokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                    string endpointUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
+                    string key = "input your key here";
+                    // To use a standard voice, make sure you set the correct locale and voice name as below
+                    // see full list here https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
+                    SpeakWithVoice(tokenUri, endpointUri, key,
+                                    "en-US",
+                                    "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                                    AudioOutputFormat.Riff24Khz16BitMonoPcm);
+                }
+
+                {
+                    // Uncomment below if you want to call a container (private preview)
+                    //string tokenUri = null;
+                    //string endpointUri = "http://localhost:5002/speech/synthesize/cognitiveservices/v1";
+                    //string key = null;
+                    //SpeakWithVoice(tokenUri, endpointUri, key,
+                    //                "en-US",
+                    //                "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                    //                AudioOutputFormat.Riff16Khz16BitMonoPcm, outputFile: "output.wav");
+                }
             }
             else
             {
                 // To use neural voice, select a right DC, set the right proper locale and voice name
                 // Neural voice is currently avaliable in eastUS, southEastAsia, westEurope
                 // see https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
-                string tokenUri = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-                string endpointUri = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
-                string key = "input your key here";
-                SpeakWithVoice(tokenUri, endpointUri, key,
-                                "en-US",
-                                "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
-                                AudioOutputFormat.Riff16Khz16BitMonoPcm);
+                {
+                    string tokenUri = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                    string endpointUri = "https://eastus.tts.speech.microsoft.com/cognitiveservices/v1";
+                    string key = "input your key here";
+                    SpeakWithVoice(tokenUri, endpointUri, key,
+                                    "en-US",
+                                    "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
+                                    AudioOutputFormat.Riff16Khz16BitMonoPcm, outputFile: "output.wav");
+                }
 
-                //string tokenUri = "https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-                //string endpointUri = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
-                //string key = "input your key here";
-                //SpeakWithVoice(tokenUri, endpointUri, key,
-                //                "zh-CN",
-                //                "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-                //                AudioOutputFormat.Riff16Khz16BitMonoPcm,
-                //                "你好， 我是晓晓!");
+                {
+                    // Uncomment below if you want to call zh-CN neural voice
+                    //string tokenUri = "https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+                    //string endpointUri = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
+                    //string key = "input your key here";
+                    //SpeakWithVoice(tokenUri, endpointUri, key,
+                    //                "zh-CN",
+                    //                "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+                    //                AudioOutputFormat.Riff16Khz16BitMonoPcm,
+                    //                "你好， 我是晓晓!");
+                }
             }
         }
 
-        private static void SpeakWithVoice(string tokeUri, string endpointUri, string key, string locale, string voiceName, AudioOutputFormat format, string text = "Hello, how are you doing?")
+        private static void SpeakWithVoice(string tokenUri, string endpointUri, string key, string locale, string voiceName, 
+                                            AudioOutputFormat format, string text = "Hello, how are you doing?", 
+                                            string outputFile = null)
         {
-            string accessToken;
+            string accessToken = string.Empty;
 
             // The way to get api key:
             // Unified Speech Service key
             // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
             // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409 
 
-            Console.WriteLine("Starting Authtentication");
-            Authentication auth = new Authentication(tokeUri, key);
+            if (tokenUri != null)
+            {
+                Console.WriteLine("Starting Authtentication");
+                Authentication auth = new Authentication(tokenUri, key);
 
-            try
-            {
-                accessToken = auth.GetAccessToken();
-                Console.WriteLine("Token: {0}\n", accessToken);
+                try
+                {
+                    accessToken = auth.GetAccessToken();
+                    Console.WriteLine("Token: {0}\n", accessToken);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed authentication.");
+                    Console.WriteLine(ex.ToString());
+                    Console.WriteLine(ex.Message);
+                    return;
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Failed authentication.");
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine(ex.Message);
-                return;
-            }
+
 
             Console.WriteLine("Starting TTSSample request code execution.");
 
             string requestUri = endpointUri;
             var cortana = new Synthesize();
 
-            cortana.OnAudioAvailable += PlayAudio;
+            System.EventHandler<GenericEventArgs<Stream>> handler;
+            if (outputFile == null)
+            {
+                handler = PlayAudio;
+            }
+            else
+            {
+                handler = (sender, e) => SaveAudio(sender, e, outputFile);
+            }
+
+            cortana.OnAudioAvailable += handler;
             cortana.OnError += ErrorHandler;
 
             // Reuse Synthesize object to minimize latency
@@ -165,6 +214,9 @@ namespace TTSSample
                 // For onpremise container, auth token is optional 
                 AuthorizationToken = "Bearer " + accessToken,
             }).Wait();
+
+            cortana.OnAudioAvailable -= handler;
+            cortana.OnError -= ErrorHandler;
         }
     }
 }
