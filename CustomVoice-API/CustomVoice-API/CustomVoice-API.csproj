@@ -68,7 +68,7 @@
     <Compile Include="AzureUtil\StorageHelper.cs" />
     <Compile Include="CustomVoiceAPI.cs" />
     <Compile Include="VoiceAPI\Authentication.cs" />
-    <Compile Include="VoiceAPI\DTO\BatchSynthesisDefinition.cs" />
+    <Compile Include="VoiceAPI\DTO\VoiceSynthesisDefinition.cs" />
     <Compile Include="VoiceAPI\DTO\Synthesis.cs" />
     <Compile Include="VoiceAPI\DTO\Voice.cs" />
     <Compile Include="VoiceAPI\DTO\VoiceSynthesisUpdate.cs" />

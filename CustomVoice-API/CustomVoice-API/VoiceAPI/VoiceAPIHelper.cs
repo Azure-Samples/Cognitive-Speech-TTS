@@ -79,6 +79,41 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
+        public static HttpResponseMessage SubmitVoiceSynthesis(VoiceSynthesisDefinition voiceSynthesisDefinition, string inputTextPath, string endpoint, string token)
+        {
+            string scriptName = Path.GetFileName(inputTextPath);
+
+            using (FileStream fsscript = new FileStream(inputTextPath, FileMode.Open))
+            using (var client = new HttpClient())
+            using (var content = new MultipartFormDataContent())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+
+                content.Add(new StringContent(voiceSynthesisDefinition.Name), "name");
+
+                if (voiceSynthesisDefinition.Description != null)
+                {
+                    content.Add(new StringContent(voiceSynthesisDefinition.Description), "description");
+                }
+
+                content.Add(new StringContent(voiceSynthesisDefinition.Model.Id.ToString()), "model");
+                content.Add(new StringContent(voiceSynthesisDefinition.Locale), "locale");
+
+                if (voiceSynthesisDefinition.Properties != null)
+                {
+                    content.Add(new StringContent(JsonConvert.SerializeObject(voiceSynthesisDefinition.Properties)), "properties");
+                }
+
+                var scriptContent = new StreamContent(fsscript);
+                scriptContent.Headers.Add("Content-Disposition", $@"form-data; name=""script""; filename=""{scriptName}""");
+                scriptContent.Headers.Add("Content-Type", "text/plain");
+                scriptContent.Headers.Add("Content-Length", $"{fsscript.Length}");
+                content.Add(scriptContent, "script", scriptName);
+
+                return client.PostAsync(endpoint, content).Result;
+            }
+        }
+
         public static HttpResponseMessage Delete(string token, string endpoint)
         {
             using (var client = new HttpClient())

@@ -29,9 +29,9 @@ namespace ConsoleApp1
         private string DeleteModelsUrl => endpoint + "api/texttospeech/v2.0/models/{0}";
         private string DeleteEndpointsUrl => endpoint + "api/texttospeech/v2.0/endpoints/{0}";
         private string DeleteVoiceTestsUrl => endpoint + "api/texttospeech/v2.0/tests/{0}";
-        private string GetVoicesUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/voices";
-        private string DeleteSynthesisUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/{0}";
-        private string VoiceSynthesisUrl => endpoint + "api/texttospeech/v2.1/voicesynthesis/";
+        private string GetVoicesUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/voices";
+        private string DeleteSynthesisUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/{0}";
+        private string VoiceSynthesisUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/";
 
         public CustomVoiceAPI(string endpoint, string ibizaStsUrl, string subscriptionKey)
         {
@@ -196,28 +196,16 @@ namespace ConsoleApp1
             VoiceAPIHelper.PatchVoiceSynthesis(VoiceSynthesisUpdate.Create(newName, newDesc), this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
         }
 
-        public void CreateBatchSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId, string azureStorageConnectionString)
+        public void CreateVoiceSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId)
         {
-            Console.WriteLine($"upload text to azure storage blob : {inputTextPath}");
-            var containerName = "voicesynthesisinputfiles";
-
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(azureStorageConnectionString);
-            var blobClient = storageAccount.CreateCloudBlobClient();
-            var containerReference = blobClient.GetContainerReference(containerName);
-
-            containerReference.CreateIfNotExists();
-
-            var fileName = $"SubscriptionKey_{Guid.NewGuid().ToString()}.txt";
-
-            StorageHelper.UploadFileAsync(containerReference, fileName, inputTextPath);
-
-            var textUrl = StorageHelper.GetBlobSas(blobClient, containerName, fileName, DateTime.MaxValue);
-
-
             Console.WriteLine("Creating batch synthesiss.");
+            var properties = new Dictionary<string, string>
+            {
+                { "ConcatenateResult", "true" }
+            };
             var model = ModelIdentity.Create(modelId);
-            var batchSynthesisDefinition = BatchSynthesisDefinition.Create(name, description, locale, new Uri($"{ textUrl }"), model);
-            var submitResponse = VoiceAPIHelper.Submit<BatchSynthesisDefinition>(batchSynthesisDefinition, VoiceSynthesisUrl, this.subscriptionKey);
+            var voiceSynthesisDefinition = VoiceSynthesisDefinition.Create(name, description, locale, model, properties);
+            var submitResponse = VoiceAPIHelper.SubmitVoiceSynthesis(voiceSynthesisDefinition, inputTextPath, VoiceSynthesisUrl, this.subscriptionKey);
         }
     }
 }
