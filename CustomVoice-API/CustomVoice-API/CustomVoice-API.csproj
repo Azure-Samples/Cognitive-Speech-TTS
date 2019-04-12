@@ -61,6 +61,11 @@
   <ItemGroup>
     <Compile Include="CustomVoiceAPI.cs" />
     <Compile Include="VoiceAPI\Authentication.cs" />
+    <Compile Include="VoiceAPI\DTO\VoiceSynthesisDefinition.cs" />
+    <Compile Include="VoiceAPI\DTO\Synthesis.cs" />
+    <Compile Include="VoiceAPI\DTO\Voice.cs" />
+    <Compile Include="VoiceAPI\DTO\VoiceSynthesisUpdate.cs" />
+    <Compile Include="VoiceAPI\HttpClientExtensions.cs" />
     <Compile Include="VoiceAPI\VoiceAPIHelper.cs" />
     <Compile Include="VoiceAPI\DTO\Dataset.cs" />
     <Compile Include="VoiceAPI\DTO\DatasetDefinition.cs" />
@@ -79,6 +84,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="TestData\en-US_small.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

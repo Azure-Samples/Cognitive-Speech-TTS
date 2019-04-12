@@ -7,12 +7,13 @@ namespace Microsoft.SpeechServices.Cris.Http
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
+    using System.Text;
     using System.Threading;
     using Newtonsoft.Json;
 
     public static class VoiceAPIHelper
     {
-        public static List<T> Get<T>(string token, string endpoint)
+        public static IEnumerable<T> Get<T>(string token, string endpoint)
         {
             var response = GetData(token, endpoint);
 
@@ -20,8 +21,8 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var streamReader = new StreamReader(responseStream))
             {
                 string responseJson = streamReader.ReadToEnd();
-                var voiceTests = JsonConvert.DeserializeObject<List<T>>(responseJson);
-                return voiceTests;
+                var items = JsonConvert.DeserializeObject<IEnumerable<T>>(responseJson);
+                return items;
             }
         }
 
@@ -78,12 +79,57 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
+        public static HttpResponseMessage SubmitVoiceSynthesis(VoiceSynthesisDefinition voiceSynthesisDefinition, string inputTextPath, string endpoint, string token)
+        {
+            string scriptName = Path.GetFileName(inputTextPath);
+
+            using (FileStream fsscript = new FileStream(inputTextPath, FileMode.Open))
+            using (var client = new HttpClient())
+            using (var content = new MultipartFormDataContent())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+
+                content.Add(new StringContent(voiceSynthesisDefinition.Name), "name");
+
+                if (voiceSynthesisDefinition.Description != null)
+                {
+                    content.Add(new StringContent(voiceSynthesisDefinition.Description), "description");
+                }
+
+                content.Add(new StringContent(voiceSynthesisDefinition.Model.Id.ToString()), "model");
+                content.Add(new StringContent(voiceSynthesisDefinition.Locale), "locale");
+
+                if (voiceSynthesisDefinition.Properties != null)
+                {
+                    content.Add(new StringContent(JsonConvert.SerializeObject(voiceSynthesisDefinition.Properties)), "properties");
+                }
+
+                var scriptContent = new StreamContent(fsscript);
+                scriptContent.Headers.Add("Content-Disposition", $@"form-data; name=""script""; filename=""{scriptName}""");
+                scriptContent.Headers.Add("Content-Type", "text/plain");
+                scriptContent.Headers.Add("Content-Length", $"{fsscript.Length}");
+                content.Add(scriptContent, "script", scriptName);
+
+                return client.PostAsync(endpoint, content).Result;
+            }
+        }
+
         public static HttpResponseMessage Delete(string token, string endpoint)
         {
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
                 return client.DeleteAsync(endpoint, CancellationToken.None).Result;
+            }
+        }
+
+        public static HttpResponseMessage PatchVoiceSynthesis(VoiceSynthesisUpdate definition, string token, string endpoint)
+        {
+            using (var client = new HttpClient())
+            using (var content = new StringContent(JsonConvert.SerializeObject(definition), Encoding.UTF8, "application/json"))
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                return client.PatchAsync(endpoint, content).Result;
             }
         }
 
