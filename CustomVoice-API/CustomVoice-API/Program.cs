@@ -79,9 +79,6 @@ namespace ConsoleApp1
         // The voice synthesis APIs are now only availabel in DC EastUS
         private static void VoiceSynthsisAPIs()
         {
-            // Will uplad the locale input text file to this azure storage blob temporary, this can be deleted after the API complete.
-            string azureStorageConnectionString = "Your azure storage connection string";
-
             string endpoint = "https://eastus.cris.ai/";
             string ibizaStsUrl = "https://eastus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
             string subscriptionKey = "Your SubscriptionKey";
@@ -97,9 +94,9 @@ namespace ConsoleApp1
 
             const string Locale = "en-US";
             const string LocalInputTextFile = @"TestData\en-US_small.txt";
-            const string VoiceName = "TargetVoiceName";
+            const string VoiceName = "Jessa";
 
-            var voice = voices.Where(m => m.Locale == Locale && m.Name.Contains(VoiceName)).FirstOrDefault();
+            var voice = voices.Where(m => m.Locale == Locale && m.Name.Contains(VoiceName) && m.IsPublicVoice).FirstOrDefault();
 
             if (voice == null)
             {
@@ -107,7 +104,7 @@ namespace ConsoleApp1
                 return;
             }
 
-            customVoiceAPI.CreateBatchSynthesis(Name, Description, Locale, LocalInputTextFile, voice.Id, azureStorageConnectionString);
+            customVoiceAPI.CreateVoiceSynthesis(Name, Description, Locale, LocalInputTextFile, voice.Id);
 
             // Get submitted synthesis request list and update a submitted synthesis request
             var syntheses = customVoiceAPI.GetSyntheses();
