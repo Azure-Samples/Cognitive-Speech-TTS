@@ -7,7 +7,6 @@ using System.Text;
 using System.Security;
 using ConsoleApp1.VoiceAPI;
 using System.IO;
-using Microsoft.WindowsAzure.Storage;
 
 namespace ConsoleApp1
 {
