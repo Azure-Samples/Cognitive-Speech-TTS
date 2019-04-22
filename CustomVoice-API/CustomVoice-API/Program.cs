@@ -27,6 +27,21 @@ namespace ConsoleApp1
                 "en-US",
                 "male");
 
+            customVoiceAPI.UploadLongAudioDataset(
+                @"E:\Audio.zip",
+                @"E:\Script.zip",
+                "long audio dataset",
+                "long audio dataset description",
+                "en-US",
+                "male");
+
+            customVoiceAPI.UploadAudioOnlyDataset(
+                @"E:\Audio.zip",
+                "audio only dataset",
+                "audio only dataset description",
+                "en-US",
+                "male");
+
             //Get Dataset
             var datasets = customVoiceAPI.GetDatasets();
 

@@ -22,6 +22,8 @@ namespace ConsoleApp1
         private string GetEndpointsUrl => endpoint + @"api/texttospeech/v2.0/endpoints";
         private string GetVoiceTestsUrl => endpoint + @"api/texttospeech/v2.0/tests/model/{0}";
         private string CreateDatasetUrl => endpoint + "api/texttospeech/v2.0/datasets/upload";
+        private string CreateLongAudioDatasetUrl => endpoint + "api/texttospeech/v2.1/datasets/longaudio";
+        private string CreateAudioOnlyDatasetUrl => endpoint + "api/texttospeech/v2.1/datasets/audioonly";
         private string CreateModelUrl => endpoint + "api/texttospeech/v2.0/models";
         private string CreateEndpointUrl => endpoint + "api/texttospeech/v2.0/endpoints";
         private string CreateVoiceTestUrl => endpoint + "api/texttospeech/v2.0/tests";
@@ -72,6 +74,28 @@ namespace ConsoleApp1
             };
             var datasetDefinition = new DatasetDefinition(name, description, locale, properties, "CustomVoice");
             var submitResponse = VoiceAPIHelper.SubmitDataset(datasetDefinition, waveUpload, scriptUpload, CreateDatasetUrl, this.subscriptionKey);
+        }
+
+        //Create Long Audio Dataset
+        public void UploadLongAudioDataset(string waveZipUpload, string scriptZipUpload, string name, string description, string locale, string gender)
+        {
+            var properties = new Dictionary<string, string>
+            {
+                { "Gender", gender }
+            };
+            var datasetDefinition = new DatasetDefinition(name, description, locale, properties, "CustomVoice");
+            var submitResponse = VoiceAPIHelper.SubmitLongAudioDataset(datasetDefinition, waveZipUpload, scriptZipUpload, CreateLongAudioDatasetUrl, this.subscriptionKey);
+        }
+
+        //Create Audio Only Dataset
+        public void UploadAudioOnlyDataset(string waveZipUpload, string name, string description, string locale, string gender)
+        {
+            var properties = new Dictionary<string, string>
+            {
+                { "Gender", gender }
+            };
+            var datasetDefinition = new DatasetDefinition(name, description, locale, properties, "CustomVoice");
+            var submitResponse = VoiceAPIHelper.SubmitAudioOnlyDataset(datasetDefinition, waveZipUpload, CreateLongAudioDatasetUrl, this.subscriptionKey);
         }
 
         //Create Models

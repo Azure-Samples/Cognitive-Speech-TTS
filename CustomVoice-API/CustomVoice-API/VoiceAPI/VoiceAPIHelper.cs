@@ -79,6 +79,84 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
+        public static HttpResponseMessage SubmitLongAudioDataset(DatasetDefinition datasetDefinition, string wave, string script, string endpoint, string token)
+        {
+            string waveName = Path.GetFileName(wave);
+            string scriptName = Path.GetFileName(script);
+
+            using (FileStream fsscript = new FileStream(script, FileMode.Open))
+            using (FileStream fswave = new FileStream(wave, FileMode.Open))
+            using (var client = new HttpClient())
+            using (var content = new MultipartFormDataContent())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+
+                content.Add(new StringContent(datasetDefinition.Name), "name");
+
+                if (datasetDefinition.Description != null)
+                {
+                    content.Add(new StringContent(datasetDefinition.Description), "description");
+                }
+
+                content.Add(new StringContent(datasetDefinition.DataImportKind), "dataImportKind");
+                content.Add(new StringContent(datasetDefinition.Locale), "locale");
+
+                if (datasetDefinition.Properties != null)
+                {
+                    content.Add(new StringContent(JsonConvert.SerializeObject(datasetDefinition.Properties)), "properties");
+                }
+
+                var transcriptionContent = new StreamContent(fsscript);
+                transcriptionContent.Headers.Add("Content-Disposition", $@"form-data; name=""transcriptions""; filename=""{scriptName}""");
+                transcriptionContent.Headers.Add("Content-Type", "application/x-zip-compressed");
+                transcriptionContent.Headers.Add("Content-Length", $"{fsscript.Length}");
+                content.Add(transcriptionContent, "transcriptions", scriptName);
+
+                var wavesContent = new StreamContent(fswave);
+                wavesContent.Headers.Add("Content-Disposition", $@"form-data; name=""audiodata""; filename=""{waveName}""");
+                wavesContent.Headers.Add("Content-Type", "application/x-zip-compressed");
+                wavesContent.Headers.Add("Content-Length", $"{fswave.Length}");
+                content.Add(wavesContent, "audiodata", waveName);
+
+                return client.PostAsync(endpoint, content).Result;
+            }
+        }
+
+        public static HttpResponseMessage SubmitAudioOnlyDataset(DatasetDefinition datasetDefinition, string wave, string endpoint, string token)
+        {
+            string waveName = Path.GetFileName(wave);
+
+            using (FileStream fswave = new FileStream(wave, FileMode.Open))
+            using (var client = new HttpClient())
+            using (var content = new MultipartFormDataContent())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+
+                content.Add(new StringContent(datasetDefinition.Name), "name");
+
+                if (datasetDefinition.Description != null)
+                {
+                    content.Add(new StringContent(datasetDefinition.Description), "description");
+                }
+
+                content.Add(new StringContent(datasetDefinition.DataImportKind), "dataImportKind");
+                content.Add(new StringContent(datasetDefinition.Locale), "locale");
+
+                if (datasetDefinition.Properties != null)
+                {
+                    content.Add(new StringContent(JsonConvert.SerializeObject(datasetDefinition.Properties)), "properties");
+                }
+
+                var wavesContent = new StreamContent(fswave);
+                wavesContent.Headers.Add("Content-Disposition", $@"form-data; name=""audiodata""; filename=""{waveName}""");
+                wavesContent.Headers.Add("Content-Type", "application/x-zip-compressed");
+                wavesContent.Headers.Add("Content-Length", $"{fswave.Length}");
+                content.Add(wavesContent, "audiodata", waveName);
+
+                return client.PostAsync(endpoint, content).Result;
+            }
+        }
+
         public static HttpResponseMessage SubmitVoiceSynthesis(VoiceSynthesisDefinition voiceSynthesisDefinition, string inputTextPath, string endpoint, string token)
         {
             string scriptName = Path.GetFileName(inputTextPath);
