@@ -58,7 +58,7 @@ class TextToSpeech(object):
         xml_body.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-us')
         voice = ElementTree.SubElement(xml_body, 'voice')
         voice.set('{http://www.w3.org/XML/1998/namespace}lang', 'en-US')
-        voice.set('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        voice.set('name', 'en-US-Guy24kRUS') # Short name for 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)'
         voice.text = self.tts
         body = ElementTree.tostring(xml_body)
 
