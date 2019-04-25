@@ -94,7 +94,7 @@ namespace TTSSample
             if (!useNeuralVoice)
             {
                 // Note: new unified SpeechService API synthesis endpoint is per region, choose the region close to your service to minimize the latency
-                // the request URI region must match with the token URI region . 
+                // the request URI region must match with the token URI region.
 
                 {
                     string tokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
@@ -104,7 +104,7 @@ namespace TTSSample
                     // see full list here https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
                     SpeakWithVoice(tokenUri, endpointUri, key,
                                     "en-US",
-                                    "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                                    "en-US-Jessa24kRUS", // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)"
                                     AudioOutputFormat.Riff24Khz16BitMonoPcm);
                 }
 
@@ -115,7 +115,7 @@ namespace TTSSample
                     //string key = null;
                     //SpeakWithVoice(tokenUri, endpointUri, key,
                     //                "en-US",
-                    //                "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)",
+                    //                "en-US-Jessa24kRUS",
                     //                AudioOutputFormat.Riff16Khz16BitMonoPcm, outputFile: "output.wav");
                 }
             }
@@ -130,7 +130,7 @@ namespace TTSSample
                     string key = "input your key here";
                     SpeakWithVoice(tokenUri, endpointUri, key,
                                     "en-US",
-                                    "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
+                                    "en-US-JessaNeural", // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)"
                                     AudioOutputFormat.Riff16Khz16BitMonoPcm, outputFile: "output.wav");
                 }
 
@@ -148,8 +148,8 @@ namespace TTSSample
             }
         }
 
-        private static void SpeakWithVoice(string tokenUri, string endpointUri, string key, string locale, string voiceName, 
-                                            AudioOutputFormat format, string text = "Hello, how are you doing?", 
+        private static void SpeakWithVoice(string tokenUri, string endpointUri, string key, string locale, string voiceName,
+                                            AudioOutputFormat format, string text = "Hello, how are you doing?",
                                             string outputFile = null)
         {
             string accessToken = string.Empty;
@@ -157,7 +157,7 @@ namespace TTSSample
             // The way to get api key:
             // Unified Speech Service key
             // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
-            // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409 
+            // Paid: https://go.microsoft.com/fwlink/?LinkId=872236&clcid=0x409
 
             if (tokenUri != null)
             {

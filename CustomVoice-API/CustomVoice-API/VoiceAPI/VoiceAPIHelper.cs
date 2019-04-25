@@ -13,9 +13,9 @@ namespace Microsoft.SpeechServices.Cris.Http
 
     public static class VoiceAPIHelper
     {
-        public static IEnumerable<T> Get<T>(string token, string endpoint)
+        public static IEnumerable<T> Get<T>(string subKey, string endpoint)
         {
-            var response = GetData(token, endpoint);
+            var response = GetData(subKey, endpoint);
 
             using (var responseStream = response.Content.ReadAsStreamAsync().Result)
             using (var streamReader = new StreamReader(responseStream))
@@ -26,17 +26,17 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
-        public static HttpResponseMessage Submit<T>(T definition, string endpoint, string token)
+        public static HttpResponseMessage Submit<T>(T definition, string endpoint, string subKey)
         {
             using (var client = new HttpClient())
             using (var content = new MultipartFormDataContent())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
                 return client.PostAsJsonAsync(endpoint, definition, CancellationToken.None).Result;
             }
         }
 
-        public static HttpResponseMessage SubmitDataset(DatasetDefinition datasetDefinition, string wave, string script, string endpoint, string token)
+        public static HttpResponseMessage SubmitDataset(DatasetDefinition datasetDefinition, string wave, string script, string endpoint, string subKey)
         {
             string waveName = Path.GetFileName(wave);
             string scriptName = Path.GetFileName(script);
@@ -46,7 +46,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var client = new HttpClient())
             using (var content = new MultipartFormDataContent())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
 
                 content.Add(new StringContent(datasetDefinition.Name), "name");
 
@@ -157,7 +157,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
-        public static HttpResponseMessage SubmitVoiceSynthesis(VoiceSynthesisDefinition voiceSynthesisDefinition, string inputTextPath, string endpoint, string token)
+        public static HttpResponseMessage SubmitVoiceSynthesis(VoiceSynthesisDefinition voiceSynthesisDefinition, string inputTextPath, string endpoint, string subKey)
         {
             string scriptName = Path.GetFileName(inputTextPath);
 
@@ -165,7 +165,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var client = new HttpClient())
             using (var content = new MultipartFormDataContent())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
 
                 content.Add(new StringContent(voiceSynthesisDefinition.Name), "name");
 
@@ -192,21 +192,21 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
-        public static HttpResponseMessage Delete(string token, string endpoint)
+        public static HttpResponseMessage Delete(string subKey, string endpoint)
         {
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
                 return client.DeleteAsync(endpoint, CancellationToken.None).Result;
             }
         }
 
-        public static HttpResponseMessage PatchVoiceSynthesis(VoiceSynthesisUpdate definition, string token, string endpoint)
+        public static HttpResponseMessage PatchVoiceSynthesis(VoiceSynthesisUpdate definition, string subKey, string endpoint)
         {
             using (var client = new HttpClient())
             using (var content = new StringContent(JsonConvert.SerializeObject(definition), Encoding.UTF8, "application/json"))
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
                 return client.PatchAsync(endpoint, content).Result;
             }
         }

@@ -51,7 +51,7 @@ else{
    $voice = $doc->createElement( "voice" );
    $voice->setAttribute( "xml:lang" , "en-us" );
    $voice->setAttribute( "xml:gender" , "Male" );
-   $voice->setAttribute( "name" , "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)" );
+   $voice->setAttribute( "name" , "en-US-Guy24kRUS"); // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)"
 
    $text = $doc->createTextNode( "This is a demo to call microsoft text to speech service in php." );
 
