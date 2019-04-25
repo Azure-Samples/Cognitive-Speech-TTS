@@ -79,7 +79,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
-        public static HttpResponseMessage SubmitLongAudioDataset(DatasetDefinition datasetDefinition, string wave, string script, string endpoint, string token)
+        public static HttpResponseMessage SubmitLongAudioDataset(DatasetDefinition datasetDefinition, string wave, string script, string endpoint, string subKey)
         {
             string waveName = Path.GetFileName(wave);
             string scriptName = Path.GetFileName(script);
@@ -89,7 +89,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var client = new HttpClient())
             using (var content = new MultipartFormDataContent())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
 
                 content.Add(new StringContent(datasetDefinition.Name), "name");
 
@@ -122,7 +122,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             }
         }
 
-        public static HttpResponseMessage SubmitAudioOnlyDataset(DatasetDefinition datasetDefinition, string wave, string endpoint, string token)
+        public static HttpResponseMessage SubmitAudioOnlyDataset(DatasetDefinition datasetDefinition, string wave, string endpoint, string subKey)
         {
             string waveName = Path.GetFileName(wave);
 
@@ -130,7 +130,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             using (var client = new HttpClient())
             using (var content = new MultipartFormDataContent())
             {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", token);
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
 
                 content.Add(new StringContent(datasetDefinition.Name), "name");
 
