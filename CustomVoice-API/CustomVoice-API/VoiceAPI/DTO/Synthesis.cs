@@ -11,7 +11,7 @@ namespace Microsoft.SpeechServices.Cris.Http
     public sealed class Synthesis
     {
         [JsonConstructor]
-        private Synthesis(Guid id, string name, string description, string locale, DateTime createdDateTime, DateTime lastActionDateTime, string status, Uri inputTxtUrl, Uri resultsUrl)
+        private Synthesis(Guid id, string name, string description, string locale, DateTime createdDateTime, DateTime lastActionDateTime, string status, Uri resultsUrl, IReadOnlyDictionary<string, string> properties)
         {
             this.Id = id;
             this.Name = name;
@@ -20,7 +20,7 @@ namespace Microsoft.SpeechServices.Cris.Http
             this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.Locale = locale;
-            this.InputTxtUrl = inputTxtUrl;
+            this.Properties = properties;
             this.ResultsUrl = resultsUrl;
         }
 
@@ -32,9 +32,6 @@ namespace Microsoft.SpeechServices.Cris.Http
 
         /// <inheritdoc />
         public string Locale { get; set; }
-
-        /// <inheritdoc />
-        public Uri InputTxtUrl { get; set; }
 
         /// <inheritdoc />
         public Uri ResultsUrl { get; set; }
@@ -51,5 +48,7 @@ namespace Microsoft.SpeechServices.Cris.Http
         public string Status { get; set; }
 
         public string StatusMessage { get; set; }
+
+        public IReadOnlyDictionary<string, string> Properties { get; set; }
     }
 }

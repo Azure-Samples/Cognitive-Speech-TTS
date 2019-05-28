@@ -49,7 +49,7 @@ public class TTSSample {
 		String outputFormat = AudioOutputFormat.Riff24Khz16BitMonoPcm;
         String deviceLanguage = "en-US";
         String genderName = Gender.Male;
-        String voiceName = "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)";
+        String voiceName = "en-US-Guy24kRUS"; // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)"
 
         try{
         	byte[] audioBuffer = TTSService.Synthesize(textToSynthesize, outputFormat, deviceLanguage, genderName, voiceName);

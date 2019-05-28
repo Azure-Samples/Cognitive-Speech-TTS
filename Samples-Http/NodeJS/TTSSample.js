@@ -26,7 +26,7 @@ function textToSpeech(accessToken, text) {
         .att('xml:lang', 'en-us')
         .ele('voice')
         .att('xml:lang', 'en-us')
-        .att('name', 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)')
+        .att('name', 'en-US-Guy24kRUS') // Short name for 'Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)'
         .txt(text)
         .end();
     // Convert the XML into a string to send in the TTS request.

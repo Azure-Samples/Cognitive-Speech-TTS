@@ -28,17 +28,16 @@ In Android Studio -\> "Project" panel -\> "Android" view, open file
 Run the samples
 --------------
 
-Follow the requirements of your language, and run the sample accordingly.
+Follow the requirements of your language, and run the sample accordingly. Find endpoints, languages and names of the voices on [Language and region support for the Speech Services](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech).
 
 Contributing
 ============
-We welcome contributions and are always looking for new SDKs, input, and
-suggestions. Feel free to file issues on the repo and we'll address them as we can. You can also learn more about how you can help on the [Contribution
-Rules & Guidelines](</CONTRIBUTING.md>).
+
+We welcome contributions and are always looking for new SDKs, input, and suggestions. Feel free to file issues on the repo and we'll address them as we can. You can also learn more about how you can help on the [Contribution Rules & Guidelines](</CONTRIBUTING.md>).
 
 For questions, feedback, or suggestions about Microsoft Cognitive Services, feel free to reach out to us directly.
 
--   [Cognitive Services UserVoice Forum](<https://cognitive.uservoice.com>)
+- [Cognitive Services UserVoice Forum](<https://cognitive.uservoice.com>)
 
 License
 =======
