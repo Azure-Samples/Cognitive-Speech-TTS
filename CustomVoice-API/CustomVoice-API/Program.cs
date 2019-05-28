@@ -105,23 +105,24 @@ namespace ConsoleApp1
 
             CustomVoiceAPI customVoiceAPI = new CustomVoiceAPI(endpoint, ibizaStsUrl, subscriptionKey);
 
-            const string Name = "Simple neural TTS batch synthesis";
-            const string Description = "Simple neural TTS batch synthesis description";
+            const string name = "Simple neural TTS batch synthesis";
+            const string description = "Simple neural TTS batch synthesis description";
 
-            // The input text file could contains only plain text or only SSML or mixed together(as showed in blow script)
-            // the input text file encoding format should be UTF-8-BOM
-            const string LocalInputTextFile = @"TestData\en-US.txt";
-            const string Locale = "en-US";
-            const string VoiceName = "Jessa";
+            // The input text file could contains only plain text or only SSML or mixed together(as shown in blow script)
+            // The input text file encoding format should be UTF-8-BOM
+            // The input text file should contains at least 50 lines of text
+            const string localInputTextFile = @"TestData\en-US.txt";
+            const string locale = "en-US";
+            const string voiceName = "Jessa";
             // public voice means the voice could be used by all Subscriptions, if the voice is private(for your Subscription only), this should be set to false
             bool isPublicVoice = true;
 
             // you can directly set the voiceId or query the voice information by name/locale/ispublic properties from server.
             //var voiceId = new Guid("Your voice model Guid");
-            var voiceId = GetVoiceId(customVoiceAPI, Locale, VoiceName, isPublicVoice);
+            var voiceId = GetVoiceId(customVoiceAPI, locale, voiceName, isPublicVoice);
             if (voiceId == Guid.Empty)
             {
-                Console.WriteLine($"Does not have a available voice for local : {Locale} , name : {VoiceName}, public : {isPublicVoice}");
+                Console.WriteLine($"Does not have a available voice for locale : {locale} , name : {voiceName}, public : {isPublicVoice}");
                 return;
             }
 
@@ -129,20 +130,20 @@ namespace ConsoleApp1
             bool concatenateResult = true;
 
             // Submit a voice synthesis request and get a ID
-            var synthesisLocation = await customVoiceAPI.CreateVoiceSynthesis(Name, Description, Locale, LocalInputTextFile, voiceId, concatenateResult).ConfigureAwait(false);
+            var synthesisLocation = await customVoiceAPI.CreateVoiceSynthesis(name, description, locale, localInputTextFile, voiceId, concatenateResult).ConfigureAwait(false);
             var synthesisId = new Guid(synthesisLocation.ToString().Split('/').LastOrDefault());
 
             Console.WriteLine("Checking status.");
             // check for the status of the submitted synthesis every 10 sec. (can also be 1, 2, 5 min depending on usage)
-            int completed = 0;
-            while (completed < 1)
+            bool completed = false;
+            while (!completed)
             {
                 var synthesis = customVoiceAPI.GetSynthesis(synthesisId);
                 switch (synthesis.Status)
                 {
                     case "Failed":
                     case "Succeeded":
-                        completed++;
+                        completed = true;
                         // if the synthesis was successfull, download the results to local
                         if (synthesis.Status == "Succeeded")
                         {
@@ -150,7 +151,7 @@ namespace ConsoleApp1
                             WebClient webClient = new WebClient();
                             var filename = $"{Path.GetTempFileName()}_{synthesis.Id}_.zip";
                             webClient.DownloadFile(resultsUri, filename);
-                            Console.WriteLine($"Synthesis succedded. Results: {filename}");
+                            Console.WriteLine($"Synthesis succeeded. Results: {filename}");
                         }
                         break;
 
@@ -205,7 +206,7 @@ namespace ConsoleApp1
             }
             if (voice == null)
             {
-                Console.WriteLine($"Does not have a available voice for local : {locale} , name : {voiceName}, public : {publicVoice}");
+                Console.WriteLine($"Does not have a available voice for locale : {locale} , name : {voiceName}, public : {publicVoice}");
                 return Guid.Empty;
             }
             return voice.Id;
