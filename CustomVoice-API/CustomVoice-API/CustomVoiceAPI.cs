@@ -7,6 +7,10 @@ using System.Text;
 using System.Security;
 using ConsoleApp1.VoiceAPI;
 using System.IO;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace ConsoleApp1
 {
@@ -33,6 +37,8 @@ namespace ConsoleApp1
         private string GetVoicesUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/voices";
         private string DeleteSynthesisUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/{0}";
         private string VoiceSynthesisUrl => endpoint + "api/texttospeech/v3.0-beta1/voicesynthesis/";
+
+        private const string OneAPIOperationLocationHeaderKey = "Operation-Location";
 
         public CustomVoiceAPI(string endpoint, string ibizaStsUrl, string subscriptionKey)
         {
@@ -209,6 +215,11 @@ namespace ConsoleApp1
             return VoiceAPIHelper.Get<Synthesis>(this.subscriptionKey, VoiceSynthesisUrl);
         }
 
+        public Synthesis GetSynthesis(Guid id)
+        {
+            return VoiceAPIHelper.GetVoiceSynthesis(this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
+        }
+
         public void DeleteSynthesis(Guid id)
         {
             VoiceAPIHelper.Delete(this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
@@ -219,16 +230,69 @@ namespace ConsoleApp1
             VoiceAPIHelper.PatchVoiceSynthesis(VoiceSynthesisUpdate.Create(newName, newDesc), this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
         }
 
-        public void CreateVoiceSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId)
+        public async Task<Uri> CreateVoiceSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId, bool concatenateResult)
         {
             Console.WriteLine("Creating batch synthesiss.");
-            var properties = new Dictionary<string, string>
+            var properties = new Dictionary<string, string>();
+            if (concatenateResult)
             {
-                { "ConcatenateResult", "true" }
-            };
+                properties.Add("ConcatenateResult", "true");
+            }
             var model = ModelIdentity.Create(modelId);
             var voiceSynthesisDefinition = VoiceSynthesisDefinition.Create(name, description, locale, model, properties);
-            var submitResponse = VoiceAPIHelper.SubmitVoiceSynthesis(voiceSynthesisDefinition, inputTextPath, VoiceSynthesisUrl, this.subscriptionKey);
+            using (var submitResponse = VoiceAPIHelper.SubmitVoiceSynthesis(voiceSynthesisDefinition, inputTextPath, VoiceSynthesisUrl, this.subscriptionKey))
+            {
+                return await GetLocationFromPostResponseAsync(submitResponse).ConfigureAwait(false);
+            }
+        }
+
+        private static async Task<Uri> GetLocationFromPostResponseAsync(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                throw await CreateExceptionAsync(response).ConfigureAwait(false);
+            }
+
+            IEnumerable<string> headerValues;
+            if (response.Headers.TryGetValues(OneAPIOperationLocationHeaderKey, out headerValues))
+            {
+                if (headerValues.Any())
+                {
+                    return new Uri(headerValues.First());
+                }
+            }
+
+            return response.Headers.Location;
+        }
+
+        private static async Task<FailedHttpClientRequestException> CreateExceptionAsync(HttpResponseMessage response)
+        {
+            switch (response.StatusCode)
+            {
+                case HttpStatusCode.Forbidden:
+                    return new FailedHttpClientRequestException(response.StatusCode, "No permission to access this resource.");
+                case HttpStatusCode.Unauthorized:
+                    return new FailedHttpClientRequestException(response.StatusCode, "Not authorized to see the resource.");
+                case HttpStatusCode.NotFound:
+                    return new FailedHttpClientRequestException(response.StatusCode, "The resource could not be found.");
+                case HttpStatusCode.UnsupportedMediaType:
+                    return new FailedHttpClientRequestException(response.StatusCode, "The file type isn't supported.");
+                case HttpStatusCode.BadRequest:
+                    {
+                        var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        var shape = new { Message = string.Empty };
+                        var result = JsonConvert.DeserializeAnonymousType(content, shape);
+                        if (result != null && !string.IsNullOrEmpty(result.Message))
+                        {
+                            return new FailedHttpClientRequestException(response.StatusCode, result.Message);
+                        }
+
+                        return new FailedHttpClientRequestException(response.StatusCode, response.ReasonPhrase);
+                    }
+
+                default:
+                    return new FailedHttpClientRequestException(response.StatusCode, response.ReasonPhrase);
+            }
         }
     }
 }

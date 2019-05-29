@@ -4,6 +4,7 @@
 
 namespace Microsoft.SpeechServices.Cris.Http
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
@@ -117,7 +118,6 @@ namespace Microsoft.SpeechServices.Cris.Http
                 wavesContent.Headers.Add("Content-Type", "application/x-zip-compressed");
                 wavesContent.Headers.Add("Content-Length", $"{fswave.Length}");
                 content.Add(wavesContent, "audiodata", waveName);
-
                 return client.PostAsync(endpoint, content).Result;
             }
         }
@@ -218,6 +218,19 @@ namespace Microsoft.SpeechServices.Cris.Http
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subKey);
                 return client.GetAsync(endpoint, CancellationToken.None).Result;
             }
+        }
+
+        public static Synthesis GetVoiceSynthesis(string subKey, string endpoint)
+        {
+            var response = GetData(subKey, endpoint);
+            using (var responseStream = response.Content.ReadAsStreamAsync().Result)
+            using (var streamReader = new StreamReader(responseStream))
+            {
+                string responseJson = streamReader.ReadToEnd();
+                var item = JsonConvert.DeserializeObject<Synthesis>(responseJson);
+                return item;
+            }
+            
         }
     }
 }

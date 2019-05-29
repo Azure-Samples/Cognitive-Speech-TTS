@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="AzureUtil\StorageHelper.cs" />
     <Compile Include="CustomVoiceAPI.cs" />
+    <Compile Include="FailedHttpClientRequestException.cs" />
     <Compile Include="VoiceAPI\Authentication.cs" />
     <Compile Include="VoiceAPI\DTO\VoiceSynthesisDefinition.cs" />
     <Compile Include="VoiceAPI\DTO\Synthesis.cs" />
@@ -92,7 +93,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestData\en-US_small.txt">
+    <Content Include="TestData\en-US.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
