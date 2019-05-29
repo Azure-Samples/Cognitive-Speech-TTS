@@ -31,7 +31,7 @@ namespace ConsoleApp1
                 "dataset test",
                 "dataset test",
                 "en-US",
-                "male");
+                "Male");
 
             customVoiceAPI.UploadLongAudioDataset(
                 @"E:\Audio.zip",
@@ -39,14 +39,14 @@ namespace ConsoleApp1
                 "long audio dataset",
                 "long audio dataset description",
                 "en-US",
-                "male");
+                "Male");
 
             customVoiceAPI.UploadAudioOnlyDataset(
                 @"E:\Audio.zip",
                 "audio only dataset",
                 "audio only dataset description",
                 "en-US",
-                "male");
+                "Male");
 
             //Get Dataset
             var datasets = customVoiceAPI.GetDatasets();
@@ -59,7 +59,7 @@ namespace ConsoleApp1
                 "model test",
                 "model test",
                 "en-US",
-                "male",
+                "Male",
                 datasetIdentityList);
 
             //Get Model
