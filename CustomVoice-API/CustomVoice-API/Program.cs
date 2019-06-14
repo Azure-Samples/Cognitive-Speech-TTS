@@ -16,6 +16,7 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
+            //To call VoiceSynthsisAPIs method:
             //VoiceSynthsisAPIs().Wait();
 
             string endpoint = "https://westus.cris.ai/";
