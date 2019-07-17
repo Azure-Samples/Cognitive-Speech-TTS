@@ -1,4 +1,22 @@
+---
+page_type: sample
+description: "Samples in various languages for using Text-to-Speech."
+languages:
+- csharp
+- python
+- nodejs
+- javascript
+- php
+- swift
+- java
+- ruby
+products:
+- azure
+- azure-cognitive-services
+---
+
 # Microsoft Speech Service API: Text-to-Speech Samples
+
 This repo contains sample in various languages for using Text-to-Speech.
 [Speech Service](<https://azure.microsoft.com/en-us/services/cognitive-services/directory/speech/>) is generally avaliable since [2018.9](<https://azure.microsoft.com/en-us/updates/azure-cognitive-services-speech-service-is-now-generally-available/>). Please be sure you have a subscription key for the new Speech Service, not a subcription key from the retiring Bing Speech. 
 
