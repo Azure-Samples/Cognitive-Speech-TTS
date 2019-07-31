@@ -174,8 +174,13 @@ namespace Microsoft.SpeechServices.Cris.Http
                     content.Add(new StringContent(voiceSynthesisDefinition.Description), "description");
                 }
 
-                content.Add(new StringContent(voiceSynthesisDefinition.Model.Id.ToString()), "model");
+                content.Add(new StringContent(JsonConvert.SerializeObject(voiceSynthesisDefinition.Models)), "models");
                 content.Add(new StringContent(voiceSynthesisDefinition.Locale), "locale");
+
+                if (!string.IsNullOrEmpty(voiceSynthesisDefinition.OutputFormat))
+                {
+                    content.Add(new StringContent(voiceSynthesisDefinition.OutputFormat), "outputformat");
+                }
 
                 if (voiceSynthesisDefinition.Properties != null)
                 {

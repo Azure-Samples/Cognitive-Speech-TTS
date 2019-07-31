@@ -10,16 +10,20 @@ namespace Microsoft.SpeechServices.Cris.Http
     public sealed class Voice
     {
         [JsonConstructor]
-        private Voice(Guid id, string name, string locale, string gender, bool isPublicVoice)
+        private Voice(Guid id, string name, string description, string locale, string gender, bool isPublicVoice, DateTime created)
         {
             this.Id = id;
             this.Name = name;
+            this.Description = description;
             this.Gender = gender;
             this.Locale = locale;
             this.IsPublicVoice = isPublicVoice;
+            this.Created = created;
         }
 
         public string Name { get; set; }
+
+        public string Description { get; set; }
 
 
         public string Locale { get; set; }
@@ -31,5 +35,7 @@ namespace Microsoft.SpeechServices.Cris.Http
         public string Gender { get; set; }
 
         public bool IsPublicVoice { get; set; }
+
+        public DateTime Created { get; set; }
     }
 }
