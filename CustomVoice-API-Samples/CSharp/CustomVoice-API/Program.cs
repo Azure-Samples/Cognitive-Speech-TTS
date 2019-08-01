@@ -127,11 +127,28 @@ namespace ConsoleApp1
                 return;
             }
 
+            List<Guid> modelIds = new List<Guid>();
+            modelIds.Add(voiceId);
+
             // indicate if want concatenate the output waves with a single file or not.
-            bool concatenateResult = true;
+            bool concatenateResult = false;
+
+            string outputFormat = "riff-16khz-16bit-mono-pcm";
+            /* Available output format:
+            "riff-8khz-16bit-mono-pcm",
+            "riff-16khz-16bit-mono-pcm",
+            "riff-24khz-16bit-mono-pcm",
+            "riff-48khz-16bit-mono-pcm",
+            "audio-16khz-32kbitrate-mono-mp3",
+            "audio-16khz-64kbitrate-mono-mp3",
+            "audio-16khz-128kbitrate-mono-mp3",
+            "audio-24khz-48kbitrate-mono-mp3",
+            "audio-24khz-96kbitrate-mono-mp3",
+            "audio-24khz-160kbitrate-mono-mp3",
+            */
 
             // Submit a voice synthesis request and get a ID
-            var synthesisLocation = await customVoiceAPI.CreateVoiceSynthesis(name, description, locale, localInputTextFile, voiceId, concatenateResult).ConfigureAwait(false);
+            var synthesisLocation = await customVoiceAPI.CreateVoiceSynthesis(name, description, locale, outputFormat, localInputTextFile, modelIds, concatenateResult).ConfigureAwait(false);
             var synthesisId = new Guid(synthesisLocation.ToString().Split('/').LastOrDefault());
 
             Console.WriteLine("Checking status.");
@@ -199,11 +216,11 @@ namespace ConsoleApp1
             Voice voice = null;
             if (publicVoice)
             {
-                voice = voices.Where(m => m.Locale == locale && m.Name.Contains(voiceName) && m.IsPublicVoice).FirstOrDefault();
+                voice = voices.Where(m => m.Locale == locale && m.Name.Contains(voiceName) && m.IsPublicVoice).OrderByDescending(m => m.Created).FirstOrDefault();
             }
             else
             {
-                voice = voices.Where(m => m.Locale == locale && m.Name.Contains(voiceName)).FirstOrDefault();
+                voice = voices.Where(m => m.Locale == locale && m.Name.Contains(voiceName)).OrderByDescending(m => m.Created).FirstOrDefault();
             }
             if (voice == null)
             {

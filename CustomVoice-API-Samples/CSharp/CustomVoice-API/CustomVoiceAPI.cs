@@ -230,7 +230,7 @@ namespace ConsoleApp1
             VoiceAPIHelper.PatchVoiceSynthesis(VoiceSynthesisUpdate.Create(newName, newDesc), this.subscriptionKey, string.Format(CultureInfo.InvariantCulture, DeleteSynthesisUrl, id.ToString()));
         }
 
-        public async Task<Uri> CreateVoiceSynthesis(string name, string description, string locale, string inputTextPath, Guid modelId, bool concatenateResult)
+        public async Task<Uri> CreateVoiceSynthesis(string name, string description, string locale, string outputFormat, string inputTextPath, IEnumerable<Guid> modelIds, bool concatenateResult)
         {
             Console.WriteLine("Creating batch synthesiss.");
             var properties = new Dictionary<string, string>();
@@ -238,8 +238,7 @@ namespace ConsoleApp1
             {
                 properties.Add("ConcatenateResult", "true");
             }
-            var model = ModelIdentity.Create(modelId);
-            var voiceSynthesisDefinition = VoiceSynthesisDefinition.Create(name, description, locale, model, properties);
+            var voiceSynthesisDefinition = VoiceSynthesisDefinition.Create(name, description, locale, outputFormat, modelIds, properties);
             using (var submitResponse = VoiceAPIHelper.SubmitVoiceSynthesis(voiceSynthesisDefinition, inputTextPath, VoiceSynthesisUrl, this.subscriptionKey))
             {
                 return await GetLocationFromPostResponseAsync(submitResponse).ConfigureAwait(false);

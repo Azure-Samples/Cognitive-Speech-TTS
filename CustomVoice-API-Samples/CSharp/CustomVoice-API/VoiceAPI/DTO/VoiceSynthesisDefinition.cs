@@ -9,12 +9,13 @@ namespace Microsoft.SpeechServices.Cris.Http
 
     public sealed class VoiceSynthesisDefinition
     {
-        private VoiceSynthesisDefinition(string name, string description, string locale, ModelIdentity model, IReadOnlyDictionary<string, string> properties)
+        private VoiceSynthesisDefinition(string name, string description, string locale, string outputFormat, IEnumerable<Guid> models, IReadOnlyDictionary<string, string> properties)
         {
             this.Name = name;
             this.Description = description;
             this.Locale = locale;
-            this.Model = model;
+            this.OutputFormat = outputFormat;
+            this.Models = models;
             this.Properties = properties;
         }
 
@@ -26,7 +27,9 @@ namespace Microsoft.SpeechServices.Cris.Http
 
         public string Locale { get; set; }
 
-        public ModelIdentity Model { get; set; }
+        public string OutputFormat { get; set; }
+
+        public IEnumerable<Guid> Models { get; set; }
 
         public IReadOnlyDictionary<string, string> Properties { get; set; }
 
@@ -34,10 +37,11 @@ namespace Microsoft.SpeechServices.Cris.Http
             string name,
             string description,
             string locale,
-            ModelIdentity model,
+            string outputFormat,
+            IEnumerable<Guid> models,
             IReadOnlyDictionary<string, string> properties)
         {
-            return new VoiceSynthesisDefinition(name, description, locale, model, properties);
+            return new VoiceSynthesisDefinition(name, description, locale, outputFormat, models, properties);
         }
     }
 }
