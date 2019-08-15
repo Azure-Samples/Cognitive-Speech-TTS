@@ -85,9 +85,9 @@ Sample command : CustomVoice-API project get subscriptionKey [YourSubscriptionKe
 
 #### Some parameters sets
 
-[IbizaStsUrl](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token>)
+- [IbizaStsUrl](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token>)
 
-[Output Format](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs>)
+- [Output Format](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs>)
 
 Contributing
 ============

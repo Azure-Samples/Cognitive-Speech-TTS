@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
+=======
+﻿using System.Collections.Generic;
+>>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
 
 namespace CustomVoice_API.API.DTO
 {
@@ -11,7 +15,11 @@ namespace CustomVoice_API.API.DTO
             string inputTextPath,
             IReadOnlyDictionary<string, string> properties,
             string locale,
+<<<<<<< HEAD
             IEnumerable<Guid> models,
+=======
+            IEnumerable<Identity> models,
+>>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
             string outputFormat)
         {
             this.Name = name;
@@ -31,7 +39,11 @@ namespace CustomVoice_API.API.DTO
 
         public string Locale { get; private set; }
 
+<<<<<<< HEAD
         public IEnumerable<Guid> Models { get; private set; }
+=======
+        public IEnumerable<Identity> Models { get; private set; }
+>>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
 
         public string OutputFormat { get; private set; }
 
@@ -43,7 +55,11 @@ namespace CustomVoice_API.API.DTO
             string inputTextPath,
             IReadOnlyDictionary<string, string> properties,
             string locale,
+<<<<<<< HEAD
             IEnumerable<Guid> models,
+=======
+            IEnumerable<Identity> models,
+>>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
             string outputFormat)
         {
             return new BatchSynthesisDefinition(name, description, inputTextPath, properties, locale, models, outputFormat);
