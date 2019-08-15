@@ -17,11 +17,7 @@ namespace CustomVoice_API.API.DTO
             Guid id,
             DateTime created,
             DateTime lastAction,
-<<<<<<< HEAD
             OneApiState status,
-=======
-            OneApiState state,
->>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
             string endpointKind,
             IEnumerable<Model> models,
             int concurrentRecognitions,
@@ -32,11 +28,7 @@ namespace CustomVoice_API.API.DTO
             this.Name = name;
             this.Created = created;
             this.LastAction = lastAction;
-<<<<<<< HEAD
             this.Status = status;
-=======
-            this.State = state;
->>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
             this.Description = description;
             this.Locale = locale.Name;
             this.EndpointKind = endpointKind;
@@ -61,11 +53,7 @@ namespace CustomVoice_API.API.DTO
 
         public DateTime LastAction { get; private set; }
 
-<<<<<<< HEAD
         public OneApiState Status { get; private set; }
-=======
-        public OneApiState State { get; private set; }
->>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
 
         public string EndpointKind { get; private set; }
 
@@ -90,11 +78,7 @@ namespace CustomVoice_API.API.DTO
             IReadOnlyDictionary<string, Uri> endpointUrls,
             DateTime created,
             DateTime lastAction,
-<<<<<<< HEAD
             OneApiState status)
-=======
-            OneApiState state)
->>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
         {
             return new Endpoint(
                 name,
@@ -104,11 +88,7 @@ namespace CustomVoice_API.API.DTO
                 id,
                 created,
                 lastAction,
-<<<<<<< HEAD
                 status,
-=======
-                state,
->>>>>>> 5963da04cb22a1ddd5eab239d6ff5d5fd19ab287
                 endpointKind,
                 models,
                 concurrentRecognitions,
