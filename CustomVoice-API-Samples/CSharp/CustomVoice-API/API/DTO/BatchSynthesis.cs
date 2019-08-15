@@ -16,7 +16,7 @@ namespace CustomVoice_API.API.DTO
             Guid id,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             Uri resultsUrl,
             Model model,
             string statusMessage)
@@ -28,7 +28,7 @@ namespace CustomVoice_API.API.DTO
             this.Id = id;
             this.Created = created;
             this.LastAction = lastAction;
-            this.State = state;
+            this.Status = status;
             this.ResultsUrl = resultsUrl;
             this.Model = model;
             this.StatusMessage = statusMessage;
@@ -48,7 +48,7 @@ namespace CustomVoice_API.API.DTO
 
         public DateTime LastAction { get; private set; }
 
-        public OneApiState State { get; private set; }
+        public OneApiState Status { get; private set; }
 
         public Uri ResultsUrl { get; private set; }
 
@@ -64,7 +64,7 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             Uri resultsUrl,
             Model model,
             string statusMessage)
@@ -77,7 +77,7 @@ namespace CustomVoice_API.API.DTO
                 id,
                 created,
                 lastAction,
-                state,
+                status,
                 resultsUrl,
                 model,
                 statusMessage);

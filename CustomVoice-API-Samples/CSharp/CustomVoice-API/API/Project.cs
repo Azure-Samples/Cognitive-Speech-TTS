@@ -32,9 +32,6 @@ namespace CustomVoice_API.API
         {
             var properties = new Dictionary<string, string>();
             properties.Add("Gender", gender);
-            properties.Add("ModelDeployments", "0");
-            properties.Add("Models", "0");
-            properties.Add("Datasets", "0");
 
             var projectDefinition = ProjectDefinition.Create(
                 name,
@@ -42,9 +39,9 @@ namespace CustomVoice_API.API
                 locale,
                 properties,
                 "TextToSpeech");
-            var response = APIHelper.Submit<ProjectDefinition>(subscriptionKey, hostURI + API_V3.VoiceModels_Create, projectDefinition);
+            var response = APIHelper.Submit<ProjectDefinition>(subscriptionKey, hostURI + API_V3.VoiceProject_Create, projectDefinition);
 
-            if (response.StatusCode != HttpStatusCode.Accepted)
+            if (response.StatusCode != HttpStatusCode.OK)
             {
                 Console.WriteLine($"Status Code: {response.StatusCode}");
                 Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");

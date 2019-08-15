@@ -144,7 +144,7 @@ namespace CustomVoice_API
                     Console.WriteLine("--action");
                     Console.WriteLine(" Get");
                     Console.WriteLine("     Gets a list of voice synthesis under the selected subscription.");
-                    Console.WriteLine(" GetVoice");
+                    Console.WriteLine(" GetVoices");
                     Console.WriteLine("     Gets a list of supported voices for offline synthesis.");
                     Console.WriteLine(" Create");
                     Console.WriteLine("     Creates a new synthesis.");
@@ -200,7 +200,7 @@ namespace CustomVoice_API
                 case Action.create:
                     actionString = "project create";
                     description = "Creates a new project.";
-                    sampleCommand = "CustomVoice-API project create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test gender male locale en-us";
+                    sampleCommand = "CustomVoice-API project create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test gender Male locale en-US";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.delete:
@@ -241,19 +241,19 @@ namespace CustomVoice_API
                 case Action.uploaddataset:
                     actionString = "dataset uploaddataset";
                     description = "Uploads data and creates a new voice data object.";
-                    sampleCommand = "CustomVoice-API dataset uploaddataset subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender male locale en-us wavePath C://sample.zip scriptPath C://sample.txt";
+                    sampleCommand = "CustomVoice-API dataset uploaddataset subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender Male locale en-US wavePath C://sample.zip scriptPath C://sample.txt";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.uploaddatasetwithlongaudio:
                     actionString = "dataset uploaddatasetwithlongaudio";
                     description = "Upload voice dataset with long audio and scripts.";
-                    sampleCommand = "CustomVoice-API dataset uploaddatasetwithlongaudio subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender male locale en-us wavePath C://sample.zip scriptPath C://sample.txt";
+                    sampleCommand = "CustomVoice-API dataset uploaddatasetwithlongaudio subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender Male locale en-US wavePath C://sample.zip scriptPath C://sample.txt";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.uploaddatasetwithaudioonly:
                     actionString = "dataset uploaddatasetwithaudioonly";
                     description = "Upload voice dataset only with audio.";
-                    sampleCommand = "CustomVoice-API dataset uploaddatasetwithaudioonly subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender male locale en-us wavePath C://sample.zip";
+                    sampleCommand = "CustomVoice-API dataset uploaddatasetwithaudioonly subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender Male locale en-US wavePath C://sample.zip";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 default:
@@ -282,7 +282,7 @@ namespace CustomVoice_API
                 case Action.create:
                     actionString = "model create";
                     description = "Creates a new voice model object.";
-                    sampleCommand = "CustomVoice-API model create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender male locale en-us dataset [DatasetId];[DatasetId] isNeuralTTS false isMixlingual false";
+                    sampleCommand = "CustomVoice-API model create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test projectId [ProjectId] gender Male locale en-US dataset [DatasetId];[DatasetId] isNeuralTTS false isMixlingual false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.delete:
@@ -364,7 +364,7 @@ namespace CustomVoice_API
                 case Action.call:
                     actionString = "endpoint call";
                     description = "Calling the endpoint to synthesize voice data.";
-                    sampleCommand = "CustomVoice-API endpoint call subscriptionKey [YourSubscriptionKey] ibizastsurl https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken endpointUrl https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=xxx-xx-xx-xx-xxxxx voiceName testVoice locale en-us script 12345 outputFile C://test.wav isSSML false";
+                    sampleCommand = "CustomVoice-API endpoint call subscriptionKey [YourSubscriptionKey] ibizastsurl https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken endpointUrl https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=xxx-xx-xx-xx-xxxxx voiceName testVoice locale en-US script 12345 outputFile C://test.wav isSSML false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 default:
@@ -393,7 +393,7 @@ namespace CustomVoice_API
                 case Action.create:
                     actionString = "batchsynthesis create";
                     description = "Creates a new synthesis.";
-                    sampleCommand = "CustomVoice-API batchsynthesis create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test inputTextPath ./script.txt locale en-us models [ModelId] outputFormat riff-16khz-16bit-mono-pcm isConcatenateResult false";
+                    sampleCommand = "CustomVoice-API batchsynthesis create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test inputTextPath ./script.txt locale en-US models [ModelId]:[ModelId] outputFormat riff-16khz-16bit-mono-pcm isConcatenateResult false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.delete:
@@ -429,6 +429,15 @@ namespace CustomVoice_API
             }
             Console.WriteLine("");
             Console.WriteLine($"Sample command : {sampleCommand}");
+            Console.WriteLine("");
+            Console.WriteLine("See the link below for a list of ibizastsurl");
+            Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token");
+            Console.WriteLine("");
+            Console.WriteLine("See the link for the output format list.");
+            Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs");
+            Console.WriteLine("");
+            Console.WriteLine("See the link for more information.");
+            Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech");
         }
     }
 }
