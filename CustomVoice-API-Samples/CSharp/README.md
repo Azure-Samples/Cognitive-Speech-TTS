@@ -8,13 +8,78 @@ The samples
 
 Use API to construct an e2e flow: upload data, start modeling, create voice test, create endpoint and so on.
 
-Build the samples
+Before use
 ----------------
 
-1. First, you must obtain a Speech API subscription key by following instructions in [Microsoft Cognitive Services subscription](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication>).
+You must obtain a Speech API subscription key by following instructions in [Microsoft Cognitive Services subscription](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication>).
 
-2. You need to replace the endpoint, ibizaStsUrl and SubscriptionKey in the Program.cs file based on the information of the Region and your subscription key.
+Usage
+----------------
 
+You can start quickly with console commands, or you can build your own workflow based on sample code.
+
+#### For console Usage
+
+Enter the following commands at the level you can see the parameter description and command sample:
+
+```
+> CustomVoice-API
+```
+```
+Custom Voice API 3.0.
+
+Usage: CustomVoice-API [APIKind] [action] [options]
+
+--APIKind:
+     project
+     dataset
+     model
+     voicetest
+     endpoint
+     batchsynthesis
+
+For more detailed usage, please enter: CustomVoice-API [APIKind]
+```
+```
+> CustomVoice-API project
+```
+```
+CustomVoice-API project:
+
+All Dataset, Model, VoiceTest, Endpoint are bound in the project.
+We need to specify Locale and Gender when creating Project.
+The data bound to each Project must be a unique locale and gender.
+
+Usage: CustomVoice-API project [action] [options]
+
+--action
+ Get
+     Gets the list of projects for the authenticated subscription.
+ create
+     Creates a new project.
+ Delete
+     Deletes the project identified by the given ID
+
+For more detailed usage, please enter: CustomVoice-API project [action]
+```
+```
+> CustomVoice-API project get
+```
+```
+CustomVoice-API project get:
+
+Gets the list of projects for the authenticated subscription.
+
+Usage: CustomVoice-API project get [options]
+
+--options
+ [Required]
+     subscriptionkey
+     hosturi
+ [Optional]
+
+Sample command : CustomVoice-API project get subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/
+```
 
 Contributing
 ============
