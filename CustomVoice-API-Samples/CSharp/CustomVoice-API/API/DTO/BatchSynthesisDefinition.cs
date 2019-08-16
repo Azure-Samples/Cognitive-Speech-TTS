@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+
 
 namespace CustomVoice_API.API.DTO
 {
@@ -10,7 +12,7 @@ namespace CustomVoice_API.API.DTO
             string inputTextPath,
             IReadOnlyDictionary<string, string> properties,
             string locale,
-            IEnumerable<Identity> models,
+            IEnumerable<Guid> models,
             string outputFormat)
         {
             this.Name = name;
@@ -30,7 +32,7 @@ namespace CustomVoice_API.API.DTO
 
         public string Locale { get; private set; }
 
-        public IEnumerable<Identity> Models { get; private set; }
+        public IEnumerable<Guid> Models { get; private set; }
 
         public string OutputFormat { get; private set; }
 
@@ -42,7 +44,7 @@ namespace CustomVoice_API.API.DTO
             string inputTextPath,
             IReadOnlyDictionary<string, string> properties,
             string locale,
-            IEnumerable<Identity> models,
+            IEnumerable<Guid> models,
             string outputFormat)
         {
             return new BatchSynthesisDefinition(name, description, inputTextPath, properties, locale, models, outputFormat);

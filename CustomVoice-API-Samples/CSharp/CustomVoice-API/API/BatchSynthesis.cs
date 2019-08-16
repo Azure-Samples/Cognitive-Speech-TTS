@@ -38,7 +38,7 @@ namespace CustomVoice_API.API
         }
 
         public static bool Create(string subscriptionKey, string hostURI, string name, string description,
-            string inputTextPath, string locale, IEnumerable<Identity> models, string outputFormat, bool isConcatenateResult)
+            string inputTextPath, string locale, IEnumerable<Guid> models, string outputFormat, bool isConcatenateResult)
         {
             var properties = new Dictionary<string, string>();
             if (isConcatenateResult)
@@ -93,7 +93,7 @@ namespace CustomVoice_API.API
                 scriptContent.Headers.Add("Content-Length", $"{fsscript.Length}");
                 content.Add(scriptContent, "script", scriptName);
 
-                string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_Create);
+                string url = hostURI + API_V3.VoiceSynthesis_Create;
                 var response = client.PostAsync(url, content).Result;
 
                 if (response.StatusCode != HttpStatusCode.Accepted)

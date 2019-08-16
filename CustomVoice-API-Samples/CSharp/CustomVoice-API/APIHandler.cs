@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
 
 namespace CustomVoice_API
 {
@@ -202,7 +201,7 @@ namespace CustomVoice_API
             string locale = arguments["locale"];
             string description = name;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
@@ -264,7 +263,7 @@ namespace CustomVoice_API
             string scriptPath = arguments["scriptpath"];
             string description = name;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
@@ -291,7 +290,7 @@ namespace CustomVoice_API
             string scriptPath = arguments["scriptpath"];
             string description = name;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
@@ -317,7 +316,7 @@ namespace CustomVoice_API
             string wavePath = arguments["wavepath"];
             string description = name;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
@@ -380,17 +379,17 @@ namespace CustomVoice_API
             bool isNeuralTTS = false;
             bool isMixlingual = false;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
 
-            if (arguments.Keys.ToString().Contains("isneuraltts"))
+            if (arguments.Keys.ToList().Contains("isneuraltts"))
             {
                 isNeuralTTS = Convert.ToBoolean(arguments["isneuraltts"]);
             }
 
-            if (arguments.Keys.ToString().Contains("ismixlingual"))
+            if (arguments.Keys.ToList().Contains("ismixlingual"))
             {
                 isMixlingual = Convert.ToBoolean(arguments["ismixlingual"]);
             }
@@ -451,7 +450,7 @@ namespace CustomVoice_API
             string script = arguments["script"];
             bool isSSML = false;
 
-            if (arguments.Keys.ToString().Contains("isssml"))
+            if (arguments.Keys.ToList().Contains("isssml"))
             {
                 isSSML = Convert.ToBoolean(arguments["isssml"]);
             }
@@ -511,7 +510,7 @@ namespace CustomVoice_API
             string modelId = arguments["modelid"];
             string description = name;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
@@ -529,7 +528,7 @@ namespace CustomVoice_API
         private static void EndpointCall(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
-            string ibizaStsUrl = arguments["ibizastsurl "];
+            string ibizaStsUrl = arguments["ibizastsurl"];
             string endpointUrl = arguments["endpointurl"];
             string voiceName = arguments["voicename"];
             string locale = arguments["locale"];
@@ -537,7 +536,7 @@ namespace CustomVoice_API
             string outputfile = arguments["outputfile"];
             bool isSSML = false;
 
-            if (arguments.Keys.ToString().Contains("isssml"))
+            if (arguments.Keys.ToList().Contains("isssml"))
             {
                 isSSML = Convert.ToBoolean(arguments["isssml"]);
             }
@@ -591,22 +590,22 @@ namespace CustomVoice_API
             string outputFormat = "riff-16khz-16bit-mono-pcm";
             bool isConcatenateResult = false;
 
-            if (arguments.Keys.ToString().Contains("description"))
+            if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
 
-            if (arguments.Keys.ToString().Contains("outputformat"))
+            if (arguments.Keys.ToList().Contains("outputformat"))
             {
                 outputFormat = arguments["outputformat"];
             }
 
-            if (arguments.Keys.ToString().Contains("isconcatenateresult"))
+            if (arguments.Keys.ToList().Contains("isconcatenateresult"))
             {
                 isConcatenateResult = Convert.ToBoolean(arguments["isconcatenateresult"]);
             }
 
-            var modelsList = new List<string>(models.Split(';')).Select(x => API.DTO.Identity.Create(new Guid(x))).ToList();
+            var modelsList = new List<string>(models.Split(';')).Select(x => new Guid(x)).ToList();
             if (BatchSynthesis.Create(subscriptionKey, hostURI, name, description, inputTextPath, locale, modelsList, outputFormat, isConcatenateResult))
             {
                 Console.WriteLine("Create batch synthesis successfully");
@@ -621,6 +620,7 @@ namespace CustomVoice_API
         {
             string key;
             string value;
+            Console.WriteLine("--------------------------------------------------------------------");
 
             foreach (var obj in result)
             {

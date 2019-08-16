@@ -15,7 +15,7 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             string modelKind,
             Model baseModel,
             List<Dataset> datasets,
@@ -25,7 +25,7 @@ namespace CustomVoice_API.API.DTO
             this.Name = name;
             this.Created = created;
             this.LastAction = lastAction;
-            this.State = state;
+            this.Status = status;
             this.Description = description;
             this.Locale = locale.Name;
             this.ModelKind = modelKind;
@@ -42,7 +42,7 @@ namespace CustomVoice_API.API.DTO
 
         public DateTime LastAction { get; private set; }
 
-        public OneApiState State { get; private set; }
+        public OneApiState Status { get; private set; }
 
         public string Description { get; private set; }
 
@@ -63,7 +63,7 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             string modelKind,
             Model baseModel,
             List<Dataset> datasets,
@@ -76,7 +76,7 @@ namespace CustomVoice_API.API.DTO
                 locale,
                 created,
                 lastAction,
-                state,
+                status,
                 modelKind,
                 baseModel,
                 datasets,

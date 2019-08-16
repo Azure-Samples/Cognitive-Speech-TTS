@@ -17,17 +17,17 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state)
+            OneApiState status)
         {
             this.Id = id;
-            this.ProjectKind = projectKind;
+            this.Properties = properties;
             this.Name = name;
             this.Description = description;
             this.ProjectKind = projectKind;
             this.Locale = locale.Name;
             this.Created = created;
             this.LastAction = lastAction;
-            this.State = state;
+            this.Status = status;
         }
 
         public Guid Id { get; private set; }
@@ -46,7 +46,7 @@ namespace CustomVoice_API.API.DTO
 
         public DateTime LastAction { get; private set; }
 
-        public OneApiState State { get; private set; }
+        public OneApiState Status { get; private set; }
 
         public static Project Create(
             Guid id,
@@ -57,7 +57,7 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state)
+            OneApiState status)
         {
             return new Project(
                 id,
@@ -68,7 +68,7 @@ namespace CustomVoice_API.API.DTO
                 locale,
                 created,
                 lastAction,
-                state);
+                status);
         }
     }
 }

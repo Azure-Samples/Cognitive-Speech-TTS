@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace CustomVoice_API.API.DTO
 {
-    class Dataset
+    public class Dataset
     {
         [JsonConstructor]
         private Dataset(
@@ -16,37 +16,37 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             string dataImportKind)
         {
             this.Id = id;
             this.Name = name;
-            this.DataImportKind = description;
+            this.Description = description;
             this.Properties = properties;
             this.Locale = locale.Name;
             this.Created = created;
             this.LastAction = lastAction;
-            this.State = state;
+            this.Status = status;
             this.DataImportKind = dataImportKind;
         }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public IReadOnlyDictionary<string, string> Properties { get; set; }
+        public IReadOnlyDictionary<string, string> Properties { get; private set; }
 
-        public string Locale { get; set; }
+        public string Locale { get; private set; }
 
-        public DateTime Created { get; set; }
+        public DateTime Created { get; private set; }
 
-        public DateTime LastAction { get; set; }
+        public DateTime LastAction { get; private set; }
 
-        public OneApiState State { get; set; }
+        public OneApiState Status { get; private set; }
 
-        public string DataImportKind { get; set; }
+        public string DataImportKind { get; private set; }
 
         public static Dataset Create(
             Guid id,
@@ -56,10 +56,10 @@ namespace CustomVoice_API.API.DTO
             CultureInfo locale,
             DateTime created,
             DateTime lastAction,
-            OneApiState state,
+            OneApiState status,
             string dataImportKind)
         {
-            return new Dataset(id, name, description, properties, locale, created, lastAction, state, dataImportKind);
+            return new Dataset(id, name, description, properties, locale, created, lastAction, status, dataImportKind);
         }
     }
 }
