@@ -58,13 +58,13 @@ namespace CustomVoice_API.API
             return true;
         }
 
-        public static void Call(string subscriptionKey, string ibizaStsUrl, string endpointUrl, string voiceName, string locale, string script, string outputFile, bool isSSML)
+        public static void Call(string subscriptionKey, string issueTokenUrl, string endpointUrl, string voiceName, string locale, string script, string outputFile, bool isSSML)
         {
             const string SsmlPattern = @"<speak version=""1.0"" xmlns=""http://www.w3.org/2001/10/synthesis"" xmlns:mstts=""http://www.w3.org/2001/mstts"" xml:lang=""{0}"">" +
             @"<voice name = ""{1}"">{2}</voice>" +
             @"</speak>";
             string ssml = "";
-            string token = APIHelper.GetToken(ibizaStsUrl, subscriptionKey);
+            string token = APIHelper.GetToken(issueTokenUrl, subscriptionKey);
 
             HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(endpointUrl);
             string ImpressionGUID = Guid.NewGuid().ToString();
