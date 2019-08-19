@@ -11,7 +11,7 @@ Use API to construct an e2e flow: upload data, start modeling, create voice test
 Before use
 ----------------
 
-You must obtain a Speech API subscription key by following instructions in [Microsoft Cognitive Services subscription](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#authentication>).
+You must obtain a Speech API subscription key by following instructions in [Microsoft Cognitive Services subscription](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure>).
 
 
 
@@ -85,9 +85,11 @@ Sample command : CustomVoice-API project get subscriptionKey [YourSubscriptionKe
 
 #### Some parameters sets
 
-- [IbizaStsUrl](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token>)
+- [HostURI](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation>)
 
-- [Output Format](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs>)
+- [IssueTokenUrl](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token>)
+
+- [OutputFormat](<https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs>)
 
 Contributing
 ============

@@ -44,9 +44,9 @@ namespace CustomVoice_API.API
             }
         }
 
-        public static string GetToken(string authenticationPath, string subscriptionKey)
+        public static string GetToken(string issueTokenUrl, string subscriptionKey)
         {
-            var ibizaStsUrl = new Uri(authenticationPath);
+            var ibizaStsUrl = new Uri(issueTokenUrl);
             var authentication = new Authentication(ibizaStsUrl, subscriptionKey);
             return authentication.RetrieveNewTokenAsync();
         }

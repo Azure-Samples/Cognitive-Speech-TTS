@@ -364,7 +364,7 @@ namespace CustomVoice_API
                 case Action.call:
                     actionString = "endpoint call";
                     description = "Calling the endpoint to synthesize voice data.";
-                    sampleCommand = "CustomVoice-API endpoint call subscriptionKey [YourSubscriptionKey] ibizastsurl https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken endpointUrl https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=xxx-xx-xx-xx-xxxxx voiceName testVoice locale en-US script 12345 outputFile C://test.wav isSSML false";
+                    sampleCommand = "CustomVoice-API endpoint call subscriptionKey [YourSubscriptionKey] issuetokenurl https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken endpointUrl https://westus.voice.speech.microsoft.com/cognitiveservices/v1?deploymentId=xxx-xx-xx-xx-xxxxx voiceName testVoice locale en-US script 12345 outputFile C://test.wav isSSML false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 default:

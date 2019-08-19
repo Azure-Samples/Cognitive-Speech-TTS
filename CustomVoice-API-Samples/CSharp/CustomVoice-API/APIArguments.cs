@@ -222,7 +222,7 @@ namespace CustomVoice_API
                     }
                 case nameof(APIKind.endpoint) + "-" + nameof(Action.call):
                     {
-                        RequiredParameters = new List<string>() { "subscriptionKey", "ibizastsurl", "endpointUrl", "voiceName", "locale", "script", "outputFile" };
+                        RequiredParameters = new List<string>() { "subscriptionKey", "issuetokenurl", "endpointUrl", "voiceName", "locale", "script", "outputFile" };
                         OptionalParameters = new List<string>() { "isSSML" };
                         break;
                     }

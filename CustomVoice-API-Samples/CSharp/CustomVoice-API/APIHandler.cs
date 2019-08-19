@@ -528,7 +528,7 @@ namespace CustomVoice_API
         private static void EndpointCall(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
-            string ibizaStsUrl = arguments["ibizastsurl"];
+            string issueTokenUrl = arguments["issuetokenurl"];
             string endpointUrl = arguments["endpointurl"];
             string voiceName = arguments["voicename"];
             string locale = arguments["locale"];
@@ -541,7 +541,7 @@ namespace CustomVoice_API
                 isSSML = Convert.ToBoolean(arguments["isssml"]);
             }
 
-            Endpoint.Call(subscriptionKey, ibizaStsUrl, endpointUrl, voiceName, locale, script, outputfile, isSSML);
+            Endpoint.Call(subscriptionKey, issueTokenUrl, endpointUrl, voiceName, locale, script, outputfile, isSSML);
         }
 
         private static void BatchSynthesisGet(Dictionary<string, string> arguments)
