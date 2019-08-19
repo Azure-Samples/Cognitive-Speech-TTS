@@ -29,8 +29,7 @@ namespace CustomVoice_API.API
             var response = APIHelper.Delete(subscriptionKey, url);
             if(response.StatusCode != HttpStatusCode.NoContent)
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                APIHelper.PrintErrorMessage(response);
                 return false;
             }
 
@@ -41,7 +40,7 @@ namespace CustomVoice_API.API
             string projectId, string gender, string locale, string wavePath, string scriptPath, string datasetKind)
         {
             var properties = new Dictionary<string, string>();
-            properties.Add("Gender", gender);
+            properties.Add("Gender", gender.Substring(0, 1).ToUpper() + gender.Substring(1));
             var datasetDefinition = DatasetDefinition.Create(locale, properties, name, description, "CustomVoice", projectId);
 
             switch (datasetKind)
@@ -104,8 +103,7 @@ namespace CustomVoice_API.API
 
                 if (response.StatusCode != HttpStatusCode.Accepted)
                 {
-                    Console.WriteLine($"Status Code: {response.StatusCode}");
-                    Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                    APIHelper.PrintErrorMessage(response);
                     return false;
                 }
                 return true;
@@ -160,8 +158,7 @@ namespace CustomVoice_API.API
 
                 if (response.StatusCode != HttpStatusCode.Accepted)
                 {
-                    Console.WriteLine($"Status Code: {response.StatusCode}");
-                    Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                    APIHelper.PrintErrorMessage(response);
                     return false;
                 }
                 return true;
@@ -208,8 +205,7 @@ namespace CustomVoice_API.API
 
                 if (response.StatusCode != HttpStatusCode.Accepted)
                 {
-                    Console.WriteLine($"Status Code: {response.StatusCode}");
-                    Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                    APIHelper.PrintErrorMessage(response);
                     return false;
                 }
                 return true;

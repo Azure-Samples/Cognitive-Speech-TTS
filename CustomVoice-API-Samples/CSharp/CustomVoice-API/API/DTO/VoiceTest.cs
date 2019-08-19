@@ -12,8 +12,8 @@ namespace CustomVoice_API.API.DTO
             Uri textUri,
             string voiceTestKind,
             Model model,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status)
         {
             if (audioUri != null)
@@ -27,8 +27,8 @@ namespace CustomVoice_API.API.DTO
             }
 
             this.Id = id;
-            this.Created = created;
-            this.LastAction = lastAction;
+            this.CreatedDateTime = createdDateTime;
+            this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.Model = model;
             this.VoiceTestKind = voiceTestKind;
@@ -36,9 +36,9 @@ namespace CustomVoice_API.API.DTO
 
         public Guid Id { get; private set; }
 
-        public DateTime Created { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
 
-        public DateTime LastAction { get; private set; }
+        public DateTime LastActionDateTime { get; private set; }
 
         public OneApiState Status { get; private set; }
 
@@ -56,8 +56,8 @@ namespace CustomVoice_API.API.DTO
             Uri textUri,
             string voiceTestKind,
             Model model,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status)
         {
             return new VoiceTest(
@@ -66,8 +66,8 @@ namespace CustomVoice_API.API.DTO
                     textUri,
                     voiceTestKind,
                     model,
-                    created,
-                    lastAction,
+                    createdDateTime,
+                    lastActionDateTime,
                     status);
         }
     }

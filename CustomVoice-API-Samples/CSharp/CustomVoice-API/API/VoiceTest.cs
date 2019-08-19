@@ -26,8 +26,7 @@ namespace CustomVoice_API.API
             var response = APIHelper.Delete(subscriptionKey, url);
             if (response.StatusCode != HttpStatusCode.NoContent)
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                APIHelper.PrintErrorMessage(response);
                 return false;
             }
 
@@ -52,8 +51,7 @@ namespace CustomVoice_API.API
 
             if (response.StatusCode != HttpStatusCode.Accepted)
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                APIHelper.PrintErrorMessage(response);
                 return false;
             }
             return true;

@@ -20,8 +20,7 @@ namespace CustomVoice_API.API
             var response = APIHelper.Delete(subscriptionKey, url);
             if (response.StatusCode != HttpStatusCode.NoContent)
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                APIHelper.PrintErrorMessage(response);
                 return false;
             }
 
@@ -31,7 +30,7 @@ namespace CustomVoice_API.API
         public static bool Create(string subscriptionKey, string hostURI, string name, string description, string gender, string locale)
         {
             var properties = new Dictionary<string, string>();
-            properties.Add("Gender", gender);
+            properties.Add("Gender", gender.Substring(0, 1).ToUpper() + gender.Substring(1));
 
             var projectDefinition = ProjectDefinition.Create(
                 name,
@@ -43,8 +42,7 @@ namespace CustomVoice_API.API
 
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Console.WriteLine($"Status Code: {response.StatusCode}");
-                Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+                APIHelper.PrintErrorMessage(response);
                 return false;
             }
             return true;

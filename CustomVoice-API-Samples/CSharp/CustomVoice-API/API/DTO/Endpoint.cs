@@ -15,8 +15,8 @@ namespace CustomVoice_API.API.DTO
             IReadOnlyDictionary<string, string> properties,
             CultureInfo locale,
             Guid id,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status,
             string endpointKind,
             IEnumerable<Model> models,
@@ -26,8 +26,8 @@ namespace CustomVoice_API.API.DTO
         {
             this.Id = id;
             this.Name = name;
-            this.Created = created;
-            this.LastAction = lastAction;
+            this.CreatedDateTime = createdDateTime;
+            this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.Description = description;
             this.Locale = locale.Name;
@@ -49,9 +49,9 @@ namespace CustomVoice_API.API.DTO
 
         public Guid Id { get; private set; }
 
-        public DateTime Created { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
 
-        public DateTime LastAction { get; private set; }
+        public DateTime LastActionDateTime { get; private set; }
 
         public OneApiState Status { get; private set; }
 
@@ -76,8 +76,8 @@ namespace CustomVoice_API.API.DTO
             bool isContentLoggingEnabled,
             CultureInfo locale,
             IReadOnlyDictionary<string, Uri> endpointUrls,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status)
         {
             return new Endpoint(
@@ -86,8 +86,8 @@ namespace CustomVoice_API.API.DTO
                 properties,
                 locale,
                 id,
-                created,
-                lastAction,
+                createdDateTime,
+                lastActionDateTime,
                 status,
                 endpointKind,
                 models,

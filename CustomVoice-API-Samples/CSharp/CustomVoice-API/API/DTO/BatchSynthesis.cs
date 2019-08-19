@@ -14,8 +14,8 @@ namespace CustomVoice_API.API.DTO
             IReadOnlyDictionary<string, string> properties,
             CultureInfo locale,
             Guid id,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status,
             Uri resultsUrl,
             Model model,
@@ -26,8 +26,8 @@ namespace CustomVoice_API.API.DTO
             this.Properties = properties;
             this.Locale = locale.Name;
             this.Id = id;
-            this.Created = created;
-            this.LastAction = lastAction;
+            this.CreatedDateTime = createdDateTime;
+            this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.ResultsUrl = resultsUrl;
             this.Model = model;
@@ -44,9 +44,9 @@ namespace CustomVoice_API.API.DTO
 
         public Guid Id { get; private set; }
 
-        public DateTime Created { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
 
-        public DateTime LastAction { get; private set; }
+        public DateTime LastActionDateTime { get; private set; }
 
         public OneApiState Status { get; private set; }
 
@@ -62,8 +62,8 @@ namespace CustomVoice_API.API.DTO
             string description,
             IReadOnlyDictionary<string, string> properties,
             CultureInfo locale,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status,
             Uri resultsUrl,
             Model model,
@@ -75,8 +75,8 @@ namespace CustomVoice_API.API.DTO
                 properties,
                 locale,
                 id,
-                created,
-                lastAction,
+                createdDateTime,
+                lastActionDateTime,
                 status,
                 resultsUrl,
                 model,
