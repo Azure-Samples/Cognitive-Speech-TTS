@@ -13,18 +13,18 @@ namespace CustomVoice_API.API.DTO
             string name,
             string description,
             CultureInfo locale,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status,
             string modelKind,
             Model baseModel,
-            List<Dataset> datasets,
+            IEnumerable<Dataset> datasets,
             IReadOnlyDictionary<string, string> properties)
         {
             this.Id = id;
             this.Name = name;
-            this.Created = created;
-            this.LastAction = lastAction;
+            this.CreatedDateTime = createdDateTime;
+            this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.Description = description;
             this.Locale = locale.Name;
@@ -38,9 +38,9 @@ namespace CustomVoice_API.API.DTO
 
         public string Name { get; private set; }
 
-        public DateTime Created { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
 
-        public DateTime LastAction { get; private set; }
+        public DateTime LastActionDateTime { get; private set; }
 
         public OneApiState Status { get; private set; }
 
@@ -52,7 +52,7 @@ namespace CustomVoice_API.API.DTO
 
         public Model BaseModel { get; private set; }
 
-        public List<Dataset> Datasets { get; private set; }
+        public IEnumerable<Dataset> Datasets { get; private set; }
 
         public IReadOnlyDictionary<string, string> Properties { get; private set; }
 
@@ -61,12 +61,12 @@ namespace CustomVoice_API.API.DTO
             string name,
             string description,
             CultureInfo locale,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status,
             string modelKind,
             Model baseModel,
-            List<Dataset> datasets,
+            IEnumerable<Dataset> datasets,
             IReadOnlyDictionary<string, string> properties)
         {
             return new Model(
@@ -74,8 +74,8 @@ namespace CustomVoice_API.API.DTO
                 name,
                 description,
                 locale,
-                created,
-                lastAction,
+                createdDateTime,
+                lastActionDateTime,
                 status,
                 modelKind,
                 baseModel,

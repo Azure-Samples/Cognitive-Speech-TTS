@@ -1,5 +1,7 @@
 ﻿using CustomVoice_API.API;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -618,21 +620,61 @@ namespace CustomVoice_API
 
         private static void DisplayResult<T>(IEnumerable<T> result)
         {
-            string key;
-            string value;
+            if(result == null)
+            {
+                return;
+            }
+
             Console.WriteLine("--------------------------------------------------------------------");
 
             foreach (var obj in result)
             {
-                Type type = obj.GetType();
-                var pros = type.GetProperties();
-                foreach (var p in pros)
-                {
-                    key = p.Name;
-                    value = p.GetValue(obj) == null ? "" : p.GetValue(obj).ToString();
-                    Console.WriteLine($"{key}\t{value}");
-                }
+                DisplaySingleResult(obj, "  ");
                 Console.WriteLine("--------------------------------------------------------------------");
+            }
+        }
+
+        private static void DisplaySingleResult(object result, string indentation)
+        {
+            string key;
+            string value;
+
+            if(result == null)
+            {
+                return;
+            }
+
+            Type type = result.GetType();
+            var pros = type.GetProperties();
+            foreach (var p in pros)
+            {
+                key = p.Name;
+
+                if (p.PropertyType.Name.Contains("Dictionary"))
+                {
+                    value = p.GetValue(result) == null ? "" : JsonConvert.SerializeObject(p.GetValue(result));
+                    Console.WriteLine(indentation + "{0,-30}{1}", key, value);
+                }
+                else if (p.PropertyType.Name.Contains("IEnumerable"))
+                {
+                    Console.WriteLine(indentation + "{0,-30}", key);
+                    var val = p.GetValue(result);
+                    foreach (dynamic item in val as IEnumerable)
+                    {
+                        DisplaySingleResult(item, indentation + indentation);
+                    }
+                }
+                else if (p.PropertyType.Name.Contains("Model"))
+                {
+                    Console.WriteLine(indentation + "{0,-30}", key);
+                    var val = p.GetValue(result);
+                    DisplaySingleResult(val, indentation + indentation);
+                }
+                else
+                {
+                    value = p.GetValue(result) == null ? "" : p.GetValue(result).ToString();
+                    Console.WriteLine(indentation + "{0,-30}{1}", key, value);
+                }
             }
         }
     }

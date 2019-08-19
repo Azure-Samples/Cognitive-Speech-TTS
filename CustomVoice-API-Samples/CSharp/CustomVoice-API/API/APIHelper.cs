@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using Newtonsoft.Json;
@@ -14,6 +15,13 @@ namespace CustomVoice_API.API
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 var response = client.GetAsync(url, CancellationToken.None).Result;
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    PrintErrorMessage(response);
+                    var items = JsonConvert.DeserializeObject<T>(" ");
+                    return items;
+                }
 
                 using (var responseStream = response.Content.ReadAsStreamAsync().Result)
                 using (var streamReader = new StreamReader(responseStream))
@@ -49,6 +57,12 @@ namespace CustomVoice_API.API
             var ibizaStsUrl = new Uri(issueTokenUrl);
             var authentication = new Authentication(ibizaStsUrl, subscriptionKey);
             return authentication.RetrieveNewTokenAsync();
+        }
+
+        public static void PrintErrorMessage(HttpResponseMessage response)
+        {
+            Console.WriteLine($"Status Code: {response.StatusCode}");
+            Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
         }
     }
 }

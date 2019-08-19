@@ -15,8 +15,8 @@ namespace CustomVoice_API.API.DTO
             string description,
             IReadOnlyDictionary<string, string> properties,
             CultureInfo locale,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status)
         {
             this.Id = id;
@@ -25,8 +25,8 @@ namespace CustomVoice_API.API.DTO
             this.Description = description;
             this.ProjectKind = projectKind;
             this.Locale = locale.Name;
-            this.Created = created;
-            this.LastAction = lastAction;
+            this.CreatedDateTime = createdDateTime;
+            this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
         }
 
@@ -42,9 +42,9 @@ namespace CustomVoice_API.API.DTO
 
         public string Locale { get; private set; }
 
-        public DateTime Created { get; private set; }
+        public DateTime CreatedDateTime { get; private set; }
 
-        public DateTime LastAction { get; private set; }
+        public DateTime LastActionDateTime { get; private set; }
 
         public OneApiState Status { get; private set; }
 
@@ -55,8 +55,8 @@ namespace CustomVoice_API.API.DTO
             string description,
             IReadOnlyDictionary<string, string> properties,
             CultureInfo locale,
-            DateTime created,
-            DateTime lastAction,
+            DateTime createdDateTime,
+            DateTime lastActionDateTime,
             OneApiState status)
         {
             return new Project(
@@ -66,8 +66,8 @@ namespace CustomVoice_API.API.DTO
                 description,
                 properties,
                 locale,
-                created,
-                lastAction,
+                createdDateTime,
+                lastActionDateTime,
                 status);
         }
     }
