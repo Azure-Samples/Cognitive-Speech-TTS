@@ -19,8 +19,7 @@ namespace CustomVoice_API.API
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
                     PrintErrorMessage(response);
-                    var items = JsonConvert.DeserializeObject<T>(" ");
-                    return items;
+                    return default(T);
                 }
 
                 using (var responseStream = response.Content.ReadAsStreamAsync().Result)
