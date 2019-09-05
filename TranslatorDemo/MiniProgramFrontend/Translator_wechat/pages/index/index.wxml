@@ -1,0 +1,47 @@
+<view class="top-container">
+  <view bindtap="playAudio" class="play-btn" wx:if="{{recordState==3&&translatonSrc!=''}}">
+    <image backgroundSize="cover" class="play-frame" mode="aspectFit" src="../../image/buttonFrame.png"></image>
+    <image backgroundSize="cover" class="play-core" mode="aspectFit" src="../../image/playCore.png" wx:if="{{!isPlaying}}"></image>
+    <image backgroundSize="cover" class="playing-core" mode="aspectFit" src="../../image/playingCore.png" wx:if="{{isPlaying}}"></image>
+    <view class="play-text" wx:if="{{!isPlaying}}">播放</view>
+    <view class="sound-wave" wx:if="{{isPlaying}}">
+      <i class="bar"></i>
+      <i class="bar"></i>
+      <i class="bar"></i>
+      <i class="bar"></i>
+      <i class="bar"></i>
+    </view>
+  </view>
+</view>
+
+<view class="result-container">
+  <view class="line"></view>
+  <view class="result">
+    <text>{{hit1}}</text>
+
+    <text>{{hit2}}</text>
+  </view>
+  <view class="line"></view>
+</view>
+
+<view class="record-container">
+  <button catch:touchcancel="{{recordState!==2?'handleStopRecord':''}}" catch:touchend="{{recordState!==2?'handleStopRecord':''}}" catch:touchstart="{{recordState!==2?'handleStartRecord':''}}" id="record-btn">
+    <image backgroundSize="cover" class="record-button-img" mode="aspectFit" src="{{isPressing?voiceButtonSrcList[1]:voiceButtonSrcList[recordState]}}"></image>
+  </button>
+  <image backgroundSize="cover" class="record-circle-inside" hidden="{{recordState!=2}}" mode="aspectFit" src="../../image/CircleInside.png"></image>
+  <image backgroundSize="cover" class="record-circle-outside" hidden="{{recordState!=2}}" mode="aspectFit" src="../../image/CircleOutside.png"></image>
+  <view hidden="{{recordState!=1}}">
+    <view class="waves"></view>
+    <view class="waves-1"></view>
+    <view class="waves-2"></view>
+  </view>
+</view>
+
+<view class="body-view">
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:key="value">
+      <radio value="{{item.value}}" checked="{{item.checked}}" />
+      {{item.name}}
+    </label>
+  </radio-group>
+</view>
