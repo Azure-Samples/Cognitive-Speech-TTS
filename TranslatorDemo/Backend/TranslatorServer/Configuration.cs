@@ -15,7 +15,8 @@
 
         //Translation data
         public const string MtHost = "";
-        public const string MtRoute = "";
+        public const string MtEnRoute = "";
+        public const string MtZhRoute = "";
         public const string MtSubscriptionKey = "";
 
         //TTS data
@@ -23,5 +24,6 @@
         public const string TtsSubscriptionKey = "";
         public const string TtsEndpoint = "";
         public const string JessaRUSName = "";
+        public const string XiaoxiaoNeuralName = "";
     }
 }
