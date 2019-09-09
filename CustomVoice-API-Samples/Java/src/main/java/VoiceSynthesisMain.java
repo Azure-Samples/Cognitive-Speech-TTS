@@ -2,8 +2,12 @@ import java.io.File;
 import java.io.IOException;
 
 import org.json.JSONException;
+import org.json.JSONArray;
 
 import io.swagger.client.ApiException;
+import io.swagger.client.api.VoiceSynthesisApi;
+import io.swagger.client.model.Voice;
+import io.swagger.client.model.VoiceSynthesis;
 
 public class VoiceSynthesisMain {
 	
@@ -20,7 +24,7 @@ public class VoiceSynthesisMain {
 					+ "locale: i.e. it-IT \n" + "voiceName: i.e. ElsaNeural \n"
 					+ "concatenateResult: true or false. Whether you want the output file to be one part or multipart. \n"
 					+ "Program exited.");
-			return;
+			//return;
 		}
 		String endpoint = args[0];
 		String ibizaStsUrl = args[1];
@@ -43,6 +47,13 @@ public class VoiceSynthesisMain {
 		// indicate if want concatenate the output waves with a single file or
 		// not. True or false
 		String concatenateResult = args[6];
+
+		VoiceSynthesisLib api = new VoiceSynthesisLib("", "");
+
+		Iterable<VoiceSynthesis> reslut = api.GetVoiceSynthesis();
+		JSONArray jsonArray=new JSONArray(reslut);
+    	
+		System.out.println(jsonArray.toString());
 		//VoiceSynthesisLib.VoiceSynthsisAPIs(endpoint, ibizaStsUrl, subscriptionKey, localInputTextFile, locale, voiceName, concatenateResult);
 		
 	}
