@@ -34,7 +34,6 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * EndpointV21
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class EndpointV21 {
   @SerializedName("concurrentRecognitions")
   private Integer concurrentRecognitions = null;

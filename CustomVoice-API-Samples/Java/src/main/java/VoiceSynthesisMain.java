@@ -15,7 +15,6 @@ public class VoiceSynthesisMain {
 		{
 			System.out.println("Not enough arguments. Expected number of arguments is 7.\n"
 					+ "endpoint: i.e. https://centralindia.cris.ai \n"
-					+ "ibizaStsUrl: i.e. https://centralindia.api.cognitive.microsoft.com/sts/v1.0/issueToken \n"
 					+ "subscriptionKey: a standard one acquired from Azure \n"
 					+ "localInputTextFile: i.e. \\Java project\\VoiceSynthsisAPIToJAVA\\en-US.txt \n"
 					+ "locale: i.e. it-IT \n" + "voiceName: i.e. ElsaNeural \n"
@@ -44,7 +43,7 @@ public class VoiceSynthesisMain {
 		// indicate if want concatenate the output waves with a single file or
 		// not. True or false
 		String concatenateResult = args[6];
-		VoiceSynthesisLib.VoiceSynthsisAPIs(endpoint, ibizaStsUrl, subscriptionKey, localInputTextFile, locale, voiceName, concatenateResult);
+		//VoiceSynthesisLib.VoiceSynthsisAPIs(endpoint, ibizaStsUrl, subscriptionKey, localInputTextFile, locale, voiceName, concatenateResult);
 		
 	}
 	
