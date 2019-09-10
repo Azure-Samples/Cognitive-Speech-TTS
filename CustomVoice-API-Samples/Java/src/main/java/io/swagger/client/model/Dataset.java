@@ -32,7 +32,6 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * Dataset
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class Dataset {
   @SerializedName("id")
   private UUID id = null;

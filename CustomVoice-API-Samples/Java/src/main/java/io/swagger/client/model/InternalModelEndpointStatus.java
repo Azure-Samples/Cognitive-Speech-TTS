@@ -28,7 +28,6 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * InternalModelEndpointStatus
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class InternalModelEndpointStatus {
   @SerializedName("createdDateTime")
   private OffsetDateTime createdDateTime = null;

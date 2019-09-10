@@ -1,4 +1,0 @@
-﻿<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="zh-CN"><voice name="Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"><mstts:express-as type="newscast">兑现的是承诺,换来的是北京的绿色。</mstts:express-as></voice></speak>
-<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="zh-CN"><voice name="Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"><mstts:express-as type="callcenter">兑现的是承诺,换来的是北京的绿色。</mstts:express-as></voice></speak>
-<speak xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="http://www.w3.org/2001/mstts" version="1.0" xml:lang="zh-CN"><voice name="Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"><mstts:express-as type="sentiment">兑现的是承诺,换来的是北京的绿色。</mstts:express-as></voice></speak>
-兑现的是承诺,换来的是北京的绿色。

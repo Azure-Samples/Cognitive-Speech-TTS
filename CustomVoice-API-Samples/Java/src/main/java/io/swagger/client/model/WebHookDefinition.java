@@ -32,7 +32,6 @@ import java.util.Map;
 /**
  * WebHookDefinition
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class WebHookDefinition {
   @SerializedName("configuration")
   private WebHookConfiguration _configuration = null;

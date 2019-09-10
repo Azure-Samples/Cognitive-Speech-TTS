@@ -29,7 +29,6 @@ import java.io.IOException;
  * An implementation of this interface represents a stage in a stack trace.  If the error levvel is the root, the {Microsoft.SpeechServices.Common.Client.IInnerError.Code} and the {Microsoft.SpeechServices.Common.Client.IInnerError.InnerError}  property may be omitted.
  */
 @ApiModel(description = "An implementation of this interface represents a stage in a stack trace.  If the error levvel is the root, the {Microsoft.SpeechServices.Common.Client.IInnerError.Code} and the {Microsoft.SpeechServices.Common.Client.IInnerError.InnerError}  property may be omitted.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class InnerError {
   @SerializedName("code")
   private String code = null;

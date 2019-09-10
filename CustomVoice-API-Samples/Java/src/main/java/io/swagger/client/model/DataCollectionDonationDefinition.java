@@ -31,7 +31,6 @@ import java.util.Map;
 /**
  * DataCollectionDonationDefinition
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class DataCollectionDonationDefinition {
   @SerializedName("dataCollection")
   private EndpointDataIdentity dataCollection = null;

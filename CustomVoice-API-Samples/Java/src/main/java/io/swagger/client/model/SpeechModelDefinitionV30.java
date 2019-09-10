@@ -34,7 +34,6 @@ import java.util.Map;
 /**
  * SpeechModelDefinitionV30
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class SpeechModelDefinitionV30 {
   @SerializedName("project")
   private ProjectIdentity project = null;

@@ -28,6 +28,7 @@ import io.swagger.client.ApiCallback;
 import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.ApiResponse;
+import io.swagger.client.Configuration;
 import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
@@ -42,10 +43,8 @@ public class VoiceSynthesisApi {
 	/* Add subKey */
 	private String subKey;
 
-	public VoiceSynthesisApi(String subKey, String basePath) {
-		// this(Configuration.getDefaultApiClient());
-		this.subKey = subKey;
-		this.apiClient = new ApiClient(basePath);
+	public VoiceSynthesisApi() {
+		this(Configuration.getDefaultApiClient());
 	}
 
 	public VoiceSynthesisApi(ApiClient apiClient) {
@@ -134,8 +133,6 @@ public class VoiceSynthesisApi {
 				}
 			});
 		}
-
-		localVarHeaderParams.put("Ocp-Apim-Subscription-Key", subKey);
 
 		String[] localVarAuthNames = new String[] { "subscription_key", "token" };
 		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
@@ -426,8 +423,6 @@ public class VoiceSynthesisApi {
 		};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
-		/* Add subKey */
-		// localVarHeaderParams.put("Ocp-Apim-Subscription-Key", subKey);
 		/*
 		 * if(progressListener != null) {
 		 * 
@@ -462,9 +457,6 @@ public class VoiceSynthesisApi {
 		// String issuedToken=tokenResponse.getData();
 		// localVarHeaderParams.put("Authorization", "Bearer"+issuedToken);
 
-		localVarHeaderParams.put("Ocp-Apim-Subscription-Key", subKey);
-
-		// String[] localVarAuthNames = new String[] { "subscription_key", "token" };
 		String[] localVarAuthNames = new String[] { "subscription_key", "token" };
 		return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
 				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
@@ -495,8 +487,6 @@ public class VoiceSynthesisApi {
 		};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
-		/* Add subKey */
-		localVarHeaderParams.put("Ocp-Apim-Subscription-Key", subKey);
 		/*
 		 * if(progressListener != null) {
 		 * 
@@ -660,6 +650,7 @@ public class VoiceSynthesisApi {
 		final String[] localVarContentTypes = {
 
 		};
+		
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
 
@@ -789,8 +780,6 @@ public class VoiceSynthesisApi {
 		};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
-		/* Add header */
-		localVarHeaderParams.put("Ocp-Apim-Subscription-Key", subKey);
 		if (progressListener != null) {
 			apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
 				@Override

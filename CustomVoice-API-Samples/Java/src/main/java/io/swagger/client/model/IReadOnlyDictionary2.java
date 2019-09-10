@@ -29,7 +29,6 @@ import java.util.List;
 /**
  * IReadOnlyDictionary2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class IReadOnlyDictionary2 {
   @SerializedName("None")
   private List<String> none = null;

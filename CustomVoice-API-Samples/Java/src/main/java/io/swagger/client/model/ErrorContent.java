@@ -32,7 +32,6 @@ import java.util.List;
  * The interface represents the content of an error response defined in the OneAPI v2.1 documentation.
  */
 @ApiModel(description = "The interface represents the content of an error response defined in the OneAPI v2.1 documentation.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-07-02T13:09:27.002+08:00")
 public class ErrorContent {
   @SerializedName("details")
   private List<ErrorDetail> details = null;
