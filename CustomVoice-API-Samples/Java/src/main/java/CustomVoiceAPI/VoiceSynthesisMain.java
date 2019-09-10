@@ -34,30 +34,30 @@ public class VoiceSynthesisMain {
 			return ;
         }
 
-		String hostPath = cli.getOptionValue("h");
-		String subscriptionKey = cli.getOptionValue("s");
+		String hostPath = cli.getOptionValue("hosturl");
+		String subscriptionKey = cli.getOptionValue("subscriptionkey");
 
 		ApiClient apiClient = new ApiClient(hostPath);
 		apiClient.setApiKey(subscriptionKey);
 		VoiceSynthesisLib api = new VoiceSynthesisLib(apiClient);
 
-        if (cli.hasOption("c")){
-			String name = cli.getOptionValue("n");
+        if (cli.hasOption("create")){
+			String name = cli.getOptionValue("name");
 			if(name == null){
 				System.out.println("Please enter the name of voice synthesis task");
 			}
 
-			String description = cli.getOptionValue("d");
+			String description = cli.getOptionValue("description");
 			if(description == null){
 				description = "";
 			}
 
-			String locale = cli.getOptionValue("l");
+			String locale = cli.getOptionValue("locale");
 			if(locale == null){
 				System.out.println("Please enter the locale of the model voice synthesis task used");
 			}
 
-			String modelList = cli.getOptionValue("m");
+			String modelList = cli.getOptionValue("modelidlist");
 			if(modelList == null){
 				System.out.println("Please enter the model list of the voice synthesis task used");
 			}
@@ -66,17 +66,17 @@ public class VoiceSynthesisMain {
 				model.add(UUID.fromString(id));
 			}
 
-			String outputFormat = cli.getOptionValue("of");
+			String outputFormat = cli.getOptionValue("outputformat");
 			if(locale == null){
 				outputFormat = "riff-16khz-16bit-mono-pcm";
 			}
 
 			String properties = ""; 
-			if(cli.hasOption("cr")){
+			if(cli.hasOption("concatenateresult")){
 				properties="{\"ConcatenateResult\": \"true\"}";
 			}
 
-			String scriptFile = cli.getOptionValue("sf");
+			String scriptFile = cli.getOptionValue("scriptfile");
 			if(scriptFile == null){
 				System.out.println("Please enter the script file path");
 			}
@@ -84,24 +84,24 @@ public class VoiceSynthesisMain {
 			
 			api.SubmitSynthesis(name, description, locale, model, outputFormat, properties, script);
         }
-        else if(cli.hasOption("gv")){
+        else if(cli.hasOption("getvoice")){
 			List<Voice> reslut = api.GetVoice();
 			System.out.println(new JSONArray(reslut));
         }
-        else if(cli.hasOption("gvs")){
+        else if(cli.hasOption("getvoicesynthesis")){
 			List<VoiceSynthesis> reslut = api.GetVoiceSynthesis();
 			System.out.println(new JSONArray(reslut));
         }
-        else if(cli.hasOption("gvsi")){
-			String voiceSynthesisId = cli.getOptionValue("vsi");
+        else if(cli.hasOption("getvoicesynthesisbyid")){
+			String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
 			if(voiceSynthesisId == null){
 				System.out.println("Please enter Voice Synthesis Id");
 			}
 			VoiceSynthesis reslut = api.GetVoiceSynthesis(UUID.fromString(voiceSynthesisId));
 			System.out.println(new JSONObject(reslut));
 		}
-		else if(cli.hasOption("dvs")){
-			String voiceSynthesisId = cli.getOptionValue("vsi");
+		else if(cli.hasOption("delete")){
+			String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
 			if(voiceSynthesisId == null){
 				System.out.println("Please enter Voice Synthesis Id");
 			}
