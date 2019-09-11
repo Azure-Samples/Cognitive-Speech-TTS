@@ -110,6 +110,8 @@ public class VoiceSynthesisMain {
 		else{
 			System.out.println("Please enter the action you need to perform");
 		}
+
+		return;
 	}
 
 	private static Options SetArgsOptions(){
