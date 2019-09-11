@@ -59,7 +59,7 @@ public class VoiceSynthesisMain {
 
 			String modelList = cli.getOptionValue("modelidlist");
 			if(modelList == null){
-				System.out.println("Please enter the model list of the voice synthesis task used");
+				System.out.println("Please enter the model list of the voice synthesis task used, separated by ';'");
 			}
 			List<UUID> model = new ArrayList<UUID>();
 			for (String id : modelList.split(";")) {
@@ -145,7 +145,7 @@ public class VoiceSynthesisMain {
 		Option opt10 = new Option("l","locale",true,"The locale information like zh-CN/en-US");
 		opt10.setRequired(false);
 		options.addOption(opt10);
-		Option opt11 = new Option("m","modelidlist",true,"The id list of the model which used to synthesis");
+		Option opt11 = new Option("m","modelidlist",true,"The id list of the model which used to synthesis, separated by ';'");
 		opt11.setRequired(false);
 		options.addOption(opt11);
 		Option opt12 = new Option("vsi","voicesynthesisid",true,"The id of the synthesis task");
