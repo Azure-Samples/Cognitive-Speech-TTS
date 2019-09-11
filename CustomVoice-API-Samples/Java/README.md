@@ -5,7 +5,7 @@ This project contains samples of HTTP-based Microsoft Custom Voice Synthesis API
 ## Build the samples
 
 1. First, you must obtain a standard (not free) Speech API subscription key by following instructions in Microsoft Cognitive Services subscription.
-2. Make sure that you have Maven installed. Under the directory with the pom file, run the command 'mvn assembly:assembly' to Compile the executable jar package.
+2. Make sure that you have Maven installed. Under the directory with the pom file, run the command `mvn assembly:assembly` to Compile the executable jar package.
 3. Run use this command: `java -jar target\CustomVoiceAPI-Java-1.0-SNAPSHOT.jar`. Related parameters, please refer to the following Usage.
 
 #### usage
