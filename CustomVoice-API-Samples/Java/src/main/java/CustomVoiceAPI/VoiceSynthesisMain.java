@@ -41,76 +41,88 @@ public class VoiceSynthesisMain {
 		apiClient.setApiKey(subscriptionKey);
 		VoiceSynthesisLib api = new VoiceSynthesisLib(apiClient);
 
-        if (cli.hasOption("create")){
-			String name = cli.getOptionValue("name");
-			if(name == null){
-				System.out.println("Please enter the name of voice synthesis task");
+		try{
+			if (cli.hasOption("create")){
+				String name = cli.getOptionValue("name");
+				if(name == null){
+					System.out.println("Please enter the name of voice synthesis task");
+					return ;
+				}
+	
+				String description = cli.getOptionValue("description");
+				if(description == null){
+					description = "";
+				}
+	
+				String locale = cli.getOptionValue("locale");
+				if(locale == null){
+					System.out.println("Please enter the locale of the model voice synthesis task used");
+					return ;
+				}
+	
+				String modelList = cli.getOptionValue("modelidlist");
+				if(modelList == null){
+					System.out.println("Please enter the model list of the voice synthesis task used, separated by ';'");
+					return ;
+				}
+				List<UUID> model = new ArrayList<UUID>();
+				for (String id : modelList.split(";")) {
+					model.add(UUID.fromString(id));
+				}
+	
+				String outputFormat = cli.getOptionValue("outputformat");
+				if(locale == null){
+					outputFormat = "riff-16khz-16bit-mono-pcm";
+				}
+	
+				String properties = ""; 
+				if(cli.hasOption("concatenateresult")){
+					properties="{\"ConcatenateResult\": \"true\"}";
+				}
+	
+				String scriptFile = cli.getOptionValue("scriptfile");
+				if(scriptFile == null){
+					System.out.println("Please enter the script file path");
+					return ;
+				}
+				File script = new File(scriptFile);
+				
+				api.SubmitSynthesis(name, description, locale, model, outputFormat, properties, script);
 			}
-
-			String description = cli.getOptionValue("description");
-			if(description == null){
-				description = "";
+			else if(cli.hasOption("getvoice")){
+				List<Voice> reslut = api.GetVoice();
+				System.out.println(new JSONArray(reslut));
 			}
-
-			String locale = cli.getOptionValue("locale");
-			if(locale == null){
-				System.out.println("Please enter the locale of the model voice synthesis task used");
+			else if(cli.hasOption("getvoicesynthesis")){
+				List<VoiceSynthesis> reslut = api.GetVoiceSynthesis();
+				System.out.println(new JSONArray(reslut));
 			}
-
-			String modelList = cli.getOptionValue("modelidlist");
-			if(modelList == null){
-				System.out.println("Please enter the model list of the voice synthesis task used, separated by ';'");
+			else if(cli.hasOption("getvoicesynthesisbyid")){
+				String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
+				if(voiceSynthesisId == null){
+					System.out.println("Please enter Voice Synthesis Id");
+					return ;
+				}
+				VoiceSynthesis reslut = api.GetVoiceSynthesis(UUID.fromString(voiceSynthesisId));
+				System.out.println(new JSONObject(reslut));
 			}
-			List<UUID> model = new ArrayList<UUID>();
-			for (String id : modelList.split(";")) {
-				model.add(UUID.fromString(id));
+			else if(cli.hasOption("delete")){
+				String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
+				if(voiceSynthesisId == null){
+					System.out.println("Please enter Voice Synthesis Id");
+					return ;
+				}
+				api.DeleteSynthesis(UUID.fromString(voiceSynthesisId));
 			}
-
-			String outputFormat = cli.getOptionValue("outputformat");
-			if(locale == null){
-				outputFormat = "riff-16khz-16bit-mono-pcm";
+			else{
+				System.out.println("Please enter the action you need to perform");
 			}
-
-			String properties = ""; 
-			if(cli.hasOption("concatenateresult")){
-				properties="{\"ConcatenateResult\": \"true\"}";
-			}
-
-			String scriptFile = cli.getOptionValue("scriptfile");
-			if(scriptFile == null){
-				System.out.println("Please enter the script file path");
-			}
-			File script = new File(scriptFile);
-			
-			api.SubmitSynthesis(name, description, locale, model, outputFormat, properties, script);
-        }
-        else if(cli.hasOption("getvoice")){
-			List<Voice> reslut = api.GetVoice();
-			System.out.println(new JSONArray(reslut));
-        }
-        else if(cli.hasOption("getvoicesynthesis")){
-			List<VoiceSynthesis> reslut = api.GetVoiceSynthesis();
-			System.out.println(new JSONArray(reslut));
-        }
-        else if(cli.hasOption("getvoicesynthesisbyid")){
-			String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
-			if(voiceSynthesisId == null){
-				System.out.println("Please enter Voice Synthesis Id");
-			}
-			VoiceSynthesis reslut = api.GetVoiceSynthesis(UUID.fromString(voiceSynthesisId));
-			System.out.println(new JSONObject(reslut));
 		}
-		else if(cli.hasOption("delete")){
-			String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
-			if(voiceSynthesisId == null){
-				System.out.println("Please enter Voice Synthesis Id");
-			}
-			api.DeleteSynthesis(UUID.fromString(voiceSynthesisId));
+		catch (Exception e) {
+			System.out.println("Request failed, wrong parameter or request timed out, please check the parameters and try again.");
+			return ;
 		}
-		else{
-			System.out.println("Please enter the action you need to perform");
-		}
-
+		
 		return;
 	}
 
