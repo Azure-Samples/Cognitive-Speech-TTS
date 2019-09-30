@@ -74,6 +74,7 @@ class TextToSpeech(object):
                 print("\nStatus code: " + str(response.status_code) + "\nYour TTS is ready for playback.\n")
         else:
             print("\nStatus code: " + str(response.status_code) + "\nSomething went wrong. Check your subscription key and headers.\n")
+            print("Reason: " + str(response.reason) + "\n")
 
     def get_voices_list(self):
         base_url = 'https://westus.tts.speech.microsoft.com/'
