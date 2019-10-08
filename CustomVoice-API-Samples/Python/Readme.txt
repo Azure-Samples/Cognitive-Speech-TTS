@@ -5,11 +5,17 @@ Usage guide:
 1.Check the help of the tool:
 python voiceclient.py -h
 
-2.Get available voice list:
+2.Get submitted voice synthesis list:
+python voiceclient.py --syntheses -region centralindia -key your_key_here
+
+3.Get available voice list:
 python voiceclient.py --voices -region centralindia -key your_key_here
 
-3.Submit a voice synthesis request:
+4.Submit a voice synthesis request:
 python voiceclient.py --submit -region centralindia -key your_key_here -file zh-CN.txt -locale zh-CN -voiceId voice_id_here -format riff-16khz-16bit-mono-pcm --concatenateResult
+
+5.Delete submitted voice synthesis requests:
+python voiceclient.py --delete -region centralindia -key your_key_here -synthesisId id1 id2 id3 id4
 
 Note:
 a.The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one zh-CN.txt, and should be more than 50 lines.

@@ -14,9 +14,11 @@ parser = argparse.ArgumentParser(description='Cris client tool to submit voice s
 parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
 parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
+parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
 parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
-parser.add_argument('-file', action="store",  dest="file", help='the input text file path')
+parser.add_argument('-file', action="store",  dest="file", help='the input text script file path')
 parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
+parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
 parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
 parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
 parser.add_argument('-key', action="store", dest="key", required=True, help='the cris subscription key, like ff1eb62d06d34767bda0207acb1da7d7 ')
@@ -41,15 +43,24 @@ def getVoices():
     voices = json.loads(response.text)
     return voices
 
+def deleteSynthesis(ids):
+	for id in ids:
+		print("delete voice synthesis %s " % id)
+		response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+		if (response.status_code == 204):
+			print("delete successful")
+		else:
+			print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
 
 def submitSynthesis():
-    filename=ntpath.basename(args.file)
     modelList = args.voiceId
     data={'name': 'simple test', 'description': 'desc...', 'models': json.dumps(modelList), 'locale': args.locale, 'outputformat': args.format}
     if args.concatenateResult:
         properties={'ConcatenateResult': 'true'}
         data['properties'] = json.dumps(properties)
-    files = {'script': (filename, open(args.file, 'rb'), 'text/plain')}
+    if args.file is not None:
+	    scriptfilename=ntpath.basename(args.file)
+	    files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
         location = response.headers['Operation-Location']
@@ -72,7 +83,10 @@ if args.syntheses:
     synthese = getSubmittedSyntheses()
     print("There are %d synthesis requests submitted:" % len(synthese))
     for synthesis in synthese:
-        print (synthesis['name'])
+        print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
+
+if args.delete:
+	deleteSynthesis(args.synthesisId)
 
 if args.submit:
     id = submitSynthesis()
