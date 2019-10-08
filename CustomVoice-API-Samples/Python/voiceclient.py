@@ -44,13 +44,13 @@ def getVoices():
     return voices
 
 def deleteSynthesis(ids):
-	for id in ids:
-		print("delete voice synthesis %s " % id)
-		response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-		if (response.status_code == 204):
-			print("delete successful")
-		else:
-			print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
+    for id in ids:
+        print("delete voice synthesis %s " % id)
+        response = requests.delete(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+        if (response.status_code == 204):
+            print("delete successful")
+        else:
+            print("delete failed, response.status_code: %d, response.text: %s " % (response.status_code, response.text))
 
 def submitSynthesis():
     modelList = args.voiceId
