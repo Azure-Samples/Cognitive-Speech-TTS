@@ -21,7 +21,14 @@ class SpeechSynthesizerFactory
             ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_LOCAL_KEY);
             static auto endpoint =
             ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_LOCAL_ENDPOINT);
-            speechConfig = SpeechConfig::FromEndpoint(endpoint, localKey);
+            if(localKey.empty())
+            {
+                speechConfig = SpeechConfig::FromEndpoint(endpoint);
+            }
+            else
+            {
+                speechConfig = SpeechConfig::FromEndpoint(endpoint, localKey);
+            }
         }
         else
         {
@@ -32,10 +39,21 @@ class SpeechSynthesizerFactory
 
             speechConfig = SpeechConfig::FromSubscription(subscriptionKey, region); // create from subscription
         }
-        
+
         speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw16Khz16BitMonoPcm);
-        speechConfig->SetSpeechSynthesisVoiceName(
-        "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)");
+        static auto locale =
+        ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_LOCALE);
+        if(!locale.empty())
+        {
+            speechConfig->SetSpeechSynthesisLanguage(locale);
+        }
+        static auto voiceName =
+        ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_VOICE_NAME);
+        if(!voiceName.empty())
+        {
+            speechConfig->SetSpeechSynthesisVoiceName(voiceName);
+        }
+
         return SpeechSynthesizer::FromConfig(speechConfig, nullptr);
     }
 
