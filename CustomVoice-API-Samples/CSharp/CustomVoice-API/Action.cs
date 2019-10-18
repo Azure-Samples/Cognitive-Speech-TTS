@@ -4,6 +4,7 @@
     {
         get,
         getbyprojectid,
+        getbysynthesisid,
         create,
         delete,
         uploaddataset,

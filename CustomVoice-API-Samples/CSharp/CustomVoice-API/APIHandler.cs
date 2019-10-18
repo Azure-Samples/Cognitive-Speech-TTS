@@ -155,6 +155,9 @@ namespace CustomVoice_API
                 case Action.get:
                     BatchSynthesisGet(arguments);
                     break;
+                case Action.getbysynthesisid:
+                    BatchSynthesisGetById(arguments);
+                    break;
                 case Action.getvoices:
                     BatchSynthesisGetvoices(arguments);
                     break;
@@ -555,6 +558,16 @@ namespace CustomVoice_API
             DisplayResult<API.DTO.BatchSynthesis>(result);
         }
 
+        private static void BatchSynthesisGetById(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            string batchSynthesisId = arguments["batchsynthesisid"];
+
+            var result = BatchSynthesis.GetById(subscriptionKey, hostURI, batchSynthesisId);
+            DisplaySingleResult(result, "  ");
+        }
+
         private static void BatchSynthesisGetvoices(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
@@ -608,13 +621,14 @@ namespace CustomVoice_API
             }
 
             var modelsList = new List<string>(models.Split(';')).Select(x => new Guid(x)).ToList();
-            if (BatchSynthesis.Create(subscriptionKey, hostURI, name, description, inputTextPath, locale, modelsList, outputFormat, isConcatenateResult))
+            var synthesisId = BatchSynthesis.Create(subscriptionKey, hostURI, name, description, inputTextPath, locale, modelsList, outputFormat, isConcatenateResult);
+            if (string.IsNullOrEmpty(synthesisId))
             {
-                Console.WriteLine("Create batch synthesis successfully");
+                Console.WriteLine("Create batch synthesis failed");
             }
             else
             {
-                Console.WriteLine("Create batch synthesis failed");
+                Console.WriteLine($"Create batch synthesis successfully, ID : {synthesisId}");
             }
         }
 
