@@ -4,17 +4,27 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace CustomVoice_API.API
 {
     class BatchSynthesis
     {
+        private const string OneAPIOperationLocationHeaderKey = "Operation-Location";
+
         public static IEnumerable<DTO.BatchSynthesis> Get(string subscriptionKey, string hostURI)
         {
             string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_Get);
             return APIHelper.Get<IEnumerable<DTO.BatchSynthesis>>(subscriptionKey, url);
+        }
+
+        public static DTO.BatchSynthesis GetById(string subscriptionKey, string hostURI, string batchSynthesisId)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_ById, batchSynthesisId);
+            return APIHelper.Get<DTO.BatchSynthesis>(subscriptionKey, url);
         }
 
         public static IEnumerable<DTO.Voice> Getvoices(string subscriptionKey, string hostURI)
@@ -25,7 +35,7 @@ namespace CustomVoice_API.API
 
         public static bool DeleteById(string subscriptionKey, string hostURI, string batchSynthesisId)
         {
-            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_DeleteById, batchSynthesisId);
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_ById, batchSynthesisId);
             var response = APIHelper.Delete(subscriptionKey, url);
             if (response.StatusCode != HttpStatusCode.NoContent)
             {
@@ -36,7 +46,7 @@ namespace CustomVoice_API.API
             return true;
         }
 
-        public static bool Create(string subscriptionKey, string hostURI, string name, string description,
+        public static string Create(string subscriptionKey, string hostURI, string name, string description,
             string inputTextPath, string locale, IEnumerable<Guid> models, string outputFormat, bool isConcatenateResult)
         {
             var properties = new Dictionary<string, string>();
@@ -56,7 +66,7 @@ namespace CustomVoice_API.API
             return Create(subscriptionKey, hostURI, batchSynthesisDefinition);
         }
 
-        private static bool Create(string subscriptionKey, string hostURI, BatchSynthesisDefinition batchSynthesisDefinition)
+        private static string Create(string subscriptionKey, string hostURI, BatchSynthesisDefinition batchSynthesisDefinition)
         {
             string scriptName = Path.GetFileName(batchSynthesisDefinition.InputTextPath);
 
@@ -98,10 +108,30 @@ namespace CustomVoice_API.API
                 if (response.StatusCode != HttpStatusCode.Accepted)
                 {
                     APIHelper.PrintErrorMessage(response);
-                    return false;
+                    return null;
                 }
-                return true;
+
+                var returnUrl = GetLocationFromPostResponse(response);
+                if (returnUrl != null)
+                {
+                    return new Guid(returnUrl.ToString().Split('/').LastOrDefault()).ToString();
+                }
+                return null;
             }
+        }
+
+        private static Uri GetLocationFromPostResponse(HttpResponseMessage response)
+        {
+            IEnumerable<string> headerValues;
+            if (response.Headers.TryGetValues(OneAPIOperationLocationHeaderKey, out headerValues))
+            {
+                if (headerValues.Any())
+                {
+                    return new Uri(headerValues.First());
+                }
+            }
+
+            return response.Headers.Location;
         }
     }
 }

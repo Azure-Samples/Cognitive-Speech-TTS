@@ -144,6 +144,8 @@ namespace CustomVoice_API
                     Console.WriteLine("--action");
                     Console.WriteLine(" Get");
                     Console.WriteLine("     Gets a list of voice synthesis under the selected subscription.");
+                    Console.WriteLine(" GetBySynthesisId");
+                    Console.WriteLine("     Gets a voice synthesis under the selected subscription with specific ID.");
                     Console.WriteLine(" GetVoices");
                     Console.WriteLine("     Gets a list of supported voices for offline synthesis.");
                     Console.WriteLine(" Create");
@@ -382,6 +384,12 @@ namespace CustomVoice_API
                     actionString = "batchsynthesis get";
                     description = "Gets a list of voice synthesis under the selected subscription.";
                     sampleCommand = "CustomVoice-API batchsynthesis get subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/";
+                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
+                    break;
+                case Action.getbysynthesisid:
+                    actionString = "batchsynthesis getbysynthesisid";
+                    description = "Gets a voice synthesis under the selected subscription by specific ID.";
+                    sampleCommand = "CustomVoice-API batchsynthesis getbysynthesisid subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ batchSynthesisId [BatchSynthesisId]";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.getvoices:

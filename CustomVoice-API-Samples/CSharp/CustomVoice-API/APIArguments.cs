@@ -214,6 +214,12 @@ namespace CustomVoice_API
                         OptionalParameters = new List<string>();
                         break;
                     }
+                case nameof(APIKind.batchsynthesis) + "-" + nameof(Action.getbysynthesisid):
+                    {
+                        RequiredParameters = new List<string>() { "subscriptionKey", "hostURI", "batchSynthesisId" };
+                        OptionalParameters = new List<string>();
+                        break;
+                    }
                 case nameof(APIKind.endpoint) + "-" + nameof(Action.delete):
                     {
                         RequiredParameters = new List<string>() { "subscriptionKey", "hostURI", "endpointId" };
