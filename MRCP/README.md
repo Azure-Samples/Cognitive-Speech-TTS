@@ -153,7 +153,7 @@ Then, run following script to start the UniMRCP server:
 *Note: it's better to use the host network to run the container, for easy configuration and high network efficiency.*
 
   ```shell
-  docker run -dt -v ~/conf:/usr/local/unimrcp/conf --network=host unimrcp_ms:latest --name unimrcp_ms
+  docker run -dt -v ~/conf:/usr/local/unimrcp/conf --network=host --name unimrcp_ms unimrcp_ms:latest
   ```
 
 The `~/conf` folder contains configure files of UniMRCP and the Microsoft plugins. You can find the sample configure files in `sample-conf` of this project.

@@ -20,6 +20,9 @@ struct Common
     static constexpr const char* TTS_LOCAL_KEY = "tts_local_key";
     static constexpr const char* TTS_LOCALE = "tts_locale";
     static constexpr const char* TTS_VOICE_NAME = "tts_voice_name";
+    static constexpr const char* TTS_SAMPLE_RATE = "tts_sample_rate";
+    static constexpr const char* TTS_EXTRA_ENABLE_PROPERTY =
+    "tts_extra_enable_property";
 };
 
 } // namespace speechlib

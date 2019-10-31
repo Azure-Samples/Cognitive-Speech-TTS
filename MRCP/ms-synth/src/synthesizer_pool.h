@@ -1,6 +1,7 @@
 #pragma once
 
 #include "common.h"
+#include "apt_log.h"
 #include "config_manager.h"
 #include "speechapi_cxx.h"
 #include <Poco/ObjectPool.h>
@@ -29,6 +30,11 @@ class SpeechSynthesizerFactory
             {
                 speechConfig = SpeechConfig::FromEndpoint(endpoint, localKey);
             }
+            auto extra_property = ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_EXTRA_ENABLE_PROPERTY);
+            if(!extra_property.empty())
+            {
+                speechConfig->SetProperty(extra_property, "true");
+            }
         }
         else
         {
@@ -40,7 +46,21 @@ class SpeechSynthesizerFactory
             speechConfig = SpeechConfig::FromSubscription(subscriptionKey, region); // create from subscription
         }
 
-        speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw16Khz16BitMonoPcm);
+        auto sampleRate = ConfigManager::GetIntValue(Common::SPEECH_SECTION, Common::TTS_SAMPLE_RATE);
+
+        if(16000 == sampleRate)
+        {
+            speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw16Khz16BitMonoPcm);
+        }
+        else
+        {
+            if(8000 != sampleRate)
+            {
+                apt_log(APT_LOG_MARK, APT_PRIO_WARNING, "Configured sample rate %d is not 8k or 16k, use default value.", sampleRate);
+            }
+            speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw8Khz16BitMonoPcm);
+        }
+
         static auto locale =
         ConfigManager::GetStrValue(Common::SPEECH_SECTION, Common::TTS_LOCALE);
         if(!locale.empty())
