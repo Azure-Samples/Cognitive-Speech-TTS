@@ -1,36 +1,36 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// 有关程序集的一般信息由以下
-// 控制。更改这些特性值可修改
-// 与程序集关联的信息。
-[assembly: AssemblyTitle("ConsoleApp1")]
+// General Information about an assembly is controlled through the following
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("CustomVoice-API")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleApp1")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyProduct("CustomVoice-API")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// 将 ComVisible 设置为 false 会使此程序集中的类型
-//对 COM 组件不可见。如果需要从 COM 访问此程序集中的类型
-//请将此类型的 ComVisible 特性设置为 true。
+// Setting ComVisible to false makes the types in this assembly not visible
+// to COM components.  If you need to access a type in this assembly from
+// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
 
-// 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("52afec63-b3eb-4a35-951e-b4bd5eee3c49")]
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("7025794d-3dee-485d-b6f9-3de255543eed")]
 
-// 程序集的版本信息由下列四个值组成: 
+// Version information for an assembly consists of the following four values:
 //
-//      主版本
-//      次版本
-//      生成号
-//      修订号
+//      Major Version
+//      Minor Version
+//      Build Number
+//      Revision
 //
-// 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
-// 方法是按如下所示使用“*”: :
+// You can specify all the values or you can default the Build and Revision Numbers
+// by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
