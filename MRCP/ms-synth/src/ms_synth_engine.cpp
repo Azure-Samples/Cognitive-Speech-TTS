@@ -235,7 +235,7 @@ ms_synth_engine_channel_create(mrcp_engine_t* engine, apr_pool_t* pool)
 
     capabilities = mpf_source_stream_capabilities_create(pool);
     // use 16kHz
-    mpf_codec_capabilities_add(&capabilities->codecs, MPF_SAMPLE_RATE_16000, "LPCM");
+    mpf_codec_capabilities_add(&capabilities->codecs, MPF_SAMPLE_RATE_8000 | MPF_SAMPLE_RATE_16000, "LPCM");
 
     /* create media termination */
     termination =
@@ -344,8 +344,6 @@ static apt_bool_t ms_synth_channel_speak(mrcp_engine_channel_t* channel,
                                          mrcp_message_t* request,
                                          mrcp_message_t* response)
 {
-
-
     apt_log(APT_LOG_MARK, APT_PRIO_INFO, "TTS service start to process speak request");
     apt_str_t* body;
 
@@ -357,6 +355,16 @@ static apt_bool_t ms_synth_channel_speak(mrcp_engine_channel_t* channel,
     {
         apt_log(SYNTH_LOG_MARK, APT_PRIO_WARNING, "Failed to Get Codec Descriptor " APT_SIDRES_FMT,
                 MRCP_MESSAGE_SIDRES(request));
+        response->start_line.status_code = MRCP_STATUS_CODE_METHOD_FAILED;
+
+        return FALSE;
+    }
+
+    auto configSampleRate = ConfigManager::GetIntValue(Common::SPEECH_SECTION, Common::TTS_SAMPLE_RATE);
+
+    if(descriptor->sampling_rate != configSampleRate)
+    {
+        apt_log(SYNTH_LOG_MARK, APT_PRIO_WARNING, "The sample rate in codec descriptor mismatch with the one in config.");
         response->start_line.status_code = MRCP_STATUS_CODE_METHOD_FAILED;
 
         return FALSE;
