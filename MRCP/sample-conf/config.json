@@ -12,6 +12,6 @@
     "tts_locale": "",
     "tts_voice_name": "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
     "tts_extra_enable_property": "",
-    "tts_sample_rate": 16000
+    "tts_sample_rate": 8000
   }
 }
