@@ -64,7 +64,7 @@ Edit `unimrcp.conf.xml` in `FS_ROOT/conf/autoload_configs`. Change the value of 
 </configuration>
   ```
 
-### Dailplan
+### Dialplan
 
 Add `02_unimrcp_test.xml` in `FS_ROOT/conf/dialplan/default`.
 
@@ -100,8 +100,8 @@ Add `mrcp_test.lua` in `FS_ROOT/scripts`.
 
 ## Run test
 
-* start FreeSwitch, then type `load mod_unimrcp` in FreeSWITCH console to load MRCP module.
-* Use a SIP client (eg. [X-Lite](https://www.counterpath.com/x-lite/)) to log in the FreeSWITCH and dial `5011` for test.
+* Start FreeSwitch, then type `load mod_unimrcp` in FreeSWITCH console to load MRCP module.
+* Use a SIP client to log in the FreeSWITCH and dial `5011` for test.
 
 ## Reference
 
