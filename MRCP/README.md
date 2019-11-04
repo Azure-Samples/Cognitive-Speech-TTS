@@ -91,7 +91,7 @@ This sample demonstrates how to use cognitive speech service (both SR and TTS) i
 
 ## Run the sample
 
-* Edit the `unimrcpserver.xml` config file (in `/usr/local/unimrcp/conf` on Linux and `Porject_folder\x64\Release\conf`).
+* Edit the `unimrcpserver.xml` config file (in `/usr/local/unimrcp/conf` on Linux and `Project_folder\x64\Release\conf`).
 
   * In `<plugin-factory>` section, add configure for the plugins, and disable demo plugins:
 
@@ -136,7 +136,7 @@ Run the application:
 
 ### On Windows
 
-Run the executable file `Porject_folder\x64\Release\bin\unimrcpserver.exe`.
+Run the executable file `Project_folder\x64\Release\bin\unimrcpserver.exe`.
 
 ## Build and Run with docker
 
@@ -166,7 +166,7 @@ In `umc` console, type `run recog` and `run synth` for testing SR and TTS, respe
 
 *Tips: remember to correct configurations for codec. The configs in `sample-conf` are tested, you can use them after configuring the IP.*
 
-If you want to test the performance of the MRCP as well as the plugins, a easy way is to adopt `umc` to call SR/TTS continuously and concurrently.
+If you want to test the performance of the MRCP as well as the plugins, an easy way is to adopt `umc` to call SR/TTS continuously and concurrently.
 Change the `UmcConsole::RunCmdLine()` method in `umcconsole.cpp` with
 
   ```c++
@@ -187,8 +187,7 @@ Also append `#include <thread>` and `#include <chrono>` in the header.
 You can change the repeat time and interval to run your own test.
 Then, you can use the python scripts in `test_scripts` to analyze the log file to get the latency.
 
-
-Alternatively, you can use FreeSWITCH to make a real call to test the plugins. See [this]("./test_with_freeswitch.md) for details.
+Alternatively, you can use FreeSWITCH to make a real call to test the plugins. See [this](test_with_freeswitch.md) for details.
 
 ## References
 
