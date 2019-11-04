@@ -105,8 +105,8 @@
         <time-skew-detection>1</time-skew-detection>
       </jitter-buffer>
       <ptime>20</ptime>
-      <codecs>PCMU/97/16000 PCMA/98/16000 L16/99/16000 PCMU PCMA L16/96/8000 telephone-event/101/8000</codecs>
-      <!-- <codecs>PCMU PCMA L16/96/8000 PCMU/97/16000 PCMA/98/16000 L16/99/16000</codecs> -->
+      <!-- <codecs>PCMU/97/16000 PCMA/98/16000 L16/99/16000 PCMU PCMA L16/96/8000 telephone-event/101/8000</codecs> -->
+      <codecs>PCMU PCMA telephone-event/101/8000</codecs>
       <!-- Enable/disable RTCP support -->
       <rtcp enable="false">
         <!--
