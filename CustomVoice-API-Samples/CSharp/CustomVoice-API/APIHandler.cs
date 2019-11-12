@@ -383,6 +383,7 @@ namespace CustomVoice_API
             string description = name;
             bool isNeuralTTS = false;
             bool isMixlingual = false;
+            Dictionary<string, string> neuralProperties = null;
 
             if (arguments.Keys.ToList().Contains("description"))
             {
@@ -392,6 +393,37 @@ namespace CustomVoice_API
             if (arguments.Keys.ToList().Contains("isneuraltts"))
             {
                 isNeuralTTS = Convert.ToBoolean(arguments["isneuraltts"]);
+                neuralProperties = new Dictionary<string, string>();
+
+                if (arguments.Keys.Contains("purpose"))
+                {
+                    neuralProperties.Add("Purpose", arguments["purpose"]);
+                }
+
+                if (arguments.Keys.Contains("am"))
+                {
+                    neuralProperties.Add("Am", arguments["am"]);
+                }
+
+                if (arguments.Keys.Contains("amsteps"))
+                {
+                    neuralProperties.Add("AmSteps", arguments["amsteps"]);
+                }
+
+                if (arguments.Keys.Contains("amcheckpointinterval"))
+                {
+                    neuralProperties.Add("AmCheckpointInterval", arguments["amcheckpointinterval"]);
+                }
+
+                if (arguments.Keys.Contains("vocodersteps"))
+                {
+                    neuralProperties.Add("VocoderSteps", arguments["vocodersteps"]);
+                }
+
+                if (arguments.Keys.Contains("vocodercheckpointinterval"))
+                {
+                    neuralProperties.Add("VocoderCheckpointInterval", arguments["vocodercheckpointinterval"]);
+                }
             }
 
             if (arguments.Keys.ToList().Contains("ismixlingual"))
@@ -400,7 +432,7 @@ namespace CustomVoice_API
             }
 
             var datasetList = new List<string>(dataset.Split(';')).Select(x => API.DTO.Identity.Create(new Guid(x))).ToList();
-            if (Model.Create(subscriptionKey, hostURI, name, description, new Guid(projectId), gender, locale, datasetList, isNeuralTTS, isMixlingual))
+            if (Model.Create(subscriptionKey, hostURI, name, description, new Guid(projectId), gender, locale, datasetList, isNeuralTTS, isMixlingual, neuralProperties))
             {
                 Console.WriteLine("Create model successfully");
             }

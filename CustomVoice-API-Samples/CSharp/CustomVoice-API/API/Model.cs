@@ -34,7 +34,8 @@ namespace CustomVoice_API.API
         }
 
         public static bool Create(string subscriptionKey, string hostURI, string name, string description,
-            Guid projectId, string gender, string locale,  List<Identity> dataset,  bool isNeuralTTS, bool isMixlingual)
+            Guid projectId, string gender, string locale,  List<Identity> dataset,  bool isNeuralTTS, bool isMixlingual,
+            IDictionary<string, string> neuralProperties)
         {
             var properties = new Dictionary<string, string>();
             properties.Add("Gender", gender.Substring(0, 1).ToUpper() + gender.Substring(1));
@@ -52,6 +53,10 @@ namespace CustomVoice_API.API
             if (isNeuralTTS)
             {
                 properties.Add("VoiceModelKind", "NeuralTts");
+                foreach (var neuralProperty in neuralProperties)
+                {
+                    properties.Add(neuralProperty.Key, neuralProperty.Value);
+                }
             }
 
             var modelDefinition = ModelDefinition.Create(
