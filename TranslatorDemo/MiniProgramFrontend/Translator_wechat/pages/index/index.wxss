@@ -1,0 +1,345 @@
+.top-container {
+    height: 140rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.play-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width: 304rpx;
+    position: relative;
+}
+
+.play-btn .play-frame {
+    width: 304rpx;
+    height: 60rpx;
+}
+
+.play-btn .play-core {
+    width: 24rpx;
+    height: 28rpx;
+    position: absolute;
+    left: 110rpx;
+}
+
+.play-btn .playing-core {
+    width: 19rpx;
+    height: 28rpx;
+    position: absolute;
+    left: 110rpx;
+}
+
+.play-btn .sound-wave {
+    width: 46rpx;
+    height: 20rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 8rpx;
+    position: absolute;
+    left: 148rpx;
+}
+
+.play-btn .sound-wave .bar {
+    display: block;
+    width: 2rpx;
+    border-radius: 10rpx;
+    margin-right: 1rpx;
+    height: 20rpx;
+    background: white;
+    animation: sound 0ms -780ms linear infinite alternate;
+    transition: height 1s;
+}
+
+.play-btn .play-text {
+    width: 48rpx;
+    height: 28rpx;
+    display: flex;
+    align-items: center;
+    margin: 0 8rpx;
+    color: white;
+    position: absolute;
+    left: 142rpx;
+    font-size: 25rpx
+}
+
+.play-btn .bar:nth-child(1) {
+    height: 2rpx;
+    animation-duration: 580ms;
+}
+
+.play-btn .bar:nth-child(2) {
+    height: 4rpx;
+    animation-duration: 600ms;
+}
+
+.play-btn .bar:nth-child(3) {
+    height: 6rpx;
+    animation-duration: 620ms;
+}
+
+.play-btn .bar:nth-child(4) {
+    height: 8rpx;
+    animation-duration: 640ms;
+}
+
+.play-btn .bar:nth-child(5) {
+    height: 10rpx;
+    animation-duration: 660ms;
+}
+
+.result-container {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.result{
+    margin-left: 10vh;
+    margin-right: 10vh;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.result text{
+    margin-top: 5vh;
+    font-size: 30rpx;
+    text-align: center;
+}
+
+.line {
+    width: 300rpx;
+    height: 3rpx;
+    background-color: #1158d413;
+}
+
+.body-view{
+  text-align:right;
+  margin-right: 3vh;
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+radio {
+  transform:scale(0.7);
+}
+
+.record-container {
+    margin: 24rpx 0 65rpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.record-container button {
+    padding: 0;
+    border-style: none;
+    background-color: transparent;
+    line-height: 0;
+    box-shadow: 1px 8px 15px rgba(43,50,59,0.156);
+    border-radius: 50%;
+}
+
+.record-container button::after {
+    border: none;
+}
+
+.record-container button .record-button-img {
+    width: 136rpx;
+    height: 136rpx;
+}
+
+.record-container .record-circle-inside {
+    width: 176rpx;
+    height: 176rpx;
+    position: absolute;
+    top: -20rpx;
+    animation: circle-animate 1s infinite linear;
+}
+
+.record-container .record-circle-outside {
+    width: 226rpx;
+    height: 226rpx;
+    position: absolute;
+    top: -44rpx;
+    animation: circle-animate 1.5s infinite linear;
+}
+.record-container .waves,.record-container .waves-1,.record-container .waves-2 {
+    position: absolute;
+    top: 68rpx;
+    width: 1rpx;
+    height: 1rpx;
+    border-radius: 50%;
+}
+
+.record-container .waves:before {
+    position: absolute;
+    background: #115ad4;
+    width: 132rpx;
+    height: 132rpx;
+    left: -65rpx;
+    top: -65rpx;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    animation: wave-animate 3s infinite ease-out;
+}
+
+.record-container .waves:after {
+    position: absolute;
+    background: #115ad4;
+    width: 132rpx;
+    height: 132rpx;
+    left: -65rpx;
+    top: -65rpx;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    animation: wave-animate 3s 0.75s infinite ease-out;
+}
+
+.record-container .waves-1:before {
+    position: absolute;
+    background: #115ad4;
+    width: 132rpx;
+    height: 132rpx;
+    left: -65rpx;
+    top: -65rpx;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    animation: wave-animate 3s 1.5s infinite ease-out;
+}
+
+.record-container .waves-1:after {
+    position: absolute;
+    background: #115ad4;
+    width: 132rpx;
+    height: 132rpx;
+    left: -65rpx;
+    top: -65rpx;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+    animation: wave-animate 3s 2.25s infinite ease-out;
+}
+
+.record-container .waves-2:before {
+    position: absolute;
+    background: #115ad4;
+    width: 132rpx;
+    height: 132rpx;
+    left: -65rpx;
+    top: -65rpx;
+    content: "";
+    display: block;
+    border-radius: 50%;
+    z-index: -1;
+    animation: wave-animate 3s 3s infinite ease-out;
+}
+
+.record-container .circle-loading {
+    width: 300px;
+    height: 300px;
+    background: blue;
+    border-radius: 50%;
+    mask: radial-gradient(transparent 110px,#000 110px);
+}
+
+.record-container .circle-loading:before {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-radius: 50%;
+}
+
+@-webkit-keyframes wave-animate {
+    0% {
+        transform: scale(0);
+        opacity: 0.25;
+        transform-origin: center;
+    }
+
+    100% {
+        transform: scale(6);
+        opacity: 0;
+        transform-origin: center;
+    }
+}
+
+@keyframes wave-animate {
+    0% {
+        transform: scale(0);
+        opacity: 0.25;
+        transform-origin: center;
+    }
+
+    100% {
+        transform: scale(6);
+        opacity: 0;
+        transform-origin: center;
+    }
+}
+
+@-webkit-keyframes circle-animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle-animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes sound {
+    0% {
+        height: 6rpx;
+    }
+
+    100% {
+        height: 20rpx;
+    }
+}
+
+@keyframes sound {
+    0% {
+        height: 6rpx;
+    }
+
+    100% {
+        height: 20rpx;
+    }
+}

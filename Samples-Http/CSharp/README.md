@@ -1,3 +1,13 @@
+---
+topic: sample
+description: "Demonstrates use of text to speech in Azure Cognitive Services."
+languages:
+- csharp
+products:
+- azure
+- azure-cognitive-services
+---
+
 # How to run the sample
 
 ## Dependency

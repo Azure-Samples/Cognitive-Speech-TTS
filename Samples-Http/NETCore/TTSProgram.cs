@@ -108,7 +108,7 @@ namespace TTSSample
                         new XElement("voice",
                             new XAttribute(XNamespace.Xml + "lang", "en-US"),
                             new XAttribute(XNamespace.Xml + "gender", "Female"),
-                            new XAttribute("name", "Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)"),
+                            new XAttribute("name", "en-US-Jessa24kRUS"), // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)"
                             text)));
 
             using (HttpClient client = new HttpClient())
