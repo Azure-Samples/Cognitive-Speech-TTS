@@ -92,6 +92,8 @@ namespace CustomVoice_API
                     Console.WriteLine("     Add a voice model to a project.");
                     Console.WriteLine(" RemoveFromProject");
                     Console.WriteLine("     Remove a voice model from a project.");
+                    Console.WriteLine(" Copy");
+                    Console.WriteLine("     Copy a model from one location to another.");
                     Console.WriteLine("");
                     Console.WriteLine("For more detailed usage, please enter: CustomVoice-API model [action]");
                     break;
