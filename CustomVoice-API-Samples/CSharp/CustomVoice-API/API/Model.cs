@@ -1,6 +1,6 @@
 ﻿using CustomVoice_API.API.DTO;
+using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
@@ -86,6 +86,10 @@ namespace CustomVoice_API.API
                 return false;
             }
 
+            var content = response.Content.ReadAsStringAsync().Result;
+            var beautifyContent = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
+            Console.WriteLine(beautifyContent);
+
             return true;
         }
 
@@ -100,6 +104,10 @@ namespace CustomVoice_API.API
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            var content = response.Content.ReadAsStringAsync().Result;
+            var beautifyContent = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
+            Console.WriteLine(beautifyContent);
 
             return true;
         }
@@ -116,6 +124,9 @@ namespace CustomVoice_API.API
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            var uri = APIHelper.GetLocationFromPostResponseAsync(response);
+            Console.WriteLine($"Copied model: {uri}");
 
             return true;
         }

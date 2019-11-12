@@ -11,29 +11,36 @@ namespace CustomVoice_API
     {
         public static void ExecuteApi(APIKind apiKind, Action action, Dictionary<string, string> arguments)
         {
-            switch (apiKind)
+            try
             {
-                case APIKind.project:
-                    ExecuteProjectApi(action, arguments);
-                    break;
-                case APIKind.dataset:
-                    ExecuteDatasetApi(action, arguments);
-                    break;
-                case APIKind.model:
-                    ExecuteModelApi(action, arguments);
-                    break;
-                case APIKind.voicetest:
-                    ExecuteVoiceTestApi(action, arguments);
-                    break;
-                case APIKind.endpoint:
-                    ExecuteEndpointApi(action, arguments);
-                    break;
-                case APIKind.batchsynthesis:
-                    ExecuteBatchSynthesisApi(action, arguments);
-                    break;
-                default:
-                    break;
+                switch (apiKind)
+                {
+                    case APIKind.project:
+                        ExecuteProjectApi(action, arguments);
+                        break;
+                    case APIKind.dataset:
+                        ExecuteDatasetApi(action, arguments);
+                        break;
+                    case APIKind.model:
+                        ExecuteModelApi(action, arguments);
+                        break;
+                    case APIKind.voicetest:
+                        ExecuteVoiceTestApi(action, arguments);
+                        break;
+                    case APIKind.endpoint:
+                        ExecuteEndpointApi(action, arguments);
+                        break;
+                    case APIKind.batchsynthesis:
+                        ExecuteBatchSynthesisApi(action, arguments);
+                        break;
+                    default:
+                        break;
 
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine($"Exception: {e.Message}");
             }
         }
 
