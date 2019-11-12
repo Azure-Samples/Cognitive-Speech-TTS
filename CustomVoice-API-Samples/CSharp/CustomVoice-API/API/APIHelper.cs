@@ -62,6 +62,8 @@ namespace CustomVoice_API.API
         {
             Console.WriteLine($"Status Code: {response.StatusCode}");
             Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+            var content = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(content);
         }
     }
 }

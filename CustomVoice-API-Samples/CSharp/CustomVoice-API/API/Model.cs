@@ -1,5 +1,6 @@
 ﻿using CustomVoice_API.API.DTO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
@@ -70,6 +71,36 @@ namespace CustomVoice_API.API
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+            return true;
+        }
+
+        public static bool AddToProject(string subscriptionKey, string hostURI, Guid projectId, Guid modelId)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_AddToProject, projectId);
+            var modelsToAdd = new List<Identity> { Identity.Create(modelId) };
+            var response = APIHelper.Submit(subscriptionKey, url, modelsToAdd);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                APIHelper.PrintErrorMessage(response);
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool RemoveFromProject(string subscriptionKey, string hostURI, Guid projectId, Guid modelId)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_RemoveFromProject, projectId);
+            var modelsToAdd = new List<Identity> { Identity.Create(modelId) };
+            var response = APIHelper.Submit(subscriptionKey, url, modelsToAdd);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                APIHelper.PrintErrorMessage(response);
+                return false;
+            }
+
             return true;
         }
     }

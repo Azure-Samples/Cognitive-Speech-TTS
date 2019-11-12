@@ -28,6 +28,8 @@
         public static string VoiceModels_GetByProjectId => VoiceModels_Base + "/project/{0}";
         public static string VoiceModels_Create => VoiceModels_Base;
         public static string VoiceModels_DeleteById => VoiceModels_Base + "/{0}";
+        public static string VoiceModels_AddToProject => VoiceModels_Base + "/project/{0}/add";
+        public static string VoiceModels_RemoveFromProject => VoiceModels_Base + "/project/{0}/remove";
 
         //Voice Tests
         private static string VoiceTests_Base => TextToSpeechBasePath_V3_beta1 + "tests";
