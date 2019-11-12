@@ -167,7 +167,7 @@ namespace CustomVoice_API
                 case nameof(APIKind.model) + "-" + nameof(Action.create):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, ProjectId, Gender, Locale, DatasetIdList };
-                        OptionalParameters = new List<string>() { Description, "isNeuralTTS", "isMixlingual" };
+                        OptionalParameters = new List<string>() { Description, "isNeuralTTS", "isMixlingual", "purpose", "am", "amSteps", "amCheckpointInterval", "vocoderSteps", "vocoderCheckpointInterval" };
                         break;
                     }
                 case nameof(APIKind.model) + "-" + nameof(Action.get):
