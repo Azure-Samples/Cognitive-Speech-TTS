@@ -395,7 +395,7 @@ namespace CustomVoice_API
             string projectId = arguments["projectid"];
             string gender = arguments["gender"];
             string locale = arguments["locale"];
-            string dataset = arguments["dataset"];
+            string dataset = arguments["datasetidlist"];
             string description = name;
             bool isNeuralTTS = false;
             bool isMixlingual = false;
