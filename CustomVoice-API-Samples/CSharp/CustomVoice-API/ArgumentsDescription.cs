@@ -309,6 +309,12 @@ namespace CustomVoice_API
                     sampleCommand = "CustomVoice-API model removefromproject subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -projectId [ProjectId]";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
+                case Action.copy:
+                    actionString = "model copy";
+                    description = "Copy a model from one location to another. If the target subcription key belongs to a subscription created for another location, the model will be copied to that location.";
+                    sampleCommand = "CustomVoice-API model copy subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -targetSubscriptionKey [targetSubscriptionKey]";
+                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
+                    break;
                 default:
                     break;
             }

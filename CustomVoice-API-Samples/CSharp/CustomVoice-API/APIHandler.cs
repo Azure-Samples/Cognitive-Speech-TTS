@@ -104,6 +104,9 @@ namespace CustomVoice_API
                 case Action.removefromproject:
                     ModelRemoveFromProject(arguments);
                     break;
+                case Action.copy:
+                    ModelCopy(arguments);
+                    break;
                 default:
                     break;
             }
@@ -447,6 +450,23 @@ namespace CustomVoice_API
             else
             {
                 Console.WriteLine("Remove model from project failed");
+            }
+        }
+
+        private static void ModelCopy(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            var modelId = new Guid(arguments["modelid"]);
+            var targetSubscriptionKey = arguments["targetsubscriptionkey"];
+
+            if (Model.Copy(subscriptionKey, hostURI, modelId, targetSubscriptionKey))
+            {
+                Console.WriteLine("Copy model succeeded");
+            }
+            else
+            {
+                Console.WriteLine("Copy model failed");
             }
         }
 

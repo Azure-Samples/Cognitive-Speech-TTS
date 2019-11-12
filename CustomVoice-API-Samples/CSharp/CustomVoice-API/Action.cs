@@ -13,6 +13,7 @@
         uploaddatasetwithlongaudio,
         uploaddatasetwithaudioonly,
         call,
-        getvoices
+        getvoices,
+        copy,
     }
 }

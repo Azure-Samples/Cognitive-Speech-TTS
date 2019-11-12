@@ -103,5 +103,21 @@ namespace CustomVoice_API.API
 
             return true;
         }
+
+        public static bool Copy(string subscriptionKey, string hostURI, Guid modelId, string targetSubscriptionKey)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_Copy, modelId);
+            const string targetSubscriptionKeyName = "targetSubscriptionKey";
+            var payload = new Dictionary<string, string> { { targetSubscriptionKeyName, targetSubscriptionKey } };
+            var response = APIHelper.Submit(subscriptionKey, url, payload);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                APIHelper.PrintErrorMessage(response);
+                return false;
+            }
+
+            return true;
+        }
     }
 }
