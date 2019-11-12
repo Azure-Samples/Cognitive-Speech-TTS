@@ -3,8 +3,8 @@
     public class API_V3
     {
 
-        private static string CommonPath_V3_beta1 => "api/common/v3.0-beta1/";
-        private static string TextToSpeechBasePath_V3_beta1 => "api/texttospeech/v3.0-beta1/";
+        private static string CommonPath_V3_beta1 => "/api/common/v3.0-beta1/";
+        private static string TextToSpeechBasePath_V3_beta1 => "/api/texttospeech/v3.0-beta1/";
         private static string speechtotextBasePath_V3_beta1 => "api/speechtotext/v3.0-beta1/";
 
         //Voice Project
@@ -28,6 +28,9 @@
         public static string VoiceModels_GetByProjectId => VoiceModels_Base + "/project/{0}";
         public static string VoiceModels_Create => VoiceModels_Base;
         public static string VoiceModels_DeleteById => VoiceModels_Base + "/{0}";
+        public static string VoiceModels_AddToProject => VoiceModels_Base + "/project/{0}/add";
+        public static string VoiceModels_RemoveFromProject => VoiceModels_Base + "/project/{0}/remove";
+        public static string VoiceModels_Copy => VoiceModels_Base + "/{0}/copy";
 
         //Voice Tests
         private static string VoiceTests_Base => TextToSpeechBasePath_V3_beta1 + "tests";
