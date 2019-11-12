@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -62,6 +64,28 @@ namespace CustomVoice_API.API
         {
             Console.WriteLine($"Status Code: {response.StatusCode}");
             Console.WriteLine($"Status ReasonPhrase: {response.ReasonPhrase}");
+            var content = response.Content.ReadAsStringAsync().Result;
+            Console.WriteLine(content);
+        }
+
+        public static Uri GetLocationFromPostResponseAsync(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+
+            const string OneAPIOperationLocationHeaderKey = "Operation-Location";
+            IEnumerable<string> headerValues;
+            if (response.Headers.TryGetValues(OneAPIOperationLocationHeaderKey, out headerValues))
+            {
+                if (headerValues.Any())
+                {
+                    return new Uri(headerValues.First());
+                }
+            }
+
+            return response.Headers.Location;
         }
     }
 }
