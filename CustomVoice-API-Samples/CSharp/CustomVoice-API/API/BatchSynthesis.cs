@@ -7,13 +7,12 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace CustomVoice_API.API
 {
     class BatchSynthesis
     {
-        private const string OneAPIOperationLocationHeaderKey = "Operation-Location";
+        private const string OneAPIOperationLocationHeaderKey = "Location";
 
         public static IEnumerable<DTO.BatchSynthesis> Get(string subscriptionKey, string hostURI)
         {

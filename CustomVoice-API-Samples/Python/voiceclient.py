@@ -63,7 +63,7 @@ def submitSynthesis():
 	    files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
-        location = response.headers['Operation-Location']
+        location = response.headers['Location']
         id = location.split("/")[-1]
         print("Submit synthesis request successful")
         return id
@@ -94,7 +94,7 @@ if args.submit:
         exit(1)
 
     while(1):
-        print("\r\nChecking status")
+        print("\r\nChecking status , id : %s" % id)
         synthesis=getSubmittedSynthesis(id)
         if synthesis['status'] == "Succeeded":
             r = requests.get(synthesis['resultsUrl'])

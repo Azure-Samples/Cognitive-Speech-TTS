@@ -75,7 +75,7 @@ namespace CustomVoice_API.API
                 return null;
             }
 
-            const string OneAPIOperationLocationHeaderKey = "Operation-Location";
+            const string OneAPIOperationLocationHeaderKey = "Location";
             IEnumerable<string> headerValues;
             if (response.Headers.TryGetValues(OneAPIOperationLocationHeaderKey, out headerValues))
             {
