@@ -110,24 +110,6 @@ namespace CustomVoice_API
 
             switch ($"{apiKind}-{action}")
             {
-                case nameof(APIKind.project) + "-" + nameof(Action.create):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, Gender, Locale };
-                        OptionalParameters = new List<string>() { Description };
-                        break;
-                    }
-                case nameof(APIKind.project) + "-" + nameof(Action.get):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri };
-                        OptionalParameters = new List<string>();
-                        break;
-                    }
-                case nameof(APIKind.project) + "-" + nameof(Action.delete):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId };
-                        OptionalParameters = new List<string>();
-                        break;
-                    }
                 case nameof(APIKind.dataset) + "-" + nameof(Action.uploaddataset):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, ProjectId, Gender, Locale, WavePath, ScriptPath };

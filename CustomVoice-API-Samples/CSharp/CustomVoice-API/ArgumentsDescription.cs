@@ -13,7 +13,6 @@ namespace CustomVoice_API
             Console.WriteLine("Usage: CustomVoice-API [APIKind] [action] [options]");
             Console.WriteLine("");
             Console.WriteLine("--APIKind:");
-            Console.WriteLine("     project");
             Console.WriteLine("     dataset");
             Console.WriteLine("     model");
             Console.WriteLine("     voicetest");
@@ -27,26 +26,6 @@ namespace CustomVoice_API
         {
             switch (apiKind)
             {
-                case APIKind.project:
-                    Console.WriteLine("");
-                    Console.WriteLine("CustomVoice-API project:");
-                    Console.WriteLine("");
-                    Console.WriteLine("All Dataset, Model, VoiceTest, Endpoint are bound in the project.");
-                    Console.WriteLine("We need to specify Locale and Gender when creating Project.");
-                    Console.WriteLine("The data bound to each Project must be a unique locale and gender.");
-                    Console.WriteLine("");
-                    Console.WriteLine("Usage: CustomVoice-API project [action] [options]");
-                    Console.WriteLine("");
-                    Console.WriteLine("--action");
-                    Console.WriteLine(" Get");
-                    Console.WriteLine("     Gets the list of projects for the authenticated subscription.");
-                    Console.WriteLine(" create");
-                    Console.WriteLine("     Creates a new project.");
-                    Console.WriteLine(" Delete");
-                    Console.WriteLine("     Deletes the project identified by the given ID");
-                    Console.WriteLine("");
-                    Console.WriteLine("For more detailed usage, please enter: CustomVoice-API project [action]");
-                    break;
                 case APIKind.dataset:
                     Console.WriteLine("");
                     Console.WriteLine("CustomVoice-API dataset:");
@@ -170,9 +149,6 @@ namespace CustomVoice_API
         {
             switch (apiKind)
             {
-                case APIKind.project:
-                    PrintProjectActionUsage(action, parameters);
-                    break;
                 case APIKind.dataset:
                     PrintDatasetActionUsage(action, parameters);
                     break;
@@ -187,35 +163,6 @@ namespace CustomVoice_API
                     break;
                 case APIKind.batchsynthesis:
                     PrintBatchSynthesisActionUsage(action, parameters);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        public static void PrintProjectActionUsage(Action action, Dictionary<string, List<string>> parameters)
-        {
-            string actionString, description, sampleCommand;
-
-            switch (action)
-            {
-                case Action.get:
-                    actionString = "project get";
-                    description = "Gets the list of projects for the authenticated subscription.";
-                    sampleCommand = "CustomVoice-API project get subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
-                    break;
-                case Action.create:
-                    actionString = "project create";
-                    description = "Creates a new project.";
-                    sampleCommand = "CustomVoice-API project create subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ name test description test gender Male locale en-US";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
-                    break;
-                case Action.delete:
-                    actionString = "project delete";
-                    description = "Deletes the project identified by the given ID.";
-                    sampleCommand = "CustomVoice-API project delete subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ projectId [ProjectId]";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 default:
                     break;
