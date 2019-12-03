@@ -15,9 +15,6 @@ namespace CustomVoice_API
             {
                 switch (apiKind)
                 {
-                    case APIKind.project:
-                        ExecuteProjectApi(action, arguments);
-                        break;
                     case APIKind.dataset:
                         ExecuteDatasetApi(action, arguments);
                         break;
@@ -41,24 +38,6 @@ namespace CustomVoice_API
             catch (Exception e)
             {
                 Console.Error.WriteLine($"Exception: {e.Message}");
-            }
-        }
-
-        private static void ExecuteProjectApi(Action action, Dictionary<string, string> arguments)
-        {
-            switch (action)
-            {
-                case Action.get:
-                    ProjectGet(arguments);
-                    break;
-                case Action.delete:
-                    ProjectDeleteById(arguments);
-                    break;
-                case Action.create:
-                    ProjectCreate(arguments);
-                    break;
-                default:
-                    break;
             }
         }
 
@@ -185,55 +164,6 @@ namespace CustomVoice_API
                     break;
                 default:
                     break;
-            }
-        }
-
-        private static void ProjectGet(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-
-            var result = Project.Get(subscriptionKey, hostURI);
-            DisplayResult<API.DTO.Project>(result);
-        }
-
-        private static void ProjectDeleteById(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            string projectId = arguments["projectid"];
-
-            if(Project.DeleteById(subscriptionKey, hostURI, projectId))
-            {
-                Console.WriteLine("Delete project successfully");
-            }
-            else
-            {
-                Console.WriteLine("Delete project failed");
-            }
-        }
-
-        private static void ProjectCreate(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            string name = arguments["name"];
-            string gender = arguments["gender"];
-            string locale = arguments["locale"];
-            string description = name;
-
-            if (arguments.Keys.ToList().Contains("description"))
-            {
-                description = arguments["description"];
-            }
-
-            if (Project.Create(subscriptionKey, hostURI, name, description,gender,locale))
-            {
-                Console.WriteLine("Create project successfully");
-            }
-            else
-            {
-                Console.WriteLine("Create project failed");
             }
         }
 

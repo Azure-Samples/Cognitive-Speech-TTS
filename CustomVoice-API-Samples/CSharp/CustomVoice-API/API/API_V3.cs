@@ -7,12 +7,6 @@
         private static string TextToSpeechBasePath_V3_beta1 => "/api/texttospeech/v3.0-beta1/";
         private static string speechtotextBasePath_V3_beta1 => "api/speechtotext/v3.0-beta1/";
 
-        //Voice Project
-        private static string VoiceProject_Base => CommonPath_V3_beta1 + "projects";
-        public static string VoiceProject_Get => VoiceProject_Base + "/kind/texttospeech";
-        public static string VoiceProject_Create => VoiceProject_Base;
-        public static string VoiceProject_DeleteById => VoiceProject_Base + "/{0}";
-
         //Voice Datasets
         private static string VoiceDataset_Base => TextToSpeechBasePath_V3_beta1 + "datasets";
         public static string VoiceDatasets_Get => VoiceDataset_Base;
