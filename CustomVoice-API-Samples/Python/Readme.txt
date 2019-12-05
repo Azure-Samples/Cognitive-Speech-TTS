@@ -20,7 +20,7 @@ python voiceclient.py --submit -region centralindia -key your_key_here -file en-
 python voiceclient.py --delete -region centralindia -key your_key_here -synthesisId id1 id2 id3 id4
 
 Note:
-a. The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and should contain at least 400 billable characters(1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters).
+a. The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and should contain at least 400 billable characters (1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters).
 b. The voiceId should pick up from MS guys or get from step2 above.
 c. Available audio output formats are:
 	"riff-8khz-16bit-mono-pcm",
