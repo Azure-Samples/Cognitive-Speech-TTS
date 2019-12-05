@@ -1,6 +1,6 @@
 ## Custom Voice API
 
-This project contains samples of HTTP-based Microsoft Custom Voice Synthesis APIs.
+This project contains samples of HTTP-based Microsoft Custom Neural Voice Batch Synthesis APIs.
  
 ## Build the samples
 
@@ -59,6 +59,6 @@ The following are the parameters required for the 5 executable commands:
 
 ## Note:
 
-1.The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with your preferred advanced text editor), like the one zh-CN.txt, and should be more than 50 lines.
+1.The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and should contain at least 400 billable characters (1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters).
 2.The voiceId could be acquired from the function getVoiceId() in the java file.
 3.'concatenateResult' is an optional parameter, if not given, the output will be multiple wave files per line.
