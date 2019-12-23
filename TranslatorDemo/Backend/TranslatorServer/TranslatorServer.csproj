@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Concentus.Oggfile" Version="1.0.4" />
     <PackageReference Include="Google.Cloud.Speech.V1" Version="1.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <PackageReference Include="NAudio" Version="1.9.0" />
