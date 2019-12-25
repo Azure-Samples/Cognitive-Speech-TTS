@@ -20,7 +20,8 @@ python voiceclient.py --submit -region centralindia -key your_key_here -file en-
 python voiceclient.py --delete -region centralindia -key your_key_here -synthesisId id1 id2 id3 id4
 
 Note:
-a. The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and should contain at least 400 billable characters (1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters).
+a. The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and shoule not contains lines more than 10000. Should contain at least 400 billable characters (1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters). If billable characters number < 10000, please expect that the request probably be queued and will be done within 12 hours.If billable characters number > 10000, the request will be executed once where are available resource(not be queued).
+Billable character link : https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech#pricing-note
 b. The voiceId should pick up from MS guys or get from step2 above.
 c. Available audio output formats are:
 	"riff-8khz-16bit-mono-pcm",
@@ -33,7 +34,9 @@ c. Available audio output formats are:
 	"audio-24khz-48kbitrate-mono-mp3",
 	"audio-24khz-96kbitrate-mono-mp3",
 	"audio-24khz-160kbitrate-mono-mp3",
-d. 'concatenateResult' is a optional parameters, if not give, the output will be multiple wave files per each line.
-
+d. 'concatenateResult' is a optional parameters, if not give, the output will be multiple wave files per line.
+e. Client for each subscription account is allowed to submit at most 5 requests to server per second, if hit the bar, client will get a 429 error code(too many requests).
+f. Server keep at most 120 requests in queue or running for each subscription accout, if hit the bar, should wait until some requests get completed before submit new ones.
+g. Server keep at most 20000 requests for each subscription account. If hit the bar, should delete some requests previously submitted before submit new ones.
 
 
