@@ -254,18 +254,6 @@ namespace CustomVoice_API
                         OptionalParameters = new List<string>();
                         break;
                     }
-                case nameof(APIKind.model) + "-" + nameof(Action.addtoproject):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId, ProjectId };
-                        OptionalParameters = new List<string>();
-                        break;
-                    }
-                case nameof(APIKind.model) + "-" + nameof(Action.removefromproject):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId, ProjectId };
-                        OptionalParameters = new List<string>();
-                        break;
-                    }
                 case nameof(APIKind.model) + "-" + nameof(Action.copy):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId, "targetSubscriptionKey" };

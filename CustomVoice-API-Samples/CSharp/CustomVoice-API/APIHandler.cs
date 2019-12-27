@@ -84,12 +84,6 @@ namespace CustomVoice_API
                 case Action.create:
                     ModelCreate(arguments);
                     break;
-                case Action.addtoproject:
-                    ModelAddToProject(arguments);
-                    break;
-                case Action.removefromproject:
-                    ModelRemoveFromProject(arguments);
-                    break;
                 case Action.copy:
                     ModelCopy(arguments);
                     break;
@@ -385,40 +379,6 @@ namespace CustomVoice_API
             else
             {
                 Console.WriteLine("Create model failed");
-            }
-        }
-
-        private static void ModelAddToProject(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            var modelId = new Guid(arguments["modelid"]);
-            var projectId = new Guid(arguments["projectid"]);
-
-            if (Model.AddToProject(subscriptionKey, hostURI, projectId, modelId))
-            {
-                Console.WriteLine("Add model to project succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Add model to project failed");
-            }
-        }
-
-        private static void ModelRemoveFromProject(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            var modelId = new Guid(arguments["modelid"]);
-            var projectId = new Guid(arguments["projectid"]);
-
-            if (Model.RemoveFromProject(subscriptionKey, hostURI, projectId, modelId))
-            {
-                Console.WriteLine("Remove model from project succeeded");
-            }
-            else
-            {
-                Console.WriteLine("Remove model from project failed");
             }
         }
 

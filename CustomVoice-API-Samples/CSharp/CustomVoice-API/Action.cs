@@ -7,8 +7,6 @@
         getbysynthesisid,
         create,
         delete,
-        addtoproject,
-        removefromproject,
         uploaddataset,
         uploaddatasetwithlongaudio,
         uploaddatasetwithaudioonly,

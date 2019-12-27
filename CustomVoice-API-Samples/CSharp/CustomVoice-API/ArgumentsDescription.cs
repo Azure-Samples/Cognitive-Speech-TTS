@@ -246,18 +246,6 @@ namespace CustomVoice_API
                     sampleCommand = "CustomVoice-API model delete subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ modelId [ModelId]";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
-                case Action.addtoproject:
-                    actionString = "model addtoproject";
-                    description = "Adds model to a project.";
-                    sampleCommand = "CustomVoice-API model addtoproject subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -projectId [ProjectId]";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
-                    break;
-                case Action.removefromproject:
-                    actionString = "model removefromproject";
-                    description = "Removes the voice model from a project. This will not delete the model itself.";
-                    sampleCommand = "CustomVoice-API model removefromproject subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -projectId [ProjectId]";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
-                    break;
                 case Action.copy:
                     actionString = "model copy";
                     description = "Copy a model from one location to another. If the target subcription key belongs to a subscription created for another location, the model will be copied to that location.";
