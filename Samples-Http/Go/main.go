@@ -27,6 +27,7 @@ func GetToken(auth string, key string) string {
 	if err != nil {
 		log.Printf("Do request failed with error %s\n", err)
 	} else {
+		defer response.Body.Close()
 		data, _ := ioutil.ReadAll(response.Body)
 		token = string(data)
 		log.Println("token is", token)
@@ -35,7 +36,7 @@ func GetToken(auth string, key string) string {
 	return token
 }
 
-func GetAudioBytes(endpoint string, authToken string, ssml string) {
+func GetAudioBytes(client *http.Client, endpoint string, authToken string, ssml string) {
 	start := time.Now()
 	postData := []byte(ssml)
 	req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(postData))
@@ -48,10 +49,11 @@ func GetAudioBytes(endpoint string, authToken string, ssml string) {
 	req.Header.Set("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm")
 	req.Header.Set("Authorization", "Bearer "+authToken)
 	req.Header.Set("User-Agent", "GoClient")
-	response, err := http.DefaultClient.Do(req)
+	response, err := client.Do(req)
 	if err != nil {
 		log.Printf("Do request failed with error %s\n", err)
 	} else {
+		defer response.Body.Close()
 		if response.StatusCode == 200 {
 			data, _ := ioutil.ReadAll(response.Body)
 			log.Println("audio byte len is", len(data))
@@ -93,8 +95,18 @@ func main() {
 		}
 	}()
 
+	tr := &http.Transport{
+		MaxIdleConns:        100,
+		MaxIdleConnsPerHost: 20,
+	}
+
 	for {
 		time.Sleep(100 * time.Millisecond)
-		GetAudioBytes(endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-JessaNeural'>Hello world!</voice></speak>")
+
+		client := &http.Client{
+			Transport: tr,
+		}
+
+		GetAudioBytes(client, endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-JessaNeural'>Hello world!</voice></speak>")
 	}
 }
