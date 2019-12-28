@@ -82,7 +82,7 @@ func main() {
 	key := "your cognitive service non free key"
 
 	token := GetToken(auth, key)
-	ticker := time.NewTicker(1 * time.Second)
+	ticker := time.NewTicker(300 * time.Second)
 	go func() {
 		for range ticker.C {
 			log.Println("Refreshing token")
