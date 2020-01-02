@@ -27,6 +27,13 @@ Neural TTS uses Deep Neural Networks in matching patterns of stress and intonati
 
 Recommend to run the CSharp example first which is always kept up to date. 
 
+# Useful Links
+- [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
+- [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
+- [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
+- [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
+
 ## Contributing
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
 
