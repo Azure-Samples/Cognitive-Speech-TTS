@@ -22,7 +22,8 @@ namespace CustomVoice_API.API.DTO
             IEnumerable<Model> models,
             int concurrentRecognitions,
             bool isContentLoggingEnabled,
-            IReadOnlyDictionary<string, Uri> endpointUrls)
+            IReadOnlyDictionary<string, Uri> endpointUrls,
+            Identity project)
         {
             this.Id = id;
             this.Name = name;
@@ -37,6 +38,7 @@ namespace CustomVoice_API.API.DTO
             this.IsContentLoggingEnabled = isContentLoggingEnabled;
             this.Properties = properties;
             this.EndpointUrls = endpointUrls.ToDictionary(kv => kv.Key, kv => kv.Value.ToString());
+            this.Project = project;
         }
 
         public string Name { get; private set; }
@@ -65,6 +67,8 @@ namespace CustomVoice_API.API.DTO
 
         public IReadOnlyDictionary<string, string> EndpointUrls { get; private set; }
 
+        public Identity Project { get; private set; }
+
         public static Endpoint Create(
             Guid id,
             string endpointKind,
@@ -78,7 +82,8 @@ namespace CustomVoice_API.API.DTO
             IReadOnlyDictionary<string, Uri> endpointUrls,
             DateTime createdDateTime,
             DateTime lastActionDateTime,
-            OneApiState status)
+            OneApiState status,
+            Identity project)
         {
             return new Endpoint(
                 name,
@@ -93,7 +98,8 @@ namespace CustomVoice_API.API.DTO
                 models,
                 concurrentRecognitions,
                 isContentLoggingEnabled,
-                endpointUrls);
+                endpointUrls,
+                project);
         }
     }
 }

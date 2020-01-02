@@ -14,7 +14,8 @@ namespace CustomVoice_API.API.DTO
             Model model,
             DateTime createdDateTime,
             DateTime lastActionDateTime,
-            OneApiState status)
+            OneApiState status,
+            Identity project)
         {
             if (audioUri != null)
             {
@@ -32,6 +33,7 @@ namespace CustomVoice_API.API.DTO
             this.Status = status;
             this.Model = model;
             this.VoiceTestKind = voiceTestKind;
+            this.Project = project;
         }
 
         public Guid Id { get; private set; }
@@ -50,6 +52,8 @@ namespace CustomVoice_API.API.DTO
 
         public string VoiceTestKind { get; private set; }
 
+        public Identity Project { get; private set; }
+
         public static VoiceTest Create(
             Guid id,
             Uri audioUri,
@@ -58,7 +62,8 @@ namespace CustomVoice_API.API.DTO
             Model model,
             DateTime createdDateTime,
             DateTime lastActionDateTime,
-            OneApiState status)
+            OneApiState status,
+            Identity project)
         {
             return new VoiceTest(
                     id,
@@ -68,7 +73,8 @@ namespace CustomVoice_API.API.DTO
                     model,
                     createdDateTime,
                     lastActionDateTime,
-                    status);
+                    status,
+                    project);
         }
     }
 }

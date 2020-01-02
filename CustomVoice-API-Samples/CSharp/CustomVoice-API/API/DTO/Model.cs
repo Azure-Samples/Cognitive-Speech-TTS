@@ -19,7 +19,8 @@ namespace CustomVoice_API.API.DTO
             string modelKind,
             Model baseModel,
             IEnumerable<Dataset> datasets,
-            IReadOnlyDictionary<string, string> properties)
+            IReadOnlyDictionary<string, string> properties,
+            Identity project)
         {
             this.Id = id;
             this.Name = name;
@@ -32,6 +33,7 @@ namespace CustomVoice_API.API.DTO
             this.BaseModel = baseModel;
             this.Datasets = datasets;
             this.Properties = properties;
+            this.Project = project;
         }
 
         public Guid Id { get; private set; }
@@ -56,6 +58,8 @@ namespace CustomVoice_API.API.DTO
 
         public IReadOnlyDictionary<string, string> Properties { get; private set; }
 
+        public Identity Project { get; private set; }
+
         public static Model Create(
             Guid id,
             string name,
@@ -67,7 +71,8 @@ namespace CustomVoice_API.API.DTO
             string modelKind,
             Model baseModel,
             IEnumerable<Dataset> datasets,
-            IReadOnlyDictionary<string, string> properties)
+            IReadOnlyDictionary<string, string> properties,
+            Identity project)
         {
             return new Model(
                 id,
@@ -80,7 +85,8 @@ namespace CustomVoice_API.API.DTO
                 modelKind,
                 baseModel,
                 datasets,
-                properties);
+                properties,
+                project);
         }
     }
 }
