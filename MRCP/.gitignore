@@ -4,6 +4,9 @@
 Makefile
 config.nice
 
+unimrcp*.tar.gz
+unimrcp*/
+
 # Created by https://www.gitignore.io/api/c++,autotools,visualstudio,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=c++,autotools,visualstudio,visualstudiocode
 

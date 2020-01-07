@@ -82,19 +82,18 @@ struct ms_recog_engine_t
     apt_consumer_task_t* task;
 };
 
-// static std::shared_ptr<SpeechRecognizer> createSpeechRecognizer();
 
 struct RecogResource
 {
     int count = 0;
     std::string result;
 
-    // std::shared_ptr<SpeechRecognizer> recognizer;
     std::shared_ptr<SpeechConfig> config;
     char* channelId{};
     std::shared_ptr<Audio::PushAudioInputStream> pushStream;
     std::shared_ptr<SpeechRecognizer> recognizer;
     bool recognized;
+    bool recognizing;
 
     RecogResource()
     {
@@ -119,6 +118,7 @@ struct RecogResource
         }
         
         recognized = false;
+        recognizing = false;
     }
 };
 
@@ -387,6 +387,58 @@ static apt_bool_t ms_recog_channel_recognize(mrcp_engine_channel_t* channel,
         apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "Receive new recognize request");
     }
 
+    // create recognizer
+    recog_channel->resource->pushStream = Audio::AudioInputStream::CreatePushStream();
+    const auto audioInput = Audio::AudioConfig::FromStreamInput(recog_channel->resource->pushStream);
+    recog_channel->resource->recognizer = SpeechRecognizer::FromConfig(recog_channel->resource->config, audioInput);
+
+    recog_channel->resource->recognizer->Recognizing.Connect([](const SpeechRecognitionEventArgs& e) noexcept {
+        apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "Recognizing: %s", e.Result->Text.c_str());
+    });
+
+    // Note the recog_channel must be captured as a variable
+    recog_channel->resource->recognizer->Recognized.Connect(
+    [recog_channel](const SpeechRecognitionEventArgs& e) {
+        if(e.Result->Reason == ResultReason::RecognizedSpeech)
+        {
+            apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "Recognized: %s",
+                    e.Result->Text.c_str());
+            if(e.Result->Text.empty() ||
+               (e.Result->Text.find_first_not_of(' ') == std::string::npos))
+            {
+                // empty
+                // use continuous recognition to avoid empty result
+            }
+            else
+            {
+                recog_channel->resource->result = e.Result->Text;
+                ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_SUCCESS);
+            }
+        }
+        else if(e.Result->Reason == ResultReason::NoMatch)
+        {
+            apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "NO MATCH: Speech could not be recognized.");
+            ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_NO_MATCH);
+        }
+    });
+
+    recog_channel->resource->recognizer->Canceled.Connect(
+    [recog_channel](const SpeechRecognitionCanceledEventArgs& e) {
+        apt_log(RECOG_LOG_MARK, APT_PRIO_WARNING, "Speech recognition cancelled.");
+        if(e.Reason == CancellationReason::Error)
+        {
+            apt_log(RECOG_LOG_MARK, APT_PRIO_ERROR, "Speech recognition error, Error Code: [%d], Error Details: [%s].",
+                    static_cast<int>(e.ErrorCode), e.ErrorDetails.c_str());
+            apt_log(RECOG_LOG_MARK, APT_PRIO_WARNING, "Did you update the subscription info?");
+        }
+        ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_ERROR);
+    });
+
+
+    // start recognizing
+    recog_channel->resource->recognizer->StartContinuousRecognitionAsync();
+    recog_channel->resource->recognizing = true;
+
     response->start_line.request_state = MRCP_REQUEST_STATE_INPROGRESS;
 
     /* send asynchronous response */
@@ -464,64 +516,6 @@ static apt_bool_t ms_recog_stream_destroy(mpf_audio_stream_t* stream)
 /** Callback is called from MPF engine context to perform any action before open */
 static apt_bool_t ms_recog_stream_open(mpf_audio_stream_t* stream, mpf_codec_t* codec)
 {
-    auto recog_channel = static_cast<ms_recog_channel_t*>(stream->obj);
-    auto resource = recog_channel->resource;
-    resource->pushStream = Audio::AudioInputStream::CreatePushStream();
-    const auto audioInput = Audio::AudioConfig::FromStreamInput(resource->pushStream);
-    resource->recognizer = SpeechRecognizer::FromConfig(resource->config, audioInput);
-
-    resource->recognizer->Recognizing.Connect([](const SpeechRecognitionEventArgs& e) noexcept {
-        apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "Recognizing: %s", e.Result->Text.c_str());
-    });
-
-    // Note the recog_channel must be captured as a variable
-    resource->recognizer->Recognized.Connect(
-    [recog_channel](const SpeechRecognitionEventArgs& e) {
-        if(e.Result->Reason == ResultReason::RecognizedSpeech)
-        {
-            apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "Recognized: %s",
-                    e.Result->Text.c_str());
-            if(e.Result->Text.empty() ||
-               (e.Result->Text.find_first_not_of(' ') == std::string::npos))
-            {
-                // empty
-                // use continuous recognition to avoid empty result
-            }
-            else
-            {
-                recog_channel->resource->result = e.Result->Text;
-                ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_SUCCESS);
-                try
-                {
-                    recog_channel->resource->recognizer->StopContinuousRecognitionAsync();
-                }
-                catch(...)
-                {
-                    apt_log(RECOG_LOG_MARK, APT_PRIO_DEBUG,
-                            "Stop recognizer failed. Maybe reset already.");
-                }
-            }
-        }
-        else if(e.Result->Reason == ResultReason::NoMatch)
-        {
-            apt_log(RECOG_LOG_MARK, APT_PRIO_INFO, "NO MATCH: Speech could not be recognized.");
-            ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_NO_MATCH);
-        }
-    });
-
-    resource->recognizer->Canceled.Connect(
-    [recog_channel](const SpeechRecognitionCanceledEventArgs& e) {
-        apt_log(RECOG_LOG_MARK, APT_PRIO_WARNING, "Speech recognition cancelled.");
-        if(e.Reason == CancellationReason::Error)
-        {
-            apt_log(RECOG_LOG_MARK, APT_PRIO_ERROR, "Speech recognition error, Error Code: [%d], Error Details: [%s].",
-                    static_cast<int>(e.ErrorCode), e.ErrorDetails.c_str());
-            apt_log(RECOG_LOG_MARK, APT_PRIO_WARNING, "Did you update the subscription info?");
-        }
-        ms_recog_recognition_complete(recog_channel, RECOGNIZER_COMPLETION_CAUSE_ERROR);
-    });
-
-    resource->recognizer->StartContinuousRecognitionAsync();
     return TRUE;
 }
 
@@ -583,6 +577,21 @@ static apt_bool_t ms_recog_recognition_complete(ms_recog_channel_t* recog_channe
     {
         return false;
     }
+
+    // stop continuous recognition first
+    try
+    {
+        recog_channel->resource->recognizer->StopContinuousRecognitionAsync();
+    }
+    catch(...)
+    {
+        apt_log(RECOG_LOG_MARK, APT_PRIO_DEBUG,
+                "Stop recognizer failed. Maybe reset already.");
+    }
+
+    recog_channel->resource->recognizing = false;
+
+
     /* create RECOGNITION-COMPLETE event */
     mrcp_message_t* message =
     mrcp_event_create(recog_channel->recog_request, RECOGNIZER_RECOGNITION_COMPLETE,
@@ -628,7 +637,9 @@ static apt_bool_t ms_recog_stream_write(mpf_audio_stream_t* stream, const mpf_fr
         recog_channel->recog_request = nullptr;
         return TRUE;
     }
-    if(frame->codec_frame.size)
+
+    // write to the stream buffer only when recognizing
+    if(frame->codec_frame.size && recog_channel->resource->pushStream != nullptr && recog_channel->resource->recognizing)
     {
         recog_channel->resource->pushStream->Write(static_cast<uint8_t*>(
                                                    frame->codec_frame.buffer),
