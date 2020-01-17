@@ -1,5 +1,4 @@
 ﻿using CustomVoice_API.API.DTO;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -79,44 +78,6 @@ namespace CustomVoice_API.API
             return true;
         }
 
-        public static bool AddToProject(string subscriptionKey, string hostURI, Guid projectId, Guid modelId)
-        {
-            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_AddToProject, projectId);
-            var modelsToAdd = new List<Identity> { Identity.Create(modelId) };
-            var response = APIHelper.Submit(subscriptionKey, url, modelsToAdd);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                APIHelper.PrintErrorMessage(response);
-                return false;
-            }
-
-            var content = response.Content.ReadAsStringAsync().Result;
-            var beautifyContent = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
-            Console.WriteLine(beautifyContent);
-
-            return true;
-        }
-
-        public static bool RemoveFromProject(string subscriptionKey, string hostURI, Guid projectId, Guid modelId)
-        {
-            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_RemoveFromProject, projectId);
-            var modelsToAdd = new List<Identity> { Identity.Create(modelId) };
-            var response = APIHelper.Submit(subscriptionKey, url, modelsToAdd);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                APIHelper.PrintErrorMessage(response);
-                return false;
-            }
-
-            var content = response.Content.ReadAsStringAsync().Result;
-            var beautifyContent = JsonConvert.SerializeObject(JsonConvert.DeserializeObject(content), Formatting.Indented);
-            Console.WriteLine(beautifyContent);
-
-            return true;
-        }
-
         public static bool Copy(string subscriptionKey, string hostURI, Guid modelId, string targetSubscriptionKey)
         {
             string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_Copy, modelId);
@@ -132,6 +93,26 @@ namespace CustomVoice_API.API
 
             var uri = APIHelper.GetLocationFromPostResponseAsync(response);
             Console.WriteLine($"Copied model: {uri}");
+
+            return true;
+        }
+
+        public static bool Update(string subscriptionKey, string hostURI, Guid modelId, string description, Guid? projectId) 
+        {
+            if (string.IsNullOrEmpty(description) && projectId == null)
+            {
+                Console.WriteLine("Nothing to update");
+                return true;
+            }
+
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceModels_Update, modelId);
+            var payload = UpdateDefinition.Create(null, description, projectId);
+            var response = APIHelper.Patch(subscriptionKey, url, payload);
+            if (!response.IsSuccessStatusCode)
+            {
+                APIHelper.PrintErrorMessage(response);
+                return false;
+            }
 
             return true;
         }

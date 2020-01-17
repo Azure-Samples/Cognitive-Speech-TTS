@@ -7,13 +7,12 @@
         getbysynthesisid,
         create,
         delete,
-        addtoproject,
-        removefromproject,
         uploaddataset,
         uploaddatasetwithlongaudio,
         uploaddatasetwithaudioonly,
         call,
         getvoices,
         copy,
+        update,
     }
 }
