@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 
@@ -50,6 +51,21 @@ namespace CustomVoice_API.API
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 return client.DeleteAsync(url, CancellationToken.None).Result;
+            }
+        }
+
+        public static HttpResponseMessage Patch<T>(string subscriptionKey, string url, T payload)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                var method = new HttpMethod("PATCH");
+                using (var request = new HttpRequestMessage(method, url) { 
+                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json")
+                })
+                {
+                    return client.SendAsync(request).Result;
+                }
             }
         }
 

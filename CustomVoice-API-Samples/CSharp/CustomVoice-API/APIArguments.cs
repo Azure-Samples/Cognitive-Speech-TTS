@@ -149,7 +149,7 @@ namespace CustomVoice_API
                 case nameof(APIKind.model) + "-" + nameof(Action.create):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, ProjectId, Gender, Locale, DatasetIdList };
-                        OptionalParameters = new List<string>() { Description, "isNeuralTTS", "isMixlingual", "purpose", "am", "amSteps", "amCheckpointInterval", "vocoderSteps", "vocoderCheckpointInterval" };
+                        OptionalParameters = new List<string>() { Description, "isNeuralTTS", "isMixlingual", "purpose", "am", "amSteps", "amCheckpointInterval", "vocoderSteps", "vocoderCheckpointInterval", };
                         break;
                     }
                 case nameof(APIKind.model) + "-" + nameof(Action.get):
@@ -168,6 +168,12 @@ namespace CustomVoice_API
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId };
                         OptionalParameters = new List<string>();
+                        break;
+                    }
+                case nameof(APIKind.model) + "-" + nameof(Action.update):
+                    {
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId };
+                        OptionalParameters = new List<string>() { ProjectId, Description };
                         break;
                     }
                 case nameof(APIKind.voicetest) + "-" + nameof(Action.create):

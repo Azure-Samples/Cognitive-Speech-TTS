@@ -20,6 +20,7 @@
         public static string VoiceModels_Create => VoiceModels_Base;
         public static string VoiceModels_DeleteById => VoiceModels_Base + "/{0}";
         public static string VoiceModels_Copy => VoiceModels_Base + "/{0}/copy";
+        public static string VoiceModels_Update => VoiceModels_Base + "/{0}";
 
         //Voice Tests
         private static string VoiceTests_Base => TextToSpeechBasePath_V3_beta1 + "tests";

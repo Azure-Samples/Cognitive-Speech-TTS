@@ -87,6 +87,9 @@ namespace CustomVoice_API
                 case Action.copy:
                     ModelCopy(arguments);
                     break;
+                case Action.update:
+                    ModelUpdate(arguments);
+                    break;
                 default:
                     break;
             }
@@ -396,6 +399,29 @@ namespace CustomVoice_API
             else
             {
                 Console.WriteLine("Copy model failed");
+            }
+        }
+
+        private static void ModelUpdate(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            var modelId = new Guid(arguments["modelid"]);
+            string description = null;
+            if (arguments.ContainsKey("description"))
+            {
+                description = arguments["description"];
+            }
+
+            var projectId = arguments.ContainsKey("projectid") && !string.IsNullOrEmpty(arguments["projectid"]) ? new Guid(arguments["projectid"]) : (Guid?)null;
+
+            if (Model.Update(subscriptionKey, hostURI, modelId, description, projectId))
+            {
+                Console.WriteLine("Model updated successfully");
+            }
+            else
+            {
+                Console.WriteLine("Model update failed");
             }
         }
 

@@ -13,5 +13,6 @@
         call,
         getvoices,
         copy,
+        update,
     }
 }

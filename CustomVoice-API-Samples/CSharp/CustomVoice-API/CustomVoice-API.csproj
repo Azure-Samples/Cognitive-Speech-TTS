@@ -88,6 +88,7 @@
     <Compile Include="API\DTO\Model.cs" />
     <Compile Include="API\DTO\ModelDefinition.cs" />
     <Compile Include="API\DTO\OneApiState.cs" />
+    <Compile Include="API\DTO\UpdateDefinition.cs" />
     <Compile Include="API\DTO\Voice.cs" />
     <Compile Include="API\DTO\VoiceTest.cs" />
     <Compile Include="API\DTO\VoiceTestDefinition.cs" />

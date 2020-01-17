@@ -252,6 +252,12 @@ namespace CustomVoice_API
                     sampleCommand = "CustomVoice-API model copy subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -targetSubscriptionKey [targetSubscriptionKey]";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
+                case Action.update:
+                    actionString = "model update";
+                    description = "Update a models description and/or project. If a project ID is provided, the model will be bound to that project.";
+                    sampleCommand = "CustomVoice-API model update subscriptionKey [YourSubscriptionKey] hostURI https://Westus.cris.ai/ -modelId [ModelId] -description [description] -projectid [projectid]";
+                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
+                    break;
                 default:
                     break;
             }
