@@ -17,7 +17,8 @@ namespace CustomVoice_API.API.DTO
             DateTime createdDateTime,
             DateTime lastActionDateTime,
             OneApiState status,
-            string dataImportKind)
+            string dataImportKind,
+            Identity project)
         {
             this.Id = id;
             this.Name = name;
@@ -28,6 +29,7 @@ namespace CustomVoice_API.API.DTO
             this.LastActionDateTime = lastActionDateTime;
             this.Status = status;
             this.DataImportKind = dataImportKind;
+            this.Project = project;
         }
 
         public Guid Id { get; private set; }
@@ -48,6 +50,8 @@ namespace CustomVoice_API.API.DTO
 
         public string DataImportKind { get; private set; }
 
+        public Identity Project { get; private set; }
+
         public static Dataset Create(
             Guid id,
             string name,
@@ -57,9 +61,10 @@ namespace CustomVoice_API.API.DTO
             DateTime createdDateTime,
             DateTime lastActionDateTime,
             OneApiState status,
-            string dataImportKind)
+            string dataImportKind,
+            Identity project)
         {
-            return new Dataset(id, name, description, properties, locale, createdDateTime, lastActionDateTime, status, dataImportKind);
+            return new Dataset(id, name, description, properties, locale, createdDateTime, lastActionDateTime, status, dataImportKind, project);
         }
     }
 }

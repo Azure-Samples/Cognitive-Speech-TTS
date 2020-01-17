@@ -2,7 +2,7 @@
 
 namespace CustomVoice_API.API.DTO
 {
-    class Identity
+    public class Identity
     {
         public Identity(Guid id)
         {

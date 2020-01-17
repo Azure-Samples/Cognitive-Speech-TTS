@@ -673,6 +673,12 @@ namespace CustomVoice_API
                     var val = p.GetValue(result);
                     DisplaySingleResult(val, indentation + indentation);
                 }
+                else if (p.PropertyType.Name.Contains("Identity"))
+                {
+                    Console.WriteLine(indentation + "{0,-30}", key);
+                    var val = p.GetValue(result);
+                    DisplaySingleResult(val, indentation + indentation);
+                }
                 else
                 {
                     value = p.GetValue(result) == null ? "" : p.GetValue(result).ToString();
