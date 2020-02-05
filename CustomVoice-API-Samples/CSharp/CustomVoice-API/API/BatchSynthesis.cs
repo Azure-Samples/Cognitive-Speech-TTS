@@ -14,10 +14,39 @@ namespace CustomVoice_API.API
     {
         private const string OneAPIOperationLocationHeaderKey = "Location";
 
-        public static IEnumerable<DTO.BatchSynthesis> Get(string subscriptionKey, string hostURI)
+        public static IEnumerable<DTO.BatchSynthesis> Get(string subscriptionKey, string hostURI, string timeStart, string timeEnd, string status, int skip, int top)
         {
-            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_Get);
-            return APIHelper.Get<IEnumerable<DTO.BatchSynthesis>>(subscriptionKey, url);
+            string url = string.Format($@"{hostURI}{API_V3.VoiceSynthesis_GetPaginated}?");
+            if(!string.IsNullOrEmpty(timeStart))
+            {
+                url += string.Format($@"&timestart={timeStart}");
+            }
+            if (!string.IsNullOrEmpty(timeEnd))
+            {
+                url += string.Format($@"&timeend={timeEnd}");
+            }
+            if (!string.IsNullOrEmpty(status))
+            {
+                url += string.Format($@"&status={status}");
+            }
+            if (skip != -1)
+            {
+                url += string.Format($@"&skip={skip}");
+            }
+            else
+            {
+                url += string.Format($@"&skip=0");
+            }
+            if (top != -1)
+            {
+                url += string.Format($@"&top={top}");
+            }
+            else
+            {
+                url += string.Format($@"&top=100");
+            }
+            var encodedUrl = Uri.EscapeUriString(url);
+            return APIHelper.GetListPaged<DTO.BatchSynthesis>(subscriptionKey, encodedUrl);
         }
 
         public static DTO.BatchSynthesis GetById(string subscriptionKey, string hostURI, string batchSynthesisId)

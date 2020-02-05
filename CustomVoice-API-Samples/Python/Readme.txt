@@ -1,14 +1,15 @@
 This python script contains samples of HTTP-based Microsoft Custom Neural Voice Batch Synthesis APIs.
 
 1. Install Python from https://www.python.org/downloads/release/
+2. Install python modules needed with 'pip install urllib3 requests'
 
 Usage guide:
 
 1.Check the help of the tool:
 python voiceclient.py -h
 
-2.Get submitted voice synthesis list:
-python voiceclient.py --syntheses -region centralindia -key your_key_here
+2.Get submitted voice synthesis list with filter and paged:
+python voiceclient.py --voicesynthesis -region centralindia -key your_key_here -status Succeeded -timestart "2020-01-01" -timeend "2020-01-23" -skip 0 -top 100
 
 3.Get available voice list:
 python voiceclient.py --voices -region centralindia -key your_key_here

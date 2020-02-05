@@ -568,8 +568,60 @@ namespace CustomVoice_API
         {
             string subscriptionKey = arguments["subscriptionkey"];
             string hostURI = arguments["hosturi"];
+            string timeStart = string.Empty;
+            string timeEnd = string.Empty;
+            string status = string.Empty;
+            int skip = -1;
+            int top = -1;
+            if (arguments.Keys.ToList().Contains("timestart"))
+            {
+                timeStart = arguments["timestart"];
+                var ret = DateTime.TryParse(timeStart, out var createdTimeStart);
+                if (!ret)
+                {
+                    Console.WriteLine("A valid timestart should be given like '2019-11-21 15:26:21'.");
+                    return;
+                }
+            }
+            if (arguments.Keys.ToList().Contains("timeend"))
+            {
+                timeEnd = arguments["timeend"];
+                var ret = DateTime.TryParse(timeEnd, out var createdTimeEnd);
+                if (!ret)
+                {
+                    Console.WriteLine("A valid timeend should be given like '2019-11-21 15:26:21'.");
+                    return;
+                }
+            }
+            if (arguments.Keys.ToList().Contains("status"))
+            {
+                status = arguments["status"];
+                var ret = API.DTO.OneApiState.TryParse(status, true, out API.DTO.OneApiState apiState);
+                if (!ret)
+                {
+                    Console.WriteLine("status parameter missing or invalid. Should be one of 'NotStarted/Running/Succeeded/Failed'.");
+                }
+            }
+            if (arguments.Keys.ToList().Contains("skip"))
+            {
+                var skipParam = arguments["skip"];
+                var ret = int.TryParse(skipParam, out skip);
+                if(!ret)
+                {
+                    Console.WriteLine("skip parameter should be an integer number.");
+                }
+            }
+            if (arguments.Keys.ToList().Contains("top"))
+            {
+                var topParam = arguments["top"];
+                var ret = int.TryParse(topParam, out top);
+                if (!ret)
+                {
+                    Console.WriteLine("top parameter should be an integer number.");
+                }
+            }
 
-            var result = BatchSynthesis.Get(subscriptionKey, hostURI);
+            var result = BatchSynthesis.Get(subscriptionKey, hostURI, timeStart, timeEnd, status, skip, top);
             DisplayResult<API.DTO.BatchSynthesis>(result);
         }
 
