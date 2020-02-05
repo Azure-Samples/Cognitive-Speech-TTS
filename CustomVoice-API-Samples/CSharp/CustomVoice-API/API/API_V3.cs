@@ -39,6 +39,7 @@
         //Voice Synthesis
         private static string VoiceSynthesis_Base => TextToSpeechBasePath_V3_beta1 + "voicesynthesis";
         public static string VoiceSynthesis_Get => VoiceSynthesis_Base;
+        public static string VoiceSynthesis_GetPaginated => VoiceSynthesis_Base + "/Paginated";
         public static string VoiceSynthesis_Create => VoiceSynthesis_Base;
         public static string VoiceSynthesis_ById => VoiceSynthesis_Base + "/{0}";
         public static string VoiceSynthesis_GetVoice => VoiceSynthesis_Base + "/voices";

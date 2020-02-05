@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
+using Skype.Azure.Runners.CustomVoice.CRISVoiceAPI.DTO;
 
 namespace CustomVoice_API.API
 {
@@ -31,6 +32,29 @@ namespace CustomVoice_API.API
                     string responseJson = streamReader.ReadToEnd();
                     var items = JsonConvert.DeserializeObject<T>(responseJson);
                     return items;
+                }
+            }
+        }
+
+        public static IEnumerable<T> GetListPaged<T>(string subscriptionKey, string url)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                var response = client.GetAsync(url, CancellationToken.None).Result;
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    PrintErrorMessage(response);
+                    return null;
+                }
+
+                using (var responseStream = response.Content.ReadAsStreamAsync().Result)
+                using (var streamReader = new StreamReader(responseStream))
+                {
+                    string responseJson = streamReader.ReadToEnd();
+                    var result = JsonConvert.DeserializeObject<PaginatedEntities<T>>(responseJson);
+                    return result.Values;
                 }
             }
         }

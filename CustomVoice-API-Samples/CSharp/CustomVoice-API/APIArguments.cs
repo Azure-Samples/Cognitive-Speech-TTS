@@ -245,7 +245,7 @@ namespace CustomVoice_API
                 case nameof(APIKind.batchsynthesis) + "-" + nameof(Action.get):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri };
-                        OptionalParameters = new List<string>();
+                        OptionalParameters = new List<string>() { "timestart", "timeend", "status", "skip", "top" };
                         break;
                     }
                 case nameof(APIKind.batchsynthesis) + "-" + nameof(Action.getvoices):

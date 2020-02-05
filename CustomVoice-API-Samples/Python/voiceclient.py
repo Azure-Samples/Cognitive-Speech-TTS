@@ -12,11 +12,16 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 parser = argparse.ArgumentParser(description='Cris client tool to submit voice synthesis requests.')
 parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
-parser.add_argument('--syntheses', action="store_true", default=False, help='print synthesis list')
+parser.add_argument('--voicesynthesis', action="store_true", default=False, help='print synthesis list')
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
 parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
 parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
 parser.add_argument('-file', action="store",  dest="file", help='the input text script file path')
+parser.add_argument('-timestart', action="store",  dest="timestart", help='the timestart filter, like 2019-11-21 15:26:21.')
+parser.add_argument('-timeend', action="store",  dest="timeend", help='the timeend filter, like 2019-11-21 15:26:21.')
+parser.add_argument('-status', action="store",  dest="status", help='the status filter, could be NotStarted/Running/Succeeded/Failed')
+parser.add_argument('-skip', action="store", metavar='N', type=int, dest="skip", help='the skip number in query')
+parser.add_argument('-top', action="store", metavar='N', type=int, dest="top", help='the top number in query')
 parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
 parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
 parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
@@ -29,19 +34,53 @@ args = parser.parse_args()
 baseAddress = 'https://%s.cris.ai/api/texttospeech/v3.0-beta1/' % args.region
 
 def getSubmittedSyntheses():
-    response=requests.get(baseAddress+"voicesynthesis", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    syntheses = json.loads(response.text)
-    return syntheses
+    url = baseAddress+"voicesynthesis/Paginated?"
+    if args.status is not None:
+        url = url + "&status=" + args.status
+    if args.timestart is not None:
+        url = url + "&timestart=" + args.timestart
+    if args.timeend is not None:
+        url = url + "&timeend=" + args.timeend
+    if args.skip is not None:
+        url = url + "&skip=" + str(args.skip)
+    else:
+        url = url + "&skip=0"
+    if args.top is not None:
+        url = url + "&top=" + str(args.top)
+    else:
+        url = url + "&top=100"
+    url.replace(" ", "%20")
+    response=requests.get(url, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
+    if response.status_code == 200:
+        syntheses = json.loads(response.text)["values"]
+        return syntheses
+    else:
+        print("getSubmittedSyntheses request failed")
+        print("response.status_code: %d" % response.status_code)
+        print("response.text: %s" % response.text)
+        return None
 
 def getSubmittedSynthesis(id):
     response=requests.get(baseAddress+"voicesynthesis/"+id, headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    synthesis = json.loads(response.text)
-    return synthesis
+    if response.status_code == 200:
+        synthesis = json.loads(response.text)
+        return synthesis
+    else:
+        print("getSubmittedSyntheses with ID request failed")
+        print("response.status_code: %d" % response.status_code)
+        print("response.text: %s" % response.text)
+        return None
 
 def getVoices():
     response=requests.get(baseAddress+"voicesynthesis/voices", headers={"Ocp-Apim-Subscription-Key":args.key}, verify=False)
-    voices = json.loads(response.text)
-    return voices
+    if response.status_code == 200:
+        voices = json.loads(response.text)
+        return voices
+    else:
+        print("getVoices request failed")
+        print("response.status_code: %d" % response.status_code)
+        print("response.text: %s" % response.text)
+        return None
 
 def deleteSynthesis(ids):
     for id in ids:
@@ -59,8 +98,8 @@ def submitSynthesis():
         properties={'ConcatenateResult': 'true'}
         data['properties'] = json.dumps(properties)
     if args.file is not None:
-	    scriptfilename=ntpath.basename(args.file)
-	    files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
+        scriptfilename=ntpath.basename(args.file)
+        files = {'script': (scriptfilename, open(args.file, 'rb'), 'text/plain')}
     response = requests.post(baseAddress+"voicesynthesis", data, headers={"Ocp-Apim-Subscription-Key":args.key}, files=files, verify=False)
     if response.status_code == 202:
         location = response.headers['Location']
@@ -79,11 +118,12 @@ if args.voices:
     for voice in voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 
-if args.syntheses:
+if args.voicesynthesis:
     synthese = getSubmittedSyntheses()
-    print("There are %d synthesis requests submitted:" % len(synthese))
-    for synthesis in synthese:
-        print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
+    if synthese is not None:
+        print("There are %d synthesis requests:" % len(synthese))
+        for synthesis in synthese:
+            print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
 
 if args.delete:
 	deleteSynthesis(args.synthesisId)
