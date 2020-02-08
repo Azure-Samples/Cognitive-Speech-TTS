@@ -21,7 +21,7 @@ To use these samples, follow these instructions:
 * Copy the code from the sample into a file named `TTSSample.js`
 * Run `npm install` to install dependencies
 * Set your subscription key
-* Run the sample: `node TTSSample.py`
+* Run the sample: `node TTSSample.js`
 
 ## Resources
 
