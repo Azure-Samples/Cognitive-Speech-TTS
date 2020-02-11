@@ -33,6 +33,7 @@ import io.swagger.client.Pair;
 import io.swagger.client.ProgressRequestBody;
 import io.swagger.client.ProgressResponseBody;
 import io.swagger.client.model.ErrorContent;
+import io.swagger.client.model.PaginatedEntities;
 import io.swagger.client.model.Voice;
 import io.swagger.client.model.VoiceSynthesis;
 import io.swagger.client.model.VoiceSynthesisUpdate;
@@ -423,39 +424,6 @@ public class VoiceSynthesisApi {
 		};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
-		/*
-		 * if(progressListener != null) {
-		 * 
-		 * client.networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-		 * 
-		 * @Override public com.squareup.okhttp.Response
-		 * intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-		 * com.squareup.okhttp.Response originalResponse =
-		 * chain.proceed(chain.request()); return originalResponse.newBuilder()
-		 * .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-		 * .build(); } }); }
-		 */
-
-		/* Add */
-		// OkHttpClient client = apiClient.getHttpClient();
-		// Authenticator authenticator = new Authenticator();
-		/*
-		 * apiClient.getHttpClient().setAuthenticator(new Authenticator() {
-		 * 
-		 * @Override public Request authenticate(Proxy proxy, Response response) throws
-		 * IOException { String credential = Credentials.basic( subKey,
-		 * "https://centralindia.api.cognitive.microsoft.com/sts/v1.0/issueToken");
-		 * return response.request().newBuilder().header("Authorization",
-		 * credential).build(); }
-		 * 
-		 * @Override public Request authenticateProxy(Proxy proxy, Response response)
-		 * throws IOException { return null; } });
-		 */
-
-		/* Add issued token */
-		// ApiResponse<String> tokenResponse= geIssuedToken();
-		// String issuedToken=tokenResponse.getData();
-		// localVarHeaderParams.put("Authorization", "Bearer"+issuedToken);
 
 		String[] localVarAuthNames = new String[] { "subscription_key", "token" };
 		return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams,
@@ -487,34 +455,7 @@ public class VoiceSynthesisApi {
 		};
 		final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 		localVarHeaderParams.put("Content-Type", localVarContentType);
-		/*
-		 * if(progressListener != null) {
-		 * 
-		 * client.networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-		 * 
-		 * @Override public com.squareup.okhttp.Response
-		 * intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-		 * com.squareup.okhttp.Response originalResponse =
-		 * chain.proceed(chain.request()); return originalResponse.newBuilder()
-		 * .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-		 * .build(); } }); }
-		 */
 
-		/* Add */
-		// OkHttpClient client = apiClient.getHttpClient();
-		// Authenticator authenticator = new Authenticator();
-		/*
-		 * apiClient.getHttpClient().setAuthenticator(new Authenticator() {
-		 * 
-		 * @Override public Request authenticate(Proxy proxy, Response response) throws
-		 * IOException { String credential = Credentials.basic( subKey,
-		 * "https://centralindia.api.cognitive.microsoft.com/sts/v1.0/issueToken");
-		 * return response.request().newBuilder().header("Authorization",
-		 * credential).build(); }
-		 * 
-		 * @Override public Request authenticateProxy(Proxy proxy, Response response)
-		 * throws IOException { return null; } });
-		 */
 		String[] localVarAuthNames = new String[] { "subscription_key", "token" };
 		return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams,
 				localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
@@ -560,16 +501,6 @@ public class VoiceSynthesisApi {
 		return apiClient.execute(call, localVarReturnType);
 	}
 
-	// public Response<List<Voice>>
-	// NewGetSupportedVoicesForVoiceSynthesisWithHttpInfo() throws ApiException {
-	/* Add */
-	// com.squareup.okhttp.Call call =
-	// getSupportedVoicesForVoiceSynthesisValidateBeforeCall(null, null);
-	// com.squareup.okhttp.Call call =
-	// getSupportedVoicesForVoiceSynthesisValidateBeforeCall(null, null);
-	// Type localVarReturnType = new TypeToken<List<Voice>>(){}.getType();
-	// return apiClient.NewExecute(call, localVarReturnType);
-	// }
 
 	/* Get token from subKey */
 	public ApiResponse<String> geIssuedToken() throws ApiException {
@@ -629,11 +560,47 @@ public class VoiceSynthesisApi {
 	 * @throws ApiException If fail to serialize the request body object
 	 */
 	public com.squareup.okhttp.Call getVoiceSynthesesCall(final ProgressResponseBody.ProgressListener progressListener,
-			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener,
+			String timeStart, String timeEnd, String status, int skip, int top) throws ApiException {
 		Object localVarPostBody = null;
 
 		// create path and map variables
-		String localVarPath = "/api/texttospeech/v3.0-beta1/voicesynthesis";
+		String localVarPath = "/api/texttospeech/v3.0-beta1/voicesynthesis/Paginated?";
+
+		if(timeStart != null)
+		{
+			localVarPath+="&timestart=" + timeStart;
+		}
+
+		if(timeEnd != null)
+		{
+			localVarPath+="&timeend=" + timeEnd;
+		}
+
+		if(status != null)
+		{
+			localVarPath+="&status=" + status;
+		}
+
+		if(skip != -1)
+		{
+			localVarPath+="&skip=" + skip;
+		}
+		else
+		{
+			localVarPath+="&skip=0";
+		}
+
+		if(top != -1)
+		{
+			localVarPath+="&top=" + top;
+		}
+		else
+		{
+			localVarPath+="&top=100";
+		}
+
+	    localVarPath = localVarPath.replaceAll(" ", "%20");
 
 		List<Pair> localVarQueryParams = new ArrayList<Pair>();
 		List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -674,9 +641,10 @@ public class VoiceSynthesisApi {
 	@SuppressWarnings("rawtypes")
 	private com.squareup.okhttp.Call getVoiceSynthesesValidateBeforeCall(
 			final ProgressResponseBody.ProgressListener progressListener,
-			final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+			final ProgressRequestBody.ProgressRequestListener progressRequestListener,
+			String timeStart, String timeEnd, String status, int skip, int top) throws ApiException {
 
-		com.squareup.okhttp.Call call = getVoiceSynthesesCall(progressListener, progressRequestListener);
+		com.squareup.okhttp.Call call = getVoiceSynthesesCall(progressListener, progressRequestListener, timeStart, timeEnd, status, skip, top);
 		return call;
 
 	}
@@ -684,65 +652,37 @@ public class VoiceSynthesisApi {
 	/**
 	 * Gets a list of voice synthesis under the selected subscription.
 	 * 
+	 * @param timeStart The timeStart filter
+	 * @param timeEnd The timeEnd filter
+	 * @param status The status filter
+	 * @param skip The skip filter
+	 * @param top The top filter
 	 * @return List&lt;VoiceSynthesis&gt;
 	 * @throws ApiException If fail to call the API, e.g. server error or cannot
 	 *                      deserialize the response body
 	 */
-	public List<VoiceSynthesis> getVoiceSyntheses() throws ApiException {
-		ApiResponse<List<VoiceSynthesis>> resp = getVoiceSynthesesWithHttpInfo();
-		return resp.getData();
+	public List<VoiceSynthesis> getVoiceSyntheses(String timeStart, String timeEnd, String status, int skip, int top) throws ApiException {
+		ApiResponse<PaginatedEntities<VoiceSynthesis>> resp = getVoiceSynthesesWithHttpInfo(timeStart, timeEnd, status, skip, top);
+		return resp.getData().getValues();
 	}
 
 	/**
 	 * Gets a list of voice synthesis under the selected subscription.
 	 * 
+	 * @param timeStart The timeStart filter
+	 * @param timeEnd The timeEnd filter
+	 * @param status The status filter
+	 * @param skip The skip filter
+	 * @param top The top filter
 	 * @return ApiResponse&lt;List&lt;VoiceSynthesis&gt;&gt;
 	 * @throws ApiException If fail to call the API, e.g. server error or cannot
 	 *                      deserialize the response body
 	 */
-	public ApiResponse<List<VoiceSynthesis>> getVoiceSynthesesWithHttpInfo() throws ApiException {
-		com.squareup.okhttp.Call call = getVoiceSynthesesValidateBeforeCall(null, null);
-		Type localVarReturnType = new TypeToken<List<VoiceSynthesis>>() {
+	public ApiResponse<PaginatedEntities<VoiceSynthesis>> getVoiceSynthesesWithHttpInfo(String timeStart, String timeEnd, String status, int skip, int top) throws ApiException {
+		com.squareup.okhttp.Call call = getVoiceSynthesesValidateBeforeCall(null, null, timeStart, timeEnd, status, skip, top);
+		Type localVarReturnType = new TypeToken<PaginatedEntities<VoiceSynthesis>>() {
 		}.getType();
 		return apiClient.execute(call, localVarReturnType);
-	}
-
-	/**
-	 * Gets a list of voice synthesis under the selected subscription.
-	 * (asynchronously)
-	 * 
-	 * @param callback The callback to be executed when the API call finishes
-	 * @return The request call
-	 * @throws ApiException If fail to process the API call, e.g. serializing the
-	 *                      request body object
-	 */
-	public com.squareup.okhttp.Call getVoiceSynthesesAsync(final ApiCallback<List<VoiceSynthesis>> callback)
-			throws ApiException {
-
-		ProgressResponseBody.ProgressListener progressListener = null;
-		ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-		if (callback != null) {
-			progressListener = new ProgressResponseBody.ProgressListener() {
-				@Override
-				public void update(long bytesRead, long contentLength, boolean done) {
-					callback.onDownloadProgress(bytesRead, contentLength, done);
-				}
-			};
-
-			progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-				@Override
-				public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-					callback.onUploadProgress(bytesWritten, contentLength, done);
-				}
-			};
-		}
-
-		com.squareup.okhttp.Call call = getVoiceSynthesesValidateBeforeCall(progressListener, progressRequestListener);
-		Type localVarReturnType = new TypeToken<List<VoiceSynthesis>>() {
-		}.getType();
-		apiClient.executeAsync(call, localVarReturnType, callback);
-		return call;
 	}
 
 	/**
