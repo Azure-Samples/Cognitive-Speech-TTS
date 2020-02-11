@@ -71,7 +71,7 @@ public class VoiceSynthesisMain {
 				}
 	
 				String outputFormat = cli.getOptionValue("outputformat");
-				if(locale == null){
+				if(outputFormat == null){
 					outputFormat = "riff-16khz-16bit-mono-pcm";
 				}
 	
@@ -94,8 +94,49 @@ public class VoiceSynthesisMain {
 				System.out.println(new JSONArray(reslut));
 			}
 			else if(cli.hasOption("getvoicesynthesis")){
-				List<VoiceSynthesis> reslut = api.GetVoiceSynthesis();
-				System.out.println(new JSONArray(reslut));
+				String timeStart = cli.getOptionValue("timestart");
+				String timeEnd = cli.getOptionValue("timeend");
+				String status = cli.getOptionValue("status");
+				String skips = cli.getOptionValue("skip");
+				int skip = -1;
+				if(skips != null)
+				{
+					try
+					{
+						skip = Integer.parseInt(skips);
+						if(skip < 0)
+						{
+							System.out.println("Please enter a valid skip parameter, should be a ingeter greater or equals 0");
+							return ;
+						}
+					}
+					catch (NumberFormatException e)
+					{
+						System.out.println("Please enter a valid skip parameter, should be a ingeter greater or equals 0");
+						return ;
+					}
+				}
+				int top = -1;
+				String tops = cli.getOptionValue("top");
+				if(tops != null)
+				{
+					try
+					{
+						top = Integer.parseInt(tops);
+						if(top < 0)
+						{
+							System.out.println("Please enter a valid top parameter, should be a ingeter greater than 0");
+							return ;
+						}
+					}
+					catch (NumberFormatException e)
+					{
+						System.out.println("Please enter a valid top parameter, should be a ingeter greater than 0");
+						return ;
+					}
+				}
+				List<VoiceSynthesis> result = api.GetVoiceSynthesis(timeStart, timeEnd, status, skip, top);
+				System.out.println(new JSONArray(result));
 			}
 			else if(cli.hasOption("getvoicesynthesisbyid")){
 				String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
@@ -120,6 +161,8 @@ public class VoiceSynthesisMain {
 		}
 		catch (Exception e) {
 			System.out.println("Request failed, wrong parameter or request timed out, please check the parameters and try again.");
+			System.out.println("We got unexpected:" + e.getMessage());
+			e.printStackTrace();
 			return ;
 		}
 		
@@ -174,6 +217,21 @@ public class VoiceSynthesisMain {
 		Option opt15 = new Option("cr","concatenateresult",false,"If concatenate result in a single wave file");
 		opt15.setRequired(false);
 		options.addOption(opt15);
+		Option opt16 = new Option("ts","timestart",true,"The timestart filter of the voice synthesis query, like 2019-11-21 15:26:21");
+		opt16.setRequired(false);
+		options.addOption(opt16);
+		Option opt17 = new Option("te","timeend",true,"The timeend filter of the voice synthesis query, like 2019-11-21 15:26:21");
+		opt17.setRequired(false);
+		options.addOption(opt17);
+		Option opt18 = new Option("st","status",true,"The status filter of the voice synthesis query, could be NotStarted/Running/Succeeded/Failed");
+		opt18.setRequired(false);
+		options.addOption(opt18);
+		Option opt19 = new Option("sk","skip",true,"The skip filter of the voice synthesis query, should be a interger value");
+		opt19.setRequired(false);
+		options.addOption(opt19);
+		Option opt20 = new Option("tp","top",true,"The top filter of the voice synthesis query, should be a interger value");
+		opt20.setRequired(false);
+		options.addOption(opt20);
 
 		return options;
 	}

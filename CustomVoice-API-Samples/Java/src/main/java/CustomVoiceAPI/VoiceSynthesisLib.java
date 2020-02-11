@@ -22,8 +22,8 @@ public class VoiceSynthesisLib {
 		return voiceApi.getSupportedVoicesForVoiceSynthesis();
 	}
 
-	public List<VoiceSynthesis> GetVoiceSynthesis() throws ApiException{
-		return voiceApi.getVoiceSyntheses();
+	public List<VoiceSynthesis> GetVoiceSynthesis(String timeStart, String timeEnd, String status, int skip, int top) throws ApiException{
+		return voiceApi.getVoiceSyntheses(timeStart, timeEnd, status, skip, top);
 	}
 
 	public VoiceSynthesis GetVoiceSynthesis(UUID id) throws ApiException{
