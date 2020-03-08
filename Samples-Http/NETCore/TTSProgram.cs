@@ -91,6 +91,15 @@ namespace TTSSample
             }
             finally
             {
+                try
+                {
+                    this.accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
+                }
+
             }
         }
 
@@ -123,6 +132,8 @@ namespace TTSSample
             // Add your subscription key here
             Authentication auth = new Authentication("https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken", "Your Key Here");
 
+
+            int round = 0;
             // reuse http client will save connection latency
             using (HttpClient client = new HttpClient())
             {
@@ -130,8 +141,9 @@ namespace TTSSample
                 {
                     Console.WriteLine("-----------------------------");
 
+                    round++;
                     text = input + new Random().Next().ToString();
-                    Console.WriteLine(text);
+                    Console.WriteLine($"Round = {round}, text = {text}");
                      
                     try
                     {
@@ -181,6 +193,7 @@ namespace TTSSample
                         using (HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false))
                         {
                             response.EnsureSuccessStatusCode();
+
                             // Asynchronously read the response
                             using (Stream dataStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                             {
