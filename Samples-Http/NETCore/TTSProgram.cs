@@ -37,6 +37,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace TTSSample
 {
@@ -46,6 +47,7 @@ namespace TTSSample
         private string tokenFetchUri;
         private Timer accessTokenRenewer;
         private string accessToken;
+        private object objLock = new object();
 
         //Access token expires every 10 minutes. Renew it every 9 minutes only.
         private const int RefreshTokenDuration = 1;
@@ -76,14 +78,20 @@ namespace TTSSample
 
         public string GetAccessToken()
         {
-            return this.accessToken;
+            lock (objLock)
+            {
+                return this.accessToken;
+            }
         }
 
-        private async void OnTokenExpiredCallback(object stateInfo)
+        private void OnTokenExpiredCallback(object stateInfo)
         {
             try
             {
-                this.accessToken = await this.FetchTokenAsync().ConfigureAwait(false);
+                lock (objLock)
+                {
+                    this.accessToken = this.FetchTokenAsync().Result;
+                }
             }
             catch (Exception ex)
             {
@@ -111,6 +119,7 @@ namespace TTSSample
                 UriBuilder uriBuilder = new UriBuilder(this.tokenFetchUri);
 
                 HttpResponseMessage result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null).ConfigureAwait(false);
+                result.EnsureSuccessStatusCode();
                 return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
         }
@@ -119,36 +128,55 @@ namespace TTSSample
     // main program
     class Program
     {
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             // Prompts the user to input text for TTS conversion
             Console.Write("What would you like to convert to speech? ");
-            string text;
             string input = Console.ReadLine();
-
-            // Gets an access token
-            string accessToken;
-
             // Add your subscription key here
-            Authentication auth = new Authentication("https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken", "Your Key Here");
+            Authentication auth = new Authentication("https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken",
+                        "Your Key Here");
+            string host = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
 
+            // number of thread to run
+            int concurrency = 1;
 
+            // each thread run # of round 
+            int roundPerTask = 100;
+            List<Task> taskList = new List<Task>();
+            for (int i = 0; i < concurrency; i++)
+            {
+                object arg = i;
+                var task = new TaskFactory().StartNew(new Action<object>(async (threadId) =>
+                {
+                    RunSynthesis((int)threadId, host, auth, input, roundPerTask).Wait();
+                }), arg, TaskCreationOptions.LongRunning);
+
+                taskList.Add(task);
+            }
+
+            Task.WaitAll(taskList.ToArray());
+        }
+
+        private static async Task RunSynthesis(int threadId, string host, Authentication auth, string input, int maxRound)
+        {
+            string accessToken;
+            string text;
             int round = 0;
             // reuse http client will save connection latency
             using (HttpClient client = new HttpClient())
             {
-                while (true)
+                while (round < maxRound)
                 {
                     Console.WriteLine("-----------------------------");
 
                     round++;
                     text = input + new Random().Next().ToString();
-                    Console.WriteLine($"Round = {round}, text = {text}");
-                     
+                    Console.WriteLine($"Thread = {threadId}, Round = {round}, text = {text}");
+
                     try
                     {
                         accessToken = auth.GetAccessToken();
-                        Console.WriteLine("Successfully obtained an access token. \n");
                     }
                     catch (Exception ex)
                     {
@@ -158,8 +186,6 @@ namespace TTSSample
                         return;
                     }
 
-                    string host = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
-
                     // Create SSML document.
                     XDocument body = new XDocument(
                             new XElement("speak",
@@ -168,7 +194,7 @@ namespace TTSSample
                                 new XElement("voice",
                                     new XAttribute(XNamespace.Xml + "lang", "en-US"),
                                     new XAttribute(XNamespace.Xml + "gender", "Female"),
-                                    new XAttribute("name", "zh-CN-XiaoxiaoNeural"), 
+                                    new XAttribute("name", "zh-CN-XiaoxiaoNeural"),
                                     text)));
 
                     DateTime dt = DateTime.Now;
@@ -189,7 +215,7 @@ namespace TTSSample
                         // Audio output format. See API reference for full list.
                         request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
                         // Create a request
-                        Console.WriteLine("Calling the TTS service. Please wait... \n");
+                        Console.WriteLine($"Thread = {threadId}, Calling the TTS service. Please wait... \n");
                         using (HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false))
                         {
                             response.EnsureSuccessStatusCode();
@@ -197,7 +223,7 @@ namespace TTSSample
                             // Asynchronously read the response
                             using (Stream dataStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                             {
-                                Console.WriteLine("Your speech file is being written to file...");
+                                Console.WriteLine($"Thread = {threadId}, Your speech file is being written to file...");
                                 using (FileStream fileStream = new FileStream(@"sample.wav", FileMode.Create, FileAccess.Write, FileShare.Write))
                                 {
                                     await dataStream.CopyToAsync(fileStream).ConfigureAwait(false);
@@ -207,7 +233,7 @@ namespace TTSSample
                         }
                     }
 
-                    Console.WriteLine($"time spend {(DateTime.Now - dt).TotalMilliseconds}");
+                    Console.WriteLine($"Thread = {threadId}, time spend {(DateTime.Now - dt).TotalMilliseconds}");
                 }
             }
         }
