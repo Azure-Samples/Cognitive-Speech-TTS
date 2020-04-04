@@ -20,6 +20,7 @@ products:
 * 2020.03 [科技宝藏 | 微软听听文档，AI语音全线升级！ ](https://mp.weixin.qq.com/s?__biz=MzA5Mzk3NDcyNw==&mid=2247486058&idx=1&sn=8db9d8a3d61ab5027865593e0aef3f24&chksm=9054f3c2a7237ad455a00c0dab6baa639f84d1387525e8153f2b6c8736a5857d1de316616b60&mpshare=1&scene=1&srcid=0320zDDQqoIu4bz0ILj2eq41&sharer_sharetime=1584690411522&sharer_shareid=67fac6419876a8c72f83d82f53762097#rd)
 * 2019.12 [NeurIPS2019: FastSpeech: New text-to-speech model improves on speed, accuracy, and controllability](https://www.microsoft.com/en-us/research/blog/fastspeech-new-text-to-speech-model-improves-on-speed-accuracy-and-controllability/)
 * 2019.11 [Play My Emails in Outlook and get time back in your day](https://techcommunity.microsoft.com/t5/outlook-blog/play-my-emails-in-outlook-and-get-time-back-in-your-day/ba-p/930243)
+* 2019.10 [Microsoft breaks new ground with AI neural TTS and life-size holograms](https://medium.com/@focaloidtechnologies/microsoft-breaks-new-ground-with-ai-neural-tts-and-life-size-holograms-bcbdacbe3ff0)
 * 2019.11 [Azure custom neural voice public preview](https://venturebeat.com/2019/11/04/azure-cognitive-services-gets-speech-search-language-and-security-updates-at-ignite-2019/)
 * 2019.08 [Bringing cloud powered voices to Microsoft Edge Insiders](https://blogs.windows.com/msedgedev/2019/08/14/cloud-powered-voices-microsoft-edge-chromium/)
 * 2019.06 [Inclusive Classroom round up for Microsoft Education at ISTE 2019](https://techcommunity.microsoft.com/t5/education-blog/inclusive-classroom-round-up-for-microsoft-education-at-iste/ba-p/679764)
