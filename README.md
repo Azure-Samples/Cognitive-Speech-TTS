@@ -17,9 +17,10 @@ products:
 # Microsoft TTS Blog and News 
 Here lists the Azure TTS product blog, Azure TTS customer stories and Microsoft TTS research news etc.  
 * 2020.04 [Blog: Introducing new voice styles in Azure Cognitive Services](https://techcommunity.microsoft.com/t5/azure-ai/introducing-new-voice-styles-in-azure-cognitive-services/ba-p/1248368)
+* 2020.04 [Microsoft Edge is becoming the browser you didn’t know you needed](https://arstechnica.com/gadgets/2020/04/microsoft-edge-is-becoming-the-browser-you-didnt-know-you-needed/)
 * 2020.03 [Blog: Cognitive Services adds Brazilian Portuguese to Neural Text to Speech](https://techcommunity.microsoft.com/t5/azure-ai/cognitive-services-adds-brazilian-portuguese-to-neural-text-to/ba-p/1210471)
 * 2020.03 [科技宝藏 | 微软听听文档，AI语音全线升级！ ](https://mp.weixin.qq.com/s?__biz=MzA5Mzk3NDcyNw==&mid=2247486058&idx=1&sn=8db9d8a3d61ab5027865593e0aef3f24&chksm=9054f3c2a7237ad455a00c0dab6baa639f84d1387525e8153f2b6c8736a5857d1de316616b60&mpshare=1&scene=1&srcid=0320zDDQqoIu4bz0ILj2eq41&sharer_sharetime=1584690411522&sharer_shareid=67fac6419876a8c72f83d82f53762097#rd)
-* 2020.01 [Bixby em português tem testes iniciados no Brasil, veja como ativar](https://epicgeek.com.br/samsung-bixby-portugues-brasil-beta-como-ativar/)
+* 2020.02 [Versão final da Bixby falando em português é liberada! Vem saber tudo!](https://missaodigital.magazineluiza.com.br/versao-final-da-bixby-falando-portugues-e-liberada-vem-saber-tudo/)
 * 2019.12 [NeurIPS 2019: FastSpeech: New text-to-speech model improves on speed, accuracy, and controllability](https://www.microsoft.com/en-us/research/blog/fastspeech-new-text-to-speech-model-improves-on-speed-accuracy-and-controllability/)
 * 2019.11 [Blog: Play My Emails in Outlook and get time back in your day](https://techcommunity.microsoft.com/t5/outlook-blog/play-my-emails-in-outlook-and-get-time-back-in-your-day/ba-p/930243)
 * 2019.11 [Delivering the benefits of Custom Neural Voice](https://www.linkedin.com/pulse/delivering-benefits-custom-neural-voice-alex-kipman/)
