@@ -23,6 +23,7 @@ products:
 * 2019.11 [Blog: Azure custom neural voice public preview](https://venturebeat.com/2019/11/04/azure-cognitive-services-gets-speech-search-language-and-security-updates-at-ignite-2019/)
 * 2019.10 [Microsoft breaks new ground with AI neural TTS and life-size holograms](https://medium.com/@focaloidtechnologies/microsoft-breaks-new-ground-with-ai-neural-tts-and-life-size-holograms-bcbdacbe3ff0)
 * 2019.10 [微软“晓晓”让温暖的声音浸润心目图书馆 | AI for Good ](https://www.infoq.cn/article/VJf8HrIIg0h50U6QEzo5)
+* 2019.09 [让电脑说人话 | 数字化转型 ING ](https://www.sohu.com/a/343369083_181341)
 * 2019.08 [Blog: Bringing cloud powered voices to Microsoft Edge Insiders](https://blogs.windows.com/msedgedev/2019/08/14/cloud-powered-voices-microsoft-edge-chromium/)
 * 2019.06 [Blog: Inclusive Classroom round up for Microsoft Education at ISTE 2019](https://techcommunity.microsoft.com/t5/education-blog/inclusive-classroom-round-up-for-microsoft-education-at-iste/ba-p/679764)
 * 2019.05 [Blog: Azure Neural text-to-speech GA](https://azure.microsoft.com/en-us/blog/a-deep-dive-into-what-s-new-with-azure-cognitive-services/)
