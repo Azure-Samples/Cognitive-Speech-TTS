@@ -39,14 +39,14 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2018.12 [Blog: Microsoft previews neural network text-to-speech](https://azure.microsoft.com/en-us/blog/microsoft-previews-neural-network-text-to-speech/)
 * 2018.09 [Blog: Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)
 
-# Azure TTS Common Links
+# Azure Cognitive TTS Common Links
 - [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 - [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
 - [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
 - [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
 
-# Microsoft Speech Service API: Text-to-Speech Samples
+# Azure Cognitive TTS Samples
 
 Microsoft Text to speech service now is offically supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
 
