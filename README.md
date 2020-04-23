@@ -16,6 +16,7 @@ products:
 ---
 # Azure Cognitive TTS Blog and News 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.  
+* 2020.04 [看过很多景色，你还没“见过”声音里的世界：周迅语音为你读书](https://mp.weixin.qq.com/s?__biz=MzA3MTA0ODYyOA==&mid=2651161833&idx=1&sn=944f6d14bfafd68c37e3905cee5eb9f5&chksm=84c2a832b3b521240348b93ee71dd41196d572a51211d376618f5026ba289c4c15214266ec25&mpshare=1&scene=1&srcid=&sharer_sharetime=1587608381632&sharer_shareid=e291f83180ca8472f4c020aae119eb2c#rd)
 * 2020.04 [Blog: Introducing new voice styles in Azure Cognitive Services](https://techcommunity.microsoft.com/t5/azure-ai/introducing-new-voice-styles-in-azure-cognitive-services/ba-p/1248368)
 * 2020.04 [Microsoft Edge is becoming the browser you didn’t know you needed, talking about natural voices ](https://arstechnica.com/gadgets/2020/04/microsoft-edge-is-becoming-the-browser-you-didnt-know-you-needed/)
 * 2020.03 [Blog: Cognitive Services adds Brazilian Portuguese to Neural Text to Speech](https://techcommunity.microsoft.com/t5/azure-ai/cognitive-services-adds-brazilian-portuguese-to-neural-text-to/ba-p/1210471)
