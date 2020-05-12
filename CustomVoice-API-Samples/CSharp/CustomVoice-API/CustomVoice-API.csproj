@@ -89,6 +89,8 @@
     <Compile Include="API\DTO\ModelDefinition.cs" />
     <Compile Include="API\DTO\OneApiState.cs" />
     <Compile Include="API\DTO\PaginatedEntities.cs" />
+    <Compile Include="API\DTO\Project.cs" />
+    <Compile Include="API\DTO\ProjectDefinition.cs" />
     <Compile Include="API\DTO\UpdateDefinition.cs" />
     <Compile Include="API\DTO\Voice.cs" />
     <Compile Include="API\DTO\VoiceTest.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="API\Endpoint.cs" />
     <Compile Include="API\Model.cs" />
     <Compile Include="API\API_V3.cs" />
+    <Compile Include="API\Project.cs" />
     <Compile Include="API\VoiceTest.cs" />
     <Compile Include="ArgumentsDescription.cs" />
     <Compile Include="Program.cs" />
