@@ -2,6 +2,7 @@
 {
     public enum APIKind
     {
+        project,
         dataset,
         model,
         voicetest,

@@ -21,6 +21,7 @@ namespace CustomVoice_API
         internal const string EndpointId = "endpointId";
         internal const string BatchSynthesisId = "batchSynthesisId";
         internal const string VoiceTestId = "voiceTestId";
+        internal const string HostUriValue = "https://Westus.customvoice.api.speech.microsoft.com/";
 
         public static Dictionary<string, string> GetApiKindAndAction(string[] args)
         {
@@ -49,7 +50,7 @@ namespace CustomVoice_API
 
         public static Dictionary<string, string> GetArguments(string[] args)
         {
-            if(args.Length <= 0)
+            if (args.Length <= 0)
             {
                 return null;
             }
@@ -94,7 +95,7 @@ namespace CustomVoice_API
 
         public static bool ParametersNoMatch(Dictionary<string, string> arguments, List<string> requiredParameters)
         {
-            if(requiredParameters.Except(arguments.Keys).Count() > 0)
+            if (requiredParameters.Except(arguments.Keys).Count() > 0)
             {
                 return true;
             }
@@ -102,7 +103,7 @@ namespace CustomVoice_API
             return false;
         }
 
-        public static Dictionary<string, List<string>> GetParameters(APIKind apiKind, Action action )
+        public static Dictionary<string, List<string>> GetParameters(APIKind apiKind, Action action)
         {
             Dictionary<string, List<string>> result = new Dictionary<string, List<string>>();
             List<string> RequiredParameters = null;
@@ -110,6 +111,24 @@ namespace CustomVoice_API
 
             switch ($"{apiKind}-{action}")
             {
+                case nameof(APIKind.project) + "-" + nameof(Action.create):
+                    {
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, Gender, Locale };
+                        OptionalParameters = new List<string>() { Description };
+                        break;
+                    }
+                case nameof(APIKind.project) + "-" + nameof(Action.get):
+                    {
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri };
+                        OptionalParameters = new List<string>();
+                        break;
+                    }
+                case nameof(APIKind.project) + "-" + nameof(Action.delete):
+                    {
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId };
+                        OptionalParameters = new List<string>();
+                        break;
+                    }
                 case nameof(APIKind.dataset) + "-" + nameof(Action.uploaddataset):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, Name, ProjectId, Gender, Locale, WavePath, ScriptPath };
@@ -178,8 +197,8 @@ namespace CustomVoice_API
                     }
                 case nameof(APIKind.voicetest) + "-" + nameof(Action.create):
                     {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId, ModelId, "script"};
-                        OptionalParameters = new List<string>() { "isSSML"};
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId, ModelId, "script" };
+                        OptionalParameters = new List<string>() { "isSSML" };
                         break;
                     }
                 case nameof(APIKind.voicetest) + "-" + nameof(Action.get):
