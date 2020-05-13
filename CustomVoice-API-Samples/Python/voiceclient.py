@@ -13,6 +13,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 parser = argparse.ArgumentParser(description='Long audio tool to submit voice synthesis requests.')
 parser.add_argument('--voices', action="store_true", default=False, help='print voice list')
 parser.add_argument('--voicesynthesis', action="store_true", default=False, help='print synthesis list')
+parser.add_argument('--voicesynthesisbyid', action="store_true", default=False, help='print the synthesis by voice synthesis id')
 parser.add_argument('--submit', action="store_true", default=False, help='submit a synthesis request')
 parser.add_argument('--delete', action="store_true", default=False, help='delete a synthesis request')
 parser.add_argument('--concatenateResult', action="store_true", default=False, help='If concatenate result in a single wave file')
@@ -23,7 +24,7 @@ parser.add_argument('-status', action="store",  dest="status", help='the status 
 parser.add_argument('-skip', action="store", metavar='N', type=int, dest="skip", help='the skip number in query')
 parser.add_argument('-top', action="store", metavar='N', type=int, dest="top", help='the top number in query')
 parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
-parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be deleted')
+parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be queried or deleted')
 parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
 parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
 parser.add_argument('-key', action="store", dest="key", required=True, help='the Speech service subscription key, like bb82464444c548dea4dce4376f3c7d26 ')
@@ -104,7 +105,7 @@ def submitSynthesis():
     if response.status_code == 202:
         location = response.headers['Location']
         id = location.split("/")[-1]
-        print("Submit synthesis request successful")
+        print("Submit synthesis request successful , id: %s" % (id))
         return id
     else:
         print("Submit synthesis request failed")
@@ -124,6 +125,16 @@ if args.voicesynthesis:
         print("There are %d synthesis requests:" % len(synthese))
         for synthesis in synthese:
             print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
+
+if args.voicesynthesisbyid:
+    if args.synthesisId is None:
+        print ("-synthesisId is required ")
+    else:
+        synthesis = getSubmittedSynthesis(args.synthesisId[0])
+        if synthesis is not None:
+            print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
+        else:
+            print ("Not found voice synthesis %s " % (args.synthesisId))
 
 if args.delete:
 	deleteSynthesis(args.synthesisId)
