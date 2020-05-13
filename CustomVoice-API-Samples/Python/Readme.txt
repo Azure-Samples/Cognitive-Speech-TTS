@@ -11,8 +11,7 @@ python voiceclient.py -h
 
 2.Get submitted voice synthesis list with filter and paged:
 python voiceclient.py --voicesynthesis -region centralindia -key your_key_here -status Succeeded -timestart "2020-01-01" -timeend "2020-01-23" -skip 0 -top 100
-
-2.Get submitted voice synthesis by ID:
+Or get single submitted voice synthesis by ID:
 python voiceclient.py --voicesynthesisbyid -region centralindia -key your_key_here -synthesisId id
 
 3.Get available voice list:
