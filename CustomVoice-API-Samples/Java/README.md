@@ -1,11 +1,10 @@
-## Custom Voice API
+# Custom Voice API
 
-This project contains samples of HTTP-based Microsoft Custom Neural Voice Batch Synthesis APIs.
+This project contains samples of HTTP-based Microsoft Neural Voice Long Audio APIs.
  
 ## Build the samples
 
-1. First, you must obtain a standard (not free) Speech API subscription key by following instructions in Microsoft Cognitive Services subscription.
-1. Make sure that you have Maven installed. Under the directory with the pom file, run the command `mvn assembly:assembly` to Compile the executable jar package.
+1. First, you must obtain a standard (not free) Speech service subscription key in Microsoft Cognitive Services subscription.
 1. Run use this command: `java -jar target\CustomVoiceAPI-Java-1.0-SNAPSHOT.jar`. Related parameters, please refer to the following Usage.
 
 #### usage
@@ -15,8 +14,8 @@ The following are the parameters required for the 5 executable commands:
 ```
  [Required]
     -c,--create                     
-    -h,--hosturl <arg>              i.e. https://centralindia.cris.ai
-    -s,--subscriptionkey <arg>      The cris subscription key
+    -h,--hosturl <arg>              i.e. https://centralindia.customvoice.api.speech.microsoft.com
+    -s,--subscriptionkey <arg>      The Speech service subscription key
     -n,--name <arg>                 The name of synthesis task
     -l,--locale <arg>               The locale information like zh-CN/en-US
     -m,--modelidlist <arg>          The id list of the model which used to synthesis, separated by ';'
@@ -30,30 +29,30 @@ The following are the parameters required for the 5 executable commands:
 ```
  [Required]
     -gv,--getvoice
-    -h,--hosturl <arg>              i.e. https://centralindia.cris.ai
-    -s,--subscriptionkey <arg>      The cris subscription key
+    -h,--hosturl <arg>              i.e. https://centralindia.customvoice.api.speech.microsoft.com
+    -s,--subscriptionkey <arg>      The Speech service subscription key
 ```
 * Get Voice Synthesis List
 ```
  [Required]
     -gvs,--getvoicesynthesis
-    -h,--hosturl <arg>              i.e. https://centralindia.cris.ai
-    -s,--subscriptionkey <arg>      The cris subscription key
+    -h,--hosturl <arg>              i.e. https://centralindia.customvoice.api.speech.microsoft.com
+    -s,--subscriptionkey <arg>      The Speech service subscription key
 ```
 * Get Voice Synthesis by Id
 ```
  [Required]
     -gvsi,--getvoicesynthesisbyid
-    -h,--hosturl <arg>                  i.e. https://centralindia.cris.ai
-    -s,--subscriptionkey <arg>          The cris subscription key
+    -h,--hosturl <arg>                  i.e. https://centralindia.customvoice.api.speech.microsoft.com
+    -s,--subscriptionkey <arg>          The Speech service subscription key
     -vsi,--voicesynthesisid <arg>       The id of the synthesis task
 ```
 * Delete Voice Synthesis by Id
 ```
  [Required]
     -dvs,--delete
-    -h,--hosturl <arg>                  i.e. https://centralindia.cris.ai
-    -s,--subscriptionkey <arg>          The cris subscription key
+    -h,--hosturl <arg>                  i.e. https://centralindia.customvoice.api.speech.microsoft.com
+    -s,--subscriptionkey <arg>          The Speech service subscription key
     -vsi,--voicesynthesisid <arg>       The id of the synthesis task
 ```
 

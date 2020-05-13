@@ -456,6 +456,9 @@ namespace CustomVoice_API
             Console.WriteLine("");
             Console.WriteLine($"Sample command : {sampleCommand}");
             Console.WriteLine("");
+            Console.WriteLine("See the link below for a list of supported regions");
+            Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation");
+            Console.WriteLine("");
             Console.WriteLine("See the link below for a list of ibizastsurl");
             Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#how-to-get-an-access-token");
             Console.WriteLine("");

@@ -187,10 +187,10 @@ public class VoiceSynthesisMain {
 		Option opt5 = new Option("dvs","delete",false,"Deletes the specified voice synthesis task.");
 		opt5.setRequired(false);
 		options.addOption(opt5);
-		Option opt6 = new Option("h","hosturl",true,"i.e. https://centralindia.cris.ai");
+		Option opt6 = new Option("h","hosturl",true,"i.e. https://centralindia.customvoice.api.speech.microsoft.com");
 		opt6.setRequired(true);  
 		options.addOption(opt6);
-		Option opt7 = new Option("s","subscriptionkey",true,"The cris subscription key");
+		Option opt7 = new Option("s","subscriptionkey",true,"The Speech service subscription key");
 		opt7.setRequired(true);
 		options.addOption(opt7);
 		Option opt8 = new Option("n","name",true,"The name of synthesis task");

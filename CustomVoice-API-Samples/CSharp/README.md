@@ -8,7 +8,7 @@ Use API to construct an e2e flow: upload data, start model training, create voic
 
 ## Before use
 
-You must obtain a Speech API subscription key by following instructions in [Microsoft Cognitive Services subscription](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure).
+You must obtain a Speech service subscription key by following instructions in [Microsoft Cognitive Services subscription](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure).
 
 ## Usage
 
