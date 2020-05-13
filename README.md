@@ -14,7 +14,15 @@ products:
 - azure
 - azure-cognitive-services
 ---
-# Azure Cognitive TTS Blog and News 
+
+# Azure Cognitive TTS Samples
+
+Microsoft Text to speech service now is offically supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
+
+Recommend to run the CSharp example first which is always kept up to date. 
+
+## Azure Cognitive TTS Blog and News 
+
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.  
 * 2020.04 [Finetune neural text-to-speech output with advanced customization features](https://techcommunity.microsoft.com/t5/azure-ai/finetune-neural-text-to-speech-output-with-advanced/ba-p/1348941)
 * 2020.04 [Read Aloud in Word on iOS](https://blog-insider.office.com/2020/04/24/read-aloud-in-word/)
@@ -42,21 +50,16 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2018.12 [Blog: Microsoft previews neural network text-to-speech](https://azure.microsoft.com/en-us/blog/microsoft-previews-neural-network-text-to-speech/)
 * 2018.09 [Blog: Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)
 
-# Azure Cognitive TTS Common Links
+## Azure Cognitive TTS Common Links
+
 - [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 - [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
 - [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
 - [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
 
-# Azure Cognitive TTS Samples
-
-Microsoft Text to speech service now is offically supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
-
-Recommend to run the CSharp example first which is always kept up to date. 
-
-
 ## Contributing
+
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
 
 You can reach out to us anytime with questions and suggestions using our communities below:
@@ -65,13 +68,13 @@ You can reach out to us anytime with questions and suggestions using our communi
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-
 ## License
+
 All Microsoft Cognitive Services SDKs and samples are licensed with the MIT License. For more details, see
 [LICENSE](</LICENSE.md>).
 
 Sample images are licensed separately, please refer to [LICENSE-IMAGE](</LICENSE-IMAGE.md>).
 
-
 ## Developer Code of Conduct
+
 Developers using Cognitive Services, including this client library & sample, are expected to follow the “Developer Code of Conduct for Microsoft Cognitive Services”, found at [http://go.microsoft.com/fwlink/?LinkId=698895](http://go.microsoft.com/fwlink/?LinkId=698895).
