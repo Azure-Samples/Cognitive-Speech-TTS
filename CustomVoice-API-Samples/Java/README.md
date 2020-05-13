@@ -5,6 +5,7 @@ This project contains samples of HTTP-based Microsoft Neural Voice Long Audio AP
 ## Build the samples
 
 1. First, you must obtain a standard (not free) Speech service subscription key by following instructions in Microsoft Cognitive Services subscription.
+1. Make sure that you have Maven installed. Under the directory with the pom file, run the command `mvn assembly:assembly` to Compile the executable jar package.
 1. Run use this command: `java -jar target\CustomVoiceAPI-Java-1.0-SNAPSHOT.jar`. Related parameters, please refer to the following Usage.
 
 #### usage
