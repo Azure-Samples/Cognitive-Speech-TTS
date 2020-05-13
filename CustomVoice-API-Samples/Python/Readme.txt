@@ -1,7 +1,8 @@
-This python script contains samples of HTTP-based Microsoft Custom Neural Voice Batch Synthesis APIs.
+This python script contains samples of HTTP-based Microsoft Neural Voice Long Audio APIs.
 
-1. Install Python from https://www.python.org/downloads/release/
-2. Install python modules needed with 'pip install urllib3 requests'
+1. First, you must obtain a standard (not free) Speech service subscription key by following instructions in Microsoft Cognitive Services subscription.
+2. Install Python from https://www.python.org/downloads/release/
+3. Install python modules needed with 'pip install urllib3 requests'
 
 Usage guide:
 

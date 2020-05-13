@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
+using CustomVoice_API.API.DTO;
 using Newtonsoft.Json;
-using Skype.Azure.Runners.CustomVoice.CRISVoiceAPI.DTO;
 
 namespace CustomVoice_API.API
 {

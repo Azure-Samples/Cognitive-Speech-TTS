@@ -21,7 +21,7 @@ namespace CustomVoice_API
         internal const string EndpointId = "endpointId";
         internal const string BatchSynthesisId = "batchSynthesisId";
         internal const string VoiceTestId = "voiceTestId";
-        internal const string HostUriValue = "https://Westus.customvoice.api.speech.microsoft.com/";
+        internal const string HostUriValue = "https://<region>.customvoice.api.speech.microsoft.com/";
 
         public static Dictionary<string, string> GetApiKindAndAction(string[] args)
         {

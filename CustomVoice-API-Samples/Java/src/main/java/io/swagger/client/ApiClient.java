@@ -109,7 +109,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://develop.cris.ai
+     * @param basePath Base path of the URL (e.g https://centralindia.customvoice.api.speech.microsoft.com
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
