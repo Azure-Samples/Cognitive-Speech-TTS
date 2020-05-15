@@ -19,7 +19,7 @@ The following are the parameters required for the 5 executable commands:
     -s,--subscriptionkey <arg>      The Speech service subscription key
     -n,--name <arg>                 The name of synthesis task
     -l,--locale <arg>               The locale information like zh-CN/en-US
-    -m,--modelidlist <arg>          The id list of the model which used to synthesis, separated by ';'
+    -m,--modelidlist <arg>          The id list of the model(voice) which used to synthesis, separated by ';'
     -sf,--scriptfile <arg>          The input text file path
  [Optional]
     -d,--description <arg>          The description of synthesis task
