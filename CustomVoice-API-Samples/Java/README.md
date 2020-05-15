@@ -39,6 +39,12 @@ The following are the parameters required for the 5 executable commands:
     -gvs,--getvoicesynthesis
     -h,--hosturl <arg>              i.e. https://centralindia.customvoice.api.speech.microsoft.com
     -s,--subscriptionkey <arg>      The Speech service subscription key
+ [Optional]
+    -sk,--skip <arg>                The skip filter of the voice synthesis
+    -st,--status <arg>              The status filter of the voice synthesis query, could be NotStarted/Running/Succeeded/Failed
+    -te,--timeend <arg>             The timeend filter of the voice synthesis query, like 2020-05-01 15:26:21
+    -tp,--top <arg>                 The top filter of the voice synthesis query, should be a interger value
+    -ts,--timestart <arg>           The timestart filter of the voice synthesis query, like 2020-05-15 15:26:21
 ```
 * Get Voice Synthesis by Id
 ```
