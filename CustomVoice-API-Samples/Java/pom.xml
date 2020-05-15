@@ -46,11 +46,6 @@
       <version>20180813</version>
     </dependency>
     <dependency>
-      <groupId>io.swagger</groupId>
-      <artifactId>swagger-annotations</artifactId>
-      <version>1.5.18</version>
-    </dependency>
-    <dependency>
       <groupId>org.threeten</groupId>
       <artifactId>threetenbp</artifactId>
       <version>1.3.5</version>
@@ -134,7 +129,7 @@
             </descriptorRefs>
             <archive>
               <manifest>
-                <mainClass>CustomVoiceAPI.VoiceSynthesisMain</mainClass>
+                <mainClass>customvoice.Main</mainClass>
               </manifest>
             </archive>
           </configuration>
