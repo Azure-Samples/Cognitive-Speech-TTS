@@ -6,6 +6,8 @@ package customvoice;
 
 import java.io.File;
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import customvoice.client.ApiClient;
 import customvoice.client.ApiException;
 import customvoice.client.ApiResponse;
 import customvoice.client.Configuration;
+import customvoice.client.DateFormatHelper;
 import customvoice.model.PaginatedEntities;
 import customvoice.model.Voice;
 import customvoice.model.VoiceSynthesis;
@@ -101,7 +104,7 @@ public class VoiceSynthesisApi {
 	 *                      deserialize the response body
 	 */
 	public List<Voice> getSupportedVoicesForVoiceSynthesis() throws ApiException {
-		String localVarPath = Configuration.VoiceSynthesis_BasePath + "/voices";
+		String localVarPath = Configuration.VoicePath;
 		Type localVarReturnType = new TypeToken<List<Voice>>() {
 		}.getType();
 		ApiResponse<List<Voice>> resp = apiClient.getJson(localVarPath, localVarReturnType);
@@ -117,21 +120,22 @@ public class VoiceSynthesisApi {
 	 * @param skip      The skip filter
 	 * @param top       The top filter
 	 * @return List&lt;VoiceSynthesis&gt;
-	 * @throws ApiException If fail to call the API, e.g. server error or cannot
-	 *                      deserialize the response body
+	 * @throws ApiException   If fail to call the API, e.g. server error or cannot
+	 *                        deserialize the response body
+	 * @throws ParseException
 	 */
-	public List<VoiceSynthesis> getVoiceSyntheses(String timeStart, String timeEnd, String status, int skip, int top)
-			throws ApiException {
-		String localVarPath = Configuration.VoiceSynthesis_BasePath + "/Paginated?";
+	public List<VoiceSynthesis> getVoiceSyntheses(Date timeStart, Date timeEnd, String status, int skip, int top)
+			throws ApiException, ParseException {
+		String localVarPath = Configuration.PaginatedVoiceSynthesisPath + "?";
 		Type localVarReturnType = new TypeToken<PaginatedEntities<VoiceSynthesis>>() {
 		}.getType();
 
 		if (timeStart != null) {
-			localVarPath += "&timestart=" + timeStart;
+			localVarPath += "&timestart=" + DateFormatHelper.parseToString(timeStart);
 		}
 
 		if (timeEnd != null) {
-			localVarPath += "&timeend=" + timeEnd;
+			localVarPath += "&timeend=" + DateFormatHelper.parseToString(timeEnd);
 		}
 
 		if (status != null) {

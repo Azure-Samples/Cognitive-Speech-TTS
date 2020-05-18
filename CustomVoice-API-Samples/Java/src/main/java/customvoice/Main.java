@@ -1,19 +1,16 @@
 package customvoice;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.cli.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Option;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
 
-import customvoice.client.ApiClient;
 import customvoice.client.ApiException;
-import customvoice.model.Voice;
-import customvoice.model.VoiceSynthesis;
 
 public class Main {
 
@@ -34,134 +31,7 @@ public class Main {
 			return;
 		}
 
-		String hostPath = cli.getOptionValue("hosturl");
-		String subscriptionKey = cli.getOptionValue("subscriptionkey");
-
-		ApiClient apiClient = new ApiClient(hostPath);
-		apiClient.setApiKey(subscriptionKey);
-		VoiceSynthesisLib api = new VoiceSynthesisLib(apiClient);
-
-		try {
-			if (cli.hasOption("create")) {
-				String name = cli.getOptionValue("name");
-				if (name == null) {
-					System.out.println("Please enter the name of voice synthesis task");
-					return;
-				}
-
-				String description = cli.getOptionValue("description");
-				if (description == null) {
-					description = "";
-				}
-
-				String locale = cli.getOptionValue("locale");
-				if (locale == null) {
-					System.out.println("Please enter the locale of the model voice synthesis task used");
-					return;
-				}
-
-				String modelList = cli.getOptionValue("modelidlist");
-				if (modelList == null) {
-					System.out
-							.println("Please enter the model list of the voice synthesis task used, separated by ';'");
-					return;
-				}
-				List<UUID> model = new ArrayList<UUID>();
-				for (String id : modelList.split(";")) {
-					model.add(UUID.fromString(id));
-				}
-
-				String outputFormat = cli.getOptionValue("outputformat");
-				if (outputFormat == null) {
-					outputFormat = "riff-16khz-16bit-mono-pcm";
-				}
-
-				String properties = "";
-				if (cli.hasOption("concatenateresult")) {
-					properties = "{\"ConcatenateResult\": \"true\"}";
-				}
-
-				String scriptFile = cli.getOptionValue("scriptfile");
-				if (scriptFile == null) {
-					System.out.println("Please enter the script file path");
-					return;
-				}
-				File script = new File(scriptFile);
-
-				String synthesisId = api.SubmitSynthesis(name, description, locale, model, outputFormat, properties,
-						script);
-				System.out.printf("Submit synthesis request successful , id: %s", synthesisId);
-				return;
-			} else if (cli.hasOption("getvoice")) {
-				List<Voice> reslut = api.GetVoice();
-				System.out.println(new JSONArray(reslut));
-			} else if (cli.hasOption("getvoicesynthesis")) {
-				String timeStart = cli.getOptionValue("timestart");
-				String timeEnd = cli.getOptionValue("timeend");
-				String status = cli.getOptionValue("status");
-				String skips = cli.getOptionValue("skip");
-				int skip = -1;
-				if (skips != null) {
-					try {
-						skip = Integer.parseInt(skips);
-						if (skip < 0) {
-							System.out.println(
-									"Please enter a valid skip parameter, should be a ingeter greater or equals 0");
-							return;
-						}
-					} catch (NumberFormatException e) {
-						System.out.println(
-								"Please enter a valid skip parameter, should be a ingeter greater or equals 0");
-						return;
-					}
-				}
-				int top = -1;
-				String tops = cli.getOptionValue("top");
-				if (tops != null) {
-					try {
-						top = Integer.parseInt(tops);
-						if (top < 0) {
-							System.out
-									.println("Please enter a valid top parameter, should be a ingeter greater than 0");
-							return;
-						}
-					} catch (NumberFormatException e) {
-						System.out.println("Please enter a valid top parameter, should be a ingeter greater than 0");
-						return;
-					}
-				}
-				List<VoiceSynthesis> result = api.GetVoiceSynthesis(timeStart, timeEnd, status, skip, top);
-				System.out.println(new JSONArray(result));
-			} else if (cli.hasOption("getvoicesynthesisbyid")) {
-				String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
-				if (voiceSynthesisId == null) {
-					System.out.println("Please enter Voice Synthesis Id");
-					return;
-				}
-				VoiceSynthesis reslut = api.GetVoiceSynthesis(UUID.fromString(voiceSynthesisId));
-				System.out.println(new JSONObject(reslut));
-			} else if (cli.hasOption("delete")) {
-				String voiceSynthesisId = cli.getOptionValue("voicesynthesisid");
-				if (voiceSynthesisId == null) {
-					System.out.println("Please enter Voice Synthesis Id");
-					return;
-				}
-				api.DeleteSynthesis(UUID.fromString(voiceSynthesisId));
-				System.out.printf("Delete successful, id : %s", voiceSynthesisId);
-			} else {
-				System.out.println("Please enter the action you need to perform");
-			}
-		} catch (Exception e) {
-			System.out.println(
-					"Request failed, wrong parameter or request timed out, please check the parameters and try again.");
-			System.out.println("We got unexpected: " + e.getMessage());
-			if (e instanceof ApiException) {
-				System.out.println("Response body: " + ((ApiException) e).getResponseBody());
-			}
-			e.printStackTrace();
-			return;
-		}
-
+		ApiHandler.excuteApi(cli);
 		return;
 	}
 
@@ -183,8 +53,8 @@ public class Main {
 		Option opt5 = new Option("dvs", "delete", false, "Deletes the specified voice synthesis task.");
 		opt5.setRequired(false);
 		options.addOption(opt5);
-		Option opt6 = new Option("h", "hosturl", true,
-				"i.e. https://centralindia.customvoice.api.speech.microsoft.com");
+		Option opt6 = new Option("r", "region", true,
+				"i.e. centralindia, see the following link for a list of supported regions https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation");
 		opt6.setRequired(true);
 		options.addOption(opt6);
 		Option opt7 = new Option("s", "subscriptionkey", true, "The Speech service subscription key");
@@ -217,11 +87,11 @@ public class Main {
 		opt15.setRequired(false);
 		options.addOption(opt15);
 		Option opt16 = new Option("ts", "timestart", true,
-				"The timestart filter of the voice synthesis query, like 2019-11-21 15:26:21");
+				"The timestart filter of the voice synthesis query, like 2020-05-01 12:00");
 		opt16.setRequired(false);
 		options.addOption(opt16);
 		Option opt17 = new Option("te", "timeend", true,
-				"The timeend filter of the voice synthesis query, like 2019-11-21 15:26:21");
+				"The timeend filter of the voice synthesis query, like 2020-05-15");
 		opt17.setRequired(false);
 		options.addOption(opt17);
 		Option opt18 = new Option("st", "status", true,
