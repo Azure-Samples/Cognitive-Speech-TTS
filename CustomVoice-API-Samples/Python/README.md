@@ -50,7 +50,7 @@ See [Billable character](https://docs.microsoft.com/en-us/azure/cognitive-servic
 
 - [SupportedRegions](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)
 
-- [LongAudioOutputFormats](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)
+- [OutputFormats](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)
 
 # Contributing
 

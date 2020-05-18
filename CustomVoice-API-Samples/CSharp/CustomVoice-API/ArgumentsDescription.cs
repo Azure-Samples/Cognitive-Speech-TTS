@@ -465,6 +465,9 @@ namespace CustomVoice_API
             Console.WriteLine("See the link for the output format list.");
             Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs");
             Console.WriteLine("");
+            Console.WriteLine("See the link for the long audio output format list.");
+            Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats");
+            Console.WriteLine("");
             Console.WriteLine("See the link for more information.");
             Console.WriteLine("https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech");
         }
