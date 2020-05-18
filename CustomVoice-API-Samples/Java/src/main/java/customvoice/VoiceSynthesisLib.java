@@ -1,6 +1,8 @@
 package customvoice;
 
 import java.io.File;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,8 +23,8 @@ public class VoiceSynthesisLib {
 		return voiceSynthesisApi.getSupportedVoicesForVoiceSynthesis();
 	}
 
-	public List<VoiceSynthesis> GetVoiceSynthesis(String timeStart, String timeEnd, String status, int skip, int top)
-			throws ApiException {
+	public List<VoiceSynthesis> GetVoiceSynthesis(Date timeStart, Date timeEnd, String status, int skip, int top)
+			throws ApiException, ParseException {
 		return voiceSynthesisApi.getVoiceSyntheses(timeStart, timeEnd, status, skip, top);
 	}
 

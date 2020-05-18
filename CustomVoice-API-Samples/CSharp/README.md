@@ -40,7 +40,7 @@ Usage: CustomVoice-API [APIKind] [action] [options]
 For more detailed usage, please enter: CustomVoice-API [APIKind]
 ```
 
-## Some parameters sets
+## Some parameter sets
 
 - [HostURI](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)
 
