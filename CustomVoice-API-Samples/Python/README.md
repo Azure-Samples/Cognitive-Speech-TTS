@@ -41,7 +41,7 @@ python voiceclient.py --delete -region centralindia -key your_key_here -synthesi
 1. The input text file should be Unicode format with 'UTF-8-BOM' (you can check the text format with Notepad++), like the one en-US.txt, and shoule not contains lines more than 10000. Should contain at least 400 billable characters (1 en-US character stands for 1 billable characters and 1 zh-CN character stands for 2 billable characters). If billable characters number < 10000, please expect that the request probably be queued and will be done within 12 hours.If billable characters number > 10000, the request will be executed once where are available resource(not be queued).
 See [Billable character](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech#pricing-note).
 1. The voiceId should pick up from MS guys or get from step2 above.
-1. 'concatenateResult' is a optional parameter, if not give, the output will be multiple wave files per line.
+1. 'concatenateResult' is an optional parameter. If this parameter isn't set, the audio outputs will be generated per paragraph.
 1. Client for each subscription account is allowed to submit at most 5 requests to server per second, if hit the bar, client will get a 429 error code(too many requests).
 1. Server keep at most 120 requests in queue or running for each subscription accout, if hit the bar, should wait until some requests get completed before submit new ones.
 1. Server keep at most 20000 requests for each subscription account. If hit the bar, should delete some requests previously submitted before submit new ones.
@@ -50,7 +50,7 @@ See [Billable character](https://docs.microsoft.com/en-us/azure/cognitive-servic
 
 - [SupportedRegions](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)
 
-- [OutputFormat](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs)
+- [OutputFormats](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)
 
 # Contributing
 

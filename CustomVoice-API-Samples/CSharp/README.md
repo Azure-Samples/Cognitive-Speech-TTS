@@ -48,6 +48,8 @@ For more detailed usage, please enter: CustomVoice-API [APIKind]
 
 - [OutputFormat](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-text-to-speech#audio-outputs)
 
+- [OutputFormatForLongAudioAPI](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)
+
 # Contributing
 
 We welcome contributions and are always looking for new SDKs, input, and
