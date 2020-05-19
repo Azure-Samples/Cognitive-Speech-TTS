@@ -50,6 +50,8 @@ For more detailed usage, please enter: CustomVoice-API [APIKind]
 
 - [OutputFormatForLongAudioAPI](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/long-audio-api#audio-output-formats)
 
+- [SSMLInputFileSampleForLongAudioAPI](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
+
 # Contributing
 
 We welcome contributions and are always looking for new SDKs, input, and

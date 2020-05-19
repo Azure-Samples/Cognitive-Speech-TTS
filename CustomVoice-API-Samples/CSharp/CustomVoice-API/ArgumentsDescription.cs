@@ -419,7 +419,7 @@ namespace CustomVoice_API
                 case Action.create:
                     actionString = "batchsynthesis create";
                     description = "Creates a new synthesis.";
-                    sampleCommand = $"CustomVoice-API batchsynthesis create subscriptionKey [YourSubscriptionKey] hostURI {hostUri} name test description test inputTextPath ./script.txt locale en-US models [ModelId]:[ModelId] outputFormat riff-16khz-16bit-mono-pcm isConcatenateResult false";
+                    sampleCommand = $"CustomVoice-API batchsynthesis create subscriptionKey [YourSubscriptionKey] hostURI {hostUri} name test description test inputTextPath ./script.txt locale en-US models modelId1;modelId2 outputFormat riff-16khz-16bit-mono-pcm isConcatenateResult false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.delete:

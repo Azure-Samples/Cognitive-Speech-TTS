@@ -24,7 +24,7 @@ parser.add_argument('-status', action="store",  dest="status", help='the status 
 parser.add_argument('-skip', action="store", metavar='N', type=int, dest="skip", help='the skip number in query')
 parser.add_argument('-top', action="store", metavar='N', type=int, dest="top", help='the top number in query')
 parser.add_argument('-voiceId', action="store", nargs='+', dest="voiceId", help='the id of the voice which used to synthesis')
-parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be queried or deleted')
+parser.add_argument('-synthesisId', action="store", nargs='+', dest="synthesisId", help='the id of the voice synthesis which need to be queried, or the id list of the voice synthesis which need to deleted')
 parser.add_argument('-locale', action="store", dest="locale", help='the locale information like zh-CN/en-US')
 parser.add_argument('-format', action="store", dest="format", default='riff-16khz-16bit-mono-pcm', help='the output audio format')
 parser.add_argument('-key', action="store", dest="key", required=True, help='the Speech service subscription key, like bb82464444c548dea4dce4376f3c7d26 ')
@@ -134,7 +134,7 @@ if args.voicesynthesisbyid:
         if synthesis is not None:
             print ("ID : %s , Name : %s, Status : %s " % (synthesis['id'], synthesis['name'], synthesis['status']))
         else:
-            print ("Not found voice synthesis %s " % (args.synthesisId))
+            print ("Not found voice synthesis %s " % (args.synthesisId[0]))
 
 if args.delete:
 	deleteSynthesis(args.synthesisId)
