@@ -17,8 +17,8 @@ To use these samples, follow these instructions:
 * Create a new project using your favorite IDE or text editor
 * Copy the code from the sample into a file named `sample.py`
 * Set your subscription key and corresponding region
-* From the working directory, `run: pip install -r requirements.txt`
-* Run the sample: python `sample.py`
+* From the working directory, run: `pip install -r requirements.txt`
+* Run the sample: `python sample.py`
 
 ## Resources
 
