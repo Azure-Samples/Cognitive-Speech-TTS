@@ -7,7 +7,7 @@ This sample shows how to call pronunciation assessment REST API in Python, with 
 Here's what you'll need to run these samples:
 
 * Your favorite IDE or text editor
-* Python 2.7.x or 3.x
+* Python >= 3.5
 * An Azure subscription with Speech Services enabled. [Get one for free!](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)
 
 ## Code samples
