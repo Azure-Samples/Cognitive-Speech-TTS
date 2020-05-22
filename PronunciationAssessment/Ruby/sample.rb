@@ -27,29 +27,29 @@ offset = 0
 chunk_size=1024
 chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
 while chunk_data
-	sleep(chunk_size / 32000) # to simulate human speaking rate
-	write_pipe.write(chunk_data)
-	offset += chunk_size
-	chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
+    sleep(chunk_size / 32000) # to simulate human speaking rate
+    write_pipe.write(chunk_data)
+    offset += chunk_size
+    chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
 end
 
 pron_assessment_params = {
-	:ReferenceText => "Good morning.",
-	:GradingSystem => "HundredMark",
-	:Granularity => "FullText",
-	:Dimension => "Comprehensive"
+    :ReferenceText => "Good morning.",
+    :GradingSystem => "HundredMark",
+    :Granularity => "FullText",
+    :Dimension => "Comprehensive"
 }
 pron_assessment_params_json = JSON.generate(pron_assessment_params)
 pron_assessment_params_base64 = Base64.strict_encode64(pron_assessment_params_json)
 
 headers = {
-	'Accept': 'application/json;text/xml',
-	'Connection': 'Keep-Alive',
-	'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
-	'Ocp-Apim-Subscription-Key': api_key,
-	'Pronunciation-Assessment': pron_assessment_params_base64,
-	'Transfer-Encoding': 'chunked',
-	'Expect': '100-continue'
+    'Accept': 'application/json;text/xml',
+    'Connection': 'Keep-Alive',
+    'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
+    'Ocp-Apim-Subscription-Key': api_key,
+    'Pronunciation-Assessment': pron_assessment_params_base64,
+    'Transfer-Encoding': 'chunked',
+    'Expect': '100-continue'
 }
 
 url = URI.parse("https://#{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us")
@@ -57,12 +57,12 @@ req = Net::HTTP.new(url.host, url.port)
 req.use_ssl = true
 
 request_thread = Thread.new do
-	res = req.post(url, read_pipe.read, headers)
-	if res.message == "OK"
-		puts res.body
-	else
-		puts res.message
-	end
+    res = req.post(url, read_pipe.read, headers)
+    if res.message == "OK"
+        puts res.body
+    else
+        puts res.message
+    end
 end
 
 write_pipe.close
