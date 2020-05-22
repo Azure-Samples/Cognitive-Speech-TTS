@@ -15,28 +15,39 @@ require 'net/http'
 # New unified SpeechService key
 # Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
 # Paid: https://go.microsoft.com/fwlink/?LinkId=872236
-apiKey = ENV["MYKEY"]
+api_key = ENV["MYKEY"]
 region = "westus"
 
-wavheader = [82, 73, 70, 70, 78, 128, 0, 0, 87, 65, 86, 69, 102, 109, 116, 32, 18, 0, 0, 0, 1, 0, 1, 0, 128, 62, 0, 0, 0, 125, 0, 0, 2, 0, 16, 0, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0].pack("C*").force_encoding("ASCII-8BIT")
-pcmdata = File.open("../goodmorning.pcm", "rb") { |f| f.read }
-data = wavheader + pcmdata
+read_pipe, write_pipe = IO.pipe
 
-pronAssessmentParams = {
+waveheader = [82, 73, 70, 70, 78, 128, 0, 0, 87, 65, 86, 69, 102, 109, 116, 32, 18, 0, 0, 0, 1, 0, 1, 0, 128, 62, 0, 0, 0, 125, 0, 0, 2, 0, 16, 0, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0].pack("C*").force_encoding("ASCII-8BIT")
+write_pipe.write(waveheader)
+
+offset = 0
+chunk_size=1024
+chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
+while chunk_data
+	sleep(chunk_size / 32000) # to simulate human speaking rate
+	write_pipe.write(chunk_data)
+	offset += chunk_size
+	chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
+end
+
+pron_assessment_params = {
 	:ReferenceText => "Good morning.",
 	:GradingSystem => "HundredMark",
 	:Granularity => "FullText",
 	:Dimension => "Comprehensive"
 }
-pronAssessmentParamsJson = JSON.generate(pronAssessmentParams)
-pronAssessmentParamsBase64 = Base64.strict_encode64(pronAssessmentParamsJson)
+pron_assessment_params_json = JSON.generate(pron_assessment_params)
+pron_assessment_params_base64 = Base64.strict_encode64(pron_assessment_params_json)
 
 headers = {
 	'Accept': 'application/json;text/xml',
 	'Connection': 'Keep-Alive',
 	'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
-	'Ocp-Apim-Subscription-Key': apiKey,
-	'Pronunciation-Assessment': pronAssessmentParamsBase64,
+	'Ocp-Apim-Subscription-Key': api_key,
+	'Pronunciation-Assessment': pron_assessment_params_base64,
 	'Transfer-Encoding': 'chunked',
 	'Expect': '100-continue'
 }
@@ -44,9 +55,16 @@ headers = {
 url = URI.parse("https://#{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us")
 req = Net::HTTP.new(url.host, url.port)
 req.use_ssl = true
-res = req.post(url, data, headers)
-if res.message == "OK"
-	puts res.body
-else
-	puts res.message
+
+request_thread = Thread.new do
+	res = req.post(url, read_pipe.read, headers)
+	if res.message == "OK"
+		puts res.body
+	else
+		puts res.message
+	end
 end
+
+write_pipe.close
+
+request_thread.join
