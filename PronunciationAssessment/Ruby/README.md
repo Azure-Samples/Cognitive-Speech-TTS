@@ -14,8 +14,9 @@ Here's what you'll need to run these samples:
 
 To use these samples, follow these instructions:
 
-* Set your subscription key in environment variable as `MYKEY` and corresponding region.
-* From the working directory, `ruby sample.rb`
+* Set your subscription in environment variables `MYKEY` and `MYREGION`.
+* From the working directory, install dependency `bundle install`
+* Run `ruby sample.rb` to get sample result
 
 ## Resources
 

@@ -9,7 +9,7 @@
 require 'json'
 require 'base64'
 require 'uri'
-require 'net/http'
+require 'httpclient'
 
 # Note: new unified SpeechService API key and issue token uri is per region
 # New unified SpeechService key
@@ -18,13 +18,45 @@ require 'net/http'
 api_key = ENV["MYKEY"]
 region = ENV["MYREGION"]
 
+pron_assessment_params = {
+    :ReferenceText => "Good morning.",
+    :GradingSystem => "HundredMark",
+    :Dimension => "Comprehensive"
+}
+pron_assessment_params_json = JSON.generate(pron_assessment_params)
+pron_assessment_params_base64 = Base64.strict_encode64(pron_assessment_params_json)
+
+headers = [
+    ['Accept', 'application/json;text/xml'],
+    ['Connection', 'Keep-Alive'],
+    ['Content-Type', 'audio/wav; codecs=audio/pcm; samplerate=16000'],
+    ['Ocp-Apim-Subscription-Key', api_key],
+    ['Pronunciation-Assessment', pron_assessment_params_base64],
+    ['Transfer-Encoding', 'chunked'],
+    ['Expect', '100-continue']
+]
+
+uri = URI.parse("https://#{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us")
+clnt = HTTPClient.new
 read_pipe, write_pipe = IO.pipe
+request_thread = Thread.new do
+    conn = clnt.post_async(uri.to_s, read_pipe.read, headers)
+    Thread.pass while !conn.finished?
+    res = conn.pop
+    if res.ok?
+        $get_response_time = Time.now
+        puts JSON.pretty_generate(JSON.parse(res.body))
+        puts ($get_response_time - $upload_finish_time) * 1000
+    else
+        puts res.body
+        puts res.reason
+    end
+end
 
 waveheader = [82, 73, 70, 70, 78, 128, 0, 0, 87, 65, 86, 69, 102, 109, 116, 32, 18, 0, 0, 0, 1, 0, 1, 0, 128, 62, 0, 0, 0, 125, 0, 0, 2, 0, 16, 0, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0].pack("C*").force_encoding("ASCII-8BIT")
 write_pipe.write(waveheader)
-
 offset = 0
-chunk_size=1024
+chunk_size = 1024
 chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
 while chunk_data
     sleep(chunk_size / 32000) # to simulate human speaking rate
@@ -35,41 +67,6 @@ while chunk_data
         $upload_finish_time = Time.now
     end
 end
-
-pron_assessment_params = {
-    :ReferenceText => "Good morning.",
-    :GradingSystem => "HundredMark",
-    :Dimension => "Comprehensive"
-}
-pron_assessment_params_json = JSON.generate(pron_assessment_params)
-pron_assessment_params_base64 = Base64.strict_encode64(pron_assessment_params_json)
-
-headers = {
-    'Accept': 'application/json;text/xml',
-    'Connection': 'Keep-Alive',
-    'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
-    'Ocp-Apim-Subscription-Key': api_key,
-    'Pronunciation-Assessment': pron_assessment_params_base64,
-    'Transfer-Encoding': 'chunked',
-    'Expect': '100-continue'
-}
-
-url = URI.parse("https://#{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us")
-req = Net::HTTP.new(url.host, url.port)
-req.use_ssl = true
-
-request_thread = Thread.new do
-    res = req.post(url, read_pipe.read, headers)
-    $get_response_time = Time.now
-    if res.message == "OK"
-        puts JSON.pretty_generate(JSON.parse(res.body))
-    else
-        puts res.message
-    end
-end
-
 write_pipe.close
 
 request_thread.join
-
-puts ($get_response_time - $upload_finish_time) * 1000
