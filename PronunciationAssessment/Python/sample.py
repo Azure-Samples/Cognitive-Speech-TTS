@@ -2,9 +2,10 @@ import requests
 import base64
 import json
 import time
+import os
 
-subscriptionKey = "{SubscriptionKey}" # replace this with your subscription key
-region = "{Region}" # replace this with the region corresponding to your subscription key, e.g. westus, eastasia
+subscriptionKey = os.environ["MYKEY"] # replace this with your subscription key
+region = os.environ["MYREGION"] # replace this with the region corresponding to your subscription key, e.g. westus, eastasia
 
 # a common wave header, with zero audio length
 # since stream data doesn't contain header, but the API requires header to fetch format information, so you need post this header as first chunk for each query

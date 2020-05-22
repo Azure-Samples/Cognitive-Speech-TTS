@@ -16,7 +16,7 @@ require 'net/http'
 # Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
 # Paid: https://go.microsoft.com/fwlink/?LinkId=872236
 api_key = ENV["MYKEY"]
-region = "westus"
+region = ENV["MYREGION"]
 
 read_pipe, write_pipe = IO.pipe
 
@@ -31,12 +31,14 @@ while chunk_data
     write_pipe.write(chunk_data)
     offset += chunk_size
     chunk_data = IO.binread("../goodmorning.pcm", chunk_size, offset)
+    if not chunk_data
+        $upload_finish_time = Time.now
+    end
 end
 
 pron_assessment_params = {
     :ReferenceText => "Good morning.",
     :GradingSystem => "HundredMark",
-    :Granularity => "FullText",
     :Dimension => "Comprehensive"
 }
 pron_assessment_params_json = JSON.generate(pron_assessment_params)
@@ -58,8 +60,9 @@ req.use_ssl = true
 
 request_thread = Thread.new do
     res = req.post(url, read_pipe.read, headers)
+    $get_response_time = Time.now
     if res.message == "OK"
-        puts res.body
+        puts JSON.pretty_generate(JSON.parse(res.body))
     else
         puts res.message
     end
@@ -68,3 +71,5 @@ end
 write_pipe.close
 
 request_thread.join
+
+puts ($get_response_time - $upload_finish_time) * 1000
