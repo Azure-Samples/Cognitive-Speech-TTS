@@ -25,6 +25,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.  
 * 2020.05 [Neural TTS is extending support to 11 new locales with 15 new voices](https://azure.microsoft.com/en-us/updates/azure-cognitive-services-2/)
+* 2020.05 [Making the web more accessible and inclusive for all with Microsoft Edge, talking about Edge read aloud](https://blogs.windows.com/windowsexperience/2020/05/21/making-the-web-more-accessible-and-inclusive-for-all-with-microsoft-edge/)
 * 2020.04 [Finetune neural text-to-speech output with advanced customization features](https://techcommunity.microsoft.com/t5/azure-ai/finetune-neural-text-to-speech-output-with-advanced/ba-p/1348941)
 * 2020.04 [Read Aloud in Word on iOS](https://blog-insider.office.com/2020/04/24/read-aloud-in-word/)
 * 2020.04 [看过很多景色，你还没“见过”声音里的世界：周迅语音为你读书](https://mp.weixin.qq.com/s?__biz=MzA3MTA0ODYyOA==&mid=2651161833&idx=1&sn=944f6d14bfafd68c37e3905cee5eb9f5&chksm=84c2a832b3b521240348b93ee71dd41196d572a51211d376618f5026ba289c4c15214266ec25&mpshare=1&scene=1&srcid=&sharer_sharetime=1587608381632&sharer_shareid=e291f83180ca8472f4c020aae119eb2c#rd)
