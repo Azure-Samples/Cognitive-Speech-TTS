@@ -104,7 +104,7 @@ namespace TTSSample
                     // see full list here https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#neural-voices-preview
                     SpeakWithVoice(tokenUri, endpointUri, key,
                                     "en-US",
-                                    "en-US-Jessa24kRUS", // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)"
+                                    "en-US-Guy24kRUS", // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Guy24KRUS)"
                                     AudioOutputFormat.Riff24Khz16BitMonoPcm);
                 }
 
