@@ -10,7 +10,7 @@
     "tts_local_endpoint": "",
     "tts_local_key": "",
     "tts_locale": "",
-    "tts_voice_name": "Microsoft Server Speech Text to Speech Voice (en-US, JessaNeural)",
+    "tts_voice_name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
     "tts_extra_enable_property": "",
     "tts_sample_rate": 8000
   }
