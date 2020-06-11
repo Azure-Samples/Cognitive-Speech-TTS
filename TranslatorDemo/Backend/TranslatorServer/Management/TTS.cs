@@ -17,7 +17,7 @@ namespace TranslatorServer.Management
         const string IbizaStsUrl = Configuration.TtsIbizaStsUrl;
         const string SubscriptionKey = Configuration.TtsSubscriptionKey;
         const string Endpoint = Configuration.TtsEndpoint;
-        public string JessaRUSName = Configuration.JessaRUSName;
+        public string AriaRUSName = Configuration.AriaRUSName;
         public string XiaoxiaoNeuralName = Configuration.XiaoxiaoNeuralName;
 
         private Authentication cognitiveServiceAuthentication;
@@ -46,7 +46,7 @@ namespace TranslatorServer.Management
             }
             else
             {
-                return GetStream(Endpoint, token, locale, JessaRUSName, script, format, false);
+                return GetStream(Endpoint, token, locale, AriaRUSName, script, format, false);
             }
         }
 

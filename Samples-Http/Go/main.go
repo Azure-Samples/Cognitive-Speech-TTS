@@ -107,6 +107,6 @@ func main() {
 			Transport: tr,
 		}
 
-		GetAudioBytes(client, endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-JessaNeural'>Hello world!</voice></speak>")
+		GetAudioBytes(client, endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-AriaNeural'>Hello world!</voice></speak>")
 	}
 }

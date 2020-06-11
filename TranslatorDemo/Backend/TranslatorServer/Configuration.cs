@@ -23,7 +23,7 @@
         public const string TtsIbizaStsUrl = "";
         public const string TtsSubscriptionKey = "";
         public const string TtsEndpoint = "";
-        public const string JessaRUSName = "";
+        public const string AriaRUSName = "";
         public const string XiaoxiaoNeuralName = "";
     }
 }
