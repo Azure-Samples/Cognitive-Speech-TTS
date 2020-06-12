@@ -94,7 +94,7 @@ public class Sample {
         byte[] responseBuffer = new byte[connection.getContentLength()];
         InputStream inputStream = connection.getInputStream();
         inputStream.read(responseBuffer);
-        String result = new String(responseBuffer, "utf-8");
+        String result = new String(responseBuffer, "utf-8"); // the result is a JSON, you can parse it with a JSON library 
 
         System.out.println("Pronunciation assessment result:\n");
         System.out.println(result);
