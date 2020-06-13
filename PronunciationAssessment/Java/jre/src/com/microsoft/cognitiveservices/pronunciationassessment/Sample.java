@@ -58,7 +58,7 @@ public class Sample {
 		byte[] pronAssessmentParamsBase64 = Base64.getEncoder().encode(pronAssessmentParamsJson.getBytes("utf-8"));
 		String pronAssessmentParams = new String(pronAssessmentParamsBase64, "utf-8");
 		
-		// build request
+		// build request (when re-run below code in short time, the connect can be cached and reused behind, with lower connecting time cost)
 		URL url = new URL("https://" + region + ".stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us");
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
