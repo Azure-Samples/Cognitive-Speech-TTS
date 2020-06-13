@@ -2,8 +2,6 @@
 
 This sample shows how to call pronunciation assessment REST API in Node.js, with chunked (streaming) data uploading.
 
-* [Convert text-to-speech using Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-nodejs-text-to-speech)
-
 ## Prerequisites
 
 Here's what you'll need to run this sample:
