@@ -22,6 +22,7 @@ namespace CustomVoice_API
         internal const string BatchSynthesisId = "batchSynthesisId";
         internal const string VoiceTestId = "voiceTestId";
         internal const string HostUriValue = "https://<region>.customvoice.api.speech.microsoft.com/";
+        internal const string AdditionalRequestHeaders = "additionalRequestHeaders";
 
         public static Dictionary<string, string> GetApiKindAndAction(string[] args)
         {
@@ -270,7 +271,7 @@ namespace CustomVoice_API
                 case nameof(APIKind.batchsynthesis) + "-" + nameof(Action.getvoices):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri };
-                        OptionalParameters = new List<string>();
+                        OptionalParameters = new List<string>() { AdditionalRequestHeaders };
                         break;
                     }
                 case nameof(APIKind.batchsynthesis) + "-" + nameof(Action.delete):

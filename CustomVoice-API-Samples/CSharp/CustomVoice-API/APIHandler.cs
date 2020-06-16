@@ -172,7 +172,7 @@ namespace CustomVoice_API
                     BatchSynthesisGetById(arguments);
                     break;
                 case Action.getvoices:
-                    BatchSynthesisGetvoices(arguments);
+                    BatchSynthesisGetVoices(arguments);
                     break;
                 case Action.delete:
                     BatchSynthesisDeleteById(arguments);
@@ -500,7 +500,7 @@ namespace CustomVoice_API
             string subscriptionKey = arguments["subscriptionkey"];
             string hostURI = arguments["hosturi"];
             string modelId = arguments["modelid"];
-            
+
             var result = VoiceTest.Get(subscriptionKey, hostURI, modelId);
             DisplayResult<API.DTO.VoiceTest>(result);
         }
@@ -676,7 +676,7 @@ namespace CustomVoice_API
             {
                 var skipParam = arguments["skip"];
                 var ret = int.TryParse(skipParam, out skip);
-                if(!ret)
+                if (!ret)
                 {
                     Console.WriteLine("skip parameter should be an integer number.");
                 }
@@ -705,12 +705,26 @@ namespace CustomVoice_API
             DisplaySingleResult(result, "  ");
         }
 
-        private static void BatchSynthesisGetvoices(Dictionary<string, string> arguments)
+        private static void BatchSynthesisGetVoices(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
             string hostURI = arguments["hosturi"];
+            string additionalRequestHeadersStr = arguments["additionalrequestheaders"];
+            Dictionary<string, string> additionalRequestHeaders = new Dictionary<string, string>();
 
-            var result = BatchSynthesis.Getvoices(subscriptionKey, hostURI);
+            if (!string.IsNullOrEmpty(additionalRequestHeadersStr))
+            {
+                foreach (string headerStr in additionalRequestHeadersStr.Split(';'))
+                {
+                    var headerKeyValue = headerStr.Split(',');
+                    if (headerKeyValue.Length == 2)
+                    {
+                        additionalRequestHeaders.Add(headerKeyValue[0], headerKeyValue[1]);
+                    }
+                }
+            }
+
+            var result = BatchSynthesis.Getvoices(subscriptionKey, hostURI, additionalRequestHeaders);
             DisplayResult<API.DTO.Voice>(result);
         }
 
@@ -771,7 +785,7 @@ namespace CustomVoice_API
 
         private static void DisplayResult<T>(IEnumerable<T> result)
         {
-            if(result == null)
+            if (result == null)
             {
                 return;
             }
@@ -790,7 +804,7 @@ namespace CustomVoice_API
             string key;
             string value;
 
-            if(result == null)
+            if (result == null)
             {
                 return;
             }
