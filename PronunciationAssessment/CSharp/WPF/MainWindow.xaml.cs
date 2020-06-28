@@ -349,7 +349,7 @@ namespace SpeechScore
             try
             {
                 SetWebBrowserFeatures(10);
-                PornScoreWebBrowser.Navigate(new Uri(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, @"pornscore.html")));
+                PornScoreWebBrowser.Navigate(new Uri(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, @"pronscore.html")));
             }
             catch (Exception ex)
             {

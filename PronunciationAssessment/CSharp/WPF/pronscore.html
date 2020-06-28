@@ -15,9 +15,6 @@
             position: relative;
         }
 
-
-
-
         #pronscore {
             margin-top: 20px;
             margin-bottom: 20px;
@@ -61,8 +58,6 @@
             return scoreColor;
         }
 
-        //var pornscore = '{"Confidence":0.9124611020088196,"Lexical":"Good Moring","ITN":"Good Moring","MaskedITN":"good moring","Display":"Good Moring.","PronScore":60.0,"AccuracyScore":60.0,"FluencyScore":100.0,"CompletionScore":50.0,"Words":[{"Word":"Good","PronScore":81.0,"ErrorType":"None","Offset":7900000,"Duration":3500000,"Phonemes":[{"Phoneme":"g","PronScore":75.0,"Offset":7900000,"Duration":1300000},{"Phoneme":"uw","PronScore":79.0,"Offset":9300000,"Duration":1100000},{"Phoneme":"d","PronScore":100.0,"Offset":10500000,"Duration":900000}]},{"Word":"Moring","PronScore":40.0,"ErrorType":"None","Offset":11500000,"Duration":4800000,"Phonemes":[{"Phoneme":"m","PronScore":100.0,"Offset":11500000,"Duration":700000},{"Phoneme":"ao","PronScore":64.0,"Offset":12300000,"Duration":700000},{"Phoneme":"r","PronScore":0.0,"Offset":13100000,"Duration":200000},{"Phoneme":"ih","PronScore":0.0,"Offset":13400000,"Duration":200000},{"Phoneme":"ng","PronScore":43.0,"Offset":13700000,"Duration":2600000}]}]}';
-
         function generatePronScoreTable(pornscore) {
             var report = JSON.parse(pornscore);
 
@@ -72,11 +67,6 @@
             mytable.setAttribute("id", "pronscore_table");
             var words_row = document.createElement("tr");
             var socres_row = document.createElement("tr");
-            
-            //var empty_cell = document.createElement("th");
-            //empty_cell.innerHTML = "Score";
-            //words_row.appendChild(empty_cell);
-
 
             var sent_pronscore_th = document.createElement("th");
             sent_pronscore_th.innerText = "Overall Score";
@@ -90,7 +80,6 @@
             sent_fluency_th.innerText = "Fluency Score";
             words_row.appendChild(sent_fluency_th);
 
-
             var sent_completion_th = document.createElement("th");
             sent_completion_th.innerText = "Completeness Score";
             words_row.appendChild(sent_completion_th);
@@ -98,7 +87,6 @@
             var sent_mission_th = document.createElement("th");
             sent_mission_th.innerText = "Omission Word";
             words_row.appendChild(sent_mission_th);
-
 
             var sent_pronscore_td = document.createElement("td");
             var sent_pronscore_span = document.createElement("span");
@@ -114,7 +102,6 @@
             sent_accuracy_td.appendChild(sent_accuracy_span);
             socres_row.appendChild(sent_accuracy_td);
 
-            
             var sent_fluency_td = document.createElement("td");
             var sent_fluency_span = document.createElement("span");
             sent_fluency_span.innerText = report.FluencyScore.toFixed(2);
@@ -129,14 +116,10 @@
             sent_completion_span.style.backgroundColor = setColor(report.CompletenessScore);
             sent_completion_td.appendChild(sent_completion_span);
             socres_row.appendChild(sent_completion_td);
-            
 
-          
             var sent_mission_td = document.createElement("td");
-            
-            //"PronScore": 66.0, "AccuracyScore": 66.0, "FluencyScore": 99.0, "CompletionScore": 80.0
+
             var OmissionWord = "";
-            
             for (var i = 0; i < report.Words.length; i++) {
                 var word_info = report.Words[i];
 
@@ -147,25 +130,10 @@
                     mission_span.style.backgroundColor = "Red";
                     sent_mission_td.appendChild(mission_span);
                 }
-                /*
-                var word_cell = document.createElement("th");
-                word_cell.innerText = word_info.Word;
-                words_row.appendChild(word_cell)
-
-                var score_cell = document.createElement("td");
-                var score_span = document.createElement("span");
-                score_span.innerText = word_info.PronScore.toFixed(2);
-                score_span.style.backgroundColor = setColor(word_info.PronScore);
-                score_cell.appendChild(score_span);
-                socres_row.appendChild(score_cell);
-                */
             }
 
-            
             socres_row.appendChild(sent_mission_td);
 
-
-            //socres_row.appendChild(sentenceScoreCell);
             mytable.appendChild(words_row);
             
             mytable.appendChild(socres_row);
@@ -206,7 +174,6 @@
                     var score_cell = document.createElement("td");
                     var score_span = document.createElement("span");
                     score_span.innerText = "";
-                    //score_span.style.backgroundColor = setColor(phone_info.PronScore);
                     score_cell.appendChild(score_span);
                     socres_row.appendChild(score_cell);
                 } else {
@@ -251,8 +218,6 @@
 
             </div>
         </font>
-
-
     </div>
 </body>
 </html>
