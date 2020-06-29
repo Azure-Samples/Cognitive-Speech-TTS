@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style type='text/css'>
+
+        #script-box {
+            font-size: 30px;
+            text-align: left;
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            margin-left: 100px;
+            margin-right: 100px;
+            position: relative;
+        }
+
+        #pronscore {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            font-size: 40px;
+        }
+
+        th {
+            border: 1px solid rgba(0, 0, 0, .25);
+            text-align: center;
+            padding: 0px;
+        }
+
+        td {
+            font-style: oblique;
+            border: 1px solid rgba(0, 0, 0, .25);
+            text-align: center;
+            padding: 0px;
+        }
+
+        span {
+            display: inline-block;
+            margin-right: .8em;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+    <!-- saved from url=(0014)about:internet -->
+    <script type="text/javascript">
+        function setColor(score) {
+            var scoreColor = "Green";
+            if (score <= 60) {
+                scoreColor = "Red";
+            } else if (score <= 70) {
+                scoreColor = "Orange";
+            }
+
+            return scoreColor;
+        }
+
+        function generatePronScoreTable(pronscore) {
+            var report = JSON.parse(pronscore);
+
+            var divPage = document.getElementById('pronscore');
+
+            var mytable = document.createElement("table");
+            mytable.setAttribute("id", "pronscore_table");
+            var words_row = document.createElement("tr");
+            var scores_row = document.createElement("tr");
+
+            var sent_pronscore_th = document.createElement("th");
+            sent_pronscore_th.innerText = "Overall Score";
+            words_row.appendChild(sent_pronscore_th);
+
+            var sent_accuracy_th = document.createElement("th");
+            sent_accuracy_th.innerText = "Accuracy Score";
+            words_row.appendChild(sent_accuracy_th);
+
+            var sent_fluency_th = document.createElement("th");
+            sent_fluency_th.innerText = "Fluency Score";
+            words_row.appendChild(sent_fluency_th);
+
+            var sent_completion_th = document.createElement("th");
+            sent_completion_th.innerText = "Completeness Score";
+            words_row.appendChild(sent_completion_th);
+
+            var sent_mission_th = document.createElement("th");
+            sent_mission_th.innerText = "Omission Word";
+            words_row.appendChild(sent_mission_th);
+
+            var sent_pronscore_td = document.createElement("td");
+            var sent_pronscore_span = document.createElement("span");
+            sent_pronscore_span.innerText = report.PronScore.toFixed(2);
+            sent_pronscore_span.style.backgroundColor = setColor(report.PronScore);
+            sent_pronscore_td.appendChild(sent_pronscore_span);
+            scores_row.appendChild(sent_pronscore_td);
+
+            var sent_accuracy_td = document.createElement("td");
+            var sent_accuracy_span = document.createElement("span");
+            sent_accuracy_span.innerText = report.AccuracyScore.toFixed(2);
+            sent_accuracy_span.style.backgroundColor = setColor(report.AccuracyScore);
+            sent_accuracy_td.appendChild(sent_accuracy_span);
+            scores_row.appendChild(sent_accuracy_td);
+
+            var sent_fluency_td = document.createElement("td");
+            var sent_fluency_span = document.createElement("span");
+            sent_fluency_span.innerText = report.FluencyScore.toFixed(2);
+            sent_fluency_span.style.backgroundColor = setColor(report.FluencyScore);
+            sent_fluency_td.appendChild(sent_fluency_span);
+            scores_row.appendChild(sent_fluency_td);
+
+           
+            var sent_completion_td = document.createElement("td");
+            var sent_completion_span = document.createElement("span");
+            sent_completion_span.innerText = report.CompletenessScore.toFixed(2);
+            sent_completion_span.style.backgroundColor = setColor(report.CompletenessScore);
+            sent_completion_td.appendChild(sent_completion_span);
+            scores_row.appendChild(sent_completion_td);
+
+            var sent_mission_td = document.createElement("td");
+
+            var OmissionWord = "";
+            for (var i = 0; i < report.Words.length; i++) {
+                var word_info = report.Words[i];
+
+                if ("Omission" == word_info.ErrorType) {
+
+                    var mission_span = document.createElement("span");
+                    mission_span.innerText = word_info.Word;
+                    mission_span.style.backgroundColor = "Red";
+                    sent_mission_td.appendChild(mission_span);
+                }
+            }
+
+            scores_row.appendChild(sent_mission_td);
+
+            mytable.appendChild(words_row);
+            
+            mytable.appendChild(scores_row);
+
+            divPage.innerHTML = mytable.outerHTML;
+        }
+
+        function generatePhoneScoreTable(pronscore) {
+            var report = JSON.parse(pronscore);
+            
+            if (report == null || report.PronScore == 0) {
+                return;
+            }
+
+            var divPage = document.getElementById('phonescore');
+
+            var mytable = document.createElement("table");
+            mytable.setAttribute("id", "phonescore_table");
+            var words_row = document.createElement("tr");
+            var phones_row = document.createElement("tr");
+            var scores_row = document.createElement("tr");
+
+            for (var wordIdx = 0; wordIdx < report.Words.length; wordIdx++) {
+
+                var phonesList = report.Words[wordIdx].Phonemes;
+              
+                var word_cell = document.createElement("th");
+                word_cell.innerText = report.Words[wordIdx].Word;
+                word_cell.setAttribute("colspan", phonesList.length)
+                words_row.appendChild(word_cell)
+
+                if (phonesList.length == 0) {
+                    word_cell.style.backgroundColor = "Red";
+                    var phone_cell = document.createElement("th");
+                    phone_cell.innerText = "";
+                    phones_row.appendChild(phone_cell)
+
+                    var score_cell = document.createElement("td");
+                    var score_span = document.createElement("span");
+                    score_span.innerText = "";
+                    score_cell.appendChild(score_span);
+                    scores_row.appendChild(score_cell);
+                } else {
+                    for (var i = 0; i < phonesList.length; i++) {
+                        var phone_info = phonesList[i];
+
+                        var phone_cell = document.createElement("th");
+                        phone_cell.innerText = phone_info.Phoneme;
+                        phones_row.appendChild(phone_cell)
+
+                        var score_cell = document.createElement("td");
+                        var score_span = document.createElement("span");
+                        score_span.innerText = phone_info.AccuracyScore.toFixed(2);
+                        score_span.style.backgroundColor = setColor(phone_info.AccuracyScore);
+                        score_cell.appendChild(score_span);
+                        scores_row.appendChild(score_cell);
+                    }
+                }
+            }
+
+            mytable.appendChild(words_row);
+            mytable.appendChild(phones_row);
+            mytable.appendChild(scores_row);
+
+            divPage.innerHTML = mytable.outerHTML;
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="script-box">
+        <div id="script"></div>
+        <font size="3">
+            <div id="pronscore">
+
+            </div>
+        </font>
+
+        <font size="2">
+            <div id="phonescore">
+
+            </div>
+        </font>
+    </div>
+</body>
+</html>
