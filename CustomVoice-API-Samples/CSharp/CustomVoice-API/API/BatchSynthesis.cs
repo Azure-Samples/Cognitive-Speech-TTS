@@ -55,10 +55,10 @@ namespace CustomVoice_API.API
             return APIHelper.Get<DTO.BatchSynthesis>(subscriptionKey, url);
         }
 
-        public static IEnumerable<DTO.Voice> Getvoices(string subscriptionKey, string hostURI)
+        public static IEnumerable<DTO.Voice> Getvoices(string subscriptionKey, string hostURI, Dictionary<string, string> additionalRequestHeaders)
         {
             string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceSynthesis_GetVoice);
-            return APIHelper.Get<IEnumerable<DTO.Voice>>(subscriptionKey, url);
+            return APIHelper.Get<IEnumerable<DTO.Voice>>(subscriptionKey, url, additionalRequestHeaders);
         }
 
         public static bool DeleteById(string subscriptionKey, string hostURI, string batchSynthesisId)
