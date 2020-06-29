@@ -39,7 +39,7 @@
             </RichTextBox>
             <Controls:ProgressRing x:Name="progressRing" IsActive="False" VerticalAlignment="Top" Margin="0,150,0,0"/>
 
-            <WebBrowser  x:Name="PornScoreWebBrowser"  HorizontalAlignment="Left"  Margin="20,360,20,100" VerticalAlignment="Top" />
+            <WebBrowser  x:Name="PronScoreWebBrowser"  HorizontalAlignment="Left"  Margin="20,360,20,100" VerticalAlignment="Top" />
         </Grid>
 
     </Grid>

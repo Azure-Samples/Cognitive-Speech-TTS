@@ -208,9 +208,9 @@ namespace SpeechScore
                         NBestItem nBestItem = result.NBest[0];
                         var pronScore = JsonConvert.SerializeObject(nBestItem);
 
-                        PornScoreWebBrowser.InvokeScript("generatePronScoreTable", pronScore);
-                        PornScoreWebBrowser.InvokeScript("generatePhoneScoreTable", pronScore);
-                        PornScoreWebBrowser.Visibility = Visibility.Visible;
+                        PronScoreWebBrowser.InvokeScript("generatePronScoreTable", pronScore);
+                        PronScoreWebBrowser.InvokeScript("generatePhoneScoreTable", pronScore);
+                        PronScoreWebBrowser.Visibility = Visibility.Visible;
                         List<WordsItem> witems = result.NBest[0].Words;
                         for (int i = 0; i < witems.Count; i++)
                         {
@@ -349,7 +349,7 @@ namespace SpeechScore
             try
             {
                 SetWebBrowserFeatures(10);
-                PornScoreWebBrowser.Navigate(new Uri(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, @"pronscore.html")));
+                PronScoreWebBrowser.Navigate(new Uri(System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, @"pronscore.html")));
             }
             catch (Exception ex)
             {

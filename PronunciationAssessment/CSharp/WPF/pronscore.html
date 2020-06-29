@@ -58,15 +58,15 @@
             return scoreColor;
         }
 
-        function generatePronScoreTable(pornscore) {
-            var report = JSON.parse(pornscore);
+        function generatePronScoreTable(pronscore) {
+            var report = JSON.parse(pronscore);
 
             var divPage = document.getElementById('pronscore');
 
             var mytable = document.createElement("table");
             mytable.setAttribute("id", "pronscore_table");
             var words_row = document.createElement("tr");
-            var socres_row = document.createElement("tr");
+            var scores_row = document.createElement("tr");
 
             var sent_pronscore_th = document.createElement("th");
             sent_pronscore_th.innerText = "Overall Score";
@@ -93,21 +93,21 @@
             sent_pronscore_span.innerText = report.PronScore.toFixed(2);
             sent_pronscore_span.style.backgroundColor = setColor(report.PronScore);
             sent_pronscore_td.appendChild(sent_pronscore_span);
-            socres_row.appendChild(sent_pronscore_td);
+            scores_row.appendChild(sent_pronscore_td);
 
             var sent_accuracy_td = document.createElement("td");
             var sent_accuracy_span = document.createElement("span");
             sent_accuracy_span.innerText = report.AccuracyScore.toFixed(2);
             sent_accuracy_span.style.backgroundColor = setColor(report.AccuracyScore);
             sent_accuracy_td.appendChild(sent_accuracy_span);
-            socres_row.appendChild(sent_accuracy_td);
+            scores_row.appendChild(sent_accuracy_td);
 
             var sent_fluency_td = document.createElement("td");
             var sent_fluency_span = document.createElement("span");
             sent_fluency_span.innerText = report.FluencyScore.toFixed(2);
             sent_fluency_span.style.backgroundColor = setColor(report.FluencyScore);
             sent_fluency_td.appendChild(sent_fluency_span);
-            socres_row.appendChild(sent_fluency_td);
+            scores_row.appendChild(sent_fluency_td);
 
            
             var sent_completion_td = document.createElement("td");
@@ -115,7 +115,7 @@
             sent_completion_span.innerText = report.CompletenessScore.toFixed(2);
             sent_completion_span.style.backgroundColor = setColor(report.CompletenessScore);
             sent_completion_td.appendChild(sent_completion_span);
-            socres_row.appendChild(sent_completion_td);
+            scores_row.appendChild(sent_completion_td);
 
             var sent_mission_td = document.createElement("td");
 
@@ -132,17 +132,17 @@
                 }
             }
 
-            socres_row.appendChild(sent_mission_td);
+            scores_row.appendChild(sent_mission_td);
 
             mytable.appendChild(words_row);
             
-            mytable.appendChild(socres_row);
+            mytable.appendChild(scores_row);
 
             divPage.innerHTML = mytable.outerHTML;
         }
 
-        function generatePhoneScoreTable(pornscore) {
-            var report = JSON.parse(pornscore);
+        function generatePhoneScoreTable(pronscore) {
+            var report = JSON.parse(pronscore);
             
             if (report == null || report.PronScore == 0) {
                 return;
@@ -154,7 +154,7 @@
             mytable.setAttribute("id", "phonescore_table");
             var words_row = document.createElement("tr");
             var phones_row = document.createElement("tr");
-            var socres_row = document.createElement("tr");
+            var scores_row = document.createElement("tr");
 
             for (var wordIdx = 0; wordIdx < report.Words.length; wordIdx++) {
 
@@ -175,7 +175,7 @@
                     var score_span = document.createElement("span");
                     score_span.innerText = "";
                     score_cell.appendChild(score_span);
-                    socres_row.appendChild(score_cell);
+                    scores_row.appendChild(score_cell);
                 } else {
                     for (var i = 0; i < phonesList.length; i++) {
                         var phone_info = phonesList[i];
@@ -189,14 +189,14 @@
                         score_span.innerText = phone_info.AccuracyScore.toFixed(2);
                         score_span.style.backgroundColor = setColor(phone_info.AccuracyScore);
                         score_cell.appendChild(score_span);
-                        socres_row.appendChild(score_cell);
+                        scores_row.appendChild(score_cell);
                     }
                 }
             }
 
             mytable.appendChild(words_row);
             mytable.appendChild(phones_row);
-            mytable.appendChild(socres_row);
+            mytable.appendChild(scores_row);
 
             divPage.innerHTML = mytable.outerHTML;
         }
