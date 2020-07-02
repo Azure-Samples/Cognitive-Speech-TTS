@@ -32,7 +32,6 @@
         private static string VoiceTests_Base => TextToSpeechBasePath_V3_beta1 + "tests";
         public static string VoiceTests_GetByModelId => VoiceTests_Base + "/model/{0}";
         public static string VoiceTests_GetByProjectId => VoiceTests_Base + "/project/{0}";
-        public static string VoiceTests_Create => VoiceTests_Base;
         public static string VoiceTests_DeleteById => VoiceTests_Base + "/{0}";
 
         //Voice Endpoints
