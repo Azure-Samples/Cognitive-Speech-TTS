@@ -128,10 +128,7 @@ namespace CustomVoice_API
                     break;
                 case Action.delete:
                     VoiceTestDeleteById(arguments);
-                    break;
-                case Action.create:
-                    VoiceTestCreate(arguments);
-                    break;
+                    break;               
                 default:
                     break;
             }
@@ -528,30 +525,6 @@ namespace CustomVoice_API
             else
             {
                 Console.WriteLine("Delete voice test failed");
-            }
-        }
-
-        private static void VoiceTestCreate(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            string projectId = arguments["projectid"];
-            string modelId = arguments["modelid"];
-            string script = arguments["script"];
-            bool isSSML = false;
-
-            if (arguments.Keys.ToList().Contains("isssml"))
-            {
-                isSSML = Convert.ToBoolean(arguments["isssml"]);
-            }
-
-            if (VoiceTest.Create(subscriptionKey, hostURI, new Guid(projectId), new Guid(modelId), script, isSSML))
-            {
-                Console.WriteLine("Create voice test successfully");
-            }
-            else
-            {
-                Console.WriteLine("Create voice test failed");
             }
         }
 

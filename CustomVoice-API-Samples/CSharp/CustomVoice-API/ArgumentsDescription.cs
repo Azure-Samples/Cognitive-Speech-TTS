@@ -109,9 +109,7 @@ namespace CustomVoice_API
                     Console.WriteLine(" Get");
                     Console.WriteLine("     Gets details of the specified model's voice test.");
                     Console.WriteLine(" GetByProjectId");
-                    Console.WriteLine("     Get the list of voice tests for specified project.");
-                    Console.WriteLine(" Create");
-                    Console.WriteLine("     Creates a new voice test.");
+                    Console.WriteLine("     Get the list of voice tests for specified project.");                 
                     Console.WriteLine(" Delete");
                     Console.WriteLine("     Deletes the specified voice test.");
                     Console.WriteLine("");
@@ -332,12 +330,6 @@ namespace CustomVoice_API
                     actionString = "voicetest getbyprojectid";
                     description = "Get the list of voice tests for specified project.";
                     sampleCommand = $"CustomVoice-API voicetest getbyprojectid subscriptionKey [YourSubscriptionKey] hostURI {hostUri} projectId [ProjectId]";
-                    PrintActionUsageBase(actionString, description, sampleCommand, parameters);
-                    break;
-                case Action.create:
-                    actionString = "voicetest create";
-                    description = "Creates a new voice test.";
-                    sampleCommand = $"CustomVoice-API voicetest create subscriptionKey [YourSubscriptionKey] hostURI {hostUri} projectId [ProjectId] modelId [ModelId] script 12345 isSSML false";
                     PrintActionUsageBase(actionString, description, sampleCommand, parameters);
                     break;
                 case Action.delete:

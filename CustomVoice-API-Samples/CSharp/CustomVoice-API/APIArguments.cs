@@ -196,12 +196,6 @@ namespace CustomVoice_API
                         OptionalParameters = new List<string>() { ProjectId, Description };
                         break;
                     }
-                case nameof(APIKind.voicetest) + "-" + nameof(Action.create):
-                    {
-                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId, ModelId, "script" };
-                        OptionalParameters = new List<string>() { "isSSML" };
-                        break;
-                    }
                 case nameof(APIKind.voicetest) + "-" + nameof(Action.get):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ModelId };
