@@ -8,7 +8,7 @@ Here's what you'll need to run these samples:
 
 * DotNET framework 4.6.1 or above
 * Visual Studio 2019
-* An Azure subscription with Speech Services enabled. [Get one for free!](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)
+* An Azure subscription with Speech Services enabled. [Create a new Azure account, and try Cognitive Services for free.](https://azure.microsoft.com/free/cognitive-services/)
 * A working microphone as audio input device
 * A working speaker or headset as audio output device
 
