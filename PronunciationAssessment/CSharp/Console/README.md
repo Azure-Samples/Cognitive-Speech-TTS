@@ -7,7 +7,7 @@ This sample shows how to call pronunciation assessment REST API in CSharp, with 
 Here's what you'll need to run these samples:
 
 * Visual Studio 2019 or Visual Studio Code
-* An Azure subscription with Speech Services enabled. [Get one for free!](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)
+* An Azure subscription with Speech Services enabled. [Create a new Azure account, and try Cognitive Services for free.](https://azure.microsoft.com/free/cognitive-services/)
 * A working microphone as audio input device
 
 ## Code sample
