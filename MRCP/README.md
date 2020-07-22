@@ -4,7 +4,7 @@ This sample demonstrates how to use cognitive speech service (both SR and TTS) i
 
 ## Prerequisites
 
-* A subscription key for the Speech service. See [Try the speech service for free](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started).
+* A subscription key for the Speech service. [Create a new Azure account, and try Cognitive Services for free.](https://azure.microsoft.com/free/cognitive-services/)
 * An Ubuntu 18.04 or Windows PC with Visual Studio
 * On Ubuntu, install these packages to build and run this sample:
 
