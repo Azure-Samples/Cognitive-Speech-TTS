@@ -24,6 +24,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News 
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.  
+* 2020.08 [Improve remote learning with speech-enabled apps powered by Azure Cognitive Service](https://techcommunity.microsoft.com/t5/azure-ai/improve-remote-learning-with-speech-enabled-apps-powered-by/ba-p/1612807)
 * 2020.07 [Neural Text to Speech extends support to 15 more languages with state-of-the-art AI quality](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)
 * 2020.06 [微软上线语音测评服务，赋能语言学习的教和学](https://www.jiemodui.com/N/117619.html?fid=82642)
 * 2020.05 [Neural TTS is extending support to 11 new locales with 15 new voices](https://azure.microsoft.com/en-us/updates/azure-cognitive-services-2/)
