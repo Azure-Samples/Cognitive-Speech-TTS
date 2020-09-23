@@ -24,10 +24,12 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News 
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.  
+* 2020.09 [Swisscom uses Azure Custom Neural Voice to drive innovation, market leadership with multilingual voice assistant](https://customers.microsoft.com/en-us/story/821105-swisscom-telecommunications-azure-cognitive-services)
 * 2020.09 [Ignite 2020 Neural TTS updates: new language support, more voices and flexible deployment options](https://techcommunity.microsoft.com/t5/azure-ai/ignite-2020-neural-tts-updates-new-language-support-more-voices/ba-p/1698544)
 * 2020.08 [Improve remote learning with speech-enabled apps powered by Azure Cognitive Service](https://techcommunity.microsoft.com/t5/azure-ai/improve-remote-learning-with-speech-enabled-apps-powered-by/ba-p/1612807)
 * 2020.07 [Neural Text to Speech extends support to 15 more languages with state-of-the-art AI quality](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-extends-support-to-15-more-languages-with/ba-p/1505911)
 * 2020.06 [微软上线语音测评服务，赋能语言学习的教和学](https://www.jiemodui.com/N/117619.html?fid=82642)
+* 2020.05 [BBC ships voice assistant with custom neural voice](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/#customer-stories)
 * 2020.05 [Neural TTS is extending support to 11 new locales with 15 new voices](https://azure.microsoft.com/en-us/updates/azure-cognitive-services-2/)
 * 2020.05 [Making the web more accessible and inclusive for all with Microsoft Edge, talking about Edge read aloud](https://blogs.windows.com/windowsexperience/2020/05/21/making-the-web-more-accessible-and-inclusive-for-all-with-microsoft-edge/)
 * 2020.04 [Finetune neural text-to-speech output with advanced customization features](https://techcommunity.microsoft.com/t5/azure-ai/finetune-neural-text-to-speech-output-with-advanced/ba-p/1348941)
