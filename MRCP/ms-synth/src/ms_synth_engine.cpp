@@ -235,7 +235,8 @@ ms_synth_engine_channel_create(mrcp_engine_t* engine, apr_pool_t* pool)
 
     capabilities = mpf_source_stream_capabilities_create(pool);
     // use 16kHz
-    mpf_codec_capabilities_add(&capabilities->codecs, MPF_SAMPLE_RATE_8000 | MPF_SAMPLE_RATE_16000, "LPCM");
+    mpf_codec_capabilities_add(&capabilities->codecs, MPF_SAMPLE_RATE_16000, "LPCM");
+    mpf_codec_capabilities_add(&capabilities->codecs, MPF_SAMPLE_RATE_8000, "PCMU");
 
     /* create media termination */
     termination =
@@ -289,16 +290,19 @@ static bool ConvertTextToAudio(ms_synth_channel_t* channel, const char* src_text
     // auto synthesizer = SpeechSynthesizer::FromConfig(speechConfig, nullptr);
     auto synthesizer = SynthesizerPool::borrowSynthesizer();
     synthesizer->SynthesisStarted.Connect([](const SpeechSynthesisEventArgs& e) noexcept {
-        apt_log(APT_LOG_MARK, APT_PRIO_INFO, "[MS TTS] synthesis started.");
+        apt_log(APT_LOG_MARK, APT_PRIO_INFO, "[MS TTS] synthesis started. Request ID: %s",
+                e.Result->ResultId.c_str());
     });
     synthesizer->Synthesizing.Connect([](const SpeechSynthesisEventArgs& e) noexcept {
-        apt_log(APT_LOG_MARK, APT_PRIO_INFO, "[MS TTS] synthesizing (audio data being received).");
+        apt_log(APT_LOG_MARK, APT_PRIO_DEBUG, "[MS TTS] synthesizing (audio data being received).");
     });
     synthesizer->SynthesisCanceled.Connect(
     [&synthesizer, &channel](const SpeechSynthesisEventArgs& e) {
         apt_log(
-        APT_LOG_MARK, APT_PRIO_WARNING, "[MS TTS] synthesis canceled %s.",
-        SpeechSynthesisCancellationDetails::FromResult(e.Result)->ErrorDetails.c_str());
+        APT_LOG_MARK, APT_PRIO_WARNING, "[MS TTS] synthesis canceled %s. Request ID: %s",
+        SpeechSynthesisCancellationDetails::FromResult(e.Result)->ErrorDetails.c_str(),
+        e.Result->ResultId.c_str());
+
         const auto cancellation =
         SpeechSynthesisCancellationDetails::FromResult(e.Result);
         if(CancellationReason::Error == cancellation->Reason)
@@ -317,8 +321,9 @@ static bool ConvertTextToAudio(ms_synth_channel_t* channel, const char* src_text
         SynthesizerPool::returnSynthesizer(synthesizer);
     });
     synthesizer->SynthesisCompleted.Connect([&synthesizer](const SpeechSynthesisEventArgs& e) {
-        apt_log(APT_LOG_MARK, APT_PRIO_INFO, "[MS TTS] synthesis completed, audio length: %d.",
-                e.Result->GetAudioLength());
+        apt_log(APT_LOG_MARK, APT_PRIO_INFO, "[MS TTS] synthesis completed, audio length: %d. Request ID: %s",
+                e.Result->GetAudioLength(),
+                e.Result->ResultId.c_str());
         synthesizer->SynthesisStarted.DisconnectAll();
         synthesizer->Synthesizing.DisconnectAll();
         synthesizer->SynthesisCanceled.DisconnectAll();
@@ -380,12 +385,12 @@ static apt_bool_t ms_synth_channel_speak(mrcp_engine_channel_t* channel,
                   "application/synthesis+ssml") == 0 ||
            strcmp(generic_header->content_type.buf, "application/ssml+xml") == 0)
         {
-            apt_log(SYNTH_LOG_MARK, APT_PRIO_INFO, "request type is ssml");
+            apt_log(SYNTH_LOG_MARK, APT_PRIO_DEBUG, "request type is ssml");
             if_request_ssml = true;
         }
         else
         {
-            apt_log(SYNTH_LOG_MARK, APT_PRIO_INFO, "request type is plain text.");
+            apt_log(SYNTH_LOG_MARK, APT_PRIO_DEBUG, "request type is plain text.");
         }
     }
     body = &synth_channel->speak_request->body;
