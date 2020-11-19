@@ -32,29 +32,5 @@ namespace CustomVoice_API.API
 
             return true;
         }
-
-        public static bool Create(string subscriptionKey, string hostURI, Guid projectId, Guid modelId, string script, bool isSSML)
-        {
-            string TextKind = "Text";
-            if (isSSML)
-            {
-                TextKind = "SSML";
-            }
-
-            var voiceTestDefinition = VoiceTestDefinition.Create(
-                new Identity(modelId),
-                script,
-                TextKind,
-                new Identity(projectId));
-
-            var response = APIHelper.Submit<VoiceTestDefinition>(subscriptionKey, hostURI + API_V3.VoiceTests_Create, voiceTestDefinition);
-
-            if (response.StatusCode != HttpStatusCode.Accepted)
-            {
-                APIHelper.PrintErrorMessage(response);
-                return false;
-            }
-            return true;
-        }
     }
 }

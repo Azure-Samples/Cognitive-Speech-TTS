@@ -6,8 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
+using CustomVoice_API.API.DTO;
 using Newtonsoft.Json;
-using Skype.Azure.Runners.CustomVoice.CRISVoiceAPI.DTO;
 
 namespace CustomVoice_API.API
 {
@@ -18,6 +18,34 @@ namespace CustomVoice_API.API
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                var response = client.GetAsync(url, CancellationToken.None).Result;
+
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    PrintErrorMessage(response);
+                    return default(T);
+                }
+
+                using (var responseStream = response.Content.ReadAsStreamAsync().Result)
+                using (var streamReader = new StreamReader(responseStream))
+                {
+                    string responseJson = streamReader.ReadToEnd();
+                    var items = JsonConvert.DeserializeObject<T>(responseJson);
+                    return items;
+                }
+            }
+        }
+
+        public static T Get<T>(string subscriptionKey, string url, Dictionary<string, string> additionalRequestHeaders)
+        {
+            using (var client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                foreach (var pair in additionalRequestHeaders)
+                {
+                    client.DefaultRequestHeaders.Add(pair.Key, pair.Value);
+                }
+
                 var response = client.GetAsync(url, CancellationToken.None).Result;
 
                 if (response.StatusCode != HttpStatusCode.OK)
@@ -84,8 +112,9 @@ namespace CustomVoice_API.API
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 var method = new HttpMethod("PATCH");
-                using (var request = new HttpRequestMessage(method, url) { 
-                Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json")
+                using (var request = new HttpRequestMessage(method, url)
+                {
+                    Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json")
                 })
                 {
                     return client.SendAsync(request).Result;

@@ -81,7 +81,7 @@ func main() {
 
 	endpoint := "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1"
 	auth := "https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken"
-	key := "your cognitive service non free key"
+	key := "your Speech service subscription key"
 
 	token := GetToken(auth, key)
 	ticker := time.NewTicker(300 * time.Second)
@@ -107,6 +107,6 @@ func main() {
 			Transport: tr,
 		}
 
-		GetAudioBytes(client, endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-JessaNeural'>Hello world!</voice></speak>")
+		GetAudioBytes(client, endpoint, token, "<speak version='1.0' xml:lang='en-us'><voice name='en-US-AriaNeural'>Hello world!</voice></speak>")
 	}
 }

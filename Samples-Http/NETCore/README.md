@@ -12,7 +12,7 @@ Here's what you'll need to run these samples:
 
 * Visual Studio 2017 or Visual Studio Code
 * .NET Core SDK
-* An Azure subscription with Speech Services enabled. [Get one for free!](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)
+* An Azure subscription with Speech Services enabled. [Create a new Azure account, and try Cognitive Services for free.](https://azure.microsoft.com/free/cognitive-services/)
 
 ## Code samples
 

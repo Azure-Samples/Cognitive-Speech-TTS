@@ -1,0 +1,46 @@
+﻿<Controls:MetroWindow x:Class="SpeechScore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="English Pronunciation Score" TitleCharacterCasing="Normal" FontSize="20"  Height="400" Width="600" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Grid>
+        <Grid x:Name="PronGrid">
+            <Label x:Name="RegionLbl" Content="Region:" HorizontalAlignment="Left" Margin="20,32,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="Region" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="95,40,0,0" Height="24" Width="105">
+                <ComboBoxItem>WestUS</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">EastAsia</ComboBoxItem>
+                <ComboBoxItem>CentralIndia</ComboBoxItem>
+            </ComboBox>
+
+            <Label x:Name="SubscriptionKeyLbl" Content="Subscription Key:" HorizontalAlignment="Left" Margin="200,32,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="SubscriptionKey" HorizontalAlignment="Left" Height="24" Margin="360,40,0,0" Text="" VerticalAlignment="Top" Width="220"/>
+
+            <StackPanel Orientation="Horizontal" Height="60" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="198,82,198,0">
+                <Button ToolTip="TTS" x:Name="TTSBut" HorizontalAlignment="Left" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}" Height="48" Width="48" Margin="0,5,0,0"  Click="TTSBut_Click">
+                    <iconPacks:PackIconModern  Kind="Sound3"  Height="32" Width="32" />
+                </Button>
+
+                <Button ToolTip="Record" x:Name="StartBut" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"  Margin="100,5,0,0"  Width="48" Height="48" Click="Button_Start_Click">
+                    <iconPacks:PackIconModern Kind="Microphone"  Height="20" Width="20"/>
+                </Button>
+                <Button ToolTip="Stop" Visibility="Collapsed"  x:Name="StopBut" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"  Width="48" Height="48" Margin="100,5,0,0"  Click="Button_Stop_Click">
+                    <iconPacks:PackIconModern Kind="ControlStop" Height="20" Width="20" />
+                </Button>
+
+            </StackPanel>
+            <RichTextBox IsReadOnly="False"  x:Name="ReferenceText" FontSize="40"  HorizontalAlignment="Left" Height="190" Margin="80,150,80,0"  VerticalAlignment="Top" VerticalScrollBarVisibility="Auto">
+                <FlowDocument TextAlignment="Center">
+                    <Paragraph>
+                        <Run>Good Morning!</Run>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Controls:ProgressRing x:Name="progressRing" IsActive="False" VerticalAlignment="Top" Margin="0,150,0,0"/>
+
+            <WebBrowser  x:Name="PronScoreWebBrowser"  HorizontalAlignment="Left"  Margin="20,360,20,100" VerticalAlignment="Top" />
+        </Grid>
+
+    </Grid>
+</Controls:MetroWindow>

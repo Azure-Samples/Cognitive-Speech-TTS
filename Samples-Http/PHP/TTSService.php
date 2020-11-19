@@ -16,8 +16,9 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 // New unified SpeechService key
 // Free: https://azure.microsoft.com/en-us/try/cognitive-services/?api=speech-services
 // Paid: https://go.microsoft.com/fwlink/?LinkId=872236
-$AccessTokenUri = "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-$apiKey = "Your api key goes here";
+$region = getenv('MYREGION');
+$AccessTokenUri = "https://".$region.".api.cognitive.microsoft.com/sts/v1.0/issueToken";
+$apiKey = getenv('MYKEY');
 
 // use key 'http' even if you send the request to https://...
 $options = array(
@@ -39,7 +40,7 @@ if (!$access_token) {
 else{
    echo "Access Token: ". $access_token. "<br>";
 
-   $ttsServiceUri = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
+   $ttsServiceUri = "https://".$region.".tts.speech.microsoft.com/cognitiveservices/v1";
 
    //$SsmlTemplate = "<speak version='1.0' xml:lang='en-us'><voice xml:lang='%s' xml:gender='%s' name='%s'>%s</voice></speak>";
    $doc = new DOMDocument();

@@ -4,6 +4,12 @@
     {
         private static string TextToSpeechBasePath_V3_beta1 => "/api/texttospeech/v3.0-beta1/";
 
+        //Voice Project
+        private static string VoiceProject_Base => TextToSpeechBasePath_V3_beta1 + "projects";
+        public static string VoiceProject_Get => VoiceProject_Base;
+        public static string VoiceProject_Create => VoiceProject_Base;
+        public static string VoiceProject_DeleteById => VoiceProject_Base + "/{0}";
+
         //Voice Datasets
         private static string VoiceDataset_Base => TextToSpeechBasePath_V3_beta1 + "datasets";
         public static string VoiceDatasets_Get => VoiceDataset_Base;
@@ -26,7 +32,6 @@
         private static string VoiceTests_Base => TextToSpeechBasePath_V3_beta1 + "tests";
         public static string VoiceTests_GetByModelId => VoiceTests_Base + "/model/{0}";
         public static string VoiceTests_GetByProjectId => VoiceTests_Base + "/project/{0}";
-        public static string VoiceTests_Create => VoiceTests_Base;
         public static string VoiceTests_DeleteById => VoiceTests_Base + "/{0}";
 
         //Voice Endpoints

@@ -15,6 +15,9 @@ namespace CustomVoice_API
             {
                 switch (apiKind)
                 {
+                    case APIKind.project:
+                        ExecuteProjectApi(action, arguments);
+                        break;
                     case APIKind.dataset:
                         ExecuteDatasetApi(action, arguments);
                         break;
@@ -38,6 +41,24 @@ namespace CustomVoice_API
             catch (Exception e)
             {
                 Console.Error.WriteLine($"Exception: {e.Message}");
+            }
+        }
+
+        private static void ExecuteProjectApi(Action action, Dictionary<string, string> arguments)
+        {
+            switch (action)
+            {
+                case Action.get:
+                    ProjectGet(arguments);
+                    break;
+                case Action.delete:
+                    ProjectDeleteById(arguments);
+                    break;
+                case Action.create:
+                    ProjectCreate(arguments);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -107,10 +128,7 @@ namespace CustomVoice_API
                     break;
                 case Action.delete:
                     VoiceTestDeleteById(arguments);
-                    break;
-                case Action.create:
-                    VoiceTestCreate(arguments);
-                    break;
+                    break;               
                 default:
                     break;
             }
@@ -151,7 +169,7 @@ namespace CustomVoice_API
                     BatchSynthesisGetById(arguments);
                     break;
                 case Action.getvoices:
-                    BatchSynthesisGetvoices(arguments);
+                    BatchSynthesisGetVoices(arguments);
                     break;
                 case Action.delete:
                     BatchSynthesisDeleteById(arguments);
@@ -161,6 +179,55 @@ namespace CustomVoice_API
                     break;
                 default:
                     break;
+            }
+        }
+
+        private static void ProjectGet(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+
+            var result = Project.Get(subscriptionKey, hostURI);
+            DisplayResult<API.DTO.Project>(result);
+        }
+
+        private static void ProjectDeleteById(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            string projectId = arguments["projectid"];
+
+            if (Project.DeleteById(subscriptionKey, hostURI, projectId))
+            {
+                Console.WriteLine("Delete project successfully");
+            }
+            else
+            {
+                Console.WriteLine("Delete project failed");
+            }
+        }
+
+        private static void ProjectCreate(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            string name = arguments["name"];
+            string gender = arguments["gender"];
+            string locale = arguments["locale"];
+            string description = name;
+
+            if (arguments.Keys.ToList().Contains("description"))
+            {
+                description = arguments["description"];
+            }
+
+            if (Project.Create(subscriptionKey, hostURI, name, description, gender, locale))
+            {
+                Console.WriteLine("Create project successfully");
+            }
+            else
+            {
+                Console.WriteLine("Create project failed");
             }
         }
 
@@ -430,7 +497,7 @@ namespace CustomVoice_API
             string subscriptionKey = arguments["subscriptionkey"];
             string hostURI = arguments["hosturi"];
             string modelId = arguments["modelid"];
-            
+
             var result = VoiceTest.Get(subscriptionKey, hostURI, modelId);
             DisplayResult<API.DTO.VoiceTest>(result);
         }
@@ -458,30 +525,6 @@ namespace CustomVoice_API
             else
             {
                 Console.WriteLine("Delete voice test failed");
-            }
-        }
-
-        private static void VoiceTestCreate(Dictionary<string, string> arguments)
-        {
-            string subscriptionKey = arguments["subscriptionkey"];
-            string hostURI = arguments["hosturi"];
-            string projectId = arguments["projectid"];
-            string modelId = arguments["modelid"];
-            string script = arguments["script"];
-            bool isSSML = false;
-
-            if (arguments.Keys.ToList().Contains("isssml"))
-            {
-                isSSML = Convert.ToBoolean(arguments["isssml"]);
-            }
-
-            if (VoiceTest.Create(subscriptionKey, hostURI, new Guid(projectId), new Guid(modelId), script, isSSML))
-            {
-                Console.WriteLine("Create voice test successfully");
-            }
-            else
-            {
-                Console.WriteLine("Create voice test failed");
             }
         }
 
@@ -606,7 +649,7 @@ namespace CustomVoice_API
             {
                 var skipParam = arguments["skip"];
                 var ret = int.TryParse(skipParam, out skip);
-                if(!ret)
+                if (!ret)
                 {
                     Console.WriteLine("skip parameter should be an integer number.");
                 }
@@ -635,12 +678,26 @@ namespace CustomVoice_API
             DisplaySingleResult(result, "  ");
         }
 
-        private static void BatchSynthesisGetvoices(Dictionary<string, string> arguments)
+        private static void BatchSynthesisGetVoices(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
             string hostURI = arguments["hosturi"];
+            string additionalRequestHeadersStr = arguments["additionalrequestheaders"];
+            Dictionary<string, string> additionalRequestHeaders = new Dictionary<string, string>();
 
-            var result = BatchSynthesis.Getvoices(subscriptionKey, hostURI);
+            if (!string.IsNullOrEmpty(additionalRequestHeadersStr))
+            {
+                foreach (string headerStr in additionalRequestHeadersStr.Split(';'))
+                {
+                    var headerKeyValue = headerStr.Split(',');
+                    if (headerKeyValue.Length == 2)
+                    {
+                        additionalRequestHeaders.Add(headerKeyValue[0], headerKeyValue[1]);
+                    }
+                }
+            }
+
+            var result = BatchSynthesis.Getvoices(subscriptionKey, hostURI, additionalRequestHeaders);
             DisplayResult<API.DTO.Voice>(result);
         }
 
@@ -701,7 +758,7 @@ namespace CustomVoice_API
 
         private static void DisplayResult<T>(IEnumerable<T> result)
         {
-            if(result == null)
+            if (result == null)
             {
                 return;
             }
@@ -720,7 +777,7 @@ namespace CustomVoice_API
             string key;
             string value;
 
-            if(result == null)
+            if (result == null)
             {
                 return;
             }

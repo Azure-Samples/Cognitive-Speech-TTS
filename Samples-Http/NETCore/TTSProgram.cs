@@ -36,116 +36,204 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Threading;
+using System.Collections.Generic;
 
 namespace TTSSample
 {
     public class Authentication
     {
-      private string subscriptionKey;
-      private string tokenFetchUri;
+        private string subscriptionKey;
+        private string tokenFetchUri;
+        private Timer accessTokenRenewer;
+        private string accessToken;
+        private object objLock = new object();
 
-      public Authentication(string tokenFetchUri, string subscriptionKey)
-      {
-          if (string.IsNullOrWhiteSpace(tokenFetchUri))
-          {
-              throw new ArgumentNullException(nameof(tokenFetchUri));
-          }
-          if (string.IsNullOrWhiteSpace(subscriptionKey))
-          {
-              throw new ArgumentNullException(nameof(subscriptionKey));
-          }
-          this.tokenFetchUri = tokenFetchUri;
-          this.subscriptionKey = subscriptionKey;
-      }
+        //Access token expires every 10 minutes. Renew it every 9 minutes only.
+        private const int RefreshTokenDuration = 1;
 
-      public async Task<string> FetchTokenAsync()
-      {
-          using (HttpClient client = new HttpClient())
-          {
-              client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", this.subscriptionKey);
-              UriBuilder uriBuilder = new UriBuilder(this.tokenFetchUri);
-
-              HttpResponseMessage result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null).ConfigureAwait(false);
-              return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
-          }
-      }
-    }
-    class Program
-    {
-        static async Task Main(string[] args)
+        public Authentication(string tokenFetchUri, string subscriptionKey)
         {
-            // Prompts the user to input text for TTS conversion
-            Console.Write("What would you like to convert to speech? ");
-            string text = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(tokenFetchUri))
+            {
+                throw new ArgumentNullException(nameof(tokenFetchUri));
+            }
 
-            // Gets an access token
-            string accessToken;
-            Console.WriteLine("Attempting token exchange. Please wait...\n");
+            if (string.IsNullOrWhiteSpace(subscriptionKey))
+            {
+                throw new ArgumentNullException(nameof(subscriptionKey));
+            }
 
-            // Add your subscription key here
-            // If your resource isn't in WEST US, change the endpoint
-            Authentication auth = new Authentication("https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken", "REPLACE_WITH_YOUR_KEY");
+            this.tokenFetchUri = tokenFetchUri;
+            this.subscriptionKey = subscriptionKey;
+
+            this.accessToken = this.FetchTokenAsync().Result;
+
+            // renew the token every specfied minutes
+            this.accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
+                                           this,
+                                           TimeSpan.FromMinutes(RefreshTokenDuration),
+                                           TimeSpan.FromMilliseconds(-1));
+        }
+
+        public string GetAccessToken()
+        {
+            lock (objLock)
+            {
+                return this.accessToken;
+            }
+        }
+
+        private void OnTokenExpiredCallback(object stateInfo)
+        {
             try
             {
-                accessToken = await auth.FetchTokenAsync().ConfigureAwait(false);
-                Console.WriteLine("Successfully obtained an access token. \n");
+                lock (objLock)
+                {
+                    this.accessToken = this.FetchTokenAsync().Result;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Failed to obtain an access token.");
-                Console.WriteLine(ex.ToString());
-                Console.WriteLine(ex.Message);
-                return;
+                Console.WriteLine(string.Format("Failed renewing access token. Details: {0}", ex.Message));
             }
+            finally
+            {
+                try
+                {
+                    this.accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
+                }
 
-            string host = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
+            }
+        }
 
-            // Create SSML document.
-            XDocument body = new XDocument(
-                    new XElement("speak",
-                        new XAttribute("version", "1.0"),
-                        new XAttribute(XNamespace.Xml + "lang", "en-US"),
-                        new XElement("voice",
-                            new XAttribute(XNamespace.Xml + "lang", "en-US"),
-                            new XAttribute(XNamespace.Xml + "gender", "Female"),
-                            new XAttribute("name", "en-US-Jessa24kRUS"), // Short name for "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24KRUS)"
-                            text)));
-
+        public async Task<string> FetchTokenAsync()
+        {
             using (HttpClient client = new HttpClient())
             {
-                using (HttpRequestMessage request = new HttpRequestMessage())
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", this.subscriptionKey);
+                UriBuilder uriBuilder = new UriBuilder(this.tokenFetchUri);
+
+                HttpResponseMessage result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null).ConfigureAwait(false);
+                result.EnsureSuccessStatusCode();
+                return await result.Content.ReadAsStringAsync().ConfigureAwait(false);
+            }
+        }
+    }
+
+    // main program
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Prompts the user to input text for TTS conversion
+            Console.Write("What would you like to convert to speech? ");
+            string input = Console.ReadLine();
+            // Add your subscription key here
+            Authentication auth = new Authentication("https://southeastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken",
+                        "Your Key Here");
+            string host = "https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1";
+
+            // number of thread to run
+            int concurrency = 1;
+
+            // each thread run # of round 
+            int roundPerTask = 100;
+            List<Task> taskList = new List<Task>();
+            for (int i = 0; i < concurrency; i++)
+            {
+                object arg = i;
+                var task = new TaskFactory().StartNew(new Action<object>(async (threadId) =>
                 {
-                    // Set the HTTP method
-                    request.Method = HttpMethod.Post;
-                    // Construct the URI
-                    request.RequestUri = new Uri(host);
-                    // Set the content type header
-                    request.Content = new StringContent(body.ToString(), Encoding.UTF8, "application/ssml+xml");
-                    // Set additional header, such as Authorization and User-Agent
-                    request.Headers.Add("Authorization", "Bearer " + accessToken);
-                    request.Headers.Add("Connection", "Keep-Alive");
-                    // Update your resource name
-                    request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
-                    // Audio output format. See API reference for full list.
-                    request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
-                    // Create a request
-                    Console.WriteLine("Calling the TTS service. Please wait... \n");
-                    using (HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false))
+                    RunSynthesis((int)threadId, host, auth, input, roundPerTask).Wait();
+                }), arg, TaskCreationOptions.LongRunning);
+
+                taskList.Add(task);
+            }
+
+            Task.WaitAll(taskList.ToArray());
+        }
+
+        private static async Task RunSynthesis(int threadId, string host, Authentication auth, string input, int maxRound)
+        {
+            string accessToken;
+            string text;
+            int round = 0;
+            // reuse http client will save connection latency
+            using (HttpClient client = new HttpClient())
+            {
+                while (round < maxRound)
+                {
+                    Console.WriteLine("-----------------------------");
+
+                    round++;
+                    text = input + new Random().Next().ToString();
+                    Console.WriteLine($"Thread = {threadId}, Round = {round}, text = {text}");
+
+                    try
                     {
-                        response.EnsureSuccessStatusCode();
-                        // Asynchronously read the response
-                        using (Stream dataStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
+                        accessToken = auth.GetAccessToken();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Failed to obtain an access token.");
+                        Console.WriteLine(ex.ToString());
+                        Console.WriteLine(ex.Message);
+                        return;
+                    }
+
+                    // Create SSML document.
+                    XDocument body = new XDocument(
+                            new XElement("speak",
+                                new XAttribute("version", "1.0"),
+                                new XAttribute(XNamespace.Xml + "lang", "en-US"),
+                                new XElement("voice",
+                                    new XAttribute(XNamespace.Xml + "lang", "en-US"),
+                                    new XAttribute(XNamespace.Xml + "gender", "Female"),
+                                    new XAttribute("name", "zh-CN-XiaoxiaoNeural"),
+                                    text)));
+
+                    DateTime dt = DateTime.Now;
+
+                    using (HttpRequestMessage request = new HttpRequestMessage())
+                    {
+                        // Set the HTTP method
+                        request.Method = HttpMethod.Post;
+                        // Construct the URI
+                        request.RequestUri = new Uri(host);
+                        // Set the content type header
+                        request.Content = new StringContent(body.ToString(), Encoding.UTF8, "application/ssml+xml");
+                        // Set additional header, such as Authorization and User-Agent
+                        request.Headers.Add("Authorization", "Bearer " + accessToken);
+                        request.Headers.Add("Connection", "Keep-Alive");
+                        // Update your resource name
+                        request.Headers.Add("User-Agent", "YOUR_RESOURCE_NAME");
+                        // Audio output format. See API reference for full list.
+                        request.Headers.Add("X-Microsoft-OutputFormat", "riff-24khz-16bit-mono-pcm");
+                        // Create a request
+                        Console.WriteLine($"Thread = {threadId}, Calling the TTS service. Please wait... \n");
+                        using (HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false))
                         {
-                            Console.WriteLine("Your speech file is being written to file...");
-                            using (FileStream fileStream = new FileStream(@"sample.wav", FileMode.Create, FileAccess.Write, FileShare.Write))
+                            response.EnsureSuccessStatusCode();
+
+                            // Asynchronously read the response
+                            using (Stream dataStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
                             {
-                                await dataStream.CopyToAsync(fileStream).ConfigureAwait(false);
-                                fileStream.Close();
+                                Console.WriteLine($"Thread = {threadId}, Your speech file is being written to file...");
+                                using (FileStream fileStream = new FileStream(@"sample.wav", FileMode.Create, FileAccess.Write, FileShare.Write))
+                                {
+                                    await dataStream.CopyToAsync(fileStream).ConfigureAwait(false);
+                                    fileStream.Close();
+                                }
                             }
-                            Console.WriteLine("\nYour file is ready. Press any key to exit.");
-                            Console.ReadLine();
                         }
                     }
+
+                    Console.WriteLine($"Thread = {threadId}, time spend {(DateTime.Now - dt).TotalMilliseconds}");
                 }
             }
         }

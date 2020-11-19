@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Skype.Azure.Runners.CustomVoice.CRISVoiceAPI.DTO
+namespace CustomVoice_API.API.DTO
 {
     public class PaginatedEntities<T>
     {
