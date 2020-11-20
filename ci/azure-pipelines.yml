@@ -15,6 +15,6 @@ jobs:
     fetchDepth: 2
     submodules: false
   - bash: |
-      bash MRCP//docker/build.sh
+      bash MRCP/docker/build.sh
     displayName: 'Build MRCP and plugins'
     
