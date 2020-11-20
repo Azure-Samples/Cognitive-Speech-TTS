@@ -5,7 +5,7 @@ trigger:
 
 jobs:
 
-- job: MRCP Build
+- job: MRCP_Build
   pool:
     vmImage: 'ubuntu-latest'
 
