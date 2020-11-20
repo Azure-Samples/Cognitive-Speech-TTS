@@ -1,0 +1,20 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+
+trigger:
+- master
+
+jobs:
+
+- job: MRCP_Build
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - checkout: self
+    lfs: true
+    fetchDepth: 2
+    submodules: false
+  - bash: |
+      bash MRCP/docker/build.sh
+    displayName: 'Build MRCP and plugins'
+    
