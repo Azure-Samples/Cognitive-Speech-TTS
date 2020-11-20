@@ -58,7 +58,7 @@ class SpeechSynthesizerFactory
             {
                 apt_log(APT_LOG_MARK, APT_PRIO_WARNING, "Configured sample rate %d is not 8k or 16k, use default value.", sampleRate);
             }
-            speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw8Khz8BitMonoMULaw);
+            speechConfig->SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat::Raw8Khz16BitMonoPcm);
         }
 
         static auto locale =
