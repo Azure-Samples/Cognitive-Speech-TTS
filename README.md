@@ -24,6 +24,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News 
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2020.12 [Azure Neural Text-to-Speech updates: 51 new voices added to the portfolio](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-text-to-speech-updates-51-new-voices-added-to-the/ba-p/1988418)
 * 2020.11 [BBC innovates how it delivers trusted news and entertainment with Azure AI](https://customers.microsoft.com/en-us/story/754836-bbc-media-entertainment-azure)
 * 2020.11 [Neural Text-to-Speech previews five new languages with innovative models in the low-resource setting](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)
 * 2020.10 [Azure Neural TTS upgraded with HiFiNet, achieving higher audio fidelity and faster synthesis speed](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-tts-upgraded-with-hifinet-achieving-higher-audio/ba-p/1847860)
