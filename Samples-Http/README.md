@@ -1,3 +1,10 @@
+NOTICE: recommend using the SDK samples 
+===============================
+
+https://github.com/Azure-Samples/cognitive-services-speech-sdk
+
+
+
 HTTP Samples for Text To Speech
 ===============================
 
