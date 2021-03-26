@@ -24,8 +24,8 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News 
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
-* 2020.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
-* 2020.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
+* 2021.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
+* 2021.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
 * 2021.01  [Unified Neural Text Analyzer: an innovation to improve Neural TTS pronunciation accuracy](https://techcommunity.microsoft.com/t5/azure-ai/unified-neural-text-analyzer-an-innovation-to-improve-neural-tts/ba-p/2102187)
 * 2020.12 [国际残疾人日：微软正式捐赠首批人工智能有声内容，包括鲁迅、老舍、萧红、朱自清等作家的经典作品](https://m.ithome.com/html/523051.htm)
 * 2020.12 [FastSpeech 2: Fast and High-Quality End-to-End Text to Speech](https://arxiv.org/abs/2006.04558)
