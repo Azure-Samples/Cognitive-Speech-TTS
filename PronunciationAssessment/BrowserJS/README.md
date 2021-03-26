@@ -21,6 +21,7 @@ In cmd line, type the following commands:
 1. cd pronunciationdash
 
 \\activate your virtualenv\\
+
 2. pip install -r requirements.txt
 3. set FLASK_APP=application.py
 4. set FLASK_ENV=development
