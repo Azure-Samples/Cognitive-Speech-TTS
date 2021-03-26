@@ -1,3 +1,10 @@
+![image](https://user-images.githubusercontent.com/31500515/112596487-e4513100-8e31-11eb-9cd1-d08c93887409.png)
+This Pronunciation Assessment Browser sample experience allows you to test the Azure Speech Service Pronunciation Assessment feature. You can simply enter your reference text or choose a random Tongue Twister and click on the record button to test your voice.
+![image](https://user-images.githubusercontent.com/31500515/112596145-6c830680-8e31-11eb-9d88-26eca37df10e.png)
+You can also play the Learn Pronunciation button to hear back the correct Pronunciation for the text.
+
+Instructions on how to run this sample
+
 To run on local (in terminal):
  
 1. git clone the code
