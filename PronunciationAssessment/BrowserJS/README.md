@@ -18,7 +18,7 @@ To run on local (in terminal):
 
 In cmd line, type the following commands:
 
-1. cd pronunciationdash
+1. cd BrowserJS
 
 \\activate your virtualenv\\
 
