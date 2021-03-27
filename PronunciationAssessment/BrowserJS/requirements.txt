@@ -8,7 +8,7 @@ Flask==1.1.2
 idna==2.10
 isort==4.3.21
 itsdangerous==1.1.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
