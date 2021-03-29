@@ -170,11 +170,11 @@ def gettts():
         return response
         
     elif result.reason == speechsdk.ResultReason.Canceled:
-        return jsonify({"success":False})
         cancellation_details = result.cancellation_details
         print("Speech synthesis canceled: {}".format(cancellation_details.reason))
         if cancellation_details.reason == speechsdk.CancellationReason.Error:
             print("Error details: {}".format(cancellation_details.error_details))
+        return jsonify({"success":False})
 
 @app.route("/getttsforword", methods=["POST"])
 def getttsforword():
@@ -205,8 +205,8 @@ def getttsforword():
         return response
         
     elif result.reason == speechsdk.ResultReason.Canceled:
-        return jsonify({"success":False})
         cancellation_details = result.cancellation_details
         print("Speech synthesis canceled: {}".format(cancellation_details.reason))
         if cancellation_details.reason == speechsdk.CancellationReason.Error:
             print("Error details: {}".format(cancellation_details.error_details))
+        return jsonify({"success":False})

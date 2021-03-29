@@ -52,7 +52,7 @@ For more detailed usage, please enter: CustomVoice-API [APIKind]
 
 - [SSMLInputFileSampleForLongAudioAPI](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 
-# Contributing
+## Contributing
 
 We welcome contributions and are always looking for new SDKs, input, and
 suggestions. Feel free to file issues on the repo and we'll address them as we can. You can also learn more about how you can help on the [Contribution
@@ -62,7 +62,7 @@ For questions, feedback, or suggestions about Microsoft Cognitive Services, feel
 
 - [Cognitive Services UserVoice Forum](https://cognitive.uservoice.com)
 
-# License
+## License
 
 All Microsoft Cognitive Services SDKs and samples are licensed with the MIT License. For more details, see
 [LICENSE](/LICENSE.md).

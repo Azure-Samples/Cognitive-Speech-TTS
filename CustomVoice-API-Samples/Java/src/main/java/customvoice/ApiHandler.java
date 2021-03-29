@@ -24,7 +24,7 @@ import customvoice.model.Voice;
 import customvoice.model.VoiceSynthesis;
 
 public class ApiHandler {
-	public static void excuteApi(CommandLine cli) {
+	public static void executeApi(CommandLine cli) {
 		String region = cli.getOptionValue("r");
 		String hostPath = String.format(Configuration.HostUri, region);
 		String subscriptionKey = cli.getOptionValue("subscriptionkey");
@@ -98,12 +98,12 @@ public class ApiHandler {
 						skip = Integer.parseInt(skips);
 						if (skip < 0) {
 							System.out.println(
-									"Please enter a valid skip parameter, should be a ingeter greater or equals 0");
+									"Please enter a valid skip parameter, should be an integer greater or equals 0");
 							return;
 						}
 					} catch (NumberFormatException e) {
 						System.out.println(
-								"Please enter a valid skip parameter, should be a ingeter greater or equals 0");
+								"Please enter a valid skip parameter, should be an integer greater or equals 0");
 						return;
 					}
 				}
@@ -114,11 +114,11 @@ public class ApiHandler {
 						top = Integer.parseInt(tops);
 						if (top < 0) {
 							System.out
-									.println("Please enter a valid top parameter, should be a ingeter greater than 0");
+									.println("Please enter a valid top parameter, should be an integer greater than 0");
 							return;
 						}
 					} catch (NumberFormatException e) {
-						System.out.println("Please enter a valid top parameter, should be a ingeter greater than 0");
+						System.out.println("Please enter a valid top parameter, should be an integer greater than 0");
 						return;
 					}
 				}
