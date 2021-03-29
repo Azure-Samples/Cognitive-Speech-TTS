@@ -72,8 +72,8 @@ public class VoiceSynthesisApi {
 		ApiResponse<Object> resp = apiClient.post(localVarPath, localVarFormParams, localVarReturnType);
 		List<String> locationValues = resp.getHeaders().get("Location");
 		if (locationValues != null && !locationValues.isEmpty()) {
-			String[] splitedLocation = locationValues.get(0).split("/");
-			return splitedLocation[splitedLocation.length - 1];
+			String[] splitLocation = locationValues.get(0).split("/");
+			return splitLocation[splitLocation.length - 1];
 		}
 		return "No synthesis ID returned.";
 	}

@@ -31,7 +31,7 @@ public class Main {
 			return;
 		}
 
-		ApiHandler.excuteApi(cli);
+		ApiHandler.executeApi(cli);
 		return;
 	}
 
@@ -99,11 +99,11 @@ public class Main {
 		opt18.setRequired(false);
 		options.addOption(opt18);
 		Option opt19 = new Option("sk", "skip", true,
-				"The skip filter of the voice synthesis query, should be a interger value");
+				"The skip filter of the voice synthesis query, should be a integer value");
 		opt19.setRequired(false);
 		options.addOption(opt19);
 		Option opt20 = new Option("tp", "top", true,
-				"The top filter of the voice synthesis query, should be a interger value");
+				"The top filter of the voice synthesis query, should be a integer value");
 		opt20.setRequired(false);
 		options.addOption(opt20);
 

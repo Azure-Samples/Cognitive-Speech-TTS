@@ -82,9 +82,9 @@ namespace CustomVoice_API.API
             {
                 ssml = string.Format(CultureInfo.InvariantCulture, SsmlPattern, locale, voiceName, SecurityElement.Escape(script));
             }
-            byte[] btBodys = Encoding.UTF8.GetBytes(ssml);
-            webRequest.ContentLength = btBodys.Length;
-            webRequest.GetRequestStream().Write(btBodys, 0, btBodys.Length);
+            byte[] btBodyS = Encoding.UTF8.GetBytes(ssml);
+            webRequest.ContentLength = btBodyS.Length;
+            webRequest.GetRequestStream().Write(btBodyS, 0, btBodyS.Length);
             webRequest.Timeout = 6000000;
 
             using (var response = webRequest.GetResponse() as HttpWebResponse)
