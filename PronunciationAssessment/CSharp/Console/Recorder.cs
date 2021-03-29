@@ -106,7 +106,7 @@ namespace PronunciationAssessment
             var formattedResult = JsonConvert.SerializeObject(resultJson, Formatting.Indented, new JsonSerializerSettings());
 
             Console.WriteLine(formattedResult);
-            Console.WriteLine($"Total audio lenght = {(double)totalBytesRecorded / waveIn.WaveFormat.AverageBytesPerSecond} seconds.");
+            Console.WriteLine($"Total audio length = {(double)totalBytesRecorded / waveIn.WaveFormat.AverageBytesPerSecond} seconds.");
             Console.WriteLine($"Latency = {latency} ms.");
 
             totalBytesRecorded = 0;
