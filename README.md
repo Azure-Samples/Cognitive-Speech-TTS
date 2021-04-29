@@ -24,6 +24,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.04 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
 * 2021.03 [Eleven more languages are generally available for Azure Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/azure-ai/eleven-more-languages-are-generally-available-for-azure-neural/ba-p/2236871)
 * 2021.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * 2021.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
