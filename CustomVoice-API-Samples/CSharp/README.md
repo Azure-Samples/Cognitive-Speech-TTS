@@ -57,7 +57,7 @@ For more detailed usage, please enter: CustomVoice-API [APIKind]
 ## Case Study: automate model deployment, synthesis and endpoint deletion.
 
 ### create a deployment 
-dotnet CustomVoice-API.Core.dll endpoint create subscriptionKey <YourSpeechKey> hostURI https://eastus.customvoice.api.speech.microsoft.com/ name batchtest locale en-us projectId <YourProjectGUID>  modelId <YourModelGuid> 
+dotnet CustomVoice-API.Core.dll endpoint create subscriptionKey <YourSpeechKey> hostURI https://<YourRegion>.customvoice.api.speech.microsoft.com/ name batchtest locale en-us projectId <YourProjectGUID>  modelId <YourModelGuid> 
 
 it will output the new endpoint information to console like below
 
@@ -68,13 +68,13 @@ it will output the new endpoint information to console like below
 use the endpointID in below command. 
 
 ### query endpoint status. 
-dotnet CustomVoice-API.Core.dll endpoint getbyid subscriptionKey <YourSpeechKey> hostURI https://eastus.customvoice.api.speech.microsoft.com/ endpointid <YourEndpointID>
+dotnet CustomVoice-API.Core.dll endpoint getbyid subscriptionKey <YourSpeechKey> hostURI https://<YourRegion>.customvoice.api.speech.microsoft.com/ endpointid <YourEndpointID>
 
 ### do some work using the endpoint. 
 For example, you can synthesize a file with multiple lines with multiple threads.
 
 ### delete the endpoint 
-dotnet  CustomVoice-API.Core.dll endpoint delete subscriptionKey a8a1a9413a1b46a39484ace7244f3e83 hostURI https://eastus.customvoice.api.speech.microsoft.com/ endpointid <YourEndpointID>
+dotnet  CustomVoice-API.Core.dll endpoint delete subscriptionKey <YourSpeechKey> hostURI https://<YourRegion>.customvoice.api.speech.microsoft.com/ endpointid <YourEndpointID>
 
 
 
