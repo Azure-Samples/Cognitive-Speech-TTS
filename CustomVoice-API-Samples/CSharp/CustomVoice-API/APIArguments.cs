@@ -226,6 +226,12 @@ namespace CustomVoice_API
                         OptionalParameters = new List<string>();
                         break;
                     }
+                case nameof(APIKind.endpoint) + "-" + nameof(Action.getbyid):
+                    {
+                        RequiredParameters = new List<string>() { SubscriptionKey, HostUri, EndpointId };
+                        OptionalParameters = new List<string>();
+                        break;
+                    }
                 case nameof(APIKind.endpoint) + "-" + nameof(Action.getbyprojectid):
                     {
                         RequiredParameters = new List<string>() { SubscriptionKey, HostUri, ProjectId };

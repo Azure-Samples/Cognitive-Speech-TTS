@@ -4,6 +4,7 @@
     {
         get,
         getbyprojectid,
+        getbyid,
         getbysynthesisid,
         create,
         delete,

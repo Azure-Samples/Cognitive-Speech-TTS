@@ -23,6 +23,12 @@ namespace CustomVoice_API.API
             return APIHelper.Get<IEnumerable<DTO.Endpoint>>(subscriptionKey, url);
         }
 
+        public static DTO.Endpoint GetById(string subscriptionKey, string hostURI, string endpointId)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceEndpoints_DeleteById, endpointId);
+            return APIHelper.Get<DTO.Endpoint>(subscriptionKey, url);
+        }
+
         public static bool DeleteById(string subscriptionKey, string hostURI, string endpointId)
         {
             string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceEndpoints_DeleteById, endpointId);
@@ -37,7 +43,7 @@ namespace CustomVoice_API.API
         }
 
         public static bool Create(string subscriptionKey, string hostURI, string name, string description,
-            string local, Guid projectId, Guid modelId)
+            string local, Guid projectId, Guid modelId, bool wait = true)
         {
             var endpointDefinition = EndpointDefinition.Create(
                 name,
@@ -53,6 +59,15 @@ namespace CustomVoice_API.API
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            Console.WriteLine("endpoint created: " +  response.Headers.Location.ToString());
+            if (wait)
+            {
+                // wait for the endpoint
+
+
+            }
+
             return true;
         }
 
