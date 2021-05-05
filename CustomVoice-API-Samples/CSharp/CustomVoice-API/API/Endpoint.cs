@@ -45,14 +45,21 @@ namespace CustomVoice_API.API
         public static bool Create(string subscriptionKey, string hostURI, string name, string description,
             string local, Guid projectId, Guid modelId, bool wait = true)
         {
+            var properties = new Dictionary<string, string>();
+            properties.Add("PortalAPIVersion", "3");
+
+            System.Net.Http.HttpResponseMessage response;
+
+
             var endpointDefinition = EndpointDefinition.Create(
                 name,
                 description,
                 local,
                 new Identity(projectId),
                 new List<Identity> { new Identity(modelId) },
-                null);
-            var response = APIHelper.Submit<EndpointDefinition>(subscriptionKey, hostURI + API_V3.VoiceEndpoints_Create, endpointDefinition);
+                properties);
+            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(endpointDefinition);
+            response = APIHelper.Submit(subscriptionKey, hostURI + API_V3.VoiceEndpoints_Create, jsonString);
 
             if (response.StatusCode != HttpStatusCode.Accepted)
             {
