@@ -62,7 +62,7 @@ dotnet CustomVoice-API.Core.dll endpoint create subscriptionKey **YourSpeechKey*
 it will output the new endpoint information to console like below
 
 
-     endpoint created: https://eastus.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/endpoints/<YourEndpointID>
+     endpoint created: https://eastus.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/endpoints/YourEndpointID
      Create endpoint successfully
 
 use the endpointID in below command. 
