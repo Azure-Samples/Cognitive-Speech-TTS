@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Along</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='readalong.css') }}">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+
+<body>
+    <div id="warning">
+        <h1 style="font-weight:500;">Speech Recognition Speech SDK not found (microsoft.cognitiveservices.speech.sdk.bundle.js missing).</h1>
+    </div>
+    <div id="totalscorediv">
+        <p id="totalscorep">0</p>
+        <p id="star">&#11088;</p>
+        <div id ="pointsdiv"></div>
+    </div>
+
+    <div class="button-container">
+        <button id="buttonmic" class="green-button">
+            <span class="fa fa-microphone"></span>Start</button>
+    </div>
+    
+    <div id="readalongcont">
+        <p id="readalongtext"><span id="textdone"></span><span id="textleft"></span></p>
+    </div>
+
+    <!-- Speech SDK REFERENCE -->
+    <script src="{{ url_for('static', filename='microsoft.cognitiveservices.speech.sdk.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename='readalong.js') }}"></script>
+</body>
+</html>

@@ -32,7 +32,7 @@ import org.threeten.bp.OffsetDateTime;
 
 public class ApiClient {
 
-    final String apiKeyPramaName = "Ocp-Apim-Subscription-Key";
+    final String apiKeyParamName = "Ocp-Apim-Subscription-Key";
     private String basePath;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private OkHttpClient httpClient;
@@ -348,7 +348,7 @@ public class ApiClient {
             Map<String, Object> formParams) throws ApiException {
         String url = basePath + path;
         Request.Builder reqBuilder = new Request.Builder().url(url);
-        headerParams.put(apiKeyPramaName, apiKey);
+        headerParams.put(apiKeyParamName, apiKey);
         processHeaderParams(headerParams, reqBuilder);
 
         String contentType = (String) headerParams.get("Content-Type");
@@ -381,8 +381,8 @@ public class ApiClient {
     /**
      * Set header parameters to the request builder, including default headers.
      *
-     * @param headerParams Header parameters in the ofrm of Map
-     * @param reqBuilder   Reqeust.Builder
+     * @param headerParams Header parameters in the form of Map
+     * @param reqBuilder   Request.Builder
      */
     private void processHeaderParams(Map<String, String> headerParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : headerParams.entrySet()) {

@@ -1,7 +1,7 @@
 Page({
   data: {
     recordingSrc: "",
-    translatonSrc: "",
+    translationSrc: "",
     srResult: "",
     translateResult: "",
     isPlaying: false,
@@ -22,7 +22,7 @@ Page({
     this.recorderManager = wx.getRecorderManager();
     this.recorderManager.onError(function () {
       that.setData({
-        translatonSrc: "",
+        translationSrc: "",
         recordState: 0,
         hit1: "Recording failed.",
         hit2: "Please try again."
@@ -108,7 +108,7 @@ Page({
       success(file) {
         var result = JSON.parse(file.data)
         that.setData({
-          translatonSrc: result.TtsResult,
+          translationSrc: result.TtsResult,
           srResult: result.SrResult,
           translateResult: result.TranslateResult,
           recordState: 3,
@@ -122,7 +122,7 @@ Page({
       },
       fail(file) {
         that.setData({
-          translatonSrc: "",
+          translationSrc: "",
           recordState: 0,
           hit1: "Request failed.",
           hit2: "Please try again."
@@ -166,12 +166,12 @@ Page({
       })
     }
     else{
-      if (this.data.translatonSrc == "") {
+      if (this.data.translationSrc == "") {
         this.tip("Please recording first!")
         return;
       }
 
-      this.innerAudioContext.src = this.data.translatonSrc;
+      this.innerAudioContext.src = this.data.translationSrc;
       this.innerAudioContext.play()
 
       this.setData({

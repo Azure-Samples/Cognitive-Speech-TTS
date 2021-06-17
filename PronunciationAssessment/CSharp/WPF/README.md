@@ -25,7 +25,7 @@ To use this sample, follow these instructions:
 * Type some text into the text box at the center of the window, or leave the default text as it is.
 * Click the button with `speaker` icon to listen to the standard pronunciation of the text.
 * Click the button with `microphone` icon and then read along the text in the central text box.
-* After you finish reading the text, click `stop` button (which was changed from the `microphone` button). Then you should see the pronuncation assessment result in scores, on sentence, word, and phoneme levels.
+* After you finish reading the text, click `stop` button (which was changed from the `microphone` button). Then you should see the pronunciation assessment result in scores, on sentence, word, and phoneme levels.
 
 ## Resources
 

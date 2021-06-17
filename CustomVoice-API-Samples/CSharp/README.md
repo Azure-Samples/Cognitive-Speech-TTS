@@ -40,6 +40,8 @@ Usage: CustomVoice-API [APIKind] [action] [options]
 For more detailed usage, please enter: CustomVoice-API [APIKind]
 ```
 
+
+
 ## Some parameter sets
 
 - [HostURI](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation)
@@ -52,7 +54,31 @@ For more detailed usage, please enter: CustomVoice-API [APIKind]
 
 - [SSMLInputFileSampleForLongAudioAPI](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 
-# Contributing
+## Case Study: automate model deployment, synthesis and endpoint deletion.
+
+### create a deployment 
+dotnet CustomVoice-API.Core.dll endpoint create subscriptionKey **YourSpeechKey** hostURI https://**YourRegion**.customvoice.api.speech.microsoft.com/ name batchtest locale en-us projectId **YourProjectGUID**  modelId **YourModelGuid**
+
+it will output the new endpoint information to console like below
+
+
+     endpoint created: https://eastus.customvoice.api.speech.microsoft.com/api/texttospeech/v3.0-beta1/endpoints/YourEndpointID
+     Create endpoint successfully
+
+use the endpointID in below command. 
+
+### query endpoint status. 
+dotnet CustomVoice-API.Core.dll endpoint getbyid subscriptionKey **YourSpeechKey** hostURI https://**YourRegion**.customvoice.api.speech.microsoft.com/ endpointid **YourEndpointID**
+
+### do some work using the endpoint. 
+For example, you can synthesize a file with multiple lines with multiple threads.
+
+### delete the endpoint 
+dotnet  CustomVoice-API.Core.dll endpoint delete subscriptionKey **YourSpeechKey** hostURI https://**YourRegion**.customvoice.api.speech.microsoft.com/ endpointid **YourEndpointID**
+
+
+
+## Contributing
 
 We welcome contributions and are always looking for new SDKs, input, and
 suggestions. Feel free to file issues on the repo and we'll address them as we can. You can also learn more about how you can help on the [Contribution
@@ -62,7 +88,7 @@ For questions, feedback, or suggestions about Microsoft Cognitive Services, feel
 
 - [Cognitive Services UserVoice Forum](https://cognitive.uservoice.com)
 
-# License
+## License
 
 All Microsoft Cognitive Services SDKs and samples are licensed with the MIT License. For more details, see
 [LICENSE](/LICENSE.md).

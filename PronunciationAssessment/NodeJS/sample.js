@@ -35,7 +35,7 @@ const request = require("request");
 const fs = require("fs");
 
 var subscriptionKey = "{SubscriptionKey}" // replace this with your subscription key
-var region = "{Region}" // replace this with the region corresponding to your subscription key, e.g.westus, eastasia
+var region = "{Region}" // replace this with the region corresponding to your subscription key, e.g. westus, eastasia
 
 // build pronunciation assessment parameters
 var referenceText = "Good morning.";

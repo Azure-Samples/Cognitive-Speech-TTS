@@ -116,11 +116,11 @@ namespace TranslatorServer.Management
                 }
             }
 
-            DateTime beforDT = System.DateTime.Now;
+            DateTime beforeDT = System.DateTime.Now;
             using (var response = request.GetResponse() as HttpWebResponse)
             {
                 DateTime afterDT = System.DateTime.Now;
-                TimeSpan ts = afterDT.Subtract(beforDT);
+                TimeSpan ts = afterDT.Subtract(beforeDT);
                 result.company = "Microsoft";
                 result.spantime = ((double)ts.TotalMilliseconds / 1000).ToString("f2");
 

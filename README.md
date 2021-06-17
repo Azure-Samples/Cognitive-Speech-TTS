@@ -17,15 +17,18 @@ products:
 
 # Azure Cognitive TTS Samples
 
-Microsoft Text to speech service now is offically supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
+Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
 
-Recommend to run the CSharp example first which is always kept up to date. 
+Recommend to run the CSharp example first which is always kept up to date.
 
-## Azure Cognitive TTS Blog and News 
+## Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
-* 2020.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
-* 2020.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
+* 2021.05 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
+* 2021.04 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
+* 2021.03 [Eleven more languages are generally available for Azure Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/azure-ai/eleven-more-languages-are-generally-available-for-azure-neural/ba-p/2236871)
+* 2021.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
+* 2021.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
 * 2021.01  [Unified Neural Text Analyzer: an innovation to improve Neural TTS pronunciation accuracy](https://techcommunity.microsoft.com/t5/azure-ai/unified-neural-text-analyzer-an-innovation-to-improve-neural-tts/ba-p/2102187)
 * 2020.12 [国际残疾人日：微软正式捐赠首批人工智能有声内容，包括鲁迅、老舍、萧红、朱自清等作家的经典作品](https://m.ithome.com/html/523051.htm)
 * 2020.12 [FastSpeech 2: Fast and High-Quality End-to-End Text to Speech](https://arxiv.org/abs/2006.04558)
@@ -45,17 +48,17 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2020.04 [Read Aloud in Word on iOS](https://blog-insider.office.com/2020/04/24/read-aloud-in-word/)
 * 2020.04 [看过很多景色，你还没“见过”声音里的世界：周迅语音为你读书](https://mp.weixin.qq.com/s?__biz=MzA3MTA0ODYyOA==&mid=2651161833&idx=1&sn=944f6d14bfafd68c37e3905cee5eb9f5&chksm=84c2a832b3b521240348b93ee71dd41196d572a51211d376618f5026ba289c4c15214266ec25&mpshare=1&scene=1&srcid=&sharer_sharetime=1587608381632&sharer_shareid=e291f83180ca8472f4c020aae119eb2c#rd)
 * 2020.04 [Blog: Introducing new voice styles in Azure Cognitive Services](https://techcommunity.microsoft.com/t5/azure-ai/introducing-new-voice-styles-in-azure-cognitive-services/ba-p/1248368)
-* 2020.04 [Microsoft Edge is becoming the browser you didn’t know you needed, talking about natural voices ](https://arstechnica.com/gadgets/2020/04/microsoft-edge-is-becoming-the-browser-you-didnt-know-you-needed/) | [Demo](https://www.youtube.com/watch?v=j5nR4eCSMBs)
+* 2020.04 [Microsoft Edge is becoming the browser you didn’t know you needed, talking about natural voices](https://arstechnica.com/gadgets/2020/04/microsoft-edge-is-becoming-the-browser-you-didnt-know-you-needed/) | [Demo](https://www.youtube.com/watch?v=j5nR4eCSMBs)
 * 2020.03 [Blog: Cognitive Services adds Brazilian Portuguese to Neural Text to Speech](https://techcommunity.microsoft.com/t5/azure-ai/cognitive-services-adds-brazilian-portuguese-to-neural-text-to/ba-p/1210471)
-* 2020.03 [科技宝藏 | 微软听听文档，AI语音全线升级！ ](https://mp.weixin.qq.com/s?__biz=MzA5Mzk3NDcyNw==&mid=2247486058&idx=1&sn=8db9d8a3d61ab5027865593e0aef3f24&chksm=9054f3c2a7237ad455a00c0dab6baa639f84d1387525e8153f2b6c8736a5857d1de316616b60&mpshare=1&scene=1&srcid=0320zDDQqoIu4bz0ILj2eq41&sharer_sharetime=1584690411522&sharer_shareid=67fac6419876a8c72f83d82f53762097#rd)
+* 2020.03 [科技宝藏 | 微软听听文档，AI语音全线升级！](https://mp.weixin.qq.com/s?__biz=MzA5Mzk3NDcyNw==&mid=2247486058&idx=1&sn=8db9d8a3d61ab5027865593e0aef3f24&chksm=9054f3c2a7237ad455a00c0dab6baa639f84d1387525e8153f2b6c8736a5857d1de316616b60&mpshare=1&scene=1&srcid=0320zDDQqoIu4bz0ILj2eq41&sharer_sharetime=1584690411522&sharer_shareid=67fac6419876a8c72f83d82f53762097#rd)
 * 2020.02 [Versão final da Bixby falando em português é liberada! Vem saber tudo!](https://missaodigital.magazineluiza.com.br/versao-final-da-bixby-falando-portugues-e-liberada-vem-saber-tudo/) | [Demo](https://twitter.com/pattetech/status/1220386925066031105)
 * 2019.12 [NeurIPS 2019: FastSpeech: New text-to-speech model improves on speed, accuracy, and controllability](https://www.microsoft.com/en-us/research/blog/fastspeech-new-text-to-speech-model-improves-on-speed-accuracy-and-controllability/)
 * 2019.11 [Blog: Play My Emails in Outlook and get time back in your day](https://techcommunity.microsoft.com/t5/outlook-blog/play-my-emails-in-outlook-and-get-time-back-in-your-day/ba-p/930243) | [Demo](https://www.youtube.com/watch?v=0u5Sptdvlig)
 * 2019.11 [Delivering the benefits of Custom Neural Voice](https://www.linkedin.com/pulse/delivering-benefits-custom-neural-voice-alex-kipman/)
 * 2019.11 [Azure custom neural voice public preview](https://venturebeat.com/2019/11/04/azure-cognitive-services-gets-speech-search-language-and-security-updates-at-ignite-2019/) | [Demo](https://www.bilibili.com/video/BV1k7411q7hN?from=search&seid=16607120944178500273)
 * 2019.10 [Microsoft breaks new ground with AI neural TTS and life-size holograms](https://medium.com/@focaloidtechnologies/microsoft-breaks-new-ground-with-ai-neural-tts-and-life-size-holograms-bcbdacbe3ff0) |  [Demo](https://www.youtube.com/watch?v=auJJrHgG9Mc)
-* 2019.10 [微软“晓晓”让温暖的声音浸润心目图书馆 | AI for Good ](https://www.infoq.cn/article/VJf8HrIIg0h50U6QEzo5)
-* 2019.09 [让电脑说人话 | 数字化转型 ING ](https://www.sohu.com/a/343369083_181341)
+* 2019.10 [微软“晓晓”让温暖的声音浸润心目图书馆 | AI for Good](https://www.infoq.cn/article/VJf8HrIIg0h50U6QEzo5)
+* 2019.09 [让电脑说人话 | 数字化转型 ING](https://www.sohu.com/a/343369083_181341)
 * 2019.08 [Blog: Bringing cloud powered voices to Microsoft Edge Insiders](https://blogs.windows.com/msedgedev/2019/08/14/cloud-powered-voices-microsoft-edge-chromium/)
 * 2019.06 [Blog: Inclusive Classroom round up for Microsoft Education at ISTE 2019](https://techcommunity.microsoft.com/t5/education-blog/inclusive-classroom-round-up-for-microsoft-education-at-iste/ba-p/679764)
 * 2019.05 [Blog: Azure Neural text-to-speech generally available](https://azure.microsoft.com/en-us/blog/a-deep-dive-into-what-s-new-with-azure-cognitive-services/)
@@ -69,19 +72,20 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 
 ## Azure Cognitive TTS Common Links
 
-- [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
-- [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
-- [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
-- [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
+* [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
+* [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
+* [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
+* [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
 
 ## Contributing
 
-We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>). 
+We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>).
 
 You can reach out to us anytime with questions and suggestions using our communities below:
- - **Support questions:** [StackOverflow](<https://stackoverflow.com/questions/tagged/microsoft-cognitive>)
- - **Feedback & feature requests:** [Cognitive Services UserVoice Forum](<https://cognitive.uservoice.com>)
+
+* **Support questions:** [StackOverflow](<https://stackoverflow.com/questions/tagged/microsoft-cognitive>)
+* **Feedback & feature requests:** [Cognitive Services UserVoice Forum](<https://cognitive.uservoice.com>)
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 

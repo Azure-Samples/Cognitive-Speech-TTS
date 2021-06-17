@@ -23,6 +23,12 @@ namespace CustomVoice_API.API
             return APIHelper.Get<IEnumerable<DTO.Endpoint>>(subscriptionKey, url);
         }
 
+        public static DTO.Endpoint GetById(string subscriptionKey, string hostURI, string endpointId)
+        {
+            string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceEndpoints_DeleteById, endpointId);
+            return APIHelper.Get<DTO.Endpoint>(subscriptionKey, url);
+        }
+
         public static bool DeleteById(string subscriptionKey, string hostURI, string endpointId)
         {
             string url = string.Format(CultureInfo.InvariantCulture, hostURI + API_V3.VoiceEndpoints_DeleteById, endpointId);
@@ -37,22 +43,38 @@ namespace CustomVoice_API.API
         }
 
         public static bool Create(string subscriptionKey, string hostURI, string name, string description,
-            string local, Guid projectId, Guid modelId)
+            string local, Guid projectId, Guid modelId, bool wait = true)
         {
+            var properties = new Dictionary<string, string>();
+            properties.Add("PortalAPIVersion", "3");
+
+            System.Net.Http.HttpResponseMessage response;
+
+
             var endpointDefinition = EndpointDefinition.Create(
                 name,
                 description,
                 local,
                 new Identity(projectId),
                 new List<Identity> { new Identity(modelId) },
-                null);
-            var response = APIHelper.Submit<EndpointDefinition>(subscriptionKey, hostURI + API_V3.VoiceEndpoints_Create, endpointDefinition);
+                properties);
+            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(endpointDefinition);
+            response = APIHelper.Submit(subscriptionKey, hostURI + API_V3.VoiceEndpoints_Create, jsonString);
 
             if (response.StatusCode != HttpStatusCode.Accepted)
             {
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            Console.WriteLine("endpoint created: " +  response.Headers.Location.ToString());
+            if (wait)
+            {
+                // wait for the endpoint
+
+
+            }
+
             return true;
         }
 
@@ -82,9 +104,9 @@ namespace CustomVoice_API.API
             {
                 ssml = string.Format(CultureInfo.InvariantCulture, SsmlPattern, locale, voiceName, SecurityElement.Escape(script));
             }
-            byte[] btBodys = Encoding.UTF8.GetBytes(ssml);
-            webRequest.ContentLength = btBodys.Length;
-            webRequest.GetRequestStream().Write(btBodys, 0, btBodys.Length);
+            byte[] btBodyS = Encoding.UTF8.GetBytes(ssml);
+            webRequest.ContentLength = btBodyS.Length;
+            webRequest.GetRequestStream().Write(btBodyS, 0, btBodyS.Length);
             webRequest.Timeout = 6000000;
 
             using (var response = webRequest.GetResponse() as HttpWebResponse)

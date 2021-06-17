@@ -55,8 +55,8 @@ def get_chunk(audio_source, chunk_size=1024):
 
 # build pronunciation assessment parameters
 referenceText = "Good morning."
-pronAssessmentParamsJson = "{\"ReferenceText\":\"%s\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\"}" % referenceText;
-pronAssessmentParamsBase64 = base64.b64encode(bytes(pronAssessmentParamsJson, 'utf-8'));
+pronAssessmentParamsJson = "{\"ReferenceText\":\"%s\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\"}" % referenceText
+pronAssessmentParamsBase64 = base64.b64encode(bytes(pronAssessmentParamsJson, 'utf-8'))
 pronAssessmentParams = str(pronAssessmentParamsBase64, "utf-8")
 
 # build request

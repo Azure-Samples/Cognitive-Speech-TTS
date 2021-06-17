@@ -97,6 +97,18 @@ namespace CustomVoice_API.API
             }
         }
 
+        public static HttpResponseMessage Submit(string subscriptionKey, string url, string data)
+        {
+            using (var client = new HttpClient())
+            using (var content = new MultipartFormDataContent())
+            {
+                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+                var httpContent = new StringContent(data, Encoding.UTF8, "application/json");
+                return client.PostAsync(url, httpContent, CancellationToken.None).Result;
+            }
+        }
+
+
         public static HttpResponseMessage Delete(string subscriptionKey, string url)
         {
             using (var client = new HttpClient())

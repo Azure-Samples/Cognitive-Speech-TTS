@@ -153,6 +153,9 @@ namespace CustomVoice_API
                 case Action.call:
                     EndpointCall(arguments);
                     break;
+                case Action.getbyid:
+                    EndpointGetById(arguments);
+                    break;
                 default:
                     break;
             }
@@ -537,6 +540,16 @@ namespace CustomVoice_API
             DisplayResult<API.DTO.Endpoint>(result);
         }
 
+        private static void EndpointGetById(Dictionary<string, string> arguments)
+        {
+            string subscriptionKey = arguments["subscriptionkey"];
+            string hostURI = arguments["hosturi"];
+            string endpointGUID = arguments["endpointid"];
+
+            var result = Endpoint.GetById(subscriptionKey, hostURI, endpointGUID);
+            DisplayResult<API.DTO.Endpoint>(new List<API.DTO.Endpoint>() { result });
+        }
+
         private static void EndpointGetByProjectId(Dictionary<string, string> arguments)
         {
             string subscriptionKey = arguments["subscriptionkey"];
@@ -572,13 +585,19 @@ namespace CustomVoice_API
             string projectId = arguments["projectid"];
             string modelId = arguments["modelid"];
             string description = name;
+            bool wait = false;
+
+            if (arguments.ContainsKey("wait"))
+            {
+                wait = true;
+            }
 
             if (arguments.Keys.ToList().Contains("description"))
             {
                 description = arguments["description"];
             }
 
-            if (Endpoint.Create(subscriptionKey, hostURI, name, description, locale, new Guid(projectId), new Guid(modelId)))
+            if (Endpoint.Create(subscriptionKey, hostURI, name, description, locale, new Guid(projectId), new Guid(modelId), wait))
             {
                 Console.WriteLine("Create endpoint successfully");
             }
