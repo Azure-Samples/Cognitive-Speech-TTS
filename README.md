@@ -24,14 +24,16 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
-* 2021.05 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
+* 2021.05 [Build 2021 – Azure Cognitive Services – Speech Updates](https://techcommunity.microsoft.com/t5/azure-ai/build-2021-azure-cognitive-services-speech-updates/ba-p/2384260)
 * 2021.04 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
+* 2021.04 [FastCompany: 8 great Microsoft Edge features that make switching worth it, read aloud is one of them](https://www.fastcompany.com/90622361/microsoft-edge-tips-reasons-to-switch-from-chrome)
+* 2021.03 [ICLR 2021: AdaSpeech: Adaptive Text to Speech for Custom Voice](https://arxiv.org/abs/2103.00993)
 * 2021.03 [Eleven more languages are generally available for Azure Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/azure-ai/eleven-more-languages-are-generally-available-for-azure-neural/ba-p/2236871)
 * 2021.02 [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * 2021.02 [Build a natural custom voice for your brand](https://techcommunity.microsoft.com/t5/azure-ai/build-a-natural-custom-voice-for-your-brand/ba-p/2112777)
-* 2021.01  [Unified Neural Text Analyzer: an innovation to improve Neural TTS pronunciation accuracy](https://techcommunity.microsoft.com/t5/azure-ai/unified-neural-text-analyzer-an-innovation-to-improve-neural-tts/ba-p/2102187)
+* 2021.01 [Unified Neural Text Analyzer: an innovation to improve Neural TTS pronunciation accuracy](https://techcommunity.microsoft.com/t5/azure-ai/unified-neural-text-analyzer-an-innovation-to-improve-neural-tts/ba-p/2102187)
 * 2020.12 [国际残疾人日：微软正式捐赠首批人工智能有声内容，包括鲁迅、老舍、萧红、朱自清等作家的经典作品](https://m.ithome.com/html/523051.htm)
-* 2020.12 [FastSpeech 2: Fast and High-Quality End-to-End Text to Speech](https://arxiv.org/abs/2006.04558)
+* 2020.12 [ICLR 2021: FastSpeech 2: Fast and High-Quality End-to-End Text to Speech](https://arxiv.org/abs/2006.04558)
 * 2020.12 [Azure Neural Text-to-Speech updates: 51 new voices added to the portfolio](https://techcommunity.microsoft.com/t5/azure-ai/azure-neural-text-to-speech-updates-51-new-voices-added-to-the/ba-p/1988418)
 * 2020.11 [BBC innovates how it delivers trusted news and entertainment with Azure AI](https://customers.microsoft.com/en-us/story/754836-bbc-media-entertainment-azure)
 * 2020.11 [Neural Text-to-Speech previews five new languages with innovative models in the low-resource setting](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)
