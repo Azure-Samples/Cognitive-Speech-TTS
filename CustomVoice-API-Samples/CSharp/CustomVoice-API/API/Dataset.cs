@@ -105,6 +105,8 @@ namespace CustomVoice_API.API
                     APIHelper.PrintErrorMessage(response);
                     return false;
                 }
+
+                System.Console.WriteLine(response.Headers.Location);
                 return true;
             }
         }

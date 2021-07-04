@@ -39,13 +39,19 @@ namespace CustomVoice_API.API
                 locale,
                 properties,
                 "TextToSpeech");
-            var response = APIHelper.Submit<ProjectDefinition>(subscriptionKey, hostURI + API_V3.VoiceProject_Create, projectDefinition);
+
+            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(projectDefinition);
+
+            var response = APIHelper.Submit(subscriptionKey, hostURI + API_V3.VoiceProject_Create, jsonString);
+
 
             if (response.StatusCode != HttpStatusCode.Accepted && response.StatusCode != HttpStatusCode.Created)
             {
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            System.Console.WriteLine(response.Headers.Location);
             return true;
         }
     }

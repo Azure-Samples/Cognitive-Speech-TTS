@@ -68,12 +68,6 @@ namespace CustomVoice_API.API
             }
 
             Console.WriteLine("endpoint created: " +  response.Headers.Location.ToString());
-            if (wait)
-            {
-                // wait for the endpoint
-
-
-            }
 
             return true;
         }
