@@ -24,6 +24,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 ## Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.06 [Speech Service Update - Pronunciation Assessment is Generally Available](https://techcommunity.microsoft.com/t5/azure-ai/speech-service-update-pronunciation-assessment-is-generally/ba-p/2505501)
 * 2021.05 [Build 2021 – Azure Cognitive Services – Speech Updates](https://techcommunity.microsoft.com/t5/azure-ai/build-2021-azure-cognitive-services-speech-updates/ba-p/2384260)
 * 2021.04 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
 * 2021.04 [FastCompany: 8 great Microsoft Edge features that make switching worth it, read aloud is one of them](https://www.fastcompany.com/90622361/microsoft-edge-tips-reasons-to-switch-from-chrome)
