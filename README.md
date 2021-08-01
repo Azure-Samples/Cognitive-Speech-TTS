@@ -10,8 +10,8 @@ Recommend to run the CSharp example first which is always kept up to date.
 * Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
 * BBC (News Media) - [Microsoft Customer Story-BBC innovates how it delivers trusted news and entertainment with Azure AI](https://customers.microsoft.com/en-us/story/754836-bbc-media-entertainment-azure)
 * Swisscomm (Telco) - [Microsoft Customer Story-Swisscom uses Azure to drive innovation, market leadership with multilingual voice assistant](https://customers.microsoft.com/en-us/story/821105-swisscom-telecommunications-azure-cognitive-services)
-* Pearson - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
-* Xpeng Motors - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
+* Pearson (Education) - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
+* Xpeng Motors (Automotive) - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
 
 # Azure TTS Blog and News
 
