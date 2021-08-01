@@ -1,8 +1,6 @@
 # Azure TTS Samples
 
-Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
-
-Recommend to run the CSharp example first which is always kept up to date.
+Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  
 
 # Azure TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
@@ -80,6 +78,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * [Guidelines for responsible deployment of synthetic voice technology - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-guidelines-responsible-deployment-synthetic)
 * [Disclosure for voice talent | Microsoft Docs](https://docs.microsoft.com/en-us/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [Disclosure Design Guidelines - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-disclosure-guidelines)
+* [Latency, load testing of Azure TTS](https://docs.microsoft.com/en-us/azure/cognitive-services/Speech-Service/how-to-lower-speech-synthesis-latency?pivots=programming-language-csharp)
 * [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 
 # Contributing
