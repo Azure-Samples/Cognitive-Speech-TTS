@@ -73,6 +73,15 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 * [Azure Speech Containers](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-container-howto?tabs=stt%2Ccsharp)
+* [Language support - Speech service - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support#text-to-speech)
+* [Speech Synthesis Markup Language (SSML) - Speech service - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-synthesis-markup?tabs=csharp#adjust-speaking-styles)
+* [Speech Studio - Microsoft Azure](https://speech.microsoft.com/audiocontentcreation)
+* [Text-to-speech quickstart - Speech service - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-javascript&tabs=script%2Cwindowsinstall)
+* [Cognitive Speech Services Pricing | Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/)
+* [Guidelines for responsible deployment of synthetic voice technology - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-guidelines-responsible-deployment-synthetic)
+* [Disclosure for voice talent | Microsoft Docs](https://docs.microsoft.com/en-us/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
+* [Disclosure Design Guidelines - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-disclosure-guidelines)
+
 
 ## Contributing
 
