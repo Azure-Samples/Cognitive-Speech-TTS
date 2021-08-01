@@ -4,7 +4,7 @@ Microsoft Text to speech service now is officially supported by [Speech SDK](htt
 
 Recommend to run the CSharp example first which is always kept up to date.
 
-## Azure Cognitive TTS Customer Story 
+# Azure Cognitive TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
 * Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
@@ -13,7 +13,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 * Pearson - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
 * Xpeng Motors - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
 
-## Azure Cognitive TTS Blog and News
+# Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
 * 2021.07 [Introducing the latest technology advancement in Azure Neural TTS: Uni-TTSv3](https://techcommunity.microsoft.com/t5/azure-ai/introducing-the-latest-technology-advancement-in-azure-neural/ba-p/2595922)
@@ -66,7 +66,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2018.12 [Blog: Microsoft previews neural network text-to-speech](https://azure.microsoft.com/en-us/blog/microsoft-previews-neural-network-text-to-speech/)
 * 2018.09 [Blog: Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)
 
-## Azure Cognitive TTS Common Links
+# Azure Cognitive TTS Common Links
 
 * [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 * [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
@@ -83,7 +83,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * [Disclosure Design Guidelines - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-disclosure-guidelines)
 
 
-## Contributing
+# Contributing
 
 We welcome contributions. Feel free to file issues and pull requests on the repo and we'll address them as we can. Learn more about how you can help on our [Contribution Rules & Guidelines](</CONTRIBUTING.md>).
 
@@ -94,13 +94,13 @@ You can reach out to us anytime with questions and suggestions using our communi
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## License
+# License
 
 All Microsoft Cognitive Services SDKs and samples are licensed with the MIT License. For more details, see
 [LICENSE](</LICENSE.md>).
 
 Sample images are licensed separately, please refer to [LICENSE-IMAGE](</LICENSE-IMAGE.md>).
 
-## Developer Code of Conduct
+# Developer Code of Conduct
 
 Developers using Cognitive Services, including this client library & sample, are expected to follow the “Developer Code of Conduct for Microsoft Cognitive Services”, found at [http://go.microsoft.com/fwlink/?LinkId=698895](http://go.microsoft.com/fwlink/?LinkId=698895).
