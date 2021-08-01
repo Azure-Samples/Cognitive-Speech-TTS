@@ -1,29 +1,22 @@
----
-page_type: sample
-description: "Samples in various languages for using Text-to-Speech."
-languages:
-- csharp
-- python
-- nodejs
-- javascript
-- php
-- swift
-- java
-- ruby
-products:
-- azure
-- azure-cognitive-services
----
-
 # Azure Cognitive TTS Samples
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
 
 Recommend to run the CSharp example first which is always kept up to date.
 
+## Azure Cognitive TTS Customer Story 
+* AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
+* Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
+* Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
+* BBC (News Media) - [Microsoft Customer Story-BBC innovates how it delivers trusted news and entertainment with Azure AI](https://customers.microsoft.com/en-us/story/754836-bbc-media-entertainment-azure)
+* Swisscomm (Telco) - [Microsoft Customer Story-Swisscom uses Azure to drive innovation, market leadership with multilingual voice assistant](https://customers.microsoft.com/en-us/story/821105-swisscom-telecommunications-azure-cognitive-services)
+* Pearson - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
+* Xpeng Motors - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
+
 ## Azure Cognitive TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.07 [Introducing the latest technology advancement in Azure Neural TTS: Uni-TTSv3](https://techcommunity.microsoft.com/t5/azure-ai/introducing-the-latest-technology-advancement-in-azure-neural/ba-p/2595922)
 * 2021.06 [Speech Service Update - Pronunciation Assessment is Generally Available](https://techcommunity.microsoft.com/t5/azure-ai/speech-service-update-pronunciation-assessment-is-generally/ba-p/2505501)
 * 2021.05 [Build 2021 – Azure Cognitive Services – Speech Updates](https://techcommunity.microsoft.com/t5/azure-ai/build-2021-azure-cognitive-services-speech-updates/ba-p/2384260)
 * 2021.04 [Enable read-aloud for your application with Azure neural TTS](https://techcommunity.microsoft.com/t5/azure-ai/enable-read-aloud-for-your-application-with-azure-neural-tts/ba-p/2301422)
