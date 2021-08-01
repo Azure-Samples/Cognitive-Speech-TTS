@@ -66,9 +66,8 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2018.12 [Blog: Microsoft previews neural network text-to-speech](https://azure.microsoft.com/en-us/blog/microsoft-previews-neural-network-text-to-speech/)
 * 2018.09 [Blog: Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)
 
-# Azure Cognitive TTS Common Links
+# Azure TTS Links
 
-* [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 * [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
 * [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
 * [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
@@ -81,7 +80,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * [Guidelines for responsible deployment of synthetic voice technology - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-guidelines-responsible-deployment-synthetic)
 * [Disclosure for voice talent | Microsoft Docs](https://docs.microsoft.com/en-us/legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context)
 * [Disclosure Design Guidelines - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-disclosure-guidelines)
-
+* [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
 
 # Contributing
 
