@@ -1,10 +1,10 @@
-# Azure Cognitive TTS Samples
+# Azure TTS Samples
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  It supports both REST and Websocket connection to the service. This repo still contains sample in various languages for using Text-to-Speech.  We will also support the common development questions using the issues tracker.  
 
 Recommend to run the CSharp example first which is always kept up to date.
 
-# Azure Cognitive TTS Customer Story 
+# Azure TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
 * Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
@@ -13,7 +13,7 @@ Recommend to run the CSharp example first which is always kept up to date.
 * Pearson - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
 * Xpeng Motors - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
 
-# Azure Cognitive TTS Blog and News
+# Azure TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
 * 2021.07 [Introducing the latest technology advancement in Azure Neural TTS: Uni-TTSv3](https://techcommunity.microsoft.com/t5/azure-ai/introducing-the-latest-technology-advancement-in-azure-neural/ba-p/2595922)
