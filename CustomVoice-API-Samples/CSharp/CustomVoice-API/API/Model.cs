@@ -53,6 +53,9 @@ namespace CustomVoice_API.API
             if (isNeuralTTS)
             {
                 properties.Add("VoiceModelKind", "NeuralTts");
+                properties.Add("PortalAPIVersion", "3");
+                properties.Add("Purpose", "Realtime");
+
                 foreach (var neuralProperty in neuralProperties)
                 {
                     properties.Add(neuralProperty.Key, neuralProperty.Value);
@@ -68,13 +71,18 @@ namespace CustomVoice_API.API
                 null,
                 dataset,
                 new Identity(projectId));
-            var response = APIHelper.Submit<ModelDefinition>(subscriptionKey, hostURI + API_V3.VoiceModels_Create, modelDefinition);
+
+            var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(modelDefinition);
+
+            var response = APIHelper.Submit(subscriptionKey, hostURI + API_V3.VoiceModels_Create, jsonString);
 
             if (response.StatusCode != HttpStatusCode.Accepted)
             {
                 APIHelper.PrintErrorMessage(response);
                 return false;
             }
+
+            System.Console.WriteLine(response.Headers.Location);
             return true;
         }
 
