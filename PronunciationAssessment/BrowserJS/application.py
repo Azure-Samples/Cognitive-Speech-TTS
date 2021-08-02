@@ -11,7 +11,8 @@ app = Flask(__name__)
 
 subscription_key = '<SPEECH_SERVICE_SUBSCRIPTION_KEY>'
 region = "<SPEECH_SERVICE_REGION>"
-voice = "Microsoft Server Speech Text to Speech Voice (en-GB, LibbyNeural)"
+language = "en-US"
+voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
 
 @app.route("/")
 def index():
@@ -111,7 +112,7 @@ def ackaud():
     pronAssessmentParams = str(pronAssessmentParamsBase64, "utf-8")
 
     # build request
-    url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us" % region
+    url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s" % (region, language)
     headers = { 'Accept': 'application/json;text/xml',
                 'Connection': 'Keep-Alive',
                 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
@@ -165,7 +166,7 @@ def gettts():
         response = make_response(audio_data)
         response.headers['Content-Type'] = 'audio/wav'
         response.headers['Content-Disposition'] = 'attachment; filename=sound.wav'
-        response.headers['reftext'] = reftext
+        # response.headers['reftext'] = reftext
         response.headers['offsets'] = offsets
         return response
         
@@ -201,7 +202,7 @@ def getttsforword():
         response = make_response(audio_data)
         response.headers['Content-Type'] = 'audio/wav'
         response.headers['Content-Disposition'] = 'attachment; filename=sound.wav'
-        response.headers['word'] = word
+        # response.headers['word'] = word
         return response
         
     elif result.reason == speechsdk.ResultReason.Canceled:
