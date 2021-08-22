@@ -17,6 +17,7 @@ Below are latest updates from Azure TTS.
 # Azure TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.08 [5 ways Microsoft Edge is better than Chrome, Read Aloud is one of the 5](https://www.pcworld.com/article/3627588/5-ways-microsoft-edge-is-better-than-chrome.html)
 * 2021.07 [Introducing the latest technology advancement in Azure Neural TTS: Uni-TTSv3](https://techcommunity.microsoft.com/t5/azure-ai/introducing-the-latest-technology-advancement-in-azure-neural/ba-p/2595922)
 * 2021.06 [Speech Service Update - Pronunciation Assessment is Generally Available](https://techcommunity.microsoft.com/t5/azure-ai/speech-service-update-pronunciation-assessment-is-generally/ba-p/2505501)
 * 2021.05 [Build 2021 – Azure Cognitive Services – Speech Updates](https://techcommunity.microsoft.com/t5/azure-ai/build-2021-azure-cognitive-services-speech-updates/ba-p/2384260)
