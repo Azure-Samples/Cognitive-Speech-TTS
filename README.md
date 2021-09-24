@@ -12,6 +12,7 @@ Below are latest updates from Azure TTS.
 * Swisscomm (Telco) - [Microsoft Customer Story-Swisscom uses Azure to drive innovation, market leadership with multilingual voice assistant](https://customers.microsoft.com/en-us/story/821105-swisscom-telecommunications-azure-cognitive-services)
 * Pearson (Education) - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
 * Xpeng Motors (Automotive) - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
+* Li Auto (Automotive) - [理想OTA 2.2版本发布，揭秘语音助手底层逻辑](https://xw.qq.com/cmsid/20210908A01EZZ00?f=newdc)
 * Kahoot! [Makes learning more accessible for everyone with Azure Cognitive Services](https://customers.microsoft.com/en-us/story/1379629341340415380-kahoot-partner-professional-services-azure-cognitive-services)
 
 # Azure TTS Blog and News
