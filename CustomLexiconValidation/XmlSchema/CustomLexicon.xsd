@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2005/01/pronunciation-lexicon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="lexicon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="lexeme">
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+              <xs:element name="grapheme" type="xs:string" />
+              <xs:element name="alias" type="xs:string"/>
+              <xs:element name="phoneme" type="xs:string"/>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required" />
+      <xs:attribute name="alphabet" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
