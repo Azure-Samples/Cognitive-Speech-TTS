@@ -1,0 +1,2 @@
+The tool depends on .netcore3.1, the usage cmd is:
+CustomLexiconValidation.exe -CustomLexiconFilePath .\invalidCustomLexicon\invalid_lang.xml -LogFile "log1.txt"
