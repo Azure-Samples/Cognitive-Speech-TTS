@@ -13,9 +13,9 @@ Below are latest updates from Azure TTS.
 * Pearson (Education) - [Pearson empowers language students to learn faster in a natural way with Azure AI capabilities](https://customers.microsoft.com/en-us/story/1379625676815325642-pearson-education-azure-cognitive-services)
 * Xpeng Motors (Automotive) - [摊牌了！小P我要变“声”了](https://mp.weixin.qq.com/s/auDKCefeeb1Q52dibbrKNw)
 * Li Auto (Automotive) - [理想OTA 2.2版本发布，揭秘语音助手底层逻辑](https://xw.qq.com/cmsid/20210908A01EZZ00?f=newdc)
-* Kahoot! (Education) [Makes learning more accessible for everyone with Azure Cognitive Services](https://customers.microsoft.com/en-us/story/1379629341340415380-kahoot-partner-professional-services-azure-cognitive-services)
-* Hongdandan (Audiobook)  [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
-* NTT Disruption Jibo (Assistant) [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
+* Kahoot! (Education) - [Makes learning more accessible for everyone with Azure Cognitive Services](https://customers.microsoft.com/en-us/story/1379629341340415380-kahoot-partner-professional-services-azure-cognitive-services)
+* Hongdandan (Audiobook) - [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
+* NTT Disruption Jibo (Assistant) - [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
 
 # Azure TTS Blog and News
 
