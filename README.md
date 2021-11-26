@@ -20,6 +20,8 @@ Below are latest updates from Azure TTS.
 # Azure TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.11 [Azure Speech’s Neural TTS empowers organizations to serve users in more than 100 languages](https://techcommunity.microsoft.com/t5/azure-ai-blog/azure-speech-s-neural-tts-empowers-organizations-to-serve-users/ba-p/2920882)
+* 2021.10 [哈酱的这首“MISS WHO”结合了电子风与国风元素，还加入了部分的昆曲，人声部分采用了微软首个AI语音定制技术 (Microsoft Azure Text-to-Speech Technology)进行创作](https://picture.iczhiku.com/weixin/message1634005485576.html)
 * 2021.09 [Latest updates on Azure Neural TTS: new voices for casual conversations](https://techcommunity.microsoft.com/t5/azure-ai/latest-updates-on-azure-neural-tts-new-voices-for-casual/ba-p/2761278)
 * 2021.09 [New natural-sounding voices come to Read Aloud](https://insider.office.com/en-us/blog/new-natural-sounding-voices-come-to-read-aloud)
 * 2021.08 [5 ways Microsoft Edge is better than Chrome, Read Aloud is one of the 5, PCWorld](https://www.pcworld.com/article/3627588/5-ways-microsoft-edge-is-better-than-chrome.html)
