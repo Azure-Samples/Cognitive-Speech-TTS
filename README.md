@@ -92,6 +92,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * [Disclosure Design Guidelines - Azure Cognitive Services | Microsoft Docs](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/concepts-disclosure-guidelines)
 * [Latency, load testing of Azure TTS](https://docs.microsoft.com/en-us/azure/cognitive-services/Speech-Service/how-to-lower-speech-synthesis-latency?pivots=programming-language-csharp)
 * [Azure TTS wiki](https://github.com/Azure-Samples/Cognitive-Speech-TTS/wiki)
+* [Pricing Note: how billing character is calculated](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech#pricing-note)
 
 # Contributing
 
