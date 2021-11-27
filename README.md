@@ -1,10 +1,10 @@
-# Azure TTS Samples
+# Azure Cognitive Service TTS Samples
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  The REST API samples are just provided as referrence when SDK is not supported on the desired platform. 
 
 Below are latest updates from Azure TTS. 
 
-# Azure TTS Customer Story 
+# Azure Cognitive Service TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
 * Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
@@ -17,7 +17,7 @@ Below are latest updates from Azure TTS.
 * Hongdandan (Audiobook) - [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
 * NTT Disruption Jibo (Assistant) - [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
 
-# Azure TTS Blog and News
+# Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
 * 2021.11 [DelightfulTTS: The Microsoft Speech Synthesis System for Blizzard Challenge 2021](https://arxiv.org/abs/2110.12612)
@@ -76,7 +76,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2018.12 [Blog: Microsoft previews neural network text-to-speech](https://azure.microsoft.com/en-us/blog/microsoft-previews-neural-network-text-to-speech/)
 * 2018.09 [Blog: Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/en-us/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)
 
-# Azure TTS Links
+# Azure Cognitive Service TTS Links
 
 * [Azure Speech Document](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/text-to-speech)
 * [Create Custom Neural Voice](https://speech.microsoft.com/customvoice)
