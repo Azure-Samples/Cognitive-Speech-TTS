@@ -1,0 +1,146 @@
+Arabic (Egypt)_ar-EG:
+"أنا [أذكر اسمك الأول والأخير] أدرك أن تسجيلات صوتي سيتم استخدامها بواسطة [اذكر اسم الشركة] لإنشاء واستخدام نسخة تركيبية من صوتي."
+
+Arabic (Saudi Arabia)_ar-SA:
+"أنا [أذكر اسمك الأول والأخير] أدرك أن تسجيلات صوتي سيتم استخدامها بواسطة [اذكر اسم الشركة] لإنشاء واستخدام نسخة تركيبية من صوتي."
+
+Bulgarian (Bulgaria)_bg-BG:
+"Аз [посочете вашето първо и фамилно име] съм запознат/а с това, че записът на гласът ми ще бъде използван от [посочете името на компанията] за да се създаде изкуствена версия на гласът ми."
+
+Catalan (Spain)_ca-ES:
+"Jo, [nom i cognoms], sóc conscient que les gravacions de la meva veu seran utilitzades per [nom de l'empresa] per a la creació i ús d'una versió sintètica de la meva veu."
+
+Chinese (Cantonese, Traditional)_zh-HK:
+"本人（填入你的姓名）確認我的聲音將會被（填入公司名稱）使用於創建合成版本語音。"
+
+Chinese (Mandarin, Simplified)_zh-CN:
+"我（填入你的姓名）确认我的声音将会被（填入公司名称）使用于创建合成版本语音。
+   
+Chinese (Taiwanese Mandarin)_zh-TW: 
+"本人（填入你的姓名）確認我的聲音將會被（填入公司名稱）使用於創建合成版本語音。"
+
+Croatian (Croatia)_hr-HR:
+"Ja [navesti ime i prezime] sam svjestan/na da će snimci moga glasa biti korišteni od strane [navesti ime kompanije] za kreiranje i korištenje sintetičke verzije moga glasa."
+
+Czech (Czech)_cs-CZ: 
+"Já [jméno a příjmení] jsem si vědom, že nahrávky mého hlasu budou použity [jméno společnosti] k vytvoření syntetické verze mého hlasu."
+
+Danish (Denmark)_da-DK:
+"Jeg [oplys dit fornavn og efternavn], er blevet informeret om, at optagelserne af min stemme vil blive brugt af [oplys navnet på firmaet], til at lave og bruge en syntetisk version af min stemme."
+
+Dutch (Netherlands)_nl-NL: 
+"Ik [vermeld uw voor- en achternaam] ben ervan op de hoogte dat opnames van mijn stem zullen worden gebruikt door [vermeld de naam van het bedrijf] om een synthetische versie van mijn stem te creëren en te gebruiken."
+
+English (Australia)_en-AU: 
+"I  [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+
+English (Canada)_en-CA: 
+"I  [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+   
+English (India)_en-IN:
+"I  [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+   
+English (Ireland)_en-IE: 
+"I, [state your first and last name], am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+
+English (United Kingdom)_en-GB: 
+"I  [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+
+English (United States)_en-US: 
+"I  [state your first and last name] am aware that recordings of my voice will be used by [state the name of the company] to create and use a synthetic version of my voice."
+
+Finnish (Finland)_fi-FI:
+"Minä [etunimesi ja sukunimesi] tiedostan, että [yhtiön nimi] käyttää ääninauhotteitani ääneni synteettisen version luomiseen ja sen käyttämiseen."
+
+French (Canada)_fr-CA: 
+"Je [indiquez votre prénom et nom] comprends que les enregistrements de ma voix seront utilisés par [indiquez le nom de l'entreprise] pour créer une voix synthétique à partir de mes enregistrements."
+
+French (France)_fr-FR: 
+"Je, [nom et prénom], déclare être informé que les enregistrements de ma voix seront utilisés par [nom de l’entreprise] pour créer et utiliser une version synthétique dema voix."
+  
+French (Switzerland)_fr-CH:
+"Je, [soussigné e prénom et nom], déclare avoir pris connaissance que mes données vocales seront utilisées par [nom de la société] pour produire une version synthétique de ma voix."
+
+German (Austria)_de-AT: 
+"Ich [geben Sie Ihren Vor- und Nachnamen an] weiß, dass Aufzeichnungen meiner Stimme von [geben Sie den Namen des Unternehmens an] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und zu verwenden."
+ 
+German (Germany)_de-DE: 
+"Ich, [Geben Sie Ihren Vor- und Nachnamen an] bin mir bewusst, dass Aufnahmen meiner Stimme von [Geben Sie den Namen des Unternehmens an] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und zu verwenden."
+  
+German (Switzerland)_de-CH: 
+"Ich, [nennen Sie Ihren Vor- und Nachnamen], bin mir bewusst, dass Aufnahmen vom meiner Stimme von [geben Sie den Namen der Firma an] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und zu verwenden."
+ 
+Greek (Greece)_el-GR:
+ "Εγώ [γραψε το ονοματεπωνυμο σου] κατανοώ ότι ηχογράφιση της φωνής μου  θα χρησιμοποιηθεί από [το όνομα της εταιρείας]  για την δημιουργία και την χρήση συνθετικής έκδοσης της φωνής μου."
+  
+Hebrew (Israel)_he-IL:
+"אני [הכנס שם פרטי ושם משפחה] מודע לכך שהקלטות הקול שלי יהיו בשימוש על-ידי [הכנס את שם החברה] על מנת ליצור ולהשתמש בגרסה סינתטית של הקול שלי."
+   
+Hindi (India)_hi-IN:
+"मैं [आपका पहला और अंतिम नाम] जानता हूं कि मेरी आवाज की रिकॉर्डिंग का उपयोग [कंपनी का नाम बताएं] द्वारा किया जाएगा, ताकि मेरी आवाज का सिंथेटिक संस्करण बनाया जा सके।"
+   
+Hungarian (Hungary)_hu-HU:
+"Én, [vezeték és keresztnév], tudomásul veszem, hogy a [cég megnevezése] a hangfelvételeimet kezeli és felhasználja, valamint létrehozza a hangom gépi változatát."
+  
+Indonesian (Indonesia)_id-ID:
+"Saya [cantumkan nama depan dan belakang Anda] mengetahui bahwa rekaman suara saya akan digunakan oleh [cantumkan nama perusahaan] untuk membuat dan menggunakan versi sintetis suara saya."
+
+Italian (Italy)_it-IT: 
+"Io [inserisci il tuo nome e cognome] sono consapevole che le registrazioni della mia voce saranno utilizzate da [indica il nome dell'azienda] per creare e usare una versione sintetica della mia voce."
+
+Japanese (Japan)_ja-JP: 
+"私（姓名を記入）は自身の音声を（会社名を記入）が使用し、合成音声を作り使用されることに同意します。"
+
+Korean (Korea)_ko-KR: 
+"나는 [본인의 이름을 말씀하세요] 내 목소리의 녹음을 이용해 합성 버전을 만들어 사용된다는 것을 [회사 이름을 말씀하세요]알고 있습니다."
+  
+Malay (Malaysia)_ms-MY:
+"Saya [nyatakan nama anda] menyedari bahawa rakaman suara saya akan digunakan oleh [nyatakan nama syarikat] untuk membuat dan menggunakan versi sintetik suara saya."
+
+Norwegian (Bokmål, Norway)_nb-NO:
+"Jeg, [oppgi fornavn og etternavn], er kjent med at lydopptak av min stemme vil bli brukt av [oppgi navn på selskapet] til å skape og bruke en kunstig versjon av min stemme.
+
+Polish (Poland)_pl-PL:
+"मJa, [imię i nazwisko], mam świadomość, że nagrania mojego głosu zostaną wykorzystane przez [nazwa firmy] do stworzenia i używania syntetycznej wersji mojego głosu."
+
+Portuguese (Brazil)_pt-BR:
+"Eu, [indique o seu nome e sobrenome] estou ciente de que as gravações da minha voz serão usadas por [indique o nome da empresa] para criar e usar uma versão sintética da minha voz."
+
+Portuguese (Portugal)_pt-PT: 
+"Eu [indique o seu nome e sobrenome] estou ciente de que as gravações da minha voz serão usadas pela [indique o nome da empresa] para criar e usar uma versão sintética da minha voz."
+  
+Romanian (Romania)_ro-RO:
+"Eu, [include prenumele și numele tău], sunt conștient de faptul că înregistrările vocii mele vor fi folosite de [include numele companiei] pentru a crea și utiliza o versiune sintetică a vocii mele."
+
+Russian (Russia)_ru-RU:
+"Я [укажите свое имя и фамилию] осведомлен о том, что мой голос будет использован [укажите название организации] для создания синтез версии моего голоса."
+  
+Slovak (Slovakia)_sk-SK:
+"Ja, [uveďte Vaše krstné meno a priezvisko], beriem na vedomie, že nahrávky môjho hlasu budú použité spoločnosťou [uveďte názov spoločnosti] na vytvorenie a použitie syntetickej verzie môjho hlasu."
+  
+Slovenian (Slovenia)_sl-SI:
+"Jaz, [navedite vaše ime in priimek] se zavedam, da bo [navedite ime podjetja] posnetke mojega glasu uporabil za ustvarjanje in uporabo sintetične različice mojega glasu."
+
+Spanish (Mexico)_es-MX: 
+"Yo, [indique sus nombres y apellidos], comprendo que las grabaciones de mi voz serán utilizadas por [indique el nombre de la empresa] para crear y utilizar una versión sintética de mi voz."
+      
+Spanish (Spain)_es-ES: 
+"Yo, [indique su nombre y apellidos], soy consciente de que las grabaciones de mi voz serán usadas por [indique el nombre de la empresa] para crear y usar una versión sintética de mi voz."
+
+Swedish (Sweden)_sv-SE:
+"Jag [säg ditt för- och efternamn] är medveten om att inspelningar av min röst kommer att användas av [säg namnet på företaget] för att skapa och använda en syntetisk version av min röst."
+   
+Tamil (India)_ta-IN:
+"நிறுவனம் [நிறுவனத்தின் பெயரைக் குறிப்பிடவும்] எனது குரலின் பதிவுகளை பயன்படுத்தி, செயற்கை பதிப்பை உருவாக்கவும் மற்றும் பயன்படுத்தவும் உள்ளதாக நான் [முதல் மற்றும் கடைசி பெயரைக் குறிப்பிடவும்] அறிவேன்."
+   
+Telugu (India)_te-IN: 
+"నా [మీ మొదటి మరియు చివరి పేరును పేర్కొనండి] వాయిస్ యొక్క సింథటిక్ సంస్కరణను సృష్టించడానికి మరియు ఉపయోగించటానికి నా వాయిస్ యొక్క రికార్డింగ్‌లు [కంపెనీ పేరును పేర్కొనండి] ఉపయోగిస్తాయని నాకు తెలుసు."
+
+Thai (Thailand)_th-TH:
+ "ฉัน [ระบุชื่อ นามสกุล] รับทราบว่าทาง [ระบุชื่อบริษัท] ได้นำเสียงบันทึกของฉันไปเพื่อสร้างและใช้ในเวอร์ชั่นสังเคราะห์"
+  
+Turkish (Turkey)_tr-TR:
+"Ben [adınızı ve soyadınızı belirtin] sesimin kayıtlarının [şirketin adını belirtin] tarafından sesimin sentetik bir versiyonunu oluşturmak ve kullanmak için kullanılacağının farkındayım."
+   
+Vietnamese (Vietnam)_vi-VN:
+"Tôi [ghi họ và tên của bạn] biết rằng các bản ghi âm giọng nói của tôi sẽ được [ghi tên công ty] dùng để tạo và sử dụng phiên bản giọng nói tổng hợp."
