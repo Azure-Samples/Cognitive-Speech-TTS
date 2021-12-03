@@ -20,6 +20,7 @@ Below are latest updates from Azure TTS.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.11 [How to Create a Custom Neural Voice](https://techcommunity.microsoft.com/t5/azure-ai-blog/how-to-create-a-custom-neural-voice/ba-p/3028275)
 * 2021.11 [DelightfulTTS: The Microsoft Speech Synthesis System for Blizzard Challenge 2021](https://arxiv.org/abs/2110.12612)
 * 2021.11 [Azure Speech’s Neural TTS empowers organizations to serve users in more than 100 languages](https://techcommunity.microsoft.com/t5/azure-ai-blog/azure-speech-s-neural-tts-empowers-organizations-to-serve-users/ba-p/2920882)
 * 2021.10 [哈酱的这首“MISS WHO”结合了电子风与国风元素，还加入了部分的昆曲，人声部分采用了微软首个AI语音定制技术 (Microsoft Azure Text-to-Speech Technology)进行创作](https://picture.iczhiku.com/weixin/message1634005485576.html)
