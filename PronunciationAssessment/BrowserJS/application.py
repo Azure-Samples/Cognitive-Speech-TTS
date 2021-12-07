@@ -9,8 +9,8 @@ from flask import Flask, jsonify, render_template, request, make_response
 
 app = Flask(__name__)
 
-subscription_key = '<SPEECH_SERVICE_SUBSCRIPTION_KEY>'
-region = "<SPEECH_SERVICE_REGION>"
+subscription_key = '1396f12afcf84a5480198c2740f31c27'
+region = "centralindia"
 language = "en-US"
 voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
 
