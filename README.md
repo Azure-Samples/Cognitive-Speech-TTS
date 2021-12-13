@@ -20,6 +20,7 @@ Below are latest updates from Azure TTS.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2021.12 [中国首位超写实虚拟偶像签约华纳，会是流量明星的对手吗？](https://mp.weixin.qq.com/s/D2n94FKjUlZwW34FW1dYNQ)
 * 2021.11 [How to Create a Custom Neural Voice](https://techcommunity.microsoft.com/t5/azure-ai-blog/how-to-create-a-custom-neural-voice/ba-p/3028275)
 * 2021.11 [DelightfulTTS: The Microsoft Speech Synthesis System for Blizzard Challenge 2021](https://arxiv.org/abs/2110.12612)
 * 2021.11 [Azure Speech’s Neural TTS empowers organizations to serve users in more than 100 languages](https://techcommunity.microsoft.com/t5/azure-ai-blog/azure-speech-s-neural-tts-empowers-organizations-to-serve-users/ba-p/2920882)
