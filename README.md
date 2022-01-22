@@ -20,7 +20,7 @@ Below are latest updates from Azure TTS.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
-* 2022.01 [元宇宙离普通人还有多远](https://tech.china.com/article/20220122/20220122992802.html)
+* 2022.01 [元宇宙离普通人还有多远](https://dt.youth.cn/dtxw/202201/t20220117_13394248.htm)
 * 2022.01 [Accelerate the in-vehicle digital experience with Azure Cognitive Services](https://azure.microsoft.com/en-us/blog/accelerate-the-invehicle-digital-experience-with-azure-cognitive-services/)
 * 2022.01 [XPENG Integrates Text-to-Speech Service From Microsoft in P7 Smart Sedan](https://www.yahoo.com/entertainment/xpeng-integrates-text-speech-microsoft-160000972.html)
 * 2021.12 [Azure AI milestone: New Neural Text-to-Speech models more closely mirror natural speech](https://www.microsoft.com/en-us/research/blog/azure-ai-milestone-new-neural-text-to-speech-models-more-closely-mirror-natural-speech/)
