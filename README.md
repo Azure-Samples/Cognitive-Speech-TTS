@@ -20,6 +20,7 @@ Below are latest updates from Azure TTS.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2022.05 [Announcing new voices and emotions to Azure Neural Text to Speech](https://azure.microsoft.com/en-us/blog/announcing-new-voices-and-emotions-to-azure-neural-text-to-speech/)
 * 2022.04 [Introducing the watermark algorithm for synthetic voice identification](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/introducing-the-watermark-algorithm-for-synthetic-voice/ba-p/3298548)
 * 2022.03 [Try out Custom Neural Voice in 5 minutes with a Lite project](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/try-out-custom-neural-voice-in-5-minutes-with-a-lite-project/ba-p/3270455)
 * 2022.02 [Azure Cognitive Services releases new languages and voices for Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-cognitive-services-releases-new-languages-and-voices-for/ba-p/3177458)
