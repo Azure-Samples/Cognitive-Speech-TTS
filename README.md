@@ -23,6 +23,7 @@ Below are latest updates from Azure TTS.
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
 * 2022.08 [Microsoft expands global language support for Speech-to-Text & Text-to-Speech](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/microsoft-expands-global-language-support-for-speech-to-text-amp/ba-p/3577315)
+* 2022.07 [DelightfulTTS 2: End-to-End Speech Synthesis with Adversarial Vector-Quantized Auto-Encoders](https://arxiv.org/abs/2207.04646)
 * 2022.07 [Azure Neural TTS previews a new contextual voice model for long-form paragraph reading](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-previews-a-new-contextual-voice-model-for-long/ba-p/3587139)
 * 2022.06 [11 new languages and variants and more voices are added to Azure’s Neural Text to Speech service](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/11-new-languages-and-variants-and-more-voices-are-added-to-azure/ba-p/3541770)
 * 2022.06 [New technical research is advancing Azure’s Neural Text-to-Speech service](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/new-technical-research-is-advancing-azure-s-neural-text-to/ba-p/3499414)
