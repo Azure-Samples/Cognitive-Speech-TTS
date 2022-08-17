@@ -1,0 +1,300 @@
+3000000001	¡Por fin nos reunimos de nuevo!
+3000000002	¡Hoy será un gran día!
+3000000003	Hiciste un muy buen trabajo.
+3000000004	Mi abuela me cocinó un caldo de res muy rico.
+3000000005	¡Me gusta mucho tu cabello!
+3000000006	Tu carro nuevo se ve muy bien.
+3000000007	Ayer comí unos tacos muy sabrosos.
+3000000008	¡Mi hermana se va a casar!
+3000000009	Estoy muy feliz con mi nuevo perro.
+3000000010	¡Uy ese perrito está hermoso!
+3000000011	¡Me encanta la idea de ir de viaje!
+3000000012	¡Como ha crecido tu hijo!
+3000000013	Diste un muy buen partido.
+3000000014	¡Ellos siempre juegan muy bien!
+3000000015	El básquetbol es un deporte muy emocionante.
+3000000016	¡Yo creo que te ves muy bien!
+3000000017	Deberíamos de ir mañana al cine, me gusta mucho ir.
+3000000018	¡Esa película está muy buena!
+3000000019	¡El partido de ayer la verdad estuvo increíble!
+3000000020	¡Yo creo que mejor que tú, nadie!
+3000000021	La casa del vecino está muy bonita.
+3000000022	¡Mi tía se ganó una tele!
+3000000023	¡Ayer comimos una carne asada deliciosa!
+3000000024	Te quedaron muy bien los platillos, amiga.
+3000000025	¡Creo que te ganaste ese trabajo a ley!
+3000000026	Me gustan mucho las películas de terror.
+3000000027	¡Ayer fui a pintarme las uñas y estaba con promoción!
+3000000028	Esa chamarra se te ve muy bien.
+3000000029	¡Ese reloj está muy bonito!
+3000000030	¡Esa sudadera azul se te ve muy bien!
+3000000031	El ratón que compré es de muy buena calidad.
+3000000032	¡Los muebles de la casa de mi abuela son grandísimos!
+3000000033	Podrás disfrutar de una cata de vinos premium de California.
+3000000034	Yo creo que te irá muy bien en tu entrevista.
+3000000035	¡Ayer comí una sopa de mariscos para chuparse los dedos!
+3000000036	¡Esta mochila me salió muy buena!
+3000000037	¡El perfume que compré ayer estaba baratísimo!
+3000000038	Tus pantuflas están realmente suaves.
+3000000039	Me gusta mucho ir al gimnasio.
+3000000040	¡Ya te extraño mucho amigo!
+3000000041	En el parque nos divertimos mucho.
+3000000042	Me gusta mucho andar en bicicleta.
+3000000043	¡Mi papá cumple años, así que le regalaré una cartera muy exclusiva!
+3000000044	¡Esos tacos de anoche estaban sabrosos!
+3000000045	¡Los atardeceres vistos desde el cerro son preciosos!
+3000000046	La arquitectura del hotel en que nos hospedamos era muy linda.
+3000000047	Aquí podrás probar más de 20 vinos seleccionados directamente de Francia.
+3000000048	¡Las enchiladas que hizo doña Toña estaban deliciosas!
+3000000049	¡Estoy muy cansado pero feliz!
+3000000050	Qué bueno que llegaste temprano.
+3000000051	¡Hoy la sangría esta riquísima!
+3000000052	Las hamburguesas que hicimos ayer nos quedaron muy bien.
+3000000053	Me gusta mucho el café con leche.
+3000000054	¡Tu mamá cocina muy rico!
+3000000055	¡Claro que sí, te quedaron muy bien!
+3000000056	¡Has avanzado mucho en tus clases de geografía!
+3000000057	¡Ya tocas muy bien el piano!
+3000000058	¡Es mi novela preferida, no me la pierdo!
+3000000059	El partido que jugaron fue espectacular.
+3000000060	Fue una gran y agradable sorpresa.
+3000000061	¡Me gusta mucho el pozole, pero más la barbacoa!
+3000000062	¡Te invito a comer a la plaza, vamos!
+3000000063	¡No puedo dejar de comer chile, me encanta!
+3000000064	¡Ayer fui a un museo muy interesante!
+3000000065	¡Me di un paseo por la ciudad, me gustó bastante!
+3000000066	El café con leche es de mis favoritos.
+3000000067	¡Me la pasé muy bien en Navidad!
+3000000068	¡Comí muchísimo, pero estaba todo riquísimo!
+3000000069	¡Te deseo que tengas mucha suerte!
+3000000070	¡Esos zapatos están muy bonitos, me los tienes que prestar!
+3000000071	¡Ayer corrí muchísimo, pero valió la pena el esfuerzo!
+3000000072	Le compré a mi hijo un juego de lápices muy bonitos.
+3000000073	¡Estoy muy emocionado, ya compré casa!
+3000000074	¡El parque nuevo quedó muy amplio! 
+3000000075	Mi deporte favorito es el futbol.
+3000000076	¡Ayer en una cena me comprometí!
+3000000077	En año nuevo nos juntamos todos y cenamos muy bien.
+3000000078	Esa playera se te ve bastante bien.
+3000000079	¡Vaya, has bajado mucho de peso!
+3000000080	Yo creo que cada día te ves mejor.
+3000000081	¡Se nota que has mejorado bastante en el beisbol!
+3000000082	Me parece que hiciste un muy buen esfuerzo.
+3000000083	¡Saqué un diez en el examen de matemáticas!
+3000000084	¡Nunca me había ido tan bien en la escuela!
+3000000085	Los profesores de mi escuela son muy amables.
+3000000086	La directora de la escuela es muy joven.
+3000000087	Carlos y yo nos llevamos muy bien.
+3000000088	La verdad que espero salir perfecto en esa materia.
+3000000089	Ayer me gané un premio en clase de literatura.
+3000000090	¡Mañana tengo competencia, estoy muy emocionada!
+3000000091	Después de clase yo te puedo ayudar.
+3000000092	¡Me siento muy feliz por ti!
+3000000093	¡Amiga te ves preciosa, nunca cambies!
+3000000094	¡Me gustó mucho la película de ayer!
+3000000095	¡Hace mucho que no veía algo tan interesante!
+3000000096	Las clases del martes están bastante bien.
+3000000097	¡Sabes que yo siempre te apoyo!
+3000000098	¡Me gustan mucho los pasteles de chocolate!
+3000000099	Las Crónicas del Desayuno es un documental muy padre.
+3000000100	¡Amiga te tengo una gran sorpresa!
+3000000101	Luisito está muy contento con sus regalos de navidad.
+3000000102	¡Marianita hoy tendrá su primer día de clases!
+3000000103	¡Es un juego muy divertido!
+3000000104	¡Ya te había dicho que tu podías!
+3000000105	Me da mucho gusto que te haya ido bien ayer.
+3000000106	Gracias Juan, eres un gran amigo.
+3000000107	¡Guau, me gustó mucho como te quedó ese arreglo!
+3000000108	¡Yo creo que hoy nos ira muy bien!
+3000000109	¡Compré muchísimas cosas en la plaza!
+3000000110	¡Me encanta ir a la playa!
+3000000111	¡Hace muchas preguntas interesantes!
+3000000112	¡En el último viaje nos la pasamos padrísimo!
+3000000113	Las calles de la ciudad de México son hermosas.
+3000000114	¡La Paz, Baja California Sur, es la ciudad más bonita de México!
+3000000115	¡La suya fue una idea brillante!
+3000000116	Te invito a mi fiesta este domingo.
+3000000117	¡Me encantó ayer la comida del buffet!
+3000000118	El agua estaba muy bien, ni fría ni caliente.
+3000000119	Ayer hicimos un paseo en lancha, ¡super bonito!
+3000000120	¡La verdad es que te extrañamos mucho!
+3000000121	¡Me encantó esa cartera para regalo!
+3000000122	¡La pasamos de maravilla paseando en Cancún!
+3000000123	¡Se te ven increíbles esos lentes rojos!
+3000000124	Soy muy fan de los artículos de colección.
+3000000125	¡Soy fan del café, pero el té matcha me encanta!
+3000000126	¡Lorena y Alicia se han convertido en muy buenas amigas!
+3000000127	¡Me saque una computadora en la rifa del trabajo!
+3000000128	Me da gusto escuchar que estas más tranquilo.
+3000000129	¡Muchas gracias por todo tu esfuerzo!
+3000000130	¡Ese paseo en lancha que hicimos en Cabo San Lucas fue hermoso!
+3000000131	No cabe duda que en Loreto se come delicioso.
+3000000132	¡Recientemente hemos tenido muchos más clientes!
+3000000133	La cosa va mejorando, ¡estoy contento!
+3000000134	¡Oye se te ven muy bien así las pestañas!
+3000000135	¡Si sigues así pronto mejorarás mucho!
+3000000136	Estas vacaciones nos la pasamos de maravilla.
+3000000137	¡Ese platillo veracruzano estaba muy sabroso!
+3000000138	¡Me gustó mucho la película que me recomendaste!
+3000000139	¡Ayer nos la pasamos genial en la pista de hielo!
+3000000140	¡El circo estaba muy divertido!
+3000000141	Ese nuevo bar de la esquina se ve muy bien.
+3000000142	¡Me encantó la novela de las 8 pm!
+3000000143	Te quiero recomendar un libro, ¡está genial!
+3000000144	Ayer me la pase muy bien, ¡saludos!
+3000000145	Conocimos un restaurante nuevo, ¡muy elegante!
+3000000146	¡Felicidades por tu juego de ayer, te vi muy bien!
+3000000147	Gracias por prestarme la revista ayer.
+3000000148	Supe de tu nuevo compromiso, ¡felicidades!
+3000000149	¡Te queda muy bien ese pantalón!
+3000000150	¡Está muy bonito tu gatito!
+3000000151	¡Me contaron que te está yendo muy bien en el trabajo!
+3000000152	¡Sin duda eres una secretaria muy eficiente!
+3000000153	Me agradó bastante tu reporte de ayer.
+3000000154	¡Solucionaste muy bien lo de ayer!
+3000000155	¡Tu novio es muy guapo sobrina!
+3000000156	¡No cabe duda que Antonio cada vez está más aplicado en la escuela!
+3000000157	¡La pizza es mi comida favorita!
+3000000158	¡Los tacos de pescado del restaurante de ayer estaban muy sabrosos!
+3000000159	¡Tenemos que volver a ese lugar!
+3000000160	Me gustó muchísimo tu actuación en la obra.
+3000000161	Amiga, bailaste superbién ayer en tu presentación.
+3000000162	La obra estaba larga pero muy interesante.
+3000000163	¡Bailas muy bien y tu vestido era muy bonito!
+3000000164	Supe de tus buenas calificaciones en el colegio.
+3000000165	¡Te ganaste que escojas un regalo!
+3000000166	El patio de tu casa quedó muy bien.
+3000000167	¡Me da envidia el color tan bonito de tu cabello!
+3000000168	¡Me encantan las flores del invierno!
+3000000169	Mi fruta favorita es la sandía.
+3000000170	Me gusta muchísimo el jugo de naranja.
+3000000171	¡El desayuno de ayer estaba muy completo!
+3000000172	¡Qué padre está tu falda!
+3000000173	Deberías de hacer más pasteles, ¡te quedan muy bien!
+3000000174	¡Los carros chocones son lo máximo!
+3000000175	Nos lo pasamos de maravilla en el concierto del otro día.
+3000000176	Qué bueno que te haya gustado la ciudad.
+3000000177	Tu abuela es muy linda, me cayó muy bien.
+3000000178	El parque cerca de nuestra casa es muy bonito.
+3000000179	¡Tu nuevo coche está espectacular!
+3000000180	¡Deberíamos de salir juntas más seguido!
+3000000181	Eres una de mis mejores amigas.
+3000000182	Me gusta mucho el maquillaje que usas.
+3000000183	¡Ayer la fruta del mercado estaba grandísima!
+3000000184	Gracias por todo el apoyo que me dan en el trabajo.
+3000000185	¡Eres muy bueno haciendo castillos de arena!
+3000000186	¡Te vi correr y eres un verdadero rayo!
+3000000187	¡Fue el mejor partido del año!
+3000000188	Es un podcast muy entretenido, te lo recomiendo.
+3000000189	Estoy mejorando mucho día a día, ¡gracias!
+3000000190	Ayer me comí unas gorditas de chicharrón, ¡uff!
+3000000191	¡Me gusta más como cocinas tú!
+3000000192	Te vi ayer en el parque, ¡ibas muy bien arreglada!
+3000000193	Ese modelo de celular me parece muy padre.
+3000000194	Tu reloj negro me parece más bonito.
+3000000195	Tu familia la verdad me cae muy bien.
+3000000196	Tu hermano es muy buena persona.
+3000000197	¡Ayer mi tío me llevó de compras y la pasamos genial!
+3000000198	La hermana de María Luisa es muy bonita.
+3000000199	El primo de José juega muy bien al tenis.
+3000000200	La semana pasada fuimos a caminar al malecón.
+3000000201	La cuñada de mi papá se compró un departamento muy moderno.
+3000000202	Lo que más me gusta de La Paz es su malecón.
+3000000203	En el hotel en el que nos hospedamos tenían muy buen trato.
+3000000204	Los desayunos que nos sirvieron ayer estaban deliciosos.
+3000000205	El gimnasio de mi escuela es muy amplio.
+3000000206	Las salas de computación parecen muy nuevas.
+3000000207	¡Ayer regresé de un viaje por Los Cabos que fue inolvidable!
+3000000208	Te recomiendo ir al paseo con el tiburón, ¡es impresionante!
+3000000209	¡La cena que tuve con Rogelio estuvo fantástica!
+3000000210	¡La verdad es que no puedo pedirle más a la vida!
+3000000211	Me gustaría que vinieras conmigo al próximo campamento, ¡anímate!
+3000000212	En Veracruz probé el café más delicioso.
+3000000213	¡En Sinaloa se comen unos mariscos muy picosos!
+3000000214	Me gustaría salir con tu hermana, es muy bonita.
+3000000215	Ayer me la pasé muy bien con tu primo Javier, es un caballero.
+3000000216	Convocaron a una reunión que resultó muy entretenida.
+3000000217	¡Ayer vi a alguien que me recordó mucho a ti!
+3000000218	Me gusta mucho la música pop.
+3000000219	¡Qué bien tocas el acordeón!
+3000000220	A mi amigo Iván le gusta mucho el chavo del ocho.
+3000000221	¡Ese documental que vimos ayer estaba padrísimo!
+3000000222	Tomás ha sido siempre mi jugador favorito.
+3000000223	Aunque no soy muy bueno, me gusta mucho jugar al futbol.
+3000000224	¡Las paredes amarillas se ven muy bien!
+3000000225	¡Pedrito Sola es una persona muy simpática!
+3000000226	La música hip hop es muy buena para el baile.
+3000000227	¡Sandrita cada vez está más hermosa!
+3000000228	¡María, eres mi mejor amiga!
+3000000229	¡Felicitaciones, estuviste verdaderamente muy bien!
+3000000230	¡Enrique es muy hábil con la guitarra!
+3000000231	Yo creo que si sigues estudiando puedes sacar buenos resultados.
+3000000232	¡Qué alegría verte de nuevo!
+3000000233	¡Me encantaron como te quedaron las uñas!
+3000000234	La voz de Antonio es muy bonita, debería seguir en clases.
+3000000235	¡Sin duda que el próximo martes nos irá muy bien!
+3000000236	¡Tu presentación fue la mejor de la clase!
+3000000237	Felicidades, entendiste muy bien el problema.
+3000000238	¡Enhorabuena Gilberto, sigue estudiando así!
+3000000239	Elisa es muy buena para las barras paralelas.
+3000000240	Lo que más me gusta de ti es tu carácter.
+3000000241	¡Que ojos tan preciosos tiene tu bebé!
+3000000242	La verdad es que me pareció muy bello el trajecito del perro.
+3000000243	¡Sigue así y poco a poco mejoraras mucho!
+3000000244	¡Mis primos me caen a todo dar!
+3000000245	Ella es una de mis mejores amigas de la escuela.
+3000000246	Te tengo buenas noticias, ¡pasaste la prueba!
+3000000247	Me gusta mucho como pintas tus cuadros.
+3000000248	Deberías de vender esos trabajos que haces, son muy bonitos.
+3000000249	¡Te extrañamos mucho en la clase amiga!
+3000000250	¡Mi mamá preparo unos chilaquiles riquísimos!
+3000000251	No puedo ir hoy, pero estoy seguro que siempre lo haces bien.
+3000000252	Fui al supermercado y la fruta se veía muy fresca.
+3000000253	Los sábados lo que más me gusta hacer es dormir.
+3000000254	Estoy segura que de ninguna manera vas a fracasar.
+3000000255	Estamos siempre para ti, no lo olvides.
+3000000256	¡Pintas muy bonito, te mereces una beca en la escuela de arte!
+3000000257	¡Cuando regreses de tu viaje hay que vernos!
+3000000258	Me contaron que eres muy buena pintando las uñas.
+3000000259	Amiga te invito a mi casa el domingo.
+3000000260	Creo que cenaremos un buen ceviche.
+3000000261	¡El nuevo restaurante de mariscos en el malecón está superbién!
+3000000262	Además de que tienen cosas de calidad, son bastante baratas.
+3000000263	Yo la verdad prefiero ir a una plaza, ahí me la paso muy bien.
+3000000264	A mi primo le gusta jugar juegos de mesa.
+3000000265	En mi familia creo que el más inteligente es mi papá.
+3000000266	Vi tus dibujos, ¡se ven muy reales!
+3000000267	A pesar de ser un poco cansado, me gusta mucho hacer caminatas.
+3000000268	A veces voy a subir el cerro, ¡la vista es impresionante!
+3000000269	Cuando Luis era más chico estaba en atletismo, ¡es rapidísimo!
+3000000270	Lo que más me gusta de este nuevo coche es el espacio.
+3000000271	¡El cuadro de tu habitación tiene un color muy bonito!
+3000000272	¡Las galletas están muy ricas!
+3000000273	En el juego de ayer estuviste muy activo.
+3000000274	La idea es que los comensales puedan disfrutar del plato o el coctel insignia de cada lugar a precio accesible.
+3000000275	La habitación me pareció preciosa.
+3000000276	Esa bolsa se te ve muy bien con vestido negro.
+3000000277	En una nueva realidad en la que los postres no sólo deben encantar paladares, sino también enamorar a los cinco sentidos.
+3000000278	Por las mañanas disfruto mucho salir a andar en bici.
+3000000279	¡Compre unas sillas para la casa a muy buen precio!
+3000000280	Me encantan los pasteles de chocolate con frutos secos.
+3000000281	El cafecito de la mañana es lo que más disfruto.
+3000000282	Tenemos que juntarnos un día de estos a echar la platicada.
+3000000283	Ella trabaja muy bien en la casa, es muy responsable.
+3000000284	Ahora que las conoces, ¿Cuáles son tus hierbas aromáticas favoritas?
+3000000285	Se te ve muy bien tu gorra de las chivas.
+3000000286	¡Juana ayer metió un tremendo golazo!
+3000000287	Mi nueva computadora es muy buena, ¡trabaja rapidísimo!
+3000000288	Recuerda que mientras más orgánico cocines, más saludable serán tus recetas.
+3000000289	Ya estoy mejorando mucho de mi pancita.
+3000000290	Mauricio usa ropa de muy buen gusto.
+3000000291	Yo sé que puedes ganar, ¡ánimo!
+3000000292	¡Ayer por la mañana se me hizo tardísimo!
+3000000293	En la oficina pusieron una máquina de café muy moderna.
+3000000294	Todos los trabajadores están muy contentos últimamente.
+3000000295	¡En la fiesta de ayer bailamos mucho!
+3000000296	¡Esa colección de libros es mi favorita!
+3000000297	¡Estoy lista para irme de viaje!
+3000000298	¡Ganamos, pasamos a la semifinal del torneo!
+3000000299	¡Por fin me gané la beca!
+3000000300	En el partido de hace tres días conseguimos un estupendo resultado.

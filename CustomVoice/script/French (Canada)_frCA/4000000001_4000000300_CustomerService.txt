@@ -1,0 +1,300 @@
+4000000001	Vous avez besoin de mon aide?
+4000000002	Avez-vous trouvé ce dont vous avez besoin?
+4000000003	Auriez-vous envie de faire un essai?
+4000000004	Quelle est la couleur que vous préférez?
+4000000005	Qu'est ce que vous recherchez?
+4000000006	Quelle est votre pointure s'il vous plaît?
+4000000007	Laissez-moi vérifier s'il y a une taille plus petite disponible.
+4000000008	Je pense que le rouge vous va plus que le bleu.
+4000000009	Pourriez-vous nous indiquer l'adresse de livraison?
+4000000010	Souhaitez-vous avoir une facture?
+4000000011	Nous sommes désolés, ce produit n'est plus disponible.
+4000000012	Nous avons une très forte demande sur ce produit, le stock est épuisé.
+4000000013	Nous n'avons plus de stock, car ce téléphone est d'une édition limitée.
+4000000014	Je suis désolé, nous ne prenons que les espèces.
+4000000015	Vous voulez payer en espèces ou par carte de crédit?
+4000000016	Avez-vous une préférence en matière de couleur?
+4000000017	Quel est le matériau que vous désirez?
+4000000018	Quelles sont les dimensions de votre tableau?
+4000000019	Avez-vous un grand ou un petit espace pour le canapé?
+4000000020	Le style scandinave vous convient-il?
+4000000021	Avez-vous déjà fait votre choix?
+4000000022	Quelles sont les dimensions du four encastré que vous recherchez?
+4000000023	Découvrez notre collection de chaussures à talons et plates pour 2021.
+4000000024	Avez-vous déjà reçu un e-mail de confirmation d’expédition?
+4000000025	Vous pouvez suivre votre commande en utilisant votre numéro de commande.
+4000000026	Votre commande est en attente d’expédition.
+4000000027	Si vous n'avez pas de numéro de commande, connectez-vous à votre compte pour en obtenir un.
+4000000028	Cette annulation est due à un manque de stock dans l’entrepôt.
+4000000029	Vous recevrez un e-mail de remboursement dans 24 heures.
+4000000030	Le remboursement peut prendre jusqu’à 7 jours en fonction du délai bancaire.
+4000000031	Vous pouvez nous contacter directement par téléphone pour avoir plus d'informations.
+4000000032	Vous pouvez également nous envoyer un mail à l’adresse suivante.
+4000000033	Veuillez remplir notre formulaire de demande de devis.
+4000000034	Nous vous invitons à aller sur notre site pour découvrir les détails de nos services.
+4000000035	Nous prendrons contact avec vous par téléphone ou par mail.
+4000000036	Notre horaire d'ouverture est de 08h à 19h, lundi au vendredi.
+4000000037	Notre siège se trouve à l'adresse suivante.
+4000000038	Notre équipe est à votre disposition pour créer votre site web.
+4000000039	Nous sommes une équipe d'organisateurs de mariage.
+4000000040	Consultez notre section de questions et réponses.
+4000000041	Nous sommes un constructeur de référence dans la région.
+4000000042	Vous pouvez voir les garanties possibles sur notre site web.
+4000000043	Que puis-je faire pour résoudre vos problèmes?
+4000000044	Pouvez-vous patienter s'il vous plaît?
+4000000045	Quel est votre numéro de commande?
+4000000046	Où est-ce que vous avez acheté le produit?
+4000000047	Quels sont les problèmes avec votre téléphone?
+4000000048	Je suis désolé, votre garantie a expiré il y a quelques semaines.
+4000000049	Notre garantie ne couvre que les pièces, pas la main-d'œuvre.
+4000000050	Souhaitez-vous être remboursé ou recevoir un autre produit?
+4000000051	Le transport n'est pas couvert par la garantie.
+4000000052	Nous vous demandons de patienter un peu, il nous faut quelques jours pour la réparation.
+4000000053	Vous devez prendre rendez-vous pour la maintenance de votre voiture.
+4000000054	Tous les retours doivent être accompagnés d'un formulaire.
+4000000055	Si vous rencontrez des problèmes, n'hésitez pas à nous appeler.
+4000000056	Je suis désolé d'entendre cela, nous vous enverrons un produit de remplacement immédiatement.
+4000000057	Je vous appelle pour vous informer que votre commande a été retardée.
+4000000058	Depuis quand l'appareil est-il tombé en panne?
+4000000059	Vous êtes sûr qu'il n'était pas tombé?
+4000000060	Nous sommes désolés, cet appareil ne peut plus fonctionner.
+4000000061	Je suis désolé monsieur, mais cette panne n'est pas couverte par votre garantie.
+4000000062	Vous n'avez qu'à suivre le guide d'utilisateur pour mettre l'appareil en marche.
+4000000063	Nous allons d'abord faire un premier diagnostic.
+4000000064	Une réparation en atelier est la plus appropriée pour votre smartphone.
+4000000065	Nous allons vous communiquer un suivi de réparation.
+4000000066	Je vous conseille de prendre un rendez-vous au siège de notre marque.
+4000000067	Vous avez droit à une assistance technique téléphonique gratuite dans les 90 jours.
+4000000068	Je vous conseille de choisir parmi nos options de garantie matérielle pour vos produits.
+4000000069	Vous devez d'abord charger votre batterie avant d'allumer le téléphone.
+4000000070	Vous devez changer votre batterie.
+4000000071	Souhaitez-vous avoir un technicien pour l'installation de votre écran plat?
+4000000072	L'installation de ce logiciel doit être faite par un professionnel.
+4000000073	Je pense qu'une télémaintenance est plus rapide pour votre cas.
+4000000074	Je trouve que ce PC a besoin d'une configuration spécifique.
+4000000075	Vous devez rallumer l'appareil pour voir le changement.
+4000000076	Essayez de suivre cette ligne directrice pour résoudre le problème de connexion.
+4000000077	Votre imprimante a besoin d'une maintenance.
+4000000078	Vous avez besoin de faire un changement de vos connecteurs électriques.
+4000000079	Nous proposons un service de soutien et de maintenance informatique au professionnel et particulier.
+4000000080	Nous pouvons vous dépanner en urgence si nécessaire.
+4000000081	Pourriez-vous me décrire vos besoins pour que je puisse vous aider?
+4000000082	Pour un usage bureautique, ce modèle est le plus approprié.
+4000000083	Le prix est à partir de 300 ou 400 $.
+4000000084	Pour un usage multimédia, vous avez besoin d'un processeur plus puissant.
+4000000085	Une carte graphique performante est nécessaire si vous comptez jouer aux jeux vidéos.
+4000000086	Les guides d’installation se trouvent ici.
+4000000087	J'ai besoin de votre code s'il vous plaît.
+4000000088	Veuillez cliquer sur le bouton à gauche.
+4000000089	Appuyez en permanence sur le bouton de démarrage.
+4000000090	Êtes-vous sûr que l'appareil est bien alimenté?
+4000000091	C'est au second étage sur votre gauche.
+4000000092	N'hésitez pas à contacter notre ingénieur en informatique pour vous conseiller.
+4000000093	Nous réparons tout matériel informatique endommagé.
+4000000094	Nous assurons un dépannage de votre réseau informatique dans les plus brefs délais.
+4000000095	Nous allons faire intervenir notre technicien de soutien pour trouver la cause de la panne.
+4000000096	Préférez-vous une réparation sur place ou dans nos ateliers?
+4000000097	Notre équipe va intervenir dans la mesure du possible.
+4000000098	Nous voulons également vous faire des propositions de solutions pour prévenir une panne ultérieure.
+4000000099	Notre aide va vous mettre à l’abri de pannes liées à l’obsolescence du matériel.
+4000000100	Appuyez sans relâcher sur le bouton rouge de votre imprimante pendant environ 10 secondes.
+4000000101	Pouvez-vous me dire la marque de votre imprimante?
+4000000102	Calmez-vous, ce n'est pas nécessairement un signe que votre imprimante est complètement inutilisable.
+4000000103	Je pense que la cause de ce dysfonctionnement est l'accumulation de poussière dans l'appareil.
+4000000104	Veuillez vous identifier pour accéder à votre compte.
+4000000105	Rejoignez-nous par mail ou par téléphone aux adresses suivantes.
+4000000106	Pour voir toutes nos boutiques, rendez-vous sur notre site web.
+4000000107	Pour quel type d'équipement souhaitez-vous obtenir de l'aide?
+4000000108	L'intervention du technicien peut prendre entre 2 et 4h selon la configuration des lieux.
+4000000109	Sélectionnez une date de rendez-vous pour l'installation de la fibre dans votre logement.
+4000000110	Vous disposez déjà d'une prise Fibre dans votre logement?
+4000000111	La coupure de ligne pendant l'intervention du technicien dure entre 2h et 4h.
+4000000112	Votre présence pendant l'installation est indispensable.
+4000000113	Avez-vous fait votre choix?
+4000000114	Avez-vous déjà réservé une table?
+4000000115	Quelle est la meilleure montre connectée?
+4000000116	C'est pour consommer des boissons ou pour manger?
+4000000117	Que commandez-vous comme boisson?
+4000000118	Avez-vous besoin d'un peu plus de pain?
+4000000119	Je reviens vite avec votre assiette supplémentaire.
+4000000120	Souhaitez-vous avoir vue sur mer?
+4000000121	Attends, je vais voir s'il y a une table discrète disponible.
+4000000122	Vous avez bien mangé?
+4000000123	Le service vous a plu?
+4000000124	Est-ce que tout va bien?
+4000000125	Tout s'est passé comme vous le souhaitiez?
+4000000126	Si vous avez oublié votre mot de passe, veuillez appeler le 0000.
+4000000127	Si vous ne l’avez pas reçu, vérifiez le dossier des spams de votre boîte de réception.
+4000000128	Pour une opposition sur vos chéquiers, veuillez contacter le responsable au numéro suivant.
+4000000129	Souscrivez à un crédit à la consommation en cliquant ici.
+4000000130	Votre demande de hausse ponctuelle du plafond est en cours.
+4000000131	Veuillez nous signaler tout changement de vos coordonnées personnelles.
+4000000132	Veuillez s'il vous plaît m'expliquer la nature de votre réclamation.
+4000000133	Je vous conseille de prendre contact avec le Directeur de l'Agence.
+4000000134	Vous êtes déjà client?
+4000000135	Regarder la télévision française depuis l'étranger.
+4000000136	Votre facture est maintenant disponible sur votre compte en ligne.
+4000000137	Votre offre Internet expire dans 2 jours.
+4000000138	Vous avez épuisé la totalité de votre forfait de ce mois-ci.
+4000000139	Veuillez appeler le service à la clientèle pour plus d'informations.
+4000000140	Nous accusons réception du paiement de votre abonnement du mois de janvier.
+4000000141	Cette transaction est actuellement en cours de traitement.
+4000000142	Vous trouverez en ligne les informations relatives à cette transaction.
+4000000143	Votre code de confirmation est le 123456.
+4000000144	Vous avez gagné une remise de 20 % sur votre prochain achat.
+4000000145	Voici votre code de réinitialisation de mot de passe.
+4000000146	Découvrez les offres en ligne, comparez-les avec votre offre actuelle et faites votre choix.
+4000000147	Consultez et téléchargez votre facture depuis votre smartphone.
+4000000148	Découvrez les offres disponibles près de chez vous.
+4000000149	Nous vous mettons en relation avec les plus grandes enseignes de location de voitures.
+4000000150	Nous pouvons vous proposer une taille plus grande si nécessaire.
+4000000151	J'ai un autre modèle à vous proposer.
+4000000152	Je vous conseille de choisir ces paires, elles sont très résistantes!
+4000000153	Ces boucles d'oreilles sont très en vogue.
+4000000154	Attends, je vais vous présenter les nouveaux arrivages.
+4000000155	Nous disposons d'autres marques si vous souhaitez en découvrir d'autres.
+4000000156	Je peux vous présenter un autre modèle moins cher adapté à votre budget.
+4000000157	Nos produits sont tous garantis 2 ans.
+4000000158	Nous vous proposons de faire un essai pour voir son efficacité.
+4000000159	C'est le dernier modèle qui vient de sortir la semaine dernière.
+4000000160	Vous pouvez recevoir votre commande dans 2 jours ouvrables.
+4000000161	Tous nos produits sont 100 % biologiques.
+4000000162	Les aliments que nous préparons ici sont tous bio et végans.
+4000000163	Les écrans plats sont en promotion cette semaine uniquement.
+4000000164	Profitez de notre code promo avant ce soir.
+4000000165	Nous ferons un déstockage vendredi prochain.
+4000000166	Si vous voulez mon avis, je propose le modèle 3 en 1!
+4000000167	Je pense qu'il vaut mieux choisir le produit neuf.
+4000000168	Nous avons également des machines d'occasions de l'autre côté du magasin.
+4000000169	Si c'est un cadeau pour quelqu'un, je peux l'emballer pour vous.
+4000000170	Nous pouvons vous offrir gratuitement les accessoires.
+4000000171	Essayez ces deux tailles et voyez laquelle vous convient le mieux.
+4000000172	Vous avez de la chance, ce produit est en promotion aujourd'hui.
+4000000173	Vous pouvez l'échanger dans les 14 jours si la taille n'est pas la bonne.
+4000000174	Vous ne regretterez pas ce choix, cette couleur est vraiment tendance.
+4000000175	Nous proposons une livraison gratuite pour un achat plus de 100 euros.
+4000000176	Vous n'avez qu'à mettre de l'eau dans le réservoir d'eau et l'aspirateur vapeur marche.
+4000000177	Bienvenu dans notre magasin!
+4000000178	Nous avons tout ce qu'il vous faut ici.
+4000000179	Vous trouverez ici les jouets.
+4000000180	Nous venons juste d'avoir un arrivage.
+4000000181	Je suis sûr que ce produit pourra vous intéresser.
+4000000182	Nous effectuons une remise de 20 % sur toutes nos chaussures.
+4000000183	Nos produits sont tous authentiques.
+4000000184	Souhaitez-vous encore essayer un autre modèle?
+4000000185	Avez-vous déjà essayé la pointure 39?
+4000000186	Ce produit présente un grand rapport qualité prix.
+4000000187	Nous proposons un service après vente pour cette télévision.
+4000000188	Vous pouvez payer par carte de crédit.
+4000000189	J'ai beaucoup de modèles à vous présenter.
+4000000190	Nous avons le produit qui correspond à votre budget.
+4000000191	Vous trouverez la cabine d'essayage au fond du couloir.
+4000000192	Je peux vous aider à trouver la décoration murale qu'il vous faut?
+4000000193	Quel est le style que vous recherchez?
+4000000194	Nous vous prions de vous rendre à la caisse pour régler votre facture.
+4000000195	N'hésitez pas à nous contacter si vous avez des problèmes.
+4000000196	Nous vous remercions de votre visite!
+4000000197	Cette machine à laver est livrée et installée gratuitement par notre équipe.
+4000000198	Profitez de nos tarifs ultra-compétitifs aux rayons des plaques à induction.
+4000000199	Nous vous proposons des centaines de références à prix discount.
+4000000200	Découvrez nos marques populaires en cliquant ici!
+4000000201	Ce sèche linge fait partie de nos meilleures ventes.
+4000000202	Les appareils électroménagers connectés sont actuellement disponibles chez nous.
+4000000203	Nous avons un large choix de marques et de modèles de fours.
+4000000204	Que pensez-vous de cette robe blazer?
+4000000205	Oui, les robes à chemise sont disponibles à toutes tailles.
+4000000206	Nous sommes une entreprise qui peut transformer votre salle de bain en un lieu de détente.
+4000000207	Un de nos conseillers traitera votre demande dans les plus brefs délais.
+4000000208	La demande et la réalisation de devis sont gratuites et sans engagement de votre part.
+4000000209	Si vous avez besoin de plus de conseils et d’explications, contactez-nous!
+4000000210	Nous serons évidemment heureux d’échanger avec vous à propos de votre projet.
+4000000211	Vous serez rappelé par un de nos conseillers qui validera votre demande avec vous.
+4000000212	Notre agence est présente uniquement en ligne.
+4000000213	Nous pouvons organiser un rendez-vous afin de vous présenter nos services.
+4000000214	Nous pouvons vous proposer un voyage personnalisé pour votre famille.
+4000000215	Nous créons pour vous des plans convenables à vos besoins.
+4000000216	Nous organisons également d'autres événements.
+4000000217	Nous vous proposons les prix les plus intéressants.
+4000000218	N'ayez pas de souci, nous utilisons les meilleurs matériaux et équipements.
+4000000219	Nous réalisons pour vous une maison 100% sur-mesure.
+4000000220	Nous pouvons réaliser le modèle de votre choix présent dans notre catalogue.
+4000000221	Nos experts mitonnent pour vous de bons conseils pour votre aménagement de cuisine.
+4000000222	Nous avons toutes les clefs pour une décoration d'intérieur à votre image.
+4000000223	Nos conseillers répondent à vos questions pour bâtir et embellir vos murs.
+4000000224	Nous sommes des spécialistes en piscines et en spa pour votre domicile.
+4000000225	Vous pouvez nous renvoyer le produit pour effectuer l'échange.
+4000000226	Votre produit est toujours sous garantie.
+4000000227	Nous sommes à votre disposition 7 jours sur 7.
+4000000228	Un de nos techniciens qualifiés va prendre soin de votre appareil.
+4000000229	Nous disposons également d'assistance en ligne.
+4000000230	Nous ferons de notre mieux pour accélérer la livraison.
+4000000231	Nous pouvons vous envoyer une pièce de rechange dans 3 jours.
+4000000232	Nos techniciens sont à votre disposition pour toutes questions.
+4000000233	Nous sommes là pour vous aider si vous avez des questions.
+4000000234	Notre technicien peut faire un dépannage par téléphone en fonction du problème.
+4000000235	Si nécessaire, nous pouvons nous déplacer pour une intervention à domicile.
+4000000236	Vous serez informé lorsque votre smartphone sera réparé.
+4000000237	Pour toute demande d'assistance, veuillez effectuer votre demande en ligne.
+4000000238	Notre service d'assistance technique est disponible au numéro suivant.
+4000000239	Découvrez l'information sur notre site.
+4000000240	Notre assistance technique en ligne est disponible à tout moment.
+4000000241	Nous disposons d'une nouvelle batterie en vente sur notre site web.
+4000000242	Nous allons vous envoyer une personne qualifiée pour ce dépannage.
+4000000243	Nous pouvons vous assister par téléphone pour vous aider.
+4000000244	Nous allons nous arranger et envoyer une équipe chez vous dès que possible.
+4000000245	Nous allons vous contacter dans les jours qui suivent.
+4000000246	Notre technicien vous aidera pour la récupération de vos données.
+4000000247	Faites confiance à notre équipe de maintenance informatique.
+4000000248	Ne vous inquiétez pas, nous allons résoudre vos problèmes.
+4000000249	Je vous conseille d'opter pour le modèle qui correspond le mieux à vos besoins.
+4000000250	Je pense qu'avec un modèle pro ou pour joueur, vous ferez le bon choix.
+4000000251	Ce modèle possède un circuit graphique suffisant pour effectuer les tâches de base.
+4000000252	Nous assurons un service de grande qualité pour vos besoins en informatique.
+4000000253	Notre personnel est rapide, efficace et polyvalent.
+4000000254	En cas de problème, contactez l’assistance.
+4000000255	Notre technicien est très expérimenté.
+4000000256	Bienvenue dans votre espace client!
+4000000257	Notre service client est à l'écoute de votre demande.
+4000000258	Vous trouverez l'édition spéciale ici.
+4000000259	Notre boutique vous accueille sur rendez-vous!
+4000000260	Bonjour, Madame, Monsieur, soyez les bienvenus!
+4000000261	Nous sommes heureux de vous recevoir!
+4000000262	Je vous souhaite bon appétit!
+4000000263	Veuillez me suivre s’il vous plaît!
+4000000264	Votre table sera prête dans quelques minutes!
+4000000265	Je vous apporte une autre serviette.
+4000000266	Vous avez chez vous des appareils électriques ou électroniques hors d’usage?
+4000000267	Je vais vous trouver une table dégagée adaptée à vos enfants.
+4000000268	Le porte-manteau est juste à gauche.
+4000000269	Veuillez déposer vos appareils usagés dans les bacs de collecte.
+4000000270	Identifiez-vous avec vos codes personnels pour accéder à vos comptes.
+4000000271	Je vous prie d'en discuter directement avec votre gestionnaire de compte.
+4000000272	La modification de votre mot de passe est bien enregistrée.
+4000000273	Nous sommes à votre disposition pour vous inscrire à nos offres d’épargne.
+4000000274	Nous mettons tout en œuvre pour vous offrir un service de qualité.
+4000000275	Nous nous engageons à vous répondre dans les plus brefs délais.
+4000000276	Votre demande de paiement a bien été enregistrée.
+4000000277	Votre demande de retrait a été approuvée avec succès.
+4000000278	Votre commande a été bien enregistrée.
+4000000279	Nous accusons réception de votre demande.
+4000000280	Nous ne sommes pas disponibles pour le moment.
+4000000281	Ne vous inquiétez pas, nos experts vous accompagnent au quotidien.
+4000000282	Effectuez votre achat maintenant et bénéficiez d'une réduction de 10%!
+4000000283	Réabonnez-vous une semaine avant la fin de votre abonnement et bénéficiez d'un bonus!
+4000000284	Votre alerte code promo est active.
+4000000285	Veuillez trouver en attaché le relevé vous concernant.
+4000000286	Pour tout besoin d'information complémentaire, veuillez contacter notre relation à la clientèle.
+4000000287	Votre demande d'envoi de fonds a été approuvée.
+4000000288	Vous avez reçu de l'argent.
+4000000289	Nous effectuons la livraison de la voiture à l'aéroport.
+4000000290	Nous vous envoyons cet email immédiatement lors de votre inscription.
+4000000291	Nous vous assurons la qualité, le confort et la sécurité.
+4000000292	Notre agence de location de voiture vous propose sa sélection de tarifs économiques.
+4000000293	Jusqu'au 30 Janvier, les véhicules de catégorie A sont de 15 $ par jour!
+4000000294	Notre offre comprend toujours un kilométrage illimité et une assurance tous risques.
+4000000295	Veuillez sélectionner vos dates de séjour s'il vous plaît.
+4000000296	Préférez-vous un hébergement indépendant ou un hôtel?
+4000000297	Nous avons uniquement une place dans la classe économique premium.
+4000000298	Nous nous adaptons à votre budget.
+4000000299	Découvrez nos offres de voyages haut de gamme.
+4000000300	Si ce code d'erreur s'affiche, suivez les instructions suivantes pour vérifier vos fichiers de jeu.

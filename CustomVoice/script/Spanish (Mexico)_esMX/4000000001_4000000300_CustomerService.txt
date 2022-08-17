@@ -1,0 +1,300 @@
+4000000001	¿Qué tipo de café prefiere?
+4000000002	¿Qué tipo de zapatos está buscando?
+4000000003	¿Son para usted o para alguien más?
+4000000004	¿Cómo le quedó ese par?
+4000000005	Déjeme consultar nuestra página web para ver si tenemos ese modelo.
+4000000006	¿Le gustaría llevárselo en bolsa para regalo?
+4000000007	¿Lo recogerá en la tienda o se lo enviamos?
+4000000008	¿También necesitará comprar una pantalla?
+4000000009	Bienvenido, ¿en qué le puedo ayudar?
+4000000010	Puede encontrar eso en el departamento de carnes frías.
+4000000011	Parece que se agotaron señor, pero déjeme ver en bodega.
+4000000012	La garantía por cambio solo aplica en las primeras 24 horas.
+4000000013	Bien, deme un segundo para hablar con el gerente.
+4000000014	¿Ha considerado los autos totalmente eléctricos?
+4000000015	Personalmente, no le recomendaría ese modelo, tiene bastantes fallas.
+4000000016	La tecnología es muy sencilla de usar y contiene multitud de opciones que te permitirán disfrutar de la lectura.
+4000000017	¿Ha comprado con nosotros antes?
+4000000018	Hay cobro extra por las bolsas, por lo que los clientes normalmente traen las suyas.
+4000000019	Con la factura va a tener suficiente.
+4000000020	Déjeme intentar buscar el número del modelo.
+4000000021	¿Va a realizar su pago con tarjeta de crédito o débito?
+4000000022	Disculpe señor, solo aceptamos efectivo.
+4000000023	No hay devoluciones para productos con esta promoción.
+4000000024	Imprime artículos y fotos para leer el diario tal como salió de nuestra rotativa.
+4000000025	Disculpe, ¿qué talla usa normalmente?
+4000000026	¿Me comentó que tenía un cupón?
+4000000027	¿Ya intentó en este momento desconectar la consola de la red eléctrica?
+4000000028	OK, bien déjeme revisar la información.
+4000000029	Revisando la información nos aparece en el sistema que hay un reporte.
+4000000030	Así es señor, está hecho, pero es una alerta.
+4000000031	Solamente le puedo comentar que durante las próximas horas se tiene que restablecer.
+4000000032	¿Cuál es el correo que tiene primeramente? 
+4000000033	Usted tiene acceso a esa cuenta de correo en el momento.
+4000000034	En efecto, su prueba del programa personal finaliza el ocho de abril del dos mil diecinueve.
+4000000035	Vamos a hacer lo siguiente si usted me permite.
+4000000036	Le voy a ayudar a realizar un acceso remoto.
+4000000037	Voy a proceder para mandarle la actualización más reciente.
+4000000038	Entonces por favor haga lo siguiente, ¿qué sistema operativo tiene la computadora?
+4000000039	Le voy a solicitar que cierre cualquier tipo de información personal que tenga.
+4000000040	Por favor apague su monitor un momento.
+4000000041	Abajo a la izquierda donde está el ícono del programa, haga clic derecho.
+4000000042	Mantenga la presión no levante el dedo allí.
+4000000043	Puedes escuchar las notas mientras estás ocupado haciendo otras cosas.
+4000000044	Ahora haga lo siguiente, por favor.
+4000000045	Comparte artículos o imágenes para disfrutar con la familia y amigos.
+4000000046	Con eso se le va a solicitar una clave de paso.
+4000000047	Por favor señora Raquel, siga mis instrucciones.
+4000000048	La clave, es el siguiente número.
+4000000049	Ahora haga clic en "siguiente", por favor.
+4000000050	¿Qué aparece en pantalla ahora?
+4000000051	Se usaron los siguientes solucionadores de problemas según el soporte técnico.
+4000000052	La solicitud de la inclusión de un código en asistencia remota.
+4000000053	Por favor acepte las notificaciones que se muestran en pantalla.
+4000000054	Continuando… Muchísimas gracias por su espera en línea.
+4000000055	Ahora, ¿me puede indicar el número de caso que le ofrecieron el día de ayer?
+4000000056	Si desea puede suspender la llamada, continuamos con el chat remoto eventualmente.
+4000000057	Puede mantener el remoto y por medio de este chat, usted puede continuar comunicándose conmigo.
+4000000058	Tal vez sea necesario desinstalar el antivirus que tiene instalado ahora mismo.
+4000000059	Un mensaje que habilita un mes más de uso de la suscripción totalmente gratuita.
+4000000060	Bueno, puede colgar el teléfono, tranquilo.
+4000000061	Usted estuvo en contacto por teléfono con alguna persona del soporte técnico en español.
+4000000062	¿Es la primera vez que se contacta con nosotros?
+4000000063	¿A nombre de quién está dado de alta el sistema informático?
+4000000064	Este comedor es madera pura y lo hemos tenido como por quince años.
+4000000065	Le voy a solicitar el correo electrónico que tiene asociado a la misma cuenta.
+4000000066	Usted lo puede encontrar en la página oficial.
+4000000067	Si sale de México, le recomendaría comprar un control nuevo.
+4000000068	Quedo pendiente a lo que usted nos indique.
+4000000069	No, una vez que yo genere la solicitud.
+4000000070	Para ayudarle con esta situación, ¿tiene usted alguna duda adicional?
+4000000071	Señor, ¿hay algo más en lo que le pudiera asistir el día de hoy?
+4000000072	Entiendo, ¿dice que es el control que incluye la consola?
+4000000073	Por ejemplo, observemos esta sala.
+4000000074	¿Con quién perdón, podría repetirme su nombre?
+4000000075	Lo mejor es considerar comprar un control nuevo y encontrar una mejor edición.
+4000000076	En el archivo que le voy a enviar en las mismas instrucciones viene el enlace.
+4000000077	Es importante que la memoria se encuentre en el formato correcto para poder solucionarlo.
+4000000078	En la ventana que aparece nos pregunta qué formato queremos y ahí elegimos.
+4000000079	Puede descargar a través del perfil, ya que todos los progresos vuelven a estar ahí.
+4000000080	Disculpe, ¿lo puede repetir, por favor?
+4000000081	Sí, son dos, son dos botones, señorita Raquel.
+4000000082	Solamente tiene que localizar la cuenta con la que jugaba antes y todos los progresos.
+4000000083	Se hará un registro de esta llamada.
+4000000084	OK, ahora ingrese en su cuenta por favor.
+4000000085	No hay forma de hacerlo manual.
+4000000086	Descarga las publicaciones en tu celular o computadora y léelas en cualquier lugar.
+4000000087	Entiendo, ¿cómo puedo ayudarle hoy?
+4000000088	En la página web, al momento de abrir la página aparece eso en inglés.
+4000000089	En la esquina izquierda abajo viene la opción para que usted la ponga en español.
+4000000090	¿Ya usted probó ese disco en alguna otra consola?
+4000000091	Puede encontrar la opción de que usted realice una orden de reaprobación.
+4000000092	Sí, correcto, ¿con quién tengo el gusto?
+4000000093	¿Qué discos son, qué juegos son los que no le están funcionando?
+4000000094	También usted puede checar la garantía con ellos directamente.
+4000000095	Así es caballero, es parte del mismo problema.
+4000000096	Buscamos la excelencia comercial a través de la optimización de precios.
+4000000097	La ejecución de ventas se lleva a cabo por profesionales.
+4000000098	La duración de un proyecto depende de varios factores.
+4000000099	Estamos abiertos a ajustarnos al presupuesto y al tamaño de la organización.
+4000000100	Cada proyecto está diseñado para satisfacer las necesidades específicas de nuestros clientes.
+4000000101	Mantenemos una relación muy estrecha con las autoridades locales.
+4000000102	El alcance se determina principalmente en función de los objetivos.
+4000000103	Por lo general, recomendamos una fase de evaluación al comienzo de cada proyecto.
+4000000104	Nuestras soluciones son flexibles y están diseñadas para resolver innumerables desafíos.
+4000000105	Eliminamos los viajes tanto como sea posible para ahorrar tiempo y dinero.
+4000000106	En la actualidad trabajamos con 12 empresas transnacionales.
+4000000107	En nuestra planta de producción contamos con 12 máquinas especializadas en corte.
+4000000108	Nuestro equipo de trabajo realiza actualizaciones constantemente.
+4000000109	La propuesta incluirá una declaración y el alcance del trabajo, precios, plazos y recomendaciones.
+4000000110	Sí, podemos realizar trabajos de documentación.
+4000000111	Por el momento no podemos realizar ese trámite por las regulaciones sanitarias.
+4000000112	La fase de diseño se utiliza para diseñar un programa de principio a fin.
+4000000113	En cuanto tengamos el presupuesto le haremos llegar los datos.
+4000000114	Se necesita primeramente un estudio del estado comercial de la empresa.
+4000000115	No realizamos envíos al extranjero por el momento actual de la pandemia.
+4000000116	El mapeo de procesos comerciales es esencial para la mejora de los procesos comerciales.
+4000000117	La redundancia operativa reduce el riesgo en caso de que el talento clave se vaya.
+4000000118	La mejora del proceso empresarial, solo se puede realizar con una documentación precisa del proceso.
+4000000119	Los requisitos de adquisición a menudo incluyen documentación detallada del proceso.
+4000000120	Contamos con agentes que se ocupan en los procesos burocráticos.
+4000000121	Usted no necesita perder tiempo en esas acciones.
+4000000122	Su estrategia organizacional es fundamental para definir cómo opera su negocio.
+4000000123	Podemos desarrollar, distribuir y proporcionar informes completos para cualquier tipo de encuesta de empresa.
+4000000124	Los costos en materia de abusos están regulados por el área de seguridad.
+4000000125	Realizamos estudios de mercado y encuestas políticas.
+4000000126	Es un servicio ya incluido en el paquete principal.
+4000000127	Al contratar el servicio se pide un anticipo del 15%.
+4000000128	Más allá de nuestra experiencia y liderazgo lo que nos define son nuestros valores.
+4000000129	Realizamos mantenimiento a las instalaciones tres veces por semana.
+4000000130	¿Ha realizado algún curso con nosotros antes?
+4000000131	Por lo general, tarda cuatro años en completarse, pero algunas personas lo hacen en menos.
+4000000132	Tenemos muchas opciones para las personas que desean estudiar semiescolarizado.
+4000000133	Puede consultar el sitio web para ver qué capacitación ofrecemos.
+4000000134	La mayoría de las becas se dan como estímulo.
+4000000135	Actualmente no estamos aceptando solicitudes.
+4000000136	¿En qué tipo de área de estudio te gustaría especializarte?
+4000000137	Ese curso solo se ofrece durante el día.
+4000000138	Los empleados tienen la elección de capacitarse en fines de semana.
+4000000139	¿Ha revisado nuestros programas de escuela nocturna?
+4000000140	Puede elegir entre el curso de informática u otros.
+4000000141	Cuando complete el programa satisfactoriamente, recibirá un certificado.
+4000000142	¿Qué tan bueno es su manejo de las computadoras?
+4000000143	Tenemos algo para todo tipo de nivel de escolaridad.
+4000000144	Las clases son de cuarenta y cinco minutos con descansos de quince minutos.
+4000000145	Por lo general, sugerimos tomar dos clases por semana, pero también pueden ser más.
+4000000146	Ofrecemos lecciones grupales y lecciones privadas.
+4000000147	También hay algunos cursos intensivos que puedes realizar en vacaciones.
+4000000148	No ofrecemos becas, pero los miembros de la empresa obtienen diez por ciento de descuento.
+4000000149	Dividimos nuestras clases por edad y nivel de idioma.
+4000000150	También los tenemos en una talla más grande si no le quedan bien.
+4000000151	Tenemos un par de ese estilo.
+4000000152	Por favor, puede sentarse a probárselos.
+4000000153	Dígame si usted necesita cualquier otra cosa.
+4000000154	También tenemos ese vestido en una talla más pequeña.
+4000000155	Este es muy bonito, son hechos en Italia.
+4000000156	Puede tocar el material, es muy suave.
+4000000157	Los probadores están justo en la parte trasera de la tienda, pase por favor.
+4000000158	Puede llamarme si necesita algo más.
+4000000159	Le pondré una bolsa de más.
+4000000160	¡Gracias por comprar con nosotros!
+4000000161	Si está jugando, definitivamente necesitará una mejor computadora.
+4000000162	Este modelo de procesador es excelente para la edición de videos.
+4000000163	Actualmente tenemos pantallas de varios modelos y tamaños.
+4000000164	En el segundo piso está el departamento de caballeros.
+4000000165	Por sólo 200 pesos, se puede agregar tres años de garantía extendida.
+4000000166	Este es el modelo más nuevo, salió al mercado la semana pasada.
+4000000167	Todo el departamento de línea blanca cuenta con un diez por ciento.
+4000000168	Muy bien señor, le enviaremos su nueva computadora de inmediato.
+4000000169	Es martes de plaza en todas las frutas y verduras.
+4000000170	El departamento de damas se encuentra en el tercer piso, adelante ¡bienvenido!
+4000000171	Claro que sí señor, es carne premium de Sonora.
+4000000172	También podemos entregarlo a domicilio.
+4000000173	Tenemos el ceviche en especial por litro.
+4000000174	Fresas y uvas frescas, de cosecha local.
+4000000175	Vendemos autos nuevos y usados ​​y, también motos.
+4000000176	Es una empresa coreana con muchos años en el mercado.
+4000000177	Si gusta podemos hacer la prueba de manejo.
+4000000178	Incluye una garantía de cinco años en todos los modelos.
+4000000179	La principal diferencia es el interior que cuenta con asientos de piel.
+4000000180	Le recomiendo definitivamente la versión más avanzada.
+4000000181	Todos nuestros autos usados ​​están en esta parte, por favor, acompáñeme.
+4000000182	También podemos rentar cualquiera de los modelos que ve aquí.
+4000000183	Este modelo viene con rines de aluminio.
+4000000184	Si adquiere uno este año, no paga intereses durante todo el año próximo.
+4000000185	Estos productos son naturales y de producción local.
+4000000186	Puede encontrar más de nuestros productos en nuestra tienda online.
+4000000187	El precio puede ser un poco más bajo si compra en la tienda.
+4000000188	El producto por el que pregunta lo tenemos en línea.
+4000000189	Los paquetes siempre son más baratos e incluyen más productos.
+4000000190	Esa consola es una edición limitada, es de lujo.
+4000000191	¡Puede pagar a plazos de seis o doce meses sin intereses!
+4000000192	¡Además, el precio ya incluye el descuento!
+4000000193	¿Se la envuelvo para regalo?
+4000000194	¿Gusta que le busque otra talla?
+4000000195	Por promoción, se incluyen accesorios extra gratis.
+4000000196	Este es nuestro mejor libro y vendemos mucho.
+4000000197	Puede probarse estos dos y ver cuál le queda mejor.
+4000000198	No, al contrario que tenga buen día.
+4000000199	Entonces, de mi parte también sería todo, ¡gracias a usted por comunicarse con nuestro soporte técnico!
+4000000200	Hasta luego, que tenga un excelente día también.
+4000000201	¿En qué le puedo ayudar el día de hoy?
+4000000202	Gracias buenas tardes bienvenido a la tienda, ¿con quién tengo el placer de conversar?
+4000000203	Nuestro staff es multidiverso y multicultural.
+4000000204	Somos una compañía amante de los animales.
+4000000205	Nos esforzamos por realizar actividades en la comunidad.
+4000000206	Ayudamos a los clientes a mejorar la eficiencia de sus procesos.
+4000000207	Innovar para el futuro es una de nuestras metas.
+4000000208	Llevamos más de veinte años brindando soluciones comerciales.
+4000000209	Somos líderes en el mercado y nuestra experiencia nos respalda.
+4000000210	Nos enfocamos en el éxito de nuestros clientes.
+4000000211	Usamos nuevas herramientas para mejorar su experiencia.
+4000000212	Los desafíos comerciales son tratados por los mejores especialistas.
+4000000213	Hemos logrado reducir costos a muchos de nuestros clientes.
+4000000214	Los recursos humanos son nuestra especialidad.
+4000000215	Claro que sí, puede contactarnos en cualquier momento.
+4000000216	Nuestros sistemas de ingeniería son los tops de la industria.
+4000000217	Tenemos servicio de acompañamiento y asesoría las 24 horas.
+4000000218	Nuestros sistemas de banda ancha se encuentran funcionando a la perfección.
+4000000219	Ofrecemos programas con certificado y diploma.
+4000000220	Todos nuestros instructores están capacitados y tienen carrera profesional.
+4000000221	Puedes tomar una clase gratuita de treinta minutos para ver si te gusta.
+4000000222	Puede capacitarse para aprender otro idioma que le ayude en su desarrollo profesional.
+4000000223	Contamos con el apoyo de tutores y esto resulta más económico.
+4000000224	¡Su paquete ha sido enviado!
+4000000225	¡Complete su compra ahora y reciba un diez por ciento de descuento!
+4000000226	Su pedido ha sido confirmado.
+4000000227	Le agradecemos el uso de su tarjeta de crédito para todas sus compras.
+4000000228	Le agradecemos su participación en esta encuesta.
+4000000229	¡Hemos recibido su pago de manera satisfactoria!
+4000000230	¡Descarga la aplicación para una mejor experiencia!
+4000000231	Nuestra nueva herramienta ofrece traducción instantánea en múltiples idiomas, para la mayoría de los artículos e incluso publicaciones completas.
+4000000232	Su producto aún tiene garantía.
+4000000233	Puede contactarnos los siete días de la semana las veinticuatro horas del día.
+4000000234	Podemos actualizar algunos componentes de forma gratuita.
+4000000235	Le enviaré un enlace con una lista de todos los accesorios compatibles.
+4000000236	Todos nuestros empleados han recibido la formación adecuada.
+4000000237	Nuestro servicio de mantenimiento le puede ayudar.
+4000000238	Mientras está en reparación, puede usar uno de nuestros autos.
+4000000239	Si tiene algún problema, no dude en llamarnos.
+4000000240	Ese pantalón se le ve de maravilla.
+4000000241	La talla del vestido le quedó perfecta.
+4000000242	¡En el área de niños tenemos nuevos juguetes!
+4000000243	¡Este es el mejor celular que tenemos!
+4000000244	¡El precio está muy bajo!
+4000000245	¡Pruebe por favor los dátiles, son muy dulces!
+4000000246	Son de una piel muy fina.
+4000000247	¡Le podemos hacer un mejor descuento!
+4000000248	¡Es una gorra muy cómoda!
+4000000249	¡Tenemos restaurante con comida exquisita!
+4000000250	Claro que sí, tenemos mucho espacio disponible.
+4000000251	Con mucho gusto señor, aquí tiene su compra.
+4000000252	¡Nos acaba de llegar de última hora!
+4000000253	Si ya tienes la aplicación, descarga la edición que desees y léela en cualquier momento sin necesidad de volver a conectarte a internet.
+4000000254	Al pagar con su tarjeta de crédito, se lleva una bolsa de regalo.
+4000000255	Bienvenido, hoy es nuestra inauguración.
+4000000256	¡Son lentes de la marca más exclusiva!
+4000000257	Tenemos mucha variedad en ropa para dama.
+4000000258	¡Hoy por apertura, contamos con 6 meses sin intereses!
+4000000259	¡Tenemos los mejores precios del mercado!
+4000000260	Así es, puede regresarlos cuando guste.
+4000000261	Tenemos sandalias muy bonitas, pase por aquí, por favor.
+4000000262	Bienvenido, estamos aquí para servirle.
+4000000263	Tenemos arreglos florales muy hermosos.
+4000000264	Le recomiendo estos tenis, son perfectos para correr.
+4000000265	Claro que sí, con mucho gusto solucionamos su caso.
+4000000266	En el pasillo de niños encontrará tenis perfectos para su hijo.
+4000000267	Tenemos estos productos en promoción.
+4000000268	Claro que sí, aceptamos todo tipo de vales.
+4000000269	Le recomiendo este sombrero, es de muy buen material.
+4000000270	¡Ha recibido un nuevo correo!
+4000000271	¡Bienvenido a usar su servicio en línea!
+4000000272	¡Ha cambiado la contraseña con éxito!
+4000000273	¡Su depósito ha sido aprobado!
+4000000274	¡Gracias por utilizar nuestro servicio!
+4000000275	¡El correo ha sido enviado!
+4000000276	¡La recarga de saldo ha sido exitosa!
+4000000277	¡Su descarga ha sido completada!
+4000000278	¡Su servicio será restablecido en solo una hora!
+4000000279	¡Gracias por realizar su pago!
+4000000280	¡Todos agradecemos su continua preferencia!
+4000000281	La canción ha sido guardada en su biblioteca.
+4000000282	Gracias por realizar el reporte.
+4000000283	¡Ha recibido un cupón de descuento en su cuenta!
+4000000284	¡El cambio de nombre de usuario fue exitoso!
+4000000285	¡Gracias por elegir nuestro servicio!
+4000000286	Establecimiento de log in por huella exitoso.
+4000000287	Su transacción ha sido validada.
+4000000288	Acceso por un año a nuestra edición de 'papel digital'.
+4000000289	Comienza a disfrutar de beneficios y aprovechar promociones diseñadas para ti.
+4000000290	Activaste tu Tarjeta Digital de manera segura.
+4000000291	Se asignó con éxito el inicio de tu cuenta.
+4000000292	¡Tu nuevo correo se ha generado!
+4000000293	¡Ahora todas las compras que realices están seguras!
+4000000294	Gracias por realizar tu alta de reconocimiento facial.
+4000000295	¡Se registró la activación de autenticación facial con éxito!
+4000000296	Puedes revisar tu comprobante de pago en cualquier momento que lo desees.
+4000000297	Tu reporte estará disponible en solo 5 minutos.
+4000000298	Aquí tus compras en línea son seguras.
+4000000299	¡Felicidades!, ha sido aceptado en el curso.
+4000000300	Si así lo desea podemos proceder al reembolso.

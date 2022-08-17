@@ -1,0 +1,300 @@
+4000000001	Mi può dare per cortesia il codice del prodotto?
+4000000002	Mi dica gentilmente il codice, vediamo se è quello giusto.
+4000000003	La garanzia dura due anni, quindi la sua è scaduta il ventitré Febbraio duemiladiciotto.
+4000000004	È l’unica cosa da fare, riceverà a breve una comunicazione in merito via posta elettronica.
+4000000005	Gentilmente, le chiedo di accettare termini e condizioni.
+4000000006	Deve controllare in fondo, alla voce Impostazioni.
+4000000007	Allora, tenga premuto il tasto per dieci secondi.
+4000000008	È sicuro di aver digitato correttamente il codice?
+4000000009	Deve cancellare e tornare alla pagina precedente.
+4000000010	È possibile sapere il suo nome e cognome?
+4000000011	Va bene, io le posso inviare le istruzioni da seguire.
+4000000012	Risulta che il codice è stato già utilizzato.
+4000000013	Clicchi su pagamento e fatturazione. 
+4000000014	Se la banca rifiuta nuovamente l’addebito, dovrà contattare direttamente loro.
+4000000015	Non è riuscito a entrare perché ha tentato di accedere con le credenziali non corrette per troppe volte.
+4000000016	Le stavo dicendo che il suo profilo è stato compromesso.
+4000000017	Sfortunatamente, con le informazioni inserite non siamo riusciti a verificare che lei sia il titolare del conto.
+4000000018	Attendo fino a quando lei riuscirà ad inserire di nuovo la carta di credito.
+4000000019	Gentilmente, mi dica l'indirizzo associato al suo conto.
+4000000020	Ok, vedo che l’addebito dell’abbonamento trimestrale è andato a buon fine.
+4000000021	Ok, mi fornisca gentilmente anche l'indirizzo di posta utilizzato per l'acquisto.
+4000000022	Sarà possibile creare un profilo relativo all’utente e ai suoi interessi, al fine di mostrare annunci personalizzati.
+4000000023	Ok, quando è stato fatto l'acquisto di questo prodotto?
+4000000024	Ok, per poter modificare la fattura le invierò adesso un messaggio sul cellulare.
+4000000025	Mi dice cortesemente qual è il numero del suo conto?
+4000000026	Ok, mi dia un numero di telefono, nel caso dovesse cadere la linea.
+4000000027	Signore, qual è il problema? Non riesce ad effettuare l’attivazione?
+4000000028	Mi può dire il suo nome per esteso?
+4000000029	Signora, deve accedere alla sezione in alto a destra.
+4000000030	È un codice valido per tre mesi.
+4000000031	L’abbonamento non si può condividere.
+4000000032	Quindi per i prossimi tre mesi potrà giocare solo ai giochi per bambini.
+4000000033	Deve fare delle modifiche e lasciare il profilo libero, senza limitazioni.
+4000000034	Perfetto, mi dia solo un attimo che verifico il profilo.
+4000000035	No, signora, lei ha riscattato un codice che è composto da venticinque caratteri.
+4000000036	Quindi, serve anche una chiave vera e propria. 
+4000000037	Aspettiamo un po', perché a volte ci vuole un po' di tempo.
+4000000038	Se le dice che non è disponibile, vuol dire che non è stata installata.
+4000000039	Facciamo un'altra prova riavviando la macchina.
+4000000040	In ogni caso, sono obbligato a chiedere i suoi dati.
+4000000041	Lascio aperta la pratica, perché non abbiamo risolto il problema.
+4000000042	Le invierò una mail per chiederle se ha trovato un modo per risolvere la questione.
+4000000043	Mi informo e vediamo cos'altro possiamo fare.
+4000000044	Trasferisco la chiamata ai colleghi del reparto commerciale.
+4000000045	I colleghi del commerciale si occupano dei server quando non riusciamo a farlo noi.
+4000000046	La sua non è una licenza irregolare, è una licenza vergine.
+4000000047	È una licenza che viene preinstallata, non è mai stata usata e non è bloccata.
+4000000048	Il numero di pratica lo troverà anche nell'oggetto del messaggio che le arriverà a breve.
+4000000049	Va bene, facciamo così: provi ad aprire una nuova finestra.
+4000000050	Provi a digitare le lettere in minuscolo.
+4000000051	Mi diceva che è connesso in remoto, cioè sta operando da remoto su questa macchina?
+4000000052	Rimanga in linea, trasferisco la sua chiamata al reparto competente.
+4000000053	Mi scusi, lei ha la garanzia?
+4000000054	Deve allegare una foto della fattura o dello scontrino.
+4000000055	Il codice che le ho mandato prima non vale più, chiaramente.
+4000000056	Per qualsiasi problema, le mando anche il numero di pratica.
+4000000057	Se ha ancora problemi, può richiamare il nostro supporto tecnico.
+4000000058	Tra cinque minuti al massimo le arriverà una conferma da parte mia.
+4000000059	Una volta ricevuta la foto, la girerò al reparto competente.
+4000000060	Aspettiamo un minuto, altrimenti tenteremo con un'altra procedura.
+4000000061	Mi può fornire gentilmente anche il numero seriale del dispositivo?
+4000000062	Ho fatto tutti i controlli del caso, ma mi dovresti dire quando è stato acquistato il prodotto.
+4000000063	Le do una buona notizia: possiamo sostituirle gratuitamente il prodotto!
+4000000064	A quale profilo voleva collegare il prodotto?
+4000000065	Rimanga in linea qualche istante, poi le spiegherò come procedere.
+4000000066	Il prossimo addebito è il dieci giugno, quindi adesso è a posto.
+4000000067	La assisto io, mi detti gentilmente il suo indirizzo.
+4000000068	Ci sono dei casi in cui non siamo riusciti a risolvere il problema.
+4000000069	Semplice da usare, leggero, da portare ovunque, anche in spiaggia o negli allenamenti al parco.
+4000000070	Ha fatto una copia dei dati, signora?
+4000000071	Lei prima non ha mai avuto problemi?
+4000000072	Il morbido dispositivo brevettato, infatti, si adatta alle pareti dell’orecchio e rende l’applicazione delicata e gradevole.
+4000000073	Un solo attrezzo ci modellerà, ci aiuterà nella definizione e allungherà muscoli di solito contratti.
+4000000074	Le dico subito che al momento non è consigliabile aggiornare il sistema operativo.
+4000000075	Per poter effettuare l'acquisto, è necessario un account Microsoft.
+4000000076	Se ha inserito una carta di credito, posso provare ad effettuare una verifica.
+4000000077	Quindi lei stava provando ad acquistare un prodotto e non sa se il pagamento è andato a buon fine.
+4000000078	Ok, signor Alberto, il codice non è ancora stato attivato.
+4000000079	Mi serve l'indirizzo con il quale ha effettuato l'acquisto.
+4000000080	Deve inserire il codice che mi ha appena dettato.
+4000000081	Inserisca ora la chiave di accesso che ha appena modificato.
+4000000082	Non le dà l'opzione "Inserisci il codice prodotto"?
+4000000083	Attenda un attimo che controlliamo nel nostro sistema.
+4000000084	Potrà leggere sullo schermo esattamente quello che deve fare.
+4000000085	Adesso facciamo una prova, riscriva nuovamente il codice.
+4000000086	Ottiene un mese gratis per l'abilitazione del rinnovo automatico.
+4000000087	Il prezzo di rinnovo è sessantanove euro, più imposte.
+4000000088	Lei ha attivato il rinnovo automatico, è per questo che le chiede la carta di credito.
+4000000089	Torniamo un attimo alla pagina precedente.
+4000000090	Per evitare l'interruzione del servizio è consigliabile attivare il rinnovo automatico.
+4000000091	Ha la possibilità di disabilitare il rinnovo automatico.
+4000000092	Benissimo, si assicuri di non interrompere la connessione mentre scarica il programma.
+4000000093	Deve stare tranquillo comunque, la parte più complicata l'abbiamo superata.
+4000000094	Nell'area di ricerca digiti il nome dell'applicazione che intende utilizzare.
+4000000095	Mi faccia sapere tramite mail se è andato tutto a buon fine.
+4000000096	Deve andare alla voce relativa all’accesso del suo conto.
+4000000097	Ha inserito il metodo di pagamento?
+4000000098	Dimmi il nome del gioco che vuoi acquistare.
+4000000099	In genere si usa in programmi di esercizi a corpo libero del Pilates,  è metallico, rivestito in gomma, con  impugnature laterali.
+4000000100	Quindi non ha sulla macchina la partizione di ripristino?
+4000000101	Che supporto ha utilizzato per l'installazione del sistema operativo?
+4000000102	Dal nostro sito si scarica la versione diciotto zero tre, non è più disponibile alcuna versione precedente.
+4000000103	In alternativa, può cercare in rete qualche versione precedente alla diciotto zero tre.
+4000000104	Lei sta operando da un fisso o un portatile?
+4000000105	Purtroppo noi del supporto tecnico dobbiamo attenerci a queste procedure.
+4000000106	Riceverà a breve anche un sondaggio per valutare il servizio.
+4000000107	Ok, mi sa dire la marca e il modello?
+4000000108	In origine era prodotto con le fasce delle botti, ma oggi ne esistono di tipi diversi e materiali.
+4000000109	Gambe divaricate a larghezza bacino, impugna il cerchio con entrambe le mani all’altezza del petto con i gomiti leggermente flessi e ruota il busto stringendo l’attrezzo.
+4000000110	Tieni sempre la schiena dritta e contrai l’addome durante la rotazione.
+4000000111	Le segnala un codice di errore particolare?
+4000000112	Così scolpirai anche gli obliqui.
+4000000113	Non perde nulla, ma reinstalla semplicemente i programmi sulla macchina.
+4000000114	Forse abbiamo dei problemi noi, non la sento bene adesso.
+4000000115	Le chiedo di cliccare con il tasto destro sull'icona in basso a sinistra.
+4000000116	Esatto, dovrebbe aprirsi un menù a tendina.
+4000000117	All'interno, vada a scrivere il comando che le detto.
+4000000118	Ho appena generato il codice, mi dica quando posso dettarglielo.
+4000000119	Sul nostro sito, in questo momento, può pagare solo con carta di credito.
+4000000120	La Carta del Docente al momento non è ancora accettata come metodo di pagamento.
+4000000121	Abbiamo riferito l'inconveniente ai nostri superiori, ma ancora non abbiamo ricevuto risposta.
+4000000122	A quanto pare è un problema del suo terminale o della sua rete.
+4000000123	Giusto per capire, lei ha la possibilità di accedere alla sua area personale?
+4000000124	Ha qualche tipo di protezione già installata per caso?
+4000000125	Probabilmente è una domanda inutile, ma è connesso alla rete?
+4000000126	Ha acquistato la licenza o ha fatto l’aggiornamento?
+4000000127	No, noi siamo il reparto che si occupa delle vendite.
+4000000128	Una volta cliccato le chiederà di inserire il suo numero di telefono.
+4000000129	Dopo che avrà fatto questo, dovrà spegnere e riavviare.
+4000000130	Lo cancelli e lo scarichi di nuovo.
+4000000131	A questo punto può utilizzare un qualsiasi profilo.
+4000000132	Ha un altro motore di ricerca da utilizzare?
+4000000133	Vuole che proceda per lei, tramite assistenza da remoto?
+4000000134	Ok, ora deve digitare nella barra degli indirizzi quello che le detto.
+4000000135	Certo, ha fatto bene a contattarci.
+4000000136	Faccia attenzione a scrivere correttamente il codice di verifica.
+4000000137	Qui deve inserire il suo indirizzo di cellulare.
+4000000138	Al momento lei ha il rinnovo automatico del programma.
+4000000139	Sì, si rinnova automaticamente, ma se desidera può cancellare il rinnovo automatico.
+4000000140	Il programma vecchio deve essere disinstallato, perché non funzionerà con quello nuovo.
+4000000141	Verifichi se è possibile aggiungere modifiche.
+4000000142	Normalmente, questa procedura di installazione può durare anche mezz'ora.
+4000000143	A installazione completata potrà utilizzare tutte le funzionalità della nuova versione.
+4000000144	Se ha bisogno di nuovo di noi, ci troverà qui domani dalle dieci.
+4000000145	Non so se mi sono spiegato.
+4000000146	La informo anche che ci sono pacchetti più moderni, se fosse interessata.
+4000000147	Se vuole può comprare il pacchetto anche con noi al telefono.
+4000000148	È un codice di attivazione per attivare il pacchetto duemilaundici.
+4000000149	Benissimo, vada sul motore di ricerca che preferisce e le dico cosa fare.
+4000000150	Non si preoccupi, può farlo anche dalla sua postazione di lavoro.
+4000000151	Va bene, signora, il prodotto è attivato e perfettamente funzionante.
+4000000152	Fra due giorni le arriverà un breve sondaggio, d'accordo?
+4000000153	Provi a vedere se funziona cambiando motore di ricerca.
+4000000154	Ok, le mando due messaggi di autorizzazione e conferma.
+4000000155	Non le posso dare informazioni, perché la questione non riguarda il nostro supporto.
+4000000156	Quindi non le dà la possibilità di accedere ad una modalità provvisoria.
+4000000157	Ok, ritorni alla schermata di blocco iniziale.
+4000000158	Nel frattempo, la metto in attesa.
+4000000159	I tecnici stanno facendo una ricerca dell’errore descritto.
+4000000160	Mi dia il numero di pratica.
+4000000161	Mi scusi, riesce a vedere qual è la licenza del prodotto?
+4000000162	Facciamo un ulteriore controllo da remoto.
+4000000163	Va bene, chiuda tutti i documenti delle cartelle personali.
+4000000164	Devi avere il consenso dei tuoi genitori.
+4000000165	Se le dovesse risultare difficile, dovrà rivolgersi ad un tecnico.
+4000000166	12 ripetizioni alternate per lato. 
+4000000167	Lei ha provato prima ad entrare in modalità provvisoria.
+4000000168	Ha già salvato i suoi dati su un dispositivo esterno?
+4000000169	Le invio tutte le opzioni di ripristino.
+4000000170	Mi spiega quale problema si è verificato con questo aggiornamento?
+4000000171	Allora, signor Pio, quando torna suo fratello ci ricontatti.
+4000000172	Ci ricontatti quando può fornirci qualche informazione in più sul prodotto acquistato.
+4000000173	Dunque, signore, la sua licenza risulta scaduta.
+4000000174	Bene, mi dica solamente se l’ha acquistata da un rivenditore.
+4000000175	Possiamo prestare assistenza da remoto gratuitamente.
+4000000176	Per una corretta assistenza, è meglio contattare il supporto apposito.
+4000000177	Il tasto uno è per i privati, il due per il supporto commerciale.
+4000000178	Può darmi un suo numero di telefono, in caso caschi la linea?
+4000000179	Allora, signore, se non lo ha già fatto può farlo adesso.
+4000000180	Ma lei è un adulto o un minorenne?
+4000000181	Mi fornisca un indirizzo di posta elettronica, per favore, perché devo inoltrare una richiesta di supporto.
+4000000182	Si tratta di un’offerta che non viene gestita dal nostro servizio clienti.
+4000000183	Ok, attenda mentre vengono caricate le credenziali di accesso.
+4000000184	Si ricorda le credenziali per accedere alla casella di posta?
+4000000185	Se non ricorda le credenziali per accedere al suo profilo non possiamo aiutarla col rinnovo.
+4000000186	Può rinnovare con carta di credito in un nostro negozio.
+4000000187	Non è che non vogliamo aiutarla, ma non c’è altra soluzione.
+4000000188	Rimango in attesa e aspetto che inserisca le informazioni.
+4000000189	In questo caso possiamo fare un'eccezione e cancellare l'abbonamento.
+4000000190	Innanzitutto le cancello l'abbonamento, poi pensiamo al resto.
+4000000191	Adesso le rimuovo la carta e poi procedo con il rimborso.
+4000000192	Le mando la conferma del rimborso sul suo indirizzo di posta elettronica.
+4000000193	Mi confermi che ha ricevuto il rimborso, così siamo sicuri che è andato tutto bene.
+4000000194	Adesso le dico con precisione il suo saldo.
+4000000195	Ok, nel frattempo dovrà attivare un altro abbonamento.
+4000000196	Ok, quindi vuole disattivare l’abbonamento a partire da questo istante?
+4000000197	Con il suo pagamento, l’abbonamento scadrà il ventidue Giugno.
+4000000198	La invito semplicemente a richiamare e a riprovare fra un’oretta o un paio d’ore.
+4000000199	Ha il codice di installazione?
+4000000200	Un attimo, quindi lei non ha un numero di pratica o un indirizzo email da fornirmi.
+4000000201	Adesso ci occupiamo anche di quello, non è un problema.
+4000000202	L’ultima autorizzazione le consente di condividere il suo schermo con me.
+4000000203	Signore, noi non forniamo assistenza tecnica per questo genere di problemi.
+4000000204	Lei ha scelto un servizio di attivazione veloce.
+4000000205	Mi conceda solo un attimo per fare una verifica.
+4000000206	Consiglio di andare sul sito del costruttore per verificare se ci sono aggiornamenti da fare.
+4000000207	Salvi tutti i suoi dati e le applicazioni per evitare di perdere qualcosa.
+4000000208	Verifichi se c’è l’addebito di trenta euro sulla sua carta.
+4000000209	Ok, ho bisogno del suo nome, cognome, telefono e indirizzo di posta elettronica.
+4000000210	Si rivolga al sito dove ha comprato la licenza e veda se può ottenere il rimborso.
+4000000211	Le consiglio per il futuro di acquistare sempre da un rivenditore ufficiale.
+4000000212	Lo deve disinstallare perché la licenza è scaduta.
+4000000213	Signore, vuol dire che ha inserito delle credenziali sbagliate.
+4000000214	Faccia attenzione, può essere bloccato in caso di troppi tentativi errati.
+4000000215	Per confermare il numero di telefono, inserisca le ultime quattro cifre.
+4000000216	Siamo sempre a sua disposizione.
+4000000217	Bene, ora dovrebbe essere in grado di effettuare una nuova installazione del gioco.
+4000000218	Desidera acquistare un nuovo pacchetto o aggiornare quello che ha già?
+4000000219	Signore, questo è un servizio che si occupa di attivazioni.
+4000000220	Ok, la sua licenza è ancora valida.
+4000000221	Perfetto, chiuda tutto e vada sulle informazioni di sistema.
+4000000222	Deve effettuare nuovamente la registrazione e poi inserire il codice.
+4000000223	Signora, vedrà la possibilità di riscattare il codice.
+4000000224	Ok, lei il gioco lo ha acquistato dal sito.
+4000000225	E’ andato tutto a buon fine.
+4000000226	Con questo abbonamento, può giocare in rete con l’opzione multigiocatore.
+4000000227	Con questo tipo di abbonamento, pagherai trentacinque euro.
+4000000228	Vuol dire che lei riceverà gratuitamente questi giochi, grazie al suo abbonamento.
+4000000229	Senza abbonamento, non può giocare in rete con altre persone.
+4000000230	Ogni volta che acquista l’abbonamento, c’è il rinnovo automatico.
+4000000231	Da che tipo di terminale si collega?
+4000000232	Annunci personalizzati possono essere mostrati in base al profilo relativo all’utente.
+4000000233	Mi dica se ha salvato i dati.
+4000000234	Una volta salvati i dati, verifichi nuovamente la posta elettronica.
+4000000235	Desidera aggiungere dati aziendali come la partita IVA?
+4000000236	Adesso, la prego di chiudere il programma.
+4000000237	Le verrà richiesto di accedere con i suoi dati.
+4000000238	Inserisca il codice utilizzato in precedenza.
+4000000239	In questo momento cosa vede sullo schermo?
+4000000240	Verifichi che non ci sia nessun disco all’interno.
+4000000241	Gentilmente, attenda fino al riavvio completo.
+4000000242	Dopo aver riavviato acceda con il suo profilo.
+4000000243	Appena le arriva il codice, gentilmente me lo comunichi.
+4000000244	Ha ragione, il suo abbonamento risulta sospeso.
+4000000245	Può darsi che qualcuno abbia provato ad accedere al suo conto.
+4000000246	Proviamo insieme, qual è la prima opzione che vede?
+4000000247	Come preferisce ricevere il codice di sicurezza?
+4000000248	Prenda nota perché si tratta dell’ultimo tentativo che possiamo fare.
+4000000249	Se vuole, possiamo fissare un appuntamento.
+4000000250	Un momento solo, apro una segnalazione.
+4000000251	Le dovrebbero rispondere e potrebbero chiederle altre informazioni.
+4000000252	Non me la dia, vorrei sapere solo se la ricorda.
+4000000253	Quanto tempo fa ha cambiato il codice di sicurezza?
+4000000254	Nessuno qui sa questa informazione, ma posso informarmi nei prossimi giorni.
+4000000255	Provi di nuovo, perché dovrebbe aver ricevuto un messaggio con un codice di sei cifre.
+4000000256	Dovrà rispondermi allegando l'estratto conto per dimostrarci che non ha ricevuto il rimborso.
+4000000257	Noi da qui vediamo che il rimborso è stato fatto regolarmente il sette maggio.
+4000000258	Il collega le ha suggerito di contattarci in un secondo momento, quando c'è suo figlio.
+4000000259	Chi ha creato questo profilo, lei o suo figlio?
+4000000260	Noi siamo un supporto vendita del negozio italiano.
+4000000261	Vediamo un attimo di cosa si tratta, magari posso darle delle informazioni utili.
+4000000262	Se ha due minuti per compilare il sondaggio le sarei molto grato.
+4000000263	Bene, completo la transazione direttamente dal nostro sistema.
+4000000264	Attenda per favore il messaggio di conferma dell'avvenuto acquisto.
+4000000265	Alla fine della chiamata le invierò la guida per scaricare la fattura.
+4000000266	Se non ci sono io, ci sarà il mio collega che potrà assisterla in merito, ok?
+4000000267	Chiuda tutte le pagine, ne lasci aperta una sola.
+4000000268	Si ricordi di salvare tutti i suoi dati, perché il dispositivo deve essere sostituito.
+4000000269	Sono le istruzioni per impacchettare e imballare il dispositivo senza sbagliare, ok?
+4000000270	Possiamo cambiare i dispositivi che hanno questo problema anche se sono fuori garanzia.
+4000000271	Esatto, è molto importante che il dispositivo non presenti danni fisici però.
+4000000272	In teoria, adesso, quando riavvia non dovrebbe più comparirle questa notifica.
+4000000273	Allora vediamo se riusciamo a ricavarla insieme direttamente dalla macchina.
+4000000274	Con la spedizione prioritaria, riceverà il tutto entro tre giorni.
+4000000275	Non riesce a leggere i dati dal cellulare?
+4000000276	Ha avuto la possibilità di provare con un altro alimentatore?
+4000000277	Cosa vorrebbe fare, disinstallare e reinstallare tutto?
+4000000278	Signor Ferrari, qual è il profilo associato a questa licenza?
+4000000279	Sì, mi scusi per il disguido, ma al momento abbiamo un problema tecnico.
+4000000280	Può rimandare per trenta giorni o attivare l'opzione per non scaricare gli aggiornamenti.
+4000000281	Per risolvere i problemi bisognerà aspettare il rilascio della prossima versione.
+4000000282	Il collega le ha spiegato come fare per recuperare il suo vecchio profilo?
+4000000283	Andiamo a verificare cosa è successo nel profilo.
+4000000284	L'abbonamento è valido, e posso dirle anche fino a quando.
+4000000285	Deve aspettare venti giorni, dopodiché potrà aggiungere il nuovo indirizzo.
+4000000286	Ah, con il telefonino è un bel guaio, perché non c'è la pagina completa.
+4000000287	Proviamo a connetterci con il conto di suo figlio e ad avviare una partita.
+4000000288	Può staccare il cavo di rete e aspettare tre secondi prima di riattaccarlo?
+4000000289	Purtroppo, in merito alla sua domanda sulla fattura, io non sono in grado di poterla aiutare.
+4000000290	Faccio la segnalazione al collega che segue il suo caso, in modo che la richiami il più presto possibile.
+4000000291	L'unica cosa che può fare è contattare un tecnico che rimuova il disco fisso e salvi i suoi dati.
+4000000292	È probabile che siano state create nuove cartelle durante l'installazione.
+4000000293	È fatto appositamente per questi casi.
+4000000294	Provi a fare queste due procedure e poi, per qualsiasi problema, mi richiami.
+4000000295	Dovrebbero essere in grado di risolverlo, ma se così non fosse possono comunque aprire una pratica gratuita.
+4000000296	Come le dicevo, le posso fare il supporto aziendale, ma le costerebbe duecentonovantanove euro.
+4000000297	Può contattare il suo gestore telefonico così da fare delle verifiche?
+4000000298	Le tue scelte possono essere espresse per tutte le finalità e i servizi in una sola volta tramite i comandi sottostanti.
+4000000299	Non riagganci, trasferisco la chiamata al reparto tecnico.
+4000000300	Quale errore visualizza quando fa gli aggiornamenti?
