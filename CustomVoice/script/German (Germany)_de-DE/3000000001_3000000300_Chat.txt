@@ -1,0 +1,300 @@
+3000000001	Ich und Lena werden in den Ferien nach Dubai fliegen.
+3000000002	Wäre es in Ordnung, wenn ich auch mitkomme?
+3000000003	Für wann habt ihr die Reise geplant?
+3000000004	Wir werden in zwei Wochen fliegen.
+3000000005	Natürlich möchte ich nicht alles buchen.
+3000000006	Dann machen wir es so, dass ihr für euch bucht und ich zu meiner Freundin gehe, die in Dubai wohnt.
+3000000007	Mit meinen Eltern verbringe ich echt immer gerne meinen Urlaub.
+3000000008	Dann machen wir es so, dass wie alle zusammen Urlaub machen.
+3000000009	Wann wirst du deinen Koffer packen?
+3000000010	Ich werde meinen Koffer auch nach einer Woche packen.
+3000000011	Bevor ich meinen Koffer packe, muss ich ja schon was eingekauft haben.
+3000000012	Ich habe gehört, dass die Durchschnittstemperatur in Dubai 37 Grad Celsius beträgt.
+3000000013	Ich muss mir noch eine Sonnencreme kaufen.
+3000000014	Ich werde nur Kleider und Röcke mitnehmen.
+3000000015	Als ich dort war bin ich auf einem Kamel geritten.
+3000000016	Es war aber sehr warm, deshalb dürfen wir unser Wasser nicht vergessen.
+3000000017	Das haben wir letztes Jahr auch gemacht.
+3000000018	Eine Freundin von mir hatte das mal gemacht.
+3000000019	Ich liebe auch die Kultur und das Essen.
+3000000020	Wir können auch einen Tag bei deiner Cousine in Abu Dhabi übernachten.
+3000000021	Jedoch soll jeder allein planen.
+3000000022	Warum können wir nicht alle dorthin?
+3000000023	Da meine Cousine eine recht kleine Wohnung hat und sie nicht gastfreundlich ist, möchte ich das nicht.
+3000000024	Dann gehen wir in ein günstiges Hotel.
+3000000025	Ich war noch nie in der Türkei.
+3000000026	Ich war in der Wüste, habe sehr viele Sterne gesehen und es war sehr kalt.
+3000000027	Wo warst du letztes Jahr im Sommer?
+3000000028	Ich wollte etwas Neues ausprobieren.
+3000000029	Wie lange warst du dort?
+3000000030	Nach zwei Monaten haben wir wieder Ferien.
+3000000031	Kannst du von deinem Job regelmäßig Urlaub machen?
+3000000032	Wann hast du im Winter Urlaub?
+3000000033	Ich weiß noch nicht, wann und wo ich es verbringen möchte.
+3000000034	Meine Freunde hatten recht.
+3000000035	Arbeiten Sie konzentriert an dieser Aufgabe beziehungsweise an Ihrem vorher festgelegten Ziel.
+3000000036	In welcher Stadt warst du schon?
+3000000037	Da in dem Gefängnis, wo Prison Break gefilmt wurde.
+3000000038	Das ist aber großartig und ich war in Hollywood auf dem roten Teppich.
+3000000039	Dafür brauchst du eine spezielle Einladung.
+3000000040	Ich kenne aber Helene Fischer. 
+3000000041	Du kennst die aber nicht persönlich und es muss ein amerikanischer Star sein.
+3000000042	Ich werde Kleidung und Pflegeprodukte mitnehmen.
+3000000043	Ich denke an leichte Kleider und knielange Hosen.
+3000000044	Ich werde Kleider und eine Tunika mitnehmen.
+3000000045	Ich will zu euch ziehen.
+3000000046	Ich will einen Urlaub machen, damit ich mich entspannen kann.
+3000000047	Dann bist du ja noch unter 18 und musst wohl deine Eltern fragen, ob du mitdarfst.
+3000000048	Die wird mich auch einladen.
+3000000049	Wenn der Wecker klingelt, machen Sie eine fünfminütige Pause.
+3000000050	Ich verspreche es dir, dass ich nicht mitkomme.
+3000000051	Wenn du damit nicht einverstanden bist, kannst du auch allein fliegen.
+3000000052	Ich möchte gerne in eine Moschee und an den Strand.
+3000000053	Ich habe viel darüber recherchiert und mein Vater hat auch dort gearbeitet.
+3000000054	Also ich liebe es ja im Sommer im Rhein zu schwimmen.
+3000000055	Du hast deinen Horizont gar nicht erweitert.
+3000000056	Ich bin einmal fast gestorben, weil ich vergessen habe zu atmen, als ich im Wasser war.
+3000000057	Es kann sein, dass er dich nicht gesehen hat.
+3000000058	Ich habe in Australien das Surfen gelernt.
+3000000059	Wir können das Gleiche im Sommer zusammen machen.
+3000000060	Danach beginnen Sie mit der nächsten Arbeitseinheit.
+3000000061	Du musst jetzt nichts planen. 
+3000000062	Wie lange dauert der Flug ungefähr?
+3000000063	Ehrlich gesagt habe ich keine Lust mehr.
+3000000064	Ich liebe auch das Essen in Indonesien.
+3000000065	Möchtest du mit uns in eine Wohnung ziehen?
+3000000066	Die Wohnung hat drei Zimmer.
+3000000067	Ist die Wohnung nah an unserer Universität?
+3000000068	Die ist 20 Minuten entfernt, aber wir können mit der Bahn fahren.
+3000000069	Es wird bestimmt sehr toll, wenn wir drei Mädchen zusammenleben.
+3000000070	Die Universität fängt in drei Wochen an.
+3000000071	Du musst aber deinen Kühlschrank mitnehmen, denn wir beide haben keinen Kühlschrank.
+3000000072	Also ich kann ein Sofa und eine Waschmaschine mitbringen.
+3000000073	Jeder kauft für seinen Schlafzimmer eigene Möbel.
+3000000074	Also ich habe noch fünf Töpfe und einen Wasserkocher.
+3000000075	Haben wir überhaupt eine Küche zur Verfügung?
+3000000076	Ist die Küche in einem sauberen Zustand?
+3000000077	Aber lass es an einem anderen Tag machen, wenn wir das ganze Haus putzen.
+3000000078	Bringt das mehr als gewöhnliche Diäten? 
+3000000079	Dann werde ich es machen lassen und es bezahlen.
+3000000080	Die Wände sind alle gelb. 
+3000000081	Ich darf nicht in Kontakt mit Kräutern kommen.
+3000000082	Kannst du bitte meine vorherige Frage beantworten?
+3000000083	Wollen wir den Esstisch in die Küche stellen?
+3000000084	Ich weiß nicht, wie viel Quadratmeter die Toilette hat.
+3000000085	Würde ein kleiner Schrank für unsere Sachen denn passen?
+3000000086	Es gibt noch einen sehr kleinen Raum in der Wohnung und dort können wir die Waschmaschine hinstellen.
+3000000087	Ich glaube ich habe noch einen Duschvorhang und einen Spiegel von meiner alten Wohnung.
+3000000088	Wir werden dort sowieso sehr wenig Zeit verbringen.
+3000000089	Ich besorge noch ein Bücherregal, Teppich und die Gardinen.
+3000000090	Der Vermieter möchte aber nicht, dass wir etwas an die Wand hängen.
+3000000091	Er möchte nicht, dass dann später Löcher in der Wand sind.
+3000000092	Warum sagst du es nicht von Anfang an?
+3000000093	Ich bin noch Student und arbeite nicht mal.
+3000000094	Es gibt zwei kleine Zimmer und ein großes Zimmer.
+3000000095	Hast du viel Kleidung und viele Möbel?
+3000000096	Ich kriege aber noch einen für den Keller.
+3000000097	Alles klar und wir müssen noch einen Putzplan erstellen.
+3000000098	Ich schlage vor, dass jeder sein eigenes Zimmer putzt. 
+3000000099	Wie wollen wir das mit den anderen Räumen machen?
+3000000100	Ich bin auch dafür und die Küche, das Wohnzimmer und das Bad muss immer sauber sein.
+3000000101	Wenn du möchtest, kann ich auch jeden Freitag, Samstag und Sonntag kochen.
+3000000102	Bist du einverstanden mit dem, was ich gerade geschrieben habe?
+3000000103	Gibt es noch etwas zu besprechen?
+3000000104	Ich werde jeden Donnerstag einem Schüler Klavierunterricht geben. 
+3000000105	Wo willst du das Klavier hinstellen?
+3000000106	Es tut mir echt leid, aber ich brauche Geld.
+3000000107	Dafür müssen wir einen Kompromiss finden.
+3000000108	Ich habe gestern mit ihr geredet und sie ist einverstanden.
+3000000109	Ich finde wir sollten die Summe durch drei Teilen und dann kann jeder einen Teil bezahlen.
+3000000110	Wollen wir dafür auch einen Dienst einführen?
+3000000111	Den bringe ich öfters zum Arzt und du brauchst dir keine Sorgen machen.
+3000000112	Das ist gut, sonst müssten wir noch Geld für den Fahrradständer bezahlen.
+3000000113	Ich habe den Vermieter noch mal gefragt und er meinte, dass wir am Anfang des Monats immer überweisen müssen.
+3000000114	Wir müssen noch etwas Wichtiges klären.
+3000000115	Wenn einer öfter feiern will, muss er die ganze Woche kochen.
+3000000116	Ist es wichtig, wann ich von der Universität komme?
+3000000117	Er ist sogar sauberer und hygienischer als ich, denn er macht sich selber sauber.
+3000000118	Wie hast du es mit dem Einwohnermeldeamt geregelt? 
+3000000119	Ich habe einfach mit ihnen geredet und danach alles geklärt.
+3000000120	Das Problem ist doch, wie wir alles transportieren werden.
+3000000121	Ich bin stolz auf dich weil du mit deiner Vergesslichkeit umgehen kannst.
+3000000122	Welche Farbe hat die Eingangstür und hat die Wohnung Fußbodenheizung?
+3000000123	Wir gehen nächste Woche, um das Haus zu putzen.
+3000000124	Hast du bei deinem Elternhaus in einem Palast gelebt?
+3000000125	Wir machen hier erstmal sauber und dann ziehen wir ein.
+3000000126	Ich hoffe, dass ich mit euch klarkommen werden.
+3000000127	Seit unserer Kindheit wollten wir drei zusammenleben und es ist endlich soweit.
+3000000128	Wir müssen es sehr gut planen.
+3000000129	Der Saal ist eine halbe Stunde von uns entfernt.
+3000000130	Ich werde ein Boot organisieren und dort anrufen.
+3000000131	Ich dachte, dass wir alles gemeinsam organisieren.
+3000000132	Ich habe ein Boot gefunden, bei dem die Miete 500 Euro beträgt.
+3000000133	Es ist ungünstig jetzt miteinander zu streiten.
+3000000134	Ich würde mich für Rockmusik entscheiden.
+3000000135	Ich bin für ein Rock und Punk Konzept.
+3000000136	Alle sollen Punk-Frisuren und schwarze Kleidung tragen.
+3000000137	Sie studiert auch Medizin.
+3000000138	Eine aktuelle Studie liefert dazu nun eine eindeutige Antwort.
+3000000139	Die Leute kommen zum Feiern und nicht zum Essen.
+3000000140	Ich finde es unnötig für die Gäste Essen mitzubringen.
+3000000141	Die anderen haben also kein Mitspracherecht.
+3000000142	Kannst du mir etwas über den Geschäftsmann Andreas erzählen?
+3000000143	Warum weißt du über die Familie so viel?
+3000000144	Wir sind mit Sophie und Julia sehr gut befreundet.
+3000000145	Wir können über Autos reden und eine Autoshow organisieren.
+3000000146	Wir könnten einfach normal feiern, also tanzen und trinken.
+3000000147	Um wie viel Uhr wollen wir anfangen?
+3000000148	Die, die übernachten wollen, müssen auch zahlen.
+3000000149	Es handelt sich wohl um eine sehr erfolgreiche Familie.
+3000000150	Wir müssen noch allen sagen, dass die ein Geschenk mitbringen müssen.
+3000000151	Wir können auch bunte Lichterketten kaufen. 
+3000000152	Ich könnte noch Fingerfood für die Party vorbereiten.
+3000000153	Vielleicht fällt dir noch etwas ein.
+3000000154	Die können wir auch zusammen färben.
+3000000155	Ich werde dunkle Farben verwenden.
+3000000156	Ich werde schreiben, dass die zu der Party kommen sollen.
+3000000157	Wann sollte noch mal die Party stattfinden?
+3000000158	Welches Parfum möchtest du denn kaufen?
+3000000159	Ich habe einen Kompromiss gefunden.
+3000000160	Du kannst ihr ein schönes Buch kaufen.
+3000000161	Ich erinnere dich, dass du 25 Euro zu viel fandest.
+3000000162	Planen Sie Ihren Tag in nur 5 Minuten.
+3000000163	Wir beide sind zwei Personen und Familie Müller sind 18 Personen.
+3000000164	Aber wir können doch trotzdem einen DJ organisieren.
+3000000165	Gerrit ist zwar kein DJ, er kann es aber für uns machen.
+3000000166	Ich werde morgen das Boot sauber machen und alles dekorieren.
+3000000167	Ich habe das Gefühl, dass wir noch nicht fertig sind.
+3000000168	Es wird sehr warm, deshalb müssen wir eine Klimaanlage kaufen.
+3000000169	Wenn du willst, können wir auch dort feiern.
+3000000170	Meine Freunde haben gesagt, ich soll loslassen und ihn vergessen.
+3000000171	Glaubst du wirklich, dass mich das interessiert?
+3000000172	Wie war eigentlich die Geburtstagsfeier von Nirvana?
+3000000173	Darüber mit hinaus isoliert Innen, so dass das Eis frisch halten kann.
+3000000174	Wir haben alle zusammen Bücher gelesen.
+3000000175	Mir fallen schon die Tränen aus den Augen.
+3000000176	Sie studiert Soziale Arbeit für Kinder.
+3000000177	Ich bin froh, dass wir mit der Planung fertig sind.
+3000000178	Ich habe was Schlimmeres über dich gehört.
+3000000179	Sophie, die Tochter von Olaf, hat mir das erzählt.
+3000000180	Hast du auch gefragt, warum sie sauer auf mich ist?
+3000000181	Möchtest du, dass ich dir die Wahrheit sage?
+3000000182	Ich denke, du kriegst ungefähr 100 Euro dafür.
+3000000183	Ich werde von ihr sehr viel Geld verlangen.
+3000000184	Das ist leichter als Sie denken!
+3000000185	Sie hat etwas von Zalando bestellt und dann hat sie es nicht bezahlt.
+3000000186	Warum kann sie nicht denken und das Päckchen einfach zurückschicken?
+3000000187	Ich habe sie schon lange nicht mehr gesehen.
+3000000188	Sie hat ihr Studium abgebrochen.
+3000000189	Was haben die Eltern überhaupt zu sagen?
+3000000190	Ich verstehe nicht, aus welchem Jahrhundert die sind.
+3000000191	Die meisten Eltern wollen, dass ihre Kinder in die Schule gehen.
+3000000192	Meine Eltern schicken mich extra in eine Eliteuniversität und bezahlen Geld dafür.
+3000000193	Die sind mega arm und haben nicht einmal ein Haus.
+3000000194	Laut einer Studie sieht man, dass arme Leute selten eine gute Bildung genießen können.
+3000000195	Der Bruder ist aber Arzt und er hat mega viel Geld.
+3000000196	Selbst wenn sie sich streiten, ist es ein ernstes Thema.
+3000000197	Ich finde nicht korrekt was Sarah gemacht hat.
+3000000198	Das ist trotzdem kein Grund, ihre kleine Schwester nicht zu unterstützen.
+3000000199	Frida kennt die Familie von Sarah und Frida hat mir das erzählt.
+3000000200	Ich bin die neue Tochter der Familie Punk.
+3000000201	Die Familie ist richtig nett und ich gehöre jetzt auch zu denen.
+3000000202	Was ist passiert, dass sie dir dein Leben gerettet hat?
+3000000203	Ich freue mich schon auf meine zweite Punkfreundin.
+3000000204	Aber ich weiß nicht, ob die dich aufnehmen werden.
+3000000205	Ich möchte es etwas genauer wissen.
+3000000206	Ich bin Martins beste Freundin und auch deine beste Freundin.
+3000000207	Wenn du es mir nicht erzählst, hast du ein Problem.
+3000000208	Nein, bitte erzähle das nicht Mathilde, sonst erzählt sie das Andreas.
+3000000209	Es geht um die negativen Seiten der Familie Punk.
+3000000210	Hast du mir schon ein Geschenk gekauft?
+3000000211	Jule hat jetzt mit ihrem Studium angefangen. 
+3000000212	Nina ist immer am Schlafen, da sie krank ist.
+3000000213	Sie hat Migräne und in ihrem Gehirn war ein Tumor.
+3000000214	Ist ihre Operation gut gelaufen und wie geht es ihr jetzt?
+3000000215	Jetzt ist sie wieder zu Hause und ihr geht es sehr gut.
+3000000216	Ich finde es gut, dass sie jetzt bei ihrer Tante ist.
+3000000217	Ich habe Günther letztens im Schwimmbad gesehen.
+3000000218	Sie werden staunen, welchen unglaublichen Effekt schon kleinste Änderungen in Ihren Arbeitsabläufen haben können. 
+3000000219	Das fände er zu langweilig und es war unter seinem Niveau.
+3000000220	Er hatte aber auch in der Jugend psychische Probleme.
+3000000221	Als wir auf der gleichen Schule waren, war er krank.
+3000000222	Er ist mit seiner Krankheit gut umgegangen.
+3000000223	Er musste aber sehr viele Medikamente nehmen.
+3000000224	Aber bei ihm habe ich mir immer gedacht, dass er keine Probleme hat.
+3000000225	Aber er hat uns das auch nicht erzählt.
+3000000226	Er ist aber in letzter Zeit auch etwas komisch.
+3000000227	Ich habe aber keinen Kontakt mehr mit denen.
+3000000228	Mein Vater hat dort ein Haus gekauft und wird dort arbeiten.
+3000000229	Sie hat mir gestern noch ein Bild geschickt, wie sie am Einsatz war.
+3000000230	Letzte Woche am Montag hat sie geheiratet.
+3000000231	Der Mann ist Oberarzt und er ist auch mega berühmt.
+3000000232	Ich war auch für eine Zeit in Indonesien und er war mein Assistent.
+3000000233	Sie ist aber gerade dabei, es zu lernen.
+3000000234	Sie ist eine sehr ehrgeizige Person und sie ist sehr selbstbewusst.
+3000000235	Wen mochtest du in deiner Schulzeit gar nicht?
+3000000236	Aus dem gleichen Grund wie du mochte ich sie nicht.
+3000000237	Denn die Altersabstände wirken sich auf das Geschwisterverhältnis aus.
+3000000238	Ich habe sie letztens in der Stadt gesehen und wir haben ein bisschen geredet.
+3000000239	Sie hat mir erzählt, dass der Vater gestorben ist.
+3000000240	Die leben im Kinderheim und ihre Mutter ist im Gefängnis.
+3000000241	Ich gehe wahrscheinlich morgen wieder in die Stadt.
+3000000242	Wir werden uns morgen wieder treffen und du kannst gerne mitkommen.
+3000000243	Ich würde gerne morgen gehen, da es sein letzter Tag in Deutschland ist.
+3000000244	Ich habe ihn gestern angeschrieben und dann hat er mir alles erzählt.
+3000000245	Gerade, weil ich so super Kollegen habe.
+3000000246	Ihr kennt euch doch schon seit dem Kindergarten.
+3000000247	Ich muss heute shoppen gehen.
+3000000248	Ich muss noch putzen und danach Essen kochen.
+3000000249	Es war sehr kalt, jedoch hatten wir sehr viel Spaß.
+3000000250	Ich werde morgen auch in den Skiurlaub fahren.
+3000000251	Morgen ist der Tag endlich gekommen. 
+3000000252	Alle Freunde kaufen sich morgen gegenseitig etwas.
+3000000253	Damit die Freunde sich nicht gegenseitig vergessen, wird es gefeiert.
+3000000254	Ich werde heute Ofengemüse kochen und unser Hund Bernd ist gestorben.
+3000000255	Ich habe letzte Woche angefangen, jedoch finde ich das sehr stressig.
+3000000256	Du musst dort einfach hingehen und deinen Personalausweis mitnehmen.
+3000000257	Ich wusste nicht, dass wir einen Sehtest brauchen.
+3000000258	Wenn du Auto fahren kannst, wird auch dein Alltag einfacher.
+3000000259	Ich stehe morgens auf und direkt danach frühstücke ich immer.
+3000000260	Danach frühstücke ich sehr gesund und anschließend mache ich mich fertig für den Tag.
+3000000261	Das finde ich sehr interessant und was machst du eigentlich mittags?
+3000000262	Ich sitze eigentlich immer nur hier rum und manchmal gucke ich auch eine Serie.
+3000000263	Wie sieht dein Wocheneinkauf üblicherweise aus?
+3000000264	Deshalb kaufe ich am Wochenende nur Mehl, Zucker und Süßigkeiten.
+3000000265	Ich werde einige Freunde von der Universität einladen und die Punk Familie, die auf Silvanas Geburtstag war.
+3000000266	Ich habe mir schon Gedanken darüber gemacht.
+3000000267	Ich würde ein Bild malen und das Bild aufhängen.
+3000000268	Wahrscheinlich haben die auch alles für Sie bezahlt.
+3000000269	Darauf habe ich sie angesprochen und das hatte sie wütend gemacht.
+3000000270	Hast du in deinem Alltag oft mit deinen Freunden Streit?
+3000000271	Dieses Wort möchte ich auch gerne in meinem Alltag verwenden.
+3000000272	Hast du eigentlich gesehen, wie viel Rabatt es bei Zalando gibt?
+3000000273	Ich muss von morgens bis abends lernen und arbeiten.
+3000000274	Also auf der Arbeit hab ich immer viel Spaß. 
+3000000275	Du bist auch ein Arbeitgeber.
+3000000276	Welchen Film möchtest du dir denn anschauen und was möchtest du essen?
+3000000277	Ich möchte mit dir Skyscraper gucken und anschließend Pizza essen.
+3000000278	Eigentlich ist das eine gute Idee, jedoch wollte ich nächste Woche meine Wohnung putzen.
+3000000279	Kannst du einen Eimer und einen Schwamm mitbringen?
+3000000280	Morgen kann ich nicht kommen, da es meiner Katze nicht gut geht.
+3000000281	Ich habe in meinem Leben noch nie so viel gelacht.
+3000000282	Wenn du willst, kann ich auch meine Freunden Bescheid sagen, dass du Hilfe brauchst.
+3000000283	Ja, ich brauche sehr viel Hilfe, weil ich das nicht allein machen kann.
+3000000284	Du hilfst mir auch immer, wenn ich Hilfe brauche.
+3000000285	Wie oft putzt du deine Wohnung in deinem Alltag?
+3000000286	Ich putze meine Wohnung jeden Tag. 
+3000000287	Ich kauf eigentlich immer in der Stadt ein, aber mittlerweile auch mehr im Internet.
+3000000288	Woran kannst du erkennen, ob etwas qualitativ gut oder schlecht ist.
+3000000289	Ich gucke immer, unter welchen Bedingungen die Kleidungsstücke hergestellt werden.
+3000000290	Für mich sind auch die Arbeitsbedingungen der Arbeiter wichtig.
+3000000291	Die müssen den ganzen Tag arbeiten und die Kinder müssen auch arbeiten.
+3000000292	Die Kinder gehen nicht zur Schule, da sie kein Geld haben.
+3000000293	Nein, ich habe eine Dokumentation über die Textilindustrie in Bangladesch gesehen.
+3000000294	Ich würd die Doku auch gerne sehen und schauen, wie deren Alltag aussieht.
+3000000295	Mein Alltag sieht in letzter Zeit sehr langweilig aus.
+3000000296	Garnelen musst du als Erstes in warmen Wasser kochen.
+3000000297	Ich wusste nicht, dass du an einem Wettbewerb teilgenommen hast.
+3000000298	Als Vorspeise hatte ich Antipasti und eine Hühnersuppe.
+3000000299	Sie hatte eine Punkfrisur und ein Punkkostüm.
+3000000300	Genau das habe ich mir schon gedacht.

@@ -1,0 +1,300 @@
+3000000001	Scegli tu cosa fare una volta a Napoli, dai.
+3000000002	Abbiamo il volo tra quattro settimane.
+3000000003	Ti dispiacerebbe se venissi anch'io?
+3000000004	Hai già fatto le valigie?
+3000000005	Ho sentito che a Rimini la temperatura è di 40 gradi.
+3000000006	Pensavo che potremmo noleggiare una macchina una volta a Roma, che ne pensi?
+3000000007	Io amo i dolci, lo sai, perciò scegli pure quello che preferisci.
+3000000008	Sembra un'attività interessante, potremmo farla.
+3000000009	Lì si può anche nuotare coi delfini, non vedo l'ora.
+3000000010	Penso che sia un'idea fantastica.
+3000000011	Per la notte pensavo di dormire da mia sorella a Como.
+3000000012	Preferisco prenotare un albergo, è molto più comodo.
+3000000013	Sara è la mia migliore amica, non posso dirle di non venire.
+3000000014	Ero nel deserto e ho visto così tante stelle. 
+3000000015	Forse ci torno questo inverno.
+3000000016	Ho vissuto gli ultimi quattro mesi a Genova, mi sono trovato benissimo.
+3000000017	Non so, ci sto ancora pensando. 
+3000000018	Potete anche scottare in padella per un paio di minuti i coralli prima di frullarli.
+3000000019	Scusa, ma non penso di passare nel pomeriggio. 
+3000000020	Sei ancora minorenne, perciò devi chiedere ai tuoi genitori se puoi venire con noi.
+3000000021	Mamma dice che il volo è alle cinque del pomeriggio.
+3000000022	Non voglio discutere con te.
+3000000023	Cercherò un albergo vicino al vostro, allora.
+3000000024	Mi piacerebbe andare in spiaggia e poi magari visitare qualche chiesa.
+3000000025	Il corallo è la parte arancione della capasanta: più il colore è intenso, più il mollusco è fresco. 
+3000000026	Anch'io voglio venire ad Alberobello, non ho mai visto i trulli!
+3000000027	Si tratta quindi di una ricetta facile e antispreco. 
+3000000028	Ciao, che fai oggi?
+3000000029	Sì, ma sono stata lì solo due giorni.
+3000000030	Non penso di portare con me molta roba.
+3000000031	Che dici se porto qualcosa da mangiare?
+3000000032	Quanti posti ci sono sull'elicottero?
+3000000033	Il volo dura 4 ore, meglio se ti porti un libro da leggere.
+3000000034	Non possiamo andarci in treno?
+3000000035	L'appartamento ha tre camere, quindi sarebbe l'ideale per noi.
+3000000036	Ma quando pensi di trasferirti? 
+3000000037	L'università comincerà tra tre settimane.
+3000000038	Però qualcuno dovrà portare piatti, bicchieri e posate.
+3000000039	Purtroppo la casa è in cattive condizioni. 
+3000000040	Simone pensa sia una buona idea, perciò diamoci da fare.
+3000000041	Quindi preferire circuiti off road.
+3000000042	Le pareti sono verdi, ma potremmo pitturarle di un colore diverso.
+3000000043	Il bagno è molto piccolo ed è senza finestra. 
+3000000044	Non so quanti metri quadrati sia.
+3000000045	Mi sono accorto che sono indietro coi compiti.
+3000000046	Ci servirebbero anche delle tende nuove.
+3000000047	No, preferisco prenderle io. 
+3000000048	Il proprietario non vuole che appendiamo quadri alle pareti.
+3000000049	L'ho pagato solo 200 euro, penso di aver strappato un buon prezzo.
+3000000050	Non penso gli sarà sufficiente un solo armadio.
+3000000051	Tutti avranno una copia della chiave di casa.
+3000000052	Ognuno dovrebbe stirarsi i propri vestiti.
+3000000053	Io posso cucinare ogni venerdì, sabato e domenica.
+3000000054	Sei d'accordo con quello che ho appena detto?
+3000000055	Quando durano le lezioni di piano? 
+3000000056	E non potresti farlo in balcone?
+3000000057	Carlo è d'accordo con questa cosa?
+3000000058	Maria è allergica ai gatti, non credo accetti di tenerlo in casa.
+3000000059	No, l'ho fatto visitare ieri dal veterinario ed è tutto OK.
+3000000060	Sì, ce l'ho una bicicletta. 
+3000000061	Costa molto affittare una bicicletta? 
+3000000062	Dovremmo cercare di consumare il meno possibile, così le bollette non saranno tanto salate.
+3000000063	Non ci avevo pensato. 
+3000000064	La tua idea è davvero brillante. 
+3000000065	Cosa succede se dimentico le chiavi?
+3000000066	No, non ho la macchina. 
+3000000067	Possiamo chiedere ad Alessandra se ci passa a prendere con la sua auto.
+3000000068	Pensiamo di trasferirci tra circa due settimane.
+3000000069	Per il trasloco potremmo noleggiare un furgoncino.
+3000000070	La prima cosa da fare penso sia cambiare la serratura.
+3000000071	E va bene, provvederò a cambiare la porta.
+3000000072	Alice porterà un secchio e delle spugnette.
+3000000073	Sono troppo felice, è sempre stato il mio sogno!
+3000000074	Avrei voluto vivere con le mie migliori amiche da anni e finalmente sta per succedere!
+3000000075	Ciao, giovedì è il compleanno di Mattia.
+3000000076	È vero che festeggerà il suo compleanno su una barca?
+3000000077	Dovrebbero essere 15 gli invitati, pensi sia fattibile?
+3000000078	Organizzare una festa del genere è davvero costoso.
+3000000079	Ti stavo solo prendendo in giro.
+3000000080	Ormai non si può più disdire la prenotazione, mi dispiace.
+3000000081	Te la meriti questa promozione, ti sei impegnato tanto.
+3000000082	Pensavo di comprare dei palloncini neri!
+3000000083	Non vorrei spendere troppo, le mie finanze sono limitate.
+3000000084	Per quanto riguarda gli invitati, hai detto che avevi preparato una lista.
+3000000085	Hai mica idea di quanti siano?
+3000000086	Francesca è la più grande delle sorelle, decide sempre tutto lei.
+3000000087	Giorgio come ha conosciuto Valerio e la sua famiglia?
+3000000088	Ida ha un'influenza decisamente negativa su quel ragazzo.
+3000000089	Come fai a sapere così tante cose su di loro?
+3000000090	Non temere, i fratelli Esposito sono dei veri esperti in fatto di macchine.
+3000000091	Ma perché hai deciso di invitare anche Franco e Laura?
+3000000092	Dovremmo comprare anche dei festoni. 
+3000000093	Pensavo di dargli appuntamento alle 20.
+3000000094	Poi potremmo anche trascorrere la notte sulla barca.
+3000000095	Dicevi che Leonardo è un uomo d'affari.
+3000000096	Ah, dobbiamo ricordare a tutti di portare un regalo per la festeggiata.
+3000000097	Quante bottiglie di aranciata prendo?
+3000000098	Però compriamo tutto al mercato, non posso spendere molti soldi.
+3000000099	Sì, sono disponibili anche in giallo e verde.
+3000000100	Penso sia meglio, così sembrerà più festoso.
+3000000101	Credi che ci stiamo dimenticando qualcosa?
+3000000102	Sì, per favore, occupatene tu degli inviti.
+3000000103	La festa dovrebbe durare circa cinque ore.
+3000000104	Questo gelato al pistacchio è davvero buonissimo.
+3000000105	Se non ha un cellulare mandagli una lettera.
+3000000106	Decidi tu, ti prometto che non metterò bocca.
+3000000107	Potrei fare qualcosa di alternativo e disegnare io stesso l'invito, che dici?
+3000000108	Cosa vuoi scrivere sulle partecipazioni?
+3000000109	La festa è la prossima settimana. 
+3000000110	Un profumo è un regalo così banale.
+3000000111	E allora suggerisci tu qualcosa di fattibile. 
+3000000112	Pensavo che sarebbe carino comprargli una candela profumata.
+3000000113	Scusa, ma a te cosa ha regalato?
+3000000114	Potremmo regalargli un libro. 
+3000000115	A me interessa solo sapere se ci sarà del cibo.
+3000000116	Non voglio pagare 30 euro per un dopobarba.
+3000000117	Perché non organizziamo una serata con canti e balli?
+3000000118	Io mi occuperò di pulire il locale e di appendere i festoni.
+3000000119	Ho la sensazione che ci stia sfuggendo qualcosa nell'organizzazione di questa serata.
+3000000120	Pensi che reggerà il tempo?
+3000000121	Forse dovremmo pensare a un piano B.
+3000000122	Mio cugino lavora in una pasticceria, potremmo chiedere a lui.
+3000000123	Ma cosa vuoi che me ne importi? 
+3000000124	Hai ragione, avevamo deciso così.
+3000000125	Oggi potremmo passare per dare una pulita.
+3000000126	Non ho mai fatto niente di simile in vita mia.
+3000000127	Per me la conversazione può anche terminare qui.
+3000000128	Ma quante cose hai imparato.
+3000000129	Ho imparato più di quello che credi. 
+3000000130	Mi ricordi cosa studia Osvaldo? 
+3000000131	Penso che abbiamo detto tutto.
+3000000132	Se non sbaglio si era iscritto a veterinaria.
+3000000133	Le hai chiesto perché è arrabbiata con me?
+3000000134	Vuoi che ti racconti come sono andate le cose?
+3000000135	Cosa pensi di fare adesso? 
+3000000136	Questa storia non finisce qui, mi rivolgerò a un avvocato.
+3000000137	Sai qual è il suo genere preferito?
+3000000138	Che sta facendo Renato? 
+3000000139	È una vita che non lo vedo in giro.
+3000000140	Non so davvero in che epoca vivano. 
+3000000141	Beh, grazie ai loro sacrifici ora si possono permettere di mandare la figlia in un'università così prestigiosa.
+3000000142	Il fratello invece è un medico ed è pieno di soldi.
+3000000143	Sapevi che l'essere umano è composto per il 70 percento da acqua?
+3000000144	No, e non sono fatti miei.
+3000000145	Chi ti ha detto queste cose?
+3000000146	Tommaso li conosce bene e mi ha raccontato tutto di loro. 
+3000000147	Questa cosa mi sorprende molto.
+3000000148	Rispondi alla mia domanda, per favore.
+3000000149	Sandra mi ha salvato la vita, le devo tutto.
+3000000150	Pino ha litigato con Amedeo e Ivan, non si parlano più da mesi.
+3000000151	Ti prego, non me lo chiedere.
+3000000152	Sono il tuo migliore amico, devi dirmi tutto!
+3000000153	Te lo prometto, terrò la cosa per me.
+3000000154	Ma cosa ci trovi di bello in lui? 
+3000000155	Che problemi ha questa famiglia?
+3000000156	No, lei studia all'università di Dublino, io sono rimasta a Venezia.
+3000000157	Io non penso avrei la forza per trasferirmi all'estero ora, lasciando qui i miei genitori.
+3000000158	Scusa, ma voglio saperne di più.
+3000000159	Finalmente possiamo concederci l'agognata vacanza, ce la siamo meritata.
+3000000160	Ora che Adelaide è tornata a casa siamo tutti più sereni.
+3000000161	Federico in questo momento è al lago con gli amici, gli serviva proprio distrarsi un po'.
+3000000162	Sono felice di sapere che è con sua zia ora, so che le è molto affezionata.
+3000000163	Adoro fare lunghe passeggiate all'ora del tramonto.
+3000000164	Saverio sta bene, si è appena laureato in Giurisprudenza col massimo dei voti.
+3000000165	Sì, mia figlia Caterina è così intelligente, sono davvero fiero di lei.
+3000000166	Pensavo si fosse iscritto a Medicina.
+3000000167	Se non ricordo male, durante l'adolescenza trascorreva ogni estate a Capri coi suoi genitori.
+3000000168	Non sapevo nulla di questa storia. 
+3000000169	I genitori erano davvero entusiasti all'idea che Caterina andasse a vivere nel loro stesso quartiere.
+3000000170	Quando eravamo alle superiori insieme era già un fenomeno in matematica, non mi sorprende il suo successo.
+3000000171	Ognuno ha i suoi problemi, non tocca a me giudicarlo.
+3000000172	Non ho più contatti con la mia famiglia, perciò sinceramente non so come stiano i miei fratelli.
+3000000173	Mio padre si è trasferito a Gallipoli con la sua nuova compagna.
+3000000174	È davvero una ragazza in gamba.
+3000000175	Possiamo cambiare argomento?
+3000000176	Alessia sta facendo volontariato, sai? 
+3000000177	Mi stai dicendo che Ferdinando si è sposato?
+3000000178	Proprio ieri mi ha mandato una foto mentre era col suo fidanzato.
+3000000179	Samuele si è sposato lo scorso settembre, non lo sapevi?
+3000000180	Aveva un vestito bellissimo, sembrava una principessa.
+3000000181	Per un breve periodo è stata la mia assistente, ma non andavamo d'accordo.
+3000000182	Lui ha trovato un buon lavoro da quelle parti.
+3000000183	Ma la ragazza di Giovanni ha deciso se trascorrerà le vacanze in Italia o ancora no?
+3000000184	È una persona molto ambiziosa, non credo faticherà a trovare un buon impiego.
+3000000185	Ai tempi del liceo era la più corteggiata della scuola, dovresti saperlo.
+3000000186	Che splendida luna stasera, mi fa sognare.
+3000000187	È preferibile indossare pantaloncini e canotta o maglia in materiale traspirante.
+3000000188	Giacomo mi ha detto che sua sorella si sposa. 
+3000000189	Non voglio mettermi a discutere anche con te.
+3000000190	Io non so come avrei reagito in una situazione simile.
+3000000191	Al momento ho altri problemi a cui pensare.
+3000000192	Ogni volta ne spunta fuori uno nuovo!
+3000000193	Alla fine è diventato un insegnante. 
+3000000194	Lo sapevi che sua cugina ha pubblicato un romanzo? 
+3000000195	Pensavamo di passare a trovarla in ospedale nel pomeriggio, vuoi venire con noi?
+3000000196	Preferisco di no, quei posti mi mettono una profonda angoscia.
+3000000197	Ma perché hai bisogno di una coperta? 
+3000000198	Da quelle parti c'è sempre una nebbia assurda.
+3000000199	È bello vedere madre e figlio così uniti, mi riempie il cuore di gioia.
+3000000200	Perché non vuoi dirmelo, pensavo che fossimo amici.
+3000000201	Che brutta notizia che mi hai dato, ancora stento a crederci.
+3000000202	Eravamo migliori amici una volta, poi ci siamo persi di vista.
+3000000203	 Secondo me gli farebbe piacere rivederti.
+3000000204	Probabile, ma voglio aspettare tempi migliori. 
+3000000205	Ti va di andare a fare compere con me?
+3000000206	Almeno è quello che ha detto tua madre una volta!
+3000000207	Non ho mai sentito parlare di una simile ricorrenza.
+3000000208	Se penso che lo scorso anno ho festeggiato il mio compleanno con Donatella mi viene da piangere.
+3000000209	Luca e Mara dovrebbero tornare da scuola verso le 14. 
+3000000210	Rimettiti al più presto, allora. 
+3000000211	Che cucini di buono oggi? Hai già qualche idea?
+3000000212	Oggi devo occuparmi del giardino. 
+3000000213	Volevo andare in piscina.
+3000000214	Ma guarda che sto bene, se andate al cinema vengo volentieri.
+3000000215	Domani ho un esame, ma se vuoi mercoledì sono libero.
+3000000216	Ho cominciato questo nuovo lavoro la settimana scorsa, ma ho già bisogno di una vacanza.
+3000000217	Ah, non dimenticarti di portare con te la carta d'identità. 
+3000000218	Per me non è un problema fare un po' di spesa anche per te.
+3000000219	Non ho bisogno di una visita agli occhi, ma ti ringrazio per l'interessamento.
+3000000220	Io al mattino faccio prima una bella doccia, poi penso alla colazione.
+3000000221	Io non ho mai tempo e la sera sono troppo stanco per mettermi a leggere.
+3000000222	Mantieni la colonna dritta e gli addominali in contrazione.
+3000000223	Cosa fai di solito nel fine settimana?
+3000000224	Spesso la sera sono così stanca che ordino la cena a domicilio, anche se so che non è un'alimentazione sana.
+3000000225	Compro pane e frutta fresca ogni giorno.
+3000000226	Se fai una festa in piscina stavolta non scordarti di invitarmi, mi farebbe davvero piacere!
+3000000227	Penso che inviterò solo qualche collega dell'università.
+3000000228	La famiglia le ha pagato il viaggio.
+3000000229	Sono giorni che non riesco a contattarla.
+3000000230	I problemi si sono risolti nel migliore dei modi, ora possiamo guardare con più serenità al futuro.
+3000000231	Guarda che non sono un tipo litigioso, sono sempre cordiale con tutti!
+3000000232	Penso proprio che darò un'occhiata in rete, di solito ci sono offerte migliori.
+3000000233	Stavo giusto dando un'occhiata al sito. 
+3000000234	Ho già ordinato un paio di camicie Armani ad un prezzo davvero ridicolo!
+3000000235	Ah, pensavo avessi cominciato a lavorare. 
+3000000236	Ti andrebbe di andare a cena con me stasera?
+3000000237	Ma non sei andata al cinema ieri? Vuoi andarci anche stasera?
+3000000238	Che film volevi vedere e dove pensavi di cenare?
+3000000239	Io preferisco pulire la cucina, se per te non è un problema.
+3000000240	Guarda che pulisco meglio di te. 
+3000000241	Puoi portare anche delle salviette igienizzanti?
+3000000242	Preferisco venire da te domani, perché il mio gatto oggi non sta tanto bene.
+3000000243	Scherzavo, certo che vengo! 
+3000000244	Ho davvero bisogno di una mano, perché non ce la faccio a fare tutto da solo.
+3000000245	Nessun problema, puoi contare sempre su di me. 
+3000000246	Gli amici servono a questo, ad aiutarsi nel momento del bisogno.
+3000000247	Ma qual è il tuo segreto di bellezza?
+3000000248	Mi mancano gli stimoli per cambiare vita.
+3000000249	Magari al parco qui vicino, per respirare un po' d'aria buona.
+3000000250	Qual è allora il segreto per una linea perfetta?
+3000000251	Ti giuro che mi sono messa a saltare dalla gioia quando la Pellegrini ha vinto l'oro!
+3000000252	So che una volta anche tu gareggiavi.
+3000000253	Purtroppo mi sono fatta male durante un allenamento e da allora ho smesso.
+3000000254	Cosa pensavi di cucinare come antipasto?
+3000000255	Al massimo prendo una torta in pasticceria.
+3000000256	No, la salsa non è necessaria.
+3000000257	Non ti credo, come è possibile che Carlotta ti abbia battuto nella gara di cucina?
+3000000258	Cosa vuoi che ti dica?
+3000000259	Non me l'aspettavo davvero.
+3000000260	Vorrei tanto tornare a quei giorni spensierati con te.
+3000000261	Sono soddisfatto della mia vita.
+3000000262	Tento sempre di organizzare al meglio le mie giornate.
+3000000263	Ho troppi pensieri per la mente.
+3000000264	Devi svegliarti presto domani? O possiamo restare a parlare ancora un po'?
+3000000265	Pensi che la meditazione possa aiutarmi?
+3000000266	Lei è esperta di yoga.
+3000000267	Cosa direbbe Andrea se lo sapesse?
+3000000268	Credo che in un anno arriveresti a spendere al massimo 300 euro.
+3000000269	C'è tempo per iscriverti fino alla fine di marzo.
+3000000270	Le lezioni si terranno a Frascati, è a solo un quarto d'ora da casa mia.
+3000000271	Pensavamo di fare una gita a Firenze. 
+3000000272	Mia madre ha adorato il suo modo di fare.
+3000000273	I miei sono originari di Torre del Greco, un paesino in provincia di Napoli.
+3000000274	Ieri sono passato da lei per farle una sorpresa, ma non era in casa.
+3000000275	Ah, non sapevo ti fossi laureato. 
+3000000276	È facile raggiungere casa mia. 
+3000000277	Hai avuto davvero un'ottima idea a organizzare un pomeriggio al Museo di Storia naturale. 
+3000000278	Antonio vorrebbe portare i ragazzi al castello.
+3000000279	Studi recenti suggeriscono di sì.
+3000000280	Sto cercando di mettere su un gruppo musicale.
+3000000281	Ohi, se apri la finestra vedrai gli alberi pieni di pappagalli. 
+3000000282	Ho una voglia matta di andare al mare. 
+3000000283	Penso che entro fine anno mi toccherà cambiare casa. 
+3000000284	Ci si vede alle dodici sotto la statua di Minerva?
+3000000285	È inutile che ancora ci speri. 
+3000000286	Sarebbe piaciuto anche a me venire alla festa di Ugo, ma non sono stata invitata!
+3000000287	Sì, festeggio il compleanno proprio il 16 di Aprile.
+3000000288	Sei troppo arrogante per i miei gusti.
+3000000289	Speravo di riuscirmi a liberare prima oggi, ma purtroppo sono ancora bloccato a lavoro.
+3000000290	Martina è chiusa in bagno da un'ora. 
+3000000291	Non mi serve un altro padre, voglio solo che tu sia più presente nella mia vita!
+3000000292	È possibile bruciare calorie stando in poltrona?
+3000000293	Ti va di venire con me stasera al concerto di Tiziano Ferro? 
+3000000294	Scusa, questo genere proprio non fa per me. 
+3000000295	Se senti Roberta puoi dirle di chiamarmi urgentemente?
+3000000296	Sono passati anni dall'ultima volta che l'ho vista. 
+3000000297	Verrei volentieri ad aiutarti, ma purtroppo devo badare al mio fratellino oggi.
+3000000298	Per me non ci sono problemi, ci sentiamo domani pomeriggio.
+3000000299	Se hai voglia di mangiare del buon pesce posso consigliarti un ottimo ristorante sul lungomare.
+3000000300	Si tratta di un viaggio breve.

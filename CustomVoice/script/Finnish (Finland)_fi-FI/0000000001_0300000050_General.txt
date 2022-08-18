@@ -1,0 +1,550 @@
+0000000001	Pölytystulos eli raakileiksi saakka päässeiden kukkien osuus on ollut keskimäärin lähes 70 prosenttia, kun pitkäaikainen keskiarvo on alle 60 prosenttia. 
+0000000002	Mielikuvat tuhansien eurojen vuokravakuuksista ja kuluneista asunnoista kaupungin laidalla voi unohtaa, sillä nyt voit nauttia ensimmäisenä asukkaana upouudesta asunnosta ja sijainnista kaupungin parhaalla paikalla.
+0000000003	Kalevan uudiskohteen asunnot on suunnattu työssäkäyville hakijoille, ja etenkin kolmiot soveltuvat erinomaisesti, sekä pariskunnille että lapsiperheille. 
+0000000004	Ihmisille on tullut halu panostaa kotiin ja kodin ympäristöön tai kakkoskotiin niin, että tilaa on enemmän. 
+0000000005	Hirrestä voi rakentaa siten, ettei lisäeristettä tule kummallekaan puolelle, joten välin ei jää kerroksia, joihin mahdolliset ongelmat voisivat jäädä piiloon.
+0000000006	Juhlintaan on kuulunut perinteisesti saunomista ja kokkojen polttamista sekä juhannustaikoja, joiden on toivottu tuovan hyvää satoa, terveyttä ja naimaonnea.
+0000000007	Tuolloin aurinko ei laske pohjoisen napapiirin pohjoispuolella lainkaan, mitä kutsutaan keskiyön auringoksi tai yöttömäksi yöksi.
+0000000008	Rakennusten ulkoseiniin ja mastoihin kiinnitettävissä tukiasemissa nykypäivänä on yhä tärkeämpää, että ne ovat mahdollisimman pieniä, kevyitä ja vähän energiaa kuluttavia.
+0000000009	Ei tässä ole syytä vielä julistaa mitään voittoa kilpailijoista, koska kilpailu on luonteeltaan kuin maraton.
+0000000010	Tutkijat arvelevat, että mikromuovit voivat vaikuttaa ilmastoon myös laajemmin nopeuttaen lumen ja jään sulamista.
+0000000011	Nisäkkäitä on tunnistettu kaikkiaan yli 60 lajia, joista yleisiä ovat muun muassa orava, metsäjänis ja kettu. 
+0000000012	Senaattiin eli ylähuoneeseen valitaan kuuden vuoden kaudeksi 76 senaattoria, 12 kustakin osavaltiosta ja kaksi kustakin mantereen territoriosta.
+0000000013	Oikeuskanslerin mukaan saatujen selvitysten perusteella asian käsittely eduskunnan valiokunnissa on tapahtunut perustuslain mukaisesti toimitettujen kirjelmien ja selvitysten perusteella. 
+0000000014	Koska Australia on ollut pitkään eristyksissä muista maanosista, sen luonto on saanut rauhassa kehittyä omanlaisekseen.
+0000000015	Metsien aluskasvillisuudessa tyypillisiä lajeja ovat metsätyypistä riippuen mustikka, puolukka, saniaiset, oravanmarja, valkovuokko, käenkaali sekä sammalet ja jäkälät.
+0000000016	Lehtoja kasvaa yleensä purolaaksoissa, ja ne ovat tavallisesti kosteita saniaislehtoja, varsinaisten lehtimetsien piirteitä alueen lehdoista ei täällä kuitenkaan löydy, vaan lehdon lehtipuut ovat yleensä havumetsillekin tyypillisiä, kuten koivuja.
+0000000017	Auringonvalo pääsee harvassa ja matalassa metsässä helposti kenttäkerrokseen, joten alueella etenkin puiden katveen varpulajisto kukoistaa. 
+0000000018	Nelisäätyopin mukaan papisto vastasi yhteiskunnan hengellisistä asioista, aateli vastasi valtakunnan puolustamisesta asein, porvaristo hoiti kauppaa ja yhteiskunnan enemmistö eli talonpojat huolehtivat perustuotannosta.
+0000000019	Rullien miedot maut saavat kaivattua  potkua täyteläisestä maapähkinädipistä, jota voi ostaa kimchin tavoin mukaan purkkiin pakattuna.
+0000000020	Pari muhkeaa nojatuolia ja laaja lehtivalikoima päivän sanomalehdistä aikakauslehtiin  kutsuvat rauhoittumaan pidemmäksikin aikaa kahvin ääreen.
+0000000021	Pohjoismaiden kansalaiset voivat liikkua vapaasti maasta toiseen ilman passia ja tehdä työtä muissa Pohjoismaissa ilman työlupaa.
+0000000022	Pohjoismailla on hyvät keskinäiset suhteet, ja ne tekevät paljon yhteistyötä esimerkiksi talouden ja politiikan alueilla.
+0000000023	Antosyaanien lisäksi mustikoissa on protoantosyanideja, flavonoleja ja tanniineja, jotka toimivat antioksidantteina, ja niiden on havaittu laboratoriokokeissa vähentävän tulehduksia.
+0000000024	Pohjoismaita on pidetty myös sisäpolitiikan suhteen yhteneväisinä; kaikilla on korkea verotusaste, mikä mahdollistaa laajan julkisten palvelujen ylläpitämisen. 
+0000000025	Ruotsin, norjan ja tanskan kielet ovat niin lähellä toisiaan, että luettu teksti on toisen kielen puhujan ymmärrettävissä. 
+0000000026	Mansikka sisältää runsaasti fenoliyhdisteitä, jotka vahvistavat elimistön suojamekanismeja, toimivat antioksidantteina ja estävät haitallisten mikrobien kasvua.
+0000000027	Mustikan marjoista valmistettavia perinteisiä ruokia Suomessa ovat muun muassa mustikkapiirakka sekä mustikkakeitto, ja perinteisesti mustikoista on valmistettu myös hilloa. 
+0000000028	Kellariravintola on katutason alapuolelle tai kellariin rakennettu ravintola, jossa seinät on usein rakennettu punaisista tiilistä ja katto voi olla holvin muotoinen. 
+0000000029	Vaikka jotkut jäätelöbaarit ovat auki ympäri vuoden etenkin lämpimän ilmaston alueilla, monet kylmemmillä alueilla sijaitsevat jäätelöbaarit ovat auki vain lämpimien kuukausien aikana, tavallisesti maaliskuusta marraskuuhun. 
+0000000030	Yrittäjän aloittaessa liiketoimintaansa luvakkeenantaja voi kouluttaa hänet sekä avustaa yrittäjää liiketoiminnan käynnistämiseen liittyvissä asioissa, kuten tilojen hankinnassa ja niiden varustamisessa, rahoitusneuvotteluissa, hankintasopimuksissa ja avajaisten järjestämisessä. 
+0000000031	Merkin on oltava erottamiskykyinen eli rekisteröitävän tavaramerkin tulee olla omiaan erottamaan haltijan tavarat tai palvelut muiden vastaavista. 
+0000000032	Erottamiskykyiseksi ei katsota myöskään merkkiä, joka muodostuu yksinomaan tavaran luonteenomaisesta, teknisen tuloksen saavuttamiseksi välttämättömästä tai tavaran arvoa olennaisesti korottavasta muodosta. 
+0000000033	Merkkiä voidaan pitää vakiinnutettuna, kun se on tullut eri kohderyhmien keskuudessa yleisesti tunnetuksi kyseisen tavaran tai palvelun tunnusmerkiksi. 
+0000000034	Rekisteröinti voidaan tarvittaessa julistaa tuomioistuimessa mitättömäksi joko alkuperäisen esteen takia, eli siksi, että merkkiä ei olisi lainkaan  saanut rekisteröidä, erottamiskyvyn menettämisen, sekoitettavuuden tai harhaanjohtavuuden vuoksi, tai merkin menetettyä rekisteröimisen edellytyksen.
+0000000035	Brändi on tuote tai tuotemerkki, yritys, henkilö tai muu vastaava, jolle on syntynyt tai esimerkiksi markkinoinnin avulla luotu laaja, yleensä myönteinen, tunnettuus. 
+0000000036	Tavaratalon neljä ensimmäistä kerrosta oli tarkoitus varata itse myyntiä varten, ja kaksi ylimmäistä kerrosta oli tarkoitus vuokrata yrittäjille, jotka täydentäisivät tavarataloa. 
+0000000037	Opastusta tarvitaan siksikin, että kylien ja soiden päälle rakennettu Lokka ei ole mikä tahansa järvi.
+0000000038	Myös eläintutkimuksista on saatu runsaasti lupaavaa näyttöä mustikan antosyaanien mahdollisuuksista ehkäistä muistihäiriöitä ja muita ikääntymiseen liittyviä toimintahäiriöitä. 
+0000000039	Nämä mielleyhtymät ovat lupaus yritykseltä asiakkaalle, ja  niiden tulisi auttaa asiakkaan ja brändin suhteen vahvistamisessa. 
+0000000040	Uudesta tavaratalosta piti alkujaan tulla vain kaksikerroksinen, mutta rakenteiden tuli olla niin vahvat, että talo pystyttäisiin myöhemmin laajentamaan kuusikerroksiseksi.
+0000000041	Alun perin kadun jatketta suunniteltiin nykyistä idemmäs, mutta lopulta kadun jatke päätettiin rakentaa suoraan silloisen Hakasalmenkadun kohdalta.
+0000000042	Tavaratalon toisen osan rakentamista lykättiin muutamilla vuosilla, sillä yrityksen johto oli päättänyt odottaa suotuisampia rakennussuhdanteita ja halvempaa rahaa.
+0000000043	Kysyimme suosituinta tuotetta, perushodarin hintaa, kasvisvaihtoehtoja, kasvisvaihtoehtojen kysyntää, allergioiden ja gluteenittomuuden huomioon ottamista ja jätelajittelua.
+0000000044	Peräti yhdessätoista hallissa suosituin tuote oli sellainen, johon sisältyi nakki tai makkara tavalla tai toisella.
+0000000045	Ennakkoon veloitettuja maksuja käytön mukaiseksi oikaisevia tasauslaskuja on myös saatettu toimittaa kuluttajille vasta heidän reklamoituaan kirjallisesti, vaikka lain mukaan tasauslaskut pitäisi lähettää neljästi vuodessa.
+0000000046	Jos kuluttajalle myydään uusi sähkösopimus edellisen ollessa yhä voimassa, uusi sopimus saattaa astua voimaan vasta jopa parin vuoden kuluttua.
+0000000047	Kuluttaja ei välttämättä tiedä, milloin hänen nykyinen sopimuksensa on päättymässä, mikä aiheuttaa sekaannuksia, varsinkin jos uusi sähköyhtiö alkaa laskuttaa ennakkoon.
+0000000048	Hyviä odotuksia oli myös siitä, miltä oma talous näyttää vuoden kuluttua, ja rahankäyttöaikeita kestotavaroihin oli lähikuukausille runsaasti.
+0000000049	Odotukset Suomen taloudesta ja yleisen työttömyystilanteen kehityksestä heikkenivät heinäkuuhun verrattuna hieman, vaikka säilyivät yhä optimistisina.
+0000000050	Ostajat maksavat haluamistaan asunnoista enemmän kuin myyjä pyytää tai he tekevät tarjouksia ilman, että käyvät katsomassa asuntoa tai taloa.
+0000000051	Asuntorahoittajan ehdoton suositus on käydä katsomassa kohde rauhassa sekä tutustua tarkasti taloyhtiön papereihin ja osakasrakenteeseen. 
+0000000052	Yli kolmen kilometrin korkeuteen nouseva Grönlannin mannerjäätikön huippu on yksi Maapallon kylmimmistä ja karuimmista paikoista.
+0000000053	Ilmatieteen laitoksen tutkimusprofessori Timo Vihma ei pidä sadetta kuitenkaan järin yllättävänä, sillä merkit ovat olleet ilmassa jo pitkään.
+0000000054	Kun jäätikön huipulla on havaittu sulamista jo kolmena vuonna tätä ennen, ei ole sinänsä yllätys, että nyt havaitaan myös vesisadetta, Vihma toteaa.
+0000000055	Ilmanpaineen erot aiheuttivat voimakkaan lounaistuulen, joka kuljetti jäätikön päälle lämmintä ja kosteaa ilmamassaa Atlantin valtamereltä.
+0000000056	Sadevesi toki sulattaa jäätä, mutta Vihman mukaan Grönlannissa sulamista aiheuttavat yleensä ilman suuri vesihöyrysisältö ja pilvisyys, jotka lisäävät lämpösäteilyä ilmakehästä jään pintaan, jolloin pintalämpötila nousee.
+0000000057	Vihman mukaan jäätikön massan kiihtyvä menetys ja neljä sulamistapahtumaa 30 vuoden sisällä kertovat siitä, että ilmasto on lämmennyt, vaikka maallikon silmin muutamat lämpöpiikit voivat vaikuttaa maltillisilta.
+0000000058	Jo tämän vuoden heinäkuussa lämpöaalto nosti Grönlannissa lämpötiloja jopa 10 astetta keskimääräistä korkeammiksi, aiheuttaen tanskalaistutkijoiden mukaan massiivista sulamista.
+0000000059	Sillä oli vahvat leuat saaliin saamiseksi ja äskettäin julkaistun tutkimuksen mukaan se pystyi kävelemään maalla sekä uimaan vedessä.
+0000000060	Tarkkaa löytöpaikkaa löytäjä ei halua paljastaa, sillä hänen mukaansa ei ole pois suljettua, että paikalla olisi muinainen hauta tai jokin muu vastaava alue, joka vaatii vielä lisätutkimuksia.
+0000000061	Komien ja udmurttien esivanhemmat vaurastuivat turkiskaupalla ja liikkuivat laajalla alueella, saapuen jopa Suomeen saakka, kertoo Raninen.
+0000000062	Ranisen mukaan on hyvin mahdollista, että nyt löydetty esine on tullut pohjoiseen permiläisten kauppiaiden mukana.
+0000000063	On myös mahdollista, että löytöpaikalta löytyy kiinteä muinaisjäännös, josta löytyy muitakin merkkejä ihmisen asumisesta tai oleskelusta paikalla.
+0000000064	Museovirasto aikoo julkaista löydön pikaisesti, jotta löytö tavoittaa suuren yleisön sekä tutkijapiirin ja löytö saa ansaitsemansa huomion, kertoo Raninen.
+0000000065	Venäläinen osapuoli katsoi, että se tarkoittaa kirkkoa ja rajan pitää kulkea sen kirkon kautta, Heikki Arpiainen kertoo.
+0000000066	Huipulla poikkeavat sääilmiöt eivät kuitenkaan olisi juuri koskaan saavuttaneet sulamispistettä, jollei taustalla olisi ollut keskilämpötilan nousua.
+0000000067	Fallgrenin mukaan linnaa ei löydetty, koska se sijaitsee yli kymmenen kilometrin päässä itse Sörbyn kylästä.
+0000000068	Jos tarvitset kylmää juomaa nopeasti, täytä kylmälaukku kylmällä vedellä ja lisää sinne jääkuutioita ja suolaa.
+0000000069	Muista kuitenkin, että aivan teltan ympärille ei kannata kaivaa juomakuoppia, sillä niissä voi taittaa nilkkansa.
+0000000070	Päätestiin he värväsivät 20 paria hyviä ystäviä, jotka olivat samaa sukupuolta eikä ystävyyssuhde ollut luonteeltaan romanttinen.
+0000000071	Osallistujat sanoivat, että heillä oli heti ensi kertaa toisen tavatessaan tunne, että kaikki sujui luontevasti ja hyvin.
+0000000072	Useat nisäkäslajit nuuhkivat aluksi vieraita ja päättävät vasta sitten, leikkivätkö ne tuntemattoman kanssa vai välttävätkö toista.
+0000000073	Tutkimus päätyi eri kokeiden perusteella siihen, että helposti ystävystyneet parit tuoksuivat samankaltaisemmilta kuin parit, jotka oli valittu kokeeseen satunnaisesti.
+0000000074	Kun tutkijat yhdistivät kaikki viisi kuvailua, toisensa heti löytäneet parit olivat kuvailujen määreissä lähempänä toisiaan kuin satunnaiset parit.
+0000000075	Tutkijat halusivat myös testata, voiko hajujen perusteella ennustaa, miten ihmiset kokevat ensi kohtaamisen vieraan kanssa.
+0000000076	Halusin kohtuuhintaisen kanootin, jota voi kuljettaa rinkassa ja jonka kanssa voi kulkea kävellen, julkisilla liikennevälineillä ja tietenkin vesillä.
+0000000077	Tämän kerron myös jäntevälle melojapapparaiselle, joka ensin ohittaa pumppauspaikan rivakkaa vauhtia kovalla kanootilla ja tulee sitten vielä paluumatkallaan jokipätkällä vastaan.
+0000000078	Sitä on hauska katsella pieninä esiintyminä, mutta se saattaa muodostua vesistölle ja veneilijöille riesaksi suurina kasvustoina, jollaiset voivat viestiä vesialueen perusluonteisista ongelmista.
+0000000079	Uusien aurinkosähkövoimaloiden hinnat ovat nousseet kymmenen vuoden halpenemisen jälkeen, mutta maakaasun, öljyn ja hiilen hinnat ovat nousseet vielä enemmän.
+0000000080	Ruotsissa kiinalainen teknologiayhtiö Huawei kokeilee sähkön siirtoa automaattisesti ja nopeasti kotien akkujen ja sähköverkon välillä.
+0000000081	Kuluttajalle tulee mahdollisuus säästää rahaa sähköllä, muutenkin kuin vain purkamalla tai lataamalla akkua sähkön hinnan mukaan.
+0000000082	Invertteri eli vaihtosuuntaaja muuttaa tasavirran vaihtovirraksi, jota valtakunnan ja rakennusten sähköverkot ja esimerkiksi isot kodinkoneet käyttävät.
+0000000083	Norjalainen yhtiö lupaa, että ensi vuonna yksi kontillinen lauttoja tuottaa sähköä 80 kilowatin hetkellisellä teholla.
+0000000084	Paneelin vuokra on nimittäin vähän yli neljä euroa kuukaudessa, mutta hyvitys on Helenin mukaan ollut vain euron verran kuussa.
+0000000085	Anis ja mansikka ovat mainio pari, sillä aniksen hivenen lakritsimainen raikas maku ryhdistää ja mehevöittää makeaa mansikkaa.
+0000000086	Ei haittaa, vaikka osa pistaaseista jää vähän suuremmaksi rouheeksi, kunhan suurin osa pistaaseista on korppujauhon kaltaista jauhetta. 
+0000000087	Nosta kattila pois liedeltä ja lisää joukkoon pehmenneet liivatteet, joista olet puristellut ylimääräisen veden pois.
+0000000088	Se on silti haluttu ottaa väliaikaisesti käyttöön, koska ihmisissä herättää yhtä lailla kysymyksiä se, jos laituri on lähes tulkoon valmis eikä sinne saa mennä.
+0000000089	 Hän arvelee, että portaissa on syystä tai toisesta irronnut näiden jälkityötä vaativien osien väliaikaiset suojat, jolloin laituriin on jäänyt avonaiset aukot.
+0000000090	Helsingin Lauttasaareen rakennettu poikkeuksellisen kallis Särkiniemen uimalaituri avattiin uimareiden käyttöön kuukausi sitten useiden viivästysten jälkeen.
+0000000091	Silti myyrien jätökset kannattaa Luken mukaan siivota märällä liinalla, ei pölyä ilmaan nostattavalla imurilla tai harjalla.
+0000000092	Hevosvoima määritettiin tarkoittamaan eläimen tai koneen kykyä tehdä työtä, kuten nostaa jotain painavaa tietyssä ajassa.
+0000000093	Yksi hevosvoima vastaa juuri 250 kilon painon nostamista sekunnissa tai tuhannen kilon nostamista neljässä sekunnissa.
+0000000094	Meillä ihmisillä ei ole lopulta muuta vaihtoehtoa kuin oppia elämään yhdessä mikrobien kanssa, koska maailma on enemmän mikrobien kuin ihmisen maailma.
+0000000095	Koska merien ja myös järvien tilavuus on kuitenkin hyvin suuri verrattuna eläinten virtsan määrään, pissapitoisuus tyrskyjen pisaroissa on hyvin pieni.
+0000000096	Kun pieni lapsi oppii puhumaan, hänen ensimmäiset sanansa kuvaavat tai jäljittelevät sitä, mitä näkee ja kuulee paljon ympärillä.
+0000000097	Tulos osoittaa, että periaatteessa lukujen luokittelu ei vaadi suuria ja monimutkaisia aivoja, jollaiset ihmisellä on.
+0000000098	Tämä ei kuitenkaan välttämättä tarkoita sitä, että mehiläiset ja yksinkertainen hermoverkko käyttäisivät samaa mekanismia tehtävän ratkaisemiseen.
+0000000099	Tämä liike vaikuttaa myös vuorokauden pituuteen eli siihen, kunka nopeasti koko maapallo pyörii yhden kierroksen akselinsa ympäri. 
+0000000100	Näin päättelee kansainvälinen tutkijoiden ryhmä, jonka kaksi tuoretta tutkimusta höyhentävät vanhoja käsityksiä kesyn kanan alkuperästä.
+0000000101	Hiilen radioaktiivisten isotooppien avulla ikä voidaan mitata suoraan luusta, eikä sitä tarvitse päätellä ympäristön avulla.
+0000000102	Pienet kananluut nimittäin liikkuvat ja päätyvät helposti itseään vanhempien löytöjen sekaan, jolloin ne monesti ajoitetaan väärin.
+0000000103	Varhaiset kanat saattoivat olla uskonnollisesti merkittäviä, niiden munia saatettiin syödä tai ne saattoivat olla yksinkertaisesti eksoottisia lemmikkejä.
+0000000104	Vuosittain teurastetaan lähes 70 miljardia kanaa, eli suunnilleen saman verran kuin kaikkia luonnonvaraisia lintuja on yhteensä.
+0000000105	Tutkijoiden mukaan eläinten kyky sopeutua lajille epätavalliseen elinympäristöön voi tuoda toivoa niiden selviämiselle ilmastonmuutoksen muokkaamilla seuduilla.
+0000000106	Grönlannin kaakkoisosissa elää poikkeuksellinen jääkarhuryhmä, joka ei käytännössä tarvitse jäätä metsästääkseen ruokaa, kertoo yliopiston tutkimus.
+0000000107	Voimme esimerkiksi katsoa reaaliajassa miten kylläisyyden tunnetta välittävät aineet erittyvät suolistossa ja kulkevat aivoihin.
+0000000108	Aiemmissa tutkimuksissa jääkarhujen on arvioitu kuolevan ilmaston lämpenemisen takia lähes kokonaan sukupuuttoon jopa vain sadan vuoden sisällä.
+0000000109	Jääkarhuryhmä on eristäytynyt muista jääkarhuista todennäköisesti jo useita satoja vuosia sitten, ja se on pysynyt varsin pienenä.
+0000000110	Toisin kuin jääkarhut yleensä, tämän ryhmän jäsenet eivät matkusta pitkiä matkoja meren jäällä ruokaa etsien vaan pysyttelevät lähellä mannerta.
+0000000111	Nämä karhut tarjoavat tavallaan vilauksen siitä, kuinka Grönlannin karhut voivat menestyä muuttuvassa ilmastossa, hän sanoi.
+0000000112	Svensberg arvioi, ettei heitä saataisi metsästämään enempää vaan kanta voisi kasvaa entisestään, jos lajin nykyinen asema romutettaisiin.
+0000000113	Svensberg luonnehtii demonisoinniksi ja mustamaalaamiseksi sitä, että valkohäntäpeuraa alettaisiin kohdella haittaeläimenä, vaikka se on Suomen toiseksi tärkein riistalaji hirven jälkeen.
+0000000114	Siitä saatavan lihan arvoksi on laskettu Riistakeskuksessa 18 miljoonaa euroa ja virkistysarvoksi 27 miljoonaa euroa vuodessa.
+0000000115	Ilmeistä on, että valkohäntäpeurat vaikuttavat tihentymäalueilla luonnon monimuotoisuuteen ja vaarantavat paikallisesti uhanalaisten lajien säilymistä, sanoo Suomen ympäristökeskuksen vanhempi tutkija Terhi Ryttäri.
+0000000116	Suomen suurimman päiväperhosen, saaristossa elävän uhanalaisen isoapollon toukat syövät vain maksaruohoa, jonka valkohännät myös hotkivat.
+0000000117	Syödyksi ja tallotuksi on tullut esimerkiksi kauraa, ohraa ja vehnää, hernettä, perunaa, mansikkaa ja härkäpapua.
+0000000118	Leskisen mukaan kanta pitäisi saada joillakin alueilla pienenemään kolmasosaan, joillakin puoleen, jotta se olisi maatalouden kannalta kestävällä tasolla.
+0000000119	Riistakeskuksen Svensberg arvioi, että metsästäjien enemmistö ei hyväksy haitalliseksi vieraslajiksi nimeämistä eikä suostu poistamaan lajia.
+0000000120	Ainoa tie kannan vähentämiseen on hänen mukaansa nykyinen kaatolupiin perustuva suunnitelmallinen malli, johon metsästäjät on sitoutettu.
+0000000121	Heti kun ruoka on jaettu, poikaset nukahtavat uudelleen, joten emon ei tarvitse käyttää aikaa poikasten nukuttamiseen.
+0000000122	Kahlaajien, kuten kuovien ja rantasipien sekä vesilintujen, poikaset lähtevät liikkeelle heti kuoriutumisen jälkeen ja hankkivat itse ruokansa.
+0000000123	Linnunpönttökameroiden nauhoituksista näkee, että kun esimerkiksi talitiainen tulee yöpymään, pää on siiven alla ja lintu nukkumispörheänä parissa minuutissa.
+0000000124	Itse asiassa kaikki luonnonvaraiset eläimet nukahtavat yleensä helposti, kun on niiden luonnollisen rytmin mukainen unen aika.
+0000000125	Jotkut ihmiset kuitenkin kaihtavat syntymäpäivien viettoa, koska se paljastaa iän karttumisen, eikä se ole heistä myönteinen asia.
+0000000126	Emme vielä tiedä, mitä singulariteetissa tarkemmin ottaen tapahtuu, koska ihmiskunta ei ole vielä onnistunut kehittämään keinoa kuvata kunnolla sen tapahtumia.
+0000000127	Useimmat punapuun neulasista hapsottavat oksien laitahaaroissa kärkkymässä auringonvaloa, jolla ne yhteyttävät puulle ruokaa ilman hiilidioksidista.
+0000000128	Oksien tyviosien neulaset, jotka kasvavat oksanmyötäisesti, eivät sen sijaan tutkijoiden mittausten mukaan yhteytä juuri lainkaan.
+0000000129	Sen sijaan pohjoisessa, missä sadevettä virtaa riittoisammin, vedenottajat keskittyvät alemmas ja ylin latvus yhteyttää enemmän.
+0000000130	Janoa pitää ehkäistä, mutta jos vedestä ei yleensä ole pulaa, kannattaa satsata nälän ehkäisyyn eli yhteyttämiseen.
+0000000131	Antarktis, johon kuuluu esimerkiksi Etelämanner, mielletään suhteellisen puhtaaksi ja koskemattomaksi alueeksi, mutta keskiviikkona julkistetun tutkimuksen mukaan siellä sataneesta tuoreesta lumesta on löytynyt mikromuoveja.
+0000000132	Ihmiset syövät ja hengittävät tietämättään mikromuoveja, ja viime vuonna julkistetussa tutkimuksessa ilmassa liikkuvan muovisaasteen huomattiin kiertävän maapalloa ympäri.
+0000000133	He merkitsivät radiopannoilla seitsemästä susilaumasta yhden aikuisen per lauma ja seurasivat sen liikkeitä kesäkuun alusta heinäkuun loppuun.
+0000000134	Tulokset yllättivät kansainvälisen tutkijaryhmän, jossa oli Suomesta mukana Luonnonvarakeskuksen sekä Helsingin ja Jyväskylän yliopistojen tutkijoita.
+0000000135	Aiemmin on huomattu, että esimerkiksi aukeiden savannien leijonat vaihtavat pyyntipaikkaa, koska saaliseläimet näkevät kaadon ja kaikkoavat.
+0000000136	Ison revohkan ilmeisesti kannatti pysyä liikkeessä reviiriään valvomassa, ja ehkä runsas saaliin tarve tuli paremmin täytetyksi siirtymällä.
+0000000137	Esimerkiksi kahta hirveä ei kesällä usein löydä samoilta nurkilta, koska ne pitäytyvät omissa oloissaan lukuun ottamatta emoa vasoineen.
+0000000138	Nikin lauman reviiriä puolestaan pilkkovat suuret tiet ja poronhoitoalueen aita, jotka ilmeisesti ohjasivat saaliit esiintymään tietyille paikoille.
+0000000139	Suurten laumanvartijakoirien kehityksen arvellaan liittyneen karjankasvatuksen käytäntöön, jossa laumaa ohjailtiin vuodenaikojen mukaan alemmas tai ylemmäs vuorenrinteelle.
+0000000140	Tämän luontaisen ominaisuuden tukahduttaminen edellytti tutkijoiden mukaan sitä, että koirissa suosittiin voimakasta vartioimiseen tai paimentamiseen soveltuvaa käytöstä.
+0000000141	Jotkut tutkijat väittävät, että koiran kouluttaminen laumanvartijaksi tai paimenkoiraksi ei välttämättä olisi ollut erityisen hankalaa.
+0000000142	Karjan kimppuun hyökkääminen voitiin estää siten, että koira totutettiin jo pienestä pennusta lähtien karjan läsnäoloon.
+0000000143	Usein koiran läsnäolo karjalauman lähellä riittää karkottamaan pedot, joten uhkaava tilanne kärjistyy taisteluksi vain harvoin.
+0000000144	Siksi tutkijat arvioivat, että koiria on ehkä käytetty laumanvartijoina jo ennen kuin niiden koko alkoi tuntuvasti kasvaa.
+0000000145	Vaikka laivan väistäminen olisi periaatteessa helppoa, pinnalla hitaasti uiva eläin ei ymmärrä nopeasti liikkuvan laivan aiheuttamaa uhkaa.
+0000000146	Kuolemia on kuitenkin vaikea varmistaa pelkillä seurannan työkaluilla, sillä niiden avulla saadaan tietoa vasta jopa päiviä törmäyksen jälkeen.
+0000000147	Uusi lääketieteen kamera näyttää jopa, miten sydänkohtaus näkyy aivoissa – antiaineen avulla kuvataan nyt valtaosa kehosta
+0000000148	Koirien ulkonäköön liittyvät geenit ovat voimakkaasti eriytyneet rotujen välillä, mutta luonteeseen vaikuttavat perimän alueet vain vähän.
+0000000149	Uuden yhdysvaltalaisen tutkimuksen mukaan koiran rotu ei ole häävi käyttäytymisen ennustaja, mutta asia on kaikkea muuta kuin yksinkertainen.
+0000000150	Näin voisimme kliinisen työn yhteydessä kerätä tietoa siitä, millä lailla verenkierron ongelmat sydämessä vaikuttavat aivoihin.
+0000000151	Edellytykset toiselle hyvälle marjavuodelle ovat siis hyvät.
+0000000152	Vietän päivittäin aikaa merellä ja nyt viimeisen vuoden aikana erityisesti kotivesillä.
+0000000153	Siksi myös juhannusta kutsutaan yöttömän yön juhlaksi.
+0000000154	Kukkiva luonto on ollut olennainen osa juhannuksen viettoa jo talonpoikaisyhteiskunnasta lähtien. 
+0000000155	Sen tarkoituksena oli edistää viljankasvua ja nostaa malja kylvöjen kunniaksi.
+0000000156	Radiolähetinvastaanottimien tehtävä on lähettää ja vastaanottaa radiosignaaleja sekä muuttaa ne digitaalisiksi ja päinvastoin.
+0000000157	Miljardit maailmankaikkeuden galaksit eivät ole jakautuneet avaruuteen aivan tasaisesti.
+0000000158	Osa niistä on ryhminä tai rypäleinä. 
+0000000159	Jättikaari on lähes symmetrinen galaksien ja galaksijoukkojen muodostama kaari.
+0000000160	Tässä isossa kuvassa ei juuri ole eroavaisuuksia tai isoja kolhuja.
+0000000161	Tähtitieteilijät ovat jo aiemmin löytäneet useita vastaavia giganttisia rakenteita.
+0000000162	Kvasaarit ovat maailmankaikkeuden kirkkaimpia galakseja universumin varhaisilta ajoilta.
+0000000163	Näistä galakseista saapuva valo kulkee avaruuden kaasujen läpi.
+0000000164	Leivän kanssa tarjotaan täydellisesti paistettua maksaa.
+0000000165	Lampaasta valunut rasva  ja mausteet ovat hauduttaneet riisin meheväksi ja herkulliseksi.
+0000000166	Varsinkin mantereen eläimistö on kehittynyt pitkään muista erillään. 
+0000000167	Eloperäisistä maalajeista soille on muodostunut turvetta ja kangasmetsiin kangashumusta. 
+0000000168	Se on suuri lautasellinen uunissa haudutettuja lampaan osia.
+0000000169	Suurimmat joet on padottu tekojärviksi.
+0000000170	Nimen Suomi etymologiasta ei ole täyttä varmuutta.
+0000000171	Suomessa on poikkeuksellisen paljon järviä.
+0000000172	Metsätyypit ovat lähinnä havupuuvaltaisia kangasmetsiä. 
+0000000173	Maasto on luonnostaan selväpiirteistä ja varsin yksitoikkoista erämaata.
+0000000174	Puulajit ovat mänty ja tunturikoivu.
+0000000175	Tunturikoivikoissa on myös havumetsien tapaan runsaasti sieniä.
+0000000176	Alue on tyypillistä taigaa ja edustaa sen karumpaa pohjoista osaa.
+0000000177	Tunturikoivikoissa aluskasvillisuus on yleensä vaivaiskoivua ja pajua.
+0000000178	Suomen sademäärä vaihtelee voimakkaasti alueittain.
+0000000179	Pronssikaudella syntyi ja hävisi lukuisia paikallisia materiaalisen kulttuurin perinteitä.
+0000000180	Jokaisena vuodenaikana vallitsevat sille tyypilliset säätyypit.
+0000000181	Lokakuussa sää on jo yleisemmin pilvinen kuin selkeä.
+0000000182	Pronssikaudella rannikon väestö oli osa Itämeren laajempaa verkostoa.
+0000000183	Pyyntielinkeinot olivat kuitenkin vielä tärkeitä.
+0000000184	Saamen kieli hävisi hiljalleen sisämaasta suomen tieltä.
+0000000185	Yleiskuva maailmankaikkeudesta muistuttaa näin hieman repaleista pitsiverhoa.
+0000000186	Lapsiseuralaisia varten on leluilla ja kirjoilla varustettu leikkipaikka kahvilan nurkassa.
+0000000187	Keskiajalla maanviljelys vakiintuikin pääasialliseksi elinkeinoksi valtaosalle ihmisistä. 
+0000000188	Muhkeiden ja näyttäviksi puolitettujen vietnamilaisten kesärullien juju on tietenkin kastikkeessa.
+0000000189	Kahvilan sisustus on skandinaavisen neutraali.
+0000000190	Moni haagalainen on jo ehtinyt kipaista kotiin viikonlopun tuoreet leivonnaiset ja leivät.
+0000000191	Se viihtyy kosteassa maaperässä ja sietää hyvin varjoa. 
+0000000192	Mustikka marjoo heinäkuusta jopa lokakuulle kasvupaikasta riippuen.
+0000000193	Mustikan sininen väri johtuu vahakerroksesta.
+0000000194	Honolulun lennonjohto sai tiedon ja matkustajat pidettiin ajan tasalla tapahtumista.
+0000000195	Iso osa lapsista kasvaa tasapainoisiksi aikuisiksi vailla perheen ulkopuolista erityistukea.
+0000000196	Hän kävi tarkastuksessa sairaalassa tiistaina.
+0000000197	Lapset on vapautettu menemästä kouluun maanantaina.
+0000000198	Pelastuslaitos sai hyvissä ajoin tietoa tilanteesta.
+0000000199	Nainen oli seurustellut jo pitkään talossa asuvan miehen kanssa.
+0000000200	Ottelu oli puoleenväliin asti hyvin tasainen.
+0000000201	Valinnanvapauden aika koittaa vuonna kaksituhatta kaksikymmentä.
+0000000202	Suomen moottorin on käytävä kaikilla neljällä sylinterillä.
+0000000203	He olivat omien sanojensa mukaan yöpyneet bussissa.
+0000000204	Lähijunat ja Suomenlinnan lautta liikennöivät perjantaina normaalisti.
+0000000205	Yhtiö kertoi loppuvuoden tuloksestaan ennakkotietoja.
+0000000206	Työaika sijoittuu arkisin klo kuuden ja kuudentoista välille.
+0000000207	Se olisi tapahtunut vuonna kaksituhatta kahdeksan.
+0000000208	Palvelun parissa vietetty aika on vähentynyt.
+0000000209	Rakennustyömaa aiheuttaa muutoksia liikennejärjestelyihin Helsingin keskustassa.
+0000000210	Tapahtumasarja ei ollut lainkaan miellyttävä kokemus.
+0000000211	Toimintamme on alkanut vuonna kaksituhatta yhdeksän autotallissa.
+0000000212	Ylihuomenna on kesän ensimmäinen suvijuhla.
+0000000213	Helsingissä sama lippu kelpaa bussiin.
+0000000214	Ehtona kampanjan toteutumiseen oli tarpeeksi suuri osallistujamäärä.
+0000000215	Hänet sai ylennyksen ja palkankorotuksen.
+0000000216	Työllisyysaste oli joulukuun lopussa kuusikymmentä prosenttia.
+0000000217	Hara lähti kisoihin lajin rankingin sijalta kuusitoista.
+0000000218	Ihan hetkessä tätä ei pystytä kuitenkaan näin ratkaisemaan.
+0000000219	Viime eduskuntavaaleissa hän jäi varasijalle.
+0000000220	Pykälät voit lukea kokonaisuudessaan täältä.
+0000000221	Poliisi sai kuitenkin estettyä miehen pakomatkan.
+0000000222	Ohjelma jatkuu kello kuusitoista asti.
+0000000223	Se oli lapsen identiteetille hämmentävää.
+0000000224	Puhuimme toisella erätauolla siitä ja hän oli hyvillä mielin.
+0000000225	Suomen luonnosta löytyy terveellistä ruokaa.
+0000000226	Työt alkavat mahdollisimman pian sopimuksen mukaan.
+0000000227	Helmikuussa joukkueella ei ollut vielä yhtään voittoa kuuden pelatun ottelun jälkeen.
+0000000228	Vajaat kaksi vuorokautta kestäviä lakkoja järjestettäisiin yhteensä kolme.
+0000000229	Syvyys on noin yksitoista metriä.
+0000000230	Liikevaihto nousi maaliskuussa kaksikymmentäkahdeksan prosenttia.
+0000000231	Toivottavasti seuraavan kaverin nimeä ei tarvitse odottaa kahtakymmentä vuotta.
+0000000232	Heistäkin kuitenkin vain runsas viidennes pitää sitä parhaimpana tapana järjestää Suomen puolustus.
+0000000233	Se onnistuu vain puuttumalla työttömyyden kovaan ytimeen.
+0000000234	Lähetykset alkavat noin klo kaksi yöllä.
+0000000235	Töitä on tarjolla vähintään kuusikymmentä tuntia kolmessa viikossa.
+0000000236	Se surffaa edelleen suurimpana puolueena.
+0000000237	Rahavirta investointien jälkeen oli suorastaan runsas.
+0000000238	Suomessa diabeetikkojen määrä on kansainvälisesti keskitasolla.
+0000000239	Ehdotettu valtuutuksen enimmäismäärä vastaa noin yhtä prosenttia yhtiön koko osakemäärästä.
+0000000240	Hevoset ovat uljaita ja nopeita eläimiä.
+0000000241	Loppuhetkillä kumpikaan joukkue ei yrittänyt pelata.
+0000000242	Voitto tuli miesten viidenkymmenen kilometrin perinteisessä hiihdossa.
+0000000243	He suosittelevat siirtymään ajassa taaksepäin tänään.
+0000000244	Vuosien varrella alueen asemakaavan muutosta on hidastanut esimerkiksi alueelle tehty arkeologinen selvitys.
+0000000245	Se ei ole aivan mikä tahansa kurssi.
+0000000246	Helteellä nukkujan keho on siis lievässä lisärasitustilassa.
+0000000247	Kuva näkyy alta ja täältä.
+0000000248	Loimu hyökkäsi monipuolisemmin ja tasaisemmin.
+0000000249	Pelejä on pelaamatta vielä seitsemän.
+0000000250	Kuumuuteen heräily ja havahtuminen sotkee myös unen luontaisen rytmin.
+0000000251	Täynnä kirjallista hohtoa oleva esikoisromaani kuvaa perheen elämää äidin muuton jälkeen.
+0000000252	Ei mennyt niin kuin suunniteltiin.
+0000000253	Asiaa voitaisiin pitää kantajien kannalta kohtuuttomana.
+0000000254	Lyhytohjelman tuloksien kehittymistä voit seurata myös täältä.
+0000000255	Sen vuoksi tuotteita on voinut loppua.
+0000000256	Opiskelijoista ja eläkeläisistä puolet vaati virastojen aukioloaikojen laajentamista.
+0000000257	Laitteella voi tietyissä rajoissa zoomata lähemmäs kuvanlaadun kärsimättä.
+0000000258	Puolustimme silti ihan hyvin ja lopussa olimme vahvoja.
+0000000259	Yliopistojen henkilöstö antoi tiistaina lakkovaroituksen.
+0000000260	Kulutustavaroiden ja polttoaineiden tuonti laski.
+0000000261	Vältä kovaa liikuntaa ja maustettuja ruokia ennen nukkumaanmenoa. 
+0000000262	Vastaanottoon kuuluu myös juhlakonsertti ja presidentin puhe.
+0000000263	Lehtien mukaan nainen oli käynyt syksyllä kaksituhatta viisitoista poliisin puheilla.
+0000000264	Heitä yhdistää samanlainen palo ja mielenkiinto elämän ilmiöitä kohtaan.
+0000000265	Hae meille kahdeskymmenes kahdetta mennessä.
+0000000266	Lajin kehitys vaan on ollut niin hurjaa.
+0000000267	Molemmat osapuolet vastaavat ehdotukseen perjantaina.
+0000000268	Silloin paneelit alkoivat tuottaa enemmän sähköä.
+0000000269	Sen jälkeen järjestö etsii asunnolle ostajan.
+0000000270	En silti koe oloani jotenkin erilaiseksi arvokisoissa.
+0000000271	Maisan suunnittelma kukkamekko nähtiin tänä vuonna kymmenessä eri värissä.
+0000000272	Raportin mukaan hallitus ei ole saavuttamassa julkiselle taloudelle asettamiaan tavoitteita.
+0000000273	Ristolainen nappasi syöttöpisteen toisen erän maalista.
+0000000274	Viimeiset teokset valmistuivat joululoman kynnyksellä.
+0000000275	Kyselyissä suomalaiset kuitenkin sanovat kotimaisen kalan kiinnostavan.
+0000000276	He eivät ainakaan pääsääntöisesti saa rahaa pelaamisestaan.
+0000000277	Kyllä siihen harkintaan vaikuttaa nyt saamani suosio.
+0000000278	Yhtiö odottaa tälle vuodelle kymmenen prosentin liikevaihdon kasvua.
+0000000279	Heidät on sijoitettu jälkimmäiseen koneeseen.
+0000000280	Ainakin yksi tai kaksi muuta kokoomuslaista saapuu paikalle.
+0000000281	Jäätanssi on ohjelmassa tulevana maanantaina ja tiistaina.
+0000000282	Täyteläinen suklaamousse on koristeltu kultapölyllä.
+0000000283	Sisältä löytyvä suklaamuru sekä pohjan mantelinen keksi tuovat kaivattua purutuntumaa.
+0000000284	Monet metsämustikkana myytävät tuotteet sisältävät pensasmustikkaa.
+0000000285	Mustikan marjoissa on hyvin vähän hedelmähappoja.
+0000000286	Lisäksi tutkimuksessa saatiin viitteitä masennusoireiden vähenemisestä.
+0000000287	Ravintolaruuan lisäksi asiakkaat voivat nauttia musiikista ja rauhallisesta ympäristöstä ruokailun yhteydessä. 
+0000000288	Ruokaravintolan baarissa odotetaan usein pöytiin pääsyä.
+0000000289	Ravintolaa pitävä yritys on tällöin saanut alkoholin anniskeluoikeudet kyseiseen tilaan. 
+0000000290	Alkoholitarjoilua eli anniskelua ja sen mainontaa ohjaa alkoholilaki ja se on luvanvaraista.
+0000000291	Erilaiset alkuperäleimat ovat hyvin vanhoja.
+0000000292	Roomalaiset tiilileimat ovat olleet usein tutkimuksen kohteena.
+0000000293	Keskiajalla ja uuden ajan alussa metallien leimaaminen oli ajoittain jopa pakollista. 
+0000000294	Yrityksen käyttämä logo voi sisältää rekisteröidyn tavaramerkin.
+0000000295	Brändipääoma mittaa brändin kokonaisarvoa omistajalleen.
+0000000296	Kotimaisuus ja mutkattomuus muodostavat punaisen langan selkeään valikoimaan.
+0000000297	Kansallisten ja kansainvälisten virikkeiden yhdistäminen oli ominaista yritykselle.
+0000000298	Asiakkaiden houkuttelemiseksi tavaratalo tarjosi erilaisia palvelumuotoja.
+0000000299	Näkkäri ja tumma leipä lepäävät liinan alla  linjastolla.
+0000000300	Keiton lohi on viljeltyä norjalaista ja saapunut samana päivänä.
+0100000001	Miten monta kappaletta tarvitsee rakentaakseen koko palapelin?
+0100000002	Onko mustikan kukinta päättynyt koko maassa?
+0100000003	Paljonko kello on, kun lopetat työt?
+0100000004	Kuinka monta aikavyöhykettä Venäjällä on?
+0100000005	Mikä on Japanin kansalliskukka?
+0100000006	Kuinka monta raitaa Yhdysvaltain lipussa on?
+0100000007	Aiotko mennä paikan päälle seuraamaan Salpausselän kisoja?
+0100000008	Kuluuko teidän perheessä paljon maitoa päivässä?
+0100000009	Kuinka monessa päivässä Maa kiertää Auringon?
+0100000010	Mutta entä jos pelit eivät voisi vähempää kiinnostaa?
+0100000011	Millä valtiolla on eniten saaria?
+0100000012	Mikä on maailman pienin valtio?
+0100000013	Mikä on Kanadan pääkaupunki?
+0100000014	Millä slanginimellä paikalliset kutsuvat Tamperetta?
+0100000015	Kuka kuuluisa graffititaiteilija on kotoisin Seinäjoelta?
+0100000016	Minkä nimisestä maalauksesta kyseinen norjalaistaiteilija on kuuluisa?
+0100000017	Kuka maalasi Vatikaanissa sijaitsevan Sikstuksen kappelin kuuluisan kattofreskon?
+0100000018	Millä vuosikymmenellä Lontoon metro avattiin?
+0100000019	Kuka keksi internetin, ja minä vuonna?
+0100000020	Miten vointisi on tänään kaiken kokemasi jälkeen?
+0100000021	Mistä kaupungista Anne Mattila on kotoisin?
+0100000022	Mikä on kaikkien aikojen kuunnelluin kappale netissä?
+0100000023	Mikä oli Spotifyn kuunnelluin albumi vuonna 2019?
+0100000024	Mikä kuuluisa pop rock -yhtye oli alun perin nimeltään Jukan bändi?
+0100000025	Kuinka monta kosketinta pianossa on?
+0100000026	Pitäisikö hänen toimia aktiivisemmin työpaikan löytämiseksi?
+0100000027	Mitä aineksia siman valmistuksessa käytetään?
+0100000028	Mitä karnevaalitavaroita vappumarkkinoilta voi ostaa?
+0100000029	Mitkä ovat Helsingissä perinteisiä vapun juhlintapaikkoja?
+0100000030	Voisiko Manner joukkoineen yllättää myös pudotuspeleissä?
+0100000031	Kuka keksi ihmisen tekemiä hiilihapollisia juomia?
+0100000032	Minkälainen olet ja mikä sytyttää sinut?
+0100000033	Jos kykenisit käsittelemään miljardia atomia sekunnissa, kuinka kauan vuosissa kestää tyypillisen ihmisen teleportointi?
+0100000034	Lähtevätkö he kotiin yhdessä vai erikseen?
+0100000035	Kuinka monta vuotta kestää Maapallolta laukaisun avaruusaluksen saapumisen Pluton planeetalle?
+0100000036	Kuinka monta karvaa tyypillisessä ihmisen päässä on lähimpään tuhanteen?
+0100000037	Voitko nimetä kuusi suomalaista järveä tai jokea?
+0100000038	Missä pelissä sinun on kerättävä mahdollisimman monta marmoria virtahevosten kanssa?
+0100000039	Mikä on Etelä-Korean suurimman teknologiayrityksen nimi?
+0100000040	Mikä on nukke, Mollan, täydellinen nimi?
+0100000041	Kuinka monta hengitystä ihmiskeho ottaa päivittäin?
+0100000042	Mikä on Portugalin pääkaupunki?
+0100000043	Mitä ravitsemusterapeutti ajattelee liigahallien pikaruokamyynnin nakki- ja makkaravetoisuudesta?
+0100000044	Ovatko ruokakauppojen aukioloajat ovat jatkaneet laajentumistaan?
+0100000045	Missä vuonna Kummisetä julkaistiin ensimmäisen kerran?
+0100000046	Kuinka monta pelaajaa on olympialaisten jääkiekkojoukkueissa?
+0100000047	Jos maapallosta tehdään musta aukko, mikä olisi sen tapahtumahorisontin halkaisija?
+0100000048	Kuinka monta sydäntä mustekalalla on?
+0100000049	Valkoinen talo on vahvistanut tiedon valinnasta?
+0100000050	Väyrynen sanoi matkustavansa tiistaina Brysseliin?
+0100000051	Leijonat löi sen jälkeen Venäjän pronssiottelussa neljä–nolla?
+0100000052	Kukaan ei ole ostanut yhtäkään pyörää tiistaina?
+0100000053	Suomen tieverkon arvo on kaksikymmentä miljardia?
+0100000054	Voiko yksittäisissä myymälöissä verkkokaupan osuus myynnistä voi ylittää reilusti yli 10 prosenttia?
+0100000055	Sijoitus neljäskymmeneskahdes on totta kai iso pettymys?
+0100000056	Jonka se vei tylysti kaksikymmentäyhdeksän viiva seitsemän?
+0100000057	He tekivät samaa toisella puoliskolla?
+0100000058	Suomen upeat rannat ovat vielä tyhjiä?
+0100000059	Sijoittajat tulkitsivat tuoreen pääjohtajan kommentteja?
+0100000060	Vanhainkodin johto kuitenkin puolustaa päätöstään?
+0100000061	Sanna otti yhteyttä Iltalehteen luettuaan Karista?
+0100000062	Täytä sähköinen hakemus ensimmäinen kahdetta?
+0100000063	Pelastuslaitoksen saapuessa rakennus oli jo täyden palon vaiheessa?
+0100000064	Veronkorotus lisää painetta hilata sitä ylös?
+0100000065	Niskanen osoitti sen jo olympiakisojen avausmatkalla?
+0100000066	Oletko nähnyt koskaan vastaavanlaista mailaa?
+0100000067	Se ei riittänyt joukkueen voittoon?
+0100000068	Tulisko meidän ohjata lahjoitukset yleishyödylliseen tarkoitukseen?
+0100000069	Oivanen kertoi Lentopalloliiton tiedotteessa?
+0100000070	Samaa sanoo Keskon aluejohtaja Jari Alanen?
+0100000071	Suomalaiset käyttivät kilpailussa yhteensä kolme varapatruunaa?
+0100000072	Heillä on ollut hieno menestys?
+0100000073	Roolia voi vetää vain hetken ajan?
+0100000074	Kiitelty ja kiistelty Parviainen on ollut julkisuudessa yli neljäkymmentä vuoden ajan?
+0100000075	Niskanen voitti päämatkansa viidenkymmenen kilometrin perinteisen hurjalla hiihdolla?
+0100000076	Noin kolmannes Viron asukkaista asuu pääkaupungissa Tallinnassa?
+0100000077	Tasoa pitää tuntuvasti laskea tai poistaa Suomessa kokonaan?
+0100000078	Onko verkossa tehtävä kertaostos on keskimäärin selvästi suurempi kuin myymälässä?
+0100000079	Naisten jääkiekkoilussa pelataan varhain maanantaiaamuna välierä?
+0100000080	Olisiko pitänyt kehittää neljä vasta neljä -laji, jossa kenttä olisi pienempi?
+0100000081	Tähän voi jokainen meistä vaikuttaa?
+0100000082	Alun perin hakuaika päättyi kahdeksastoista tammikuuta?
+0100000083	Tänään paljastettiin sarjassa nähtävät kahdeksantoista naista?
+0100000084	Puoliajalla Suomi johti lukemin neljäkymmentä viiva kolmekymmentä?
+0100000085	Pelastuslaitos sai hälytyksen kello seitsemän neljäkymmentäyhdeksän?
+0100000086	Mihin mennessä ilmoittautumisen on oltava perillä yhtiössä?
+0100000087	Puhe alkaa Suomen aikaa kello neljä?
+0100000088	Uusi insuliini on noussut sosiaalisen median keskusteluihin?
+0100000089	Haluatko onnistua painonhallinnassa pitkällä aikavälillä?
+0100000090	Mihin kaikkiin maihin suomalainen tarvitsee viisumin?
+0100000091	Siinä ovat näiden kisojen yleisimmät logot?
+0100000092	Kenen vastuulla on siivota kahvinkeitin työpaikalla?
+0100000093	Sosiaalisen median aineistojen läpikäynti antaakin viitteitä siitä?
+0100000094	Sen oikaistu käyttökate kasvoi kaksikymmentäkuusi prosenttia?
+0100000095	Puhelinta on kehitetty yhteistyössä vuoden verran?
+0100000096	Kaivos on tuomassa paikkakunnalle kipeästi kaivattuja työpaikkoja?
+0100000097	Kaikki urheilijat eivät edes tiedä sellaisten olemassaolosta?
+0100000098	Saavatko ulkomaiset toimijat liian suuret valtuudet?
+0100000099	Niistä suurin osa hoitaa kuljetuksia satamiin?
+0100000100	Koska esitys on saanut siitä myös nimensä?
+0200000001	Tytön viimeisessä viestissä luki: "Hyvää syntymäpäivää!"
+0200000002	Tällaiset leikit ovat hauskoja!
+0200000003	Elämä on tarua ihmeellisempää!
+0200000004	Älkää koskaan unohtako kansalaisia!
+0200000005	Eka ja vika kerta!
+0200000006	Onpa upea punainen väri uudessa autossasi!
+0200000007	Tsekkaa täältä joulukuun tärpit!
+0200000008	Voi pyhä yksinkertaisuus minkä teit!
+0200000009	Ja niin uusi olympiaennätys on syntynyt!
+0200000010	Uudet saappaat pitäisi saada!
+0200000011	Emme voi mennä sinne!
+0200000012	Siinähän sinä oletkin Maisa!
+0200000013	Suomi voitti tänään kultaa!
+0200000014	Kalleimmat talot voivat maksaa jopa miljoonia euroja!
+0200000015	Tämäpä oli mahtava yllätys meille kaikille!
+0200000016	Uskomatonta, mutta totta koko tarina!
+0200000017	Paljon onnea valmistumisen johdosta Riikka-Kaisa!
+0200000018	Myöhäistä itkeä, kun maito on jo kaatunut!
+0200000019	Saat tuoreimmat sisällöt suoraan sähköpostiisi!
+0200000020	Katso yllä olevalta videolta pätkä jaksosta!
+0200000021	Kesätekemistä laiturin nokkaan tai illanviettoon!
+0200000022	Testaa tietosi ja osallistu arvontaan!
+0200000023	Katso koko Huomenta Suomen keskustelu aiheesta!
+0200000024	Katso yllä olevalta videolta keskustelua laihduttamisen keinoista ja sen tarpeellisuudesta!
+0200000025	Lue alla oleva juttu vasta testin tekemisen jälkeen!
+0200000026	Luvassa on varmasti elämyksellinen ilta!
+0200000027	Katso kohtaus tiistain jaksosta artikkelin yllä olevalta videolta!
+0200000028	Tämän ei pitäisi olla mahdollista!
+0200000029	Katso kohtaus keskiviikon jaksosta artikkelin yllä olevalta videolta!
+0200000030	Jos tunnistat edellä mainitusta itsesi, haluamme ehdottomasti kuulla Sinusta!
+0200000031	Lue alla olevat vinkit ja ota punajuuresta kaikki irti!
+0200000032	Katso yllä olevalta videolta, miksi sinunkin pitäisi harrastaa liikuntaa!
+0200000033	Miksipä ei, jos ajatellaan monen muun lajin evoluutiota!
+0200000034	Katso yllä olevalta videolta keskustelua astman ja allergioiden lisääntymisestä!
+0200000035	Älkääkä ehdottako ratkaisuksi sitä, että harrastajat siirtyisivät muihin lajeihin!
+0200000036	Katso yllä olevalta videolta koskettava hetki, kun pariskunta kosii toisiaan samaan aikaan!
+0200000037	Lue alta lisää, millaisia paikkoja ohjelmassa on tarjolla ja hae mukaan!
+0200000038	Mikäli tämä kuulosti sinulta, hae paikkaa mahdollisimman pian alla olevan linkin kautta!
+0200000039	Töitä on tarjolla aamusta iltaan, lähetä hakemuksesi meille ja kerromme lisää!
+0200000040	Olen myös ehdolla kevään 2019 eduskuntavaaleissa!
+0200000041	Katso yllä olevalta videolta, mikä yllätti toimittajan, kun unen laatu laitettiin testiin!
+0200000042	Jos vastasit KYLLÄ, tämä saattaa olla sinulle sopiva työpaikka!
+0200000043	Katso, miten mies suoriutui käärmeen kanssa artikkelin yllä olevalta videolta!
+0200000044	Sinä olet eri mieltä kaikesta!
+0200000045	Tule tekemään kanssamme muutosta ja vaikuttamaan!
+0200000046	Hyville tekijöille on mahdollisesti tarjolla töitä myös pidemmäksi aikaa!
+0200000047	Tämä on todella jännittävää, enhän mä ole koskaan tehnyt mitään tällaista!
+0200000048	Me tarjoamme nyt paikan tulla kasvamaan ammattilaiseksi hyvässä seurassa!
+0200000049	Ilman sitä meille ei tule joulua, ja meillä on pakko olla mansikoita!
+0200000050	Seuraavalla kerralla sitten viisi kierrosta täyteen!
+0200000051	Katso videolta, milloin on syytä mennä ammattilaisen puheille, jos harkitsee uuden työpaikan hankkimista!
+0200000052	Älä astu nurmikolle, se on vastaleikattu!
+0200000053	Katso uudet pilalle menneet kohtaukset!
+0200000054	Voit olla jo kokenut konkari tai vasta alalle haluava!
+0200000055	Tässä voisi olla juuri sinulle sopiva seuraava haaste!
+0200000056	Tällä tahdilla uusi pyörä päätyy uudelle omistajalle vain reilun vuoden välein!
+0200000057	Hän ei voinut olla tosissaan!
+0200000058	Onnea kevään uudelle ylioppilaalle!
+0200000059	Kun kuulin siitä, en ollut uskoa, että se oli totta!
+0200000060	Harrastajille voisi kehitellä turvallisempia pelimuotoja, joissa kentällä on vähemmän pelaajia!
+0200000061	Tämä jakso on tarkoitettu ensisijaisesti sinulle jota jääkiekko ei kiinnosta tippaakaan!
+0200000062	Jos olet fyysisesti hyvässä kunnossa sekä oma-aloitteinen voit olla etsimämme henkilö!
+0200000063	Eihän tällaista pitänyt olla odotettavissa, jos keskusta voittaa eduskuntavaalit 2015!
+0200000064	Niin ja ota mukaan herkulliset eväät!
+0200000065	Tärkeintä on, että annetut työtehtävät hoituvat tunnollisesti ja reippaasti hyvällä asenteella!
+0200000066	Tämä on suuri päivä eläinten hyvinvoinnille Saksassa!
+0200000067	Vapautta ja sen mukaista vastuuta siis yllin kyllin!
+0200000068	No, kaikki varmaan muistavat mitä näiden kahden levyn kohdalla tapahtui!
+0200000069	Ulkomailla tulee edustajasta se käsitys, että suomalaiset ovat venäläisiä!
+0200000070	Ilmoita, miten sinulle parhaiten sopisi!
+0200000071	Laita meille hakemuksesi ja vakuuta meidät miksi Sinut pitäisi valita meille töihin!
+0200000072	Mikäli haluat olla osa innostavaa työympäristöä, hae meille töihin!
+0200000073	Katso koko kierroksen anti jutun videolta!
+0200000074	Työ huoltoasemalla on todella monipuolista, eikä yksikään päivä ole täysin samanlainen!
+0200000075	Se oli henkisesti ja fyysisesti tosi raskasta, mutta mahtava kokemus!
+0200000076	Reissuun viikonloppuna alle 200 eurolla!
+0200000077	Katso videolta, miltä 30 metrin syvyyteen vajonnut hylky näytti pelastajien silmin!
+0200000078	Silloin voi olla varma siitä, että kevät on viimeinkin tullut!
+0200000079	Mitä kaikkea me naiset olemmekin valmiit kokemaan kauneuden vuoksi!
+0200000080	Suuntaa kohti keltaista ja jätä hakemuksesi jo tänään!
+0200000081	Mutta ne, joilla olisi mahdollisuus vaikuttaa, puhuvat yhtä ja tekevät toista!
+0200000082	Hae paikkaa pian, sillä täytämme paikan niin pian kuin mahdollista!
+0200000083	Kerta toisensa jälkeen luova prosessi kulkee kaaoksesta järjestykseen ja ahdistuksesta iloon!
+0200000084	Eikö tämä paljasta sen, että he voittavat!
+0200000085	Jos kiinnostuit, laita HETI hakemusta sisään, sillä työt alkavat heti!
+0200000086	Voi, meillä on niin paljon pohdittavaa!
+0200000087	Mutta parasta tietysti on, ettei valitse ollenkaan, ja pitää molemmat!
+0200000088	Paikat täytetään heti oikeiden hakijoiden löydyttyä, joten laita rohkeasti hakemusta tulemaan!
+0200000089	Lähetä hakemuksesi meille pian, sillä paikat täytetään heti sopivien henkilöiden löydyttyä!
+0200000090	Jokainen ihminen on arvokas ja haluan kaikille oululaisille hyvän elämän!
+0200000091	Liity joukkoomme rakentamaan tulevaisuuden menestystarinoita!
+0200000092	Kaikki finaalin maalit on katsottavissa jutun lopusta löytyvistä linkeistä!
+0200000093	Paikka täytetään heti sopivan henkilön löydyttyä, joten laitahan hakemusta tulemaan!
+0200000094	Työssä on mahdollisuus aloittaa heti!
+0200000095	Mahtavaa kuinka pitkälle jaksoimme pyöräillä tänään!
+0200000096	Et ole yksin, minä olen täällä!
+0200000097	Heitä meille hakemus linkin kautta mahdollisimman pian, niin jatketaan keskustelua!
+0200000098	Sinulla voi kuitenkin olla mahdollisuus saada jatkoa töille Kappelissa vuoden vaihteen jälkeenkin!
+0200000099	Voi Sauli, Sauli, minkä menit tekemään!
+0200000100	Jos vastasit kyllä, paikka Kappelin tiimissä voi olla juuri sinun!
+0300000001	Kuulamörssäri työnsi huikean M E :n kisoissa.
+0300000002	F C Honka etsii valmennuspäällikköä.
+0300000003	Eteläisen Floridan N H L -joukkue nousi tällä kaudella varjoista parrasvaloihin.
+0300000004	Jussi Nuorela korvaa Jukka Karjalaisen V P S :n päävalmentajana.
+0300000005	F F Jaro nousi Ykkösen kärkipaikalle.
+0300000006	Kokemukset U E F A :sta ovat olleet loistavat.
+0300000007	Sarjakärki E I F saa vieraita Helsingistä.
+0300000008	M P yrittää nousta jumbosijalta perjantaina.
+0300000009	P J K :n toiminnanjohtaja ottaa uuden joukkueen vastaan innostuneesti. 
+0300000010	A C E :n joukkue on enemmän kuin tervetullut Pirkkalaan!
+0300000011	U N C tunnetaan menestyksekkäänä yliopistojoukkueena.
+0300000012	H J K :ta edustanut Annika Huhta pelaa tänään viimeisen ottelunsa.
+0300000013	F C K T P on kaikille edellä mainittuun ikäluokkaan kuuluville pelaajille avoin.
+0300000014	Avoimen A M K :n polkuopintojen haku käynnistyy.
+0300000015	Lipunmyynti Huuhkajien syksyn M M -karsintaotteluihin alkaa maanantaina.
+0300000016	K P V :n joukkue ei päässyt matkustamaan Helsingistä.
+0300000017	Aamun V R -junavuoro peruttiin veturinkuljettajien lakon takia.
+0300000018	Modernan R N A -rokotteita tulee heinä-elo-syyskuussa.
+0300000019	T H L :n Mia Kontio sanoo, että myös Suomessa kolmansia annoksia suunnitellaan.
+0300000020	Suomi on mukana E U :n hankinnoissa lisäannoksia varten.
+0300000021	R U K :n priimus jätti kuuluisan juoksutestin kesken.
+0300000022	S A K varoittaa liian suurista palkankorotuksista.
+0300000023	S T T K :n pääekonomisti korostaa, että palkkojenkin nousua tarvitaan.
+0300000024	Elinkeinoelämän keskusliitossa E K :ssa saatu etumatka nähdään aivan toisin.
+0300000025	Amadeus on S A S :n paikkavarauksia ja muita matkapalveluita ylläpitävä järjestelmä.
+0300000026	Uutistoimisto A P :n mukaan demokraatit tähtäävät nyt myös terveydenhuolto-ohjelman uudistamiseen.
+0300000027	P C R -testejä ei kuitenkaan koskaan lähetetty laboratorioon analysointia varten.
+0300000028	H X -hävittäjähankkeen lopulliset tarjoukset saapuivat.
+0300000029	M P K :n valtionapu on toistaiseksi keskeytetty.
+0300000030	Rajavartiolaitoksen M V X -hankkeen tavoitteena on korvata nykyiset koneet uusilla.
+0300000031	H U S kilpailutti jopa 92 miljoonan laitehankinnat.
+0300000032	Sairaanhoitopiiri joutui kilpailuttamaan I T -laitteidensa hankinnat etuajassa.
+0300000033	Pörssitiedotteessa oli hinnan yksiköksi ilmoitettu U S D.
+0300000034	U P M :n korjatun tiedotteen sisältö oli yllätys.
+0300000035	Helsingin Pörssin osakeindeksit laskivat U S A :n keskuspankkiirien nostettua inflaatio-odotuksiaan.
+0300000036	Päästrategi finanssiyhtiö Q M A :lta kommentoi asiaa.
+0300000037	Teemasijoittaminen on yksi lähestymistapa vastuullisessa sijoittamisen ja se onnistuu E T F :ien kautta.
+0300000038	Yhdysvaltain suurin ostoskeskusoperaattori hakee konkurssiin, kertoo C N N.
+0300000039	P R E I T oli hakeutunut konkurssiin jo viime vuonna.
+0300000040	Samalla matkapuhelinverkot ovat korostuneet I O T :n yhteystekniikkana.
+0300000041	Suomessa on lähes koko maan kattava L T E - M -verkko.
+0300000042	D N A on yksi Suomen johtavista tietoliikenneyhtiöistä.
+0300000043	I M S -yhtiön uusissa tiloissa työympäristösuunnittelu on viety huippuunsa.
+0300000044	N K -logistiikan kyydissä elintarvikkeet kulkevat aina Helsingistä Nuorgamiin.
+0300000045	Tänä vuonna se supistuu lähes 13 prosenttia, arvioi talousjärjestö O E C D.
+0300000046	Yhteisvastuu on nimittäin jo olemassa Euroopan keskuspankin E K P :n kautta.
+0300000047	Euroopan markkinoiden sulkeutuessa Saksan D A X laski 1,78%.
+0300000048	P H P on lyhenne nimestä hypertekstin esikäsittelijä.
+0300000049	H T M L on koodikieli, joka toimii internetsivuilla.
+0300000050	Tämän sivun koodit toimivat suurella varmuudella myös X H T M L -merkintäkielessä.

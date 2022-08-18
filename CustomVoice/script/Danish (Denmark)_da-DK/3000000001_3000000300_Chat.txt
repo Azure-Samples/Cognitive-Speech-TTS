@@ -1,0 +1,300 @@
+3000000001	Jeg synes, det er meget godt.
+3000000002	Ja, det vil jeg også sige.
+3000000003	Jeg hørte nogle slemme ting om dig.
+3000000004	Jeg hørte noget dårligt om dig.
+3000000005	Ja, hvor har du hørt det fra?
+3000000006	Vi planlagde det meget godt.
+3000000007	Sophie, Olafs datter, fortalte mig det.
+3000000008	Spurgte du, hvorfor hun var vred på mig?
+3000000009	Skal jeg fortælle dig sandheden?
+3000000010	Ja, det ville jeg være meget glad for.
+3000000011	Hun ville have penge fra mig.
+3000000012	Hvad sagde hun helt præcist?
+3000000013	Du skal ikke stole på nogen.
+3000000014	Hvad vil du gøre nu?
+3000000015	Ønsk Katrine og tre andre tillykke med fødselsdagen!
+3000000016	Jeg tror, du får omkring 100 kroner.
+3000000017	Jeg vil kræve en masse penge for det.
+3000000018	Hans datter fik en advarsel fra skolen i går.
+3000000019	Hvorfor modtog hun en påmindelse?
+3000000020	Hun bestilte noget online, og så betalte hun ikke.
+3000000021	Hvad er det for en familie?
+3000000022	Hun skulle betale 50 kroner.
+3000000023	Hvorfor kan hun ikke blot returnere pakken der?
+3000000024	Det forsegler i hvert fald hele vejen rundt og puffer det op.
+3000000025	Jeg har ikke set hende i lang tid.
+3000000026	Jeg talte med hende i sidste uge.
+3000000027	Katrine var en hårdtarbejdende pige.
+3000000028	Hvad har forældre overhovedet at sige?
+3000000029	Ja, det er jeg enig i.
+3000000030	Jeg forstår ikke, hvilket århundrede de kommer fra.
+3000000031	De fleste forældre vil have deres børn i skole.
+3000000032	Præcis, mine forældre sender mig endda til et eliteuniversitet og betaler for det.
+3000000033	Det kan du også fortælle hende.
+3000000034	Ja, de er meget fattige, og de har ikke engang et hus.
+3000000035	Ifølge en undersøgelse er børn fra akademiske familier altid bedre uddannede.
+3000000036	Broren er læge, og han har mange penge.
+3000000037	Du forstod mig ikke i begyndelsen.
+3000000038	Hvor bor han i øjeblikket?
+3000000039	Han skændtes også med Sarah.
+3000000040	Jeg kan stadig ikke tro det.
+3000000041	Det er lige meget, fordi hun løj for hans bror.
+3000000042	Ved du overhovedet, hvad du taler om?
+3000000043	Hvilket spørgsmål taler du om?
+3000000044	Hvorfor gør broren ikke noget?
+3000000045	Hvem har fortalt dig det?
+3000000046	Nej, men det er ikke så alvorligt for mig.
+3000000047	Jeg kontakter broren og Emma.
+3000000048	Mine forældre er begge undervisere.
+3000000049	På en eller anden måde er du meget omsorgsfuld.
+3000000050	Jeg tror ikke hvad Mathilde gjorde er rigtigt.
+3000000051	Selv hvis de havde en sag, er det et alvorligt emne.
+3000000052	Da Tom var ude, stjal hun tyve tusind kroner fra ham.
+3000000053	Det kom ud senere, og hun  indrømmer det stadig ikke.
+3000000054	Det er ingen grund til ikke at støtte sin lillesøster.
+3000000055	Jeg tror ikke, du har det godt.
+3000000056	Jeg spiste hos Frida, og de kender Antons familie, og Frida fortalte mig det der.
+3000000057	Hvorfor var du overhovedet sammen med familien?
+3000000058	Hvad har ændret din mening?
+3000000059	Familien er virkelig rar, og jeg føler jeg er en del af dem.
+3000000060	Kan du besvare mit spørgsmål?
+3000000061	Frida har reddet mit liv.
+3000000062	Hvad var det der, der reddede dit liv?
+3000000063	Jeg var på gaden, og en bil forsøgte at køre mig over.
+3000000064	Jeg vil vide det i detaljer.
+3000000065	Det ville jeg være meget interesseret i.
+3000000066	Ja, men jeg ved ikke, om de vil acceptere dig.
+3000000067	Jeg kan stadig tænke rationelt.
+3000000068	Er hun stadig i live?
+3000000069	Lene skændtes med Tine og Frederik.
+3000000070	Hvorfor tror du på hende?
+3000000071	Det kan jeg ikke sige.
+3000000072	Jeg er Cecilies bedste ven og også din bedste ven.
+3000000073	Du er nødt til at fortælle mig det.
+3000000074	Ja, men Frida forbød mig det.
+3000000075	Hvis du ikke fortæller mig det, vil jeg ikke tale med dig mere.
+3000000076	Så vil jeg ikke lave noget sammen med dig mere.
+3000000077	Ja, men jeg vil ikke fortælle alt.
+3000000078	Hvis du ikke fortæller mig det, har du et problem.
+3000000079	Mine forældre burde tale med deres forældre.
+3000000080	Nej, sig det ikke til Frida, ellers siger hun det til Andreas.
+3000000081	Desuden påvirker det os ikke.
+3000000082	Nej, det lover jeg dig.
+3000000083	Ja, det handler om de negative sider af familien.
+3000000084	Nej, jeg vil vide alt.
+3000000085	Okay, jeg fortæller mere.
+3000000086	Men det bliver mellem os.
+3000000087	Jeg siger det ikke til nogen.
+3000000088	Som følge heraf blev hun udelukket fra familien.
+3000000089	Hvordan kan du elske denne familie så meget?
+3000000090	Hvor skal den være henne i jeres hjem?
+3000000091	Nej, Kasper er bange for Lise.
+3000000092	At overraske nogen med blomster er meget mere end en enkel gave. 
+3000000093	Mads er startet på sit studie nu.
+3000000094	Nej, hun er på et andet universitet.
+3000000095	Hvad laver de andre fyre i familien?
+3000000096	Ida sover altid, fordi hun er syg.
+3000000097	Hun blev opereret i går.
+3000000098	Hun har en alvorlig sygdom.
+3000000099	Hun havde migræne, og der var en svulst i hendes hjerne.
+3000000100	Forløb hendes operation godt, og hvordan har hun det nu?
+3000000101	Nu er hun hjemme igen, og hun klarer sig rigtig godt.
+3000000102	Jeg vil vide, hvor Lukas er.
+3000000103	Jeg er din bedste ven.
+3000000104	Jeg synes, det er godt, at hun er sammen med sin tante nu.
+3000000105	Hun kan komme sig bedre der.
+3000000106	Jeg så Tobias for nylig ved svømmebassinet.
+3000000107	Ja, vi har stadig kontakt med hinanden.
+3000000108	Han er meget social og hjælpsom.
+3000000109	Hvad slag kæreste er du?
+3000000110	Han er snart færdig med sine jurastudier.
+3000000111	Jeg er stolt af ham.
+3000000112	Han er meget rig og ejer tre biler og har tre huse.
+3000000113	Ville han ikke være læge?
+3000000114	Nej, han fandt det kedeligt, og at det var under hans niveau.
+3000000115	Men han havde også psykiske problemer i sin ungdom.
+3000000116	Jeg troede, at han ville studere medicin.
+3000000117	Det ved jeg ikke nu.
+3000000118	Ja, da vi gik på samme skole, var han syg.
+3000000119	Nu har han det fint.
+3000000120	Ja, han fik også hjælp.
+3000000121	Alle har hårde tider i livet.
+3000000122	Ja, men jeg har altid troet, at han ikke havde nogle problemer med ham.
+3000000123	Jeg kan stadig huske det.
+3000000124	Ja, men han fortalte det heller ikke til os.
+3000000125	Ja, jeg kan godt forstå det.
+3000000126	Men på det seneste er han også lidt underlig.
+3000000127	Jeg har ikke set dem i lang tid.
+3000000128	Men jeg har ingen kontakt med dem mere.
+3000000129	Er der en særlig grund?
+3000000130	Han behøver ikke fortælle det.
+3000000131	Helt ærligt, det interesserer mig ikke.
+3000000132	Min far købte et hus og vil arbejde der.
+3000000133	Hvad synes din familie om familien?
+3000000134	Min familie har store problemer med dem.
+3000000135	Kan vi ikke afslutte emnet nu?
+3000000136	Jo, selvfølgelig kan vi afslutte emnet.
+3000000137	Hvilken Mette mener du det er?
+3000000138	Han var nødt til at tage en masse medicin.
+3000000139	Ja, hun er i praktik i Indonesien.
+3000000140	Nej, hun er lige blevet gift.
+3000000141	I går sendte hun mig et billede, der viste hvordan hun arbejdede.
+3000000142	Han håndterede sin sygdom godt.
+3000000143	Ja, hun giftede sig også i Indonesien.
+3000000144	Nu kan jeg huske det.
+3000000145	Hun blev gift i sidste uge i mandags
+3000000146	Jeg synes det er meget modigt af hende.
+3000000147	Hendes brudekjole var virkelig smuk.
+3000000148	Hvilke slags variationer er der i naturen?
+3000000149	Ja, manden er en læge, og han er også meget berømt.
+3000000150	Du behøver ikke fortælle mig det.
+3000000151	Hvordan kan du vide det?
+3000000152	Ja, jeg var i Indonesien et stykke tid, og han var min assistent.
+3000000153	Ja, det er rigtigt, at du engang fortalte mig det.
+3000000154	Han fik et godt jobtilbud der.
+3000000155	Kan hun virkelig tale sproget.
+3000000156	Nej, de taler engelsk med hinanden.
+3000000157	Men hun vil lære det meget hurtigt.
+3000000158	Hun er en meget ambitiøs person, og meget selvsikker.
+3000000159	Hendes mand er også fra Indonesien.
+3000000160	Ja, jeg kunne rigtig godt lide hende.
+3000000161	Hvem kunne du ikke lide fra dine skoledage?
+3000000162	Jeg har fået utrolig mange gode naturoplevelser ved at tilbringe al den tid i skoven sammen med dyrene.
+3000000163	Jeg kunne heller ikke lide hende.
+3000000164	Hvorfor kunne du ikke lide hende?
+3000000165	Jeg kunne ikke lide hende af samme grund
+3000000166	Jeg har aldrig brudt mig om hende.
+3000000167	Men det behøver du ikke at gøre!
+3000000168	Hvad skete der med hende?
+3000000169	De plejede at være meget rige, og nu er de meget fattige.
+3000000170	Går vi på samme universitet?
+3000000171	Jeg så hende i byen for nylig, og vi talte lidt sammen.
+3000000172	Hvad talte i med hinanden om?
+3000000173	Nu bor de i en lille lejlighed.
+3000000174	Hvor stort er universet?
+3000000175	Jeg har også ondt af hende.
+3000000176	Jeg ved ikke, hvordan hun vil håndtere sit liv.
+3000000177	Jeg er nysgerrig efter at vide, hvad du vil sige.
+3000000178	Jeg håber ikke det er dårligt.
+3000000179	Hun er stadig meget smuk og slank.
+3000000180	Hvor mange søskende var de?
+3000000181	Vi kommer til at spise flere bælgfrugter i fremtiden.
+3000000182	Når vi taler om bælgfrugterne, er det oftest de tørrede ærter, bønner, linser og så videre, som er i fokus.
+3000000183	Jeg tager nok tilbage til byen i morgen.
+3000000184	Vil du møde hende?
+3000000185	Ja, vi mødes igen i morgen, og du er også velkommen.
+3000000186	Skal jeg købe noget til hende?
+3000000187	Jeg vil give hende en blomst.
+3000000188	Det gør mig bare ked af det.
+3000000189	Ikke desto mindre har jeg ondt af hende.
+3000000190	Det ville jeg ikke turde.
+3000000191	Han var meget slem i skolen.
+3000000192	Jeg synes, det er fedt af ham.
+3000000193	Ja, jeg er også meget spændt.
+3000000194	Hvor mange arter er der egentlig på jorden?
+3000000195	Han var ude for et trafikuheld.
+3000000196	Hvad skal jeg sige til det?
+3000000197	Det ville være meget rart, fordi han er meget ked af det.
+3000000198	Det hørte jeg heller ikke.
+3000000199	Jeg vil gerne deltage  i morgen, da det er hans sidste dag i Tyskland.
+3000000200	Vi kan gøre det på denne måde.
+3000000201	Hvordan ved du så meget?
+3000000202	Jeg skrev til ham i går, og så fortalte han mig alt.
+3000000203	Men vi kan give ham et tæppe.
+3000000204	Om sommeren vil det mange steder i supermarkeder og ved vejboder være muligt at købe grønne ærter i bælg.
+3000000205	Jeg var der et stykke tid.
+3000000206	Kender du en bedre grund?
+3000000207	Det aner jeg ikke noget om.
+3000000208	Du behøver ikke lyve for mig.
+3000000209	Jeg vil ikke fortælle dig årsagen.
+3000000210	Hvorfor vil du ikke fortælle mig årsagen?
+3000000211	Det finder jeg meget trist.
+3000000212	Nej, fortæl mig det nu.
+3000000213	Moderen har skizofreni og måtte gå til psykiater.
+3000000214	Ja, jeg synes også, det er meget sørgeligt.
+3000000215	Finn nægter at sige mere.
+3000000216	Ja, I har kendt hinanden siden børnehaven.
+3000000217	Vi er meget gode og nære venner.
+3000000218	Du har ikke meget kontakt længere.
+3000000219	Fordi han bare har brug for tid til sig selv.
+3000000220	Det er en meget vanskelig tid.
+3000000221	Jeg håber, han snart får det bedre.
+3000000222	Hej, hvad skal du lave i dag?
+3000000223	Jeg skal ud og shoppe i dag, hvad skal du?
+3000000224	Jeg er nødt til at gøre rent, og derefter lave mad.
+3000000225	Hvordan var din skiferie i går?
+3000000226	Det var meget koldt, men vi havde en masse sjov.
+3000000227	Hvad tog du med dig?
+3000000228	Jeg tog meget med mig.
+3000000229	Okay, jeg skal også stå på ski i morgen.
+3000000230	Har du allerede købt mig en gave?
+3000000231	Det er første gang, jeg hører det.
+3000000232	Alle venner køber noget til hinanden i morgen.
+3000000233	Hvorfor fejres sådan en dag?
+3000000234	For at vennerne ikke glemmer hinanden, fejrer de det.
+3000000235	Sidste sommer fejrede jeg dagen med Mie.
+3000000236	Du ved altid mere end mig.
+3000000237	Nej, vi fejrer dagen sammen.
+3000000238	Hvorfor har du ikke kontakt mere?
+3000000239	Jeg vil give hende en vase.
+3000000240	Det er heller ikke noget problem for mig.
+3000000241	Hvornår kommer Tom og Pia fra universitetet?
+3000000242	De kommer fra universitetet omkring trettenhalvtreds.
+3000000243	Jeg hørte, du var på hospitalet i sidste uge.
+3000000244	Ja, jeg havde en infektion i øret.
+3000000245	I går var jeg i biografen med nogle venner.
+3000000246	Er juice fra koncentrat lige så sundt som friskpresset?
+3000000247	Som jeg sagde, var jeg allerede i biografen i går.
+3000000248	Hvad slags mad vil du lave i dag?
+3000000249	Jeg laver grøntsager i dag.
+3000000250	Har du allerede gjort rent i haven?
+3000000251	Nej, det må jeg begynde med.
+3000000252	Jeg tager måske hen til svømmebassinet.
+3000000253	Gik du allerede tur med din hund?
+3000000254	I morgen skal jeg på universitetet.
+3000000255	Hvis du vil, kan du gå alene.
+3000000256	Det ville ikke være et problem for mig.
+3000000257	Jeg har ikke været i vandet i lang tid.
+3000000258	Har du allerede kørekort?
+3000000259	Jeg har ikke haft tid på det sidste.
+3000000260	Jeg begyndte i sidste uge, men jeg synes det er meget stressende.
+3000000261	Jeg aner ikke, hvordan man gør.
+3000000262	Du skal bare gå derhen og tage dit identitetskort med dig.
+3000000263	Jeg troede, det var mere kompliceret.
+3000000264	Har du allerede taget øjenprøven?
+3000000265	Nej, jeg vidste ikke, vi havde brug for en synsprøve.
+3000000266	Hvis du kan køre bil, vil din hverdag også være lettere.
+3000000267	Det er derfor, jeg skal handle i dag.
+3000000268	Hvordan ser din hverdagsrutine ud?
+3000000269	Hvad skal du i morgen?
+3000000270	Jeg står op om morgenen og spiser altid morgenmad.
+3000000271	Det første jeg gør om morgenen, er at tage et bad
+3000000272	Så har jeg en meget sund morgenmad, og derefter gør jeg mig klar til dagen.
+3000000273	Det synes jeg er meget interessant, og hvad laver du ved middagstid?
+3000000274	Jeg tror, du læser en masse bøger.
+3000000275	Ved middagstid går jeg på universitetet for at lære.
+3000000276	Jeg spiser det meste af tiden min frokost i cafeteriet.
+3000000277	Hvordan ser dine middage ud?
+3000000278	Om aftenen kommer jeg hjem og spiser min middag.
+3000000279	Så gør jeg mig klar til at gå i seng og ser som regel en eller anden serie.
+3000000280	Om aftenen tager jeg altid et brusebad, og derefter drikker jeg så en kop kaffe.
+3000000281	Så børster jeg tænder, og går i seng.
+3000000282	Hvordan ser din ugentlige indkøb ud?
+3000000283	Jeg køber altid frisk mad, så mel, sukker og slik køber jeg kun i weekenden.
+3000000284	Har han fortalt dig noget?
+3000000285	Jeg synes bare, plastikposerne er forfærdelige.
+3000000286	Det er derfor, jeg bruger bomuldsposer.
+3000000287	Din pool er bare fantastisk.
+3000000288	Nej, jeg synes stadig, det er koldt.
+3000000289	Måske arrangerer jeg en pool-fest.
+3000000290	Det skal være varmere først.
+3000000291	Jeg inviterer nogle venner fra universitetet og familien.
+3000000292	Men jeg keder mig bare.
+3000000293	Jeg kender ikke så mange.
+3000000294	Ja, selvfølgelig har jeg mange venner.
+3000000295	Jeg synes, ideen er rigtig god.
+3000000296	Du kan gøre din hverdag lidt anderledes.
+3000000297	Du har ikke foreslået noget endnu.
+3000000298	Prøv at dekorere dit værelse.
+3000000299	Ja, jeg har tænkt over det.
+3000000300	Jeg malede et billede og hængte billedet op.

@@ -1,0 +1,300 @@
+4000000001	Tilaa elokuvia, pelejä, pelitarvikkeita ja muuta helposti nettisivuiltamme.
+4000000002	Tilaa julisteet ja sisustustaulut suoraan kotiin Artiksilta.
+4000000003	Tällä viikolla saat korotetun bonuksen kaupastamme, sekä 10 euroa alennusta kun tilaat 60 eurolla.
+4000000004	Hotellin kevätale on käynnissä, tarjoamme jopa 25% alennuksen.
+4000000005	Saat nyt oppikirjoista ja kurssikirjoista 10 prosentin alennuksen, kun käytät alekoodia.
+4000000006	Iso roiskevesitiivis ja lukittava säilytyslaatikko veneeseen, mökille tai autotalliin.
+4000000007	Kesän ale tuo mukanaan kaikenlaista mukavaa pienille ja suurille eläinystäville, tervetuloa!
+4000000008	Ale on pärähtänyt käyntiin sekä verkkokaupassa että myymälöissä!
+4000000009	Myymälöissämme vaatteiden ja asusteiden tasarahapäivät ja paljon muuta.
+4000000010	Innovatiivinen skannaustila mahdollistaa eri kohteiden etäisyyksien mittaamisen välittömästi keskellä toimintaa.
+4000000011	Nyt kannattaa rynnätä tilaamaan uutta ja nautinnollista piristystä itselle ja ystävälle lahjaksi, sillä saat 5€ alennuksen.
+4000000012	Kerro mitä pidit - arvostelijat saavat palkinnoksi ilmaisia tuotteita.
+4000000013	Arkisin klo 8-18 soitamme sinulle mahdollisimman pian, kuitenkin viimeistään kahden tunnin kuluessa. 
+4000000014	Voit voittaa vuoden treenit itsellesi ja kolmelle kaverille!
+4000000015	Osoitelähde: Helsingin ja Oulun Traumaterapiakeskus Ry:n markkinointi- ja asiakasrekisteri.
+4000000016	Paina Aktivoi-nappia ja summa vähennetään alennuksen tavoin tilauksesi loppusummasta.
+4000000017	Kurssi kestää kuukauden.
+4000000018	Yli 50 euron tilauksiin toimituskulut kaupan päälle ja 119 eurolla kotiinkuljetus.
+4000000019	Ilmainen toimitus Postiin, Postin noutopisteeseen, Matkahuoltoon tai K-menuun, kun ostat yli 55 eurolla.
+4000000020	Päiväkirjasta löytyy jokaiselta aukeamalta oma osio kullekin retkelle.
+4000000021	Hanki laatulukemista jouluksi itselle ja pukinkonttiin.
+4000000022	Ikävä kyllä emme myy kyseistä tuotetta enää.
+4000000023	Odota hetki, kun etsimme tuotetta.
+4000000024	Käytämme samaa maksutapaa, jota käytit ostoksen tekemiseen.
+4000000025	Meillä on tyytyväisyystakuu, joten jos olet tyytymätön ostokseesi, voit palauttaa sen.
+4000000026	Sivuiltamme löydät oivallisen kattauksen kevään uutuuskirjoja kampanjahinnoin.
+4000000027	Kiitos palautteestasi, arvostamme sitä todella!
+4000000028	Lahjakortin lataat netistä helposti ja nopeasti!
+4000000029	Tilaa nyt meiltä edulliseen tarjoushintaan.
+4000000030	Valikoimasta löydät syksyn suosituimmat uutuudet - tutustu ja tilaa nyt!
+4000000031	Olemme väliaikaisesti loppuunmyyty, tule huomenna uudestaan.
+4000000032	Jos et ole tyytyväinen, soita meille, niin hyvitämme tilauksesi.
+4000000033	Maksutapamme on joko kortti tai käteinen.
+4000000034	Ystävällinen henkilökuntamme vastaa mielellään kaikkiin kysymyksiisi.
+4000000035	Voimme varata tuotteen puolestasi yhden työpäivän ajaksi.
+4000000036	Oliko sinulla jo meidän etuasiakaskorttimme?
+4000000037	Kunkin tuotteen hinta on sama kaikissa myymälöissä.
+4000000038	Seuraavan päivän toimitusvaihtoehto on saatavilla lisämaksusta.
+4000000039	Meillä on osta kaksi, saat yhden ilmaiseksi -tarjous tänään ja huomenna.
+4000000040	Kaikki ohjaajamme ovat ammatillisesti sertifioituja.
+4000000041	Hakuprosessimme on helppo ja nopea.
+4000000042	Opiskelijamme ovat kotoisin eri puolilta maailmaa.
+4000000043	Tarjoamme täyden hyvityksen, jos et ole tyytyväinen kurssiin.
+4000000044	Tarjoamme apurahoja lahjakkaille opiskelijoille.
+4000000045	Ensimmäisen kerran opiskelijat ovat oikeutettuja ilmaiseen kokeiluun.
+4000000046	Tarjoamme tällä hetkellä vain ryhmätunteja.
+4000000047	Opiskelijat näkevät edistyksensä vain kahdessa viikossa!
+4000000048	Räätälöimme kurssimme jokaiselle yksittäiselle opiskelijalle.
+4000000049	Jos ohjelmointitaitosi eivät ole parantuneet, hyvitämme kurssimaksusi!
+4000000050	Tarjoamme myös päivä- ja iltakursseja.
+4000000051	Jokaisen tunnin kesto on 45 minuuttia.
+4000000052	Voit puhua mentorin kanssa, jotta voimme parhaiten vastata sinun tarpeisiisi.
+4000000053	Tarjoamme jokaiselle jotakin riippumatta siitä, onko kyseessä lapsi tai nuori aikuinen.
+4000000054	Monet ohjaajistamme ovat huippututkinnon suorittaneita.
+4000000055	Kurssilla on 30 päivän rahat takaisin -takuu.
+4000000056	Kiinnostuneet opiskelijat voivat oppia lisää napsauttamalla alla.
+4000000057	Aiempien opiskelijoiden tyytyväisyysaste on 98%.
+4000000058	Luokkamme ovat yleensä 3 tai 4 opiskelijan ryhmissä.
+4000000059	Intensiivikurssimme englanniksi on suosituin opintokokonaisuus.
+4000000060	Emme voi tällä hetkellä tarjota kyseistä luokkaa.
+4000000061	Tarjoamme kursseja englanniksi, ranskaksi ja espanjaksi.
+4000000062	Aikataulut ovat joustavia vastaamaan opiskelijan tarpeita.
+4000000063	Aikaisemmat opiskelijat ovat jättäneet meille viiden tähden arvostelut.
+4000000064	Tarjoamme erämaksusuunnitelman tietyille kursseille.
+4000000065	Kirjallisuuskurssilla on vain kolme paikkaa.
+4000000066	Nykytilanteen vuoksi kaikki kurssit pidetään verkossa.
+4000000067	Tarjoamme opetusta henkilökohtaisesti tai online-luokissa.
+4000000068	Emme tarjoa enää tätä opetusohjelmaa.
+4000000069	Järjestämme huomenna verkkotiedotustilaisuuden.
+4000000070	Opiskelijat saavat todistuksen valmistumisesta valmistuttuaan.
+4000000071	Opiskele silloin, kun sinulle sopii: töiden jälkeen, viikonloppuisin, kotona tai vaikkapa suosikkikahvilassasi.
+4000000072	Olet oikeassa paikassa, jos haluat oppia taidon, jonka avulla voit tienata.
+4000000073	Opi paljon lyhyessä ajassa, sopivan kokoisina suupaloina.
+4000000074	Vahvistettu peukalonkohta suojaa hyvin sormia.
+4000000075	Tiimityö tekee kaikesta helpompaa.
+4000000076	Jokaisen luokkaryhmän seuraan liittyy ammattitaitoinen mentori, joka työskentelee kanssasi kuukauden ajan tuoden esiin parhaat puolesi.
+4000000077	Annamme sinulle jokaisella viikolla ohjeita tavoitteidesi saavuttamiseksi, jotta voit keskittyä opiskeluun.
+4000000078	Kahvikupin hinnalla päivässä opit ajanmukaisen ja arvokkaan taidon, jonka voit kääntää itsellesi uudeksi tai kannattavammaksi uraksi.
+4000000079	Et löydä niitä meiltä!
+4000000080	Älä ohita tätä tilaisuutta, ilmoittaudu mukaan nyt!
+4000000081	Vain omalla ryhmälläsi on pääsy yksityiseen virtuaaliseen luokkahuoneeseen.
+4000000082	Etenet yhdessä muiden oppilaiden kanssa, jotka kohtaavat samat haasteet kuin sinäkin.
+4000000083	Muistatko ne paksut ja tylsät oppikirjat koulusta?
+4000000084	Sinun on esitettävä ostotodistus hyvityksen saamiseksi.
+4000000085	Tuotteen on oltava alkuperäisessä pakkauksessaan.
+4000000086	Pystymme korvaamaan sen ilmaiseksi, jos haluat.
+4000000087	Voit saada täyden hyvityksen vasta 30 päivän sisällä ostosta.
+4000000088	Ota tuote mukanasi kauppaan kuitin mukana.
+4000000089	Tuo kaikki kuitit mukaasi, kun tulet palauttamaan.
+4000000090	Valmistajan vian vuoksi voimme vaihtaa tuotteen sinulle ilmaiseksi.
+4000000091	Kaikki palautukset tarvitsevat joko fyysisen kuitin tai sähköisen kuitin.
+4000000092	Jokaisella tuotteella on rahat takaisin -takuu, joten hyvitämme sinulle tuotteen hinnan mielellämme.
+4000000093	Tämä tuote ei ole oikeutettu palautukseen.
+4000000094	Olen tarkistanut, että kyseistä tuotetta ei voida palauttaa.
+4000000095	Kyseisen osan korvausmaksu on 31 euroa.
+4000000096	Voit viedä tuotteen kauppaan tai lähettää sen meille.
+4000000097	Emme voi tarjota sinulle hyvitystä, mutta voimme antaa sinulle alennuskoodin.
+4000000098	Vie se huoltokeskukseemme, jotta teknikkomme voi katsoa sitä.
+4000000099	Tuotteen takuu päättyi kolme päivää sitten.
+4000000100	Voit joko lähettää sen takaisin meille hyvitystä varten tai voimme lähettää sinulle uuden tuotteen.
+4000000101	Sanoitko, että puhelin ei enää käynnisty?
+4000000102	Ruostuminen ei kuulu takuun piiriin, joten emme voi korvata sitä.
+4000000103	Emme voi tarjota sinulle täyttä hyvitystä, mutta voimme hyvittää sinulle 40% hinnasta.
+4000000104	Varmista, että sinulla on alkuperäinen pakkaus mukanasi palatessasi.
+4000000105	Lähettäkää tuote takaisin meille ennen päivän päättymistä torstaina.
+4000000106	Sinun on toimitettava ostotodistus, ennen kuin voimme tehdä mitään.
+4000000107	Jos kohtaat ongelmia uudelleen, ota meihin yhteyttä mahdollisimman pian.
+4000000108	Hyvitys käsitellään kahden työpäivän kuluessa.
+4000000109	Emme ole vastuussa mahdollisista lähetyskuluista.
+4000000110	Onko sinulla aikaa täyttää nopea asiakastyytyväisyystutkimus?
+4000000111	Olen pahoillani, mutta emme voi käsitellä palautusta ilman kuittia.
+4000000112	Lähetä meille yksityiskohtainen kuvaus tuotteen vaurioista.
+4000000113	Se on aina maksutonta.
+4000000114	Hyvitämme palautettujen tuotteiden arvon.
+4000000115	Haluamme hyvittää asiasta mahdollisesti aiheutuneen vaivan tarjoamalla seuraavan etukoodin, jonka voit käyttää seuraavan tilauksesi yhteydessä.
+4000000116	Digitaalinen konsultointi on erikoisalamme, kysy lisää!
+4000000117	Asiantuntijaryhmämme voi ratkaista kaikkein kiireellisimmätkin ongelmat koneoppimisen avulla.
+4000000118	Syvä teollisuuden tuntemus ja perusteellinen analyysi ovat vahvoja puoliamme.
+4000000119	Asiakkaamme ovat hyötyneet suuresti parantuneista liiketoimintaprosesseista ja kasvaneista liikevoitoista.
+4000000120	Tarjoamme ratkaisuja erilaisille sisäisille ja ulkoisille asiakkaille.
+4000000121	Kriittisten oivallusten saaminen asiakkaillemme on prioriteettimme.
+4000000122	Tarjoamme räätälöityjä ratkaisuja, jotka vastaavat parhaiten tarpeitasi.
+4000000123	Tuotteemme tekevät asiakkaista kilpailukykyisempiä globaaleilla markkinoilla.
+4000000124	Autamme kasvavia yrityksiä toteuttamaan monimutkaisia ​​liiketoimintajärjestelmiä.
+4000000125	Tarjoamme globaaleja ratkaisuja globaalisti integroiduille asiakkaillemme.
+4000000126	Meillä on 20 vuoden alan kokemus toteutuksesta.
+4000000127	Asiakkaiden sitoutuminen on meille erittäin tärkeää.
+4000000128	Autamme organisaatiotasi optimoimaan toimintoja ja viemään läpi.
+4000000129	Ydinosaamistamme ovat strategiakonsultointi ja liiketoimintojen kehittäminen, digitaaliset palvelut ja teknologiakonsultointi, brändin hallinta, markkinointi ja palvelumuotoilu.
+4000000130	Olemme riippumattomia ohjelmistotoimittajista ja muista valmistajakohtaisten ratkaisujen myyjistä.
+4000000131	Laadukkailla taloushallinnon palveluilla parempaa kontrollia ja asiantuntijan näkemystä yrityksesi taloushallintoon.
+4000000132	Hoidamme kaikki yrityksesi taloushallinnon osa-alueet.
+4000000133	Voit ulkoistaa meille laskutukseen, myyntireskontraan ja perintään liittyviä tehtäviä.
+4000000134	Paranna maksuvalmiutta ja nopeuta saatavien kotiutumista.
+4000000135	Mietitkö liiketoiminnan digitalisointia tai kaipaatko markkinoinnille uutta suuntaa?
+4000000136	Konsultointipalvelu on jaettu viiteen osa-alueeseen.
+4000000137	Konsultointipalvelu on tarkoitettu toimintansa vakiinnuttaneille yrityksille, jotka haluavat kasvaa ja kehittää toimintaansa.
+4000000138	Arvioimme yrityksesi tilanteen ja tarpeet ja autamme etsimään sopivan asiantuntijan.
+4000000139	Vahvista strategista liiketoimintaosaamistasi yhdessä kokeneen liikkeenjohdon asiantuntijan kanssa.
+4000000140	Tuemme yritys- ja kasvustrategian kehittämisessä, yrityskauppojen jälkeisissä integraatiokysymyksissä ja autamme tehostamaan yrityksen toimintaa.
+4000000141	Tuemme ennakoivaa johtamista, luomme edellytyksiä muutoksen onnistumiselle ja jatkuvalle osaamisen kehittämiselle.
+4000000142	Autamme löytämään tien kasvuun, muutosten läpivientiin ja tehokkaampaan toimintaan.
+4000000143	Toimintamme kulmakiviä ovat kansainvälinen suomalaisuus, säännösten ja vaatimusten tuntemus sekä ymmärrys yrityksenne ainutlaatuisesta muutosprojektista ja sen päähaasteista.
+4000000144	Asiantuntijamme auttavat toimintojen kehittämisessä ja muutosten läpiviemisessä eri toimialoilla, organisaation eri tasoilla huomioiden koko henkilöstön.
+4000000145	Emme usko, että toimiva ratkaisu löytyy valmiista muotista, joten palvelumme on räätälöity tarpeittesi mukaan.
+4000000146	Tulevaisuudessa tämä näkyy asiakkaille uusina, toimivampina asiointijärjestelminä.
+4000000147	Askarruttaako sinua julkisen hallinnon tiedonhallintalaki?
+4000000148	Me autamme tuottamaan datasta analytiikkaa ja tietoa, jolla on arvoa.
+4000000149	Yhdistämme kanssasi ihmiset, datan sekä teknologian.
+4000000150	Asiantuntijamme auttavat kartoittamaan organisaatiosi datan hallinnan lähtötilannetta, visiota ja teknologioita viiden avaintekijän avulla.
+4000000151	Tarjoamme kattavat ja helppokäyttöiset palvelut organisaatiosi datan hallinnan tueksi aina datan laadun moottoreista migraatiotehtaaseen ja navigaatiopalveluun.
+4000000152	Muotoilemme asiakaskokemusta kokonaisuutena, joka huomioi asiakkaille näkyvien asioiden kehityksen lisäksi myös yrityksen sisäisten prosessien, työntekijäkokemuksen ja liiketoiminnan kehittämisen.
+4000000153	Olemme kumppanisi kun haluat varmistaa, että asiakaskokemuksesi suunnittelu viedään konkretian tasolle.
+4000000154	Tuomme asiakkaat aitoon vuoropuheluun ja olennaiseksi osaksi palveluiden kehittämistä.
+4000000155	Kiinteistönjohdon konsultoinnin ammattilaisemme löytävät sinulle oikeat ratkaisut.
+4000000156	Tilanteet ja tarpeet ovat jokaisessa organisaatiossa yksilöllisiä, mutta tukemissamme kehityshankkeissa noudatetaan pääsääntöisesti seuraavaa toiminnan kehittämisen prosessia.
+4000000157	Yhdistämme kehityshankkeissa teknisen, kestävän rakentamisen ja kiinteistöliiketoiminnan osaamisemme sekä kokemuksemme kiinteistöliiketoiminnan tietojärjestelmistä ja palveluntuottajakentästä.
+4000000158	Asiantuntijoillamme on laaja kokemus ja valmiit toimintamallit kiinteistötietojärjestelmien ja -palveluiden hankintaprojekteista.
+4000000159	Tarjoamme sinulle mukavan ja avuliaan yhteisön tuen.
+4000000160	Kiinteistöjohtamisen toimintojen kehittämisen hankkeet ovat lähtökohdiltaan kaikkein yksilöllisimpiä.
+4000000161	Täytä tarjouspyyntölomake ja palaamme sinulle tarjouksen kanssa mahdollisimman pian.
+4000000162	Meidän kauttamme saat työsopimuslain määrittelemää valmennusta niin työntekijä- kuin toimihenkilötasolle, yksilö– sekä ryhmätoteutuksena.
+4000000163	Me tuemme muutoksen kohtaamisessa, uratavoitteiden määrittelyssä, oman osaamisen tunnistamisessa ja työnhaussa.
+4000000164	Vaativat, isot toimintaympäristön muutokset edellyttävät eri osa-alueiden samanaikaista tarkastelua sekä toteutuskelpoisten toimenpiteiden toteutusta.
+4000000165	Autamme tarvittaessa mielellämme myös toimintauudistusten toteuttamisessa sekä mahdollisten yhteistyökumppanien löytämisessä.
+4000000166	Työskentely kanssamme on selkeää ja läpinäkyvää, etenemme joustavasti vaihe kerrallaan ja vain sen aikaa, mitä asiakkaamme tarvitsevat.
+4000000167	Vähemmän raportteja, enemmän tekoja ja konkreettisia ratkaisuja!
+4000000168	Kaipaatko uutta, raikasta ja käytännönläheistä lähestymistapaa yrityksesi liiketoiminnan uudistamiseen?
+4000000169	Kanssamme työskennellessä modernit käytännöt ja teknologiat yhdistyvät saumattomasti ihmisten toimintaan ja käyttäytymiseen, valitun strategian mukaisesti.
+4000000170	Ota yhteyttä niin selvitetään yhdessä mitä tämä tarkoittaa teidän yrityksen kohdalla käytännössä!
+4000000171	Meille luovuus ja jatkuva oppiminen ovat tärkeitä.
+4000000172	Rakennamme kestävää ja humaania yhteiskuntaa digitalisaation ja innovoinnin kautta.
+4000000173	Lue työntekijöidemme ajatuksia siitä miten viemme muutosta eteenpäin hyödyntäen uusinta teknologiaa.
+4000000174	Työntekijämme ovat erittäin tyytyväisiä meihin työnantajana ja suosittelevat meitä myös tutuilleen.
+4000000175	Meiltä löydät alan parhaat osaajat ja työkalut, kuten omat kattavat tietokantamme ja mallinnustyökalumme, jotka tukevat näkemysten muodostamisessa.
+4000000176	Tutustu lisää näihin osaamisalueisiimme englanninkielisillä sivuillamme.
+4000000177	Työnantajan vetovoimalla on kasvava merkitys rekrytointitilanteissa.
+4000000178	Työelämän laatua kuvaavien kysymysten perusteella alan jäsenten mielestä suurin kehityskohde on alan palkkaus ja sen kannustavuus.
+4000000179	Sinun ei tarvitse tietää mitään ohjelmoinnista tai osata vieraita kieliä aloittaaksesi.
+4000000180	On todistettu tieteellisesti, että yhteisössä opiskelu on hauskempaa ja tehokkaampaa kuin yksin opiskelu.
+4000000181	Keskustele ja opiskele ohjelmointia yhdessä toisten verkko-opiskelijoiden kanssa.
+4000000182	Mentorimme ovat asiantuntijoita monen vuoden kokemuksella, ja he auttavat sinua selkeällä suomen kielellä, jos jäät jumiin.
+4000000183	Kahvikupin hinnalla päivässä saat ajanmukaisen ja arvokkaan taidon, josta voi tulla sinulle tuottoisa ura.
+4000000184	Saumaton yläosa antaa hyvän istuvuuden.
+4000000185	Kurssilla opit ohjelmoinnin perusteet ja opit ymmärtämään, kuinka ohjelmoija ajattelee.
+4000000186	Yksi kautta aikojen tehokkaimmista kuluttajille suunnatuista etäisyysmittareista!
+4000000187	Hienosäädä lopuksi ampumalla muutama kohdistuslaukaus.
+4000000188	Meillä sinulla on mahdollisuus kehittyä ja kasvaa osana kannustavaa tiimiä.
+4000000189	Saat oppitunnit, sekä tehtävät käyttöösi oppimisalustamme kautta, jossa työskentelet omaan tahtiin.
+4000000190	Mikäli sinulla on kysyttävää tai jäät jumiin, voit kysyä apua mentoreiltamme chatin kautta.
+4000000191	Sinulla ei tarvitse olla aikaisempaa osaamista tai jotain tiettyä koulutusta.
+4000000192	Sinun täytyy vain osata käyttää tietokonetta, etsiä tietoa internetistä ja käyttää helppoa tekstinkäsittelyohjelmaa.
+4000000193	Ohjelmoinnissa jotkin sanat ovat tietenkin englanniksi, mutta tehtävät ovat suomeksi, ja selitämme kaikki vieraskieliset sanat sinulle.
+4000000194	Todella moni ihminen pitää ohjelmoinnista, jos heillä on tilaisuus oppia sitä selkeällä ja hyvin rakennetulla opetusohjelmalla.
+4000000195	Mitta-asteikkona valittavissa joko jaardit tai metrit.
+4000000196	Aloitamme kurssin uudelleen yleensä joka kuukausi.
+4000000197	Jos tämänhetkinen kurssi ei sovi aikatauluusi, muista tilata ilmoitukset tämän sivun alareunasta, jotta voimme ilmoittaa sinulle, kun seuraava kurssi alkaa!
+4000000198	Kurssin aikana käytät selainta sekä ilmaista, ohjelmointia varten suunniteltua tekstinkäsittelyohjelmaa.
+4000000199	Saat tarkempia ohjeita sisältävän vahvistussähköpostin 24 tunnin kuluessa maksun suorittamisesta.
+4000000200	Asiakastietosi saat päivitettyä Omilla sivuillasi!
+4000000201	Sinulla ei ole mahdollisuutta muuttaa itse tilaustasi sen jälkeen, kun olet vahvistanut sen.
+4000000202	Huomioithan, että tavoitteenamme on käsitellä ja lähettää tilaukset niin pian kuin mahdollista, ja tästä syystä emme aina voi tehdä muutoksia.
+4000000203	Kokojen saatavuuden seuranta tarkoittaa, että saat sähköpostiisi ilmoituksen, kun kaipaamaasi kokoa saapuu uudelleen varastoomme haluamastasi tuotteesta.
+4000000204	Jos sinulla on alennuskoodi, jonka haluat käyttää, täytä koodi kassalla tilauksen tekemisen yhteydessä.
+4000000205	Haluatko olla perillä viimeisimmistä uutisista ja osallistua yksinoikeudellisiin tarjouksiin ennen kaikkia muita?
+4000000206	Saat tilausvahvistuksen ilmoittamaasi sähköpostiosoitteeseen heti, kun tilauksesi on saapunut ja hyväksytty.
+4000000207	Voit nähdä takaisinmaksun tiliotteellasi viiden pankkipäivän kuluttua siitä, kun sait palautusvahvistuksen meiltä.
+4000000208	Etu koskee valikoituja tuotteita myymälöissä ja netissä niin kauan kuin tuotteita riittää.
+4000000209	Pääset milloin tahansa ostoskoriisi klikkaamalla sivun oikeassa yläkulmassa olevaa kuvaketta.
+4000000210	Kaikki tänään löytämäsi tuotteet tallennetaan ostoskoriisi 7 päiväksi.
+4000000211	Kun olet valmis maksamaan, mene ostoskoriisi ja tarkista tilauksesi.
+4000000212	Korkein suositeltu pesulämpötila mainitaan vaatteen hoito-ohjeessa.
+4000000213	Voit laskea oman kokosi helposti koko-oppaamme avulla, löydät sen täältä.
+4000000214	Huomaa, että samalla kokomerkinnällä olevat vaatteet voivat poiketa toisistaan mallista riippuen.
+4000000215	Käytä näitä mittoja suuntaviivana löytääksesi itsellesi sopivan mallin tai istuvuuden, ei tarkkoina arvoina.
+4000000216	Ennen kuin jatkat eteenpäin, arvioi kuinka helppoa tai vaikeaa on rajata valikoimastamme etsimäsi tuotteet?
+4000000217	Suosittelemme ottamaan mitan aina paljaalta iholta, sillä vaatteet saattavat vääristää mittaustulosta.
+4000000218	Kiinnitä kohdistin aseen piippuun ja käynnistä laser, jonka jälkeen voit säätää tähtäimen laserpisteen mukaisesti.
+4000000219	Chatbottimme on täällä apunasi.
+4000000220	Huomioithan, että odotusaika saattaa olla 3 minuuttia.
+4000000221	Haluaisitko 10% alennuksen?
+4000000222	Etukuponki on lunastettava ennen tilauksen lähettämistä, eikä sitä hyvitetä tilauksesta jälkikäteen.
+4000000223	Etkö löydä vastausta kysymykseesi?
+4000000224	Otathan huomioon, että tilauksen yhteydessä voi lunastaa vain yhden etukupongin tai lahjakortin.
+4000000225	Aukeaman vasen sivu on tarkoitettu vapaamuotoisille omille muistiinpanoille sekä kuville.
+4000000226	Mikäli haluat tilata lahjaksi, tulee sinun vaihtaa ensisijainen toimitusosoite ja tilauksen vastaanottaja.
+4000000227	Huomioithan, että tilauksen pystyy toistaiseksi tekemään ainoastaan verkkokaupassamme, eikä esimerkiksi puhelimitse.
+4000000228	Suosittelemme, että tarkistat tarkan varastosaldon ottamalla yhteyttä myymälään.
+4000000229	Edullisin vaihtoehto on tilauksen toimittaminen myymälään.
+4000000230	Sen ominaisuuden avulla lasket vaivatta todellisen vaakasuuntaisen etäisyyden kohteeseen missä tahansa korkeudessa.
+4000000231	Meillä ei valitettavasti ole myymälöiden varastosaldoista muuta tietoa kuin mitä sivustollamme mainitaan.
+4000000232	Ensiluokkaiset, ykkösluokan lasilinssit takaavat selkeän ja kirkkaan kuvan kohteesta.
+4000000233	Tarvitset sovelluksen uusimman version jatkaaksesi.
+4000000234	Jos näet punaisen valon, sinun on poistuttava ohjelmasta välittömästi.
+4000000235	Irrota laite verkkovirrasta, se on saattanut olla ylikuumentunut.
+4000000236	Sammuta kaikki virustorjuntaohjelmistot, koska ne saattavat vaikuttaa lataamiseen.
+4000000237	Pidä virtapainiketta painettuna kolmen sekunnin ajan.
+4000000238	Saatat joutua asentamaan ohjelmiston uudelleen.
+4000000239	Voinko kysyä, mitä versiota käytät tällä hetkellä?
+4000000240	Kokeile ensin sovelluksen omaa vianmääritystä.
+4000000241	Päivitä laitteesi uusimpaan versioon ennen kuin jatkat.
+4000000242	Yritä napsauttaa "työkalu" -kuvaketta asetusvälilehdessä.
+4000000243	Sinun on vapautettava riittävästi levytilaa päivitystä varten.
+4000000244	Älä paina virtapainiketta, ennen kuin valo muuttuu vihreäksi.
+4000000245	Sinun on päivitettävä järjestelmä, ennen kuin voit tallentaa muutokset.
+4000000246	Haluatko ostaa paketin vai yhden ohjelmiston?
+4000000247	Se voi johtua siitä, että laitteellasi ei ole tilaa.
+4000000248	Odota muutama sekunti ennen kuin käynnistät tietokoneen uudelleen.
+4000000249	Odota muutama minuutti, ennen kuin päivitys ladataan.
+4000000250	Valitettavasti laitteesi ei tue ohjelmistoa.
+4000000251	Sovellus ei tue enempää kuin kahta laitetta.
+4000000252	Mistä näen toisen verkkoon liitetyn laitteen?
+4000000253	Uskon, että ilmainen kokeilujaksosi päättyi eilen.
+4000000254	Yritä tallentaa se toiselle palvelimelle.
+4000000255	Varmista, että palomuureja ei ole kytketty päälle, kun muodostat yhteyden verkkoon.
+4000000256	Huomaa, että olet ladannut ohjelmiston yksinkertaisen version.
+4000000257	Voit maksaa kuukausimaksun tai kertamaksun.
+4000000258	Haluatko ladata ohjelmiston uuden version nyt?
+4000000259	Irrota tietokone pistorasiasta, jos näyttö jäätyy.
+4000000260	Odota kaksi minuuttia, ennen kuin päivität sivun.
+4000000261	Sinun on ehkä päivitettävä sivu nähdäksesi uudet päivitykset.
+4000000262	Yritä siirtyä lähemmäksi reititintäsi paremman yhteyden muodostamiseksi.
+4000000263	Varmista, että valitset ohjelmiston yritysversion.
+4000000264	Emme tue laitettasi tällä hetkellä.
+4000000265	Keltainen hälytys: useita maakuntia, katso paikalliset tiedotusvälineet.
+4000000266	Muistiinpanojen kirjaaminen päiväkirjaan onnistuu vaikka kaatosateessa!
+4000000267	Valitettavasti maksu epäonnistui, veloituksia ei tehty.
+4000000268	Milla Mallikas ja kolme muuta tykkäsi kuvastasi.
+4000000269	Sinulla on ajanvaraus tänään klo 17!
+4000000270	Tilauksesi on matkalla, seuraa sitä kartalla!
+4000000271	Tilauksesi on toimitettu, klikkaa tästä kuitataksesi.
+4000000272	Koodi vanhenee 15 minuutin kuluttua.
+4000000273	Kivipaperille voit kirjoittaa myös monilla metalliesineillä, mikäli tavallista kynää ei ole saatavilla.
+4000000274	Tilaa nyt ja saat kymmenen prosentin alennuksen!
+4000000275	Seurantakoodisi odottaa sinua.
+4000000276	Kivipaperille valmistettu metsästyspäiväkirja on täysin vedenpitävää, joka kestää veden lisäksi myös rasvaa, öljyä, kuraa ja kulutusta.
+4000000277	Pyöräillessä pyörien pitää pyöriä!
+4000000278	Tarkista ajoissa kaikkien osallistujien ajopelien kunto, ja hoida tarvittaessa rengas- ja muu huolto.
+4000000279	Tärkeimmät huoltotoimenpiteet löydät napakkana pakettina tästä artikkelista.
+4000000280	Silmäile sääennuste ja huolehdi, että jokaisella polkijalla on sään mukainen varustus.
+4000000281	Joskus sade tai kova tuuli voi kuitenkin yllättää, ja sen varalta on syytä miettiä myös niiltä suojautumista muuttuvissa olosuhteissa.
+4000000282	Kesällä on samoin syytä pitää kirkkaana mielessä auringolta suojautuminen.
+4000000283	Oikeanpuoleiselle sivulle voit tehdä tarkat merkinnät yksityiskohtaisemmista tapahtumista, kuten retkillä käytetyistä välineistä sekä tietenkin saaliistasi.
+4000000284	Suunnittele reitti etukäteen niin, että kaikki matkaan lähtijät myös jaksavat iloisin mielin maaliin asti.
+4000000285	Retkeen on syytä valmistautua huolellisella ruoka- ja juomatankkauksella jo kotona, mutta perille pääsyäkin tärkeämpää ovat usein kunnon tauot ja reilut taukoeväät.
+4000000286	Varustele siis reppusi tai pyörälaukkusi sopivilla naposteltavilla ja juomilla.
+4000000287	Joskus makkarapaketti ja -tikkukin voi olla tarpeen, jos oikein mainio pysähdyspaikka kohdalle osuu.
+4000000288	Iloisen mielen ohella tärkeintä on tietenkin turvallisuus.
+4000000289	Kevyen liikenteen väylien käyttö on usein viisainta, jos reitti sen suinkin sallii.
+4000000290	Kunnon kypärä on itsestäänselvyys, mutta muista napata mukaan myös pyörien lukot.
+4000000291	Usein seikkailun varrelle osuu vaikka mitä mielenkiintoista bongattavaa, joten on hyvä varautua myös siihen, että pyörät voi tarpeen vaatiessa jättää turvallisesti lukittuna matkan jatkumista odottelemaan.
+4000000292	Mukaan pakatut pyörän pumppu, renkaan paikkausvälineet ja kevyt huoltolaukku ovat myös pelastaneet monta retkeä ja varmistaneet, että tien päälle on polkaistu nopeasti takaisin pikku haaverin jälkeenkin.
+4000000293	Tallennamme asiakaspalvelumme puheluita osapuolten asiointiin liittyvien oikeuksien turvaamiseksi.
+4000000294	Käytämme tallenteita asiakaspalvelumme laadun kehittämiseksi sekä petoksellisen toiminnan ehkäisemiseen.
+4000000295	Tallentaminen tapahtuu tietoturvallisesti tietosuoja-asetuksen ja muiden säädösten puitteissa eikä tallenteita käytetä muihin tarkoituksiin eikä niitä luovuteta ulkopuolisille.
+4000000296	Metsässä liikkuminen ja ulkoileminen rentouttaa mieltä ja kohottaa kuntoa.
+4000000297	Tutustu retkeilyvälineiden, retkeilyvaatteiden, metsästysvaatteiden ja metsästystarvikkeiden valikoimaan.
+4000000298	Erillinen irrotettava suoja, kiinnitetään tukevasti maahan mukana tulevien kiilojen avulla.
+4000000299	Tummanvihreän värinsä ansiosta teltta saadaan mainiosti häivytettyä maastoon.
+4000000300	Kokoonsa nähden tämä teltta on painoltaan kevyt ja täten helppo kuljettaa syvemmällekin erämaan uumeniin.

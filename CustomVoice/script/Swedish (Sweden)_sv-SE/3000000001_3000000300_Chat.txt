@@ -1,0 +1,300 @@
+3000000001	Jag och Ida kommer flyga till Rom under lovet.
+3000000002	Var tecknar jag en prenumeration?
+3000000003	Hela familjen reser till Maldiverna om två veckor.
+3000000004	Vi har inte bokat bord på restaurangen än, men det kanske vi borde göra.
+3000000005	Det är verkligen omtänksamt av dig att tänka på mig.
+3000000006	Nej, du behöver inte betala något.
+3000000007	Okej, men då gör vi så i stället, perfekt!
+3000000008	Jag är glad att vi är överens om det.
+3000000009	Eftersom vi flyger om en vecka kommer jag troligtvis börja packa till helgen.
+3000000010	Själv har jag inte riktigt hunnit planera något än.
+3000000011	Har du varit i Göteborg någon gång?
+3000000012	Är det varmt eller kallt i Grekland i november?
+3000000013	Jag behöver köpa solkräm, annars kommer jag bränna mig.
+3000000014	Om inte får vi nog satsa på att ta bussen.
+3000000015	Jag verkligen älskar sol och bad. 
+3000000016	När jag var i Spanien hyrde jag häst i två dagar.
+3000000017	Det är väldigt varmt på stranden, så vi får inte glömma att ta med vatten.
+3000000018	Ska vi köra igång direkt?
+3000000019	Jag älskar också den franska kulturen och maten.
+3000000020	Jag följer väldigt gärna med.
+3000000021	Vi får gärna övernatta hos min släkting i Stockholm.
+3000000022	Du kommer behöva dela med dig.
+3000000023	Då räknar jag med att ni alla kommer på lördag, så kul!
+3000000024	Jag vill inte åka själv.
+3000000025	Kan vi inte sova på hotell?
+3000000026	Hon är min bästa vän från skoltiden.
+3000000027	Hur dags börjar matchen på söndag?
+3000000028	Det är soligt ute, men ändå ganska kallt.
+3000000029	Så roligt det ska bli att träffa din syster för första gången.
+3000000030	Nu börjar det bli hög tid att tänka på julfirandet.
+3000000031	Jag jobbade en kort tid på café, mest för att jag ville prova på något nytt.
+3000000032	Vem älskar inte att åka på semester? 
+3000000033	Kommer du resa till Thailand fler gånger tror du?
+3000000034	I morgon släpps biljetterna till den nya Bond-filmen.
+3000000035	Jag vill gärna höra allt om din resa!
+3000000036	Vi kan ta min bil i stället för taxi.
+3000000037	Som min egen chef kan jag välja själv när jag tar ledigt.
+3000000038	Jag skriver min slutuppsats nu och i vår tar jag examen.
+3000000039	En spontan idé, kan vi inte gå ut och äta ikväll?
+3000000040	Jag går just nu i mitt sista år på IT-gymnasiet.
+3000000041	Kul att ni bjöd med mig på konserten, tack!
+3000000042	Glöm inte att berömma dig själv också.
+3000000043	Jag skulle också vilja lära mig ett nytt språk.
+3000000044	Kom gärna en stund innan passet börjar, så att det inte blir stressigt.
+3000000045	Vi stannar gärna över natten, bara det inte är till extra besvär. 
+3000000046	Det viktigaste är att vi hittar på något tillsammans, eller hur?
+3000000047	Jag känner till Oslo väldigt väl, trots att jag aldrig varit där.
+3000000048	Det är väldigt sällan jag läser en vanlig bok numera.
+3000000049	Är det så varmt ute så man kan gå runt i shorts?
+3000000050	Hittar du till verkstaden, eller vill du ha en vägbeskrivning?
+3000000051	Det ösregnade, så jag var genomblöt när jag kom fram till jobbet.
+3000000052	När jag var i Australien såg jag vilda kängurur.
+3000000053	Kan jag följa med in till läkaren tror du?
+3000000054	Det var en rolig film vi såg igår, jag skrattade massor.
+3000000055	Jag trodde att vi skulle träffas utanför biblioteket.
+3000000056	Det kan ha varit så att han inte såg dig.
+3000000057	Snälla, kan du förklara för mig hur det nya biljettsystemet fungerar.
+3000000058	Vi testade ett nytt recept på skaldjurspasta till middag.
+3000000059	Jag har redan planerat allt inför resan, till och med vilka restauranger jag ska besöka.
+3000000060	Det ska bli roligt att se hur den nya biografen kommer se ut.
+3000000061	Jag vill verkligen resa till Indonesien, framför allt till Bali.
+3000000062	Ja, vi siktar på att åka till Mallorca nästa sommar!
+3000000063	Vi flyger på söndag och blir borta i en vecka.
+3000000064	Behöver jag ta med mig sängkläder och kudde? 
+3000000065	Hur många sittplatser har bilen, får vi plats?
+3000000066	Det har snöat hela natten och det är tio minusgrader ute.
+3000000067	Jag har aldrig varit i Prag, men jag har hört att det är vackert där.
+3000000068	När passar det att vi kommer och hämtar bokhyllan?
+3000000069	Det tar tjugo minuter in till stan med cykel.
+3000000070	Den sista bussen hem går strax efter midnatt.
+3000000071	Det är kanske bra om vi gör upp en gemensam plan?
+3000000072	Vänta lite så ska jag kolla hur det ser ut i kylskåpet, det mesta borde finnas.
+3000000073	Ja, det låter bra att vi ses klockan åtta.
+3000000074	Hänger du med på en promenad lite senare?
+3000000075	Köket i stugan är 15 kvadratmeter.
+3000000076	Har du tid att ses senare ikväll?
+3000000077	Vi kan väl ta en sväng på stan och se om vi hittar en bra present?
+3000000078	Jag är väldigt allergisk mot katter, men det brukar gå bra med hundar.
+3000000079	Vi får inte glömma att ta med kvittot när vi ska byta TV:n.
+3000000080	Jag tror att det finns en diskmaskin i lokalen.
+3000000081	Är det okej för dig om vi säger klockan fem?
+3000000082	Vi fixar maten tillsammans, det går snabbast.
+3000000083	Tror du att vi kan få tag på räkor här i närheten?
+3000000084	Jag tror det blir fint med rosa gardiner i sovrummet.
+3000000085	Det är ju jättebra att du har kommit igång med träningen!
+3000000086	Jag hinner inte riktigt nu, men vi kan prata om det senare. 
+3000000087	Det skulle vara snyggt med grå väggar i hela rummet.
+3000000088	Jag vet inte hur många som kommer på festen.
+3000000089	Undrar om en liten garderob räcker för alla mina kläder.
+3000000090	Snälla, kan du köpa godis när du ändå är i affären?
+3000000091	Jag ska kolla om det finns någon ledig tvättid i morgon.
+3000000092	Ja, du har självklart rätt.
+3000000093	Jag siktar på att bli färdig med inlämningsuppgiften senast i morgon. 
+3000000094	Så bra, då är vi klara med allt på listan.
+3000000095	Jag tänker att det blir bra att sätta TV:n på väggen framför sängen.
+3000000096	Jag tror att vi har kvar en taklampa någonstans i källaren.
+3000000097	Jag behöver skaffa en bokhylla, matta och gardiner.
+3000000098	Jag fixar lunch, om du tar hand om tvätten.
+3000000099	Jag tycker inte att vi ska försöka laga hålet själva, det är bättre att vi kontaktar hyresvärden.
+3000000100	Igår sprang jag den långa slingan på åtta kilometer.
+3000000101	Vi behöver köpa mjölk, bröd, smör och pålägg.
+3000000102	Jag tycker det är rätt billigt.
+3000000103	Tycker du att det är för dyrt att betala 1000 kronor för konsertbiljetterna?
+3000000104	Jag letar efter ett billigt flyg mellan Göteborg och London.
+3000000105	Lägenheten har två små rum och ett stort.
+3000000106	Det kommer bli så bra när vi är klara med tapetseringen!
+3000000107	Tror du att vi hinner till sportaffären innan de stänger?
+3000000108	På lördag är vi bjudna på fest till Anna och Niklas.
+3000000109	Du har helt rätt, vi går på din linje.
+3000000110	Vi behöver tvätta, torka och damma idag.
+3000000111	Det går snabbare om vi hjälps åt med efterrätten.
+3000000112	Vi måste röja i garaget snart, man kommer ju knappt in. 
+3000000113	Jag tar gärna på mig ansvaret för köket.
+3000000114	Om ni vill kan jag laga mat varje lördag och söndag.
+3000000115	Har du hunnit läsa vad jag skrev i mailet?
+3000000116	Det är ett bra argument, jag håller med.
+3000000117	Okej, vi gör som du säger. 
+3000000118	Jag förstår precis hur du menar, jag hade känt likadant.
+3000000119	Jag har tenta på fredag och pluggar både dag och natt.
+3000000120	Det skulle vara kul att bjuda in våra nya grannar på fika.
+3000000121	Det är inga problem för mig att hoppa in med kort varsel.
+3000000122	Jag funderar på att köpa en elcykel så jag slipper åka kommunalt till jobbet.
+3000000123	Det bästa kanske är om vi delar notan på tre och alla betalar sin del?
+3000000124	Jag funderar på om det är en bra idé att ses i parken.
+3000000125	Så bra att vi är överens om vart vi ska åka. 
+3000000126	Jag har en persisk katt som heter Melvin.
+3000000127	Vi är väldigt intresserade av lägenheten.
+3000000128	Vad är det mer exakt som ingår i priset?
+3000000129	Idag är det precis ett år sen vi flyttade in här.
+3000000130	Jag måste tyvärr springa eftersom jag är sen till bussen. 
+3000000131	Vilken lättnad att du inte bröt något när du trillade!
+3000000132	Vilken tid ska vi sikta på att komma iväg i morgon?
+3000000133	Vi får göra vad vi kan för att lösa den.
+3000000134	Nu får vi bara vänta och hoppas på det bästa.
+3000000135	Jag kommer att behöva jobba sent idag.
+3000000136	Spelar det någon roll vilken tid jag kommer, eller går det bra hela eftermiddagen?
+3000000137	Vi kanske kan prata mer om saken när vi ses?
+3000000138	Jag kan absolut förstå att du tycker så. 
+3000000139	Gatan heter gamla Kvarngatan.
+3000000140	Vi behöver hyra en parkeringsplats.
+3000000141	Jag har pratat med försäkringsbolaget och klargjort allt kring vattenskadan.
+3000000142	Jag har tyvärr inte tillgång till bil.
+3000000143	Jag skulle kunna höra med min granne om vi får låna hennes bil.
+3000000144	Det vore så roligt om ni kom och hälsade på oss.
+3000000145	Det har dykt upp en sak på jobbet så jag kommer tyvärr inte hinna i tid.
+3000000146	Jag önskar att det fanns något jag kunde göra för att hjälpa dig.
+3000000147	Vilken dag vi hade ute på havet, det var helt underbart!
+3000000148	Det har varit en riktigt intensiv period på jobbet det senaste.
+3000000149	Det är helt okej, tänk inte mer på det.
+3000000150	Åh, jag längtar verkligen hem till min familj nu. 
+3000000151	Som student har jag inte råd med någon exklusiv inredning.
+3000000152	Vi planerar en storstädning av hela huset nästa vecka.
+3000000153	Det här är en jättefin lägenhet!
+3000000154	Vi behöver hitta en rörmokare som kan komma med kort varsel.
+3000000155	Gå före ni, jag kommer snart.
+3000000156	Snälla, kan du låsa upp dörren?
+3000000157	Köp precis vad du vill, jag bjuder.
+3000000158	Hur många andra personer har varit och tittat på lägenheten?
+3000000159	Jag tycker det är bra att vi tar tag i projektet tillsammans.
+3000000160	Vi ser så mycket fram emot att träffa er alla snart!
+3000000161	Förlåt, jag hade helt och hållet glömt att vi skulle höras vid lunchtid.
+3000000162	Det är inga problem för mig att vara vaken sent.
+3000000163	Det vore perfekt om vi kunde hitta en begagnad soffa.
+3000000164	Är det okej för er att vi kommer lite senare?
+3000000165	Vi kan gärna bestämma en tid och prata mer i morgon.
+3000000166	Vi flyttar till vår nya lägenhet om två veckor.
+3000000167	Jag tycker det är bättre att vi avvaktar och ser. 
+3000000168	Den rosa tröjan är snyggast.
+3000000169	Mot slutet av terminen ska vi åka på skolresa till Paris.
+3000000170	Kan vi inte försöka få tag på biljetter till julkonserten?
+3000000171	Jag tänkte åka till affären, följer du med?
+3000000172	Vore det inte roligt om vi alla åkte på en resa ihop?
+3000000173	Det ska bli dåligt väder i helgen, så det blir till att kura inomhus.
+3000000174	Det är jättesnällt att du vattnar mina blommor medan jag är bortrest.
+3000000175	Vi kommer gärna hela familjen. 
+3000000176	Jag såg dig i tidningen igår.
+3000000177	Tack för alla bra råd.
+3000000178	Vi tar bussen i stället för bilen.
+3000000179	Jag har något roligt att berätta för dig!
+3000000180	I sommar ska vi hyra en bil och resa runt i Italien.
+3000000181	Jag tror det blir svårt att bära allting själv.
+3000000182	Inom vilken bransch jobbar du?
+3000000183	Jag blev så glad när jag kom hem och barnen hade städat.
+3000000184	Hur kommer det sig att du vet så mycket om bilar? 
+3000000185	För första gången på länge har jag haft en helt ledig helg.
+3000000186	Hinner du göra allt själv?
+3000000187	Jag skulle vilja bjuda dig på lunch idag.
+3000000188	Skulle vi kunna få se menyn, tack?
+3000000189	Jag skulle gärna vilja ha löjromstoast till förrätt.
+3000000190	Rekommenderar ni något speciellt på menyn?
+3000000191	Vilken tid börjar filmen? Hinner vi köpa popcorn först?
+3000000192	Vi ska fira min mammas 75-årsdag genom att gå ut på restaurang.
+3000000193	Vi borde kunna hitta den här boken till ett bättre pris på nätet.
+3000000194	Jag gillar ditt förslag.
+3000000195	Min man har ett eget företag inom IT-branschen.
+3000000196	Vi måste komma på en present att ta med till värdinnan.
+3000000197	Jag är helt överväldigad av responsen på sociala medier.
+3000000198	Skulle du kunna hjälpa mig att välja?
+3000000199	Badrumsrenoveringen kommer kosta en del, men den är verkligen nödvändig.
+3000000200	Jag har köpt så snygga kuddar till soffan, dessutom på rea.
+3000000201	Det enklaste är nog att ha plockmat på festen.
+3000000202	Nu förstår jag, tack för att du beskrev allt så tydligt!
+3000000203	Har vi alla ingredienser till pajen, eller har vi glömt att köpa något?
+3000000204	Jag väntar med spänning på mina nya möbler.
+3000000205	Uppgiften borde väl inte ta mer än sex timmar?
+3000000206	Det vore nog bra att ändra tiden för mötet.
+3000000207	Min mobiltelefon har gått sönder, så just nu kan ni inte nå mig.
+3000000208	Du får bestämma helt själv hur du vill göra.
+3000000209	Jag undrar samma sak som du.
+3000000210	Ditt förslag är väldigt kreativt.
+3000000211	Vi funderar på vad vi ska skriva i bröllopsinbjudan och hur långt i förväg vi ska skicka ut den.
+3000000212	Jag behöver skriva upp det i kalendern. 
+3000000213	Just nu är jag helt tom på idéer.
+3000000214	I år kommer vi fira jul i stugan för första gången.
+3000000215	Det har varit väldigt givande att diskutera det här ämnet med dig.
+3000000216	Jag har använt den här parfymen länge, det är min favoritdoft.
+3000000217	Vad tror du om att köpa en bra bok till mamma i julklapp?
+3000000218	Vår dotter är väldigt förtjust i att läsa hästböcker.
+3000000219	Förlåt, jag missade helt ditt meddelande igår!
+3000000220	Hur många stolar kommer vi behöva till festen?
+3000000221	Vi behöver hitta en lokal till vår bröllopsfest.
+3000000222	Vi är verkligen i behov av en ny bil, vår gamla håller på att rosta sönder helt.
+3000000223	Oj, är det stopp i avloppet!
+3000000224	Har vi tillgång till bilen i morgon?
+3000000225	Jag är inte helt säker, men jag tror det.
+3000000226	Det blir så varmt när solen ligger på hela dagen.
+3000000227	Jag har hyrt ett studentrum nära universitetet.
+3000000228	Du som vet så mycket om trädgårdsskötsel, kan inte du ge mig lite tips?
+3000000229	Jätteroligt att det går bra för ditt nya företag!
+3000000230	Vi lägger ganska lite pengar på mat, men mycket på resor.
+3000000231	Berätta! Vad gjorde ni igår kväll?
+3000000232	Min farmor älskar att dansa, promenera och ta hand om trädgården.
+3000000233	Hoppas att du kommer lära dig mycket nytt under kursen.
+3000000234	Du ska veta hur otroligt stolt jag är över dig!
+3000000235	Hur mycket kostar allt tillsammans?
+3000000236	Jag tycker att vi har planerat allt väldigt bra. 
+3000000237	Jag skulle säga att livet aldrig har varit så bra som det är nu.
+3000000238	Hur kommer det sig att du bytte jobb?
+3000000239	Såhär i slutet av arbetslivet ser man saker och ting på ett lite annorlunda sätt. 
+3000000240	Jag mår som allra bäst när jag får vara aktiv och slipper sitta stilla.
+3000000241	Jag trivs väldigt bra med mitt arbete som undersköterska. 
+3000000242	Vad vill du göra nu? Ska vi åka in till stan?
+3000000243	Hur mycket kommer du tjäna på ditt nya jobb? 
+3000000244	Mina svärföräldrar har varit så generösa i samband med flytten.
+3000000245	Hur mycket fick du betala för klippningen?
+3000000246	Det är så snällt att du vill hjälpa mig.
+3000000247	Jag har tagit ett sabbatsår och ska resa runt i Europa. 
+3000000248	Det du berättar låter ju helt sanslöst!
+3000000249	Ibland hoppar jag över frukosten och äter inte förrän vid lunch.
+3000000250	Jag håller absolut med om vad du säger. 
+3000000251	Jag förstår inte hur det kan bli så rörigt hemma hela tiden.
+3000000252	Vi skulle så gärna vilja köpa ett hus, men vi har inte råd.
+3000000253	Jag ska berätta vad som hände, men lova att du inte säger det till någon.
+3000000254	Jag tror fortfarande inte det är sant att jag snart fyller femtio.
+3000000255	Vilken fråga menar du specifikt?
+3000000256	Idag finns bara en bråkdel av ängarna kvar.
+3000000257	Jag uppskattar verkligen ditt engagemang. 
+3000000258	Jag hjälper min syster så mycket jag kan nu när hon fått barn.
+3000000259	Vad var anledningen till att du flyttade till Stockholm?
+3000000260	Jag känner mig verkligen som hemma hos dem.
+3000000261	Kan du snälla svara på min fråga?
+3000000262	Så roligt att ni skaffat hund! Hur kom det sig att ni valde just den här rasen?
+3000000263	Allt är bra med min bror.
+3000000264	Det är bara att fråga mig om du undrar något. 
+3000000265	Det var verkligen länge sen vi satt ner och pratade såhär.
+3000000266	Jag förstår inte riktigt, kan du berätta mer?
+3000000267	Jag tycker att jag känner igen dig.
+3000000268	En av mina närmaste vänner är läkare och tjänar riktigt bra.
+3000000269	Jag kommer inte berätta för någon.
+3000000270	Jag har inte hört något om förslaget tidigare.
+3000000271	Min kropp var väldigt sliten efter Vätternrundan.
+3000000272	Nu är min mamma tillbaka hemma och hon mår mycket bättre.
+3000000273	Jag vill veta i detalj vad som hände.
+3000000274	Jag trodde han skulle studera ekonomi.
+3000000275	Vi gick i samma skola när vi var små.
+3000000276	Ta god tid på dig, vi har inte bråttom. 
+3000000277	Det är inte konstigt att du är nervös, men det kommer gå bra.
+3000000278	Du behöver inte berätta om du inte vill. 
+3000000279	Din vän har verkat lite nere på sistone.
+3000000280	Min kusin med familj har flyttat till Österrike.
+3000000281	Vad var anledningen till att du flyttade från stan?
+3000000282	Vad tycker din familj om dina planer?
+3000000283	Berätta mer om din utbildning.
+3000000284	Min dotter pluggar design i London.
+3000000285	Det är bra att planerna kring den nya vägen kommer upp till diskussion.
+3000000286	Du behöver inte berätta för mig.
+3000000287	Hur vet du vad han heter? Har ni jobbat ihop?
+3000000288	Vi kommer snart flytta till Uppsala, eftersom min kille har fått ett bra jobberbjudande där.
+3000000289	Du som är så duktig kommer lära dig snabbt.
+3000000290	Jag kommer ihåg vår fröken från ettan.
+3000000291	Jag fick ett så bra bemötande i butiken.
+3000000292	Det vore spännande att veta hur det gick för alla efter gymnasiet.
+3000000293	Jag är så nyfiken på vad du kommer att säga om mitt förslag.
+3000000294	Jag mötte min sons lärare på stan och vi pratade lite.
+3000000295	Det var så länge sen jag träffade henne.
+3000000296	Borde jag köpa något till svärmor i julklapp? Kanske något klädesplagg?
+3000000297	Det innebär så mycket glädje att arbeta inom äldreomsorgen.
+3000000298	Vad gör jag om jag har glömt mitt lösenord?
+3000000299	Jag måste storhandla idag.
+3000000300	Jag ska åka skidor i morgon också.

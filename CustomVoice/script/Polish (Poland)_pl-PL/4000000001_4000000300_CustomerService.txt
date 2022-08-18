@@ -1,0 +1,300 @@
+4000000001	Niestety, nie posiadamy rozmiaru M.
+4000000002	Dzisiaj sklep jest czynny do godziny 17.
+4000000003	Płaci Pani kartą czy gotówką?
+4000000004	Przymierzalnia jest po prawej stronie.
+4000000005	Jeśli kupi Pan dwie pary spodni, trzecią dostanie Pan gratis.
+4000000006	Dostawa może potrwać do 2 lub 3 dni.
+4000000007	Zwrot jest możliwy tylko za okazaniem paragonu.
+4000000008	Ten artykuł został już wyprzedany.
+4000000009	Od następnego tygodnia zaczyna się wyprzedaż.
+4000000010	Buty z kolekcji letniej są przecenione o 10%.
+4000000011	Czy ma Pani kartę lojalnościową?
+4000000012	Czy potrzebuje pan potwierdzenie zakupu?
+4000000013	Czy mogę w czymś pomóc?
+4000000014	Torba papierowa kosztuje 12 groszy.
+4000000015	Dzień dobry, czego Pan szuka?
+4000000016	Te produkty są wykonane z ekologicznych materiałów.
+4000000017	Nowy klient do pierwszego zakupu dostaje prezent gratis.
+4000000018	Dziękujemy bardzo i zapraszamy ponownie.
+4000000019	Wyślemy powiadomienie, kiedy produkt będzie ponownie dostępny.
+4000000020	Jeśli chce Pani przymierzyć płaszcz, zapraszam do przymierzalni.
+4000000021	Ta spódnica fantastycznie na Pani leży.
+4000000022	Ten sprzęt jest bardzo dobrej jakości.
+4000000023	To najnowszy model, zbiera same świetne recenzje.
+4000000024	Od 24 do 26 grudnia sklep będzie zamknięty.
+4000000025	Kup dobry powerbank i nie przejmuj się baterią.
+4000000026	W Warszawie również mamy swój sklep.
+4000000027	Polecamy produkt z najnowszej serii.
+4000000028	Zapraszamy do skorzystania z oferty weekendowej.
+4000000029	Proszę podać mi wieszak, odłożę go na miejsce.
+4000000030	Dziękujemy za opinię, wszystkie uwagi naszych klientów są dla nas bardzo ważne.
+4000000031	Gdyby coś się działo, proszę do nas dzwonić.
+4000000032	Czy ma Pan jakieś pytania dotyczące naszego produktu?
+4000000033	Zamówienie dotrze do Państwa w ciągu 7 dni roboczych.
+4000000034	Bateria litowo-jonowa stosowana w większości powerbanków może być zasilana na wiele różnorodnych sposobów.
+4000000035	Nowa dostawa będzie w poniedziałek.
+4000000036	Jakiego rozmiaru buty Pani potrzebuje?
+4000000037	Chciałbym zobaczyć Pana dowód osobisty.
+4000000038	Niestety, te produkty nie są objęte promocją.
+4000000039	Oczywiście, mamy możliwość płatności kartą.
+4000000040	Proszę poczekać, została jeszcze jedna sztuka tego swetra.
+4000000041	Jaki rozmiar nosi Pan zazwyczaj?
+4000000042	Jestem do Pani dyspozycji, gdyby była potrzebna pomoc.
+4000000043	Zaraz sprawdzę, czy ten model jest jeszcze dostępny.
+4000000044	Kierownik będzie mógł z Panem porozmawiać za 5 minut.
+4000000045	Czy będzie Pan potrzebował faktury?
+4000000046	Jeśli weźmie Pani jeszcze jedną sztukę, zakupy obejmie rabat 20%.
+4000000047	Czy chciałby Pan założyć kartę stałego klienta?
+4000000048	Wszystkie nasze kosmetyki są wykonane z naturalnych składników.
+4000000049	Mięso z naszej hodowli jest żywione najlepszą na rynku paszą.
+4000000050	W tym miesiącu mamy 10% zniżki na kurs dla początkujących.
+4000000051	Każda lekcja trwa 60 minut.
+4000000052	Na pierwszej lekcji odbędzie się test, który sprawdzi Pana poziom.
+4000000053	Jakim poziomem kursu jest Pani zainteresowana?
+4000000054	Pakiet 10 lekcji kosztuje 799 zł.
+4000000055	Ile godzin lekcyjnych chciałby Pan wykupić?
+4000000056	Wszyscy nasi pracownicy są wykwalifikowanymi lektorami.
+4000000057	Czy ma Pan podstawową znajomość języka hiszpańskiego?
+4000000058	Zajęcia odbywają się 3 razy w tygodniu.
+4000000059	W grupie zaawansowanej jest 6 studentów.
+4000000060	W naszej ofercie posiadamy również kursy wieczorowe.
+4000000061	W tej grupie zostało już tylko ostatnie miejsce.
+4000000062	Jesteśmy zmuszeni odwołać jutrzejsze zajęcia.
+4000000063	W związku z zaistniałą sytuacją wszystkie lekcje odbywają się zdalnie.
+4000000064	Po więcej informacji zapraszamy na naszą stronę internetową.
+4000000065	Nasi nauczyciele korzystają z najbardziej efektywnych metod.
+4000000066	To specjalny kurs, który przygotowuje do zdania egzaminu certyfikatowego.
+4000000067	Oferujemy zarówno lekcje grupowe, jak i indywidualne.
+4000000068	W celu uzyskania szczegółowych informacji zapraszamy na jutrzejsze spotkanie.
+4000000069	Na parterze znajduje się tablica informacyjna.
+4000000070	Proszę wybrać najdogodniejszy dla Pani termin.
+4000000071	Niestety, w naszej ofercie nie posiadamy kursu języka japońskiego.
+4000000072	Nasza szkoła działa na rynku już 25 lat.
+4000000073	Powerbanki dostępne na rynku mają różne kształty, kolory i wielkości, zwykle jednak im są pojemniejsze, tym mają większy rozmiar.
+4000000074	Na zajęciach wymagany jest własny sprzęt.
+4000000075	Wszystkie potrzebne materiały zapewnia szkoła.
+4000000076	Nasz pracownik oprowadzi Pana po budynku.
+4000000077	Zapiszę Panią na listę, proszę się w tym czasie rozejrzeć.
+4000000078	Skupiamy się głównie na umiejętności mówienia.
+4000000079	Po każdym rozdziale studenci piszą test.
+4000000080	W czasie świąt dostępne są dodatkowe zajęcia kulturowe.
+4000000081	Po każdej lekcji studenci mają 5 minut przerwy.
+4000000082	Po ukończeniu kursu każdy student otrzyma certyfikat.
+4000000083	Czy zna Pan podstawy programowania?
+4000000084	Możliwe jest rozłożenie płatności za kurs na raty.
+4000000085	Dojazd do naszej szkoły jest bardzo komfortowy, naprzeciwko znajduje się przystanek autobusowy.
+4000000086	Nasza szkoła prawa jazdy ma najlepsze opinie na rynku.
+4000000087	Limit miejsc na kurs podstawowy został już wyczerpany.
+4000000088	Jeden semestr obejmuje 4,5 miesiąca.
+4000000089	Dzieci mają dostęp do placu zabaw i jadalni.
+4000000090	Mamy swoje filie również w Krakowie i we Wrocławiu.
+4000000091	Którym kursem jest Pan zainteresowany?
+4000000092	Najlepsze efekty dają 3 lekcje tygodniowo.
+4000000093	Wymagana jest zaliczka za kurs w wysokości 250 zł.
+4000000094	Oferujemy możliwość przeprowadzenia 45-minutowej darmowej lekcji próbnej.
+4000000095	Lekcje indywidualne są najlepsze dla osób, które potrzebują maksymalnej uwagi nauczyciela.
+4000000096	Czy to Pana pierwszy kurs języka niemieckiego?
+4000000097	Jaki poziom znajomości języka chciałby Pan osiągnąć?
+4000000098	Proszę wysłać szczegółowy opis uszkodzenia produktu.
+4000000099	W przyszłym tygodniu wyślemy pracownika, który sprawdzi stan produktu.
+4000000100	Określ potrzebną Ci moc, rodzaj ładowania, wielkość urządzenia i jego koszt, a następnie dokonaj zakupu.
+4000000101	Oczywiście, zwrócimy całość kwoty zamówienia.
+4000000102	Przepraszamy, paragon jest niezbędny do zwrotu zamówienia.
+4000000103	Niestety, gwarancja nie obejmuje tego typu uszkodzeń.
+4000000104	Zwrot kosztów nastąpi w ciągu 5 dni roboczych.
+4000000105	W razie dodatkowych problemów proszę skontaktować się z nami jak najszybciej.
+4000000106	Czy posiada Pan paragon lub inne potwierdzenie zapłaty?
+4000000107	Niestety, produkty z wyprzedaży nie są objęte gwarancją.
+4000000108	Bardzo prosimy o zwrócenie produktu w oryginalnym opakowaniu.
+4000000109	Rozpatrzymy reklamację w ciągu 7 dni.
+4000000110	Czy mogłaby Pani podać nazwę produktu?
+4000000111	Obawiam się, że możemy zaproponować jedynie zwrot części kosztów.
+4000000112	Proszę poczekać, sprawdzę historię zakupu.
+4000000113	Przepraszamy za wszelkie niedogodności związane z opóźnieniem wysyłki.
+4000000114	Zakupiony przez Pana produkt wciąż obejmuje gwarancja.
+4000000115	Można się z nami kontaktować przez 7 dni w tygodniu.
+4000000116	W którym sklepie zakupiła Pani ten produkt?
+4000000117	Niestety, termin gwarancji minął tydzień temu.
+4000000118	Może Pan wyłączyć tę funkcję, nie jest niezbędna.
+4000000119	Wygląda na to, że Pani urządzenie nie jest kompatybilne z naszym systemem.
+4000000120	Proszę podać adres, potrzebujemy potwierdzić wysłanie przesyłki.
+4000000121	W mailu wyślę do Pana link do strony internetowej.
+4000000122	Możemy zaktualizować potrzebne składniki gratis.
+4000000123	Zazwyczaj naprawa trwa do dwóch tygodni.
+4000000124	Wszyscy nasi pracownicy są przygotowani.
+4000000125	Jeśli chciałby Pan uniknąć opóźnień, proszę skorzystać z serwisu internetowego.
+4000000126	Najpierw musimy zweryfikować wszystkie informacje.
+4000000127	To stary model, możemy go wymienić na jeden z nowszych.
+4000000128	Montaż jest wliczony w cenę usługi.
+4000000129	Rekomendowany jest przegląd urządzenia co pół roku.
+4000000130	Kontaktujemy się z Panią aby poinformować, że nowy telefon jest gotowy do odbioru.
+4000000131	Pierwsze ładowanie komputera powinno trwać nie mniej niż 12 godzin.
+4000000132	Żywotność baterii trwa mniej więcej 3 lata.
+4000000133	W celu uniknięcia przegrzania urządzenia najlepiej dokupić podkładkę chłodzącą.
+4000000134	Niestety, zwrot tego produktu nie jest możliwy.
+4000000135	Więcej informacji może Pan uzyskać, dzwoniąc pod podany niżej numer kontaktowy.
+4000000136	Czy ma Pan czas, aby wypełnić krótką ankietę na temat naszego serwisu?
+4000000137	Dzień dobry, kontaktujemy się z Panią w celu uzyskania informacji na temat problemów z urządzeniem.
+4000000138	Czy chciałby Pan dołączyć do naszego programu lojalnościowego?
+4000000139	Jeśli nasz pracownik nie naprawi produktu, zapewnimy nowy model.
+4000000140	Nasi pracownicy służą pomocą w montażu urządzenia.
+4000000141	Chcielibyśmy zadać kilka pytań dotyczących Państwa zamówienia.
+4000000142	Proszę udać się do najbliższego punktu naszego sklepu.
+4000000143	Ten zakup uprawnia do uzyskania 15% kodu rabatowego na następne zamówienie.
+4000000144	Wysyłamy nasze produkty za granicę, dostawa trwa do miesiąca.
+4000000145	Darmowy okres próbny naszych usług trwa 2 tygodnie.
+4000000146	Zadzwonimy do Państwa w najbliższym czasie.
+4000000147	Hasło powinno zawierać od 5 do 12 znaków.
+4000000148	Ma Pan już dostęp do swojego konta.
+4000000149	Program otworzy się automatycznie po zainstalowaniu.
+4000000150	Czy w ostatnim czasie była wykonywana jakaś aktualizacja?
+4000000151	Proszę zalogować się do systemu i sprawdzić, czy coś się zmieniło.
+4000000152	Kod weryfikacyjny powinien znajdować się w mailu.
+4000000153	Co w tym momencie jest widoczne na ekranie?
+4000000154	Proszę dać mi kilka minut na sprawdzenie błędu.
+4000000155	Rozumiem, jednak ten błąd nie jest naszą winą.
+4000000156	Czy posiada Pan jakiś inny numer telefonu?
+4000000157	Otrzymała Pani już ID użytkownika.
+4000000158	Najlepszy powerbank pozwoli Ci na korzystanie ze smartfona przez wiele godzin bez potrzeby podłączania go do tradycyjnej ładowarki.
+4000000159	Jaki system operacyjny jest zainstalowany na Pana komputerze?
+4000000160	Z tego powodu Państwa zamówienie jest nieco opóźnione.
+4000000161	Proszę chwilę poczekać, za chwilę wszystko powinno działać.
+4000000162	Oczywiście, istnieje możliwość połączenia dwóch kont.
+4000000163	To doskonałe i oszczędne rozwiązanie, które może pomóc Ci w odludnym terenie, gdzie dostęp do prądu jest ograniczony.
+4000000164	Odnowienie subskrypcji po rocznym okresie użytkowania kosztuje 50% mniej.
+4000000165	Czy jest Pan w tym momencie zalogowany?
+4000000166	Przed tą inwestycją jednak zastanów się, czy taka opcja może w ogóle być Ci kiedykolwiek potrzebna.
+4000000167	Kod produktu znajduje się z tyłu opakowania.
+4000000168	Problem z połączeniem sieciowym nie wynika z usterki routera.
+4000000169	Tak, to może być jedna z przyczyn problemu.
+4000000170	Zadbaj więc o to, by szybko dało się go naładować, bo to wpłynie na komfort użytkowania.
+4000000171	Proszę szerzej opisać problem z komputerem.
+4000000172	Szanowna Pani, dziękujemy za zakup biletu.
+4000000173	Naprawa będzie kosztować około 200 zł.
+4000000174	Po kilka sekundach proszę nacisnąć włącznik.
+4000000175	Dobrze, zaraz sprawdzę na którym koncie możemy znaleźć te informacje.
+4000000176	Przeprowadzę Panią przez proces instalacji.
+4000000177	Odpowiedź na to pytanie powinna znajdować się w instrukcji użytkowania.
+4000000178	Nieraz jednak dostępne porty różnią się od siebie, np. funkcją szybkiego ładowania.
+4000000179	Tak, otrzyma Pani zniżkę na zakup kolejnego produktu.
+4000000180	Czy cokolwiek pojawiło się na ekranie?
+4000000181	Często dzięki temu nadają się nawet do ładowania dwóch urządzeń jednocześnie.
+4000000182	Proszę kliknąć na ikonę po prawej stronie.
+4000000183	Proszę sprawdzić, czy komputer ma połączenie z Internetem.
+4000000184	Szybko dostrzeżesz, że to inwestycja w wygodę i praktyczne podejście do codziennego korzystania z urządzeń elektronicznych.
+4000000185	W tym momencie powinno pojawić się okno powiadomienia.
+4000000186	Proszę przesunąć router w celu uzyskania lepszego zasięgu.
+4000000187	Po 5 minutach proszę odświeżyć stronę.
+4000000188	Okres próbny zakończy się za 2 dni.
+4000000189	Nasze serwery są przeciążone, proszę spróbować za chwilę.
+4000000190	Nie jest możliwe wstrzymanie instalacji programu.
+4000000191	Proszę sprawdzić, czy możliwe jest poruszanie kursorem.
+4000000192	Gdzie w tym momencie znajduje się pasek zadań?
+4000000193	W tym przypadku warto zainstalować program antywirusowy.
+4000000194	Aby to zrobić, potrzebuje Pan najnowszej wersji Java.
+4000000195	Pełny pakiet programów Adobe jest dostępny w wersji próbnej na 3 miesiące.
+4000000196	Proszę spróbować odinstalować aplikację i zainstalować ją jeszcze raz.
+4000000197	Mamy ponad 30 lat doświadczenia w branży gastronomicznej.
+4000000198	Zapewniamy kompleksową pomoc przedsiębiorcom w całym kraju.
+4000000199	Oferujemy usługi dopasowane indywidualnie do każdego klienta.
+4000000200	Montaż paneli fotowoltaicznych jest naszą specjalnością.
+4000000201	Nasza firma otrzymała Laur Konsumenta w 2016 i 2018 roku.
+4000000202	Nasze produkty cechują się wyjątkową trwałością.
+4000000203	Nasz zespół składa się z najlepszych specjalistów w dziedzinie najnowszych technologii.
+4000000204	Dostarczamy rozwiązania zarówno dla klientów w kraju, jak i za granicą.
+4000000205	Nasi pracownicy cieszą się wyjątkowym zaufaniem wśród klientów.
+4000000206	Pomagamy naszym klientom dostosować ofertę do wymagań użytkowników.
+4000000207	Skupiamy się na osiągnięciu sukcesu przez naszych klientów.
+4000000208	Czas wykonania projektu zależy również od warunków zewnętrznych.
+4000000209	Każdy projekt jest dopasowany do indywidualnych potrzeb klienta.
+4000000210	Nasze rozwiązania są elastyczne i stworzone, aby rozwiązywać problemy różnego typu.
+4000000211	Udoskonalenia procesów biznesowych można dokonać tylko na podstawie dokładnej dokumentacji procesu.
+4000000212	Staramy się eliminować potrzebę podróży w celu oszczędzania czasu i pieniędzy.
+4000000213	Podczas fazy projektowania program szkoleniowy jest tworzony od początku do końca.
+4000000214	Zazwyczaj zalecamy etap oszacowania kosztów na początku każdego projektu.
+4000000215	Pomagamy klientom przezwyciężać wyzwania na szybko rozwijającym się rynku.
+4000000216	Pobierz aplikację i dowiedz się więcej!
+4000000217	Nasz zespół potwierdził Państwa zamówienie.
+4000000218	Ta strona może zbierać poufne informacje, czy jesteś pewien, że chcesz ją otworzyć?
+4000000219	Aby sprawdzić pocztę głosową, wciśnij 108.
+4000000220	Zostałeś wylogowany z ostatniej sesji.
+4000000221	Dokończ swoje zamówienie i zyskaj 10% rabatu!
+4000000222	Połącz się z Internetem, aby dokończyć pobieranie pliku.
+4000000223	Wykorzystałeś limit danych na ten miesiąc.
+4000000224	Pod tym adresem znajdują się informacje na temat Twojego zamówienia.
+4000000225	W związku z utrudnieniami w ruchu lotniczym dostawa zamówienia może być opóźniona do 3 dni.
+4000000226	Zarejestruj się, aby uzyskać zniżkę!
+4000000227	Teraz możesz już wykonywać połączenia.
+4000000228	Kopia umowy zostanie wysłana w kolejnym e-mailu.
+4000000229	Nowoczesne powerbanki mogą mieć wiele różnorodnych portów, zależnie od typu telefonów i urządzeń, które mają obsługiwać.
+4000000230	Zwrot powinien pojawić się na koncie bankowym do 7 dni roboczych.
+4000000231	Państwa zamówienie jest już w drodze!
+4000000232	To pozwoli Ci racjonalnie gospodarować zasobami i nigdy nie zostać w ręce z rozładowanym telefonem.
+4000000233	Z praktycznego punktu widzenia wskaźnik naładowania baterii jest szczególnie istotny, bo dzięki niemu będziesz wiedział, na jak długi czas jeszcze starczy Ci baterii. 
+4000000234	Dla niektórych użytkowników istotne jest też bezprzewodowe ładowanie.
+4000000235	Monika Kowalska i 3 innych użytkowników polubiło Twój post.
+4000000236	Nie zapomnij złożyć mu życzeń!
+4000000237	Nastąpił problem, transakcja nie została sfinalizowana.
+4000000238	Spotkanie w Hotelu InterContinental dzisiaj o 15.
+4000000239	Prosimy o zapisanie załączonego pliku z biletem w urządzeniu mobilnym.
+4000000240	Przejrzyj ranking powerbanków i wybierz ten, który najbardziej Ci się przyda.
+4000000241	Twój kod bezpieczeństwa to 7294.
+4000000242	Cena produktu zawiera wszystkie podatki.
+4000000243	Przepraszam, niestety przyjmujemy tylko płatność gotówką.
+4000000244	To unikalny produkt z edycji limitowanej.
+4000000245	W sklepie stacjonarnym cena będzie korzystniejsza.
+4000000246	Nasze sery są produktami regionalnymi, dlatego mają tak wyjątkowy smak.
+4000000247	Wypożyczamy również samochody, które znajdują się na drugim piętrze.
+4000000248	Aktualny status transakcji sprawdzić pod tym adresem.
+4000000249	Jeśli to prezent, mogę zapakować sukienkę w ozdobny papier.
+4000000250	Czy to zakup dla Pana, czy dla kogoś innego?
+4000000251	I jak leżą te buty?
+4000000252	Dzień dobry, jakiego modelu Państwo szukają?
+4000000253	Proszę dotknąć materiału, jest bardzo wygodny.
+4000000254	Ta skóra jest bardzo dobrej jakości, materiał pochodzi z Włoch.
+4000000255	Została jeszcze ostatnia sztuka tej bluzki w rozmiarze S.
+4000000256	Czy życzą Państwo sobie dostawę do domu?
+4000000257	Posiadamy telewizory w różnych rozmiarach.
+4000000258	Jeśli nie gra Pan w gry komputerowe, wystarczy laptop z mniejszą pamięcią.
+4000000259	Wszystkie owoce i warzywa w tym dziale pochodzą z ekologicznych upraw.
+4000000260	Płatki kukurydziane leżą obok działu słodyczy.
+4000000261	Oczywiście, przekażę Pana sugestię kierownikowi.
+4000000262	Poprzedni studenci oceniają naszą szkołę bardzo dobrze.
+4000000263	Niestety, nie jesteśmy w stanie utworzyć grupy weekendowej.
+4000000264	Płaci Pani z góry za całość kursu.
+4000000265	Zazwyczaj w jednej grupie jest 5 studentów.
+4000000266	W przyszłym tygodniu organizujemy wyjście do teatru.
+4000000267	Nasi nauczyciele z chęcią odpowiedzą na wszystkie pytania.
+4000000268	Oczywiście, mamy w ofercie również kurs samoobrony dla dzieci.
+4000000269	Każda lekcja jest skonstruowana w taki sposób, aby skupić na sobie uwagę studenta.
+4000000270	Ten kurs jest bardzo popularny, dlatego ilość miejsc jest ograniczona.
+4000000271	Nasz kurs programowania jest idealny dla wszystkich, którzy nie mieli jeszcze styczności z tym tematem.
+4000000272	Dla najlepszych studentów przygotowane jest specjalne stypendium.
+4000000273	Nasi studenci pochodzą z różnych krajów.
+4000000274	Na rozpoczęcie tego kursu trzeba niestety poczekać do września.
+4000000275	Studenci widzą postępy już po 2 tygodniach!
+4000000276	Proces aplikacji jest szybki i prosty.
+4000000277	Oferujemy pełny zwrot kosztów w razie niezadowolenia z kursu.
+4000000278	W piątek o godzinie 11 odbędzie się test plasujący.
+4000000279	Na naszej stronie internetowej znajduje się więcej informacji.
+4000000280	Najbliższy kurs języka angielskiego rozpoczyna się za 2 tygodnie.
+4000000281	Niestety, nie posiadamy w ofercie grupowych lekcji online.
+4000000282	Rozwiążemy ten problem najszybciej, jak tylko będzie to możliwe.
+4000000283	Czy na początek mogę prosić o Pana adres e-mail?
+4000000284	To świetne rozwiązanie dla ludzi mobilnych, którzy nie mają czasu na siedzenie przez dłuższy czas w jednym miejscu.
+4000000285	Kod dostępu ma 8 znaków.
+4000000286	Oprogramowanie w wersji próbnej jest dostępne przez 3 miesiące.
+4000000287	Znajdź złoty środek między tymi dwoma aspektami, który idealnie dopasowany będzie do Twoich potrzeb i oczekiwań.
+4000000288	Czy mogłaby Pani przeliterować nazwisko?
+4000000289	Proszę pamiętać, że hasło powinno być skomplikowane.
+4000000290	Udzieloną zgodę możesz wycofać.
+4000000291	Jaki komunikat wyświetla się po włączeniu telewizora?
+4000000292	Dzień dobry, kontaktuję się z Panem, aby zapytać, czy z urządzeniem jest wszystko w porządku?
+4000000293	Proszę wpisać ten kod na naszej stronie internetowej, dostanie Pani 15% zniżki.
+4000000294	Jeśli potrzebuje Pani pomocy przy instalacji oprogramowania, proszę zadzwonić na naszą infolinię.
+4000000295	Niestety, nie mogę udzielić takiej informacji przez telefon.
+4000000296	Tak, oferujemy również szkolenia online.
+4000000297	Ten rodzaj produktów sprzedajemy jedynie klientom ze specjalnymi uprawnieniami.
+4000000298	Wraz z zakupem dostaje Pan roczny dostęp do chmury danych.
+4000000299	Czy adres podany przy rejestracji nie zawiera jakiegoś błędu?
+4000000300	Bardzo mi przykro, zrobimy co w naszej mocy, aby naprawić urządzenie.

@@ -1,0 +1,300 @@
+3000000001	Dzisiaj jednak nie mogę się spotkać, źle się czuję.
+3000000002	Co chcesz zjeść na kolację?
+3000000003	Możemy pójść na piechotę, to nie jest daleko.
+3000000004	Nie podoba mi się twój ton.
+3000000005	Już nasze prababcie wykorzystywały go w celach leczniczych oraz pielęgnacyjnych.
+3000000006	Kończę szkołę o 15, będę w domu około 16.
+3000000007	Strasznie za wami tęsknię, mam nadzieję, że niedługo się spotkamy!
+3000000008	No to wszystko mamy zaplanowane.
+3000000009	Mogę zrobić kotlety schabowe.
+3000000010	Jutro nie mam czasu, zadzwonię do ciebie w niedzielę po południu.
+3000000011	Nie rozumiem, o co ci chodzi.
+3000000012	Rumianek lekarski jest jednym z najbardziej popularnych ziół.
+3000000013	Próbowałam z nią pogadać, ale nic nie mogłam wyciągnąć.
+3000000014	Spakowałam tyle kosmetyków, że nie starczy mi miejsca na resztę.
+3000000015	Dlaczego nigdy mnie nie słuchasz?
+3000000016	Muszę kupić nowy komputer, ten już prawie nie działa.
+3000000017	Pomożesz mi wybrać prezent dla Jacka?
+3000000018	Wszystko się u mnie pozmieniało.
+3000000019	Nigdy nie chciałem, żeby tak to się skończyło.
+3000000020	Poznaj wszechstronne działanie ziela, które skutecznie wykorzystasz w domowych warunkach.
+3000000021	Ta bluzka kosztowała tylko 20 zł, były duże promocje.
+3000000022	Słyszałem, że pracuje w banku.
+3000000023	Możesz odpowiedzieć na moje poprzednie pytanie?
+3000000024	Teraz to nie ma już żadnego znaczenia.
+3000000025	Wciąż nie mogę uwierzyć w to, co się stało.
+3000000026	Kupiliście jajka, czy mam zajść do sklepu?
+3000000027	Nie wiem już, jak mam przemówić Kasi do rozumu.
+3000000028	Nawet nie wiesz jak się cieszę, że się znamy.
+3000000029	Nie chcę mieć z tobą już nic wspólnego.
+3000000030	Dlaczego tak się zachowujesz?
+3000000031	Wieczorem muszę się spakować, jutro o 8 mam lot.
+3000000032	Rumianek częściej znany pod nazwą rumianku lekarskiego, pospolitego, zwyczajnego można spotkać niemal w całej Europie.
+3000000033	Nie pytaj mnie, bo i tak ci nie powiem.
+3000000034	Nie wiem, nie ufałabym mu.
+3000000035	Jakie ubrania chcesz wziąć ze sobą?
+3000000036	Zaczynamy remont za dwa miesiące, nie mogę się doczekać.
+3000000037	Najbardziej lubię truskawki, ale możesz też kupić maliny.
+3000000038	Naprawdę cię nie widziałem!
+3000000039	Nigdy żaden facet nie stanął im na drodze.
+3000000040	Wszystko u niego dobrze, nie musisz się martwić.
+3000000041	Jest najpiękniejszą kobietą, jaką w życiu widziałem. 
+3000000042	Kowalscy przeprowadzili się do Niemiec.
+3000000043	Studiowałam we Wrocławiu, a potem znalazłam pracę w Warszawie.
+3000000044	No tak, wszyscy mają jakieś problemy.
+3000000045	Nie wiem, nie widziałam jej już pół roku.
+3000000046	Ładne profilowe zdjęcie! Gdzie ścinałaś włosy?
+3000000047	W mojej rodzinie też mamy taki problem.
+3000000048	Nowy wykładowca wydaje się być w porządku.
+3000000049	Jest ambitna i zawsze walczy o swoje.
+3000000050	Myślimy o kupnie działki pod budowę, mieszkanie to nie jest to samo.
+3000000051	Chcę zmienić pracę, ale na razie musi być tak, jak jest.
+3000000052	My też planujemy zbudować za rok.
+3000000053	Staram się zdrowo odżywiać, ale nie zawsze wychodzi.
+3000000054	Czy powiedziałem coś nie tak?
+3000000055	Moja mama jest w szpitalu, jeszcze nie wiemy co jej jest.
+3000000056	Proszę, powiedz mi o co chodzi.
+3000000057	Mój kolega też chodzi na ten kurs.
+3000000058	Daj znać, jeśli będziesz potrzebować notatek.
+3000000059	Dzieci chodzą do szkoły, my pracujemy tam gdzie wcześniej.
+3000000060	Trzymaj za mnie kciuki, po południu idę na rozmowę o pracę.
+3000000061	Ile zapłaciliście za basen?
+3000000062	Ich rodzice zapłacili za wszystko, bo są bardzo bogaci.
+3000000063	Na co masz ochotę?
+3000000064	Będę trochę później, muszę jeszcze skoczyć do sklepu.
+3000000065	W tym miesiącu wydali za dużo, więc musimy jeszcze trochę poczekać.
+3000000066	Mam coś przynieść, czy wszystko jest na miejscu?
+3000000067	Kup jakiś chleb, bo my mamy jedzenie i resztę.
+3000000068	Podobno Gośka stała się dla niego trochę za miła.
+3000000069	Żałuję, że nie mogłam wpaść.
+3000000070	Mam nadzieję, że będziesz już czekać z kolacją.
+3000000071	Jak ci poszedł test z matematyki?
+3000000072	Nie wiem, nie zrobiłem wszystkiego.
+3000000073	Wybrałeś już kierunek?
+3000000074	Chcę, żeby wszystko wyszło idealnie.
+3000000075	Przez ostatni tydzień nie mogłam spać.
+3000000076	Masz jakiś pomysł, co może pomóc?
+3000000077	Spróbuj położyć się wcześniej i wypić ciepłe mleko przed snem.
+3000000078	Tego już próbowałam, nic nie dało.
+3000000079	Może potrzebujesz lekarza, tydzień to już długo.
+3000000080	Poczekam jeszcze kilka dni i zobaczę.
+3000000081	Wszystko będzie dobrze, nie martw się.
+3000000082	Pamiętasz, jak rozmawiałyśmy o lekcjach hiszpańskiego? Dalej chcesz się uczyć?
+3000000083	A gdzie dokładnie się wybieracie?
+3000000084	Znalazłam szkołę językową, mają teraz kursy w promocji.
+3000000085	Czy zajęcia są tylko od poniedziałku do piątku, czy w weekendy też?
+3000000086	Zajęcia są w sobotę od 9 do 12.
+3000000087	W tygodniu nie mam czasu, a ty?
+3000000088	Ja też nie mam czasu w tygodniu.
+3000000089	Zadzwonię tam jutro i zapytam o szczegóły.
+3000000090	Nigdy nie byłam w Afryce, nie mogę się doczekać.
+3000000091	Pamiętaj, żeby pić dużo wody.
+3000000092	Planujesz zwiedzić Egipt, czy to zbyt popularne miejsce?
+3000000093	Ja nie wiem, które są najlepsze.
+3000000094	Odpowiednio przygotowany napar z rumianku może wykazywać działanie przeciwzapalne.
+3000000095	Na pewno wyślę dużo zdjęć.
+3000000096	Twój wychowawca do mnie dzwonił.
+3000000097	Roślinę możesz spotkać praktycznie na każdej łące i bardziej zarośniętych trawą przestrzeniach.
+3000000098	Dlaczego nic mi nie powiedziałaś?
+3000000099	Masz jakieś plany na czerwiec?
+3000000100	Jeszcze nie wiem, a czemu pytasz?
+3000000101	Chcemy jechać do Hiszpanii z Maćkiem i Jolą.
+3000000102	Znaleźliście jakąś promocję na lot?
+3000000103	Chcesz pojechać z nami na urlop?
+3000000104	Myślę, że dostanę wtedy urlop. 
+3000000105	Wolisz jechać autem czy autobusem?
+3000000106	Słyszałam, że Gran Canaria ma piękne plaże.
+3000000107	To dobrze, bo chyba nawet cena jest korzystniejsza.
+3000000108	W przyszłym tygodniu zapytam szefa, jak planuje rozdzielać urlopy.
+3000000109	Będziemy w kontakcie, trzymaj się.
+3000000110	Cześć! Kupiłeś już najnowszy kryminał naszego ulubionego autora?
+3000000111	Najpierw chciałem skończyć poprzednią książkę, i tak kupuję za dużo.
+3000000112	Jeśli jeszcze nie masz, to mogę ci pożyczyć.
+3000000113	Ze względu na to, że zioło można zaliczyć do chwastów, nie jest konieczne, aby szukać go na specjalnych uprawach, czy plantacjach.
+3000000114	Masz czas w przyszły weekend?
+3000000115	W piątek jadę do mojej dziewczyny, wracam w niedzielę po południu.
+3000000116	 Kończę pracę o 18, a ty?
+3000000117	Chyba że wolisz spotkać się na mieście?
+3000000118	Sylwia nie może zostać sama nawet na chwilę, bo mały zaczyna płakać.
+3000000119	Ok, to do następnego weekendu!
+3000000120	Nie wiem, co mam wziąć.
+3000000121	Prawie wszystko mam już w walizce.
+3000000122	Przecież ten biwak to tylko 3 dni.
+3000000123	Wiem, ale tam będzie Michał.
+3000000124	Jesteś śliczna i bez makijażu.
+3000000125	Ostatnio mam straszne problemy z cerą.
+3000000126	Widziałam, jak on na ciebie patrzy.
+3000000127	Chciałabym, żeby w końcu powiedział mi to wprost.
+3000000128	A może ty zrobisz pierwszy krok?
+3000000129	Nie, wiesz, jaka jestem nieśmiała.
+3000000130	No to miejmy nadzieję, że chłopak się odważy.
+3000000131	A tak z innej beczki, z kim chcesz być w pokoju?
+3000000132	Zależy, ile osób będzie w jednym.
+3000000133	Idziemy do baru z kolegami.
+3000000134	Ze względu na wykazywanie silnych właściwości przeciwzapalnych przez ziele rumianku roślina często stosowana jest w kosmetologii.
+3000000135	Może ktoś z twoich znajomych sprzedaje?
+3000000136	Nie znam szczegółów, ale chyba chodzi o Kubę.
+3000000137	Kuba szaleje za Natalią.
+3000000138	Tak, ale one przyjaźnią się od dziecka. 
+3000000139	Gosia jest najbardziej lojalną osobą, jaką znam.
+3000000140	Ale z drugiej strony, widziałaś, jak się zachowuje?
+3000000141	W każdym razie będziemy w pokoju albo z Natalią, albo z Gosią.
+3000000142	Kto jeszcze idzie z nami do kina?
+3000000143	Zapytam ją jutro, chyba że jest już umówiona z kimś innym.
+3000000144	Tak w ogóle o której spotykamy się na placu?
+3000000145	Jeszcze nawet się nie wykąpałam.
+3000000146	Do zasadzenia wybierz dość dobrze nasłonecznione miejsce, które zagwarantuje rumiankowi odpowiedni wzrost.
+3000000147	W końcu znaleźliśmy kotka dla małej!
+3000000148	Słyszałam, że masz teraz kotkę.
+3000000149	Dostaliście już papiery waszego kotka?
+3000000150	Tak, wszystko już jest, czekamy tylko na informację, że możemy przyjechać.
+3000000151	Wyślij mi zdjęcie.
+3000000152	Ostatnio mam jakieś problemy z telefonem i nie jestem pewna, czy doszło.
+3000000153	Ta czarna plamka pod okiem jest urocza.
+3000000154	A co u ciebie, wszystko dobrze?
+3000000155	Ostatnio byłam trochę przeziębiona, poza tym po staremu.
+3000000156	Mam nadzieję, że kotek nie narobi nam bałaganu.
+3000000157	Na pewno nie narobi bałaganu.
+3000000158	Dobrze, że Julia będzie miała towarzystwo.
+3000000159	Cały czas zostajesz przy swoim zdaniu? Nie chcesz drugiego dziecka?
+3000000160	Znowu długi czas spędzę w domu.
+3000000161	Tak, pamiętam, jakie to było dla ciebie trudne.
+3000000162	Poza tym nie mogę sobie pozwolić na kolejną przerwę w pracy.
+3000000163	Dlatego my zdecydowaliśmy, że przez najbliższe lata będziemy cieszyć się sobą.
+3000000164	Chociaż my mieliśmy szczęście, bo Julka jest bardzo spokojnym dzieckiem.
+3000000165	Synek mojej koleżanki potrzebuje dużo uwagi.
+3000000166	Była z nim u lekarza?
+3000000167	Powiedział, że wszystko jest w porządku, po prostu mały ma taki charakter.
+3000000168	To może być też następny skok rozwojowy.
+3000000169	Nie musi się przejmować, ale i tak jej współczuję.
+3000000170	Najważniejsze, że jest zdrowy i nic mu nie jest.
+3000000171	Polecisz mi jakąś szkołę prawa jazdy?
+3000000172	W końcu się za to zabrałeś!
+3000000173	Przeprowadzam się za miasto i będę dalej dojeżdżać do pracy.
+3000000174	Jak daleko będziesz teraz jeździć?
+3000000175	Rozglądam się już za samochodem, ale jeszcze nie mam nic na oku. 
+3000000176	Wolisz coś z większym przebiegiem czy nowszy model?
+3000000177	Jaki tatuaż tym razem zrobiłaś?
+3000000178	Nie można mieć wszystkiego. 
+3000000179	Daj mi znać, będę czekać.
+3000000180	Czego potrzebujemy ze sklepu?
+3000000181	Kup jakieś owoce i warzywa, słodycze też się skończyły.
+3000000182	Co robimy jutro na obiad?
+3000000183	Może kurczaka z ryżem i brokułami?
+3000000184	Powinnaś kupować takie rzeczy sama.
+3000000185	Przecież widzisz, jakie przynoszę do domu.
+3000000186	Znowu zaczynamy ten sam temat?
+3000000187	Mówiłam ci jaka jestem zmęczona i jak bardzo potrzebuję chociaż jednego dnia wolnego.
+3000000188	Rozumiem cię, ale dobrze wiesz jaka jest sytuacja.
+3000000189	Wyprowadzka nie była najlepszym pomysłem.
+3000000190	Pracuję tak dużo, bo chcę dostać podwyżkę.
+3000000191	Mam też inny pomysł, ale nie będziesz chciał się zgodzić.
+3000000192	Chyba wiem, co masz na myśli.
+3000000193	Możemy sprzedać mieszkanie i wrócić do Warszawy.
+3000000194	Silne i kojące działanie substancji odżywczych sprawi, że osiągniesz stan ukojenia.
+3000000195	Może uda mi się znaleźć pracę na pół etatu.
+3000000196	Wtedy całą twoją wypłatę będziemy musieli przeznaczyć na nianię.
+3000000197	Ja już naprawdę nie daję rady.
+3000000198	Wytrzymaj jeszcze trochę czasu, niedługo będzie łatwiej.
+3000000199	Ja chętnie pójdę do pracy, a ty zostaniesz w domu z dziećmi.
+3000000200	Jeśli będziesz w stanie zarobić tyle co ja, proszę bardzo.
+3000000201	A nie, przepraszam, nie widzisz bo nigdy cię nie ma.
+3000000202	Przepraszam, ale takie są realia.
+3000000203	To brzmi tak, jakbyś myślał, że siedzę tylko w domu i nic nie robię.
+3000000204	Zdaję sobie sprawę, że opieka nad dziećmi jest bardzo trudna.
+3000000205	Opieka to jedno, poza tym jest jeszcze sprzątanie, gotowanie, załatwianie spraw na mieście i mnóstwo innych rzeczy.
+3000000206	Masz rację, nie pomyślałem o tym.
+3000000207	Czasami mam na głowie tyle, że nie wiem od czego zacząć.
+3000000208	Twoja mama może przyjechać na kilka dni, nawet do dwóch tygodni i trochę cię odciążyć.
+3000000209	Przecież nie lubisz, kiedy do nas przyjeżdża.
+3000000210	Zależy mi na twoim samopoczuciu.
+3000000211	Zadzwonię do niej wieczorem.
+3000000212	Hej, idziesz na urodziny Rafała?
+3000000213	Wybieram się, a czemu pytasz?
+3000000214	Nie wiem co mu kupić, masz już dla niego prezent?
+3000000215	Kupiłem mu najnowszą płytę jego ulubionego zespołu.
+3000000216	Też o tym myślałem i miałem zapytać cię o kapelę, ale teraz już odpada.
+3000000217	Zawsze możesz kupić mu bilety na koncert.
+3000000218	Grają w Polsce jakoś niedługo?
+3000000219	Tak, słyszałem, że mają trasę w Europie.
+3000000220	Nie musisz jednak zapuszczać się na wyprawy, aby uzbierać odpowiednią ilość rośliny.
+3000000221	Tak, ale ona chyba nie bardzo lubi tego typu muzykę.
+3000000222	To może weźmie ze sobą najlepszego kumpla.
+3000000223	Kupuj dwa bilety, póki są!
+3000000224	Nie ciesz się tak, pewnie i tak wybierze dziewczynę.
+3000000225	Mamy dwoje dzieci i ktoś musi na nie zarobić.
+3000000226	Jak tam bilety, ile kosztują?
+3000000227	Cena biletów wynosi 300 złotych.
+3000000228	Do 8 tysięcy będzie w porządku?
+3000000229	Nie ma opcji, muszę zmienić plan.
+3000000230	Jego ulubiona drużyna nie gra teraz w Polsce, ale możesz kupić mu koszulkę zawodnika.
+3000000231	Dzięki za podpowiedź! Przy okazji, będzie alkohol czy każdy w swoim zakresie?
+3000000232	Nie wiem, ale na wszelki wypadek lepiej weź coś swojego.
+3000000233	Jak było dzisiaj w szkole?
+3000000234	Nudno, nic ciekawego się nie działo.
+3000000235	Zmiany na skórze w postaci drobnych krostek czy też czerwonych plam mogą być objawami alergii.
+3000000236	Tylko proszę, nie bądź zła.
+3000000237	Nie mów, że znowu dostałeś jedynkę.
+3000000238	W tym sklepie zawsze są fajne promocje.
+3000000239	Za trzy miesiące masz maturę.
+3000000240	Przecież chodzę co tydzień na korepetycje.
+3000000241	Moje ciężko zarobione pieniądze wyrzucone w błoto.
+3000000242	Na korepetycjach wszystko rozumiem, ale jak przychodzi sprawdzian to nic mi nie wychodzi.
+3000000243	Daj mi numer do twojej nauczycielki.
+3000000244	Niedługo jest wywiadówka.
+3000000245	Chcę zobaczyć ten sprawdzian, może gdzieś się pomyliła.
+3000000246	Po prostu mi nie poszło.
+3000000247	Masz w tym momencie wysłać mi numer.
+3000000248	Gdybym miała blisko mamę, wszystko byłoby łatwiejsze.
+3000000249	Co interesującego zobaczyliście na tej wycieczce?
+3000000250	Jutro mam ostatni dzień w tej pracy.
+3000000251	Podobało ci się we Wrocławiu?
+3000000252	Wtedy będziemy mogli zatrudnić nianię.
+3000000253	Masz we Wrocławiu jakichś znajomych?
+3000000254	Mam nadzieję że poznam kogoś na tej imprezie.
+3000000255	Wiem kochanie, ale zawsze lepiej jechać tam, gdzie już się kogoś zna.
+3000000256	Znowu chcesz zacząć ten sam temat.
+3000000257	Zupełnie nie wiem o co ci chodzi.
+3000000258	Chcesz, żebym została w Poznaniu.
+3000000259	Muszę coś zmienić w swoim życiu.
+3000000260	Jestem dorosła i wiem, co dla mnie dobre.
+3000000261	Póki to my będziemy płacić za twoje studia, chyba mamy coś do powiedzenia?
+3000000262	W takim razie pójdę do pracy i sama będę opłacać czesne.
+3000000263	Masz się skupić na nauce.
+3000000264	Dobrze, ale nie zmienicie moich planów.
+3000000265	W tych dniach pytanie to mogłoby się wydawać zupełnie nieistotne.
+3000000266	Zupełnie inne życie, które chciałabym poznać.
+3000000267	Źle ci się z nami mieszka?
+3000000268	Lubię nasz dom, przecież wiesz.
+3000000269	Masz tutaj wszystko, czego potrzebujesz.
+3000000270	Czuję, że to czas na coś nowego.
+3000000271	Ja też kiedyś byłam w twoim wieku.
+3000000272	Kiedy wyprowadziłaś się z domu?
+3000000273	Wcześnie, miałam tylko 19 lat.
+3000000274	Dlatego nie rozumiem, o co ci chodzi.
+3000000275	Nawet nie wiesz, jak było mi trudno.
+3000000276	Jak rozpoznać wysypkę alergiczną i czy istnieje skuteczna maść na alergie?
+3000000277	Musiałam jednocześnie uczyć się i pracować.
+3000000278	Nie miałaś na nic czasu?
+3000000279	Byłam w pracy do wieczora i siedziałam nad książkami do późnej nocy.
+3000000280	Jak rozpoznać wysypkę alergiczną na skórze?
+3000000281	Po prostu bardzo nie chcę, żebyś teraz pracowała.
+3000000282	Obiecuję, że znajdę pracę z domu.
+3000000283	Zaoszczędzisz czas na dojazdy.
+3000000284	Długo go nie widziałem.
+3000000285	Wyjechał za granicę, nie wiem dokładnie gdzie.
+3000000286	Kto będzie zajmował się jego firmą?
+3000000287	Jutro otwiera się nowa restauracja u mnie na osiedlu.
+3000000288	Masz może ochotę się przejść?
+3000000289	Nikt nie wie, skąd się wzięły jego problemy finansowe.
+3000000290	Ciekawe, gdzie on jest i co teraz robi.
+3000000291	Mój kolega mówił, że ma w Kanadzie rodzinę.
+3000000292	Mam nadzieję, że nie jesteś w pracy.
+3000000293	Nie, zostałam dzisiaj w domu.
+3000000294	Sprawia również, że w czasie dnia możemy czuć się komfortowo.
+3000000295	I skończyłam książkę, której nie miałam czasu doczytać.
+3000000296	Lepiej, żebyś chociaż jeden dzień poleżała.
+3000000297	Mają być w Krakowie w lipcu.
+3000000298	Masz wszystkie zakupy czy czegoś potrzebujesz?
+3000000299	Zamówiłam na obiad spaghetti.
+3000000300	Powinnaś zjeść ciepłą zupę!

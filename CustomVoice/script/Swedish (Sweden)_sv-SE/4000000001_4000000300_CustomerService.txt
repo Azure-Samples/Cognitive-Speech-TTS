@@ -1,0 +1,300 @@
+4000000001	Hej och välkommen till kundtjänst! Hur kan jag hjälpa till?
+4000000002	Jag kan självklart hjälpa dig med ditt ärende via telefon.
+4000000003	Våra ordinarie öppettider är mellan klockan 8 och 17 på vardagar.
+4000000004	Är du kund hos oss sen tidigare?
+4000000005	Den här produkten finns att köpa både online och i butik. 
+4000000006	Jag ska se om vi har några fysiska återförsäljare på din ort.
+4000000007	Just den här varan säljer vi tyvärr bara i våra fysiska butiker.
+4000000008	Hos oss gäller alltid öppet köp i 30 dagar.
+4000000009	Du har ett års bytesrätt på alla varor, både i butik och online.
+4000000010	Hela utbudet i vår butik finns även att beställa på webben.
+4000000011	Vårt mål är att leverera alla ordrar inom 24 timmar. 
+4000000012	Vår prisgaranti gäller i 30 dagar från inköpsdatumet.
+4000000013	Det är möjligt att antingen hämta varan i vår butik eller välja hemleverans.
+4000000014	Frakten är gratis vid köp över 500 kr.
+4000000015	Om du vill få din vara extra snabbt erbjuder vi expressfrakt till en låg extra kostnad.
+4000000016	Det går bra att returnera varan trots att du öppnat förpackningen och provat produkten.
+4000000017	Vi erbjuder kostnadsfri betalning mot faktura i 30 dagar.
+4000000018	Ångerrätten gäller i 14 dagar från det att du har tagit emot varan.
+4000000019	Om det är något som inte passar har du 30 dagar på dig att göra en retur.
+4000000020	Det går bra att betala med kontanter eller kort i våra butiker.
+4000000021	I vår webbshop finns även möjlighet att betala mot faktura.
+4000000022	När du har ett kundkonto hos oss kan du dela upp betalningen på 12, 24 eller 36 månader.
+4000000023	Köp som görs före klockan 12 levereras vanligtvis nästa dag.
+4000000024	Det går att få paketet hem till dörren eller välja upphämtning hos närmaste postombud.
+4000000025	Du kommer att få ett mail när leveransen lämnar vårt lager.
+4000000026	Vilken adress vill du att paketet ska skickas till?
+4000000027	Jag ger dig gärna mer information om våra olika fraktalternativ.
+4000000028	Om du skulle ångra ditt köp har du alltid 14 dagars returrätt.
+4000000029	Alla priser i webbutiken är inklusive moms.
+4000000030	Vi har nöjd-kund-garanti, vilket innebär att du får pengarna tillbaka om du inte är helt nöjd.
+4000000031	Det minsta köpbeloppet i vår webbshop är 100 kr.
+4000000032	Din beställning borde vara framme hos dig inom 5 dagar.
+4000000033	Vi har varan i lager och den förväntade leveranstiden är 2 till 3 arbetsdagar.
+4000000034	Du kan hitta mer information om alla produkter på vår webbplats. 
+4000000035	Jag kan se att ditt paket fortfarande är under transport hos vår fraktpartner.
+4000000036	Eftersom du är bonuskund hos oss skickar vi din order fraktfritt.
+4000000037	Vill du att varan ska skickas som en gåva?
+4000000038	Jag beklagar, men just den produkten har utgått ur vårt sortiment. 
+4000000039	Du har pengarna-tillbaka-garanti på alla produkter i tre månader. 
+4000000040	Vi lämnar en extra garanti på alla teknikprodukter i ett år.
+4000000041	Datorn du söker har dessvärre utgått ur sortimentet, men jag kan rekommendera en nyare modell.
+4000000042	Om du behöver hjälp med att koppla in routern erbjuder vi installationshjälp i hemmet.
+4000000043	Dröj bara ett kort ögonblick, så ska jag ta fram din köphistorik.
+4000000044	Du kan se alla dina beställningar genom att logga in på ditt konto.
+4000000045	Jag ska se om varan finns på lager hos din närmaste återförsäljare.
+4000000046	Ett ögonblick, så ska jag logga in i vårt system där jag kan se dina beställningar. 
+4000000047	Ladda gärna ner vår app för att få fler personliga erbjudanden till din telefon.
+4000000048	Varan är dessvärre tillfälligt slut på vårt centrallager, men jag lägger gärna in en bevakning om du vill.
+4000000049	Vill du göra en beställning över telefon?
+4000000050	Om jag får ditt namn och kundnummer så ska jag kontrollera statusen för din order.
+4000000051	Vad har du för ordernummer?
+4000000052	I vilket namn är beställningen gjord?
+4000000053	Är fakturaadressen samma som leveransadressen?
+4000000054	Om du har möjlighet att dröja en kort stund ska jag söka upp ditt ärende i vår databas.
+4000000055	Vill du att vi skickar fakturan med posten eller till din e-postadress?
+4000000056	Om du loggar in via vår hemsida hittar du ditt kontosaldo under rubriken "betalningar".
+4000000057	Jag ser i din orderhistorik att du gjorde ditt senaste köp för två veckor sedan, stämmer det? 
+4000000058	Ett ögonblick, så ska jag försöka spåra ditt paket.
+4000000059	Förfallodatumet för din aktuella månadsfaktura är om tio dagar. 
+4000000060	Du kan använda dina insamlade klubbpoäng som betalning i någon av våra butiker.
+4000000061	Om du har möjlighet att dröja en kort stund, så ska jag rådfråga en kollega.
+4000000062	För att kunna hjälpa dig på bästa sätt skulle jag behöva be om ditt personnummer.
+4000000063	Ett ögonblick, så ska jag ta fram dina kontouppgifter.
+4000000064	Din senaste inbetalning är registrerad och det finns inget mer att betala.
+4000000065	Den här frågan kan mina kollegor på administration hjälpa dig mycket bättre med, så jag kopplar dig vidare dit.
+4000000066	Vill du komma till butiken och hämta paketet eller ska vi skicka det med post?
+4000000067	Garantin gäller i ytterligare ett halvår från och med idag.
+4000000068	Jag guidar dig gärna kring de tekniska funktionerna.
+4000000069	Du kan köpa ett digitalt presentkort via vår hemsida och även skriva ut det om du skulle vilja.
+4000000070	Våra presentkort kan lösas in både online och i våra butiker.
+4000000071	Jag beklagar verkligen att du inte är nöjd med produkten, men jag är glad att du kontaktar oss. 
+4000000072	Vi kan erbjuda dig att byta ut den trasiga produkten till en ny vara.
+4000000073	Om du tar med dig produkten till butiken kan du göra ett byte eller få pengarna tillbaka direkt.
+4000000074	Det går självklart bra att göra en retur, alternativt om du vill byta varan till något annat.
+4000000075	Du kan registrera din retur och ladda ner en förbetald returetikett på vår hemsida.
+4000000076	Det går bra att antingen returnera varan i vår butik, eller skicka tillbaka den med post.
+4000000077	Vi kommer att behandla din reklamation direkt och återkomma till dig senast i morgon.
+4000000078	Gå bara till vår kundtjänstdisk, så hjälper de till med återköpet. 
+4000000079	Köpte du den här varan i någon av våra fysiska butiker?
+4000000080	Vill du få en återbetalning eller välja någon annan produkt?
+4000000081	Om du vill lämna tillbaka varan behöver du visa upp ditt kvitto i kassan.
+4000000082	Vi kommer att återbetala ditt köp så fort varan har kommit i retur. 
+4000000083	Tyvärr är det inte möjligt att returnera produkter som köpts till rabatterat pris.
+4000000084	Tänk på att det är viktigt att du tar med dig alla köpehandlingar om du vill göra ett återköp.
+4000000085	Väljer du att byta till en billigare vara kommer du att få ett tillgodokvitto på mellanskillnaden.
+4000000086	Vi kommer så klart att ersätta din defekta vara helt kostnadsfritt.
+4000000087	Vill du byta till en annan vara eller få ett tillgodokvitto?
+4000000088	Kommer du ihåg vilket datum du köpte produkten?
+4000000089	Jag är verkligen ledsen att din vara var skadad vid leveransen, tyvärr är det sådant som händer ibland.
+4000000090	Vi kommer naturligtvis att återbetala dig för returkostnaden.
+4000000091	Kom ihåg att det är viktigt att du skickar med originalförpackningen när du returnerar produkten.
+4000000092	Vi kommer göra allt vi kan för att hantera ditt ärende så snabbt som möjligt.
+4000000093	Din faktura kommer att krediteras så snart vi mottagit returen.
+4000000094	Återbetalningen kan ta upp till en vecka, men oftast går det betydligt snabbare.
+4000000095	Jag återkommer så snart jag har utrett ditt ärende vidare. 
+4000000096	Skulle du vilja uppge numret som står på baksidan av produkten?
+4000000097	Vi kan självklart hjälpa dig med reparation av skadan, lämna bara in telefonen i en av våra butiker.
+4000000098	Garantin kommer att täcka hela reparationskostnaden, så du behöver inte betala något.
+4000000099	Du kan få hjälp med reparationen hos en av våra serviceverkstäder. 
+4000000100	Skulle du vilja ha en ersättningsvara under reparationstiden?
+4000000101	Det är svårt att säga exakt hur lång tid reparationen tar, det beror lite på vad våra tekniker hittar.
+4000000102	Vår målsättning är att alltid återkomma med ett kostnadsförslag inom tre dagar. 
+4000000103	Jag kan se att vi har beställt hem dina ersättningsdelar och att de är under leverans hos posten.
+4000000104	För att underlätta reklamationen är det bra om du bifogar en detaljerad beskrivning av skadorna på produkten.
+4000000105	Det är bra om du har möjlighet att skicka tillbaka varan till vårt lager inom en vecka.
+4000000106	Fyll bara i felanmälan via vår hemsida så kommer en tekniker att kontakta dig omgående.
+4000000107	Vi erbjuder kostnadsfri produktsupport i alla våra butiker. 
+4000000108	Vill du att någon från vårt serviceteam kommer hem till dig och hjälper dig på plats?
+4000000109	Om du går med telefonen till vår servicedisk så kan en av våra tekniker ta en titt på den. 
+4000000110	Den här typen av yttre produktskador täcks av din tilläggsförsäkring.
+4000000111	Du kommer självklart att få full återbetalning av hela inköpspriset.
+4000000112	Vi kommer att göra en återbetalning till ditt konto inom två bankdagar.
+4000000113	Jag kopplar dig vidare till vår fakturaavdelning, som kommer att hjälpa dig med krediteringen av fakturan.
+4000000114	Vi ska självklart se till att lösa ditt ärende så snabbt som möjligt.
+4000000115	Om du berättar lite mer om problemet hoppas jag kunna hjälpa dig omgående.
+4000000116	Jag har nu gjort en makulering av ditt köp och begärt att pengarna återbetalas.
+4000000117	Om produkten inte skulle motsvara dina förväntningar är det inga problem att lämna tillbaka den.
+4000000118	För att kunna hjälpa dig behöver jag först be dig att verifiera dina kontouppgifter.
+4000000119	Jag hjälper dig gärna att öppna ett nytt bankkonto nu med en gång.
+4000000120	Du kan se alla dina transaktioner i din kontohistorik.
+4000000121	Jag kan höja din aktuella kreditgräns nu direkt om du vill.
+4000000122	Dina pengar kommer att föras över till ditt konto inom 2 bankdagar.
+4000000123	Vill du att jag kontrollerar ditt aktuella kontosaldo?
+4000000124	Skulle du ha möjlighet att logga in med ditt bank-id?
+4000000125	Jag kan försäkra dig om att fakturan är makulerad och att inga pengar kommer att dras från ditt konto. 
+4000000126	Det är inga problem att lägga till ytterligare en kontoinnehavare.
+4000000127	Du kommer strax att få ett mail med en länk för återställning och byte av ditt lösenord.
+4000000128	Vad gäller dina frågor kring bankfack rekommenderar jag dig att besöka något av våra kontor.
+4000000129	Enligt vad jag kan se har överföringen genomförts vid midnatt, så pengarna bör nå mottagaren under dagen.
+4000000130	Om du vill ansöka om ett lånelöfte via telefon ska jag ska koppla dig vidare till vår bolåneavdelning.
+4000000131	Vill du att jag bokar in ett möte med någon av våra personliga rådgivare?
+4000000132	Våra kontor har öppet för bokade besök fram till klockan 15, måndag till torsdag.
+4000000133	Är det något mer du skulle vilja ha information om?
+4000000134	Jag ser i systemet att du har ett aktivt försäkringsärende hos oss. 
+4000000135	Jag bokar gärna in ett möte med en handläggare, som kan hjälpa dig att se över ditt försäkringsskydd.
+4000000136	Vi erbjuder en årlig rabatt på 10 %  om du väljer att ha flera försäkringar hos oss.
+4000000137	Kan jag få be om ditt ärendenummer, tack.
+4000000138	Vill du göra en skadeanmälan nu direkt?
+4000000139	Om du dröjer ett kort ögonblick så ska jag kontrollera statusen för ditt ärende.
+4000000140	Skulle du vara intresserad av att teckna en utökad reseförsäkring?
+4000000141	Vår handläggningstid för denna typ av ärenden är ungefär tre veckor. 
+4000000142	Det stämmer att vattenskador täcks av din hemförsäkring. 
+4000000143	Din aktuella självrisk ligger på 1 200 kr.
+4000000144	Du kan göra en anmälan om förlust eller skada via formuläret på vår hemsida.
+4000000145	Jag ger dig gärna mer detaljerad information om hur du fyller i vårt skadeformulär.
+4000000146	Du kan antingen göra en engångsbetalning av hela årspremien, eller välja månadsvis betalning.
+4000000147	Om du loggar in på ditt konto kan du se aktuell status för dina pågående ärenden.
+4000000148	Finns det något mer som jag kan hjälpa dig med, eller något mer du undrar över?
+4000000149	Vi erbjuder även teknisk support på kvällstid, alla dagar i veckan.
+4000000150	Skulle du ha några fler frågor är du varmt välkommen att kontakta oss igen.
+4000000151	Vi värdesätter verkligen våra kunders åsikter och feedback, så tack för att du hörde av dig.
+4000000152	Vi svarar mer än gärna på frågor, både över telefon och via mail. 
+4000000153	Vår telefonsupport finns tillgänglig alla dagar i veckan mellan klockan 09 och 17.
+4000000154	Om det skulle uppstå några problem med produkten är det bara att kontakta oss.
+4000000155	Våra medarbetare i butiken är väldigt duktiga och hjälper dig gärna med valet av telefonmodell.
+4000000156	Jag ska rådgöra med vår IT-avdelning så att vi kan hjälpa dig på bästa sätt.
+4000000157	Finns det något annat jag kan göra för dig idag?
+4000000158	Vi vill premiera våra återkommande kunder, så därför kommer du att få 20 % rabatt på köpet idag.
+4000000159	Tveka inte att kontakta oss om du stöter på problem igen.
+4000000160	Vår självbetjäning har kortare väntetid, om du vill använda den i stället?
+4000000161	Eftersom du är premiumkund hos oss är du berättigad till kostnadsfri personlig rådgivning.
+4000000162	Om du skulle vilja träffa någon av våra investeringsrådgivare hjälper jag gärna till att boka in ett möte.
+4000000163	Jag berättar gärna mer om våra olika investeringstjänster och tilläggsprodukter.
+4000000164	Kundnöjdhet är viktigt för oss, så vi är glada för alla synpunkter kring förbättring.
+4000000165	Om du skulle behöva fortsatt hjälp under kvällstid vill jag tipsa om vår chatt, som är bemannad alla dagar fram till klockan 23.
+4000000166	Om du är nöjd med vår service blir vi jätteglada om du lämnar en recension på vår hemsida.
+4000000167	Alla priser som anges på vår hemsida är per påbörjad timme. 
+4000000168	Du får alltid en kostnadsfri konsultation vid ditt första besök hos oss.
+4000000169	Om du vill boka tid kan du göra det här över telefon eller via vårt bokningssystem online.
+4000000170	Som student har du alltid 10 % rabatt på alla våra tjänster.
+4000000171	Det är möjligt att prova på vår prenumerationstjänst i en vecka utan kostnad. 
+4000000172	Självklart går det bra att göra en rumsreservation redan nu.
+4000000173	Jag lägger gärna in en preliminär bokning nu direkt. 
+4000000174	Hur många personer vill du boka för?
+4000000175	Vill du att jag lägger in dina uppgifter i vårt system så att de finns tillgängliga nästa gång?
+4000000176	Du är välkommen att prova våra tjänster kostnadsfritt i en månad innan du bestämmer dig.
+4000000177	Om du av någon anledning inte skulle bli nöjd återbetalar vi hela kurskostnaden. 
+4000000178	Vår digitala kundservice finns tillgänglig dygnet runt om det skulle dyka upp fler frågor.
+4000000179	För att betala dina fakturor automatiskt behöver du fylla i ett autogiromedgivande på vår hemsida.
+4000000180	Vill du få din faktura som e-faktura direkt till din internetbank, i stället för via post?
+4000000181	Om du väljer att byta till papperslös fakturering slipper du fakturaavgiften på 29 kr. 
+4000000182	Det går bra att göra en felanmälan, antingen över telefon eller genom att skapa ett ärende på vår hemsida.
+4000000183	Jag ska be en av våra tekniker att ringa upp dig direkt efter vårt samtal. 
+4000000184	Dessvärre har vi en pågående driftstörning som påverkar alla våra mobila tjänster just nu.
+4000000185	Skulle det uppstå några problem utanför kontorstid är det också möjligt att göra en felsökning på webben.
+4000000186	Skulle du vilja berätta lite mer om vilka problem du upplever med datorn?
+4000000187	Om du har möjlighet att dela din skärm ska jag förhoppningsvis kunna hjälpa dig.
+4000000188	Problemet skulle kunna bero på att du har för lite utrymme kvar på din hårddisk.
+4000000189	Jag skulle råda dig att ta med datorn till en butik, så att någon av våra duktiga tekniker kan titta på den.
+4000000190	Det är inga som helst problem att ta med ditt fasta abonnemang när du flyttar.
+4000000191	Jag kan självklart hjälpa dig att göra en adressändring nu direkt.
+4000000192	För att inte debiteras för nästa månad behöver du säga upp prenumerationen minst två arbetsdagar innan den nuvarande betalningsperioden löper ut.
+4000000193	Vill du att jag registrerar ett uppehåll i din prenumeration, eller vill du göra det själv via vår hemsida?
+4000000194	Du är alltid välkommen att kontakta oss om det är något du undrar över.
+4000000195	Är det du själv eller någon annan som står på det nuvarande abonnemanget?
+4000000196	För medlemmar erbjuder vi ett utökat abonnemang, som är helt gratis.
+4000000197	Men tänk på att du kan göra mycket själv via Mitt konto – exempelvis ändra adress eller göra uppehåll.
+4000000198	Du kan fylla på din surfmängd dygnet runt, genom att skicka oss ett sms.
+4000000199	Om du behöver hjälp med en tillfällig adressändring tänk på att skriva ut adressen du vill ändra till i mejlet för snabbare hantering.
+4000000200	Ange även adressen du har i nuläget för säkrare identifiering.
+4000000201	Vi har ingen bindningstid, så du kan avsluta ditt abonnemang precis när du själv vill. 
+4000000202	Vill du att jag uppgraderar ditt abonnemang från och med idag?
+4000000203	Prisskillnaden mellan basabonnemanget och premiumabonnemanget ligger på 200 kr i månaden. 
+4000000204	Önskar du köpa fullversionen eller miniversionen av programmet?
+4000000205	Det är gratis att uppgradera till premiumversionen, så det skulle jag rekommendera dig att göra.
+4000000206	Om du önskar uppehåll tänk på att skriva mellan vilka datum för snabbare hantering.
+4000000207	Om ni är flera som surfar mycket skulle jag rekommendera vårt familjeabonnemang.
+4000000208	Jag hjälper gärna till med att ändra datumet för dina månatliga betalningar. 
+4000000209	Uppgraderingen av abonnemanget kommer att gälla från och med nästa månadsskifte.
+4000000210	Om något skulle krångla är du välkommen att kontakta vår digitala support dygnet runt.
+4000000211	Är det något mer du undrar över kring våra produkter och tjänster?
+4000000212	Priset för vår digitala abonnemangstjänst ligger på 299 kr i månaden.
+4000000213	Vill du att orderbekräftelsen ska skickas till din mail?
+4000000214	Det är beklagligt att du haft en negativ upplevelse i vår butik.
+4000000215	Jag kommer att föra ditt klagomål vidare till min chef.
+4000000216	Vill du att vi skickar en avisering via sms när leveransen är utförd?
+4000000217	Jag ska koppla dig vidare till vår orderavdelning så att du kan få hjälp med din fråga direkt.
+4000000218	Vi lämnar full garanti på allt utfört arbete på våra verkstäder i 12 månader.
+4000000219	Om du har ett serviceavtal hos oss får du just nu 20 % rabatt på alla ordinarie servicepriser. 
+4000000220	Leveranstiden för ett paket till Finland är cirka tre arbetsdagar. 
+4000000221	Om någon annan ska hämta ut din försändelse behöver han eller hon visa både sin egen och din legitimation.
+4000000222	Om du inte vill hämta paketet hos ett postombud kan vi hjälpa till med hemkörning.
+4000000223	Ett ögonblick, så ska jag se efter.
+4000000224	Den senaste inlämningstiden för paket är klockan 17. 
+4000000225	Vill du lägga till några ytterligare varor innan du betalar?
+4000000226	Du har rätt att prova våra sängar hemma i upp till 120 dagar innan du bestämmer dig.
+4000000227	Har du ett medlemskort hos oss?
+4000000228	Jag kan tipsa om att vi har halva priset på all heminredning i morgon.
+4000000229	Just nu har vi 10 % rabatt på smycken och hårartiklar.
+4000000230	I dag och i morgon har vi ett erbjudande, köp 2 betala för 1 på alla skönhetsprodukter.
+4000000231	Alla varor med röd markering är nedsatta med 30 % den här veckan.
+4000000232	Vi har butiker i Stockholm, Göteborg och Malmö. 
+4000000233	Vilken storlek vill du prova?
+4000000234	Det kan hända att vi har fler storlekar kvar i vår webbshop.
+4000000235	Vi har bara ett fåtal kuddar kvar i den färgen.
+4000000236	Vi har flera olika jeansmodeller, är det någon speciell som du är intresserad av?
+4000000237	Är det något särskilt plagg du letar efter?
+4000000238	Det är bara att säga till om du behöver hjälp med storleksvalet.
+4000000239	Väskan finns i flera storlekar, tänker du dig en stor eller liten modell?
+4000000240	Vi kommer att få en ny leverans med vårkläder till butiken i nästa vecka.
+4000000241	Det går att betala kontaktlöst även i våra självbetjäningskassor.
+4000000242	Jag ser att du har en innestående bonuscheck, vill du använda den idag?
+4000000243	Som premiummedlem kan du boka kostnadsfri stylinghjälp i 30 minuter, är det något du skulle vilja göra?
+4000000244	Skulle du vara intresserad av att gå med i vår kundklubb?
+4000000245	Om du väljer att bli förmånsmedlem får du bland annat förtur till våra årliga reor. 
+4000000246	Som klubbmedlem samlar du poäng vid köp, som du sen kan lösa in till värdecheckar.
+4000000247	Om du handlar för över 1000 kr får du rabatt med 200 kr vid nästa köp.
+4000000248	Vill du att vi skickar aktuella erbjudanden via sms eller mail?
+4000000249	Vi har en pågående rea just nu, så det finns en viss risk att produkten tar slut.
+4000000250	Alla köp över 200 kr ger dig en chans i vår månadsutlottning. 
+4000000251	Som bonuskund får du alltid 5 % extra rabatt på alla köp.
+4000000252	Vi har flera tillgängliga färger, är det någon speciell du tänker dig?
+4000000253	Alla varor för säsongen är på rea just nu.
+4000000254	Nästa vecka kommer vi ha en kampanj med 20 % rabatt på alla vinterjackor.
+4000000255	Önskar du lägga till en förlustgaranti i tre år?
+4000000256	Är du intresserad av att teckna en utökad försäkring?
+4000000257	Det är tyvärr inte möjligt att använda rabattkuponger på varor som redan är nedsatta.
+4000000258	Du har möjlighet att förlänga garantin på årsbasis, till en kostnad av 100 kr.
+4000000259	Vi har alltid samma pris i våra butiker och online.
+4000000260	Skulle du hitta varan billigare någon annanstans matchar vi det priset.
+4000000261	Om du av någon anledning skulle ångra dig erbjuder vi full återbetalning.
+4000000262	Garantin gäller i två år och täcker alla typer av fel och skador.
+4000000263	Det är inga som helst problem om du skulle vilja byta till en annan modell. 
+4000000264	Önskar du köpa till en påse också?
+4000000265	Vill du ha kvittot digitalt till din mail i stället?
+4000000266	För att lämna tillbaka en vara som du köpt online behöver du ta med dig orderbekräftelsen eller fakturan till butiken.
+4000000267	Vi kan tyvärr inte återbetala dig, men vi kan ge dig samma värde på någon annan produkt i sortimentet.
+4000000268	Vi erbjuder en förlängd garanti på fem år, är det något som du är intresserad av?
+4000000269	Hela vårt sortiment består av ekologiskt certifierade och miljömärkta produkter.
+4000000270	Som medlem hos oss får du personliga erbjudanden per mail varje vecka.
+4000000271	Jag lägger gärna till dig som klubbmedlem nu direkt. 
+4000000272	För att skicka e-post till kundservice använd formuläret på denna sida.
+4000000273	Vi bjuder alla nya kunder på en gåva i form av en värdecheck.
+4000000274	Den här blusen är helt nyinkommen i sortimentet.
+4000000275	Det går fint att prova plaggen i lugn och ro hemma och lämna tillbaka det som inte passar.
+4000000276	Accessoarer finns på väskavdelningen, en trappa ner.
+4000000277	Om du går rakt fram och till vänster vid hissarna kommer du att se barnkläderna.
+4000000278	Hundmat hittar du på djuravdelningen i korridor tre. 
+4000000279	Strumpor finns på underklädesavdelningen, längst in till vänster i butiken.
+4000000280	Det är möjligt att köpa parfymen separat eller som en del av ett presentset.
+4000000281	Klänningen finns i både kort och lång modell, vilken vill du prova?
+4000000282	Skulle du vilja se hur byxorna ser ut tillsammans med ett par skor?
+4000000283	Jackan finns även i en större storlek om den skulle kännas för trång.
+4000000284	Jag ska gå och titta på lagret om vi har fler storlekar än de som finns framme.
+4000000285	Vill du prova tröjan i rött eller brunt?
+4000000286	Vilken typ av stövlar är du ute efter, med eller utan klack?
+4000000287	Jag skulle föreslå att du går omkring lite med skorna hemma, för att känna efter hur storleken är. 
+4000000288	Vill du att jag hämtar någon annan modell, så att du kan jämföra?
+4000000289	Säg bara till om du behöver hjälp med något annat.
+4000000290	Blusen finns även med kort ärm, vill du prova den också?
+4000000291	Jag skulle rekommendera dig att välja den större storleken, eftersom materialet kan krympa något i tvätten.
+4000000292	Provrummen hittar du längre in i butiken, till höger om rulltrappan.
+4000000293	Dessvärre är just din storlek tillfälligt slut på lager, men vi kommer att få in den igen i nästa vecka.
+4000000294	Vi erbjuder hemkörning och uppbärning av större och skrymmande möbler.
+4000000295	Du hittar varan i gång 10B på vårt tag-själv-lager.
+4000000296	Vill du ha vasen inslagen som en present?
+4000000297	Vill du hämta upp hörlurarna i butik eller ska vi skicka dem till dig?
+4000000298	Det går även bra att betala dina varor en trappa ner.
+4000000299	Skulle du kunna tänka dig att delta i en kort kundnöjdhetsundersökning som vi genomför?
+4000000300	Jag hoppas verkligen att du blir nöjd med klänningen!

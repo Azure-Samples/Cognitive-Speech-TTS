@@ -1,0 +1,300 @@
+3000000001	Yes, I have a lot of furniture and a lot of books.
+3000000002	After that, I couldn't find the strange man again.
+3000000003	So, I can bring a couch and a washing machine.
+3000000004	People come to celebrate and not to eat.
+3000000005	I did not think about that.
+3000000006	No, I don't like that, because sometimes I'm not at home.
+3000000007	We got into the apartment building.
+3000000008	The kitchen is very small.
+3000000009	She had used this perfume before.
+3000000010	She asked me to run to the mail room and grab the mail.
+3000000011	What more can I say?
+3000000012	I have to buy sunscreen.
+3000000013	Is Lena still friends with her?
+3000000014	Yes, the price is too expensive.
+3000000015	What do we need a console for?
+3000000016	You say that you are going to help me.
+3000000017	We need a hiding place.
+3000000018	Yes, they are also available in black and yellow.
+3000000019	When will you pack your suitcase?
+3000000020	You are all so serious.
+3000000021	Where do you live?
+3000000022	It was covered with green buds.
+3000000023	I've never been there.
+3000000024	I can't change it anymore. 
+3000000025	How was your trip last week?
+3000000026	No, my dog does not bite.
+3000000027	I don’t know what that dream is that you have.
+3000000028	I think your suggestion is great. 
+3000000029	You are a really creative person.
+3000000030	The only thing I could find was one single envelope.
+3000000031	Is there anything left to discuss?
+3000000032	So, I still have five pots and a kettle.
+3000000033	I want to go there too. 
+3000000034	You should find some shelter from the cold night.
+3000000035	I have to clean and then cook food.
+3000000036	I spent more than I thought I would, cooking this meal.
+3000000037	Why don’t you bring it in?
+3000000038	Are you taking your pets with you?
+3000000039	Two hours later, he didn’t come back.
+3000000040	I'll bring the sofa and a coffee table.
+3000000041	I was shocked by how she was able to jump so high.
+3000000042	Because my pot is too small.
+3000000043	The apartment has three rooms, the house would be enough for us.
+3000000044	Yes, should I get the cleaning products?
+3000000045	I think we do not need a microwave.
+3000000046	Then he probably had an important conversation.
+3000000047	Tell me what you want to see in New York.
+3000000048	I thought about celebrating it on a boat.
+3000000049	I did a lot of research and my dad worked there as well.
+3000000050	But I want to fly in the morning.
+3000000051	It’s very cold up north.
+3000000052	I wish I knew how to ride a bike.
+3000000053	No, our neighbors would not agree with that.
+3000000054	No, of course I don't have a bike.
+3000000055	In my opinion, we also need black cutlery.
+3000000056	I cooked rice with meat and veggies.
+3000000057	Have you moved out already?
+3000000058	Then buy a white and black door.
+3000000059	You can't just tell me you're not coming at the last minute.
+3000000060	Do you agree with what I just wrote?
+3000000061	I think we should buy black balloons.
+3000000062	What would it be, for example?
+3000000063	Which color do you want?
+3000000064	Is it okay for you to put her posters in your room?
+3000000065	Please just answer my questions.
+3000000066	Which city do you want to travel to?  
+3000000067	I would take cheese skewers and small snacks.
+3000000068	Lena has more furniture than you. 
+3000000069	You have to explain it to me.
+3000000070	I think it's better if we leave later on.
+3000000071	Yes, her mother will sew it for us. 
+3000000072	Please don't keep asking me these questions.
+3000000073	Yes, I would be very happy about that. 
+3000000074	Yes, I'm really looking forward to it. 
+3000000075	Yes, I'm a bit forgetful. 
+3000000076	I still have a good idea.
+3000000077	I don't know when and where I want to spend it.
+3000000078	That's a real talent move.
+3000000079	Where do we get moving boxes?
+3000000080	Everyone gets their own bedroom.
+3000000081	I will come to office later.
+3000000082	What time do we want to start?
+3000000083	Why do you set it free?
+3000000084	Do you have time to cook on weekdays?
+3000000085	There are two small rooms and a big room.
+3000000086	It is better than nothing.
+3000000087	That is not a problem.
+3000000088	You'll get everything you want. 
+3000000089	We can go back to the art gallery tomorrow together.
+3000000090	Yes, tell me the truth. 
+3000000091	That's right, we planned it that way.
+3000000092	At the moment, he might be busy.
+3000000093	We can alternate every week.
+3000000094	I came up with something spontaneously. 
+3000000095	She also has a container for toothpaste and toothbrushes.
+3000000096	I would choose rock music.
+3000000097	Why on earth are you saying it is my fault?
+3000000098	So, Lena will bring a TV. 
+3000000099	Have we already clarified what we are doing tomorrow?
+3000000100	How did you all know it was my birthday today?
+3000000101	We don't have to pay for airline tickets.
+3000000102	I think there's a dishwasher in the apartment. 
+3000000103	Did you make these cakes yourself?
+3000000104	Yes, that would work. 
+3000000105	Is it okay for her to move in with you?
+3000000106	Can I use this bowl?
+3000000107	He is such a creative person.
+3000000108	I will take clothes and toiletries with me.
+3000000109	I also wanted to go there two years ago.
+3000000110	The job I'm doing now requires a lot of concentration.
+3000000111	He's always hanging out with someone.
+3000000112	How do you know the area so well?
+3000000113	I'm sorry about what happened the other day.
+3000000114	I threw it at a bird, and it went straight to the plate.
+3000000115	You shouldn't buy two doors.
+3000000116	I mean the door should be black and white. 
+3000000117	You don’t know the world is big.
+3000000118	You can come out and have a look by yourself.
+3000000119	How big the world is!
+3000000120	It's a good idea, honey. 
+3000000121	I can also get a fridge. 
+3000000122	Donny is my little brother. 
+3000000123	He is a naughty boy.
+3000000124	It all works out in the end anyway.
+3000000125	How long does the flight actually take?
+3000000126	No, I do not like that, because otherwise everything is black.
+3000000127	What can I do now?
+3000000128	I still have a kettle and toaster. 
+3000000129	Now we have everything planned. 
+3000000130	The problem is, how will we transport everything?
+3000000131	Are we at the same university?
+3000000132	We have everything planned now.
+3000000133	That's very interesting, I love it.
+3000000134	I've tried restarting the computer but it didn't work.
+3000000135	That's not our topic now. 
+3000000136	You will not believe it.
+3000000137	The answer you gave is incorrect.
+3000000138	You have not suggested anything yet.
+3000000139	Nevertheless, I am proud of myself.
+3000000140	Yes, but let's make it another day when we clean the whole house.
+3000000141	Okay, I agree, but you need to think about it as well.
+3000000142	I brought the envelopes up to my mom.
+3000000143	We have already clarified the services.
+3000000144	Lena just told me that she can also bring a TV.
+3000000145	I hope you agree with my suggestions.
+3000000146	I would like to take over the kitchen service.
+3000000147	Lena wants to vacuum and wipe. 
+3000000148	No, I remembered that my father has a moving company.
+3000000149	He believes he can do that.
+3000000150	We could spend the night on the boat too.
+3000000151	It is full of life and fulfilment.
+3000000152	We helped each other out.
+3000000153	Since I am the boss, I can plan my vacation myself.
+3000000154	She then walked into her room.
+3000000155	Yes, that would be good. 
+3000000156	Yes, that would be a suggestion. 
+3000000157	After two months we have holidays again.
+3000000158	Here, come to have some grapes.
+3000000159	You do not have to say anything anymore. 
+3000000160	We can fly with my helicopter. 
+3000000161	I cannot believe how much he grew in the past year.
+3000000162	I'm looking forward to the holiday.
+3000000163	Maybe I'll fly there in the winter.
+3000000164	Yes, I will use dark shades.
+3000000165	You will cook Monday and Tuesday.
+3000000166	People tend to find happiness.
+3000000167	Is that your best excuse?
+3000000168	I would not have thought you were a jazz fan.
+3000000169	You should really think about what you're going to bring to the party.
+3000000170	Maybe you'll think of something else.
+3000000171	Lend them a bit of your time and support.
+3000000172	Today my best friend saved my life.
+3000000173	It may be that he did not see you. 
+3000000174	Lena wants to buy a curtain. 
+3000000175	It started off really well, and just kept getting better.
+3000000176	You need to manage your appetite.
+3000000177	If you want, I can get the curtains.
+3000000178	Set your goal and write down your reasons for them.
+3000000179	I am satisfied with the rent for this luxury apartment.
+3000000180	I thought he was nice. 
+3000000181	Yes, you're right about this. 
+3000000182	Do you have time all day?
+3000000183	I tried to pet him.
+3000000184	You can also clean the bathroom.
+3000000185	You see, I discovered your little secret.
+3000000186	I knew I had a challenge.
+3000000187	No, but I don't think it's alright that the apartment has no front door. 
+3000000188	Great, but I want to fly in the evening.
+3000000189	That's not a serious question, is it?  
+3000000190	What do you think you're going to buy?
+3000000191	I have a few questions about that. 
+3000000192	It looks happier than before.
+3000000193	Have we already clarified everything? 
+3000000194	I think that's better too. 
+3000000195	We still have to plan everything.
+3000000196	Yeah, I've been thinking about our relationship for the past few days.
+3000000197	What do you want to do now?
+3000000198	I have to work to make school interesting.
+3000000199	Should we buy some food?
+3000000200	I had a teacher who taught me that.
+3000000201	Everyone should iron their clothes.
+3000000202	Because they are so intelligent.
+3000000203	Those are their locker numbers.
+3000000204	That's good, otherwise we would have to pay for the bike rack.
+3000000205	How well do you feel when you have sunshine?
+3000000206	When does the party take place again?
+3000000207	What effect does it have on our psyche?
+3000000208	We were so positive all year round.
+3000000209	Yeah, that is easier said than done.
+3000000210	Yes, she likes to read books.
+3000000211	In the end that's your choice.
+3000000212	Don't tell me that you find the price too expensive.
+3000000213	We can talk about cars and organize a car show.
+3000000214	They are both really nice and pleasant.
+3000000215	We are very good friends with Sophie and Julia. 
+3000000216	I'd like to put it in the living room.
+3000000217	Where are all the labels?
+3000000218	I am so happy for you.
+3000000219	Yes, honestly, I'm still thinking. 
+3000000220	Hello, Lena has her birthday on Monday. 
+3000000221	Pick a can, any can.
+3000000222	That's fair for everyone.
+3000000223	Maybe we can rent a truck.
+3000000224	That would be an option too. 
+3000000225	I've got something to go with it.
+3000000226	I'll probably go back to town tomorrow.
+3000000227	You look happier than usual, what is going on?
+3000000228	What's inside is the same.
+3000000229	Maybe she likes those clothes.
+3000000230	No, we have not booked anything yet.
+3000000231	 Please ask Lena, maybe she has one.
+3000000232	Yes, I will stay next to you every day.
+3000000233	I have to know that now.
+3000000234	Is this your last year here?
+3000000235	What are you studying anyway?
+3000000236	Can you swim there or are there any sharks?
+3000000237	I'll get the dishwasher and the oven.
+3000000238	There was a huge sale yesterday.
+3000000239	Should I take something to eat?
+3000000240	Hello, would you like to move into an apartment with us?
+3000000241	Your father has a moving company.
+3000000242	Now they live in a small apartment.
+3000000243	No, I do not have a car.
+3000000244	It's worth a million dollars.
+3000000245	Do you want to sign up too?
+3000000246	I want to go somewhere fun with you and Jack.
+3000000247	Did you enjoy the meal?
+3000000248	Thank you very much for your hospitality.
+3000000249	I don’t think we need a microwave.
+3000000250	That's the first time I've heard of hot sushi.
+3000000251	What does your everyday routine look like?
+3000000252	Can you please behave like an adult?
+3000000253	When did we want to move again?
+3000000254	No, but what happens if you forget your key?
+3000000255	They know a lot about cars. 
+3000000256	I need to sleep now.
+3000000257	You can wrinkle up with cheer.
+3000000258	At the moment I cannot think anymore.
+3000000259	My dear, what's for supper?
+3000000260	Yes, is there something wrong?
+3000000261	Yes, that's a good idea.
+3000000262	I just finished my paper. 
+3000000263	Can you bring a bucket and a sponge?
+3000000264	I need to buy a dress.
+3000000265	Because she's my best friend.
+3000000266	Now we can start from the kitchen. 
+3000000267	Sure, let's take a look.
+3000000268	It seldom rains this summer.
+3000000269	I always buy clothes online.
+3000000270	But you do not stay next to us every day.
+3000000271	Yeah, some places are very short of water.
+3000000272	I dare say it will be.
+3000000273	Why do you want to give her a blanket?
+3000000274	Could you maybe do your art in the balcony?
+3000000275	Some places are sure to be open.
+3000000276	Look, I forgot it again.
+3000000277	Yes, I'd like to know where you were.
+3000000278	We will discuss that later.
+3000000279	How do we have to pay the rent?
+3000000280	I’m sure it will be wet when we arrive. 
+3000000281	Lena will get a bucket and three sponges.
+3000000282	I need your help for a second.
+3000000283	We can also use something blue.
+3000000284	Yes, I think so too. 
+3000000285	Oh, how long have you been there?
+3000000286	Taking a walk on the beach and lying in the sun are pretty good. 
+3000000287	I've heard that the environment there is very good.
+3000000288	Yes, that's a good place to spend a holiday.
+3000000289	I totally understand your situation.
+3000000290	I have not seen her for a long time.
+3000000291	I am going back tomorrow.
+3000000292	Would it be okay if I could come too?
+3000000293	I don't have a car. 
+3000000294	Yes, but we have to buy everything very cheap.
+3000000295	Okay, everyone buys their own furniture for their own bedroom.
+3000000296	I'm looking for some books for my mother.
+3000000297	Our pizza is on the way!
+3000000298	I have not seen them for a long time.
+3000000299	Oh, it's on that shelf.
+3000000300	Why didn't you come today?

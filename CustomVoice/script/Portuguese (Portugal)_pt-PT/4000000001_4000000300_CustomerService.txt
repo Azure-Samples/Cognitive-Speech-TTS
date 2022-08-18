@@ -1,0 +1,300 @@
+4000000001	Pode resgatar o seu cartão-presente em qualquer um de nossos estabelecimentos.
+4000000002	A compra mínima é de 100 euros.
+4000000003	A nossa equipa terá todo o prazer em responder a qualquer pergunta.
+4000000004	Aceitamos cartão ou dinheiro como métodos de pagamento.
+4000000005	Aguarde que a sua compra chegue dentro de três dias úteis.
+4000000006	Aguarde um momento enquanto procuramos o produto.
+4000000007	As devoluções são apenas aceites 30 dias após a compra com talão.
+4000000008	As fraldas estão localizadas no corredor três.
+4000000009	Estamos temporariamente sem stock, volte amanhã.
+4000000010	Este produto foi lançado recentemente e deve esgotar rapidamente.
+4000000011	Não encontrei nenhum item guardado naquele local específico.
+4000000012	Não vendemos mais esse produto.
+4000000013	Nós descontinuamos essa linha de produtos.
+4000000014	Novos clientes têm direito a um presente gratuito.
+4000000015	O envio grátis está disponível com qualquer compra.
+4000000016	O horário de funcionamento da loja é das 10 às 21 horas.
+4000000017	O preço de cada produto é o mesmo em todas as nossas lojas.
+4000000018	O preço listado não inclui iva ou envio.
+4000000019	O serviço ao cliente é a nossa prioridade e tratamos todas as reclamações com seriedade.
+4000000020	Com características térmicas ou apenas práticas, há várias soluções para o transporte do recipiente, algumas com muito estilo à mistura.
+4000000021	Obrigado pelo seu comentário, valorizamos as opiniões de cada cliente!
+4000000022	Oferecemos descontos para estudantes e militares.
+4000000023	Oferecemos o produto isoladamente ou em embalagem.
+4000000024	Oferecemos produtos orgânicos e não orgânicos.
+4000000025	Oferecemos serviço de entrega ao domicílio.
+4000000026	Oferecemos um plano de reciclagem para os seus dispositivos antigos.
+4000000027	Os itens com etiqueta vermelha têm 40% de desconto.
+4000000028	Os itens em liquidação não são elegíveis para devoluções.
+4000000029	Os itens sazonais estão todos disponíveis durante os descontos.
+4000000030	Peça ajuda a qualquer um dos nossos funcionários.
+4000000031	Pode levantar na loja ou fazemos a entrega ao domicílio.
+4000000032	Podemos guardar-lhe o item durante um dia útil.
+4000000033	Por favor, mostre o recibo ao segurança ao sair do estacionamento.
+4000000034	Receberemos uma nova remessa na terça-feira.
+4000000035	Se você não estiver satisfeito, basta nos ligar e reembolsaremos o seu pedido.
+4000000036	Tem garantia de 3 anos.
+4000000037	Temos apenas tamanhos pequenos e grandes.
+4000000038	Temos este produto em vários tamanhos.
+4000000039	Temos uma garantia de satisfação, pelo que se não ficar satisfeito com a sua compra pode simplesmente devolvê-la.
+4000000040	Temos uma oferta especial, compre 2 e leve 2, hoje e amanhã.
+4000000041	Temos uma opção de entrega no dia seguinte disponível por um custo extra.
+4000000042	Temos várias cores disponíveis.
+4000000043	Todas as peças de roupa têm desconto de 10%.
+4000000044	Tudo o que vendemos aqui é certificado como orgânico.
+4000000045	Vendemos apenas este produto na nossa loja principal.
+4000000046	Verifique com o seu revendedor local.
+4000000047	Na Véspera de Natal, a loja irá fechar às 19 horas.
+4000000048	Você gostaria de adicionar algum item adicional ao seu pedido?
+4000000049	Você pode usar o crédito de loja e qualquer um dos nossos estabelecimentos.
+4000000050	Você tem cartão de cliente?
+4000000051	Voltaremos de novo com uma liquidação de volta às aulas amanhã.
+4000000052	A maioria das bolsas é baseada no mérito.
+4000000053	Amanhã iremos a realizar uma sessão de formação.
+4000000054	Apenas temos vagas limitadas disponíveis.
+4000000055	As aulas duram quarenta e cinco minutos, com intervalos de quinze minutos entre elas.
+4000000056	As aulas são cobradas por hora.
+4000000057	As nossas aulas são ajustadas para melhor atender às necessidades de cada aluno.
+4000000058	As nossas aulas são baseadas numa abordagem prática de aprendizagem.
+4000000059	As nossas aulas são geralmente em grupos de 3 ou 4 alunos.
+4000000060	Cada aula dura 45 minutos.
+4000000061	Depois de concluir o curso, irá receber um certificado.
+4000000062	Devido à situação atual, todos os cursos são lecionados online.
+4000000063	Existe uma lista de espera para algumas turmas.
+4000000064	Existem apenas mais três vagas no curso de Literatura.
+4000000065	Existem também alguns cursos intensivos que pode fazer aos fins de semana.
+4000000066	Geralmente leva quatro anos para ser concluído, mas algumas pessoas fazem isso em menos.
+4000000067	Não oferecemos bolsas de estudo, mas os alunos têm dez por cento de desconto.
+4000000068	Não podemos oferecer essa aula no momento.
+4000000069	No momento, não estamos aceitar inscrições para este curso.
+4000000070	Normalmente sugerimos fazer duas aulas por semana.
+4000000071	Nós adaptamos os nossos cursos para cada aluno individualmente.
+4000000072	Nós não oferecemos mais essa aula.
+4000000073	A nossa aula de inglês intensivo é a aula mais popular.
+4000000074	A nossa orientação começa na segunda-feira.
+4000000075	O nosso processo de inscrição é fácil e rápido.
+4000000076	Oferecemos algo para todos, quer sejam bebés ou adultos jovens.
+4000000077	Oferecemos apenas aulas em grupo.
+4000000078	Oferecemos aulas diurnas e noturnas.
+4000000079	Oferecemos aulas em grupo e aulas particulares.
+4000000080	Oferecemos aulas presenciais ou online.
+4000000081	Oferecemos bolsas de estudo para alunos talentosos.
+4000000082	Oferecemos cursos em inglês, francês e espanhol.
+4000000083	Oferecemos reembolso total se não ficar satisfeito com o curso.
+4000000084	Oferecemos uma abordagem abrangente de aprendizagem.
+4000000085	Os alunos pela primeira vez são elegíveis para uma aula experimental gratuita.
+4000000086	Os alunos receberão um certificado de conclusão após a conclusão do curso.
+4000000087	Os alunos são obrigados a fazer um teste de diagnóstico.
+4000000088	Os alunos veem o progresso em apenas duas semanas!
+4000000089	Os nossos horários são flexíveis para acomodar as necessidades dos alunos.
+4000000090	Os nossos instrutores são especialistas.
+4000000091	Se as suas competências de programação não melhorarem, a aula é por nossa conta!
+4000000092	Tem uma aula de música marcada para as 9h.
+4000000093	Temos alunos de várias faixas etárias.
+4000000094	Temos um índice de satisfação de 98%.
+4000000095	Todos os nossos instrutores estudaram no conservatório de música.
+4000000096	Todos os nossos instrutores são certificados.
+4000000097	Uma performance ao vivo é um dos requisitos para receber o certificado.
+4000000098	Você pode escolher entre aulas particulares ou aulas em grupo.
+4000000099	Você pode falar com um professor para que possamos atender melhor às suas necessidades.
+4000000100	Você pode fazer uma aula gratuita de trinta minutos para ver se gosta.
+4000000101	Você pode transferir créditos de outras instituições.
+4000000102	Você pode verificar o site para ver que bolsas temos para oferecer.
+4000000103	A ferrugem não é coberta pela garantia, portanto não podemos substituí-la.
+4000000104	A garantia deste produto não cobre danos por água.
+4000000105	A garantia foi anulada no momento em que retirou o selo de segurança.
+4000000106	A nossa garantia cobre apenas peças, não a mão de obra.
+4000000107	A taxa de substituição para essa peça é de 31 euros.
+4000000108	Ainda faltam três meses para a sua garantia.
+4000000109	As suas peças de reposição estão a caminho.
+4000000110	Basta enviar de volta para nós e cuidaremos disso.
+4000000111	Cada item vem com garantia de devolução do dinheiro.
+4000000112	Certifique-se de ter a embalagem original consigo quando for fazer a devolução.
+4000000113	Deixe-me verificar o seu histórico de compras.
+4000000114	Devido a defeito de fabrico, podemos substituir o item gratuitamente.
+4000000115	Envie-nos uma descrição detalhada dos danos ao produto.
+4000000116	Esse produto foi retirado do mercado há muito tempo.
+4000000117	Este item não é elegível para a garantia de devolução do dinheiro.
+4000000118	Eu verifiquei e esse item não é elegível para devoluções.
+4000000119	Foi previamente corrigido por um dos nossos técnicos qualificados?
+4000000120	Infelizmente, o produto não está qualificado para reparações gratuitas.
+4000000121	Lamento, mas não podemos processar a devolução sem um recibo.
+4000000122	Leve-o ao seu centro de serviço para que o nosso técnico o possa testar.
+4000000123	Na verdade, a garantia expirou há três dias.
+4000000124	Não podemos oferecer-lhe um reembolso, mas podemos dar-lhe um vale de desconto.
+4000000125	Não podemos oferecer-lhe um reembolso total, mas podemos dar-lhe 40% em dinheiro de volta.
+4000000126	Não somos responsáveis ​​por quaisquer custos de envio associados.
+4000000127	O desgaste pelo uso não é coberto pela garantia original.
+4000000128	O envio não está coberto pela garantia.
+4000000129	O produto deve estar na sua embalagem original.
+4000000130	O reembolso será processado em dois dias úteis.
+4000000131	O seu item ainda está na garantia.
+4000000132	O seu produto ainda está dentro da garantia.
+4000000133	O seu produto não foi mencionado na lista de recolha do fabricante.
+4000000134	Parece que a garantia expirou há algumas semanas.
+4000000135	Pode fazer a devolução no balcão de atendimento ao cliente.
+4000000136	Pode levar o item para a loja ou enviá-lo para nós.
+4000000137	Podemos chamar um técnico amanhã para verificar.
+4000000138	Podemos enviar-lhe uma substituição ou devolver o seu dinheiro.
+4000000139	Podemos substituir gratuitamente, se desejar.
+4000000140	Qual é o problema da sua televisão?
+4000000141	Quer um reembolso pelo item ou um vale de desconto?
+4000000142	Se você tiver problemas novamente, entre em contacto connosco o mais rápido possível.
+4000000143	Teremos o maior prazer em reembolsar o custo do produto.
+4000000144	Todas as devoluções precisam de um recibo físico ou e-recibo.
+4000000145	Traga todos os recibos com consigo quando vier fazer a devolução.
+4000000146	Você ainda tem um recibo ou recibo digital?
+4000000147	Você deve mostrar o comprovativo de compra para ter direito ao reembolso.
+4000000148	Você nunca adquiriu a garantia quando comprou o produto.
+4000000149	Você pode entrar em contacto connosco sete dias por semana.
+4000000150	Você se lembra quando é que comprou o item?
+4000000151	Você só tem direito a um reembolso total no prazo de 30 dias após a compra.
+4000000152	Tem  direito a prolongar a sua garantia por mais 10 euros por ano.
+4000000153	A disponibilidade de gama pode variar em função da localização geográfica.
+4000000154	A duração de um projeto depende de vários fatores, como orçamento e tamanho da empresa.
+4000000155	A nossa equipa de especialistas pode resolver até mesmo os problemas mais graves com a máquina.
+4000000156	A proposta incluirá uma declaração e escopo de trabalho, preços, prazos e recomendações.
+4000000157	Misturamos estilos e tendências de vários lugares do mundo, permitindo fazer conjugações diferentes e arrojadas.
+4000000158	A sua estratégia organizacional é importante para definir como a sua empresa irá operar.
+4000000159	Acesso a toda a gama da Loja e ainda a gama exclusiva a pensar na sua empresa.
+4000000160	Ajudamos empresas em crescimento a implementar sistemas de negócios complexos.
+4000000161	Ajudamos os clientes a melhorar a eficiência e a inovar para o futuro.
+4000000162	Alcance a excelência comercial através da otimização de preços e execução de vendas.
+4000000163	As nossas soluções são flexíveis e destinadas a resolver inúmeros desafios.
+4000000164	Cada projeto é pensado para atender às necessidades específicas dos nossos clientes.
+4000000165	Poderá visualizar os preços sem IVA para facilitar a sua experiência.
+4000000166	Como parte do nosso compromisso social e ambiental queremos ajudá-lo a prolongar a vida útil das suas peças de roupa.
+4000000167	Eliminamos as viagens o máximo possível para economizar tempo e dinheiro.
+4000000168	Em colaboração com organizações sem fins lucrativos locais, recuperamos as peças de roupa que já não se utilizam.
+4000000169	O novo modelo chega agora, sem diesel e uma estética interessante.
+4000000170	Entregas em todo o país de forma rápida e segura no seu escritório ou domicílio.
+4000000171	A obtenção de dados primários, através de uma simples operação de registo, permitirá uma valorização comercial dos seus espaços digitais e uma comunicação mais próxima dos seus utilizadores.
+4000000172	Assim, poderão prosseguir a sua aposta na informação livre e em conteúdos diversificados e de qualidade.
+4000000173	Metodologias cascata e ágeis são usadas para lidar com os seus projetos de desenvolvimento de software.
+4000000174	Naturalmente, todos os pagamentos serão feitos nos valores com IVA.
+4000000175	Normalmente recomendamos uma fase de avaliação no início de cada projeto.
+4000000176	O conhecimento profundo da indústria e análise rigorosa são os nossos pontos fortes.
+4000000177	O envolvimento do cliente é de extrema importância para nós.
+4000000178	O escopo é determinado principalmente com base nos objetivos e desafios do negócio.
+4000000179	O mapeamento de processos de negócios é essencial para a melhoria dos processos de negócios.
+4000000180	O nosso foco é o sucesso dos nossos clientes.
+4000000181	O nosso histórico de sucesso fala por si.
+4000000182	O planeamento de recursos empresariais é a nossa especialidade.
+4000000183	Obter perceções críticas para os nossos clientes é a nossa prioridade.
+4000000184	Oferecemos soluções globais para os nossos clientes.
+4000000185	No meio digital, que também disputamos, queremos que a nossa presença seja distintiva.
+4000000186	Oferecemos soluções personalizadas para melhor atender às suas necessidades.
+4000000187	Os descontos por volume variam de dez a trinta por cento das nossas taxas típicas de consultoria.
+4000000188	Garantimos-lhe também os melhores preços do mercado, um atendimento personalizado e um vasto conjunto de serviços.
+4000000189	Podemos desenvolver, distribuir e fornecer relatórios abrangentes para qualquer tipo de pesquisa com funcionários.
+4000000190	Porque somos focados na nossa missão: trazer o melhor da tecnologia a todos, sem exceção, hoje e sempre.
+4000000191	O nosso conceito de loja é inovador e original.
+4000000192	Um projeto com esta dimensão não está isento de percalços técnicos, minorados por um serviço de apoio on-line ativo e próximo dos nossos clientes.
+4000000193	Se deseja encomendar algum artigo que não encontra na nossa loja, contacte-nos por e-mail.
+4000000194	Se é empresário, aqui vai encontrar os produtos mais ajustados às suas necessidades.
+4000000195	O utilizador concorda em assumir a responsabilidade dos seus dados de login, como o endereço de email e palavra-chave.
+4000000196	Não descansaremos enquanto o número de falhas no registo – hoje muito diminuto e de rápida resolução – for zero.
+4000000197	Somos um membro certificado de serviços platina.
+4000000198	Temos 20 anos de experiência em implementação.
+4000000199	Temos mais de vinte anos a oferecer soluções de negócios.
+4000000200	Ultrapassámos a barreira do milhão de logins e aproximamo-nos do milhão e meio.
+4000000201	Agradecemos a confiança e a compreensão dos nossos utilizadores.
+4000000202	Acho que há um problema com o nosso servidor.
+4000000203	Aguarde alguns minutos para que a atualização seja transferida.
+4000000204	Aguarde alguns segundos antes de ligar o computador novamente.
+4000000205	Aguarde um segundo antes de cancelar o download.
+4000000206	Procuraremos servir-vos cada vez melhor.
+4000000207	Atualize o seu dispositivo para a versão mais recente antes de continuar.
+4000000208	Certifique-se de fechar todas as outras janelas antes de continuar.
+4000000209	Certifique-se de que há espaço suficiente no seu disco.
+4000000210	Certifique-se de que está conectado à rede.
+4000000211	Para continuar a aceder aos mais 70 principais sites portugueses que fazem parte desta plataforma basta fazer o seu registo.
+4000000212	Certifique-se de ter uma conexão forte antes de transferir.
+4000000213	Clique no ícone no canto superior direito.
+4000000214	Clique no ícone quando solicitado.
+4000000215	Desative qualquer programa antivírus, pois isso pode afetar a transferência.
+4000000216	Desconecte o dispositivo, este pode estar superaquecido.
+4000000217	Diga-se a chave do produto, se faz favor.
+4000000218	Está a dizer sim ao jornalismo sério e de qualidade.
+4000000219	Está a dizer sim ao trabalho de todos os jornalistas e produtores de conteúdo nacionais.
+4000000220	Experimente em clicar no ícone "Ferramenta" na página de configurações.
+4000000221	Feche todas as janelas desnecessárias.
+4000000222	Gostaria de transferir a versão paga do programa?
+4000000223	São também produtores de conteúdo nacionais que lhe trazem o entretenimento em Português, feito em Portugal.
+4000000224	Infelizmente, o programa não é compatível com o seu dispositivo.
+4000000225	Irá precisar de libertar muito espaço em disco para esta atualização.
+4000000226	Irá precisar de mais espaço no disco rígido.
+4000000227	Pode ser necessário reinstalar o programa.
+4000000228	Pode ser porque o seu dispositivo está sem armazenamento.
+4000000229	Podemos enviar um técnico às 15h.
+4000000230	Precisa da versão mais recente da aplicação para continuar.
+4000000231	Prima e segure o botão ligar/desligar durante três segundos.
+4000000232	Não irá avaliar e testar a vulnerabilidade do sistema e quebrar a segurança instalada.
+4000000233	Pode registar-se aqui ou em qualquer um dos mais de 70 sites da plataforma.
+4000000234	Qual é versão que está a usar atualmente?
+4000000235	Quando é que a licença do programa expirou?
+4000000236	Quer comprar o pacote ou apenas o programa?
+4000000237	Para fazer o seu registo vamos pedir-lhe o seu nome, e-mail, data de nascimento e género.
+4000000238	Se vir uma luz vermelha, saia do programa imediatamente.
+4000000239	Se a transferência não for feito em dois minutos, reinicie o dispositivo.
+4000000240	Será enviado para o seu e-mail o código de acesso.
+4000000241	Tente desinstalar a aplicação primeiro.
+4000000242	Tente guardar o ficheiro noutro servidor.
+4000000243	Tente reiniciar novamente o computador.
+4000000244	Tente reiniciar o computador primeiro.
+4000000245	Tente solucionar o problema da aplicação.
+4000000246	Tente transferir os ficheiros para a área de trabalho.
+4000000247	Esta informação vai-nos permitir oferecer-lhe conteúdos personalizados para si.
+4000000248	Use a função de pesquisa.
+4000000249	Mas atenção, todos os seus dados serão protegidos e confidenciais, sendo que pode solicitar que sejam eliminados a qualquer momento.
+4000000250	Você atualizou o seu dispositivo recentemente?
+4000000251	Depois de preencher os dados de registo, vai receber um e-mail com um link para ativar e concluir o seu registo.
+4000000252	Você precisa atualizar o sistema antes de guardar qualquer alteração.
+4000000253	A sua encomenda foi enviada!
+4000000254	A sua encomenda saiu agora para envio!
+4000000255	A sua pizza está a caminho!
+4000000256	É simples e depois basta fazer login uma vez para entrar em todos os sites.
+4000000257	Aqui estão as suas informações de envio.
+4000000258	Avalie a sua experiência com a Uber hoje!
+4000000259	Catarina Pinto gostou da sua foto!
+4000000260	Poderá clicar para consentir o processamento por nossa parte e pela parte dos nossos parceiros, conforme descrito acima.
+4000000261	Conclua a sua compra agora e receba um desconto de dez por cento!
+4000000262	Em alternativa, pode aceder a informações mais pormenorizadas e alterar as suas preferências antes de consentir ou recusar o consentimento.
+4000000263	Desculpe, o seu pagamento falhou, nenhuma cobrança foi feita.
+4000000264	Por favor, adicione um índice de matriz de propriedade.
+4000000265	Efetue o upgrade para o Plano Premium para descobrir uma forma mais inteligente de gerir o seu dinheiro.
+4000000266	Efetue o upgrade para um dos nossos planos pagos para melhorar o seu estilo de vida.
+4000000267	Envie 123 para 99484 para atualizações.
+4000000268	Escolhemos uma recompensa especial para si esta semana.
+4000000269	Este e-mail pode não ser seguro. 
+4000000270	Foi atualizado um elemento às 17h.
+4000000271	Logo à noite será feita a atualização.
+4000000272	Luís Pedro, você conhece a Maria Fernanda?
+4000000273	Tenha em atenção que algum processamento dos seus dados pessoais poderá não exigir o seu consentimento, mas que tem o direito de se opor a esse processamento.
+4000000274	Por favor, mantenha o seu diapositivo atualizado.
+4000000275	Nós recebemos com sucesso o seu pagamento!
+4000000276	O alerta foi atualizado com sucesso.
+4000000277	O seu código de segurança é 92192.
+4000000278	As suas preferências serão aplicadas apenas a este website.
+4000000279	O seu extrato já está disponível na sua conta.
+4000000280	Poderá alterar as suas preferências em qualquer momento, regressando a este site ou acedendo à nossa política de privacidade.
+4000000281	O seu pedido de amizade foi aceite!
+4000000282	O seu pedido foi confirmado.
+4000000283	Tem certeza de que deseja abri-lo?
+4000000284	Os anúncios personalizados podem ser-lhe mostrados com base num perfil sobre si.
+4000000285	Por favor, verifique o seu volume atual.
+4000000286	Os tempos limite do ecrã estão desativados até às 16h.
+4000000287	Para verificar o seu correio de voz, marque um dois um.
+4000000288	Utilizar os dados de geolocalização não precisos de um utilizador. 
+4000000289	Responda a um questionário para obter mais pontos!
+4000000290	Tem dois itens que necessitam de atenção.
+4000000291	Tem um compromisso hoje às 15h00.
+4000000292	Transfira a aplicação para uma melhor experiência!
+4000000293	Uma vez que é um administrador neste dispositivo, irá necessitar de enviar um pedido para mais tempo do ecrã.
+4000000294	Você acabou de receber um depósito na sua conta.
+4000000295	Você excedeu o seu limite de dados para este mês.
+4000000296	Você pode experimentar interrupções devido ao sinal fraco.
+4000000297	Siga as nossas dicas, e boa compra!
+4000000298	Controlar a frequência dos anúncios apresentados a um utilizador. 
+4000000299	Escolher a ordem pela qual os anúncios são mostrados a um utilizador.
+4000000300	Você tem dois e-mails por ler.

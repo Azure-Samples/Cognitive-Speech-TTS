@@ -1,0 +1,300 @@
+4000000001	Informa’t de les condicions d’entrega de cada venedor.
+4000000002	Vol que l'ajudi en alguna cosa més?
+4000000003	Què li sembla aquest model?
+4000000004	És a la secció de roba infantil.
+4000000005	Hi ha una rebaixa del trenta per cent sobre el preu marcat.
+4000000006	Pot emprovar-s' ho abans de comprar.
+4000000007	Acompanyi’m a la caixa, si us plau.
+4000000008	Vol emprovar-se una talla més gran?
+4000000009	Ho paga en efectiu o amb targeta de crèdit?
+4000000010	Guardi’s el tiquet de compra per si l’ha de canviar.
+4000000011	Recull de manera gratuïta a la teva botiga per a comandes majors de cinquanta euros.
+4000000012	Aprofita els descomptes de primavera.
+4000000013	Un moment, que truco al magatzem i ho comprovo.
+4000000014	Cap problema, ja poden passar.
+4000000015	Vol que l’hi portem a casa?
+4000000016	Perdoni, com es diu, vostè?
+4000000017	La targeta client és gratuïta i ofereix descomptes.
+4000000018	Li fa res que li pregunti algunes dades personals per omplir el formulari?
+4000000019	Obrim a dos quarts de dues, més o menys.
+4000000020	Ja funciona el servei a domicili.
+4000000021	Em sap greu, però fins divendres no en tindrem.
+4000000022	Ho sento, però no me’n queda cap.
+4000000023	Em pot signar aquí, si us plau?
+4000000024	Té el tiquet de compra, si us plau?
+4000000025	Ara li abono la diferència.
+4000000026	Si compres més d’un producte et farem un cinc per cent de descompte.
+4000000027	Pots recollir la butlleta de participació en qualsevol caixa.
+4000000028	Si necessita alguna cosa, avisi’m.
+4000000029	Vol que ho emboliqui per regalar?
+4000000030	Passin per caixa i allà els hi cobraran.
+4000000031	Cal triar el sistema de pagament i també cal introduir l’adreça on es vol rebre la comanda.
+4000000032	Afegeix els productes seleccionats al carro de la compra clicant a la icona del carret.
+4000000033	Confirma la comanda prement el botó “passa per caixa”.
+4000000034	El client pot recollir personalment les compres als nostres establiments.
+4000000035	Si ho vol, pot demanar que li portin la comanda a casa amb un recàrrec de quatre euros.
+4000000036	La franja horària disponible per el repartiment a domicili va des de les deu fins a les vint-i-dues hores.
+4000000037	En cas d’incompliment dels horaris d’entrega per culpa de l’empresa, no es cobrarà el cost d'enviament.
+4000000038	Em pot deixar un número de telèfon?
+4000000039	Compris el que compris en línia, t'ho portem a casa.
+4000000040	Selecciona la data de lliurament que prefereixis entre les disponibles.
+4000000041	El transportista et contactarà el dia en què vagi a lliurar la comanda per a coordinar el lliurament.
+4000000042	Tota la informació sobre mides la pot trobar a la pàgina de cada producte.
+4000000043	Per qualsevol consulta, pot contactar amb nosaltres a través del nostre telèfon o enviant un correu electrònic.
+4000000044	En qualsevol cas, ens pots enviar un correu electrònic a qualsevol hora i et respondrem tan aviat com ens sigui possible.
+4000000045	Si sol·licites el lliurament de la teva comanda a qualsevol de les nostres botigues, les despeses d’enviament són gratuïtes.
+4000000046	Bon dia, com podem ajudar-te?
+4000000047	Pots finançar les teves compres en línia a partir de noranta euros de forma fàcil i còmode!
+4000000048	Una vegada realitzada la teva comanda i finalitzat el pagament, rebràs un correu electrònic de “Confirmació de la comanda”.
+4000000049	Indiqueu les dades personals i les de pagament.
+4000000050	Quan hàgiu acabat de seleccionar els productes i sigueu a la cistella, haureu de prémer el botó "Anar a caixa".
+4000000051	És recomanable d’imprimir aquesta pantalla, tot i que us enviarem una confirmació per correu electrònic.
+4000000052	Els dies feiners, la comanda us ha d’arribar entre quaranta-vuit i setanta-dues hores, si s’envia per agència de transport.
+4000000053	A partir de cinc quilos, el cost de tramesa és de vuit coma cinc euros.
+4000000054	A la web es pot seguir l’estat de la comanda.
+4000000055	Us recomanem que abans de comprar un producte en mireu la guia de mides per a saber quina talla cerqueu.
+4000000056	Tots els productes es poden canviar en un termini de quinze dies a partir del lliurament del paquet.
+4000000057	No acceptarem devolucions de productes amb proves evidents d’haver estat utilitzats o que tinguin qualsevol mena de desperfecte.
+4000000058	Si el canvi és degut a un defecte del producte, us abonarem el cost del vostre enviament.
+4000000059	Pots navegar pel nostre catàleg movent-te per les diferents categories que pots veure a la part superior del portal.
+4000000060	Si no et convenç el producte, pots canviar-lo.
+4000000061	Genera vals regal trimestrals acumulant punts amb les teves compres.
+4000000062	Només amb la teva targeta client, podràs gaudir de totes les promocions en productes seleccionats a les nostres botigues.
+4000000063	Cada mes rebràs descomptes personalitzats adaptats als teus gustos a través de missatge de text, correu electrònic i app.
+4000000064	Per cada euro de compra acumularàs quatre punts.
+4000000065	El val regal s'aplicarà en la propera compra sense import mínim i té una validesa de tres mesos.
+4000000066	Compra a la nostra botiga en línia amb les millors promocions.
+4000000067	No hi ha comanda mínima.
+4000000068	Indica el codi postal on vols rebre o recollir la comanda.
+4000000069	Busca els productes des del cercador o dins la categoria del producte corresponent.
+4000000070	Una vegada afegits tots els productes, fes clic a “Finalitzar” a la teva cistella.
+4000000071	Completa tots els camps fins arribar a la pàgina de confirmació d’encàrrec.
+4000000072	Conserva el rebut fins que la comanda hagi arribat al seu destí.
+4000000073	Si necessites modificar l’encàrrec, el pots cancel·lar i començar de nou.
+4000000074	Una vegada realitzat l’encàrrec, no és possible afegir ni eliminar productes.
+4000000075	Per a cancel·lar la teva comanda, contacta amb Atenció al client.
+4000000076	La nova botiga en línia ofereix descomptes de fins al setanta per cent.
+4000000077	Aquesta botiga està oberta tot el dia.
+4000000078	Acumula punts per valor del cinc per cent de cada compra i bescanvia’ls per descomptes o per ofertes exclusives.
+4000000079	Palamós construirà el primer habitatge cooperatiu de la província de Girona.
+4000000080	Pots modificar les quantitats canviant la xifra a la casella corresponent.
+4000000081	Per eliminar un producte de la cistella, prem la icona de la paperera.
+4000000082	Les comandes a recollir a una de les nostres botigues podran retirar-se en un termini aproximat de quatre dies laborables.
+4000000083	T'avisarem quan en tornem a tenir.
+4000000084	Ens sap greu, però no podem servir la comanda en el termini previst.
+4000000085	Pots fer-nos arribar qualsevol queixa o reclamació relacionada amb el servei prestat a través del web.
+4000000086	Elaborem pressupostos a mida i sense compromís.
+4000000087	Ens encarreguem de tot, des de la preparació dels articles a l’entrega allà on ens diguis.
+4000000088	Els vals es podran bescanviar en compres mínimes de trenta euros als establiments adherits.
+4000000089	Demana els teus vals de descompte clicant aquí!
+4000000090	Si tens un codi promocional, fes clic al botó «Continua» i sortirà un desplegable on hauràs d’introduir el codi.
+4000000091	Al correu de confirmació de la compra, t'adjuntem les teves entrades per a portar-les al teu telèfon mòbil.
+4000000092	En cada compra en línia només es podrà utilitzar un sol codi de descompte.
+4000000093	Compra des de qualsevol lloc les vint-i-quatre hores els tres-cents seixanta-cinc dies de l'any.
+4000000094	Pots començar la compra des de l’ordinador i acabar-la des del mòbil, i la cistella de compra incorporarà els canvis.
+4000000095	Consulta el nostre catàleg d'ofertes quinzenals.
+4000000096	Entra el teu codi postal i t'informem si et portem la compra a casa.
+4000000097	Per demanar les teves factures, has de sol·licitar-ho des de l' Espai Privat.
+4000000098	Per aplicar el descompte, hauràs d' introduir el codi promocional que apareix en el detall de l' oferta.
+4000000099	Teniu descomptes a tota la botiga en línia fins al dia vint-i-cinc d'agost.
+4000000100	Fem enviaments durant tot l' estiu.
+4000000101	Per poder inscriure’t has de tenir entre 18 i 30 anys.
+4000000102	Les places al curs són limitades.
+4000000103	Les inscripcions a tots els cursos s’iniciaran el proper vint-i-dos de febrer, a partir de les deu hores del matí.
+4000000104	Les places pel curs de preparació s' han esgotat.
+4000000105	La formació, d’un total de vuitanta-quatre hores, es cursarà en línia a través del Campus Virtual.
+4000000106	El curs es podrà pagar de cop o de manera fraccionada mensualment.
+4000000107	Podeu consultar el llistat d’inscripcions de la primera edició aquí.
+4000000108	Contactarem amb vosaltres seguint l’ordre de llista.
+4000000109	Ampliem places per al curs en línia del proper dimarts.
+4000000110	Si vols apuntar-te a la llista d' espera envia' ns un correu electrònic.
+4000000111	Aquests cursos d’ introducció són una mica més avançats i complets que els de tipus intensiu.
+4000000112	Els alumnes podran interactuar amb el professor des del xat de la videoconferència.
+4000000113	Aquest és un curs obert però està especialment adreçat als alumnes que estan seguint un itinerari formatiu.
+4000000114	Entra a la teva àrea de membre i comprova que has introduït correctament totes les dades que es sol·liciten.
+4000000115	Cerca el curs al qual et vols inscriure.
+4000000116	Matricula' t des de casa teva amb tota comoditat.
+4000000117	L' aplicatiu et demanarà que especifiquis els codis d'estudi i edició del programa al qual et vols matricular.
+4000000118	També pots matricular-te en persona.
+4000000119	Recorda que si fas la matrícula en línia, serà necessari que enviïs després la documentació compulsada per correu postal.
+4000000120	Consulta el coordinador davant de qualsevol dubte.
+4000000121	Aviat us informarem amb nous cursos intensius d' estiu.
+4000000122	La nostra garantia s’estén durant un any natural a partir de la data de subministrament.
+4000000123	La garantia només es limita a reparar els productes que pateixin averies degudes a defectes de producció.
+4000000124	Les despeses d' instal·lació i transport corren a càrrec del comprador.
+4000000125	La forma més senzilla de retornar un article comprat en línica, és fer-ho en una de les nostres botigues.
+4000000126	Hauràs de presentar el número de comanda que figura en l' email de confirmació de compra per a realitzar un canvi.
+4000000127	També pots sol·licitar una devolució a domicili des del teu compte de client en línia.
+4000000128	Selecciona quins productes desitges retornar.
+4000000129	En els camps següents, indica si el paquet està obert i que és una devolució.
+4000000130	Si desitges afegir informació addicional, pots fer-ho en l' espai habilitat.
+4000000131	No fem canvis directes: si desitges fer un canvi, has de sol·licitar una devolució i realitzar una nova compra.
+4000000132	En un màxim de setanta-dues hores s'aprovarà la sol·licitud i s'enviarà a un transportista a recollir el paquet.
+4000000133	Quan haguem rebut el producte a retornar, es procedirà al reemborsament de l' import en el mateix mètode de pagament.
+4000000134	Els nostres tècnics realitzaran un diagnòstic de la possible avaria tan ràpidament com sigui possible.
+4000000135	Si va adquirir el producte a un distribuïdor, ha de dirigir-se a ell per sol·licitar la devolució o el canvi.
+4000000136	Volem saber la teva opinió sobre els serveis que t' oferim als nostres centres.
+4000000137	Haurà d’embalar novament el producte o productes, i posar-se en contacte amb nosaltres, perquè puguem avisar al servei de missatgeria.
+4000000138	En cas que el producte a canviar sigui d' un import inferior al comprat, se li abonarà la diferència.
+4000000139	Per quin altre producte vols realitzar el canvi?
+4000000140	Quan contractes els nostres serveis ets lliure de quedar-te o anar-te en qualsevol moment, sota previ avís.
+4000000141	Té algun problema amb la seva instal·lació?
+4000000142	No haurà de pagar ni els desplaçaments ni la mà d'obra.
+4000000143	Per fer una reclamació cal que et posis en contacte amb el nostre departament d’Atenció al Client.
+4000000144	Et lliurarem una Targeta Abonament en retornar un article a un centre comercial.
+4000000145	Els productes frescos o peribles tenen condicions especials.
+4000000146	Només es poden ajornar rebuts de targeta si se sol·licita abans del dia vint del mes següent.
+4000000147	El teu període de garantia ha caducat.
+4000000148	Envia' ns una còpia del correu de confirmació de la teva compra.
+4000000149	Pot sotmetre les seves reclamacions a través de la plataforma de resolució de litigis en línia.
+4000000150	Si tens algun problema, el nostre servei d'atenció al client està sempre disponible.
+4000000151	En general, està satisfet amb el nostre servei?
+4000000152	Per a la devolució de les entrades, pots escriure al nostre correu electrònic.
+4000000153	En cas que prefereixis sol·licitar la devolució de l’import de les entrades, pots fer-ho seguint els passos que s’indiquen aquí.
+4000000154	Tens fins el dia vint-i-u de febrer per a sol·licitar la devolució, un bescanvi o renunciar a la teva entrada.
+4000000155	Accedeix al sistema de devolucions per a seleccionar l’opció que més et convenci.
+4000000156	Un dels nostres operaris es desplaçarà al lloc on ens indiqui.
+4000000157	Si cancel·les o modifiques la reserva fins a dos dies abans de la data d'arribada, no s'efectuaran càrrecs.
+4000000158	Aquesta reserva no es pot cancel·lar gratis.
+4000000159	L' establiment és qui decideix els càrrecs de cancel·lació o modificació.
+4000000160	Si no has quedat satisfet en algun dels productes, si us plau, diga' ns-ho i trobarem una solució.
+4000000161	Si tens algun suggeriment o no has quedat satisfet amb la teva compra, escriu-nos!
+4000000162	Totes les reparacions o instal·lacions realitzades a qualsevol taller, tenen una garantia de dos mil quilòmetres o de tres mesos.
+4000000163	Les targetes malmeses per la persona usuària no donen dret a un bescanvi ni a una compensació.
+4000000164	Estarem encantats de rebre els seus suggeriments per poder-li oferir l' atenció més personalitzada.
+4000000165	Aquesta valoració és totalment voluntària, i li assegurem que qualsevol opinió o crítica constructiva serà considerada.
+4000000166	No, ens sap greu, però no és possible fer una devolució d' aquest producte.
+4000000167	Lamentablement no podem acceptar devolucions, però pots optar en revendre la teva entrada.
+4000000168	En relació a la teva reclamació, t'informem que no podem reemborsar els vint-i-nou euros de l'entrega prèmium.
+4000000169	Marca la casella al costat del contingut en qüestió, i selecciona l' opció «Devolució per reembossament».
+4000000170	Faci una breu descripció del problema que presenta el producte i de com s’ha originat.
+4000000171	Necessito saber el nom de la persona que envia el producte per reparar, adreça completa, telèfon i correu electrònic.
+4000000172	Caldrà incloure el document a l’interior del paquet, i retolar a l’exterior del paquet el número de reparació.
+4000000173	Si hem de substituir la pantalla, la bateria també es reemplaçarà sense càrrec addicional.
+4000000174	Les reparacions que realitzen els nostres serveis tècnics oficials tindran un període de garantia mínim de tres mesos.
+4000000175	Primer de tot, li demanem disculpes.
+4000000176	En cas de persistir l' error, contacteu amb el nostre departament d' Atenció en línia.
+4000000177	És important que el producte es torni en l' embalatge original i en les mateixes condicions que es va enviar.
+4000000178	Per a realitzar el reemborsament, necessitarem que ens facilitis les teves dades bancàries.
+4000000179	Si desitges canviar la teva peça per un altre model o color, puc sol·licitar-te un canvi.
+4000000180	Si tens un projecte escalable i vols ser global, t' oferim solucions de finançament i serveis a la teva mida.
+4000000181	Et posem en contacte amb els principals ecosistemes d'empreses emergents de tot el món.
+4000000182	T' ajudem a multiplicar la teva visibilitat internacional.
+4000000183	Tot l’assessorament per a la teva empresa, cara a cara, siguis on siguis.
+4000000184	Reforcem els seus canals d’assessorament empresarial mitjançant una nova metodologia de teleassessorament.
+4000000185	Utilitza aquest formulari per explicar-nos què t’estàs plantejant.
+4000000186	Trenta anys d’experiència assessorant les seves decisions.
+4000000187	Som una empresa de consultoria estratègica, financera i tecnològica amb operacions a nivell internacional.
+4000000188	Tot això ens situa com a referència dins del sector de la consultoria.
+4000000189	Necessites col·laboracions estratègiques per innovar?
+4000000190	Solo a través de los hechos podemos entender la realidad.
+4000000191	Disposem d' ajuts per subcontractar serveis d’innovació.
+4000000192	Oferim mediació, interlocució i acompanyament amb tots els agents de l’administració implicats.
+4000000193	En el moment de fer efectiva la inversió, t’assessorarem sobre incentius i finançament.
+4000000194	Nosaltres som una consultoria digital estratègica per a millorar la imatge en línia de la teva empresa.
+4000000195	Les activitats que desenvolupem impliquen la creació de plans estratègics de màrqueting digital, auditories de llocs web i presència en línia.
+4000000196	Dissenyem i integrem entorns TIC optimitzats i solucions per a la millora de l’ús de la informació.
+4000000197	Repassem amb tu alguns dels nostres casos d' èxit.
+4000000198	Sumem deu anys com a socis gestionant tot el procés de transformació digital en les àrees de màrqueting.
+4000000199	Per descomptat, treballarem en el teu projecte de manera personalitzada i farem un pla d’acció adaptat als teus objectius.
+4000000200	T'informem que el termini per dipositar el treball és el dilluns dos de setembre.
+4000000201	Apaga’l prement el botó d’arrencada durant uns deu segons.
+4000000202	Aquesta comprovació pot durar uns moments, esperi, si us plau.
+4000000203	Has canviat de lloc o de nom un arxiu o una carpeta del sistema?
+4000000204	Després, reinicia el telèfon per veure si s' ha resolt el problema.
+4000000205	Obre l' aplicació Configuració del telèfon.
+4000000206	Ara, segueix els passos en pantalla.
+4000000207	Si prems la tecla “Opció” mentre visualitzes un menú, es mostren opcions de menú ocultes.
+4000000208	Surt de totes les apps que no fas servir.
+4000000209	El nom de la targeta gràfica de l’ordinador es mostra al centre de la finestra.
+4000000210	Sap quin processador té l’ordinador?
+4000000211	T'agrairem que, si ho autoritzes, ens lliuris el formulari original signat.
+4000000212	Podeu provar de treure la bateria i veure si hi ha signes evidents de danys als contactes.
+4000000213	Si teniu un segon controlador, proveu de comprovar si es carrega normalment.
+4000000214	Això vol dir que el controlador està executant el microprogramari més recent.
+4000000215	Engegueu la consola i comproveu si s’encén correctament.
+4000000216	Et recomanem que consultis la nostra pàgina web on hi trobaràs tota la informació.
+4000000217	Espereu que es carregui la llista d’aplicacions instal·lades.
+4000000218	Feu clic al camp de cerca de la barra de tasques i escriviu "bloc de notes".
+4000000219	Reinicia l' equip si encara no ho has fet.
+4000000220	A la nova pantalla que apareix, també en el menú de l’esquerra, clicar sobre "Recuperació".
+4000000221	No es preocupi, l’equip és reiniciarà sol.
+4000000222	Indica el nom de l’usuari i la contrasenya que vulguis utilitzar.
+4000000223	Desactiva l' antivirus que tinguis instal·lat a l' ordinador.
+4000000224	Accedeix al teu correu electrònic, hauries de rebre el codi d' activació en uns instants.
+4000000225	Escríbenos en el chat para resolver cualquier duda sobre la suscripción.
+4000000226	Quan acabis, torna a fer clic al menú.
+4000000227	Es mostrarà a la barra d’estat de la part inferior de la finestra, la veus?
+4000000228	M' indica que la vostra subscripció de suport ha caducat.
+4000000229	Quina és la seva preferència d' idioma?
+4000000230	No podeu crear una reunió des de l' aplicació mòbil.
+4000000231	Aniria bé que adjuntessis una captura de pantalla de l'error que t' apareix.
+4000000232	Mentrestant, pots actualitzar el controlador de la teva impressora a l' última versió.
+4000000233	Si has sol·licitat una beca o n'ets beneficiari, has de presentar l'original i una còpia de la credencial.
+4000000234	Assegura' t abans de començar, que tens prou bateria.
+4000000235	Al tauler de navegació de la part superior esquerra, feu clic a "Dades i personalització".
+4000000236	Podeu marcar la casella que hi ha al costat de l' opció “Inclou l'historial”?
+4000000237	En cas de dubte pots contactar amb el coordinador.
+4000000238	La meva companya m'ha passat la documentació que vas presentar ahir.
+4000000239	L' únic que heu de fer a partir d'aquí és desconnectar el comandament i ja es finalitza el programa.
+4000000240	Ha aconseguit descarregar el fitxer?
+4000000241	Si tens pensat fer el pagament per domiciliació bancària, necessito que emplenis també aquest document.
+4000000242	Veu una icona amb forma de monitor situada a la part superior de la finestra?
+4000000243	Deixa l' ordinador apagat uns quants minuts.
+4000000244	Espera uns minuts perquè es refresqui la memòria cau de dades internes.
+4000000245	Prem el botó d' encesa de l'ordinador.
+4000000246	Potser hagis de dur-la a el servei tècnic perquè li facin un diagnòstic.
+4000000247	En acabar de iniciar-se, tornarà a la manera normal.
+4000000248	El certificat és vàlid durant quatre anys.
+4000000249	El certificat es pot renovar una vegada des de l'ordinador on tens instal·lat el certificat.
+4000000250	Caldrà que tornis a validar la teva identitat.
+4000000251	La descàrrega s'ha de fer en un ordinador personal.
+4000000252	Si ja sou usuari verificat, us heu d'identificar.
+4000000253	Durant cent vint dies la suspensió es reversible, i el pots tornar a habilitar el compte.
+4000000254	Espereu un moment, si us plau.
+4000000255	És molt important que recordis el codi indicat.
+4000000256	Finalitza l' assistent i ja tindràs creat el fitxer al teu ordinador.
+4000000257	Et demana la paraula de pas?
+4000000258	Si habilites aquesta opció, el sistema t' avisarà cada cop que calgui actualitzar.
+4000000259	Revisa les dades introduïdes perquè alguna és incorrecta.
+4000000260	Vés amb compte amb les majúscules i minúscules.
+4000000261	Torna a fer la prova més tard perquè hi ha hagut un problema puntual de connexió.
+4000000262	Aquest error vol dir que ja el vas descarregar.
+4000000263	Passat aquest termini ja no tornaràs a rebre cap comunicació al respecte.
+4000000264	El codi que has rebut és totalment vàlid, i el pots utilitzar amb total normalitat.
+4000000265	Si el tràmit requereix autenticació t’hauràs d’identificar mitjançant el certificat digital.
+4000000266	S’enviarà un missatge de correu electrònic informant del número de registre.
+4000000267	Copia l’enllaç i envia’l, per exemple, mitjançant un missatge.
+4000000268	Has provat de desactivar-lo i tornar-lo a activar de nou?
+4000000269	Has provat a desactivar les extensions?
+4000000270	L' altre mètode de configuració, el manual, implica la instal·lació del certificat al dispositiu.
+4000000271	Primerament hem de seleccionar a quina xarxa ens volem connectar.
+4000000272	Demà ho tindrem a punt.
+4000000273	Em podria fer un llistat dels proveïdors que compleixin les condicions, si us plau?
+4000000274	Vol adquirir la llicència per a ús comercial?
+4000000275	Quants comptes d' usuari vol crear?
+4000000276	La seva llicència ha de ser compatible amb la d' aquell altre programari.
+4000000277	Si és tan amable d’esperar un moment.
+4000000278	Us enviarem un avís amb un mes d' antelació com a mínim abans de tancar el compte.
+4000000279	Diguim, de què es tracta?
+4000000280	Torni a intentar el tràmit sense tancar el navegador.
+4000000281	Li suggerim que tanqui per complet la sessió oberta del navegador.
+4000000282	Per evitar que l' error es repeteixi per estar en la mateixa sessió, tanqui totes la pàgines obertes.
+4000000283	Tingui en compte que si el certificat electrònic no és vigent serà precís sol·licitar-ne un de nou.
+4000000284	Vol que li facilitem l' enllaç a la pàgina?
+4000000285	Necessito el seu permís per a la visualització de la pantalla.
+4000000286	Farem servir una eina de suport remot per agilitar la resolució de la consulta.
+4000000287	Em pot dir el seu nom, si us plau?
+4000000288	Introdueix el codi sis vuit sis nou quatre quatre per continuar amb la seva compra.
+4000000289	En què la puc ajudar?
+4000000290	Con el objetivo de ofrecer al usuario contenidos e información más adecuados a sus intereses y facilitar su navegación a través de nuestros Servicios.
+4000000291	Un moment, si us plau, provo de localitzar-lo.
+4000000292	S' ha desconnectat del control remot.
+4000000293	Para registrar las preferencias del usuario y proporcionarle un acceso más rápido.
+4000000294	El seu enviament és al punt d'entrega.
+4000000295	El pagament s' ha executat correctament.
+4000000296	No s' ha pogut instal·lar l' aplicació.
+4000000297	Hem rebut la seva comanda correctament.
+4000000298	És possible que dijous ja sigui aquí.
+4000000299	S' ha exhaurit el temps d' inactivitat.
+4000000300	No tens accés a aquest servei.

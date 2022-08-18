@@ -1,0 +1,300 @@
+3000000001	Quand est-ce que tu es libre?
+3000000002	Quand est-ce que vous planifiez le voyage?
+3000000003	On prend l'avion dans deux semaines.
+3000000004	Bien sûr que non je ne veux pas tout réserver.
+3000000005	Je ne suis pas d'accord.
+3000000006	Ça serait un bon compromis.
+3000000007	Quand est-ce que tu vas préparer ta valise?
+3000000008	Oui, avant de faire ma valise, je dois avoir fait mes achats.
+3000000009	À ce qu'il paraît, la température moyenne à Dubaï est de 37 degrés Celsius.
+3000000010	Je dois acheter de la crème solaire.
+3000000011	J'ai pensé que nous louerions une voiture là-bas.
+3000000012	Il y a aussi beaucoup de déserts.
+3000000013	Les paysages désertiques sont à couper le souffle.
+3000000014	J'aime aussi la culture et la nourriture.
+3000000015	On peut aussi passer la nuit chez ta cousine à Abu Dhabi.
+3000000016	Je sais à l'avance que pas plus de deux personnes peuvent y aller.
+3000000017	Je suis désolée, mais je n'y peux rien.
+3000000018	Pourquoi est-ce qu'on ne peut pas y aller toutes ensemble?
+3000000019	C'est parce que c'est ma meilleure amie.
+3000000020	Elle peut venir avec nous.
+3000000021	Est-ce que tu habites en Allemagne?
+3000000022	Oh, et combien de temps as-tu été là?
+3000000023	Après deux mois, on est encore en vacances.
+3000000024	Est-ce que tu peux prendre beaucoup de jours de vacance avec ton travail?
+3000000025	Comme je suis le boss, je peux planifier mes propres vacances.
+3000000026	Quand est-ce que tu as des vacances en hiver?
+3000000027	Je ne sais pas encore quand et où je veux les passer.
+3000000028	Veuillez prendre soin de saisir votre mot de passe unique correctement.
+3000000029	Je vais amener des vêtements et des accessoires de toilette.
+3000000030	J'ai oublié ce que tu voulais amener.
+3000000031	Je viens d'avoir une idée.
+3000000032	Mon père dit que nous allons décoller vers 18 heures.
+3000000033	Considère-toi juste chanceuse que je t'emmène avec moi.
+3000000034	Je ne veux pas argumenter avec toi.
+3000000035	Mais tu ne restes pas avec nous tous les jours.
+3000000036	Je connais très bien Dubaï même si je n'y suis jamais allée.
+3000000037	Comment ça se fait que tu connaisses ça?
+3000000038	J'ai fait beaucoup de recherches et mon père a également travaillé là-bas.
+3000000039	Est-ce qu'on peut se promener en shorts?
+3000000040	C'est l'une des choses les plus simples à mettre en place.
+3000000041	Est-ce qu'on pourra nager tranquillement là-bas?
+3000000042	L'objectif est de bien boire, manger et se faire des amis.
+3000000043	J'achète régulièrement des plats à emporter.
+3000000044	Est-ce que je devrais te dire où j'étais?
+3000000045	Oui, j'aimerais savoir où tu étais.
+3000000046	Oui, il regardait son cellulaire?
+3000000047	J'ai appris à surfer en Australie.
+3000000048	Il y a un professeur qui me l'a appris.
+3000000049	Es-tu allée à Sydney aussi?
+3000000050	Parfait, mais je veux décoller le soir.
+3000000051	Est-ce que je devrais emmener quelque chose à manger?
+3000000052	Tu n'as rien à planifier pour le moment.
+3000000053	C'est un hélicoptère de première classe.
+3000000054	Il y a combien de places dans l'hélicoptère?
+3000000055	Combien de temps dure le vol?
+3000000056	Le vol dure 12 heures.
+3000000057	J'adore la nourriture en Indonésie.
+3000000058	J’espère que cet appareil polyvalent vous plaira!
+3000000059	Hé, voudrais-tu déménager dans un appartement avec nous?
+3000000060	Non, c'est à 20 minutes, mais on peut y aller en train.
+3000000061	Je peux emmener un divan et une laveuse.
+3000000062	On peut maintenant commencer avec la cuisine.
+3000000063	Non, elle n'est pas propre du tout.
+3000000064	Oui, mais allons-y un autre jour lorsqu'on pourra nettoyer la maison au complet.
+3000000065	Je ne pense pas qu'on ait besoin d'un micro-ondes.
+3000000066	Ok, laissons faire pour l'instant.
+3000000067	Annie vient de me dire qu'elle peut aussi apporter une télévision.
+3000000068	Peux-tu s'il te plaît répondre à ma question?
+3000000069	La cuisine est vieille et de couleur brune.
+3000000070	On peut aussi éventuellement faire pousser des herbes fraîches pour égayer la cuisine.
+3000000071	Je ne peux pas être en contact avec n’importe quelles herbes.
+3000000072	Je n'ai pas de problème avec ça.
+3000000073	Je ne sais pas combien de mètres carrés fait la salle de bain.
+3000000074	Est-ce qu'on pourrait y mettre une petite armoire pour nos accessoires?
+3000000075	Elle a aussi un contenant pour les brosses à dents et le dentifrice.
+3000000076	Pourquoi a-t-on besoin d'une console?
+3000000077	Je vais apporter la table à manger avec les chaises.
+3000000078	Je vais apporter le divan et une table de salon.
+3000000079	Je vais aussi apporter une bibliothèque, un tapis et des rideaux.
+3000000080	Le propriétaire ne veut pas qu'on accroche quoi que ce soit aux murs.
+3000000081	Il ne veut pas voir des trous enlaidir son mur.
+3000000082	Il y a deux petites chambres et une grande chambre.
+3000000083	Est-ce que tu as beaucoup de vêtements et beaucoup de meubles?
+3000000084	Annie a plus de meubles que toi.
+3000000085	Par exemple, chaque semaine, quelqu'un se charge de la cuisine et ainsi de suite.
+3000000086	J'aimerais me charger de nettoyer la cuisine.
+3000000087	Ok, alors je me chargerai de la salle de bain.
+3000000088	Si tu veux, je peux cuisiner tous les vendredis, samedis et dimanches.
+3000000089	Une prépare le déjeuner, une autre le dîner et la dernière prépare le souper.
+3000000090	Es-tu d'accord avec ce que je viens de dire?
+3000000091	Non, parce qu'il arrive que je ne sois pas à la maison.
+3000000092	J'aimerais le mettre dans le salon.
+3000000093	Non, nos voisins ne seront pas d'accord avec ça.
+3000000094	Oui, je lui ai parlé hier et elle a dit que c'était correct.
+3000000095	Comment est-ce qu'on s'organise pour les courses hebdomadaires?
+3000000096	Je pense qu'on devrait tout diviser en trois pour que chacune paie sa partie.
+3000000097	Est-ce qu'on devrait créer une tâche pour ça?
+3000000098	C'est bien, sinon il faudrait payer pour le support à vélo.
+3000000099	Est-ce que tu as des suggestions?
+3000000100	Est-ce que c'est important que tu saches quand je rentre de l'université?
+3000000101	Non, mais si tu oublies ta clé, qu'est-ce qu'on fait?
+3000000102	Je peux comprendre pourquoi tu penses ainsi.
+3000000103	Comment est-ce que tu t'es arrangée avec le bureau d'enregistrement?
+3000000104	Non, je n'ai pas de voiture.
+3000000105	On devra payer 25 dollars chacune par mois.
+3000000106	On veut déménager dans deux semaines.
+3000000107	Il ne nous reste qu'à trouver une façon de transporter tout ça.
+3000000108	Peut-être qu'on peut louer un camion.
+3000000109	Ton père a une compagnie de déménagement.
+3000000110	Tu réalises que nous sommes étudiantes.
+3000000111	S'il te plaît, dis-le à Annie aussi.
+3000000112	Est-ce que tu vivais dans un manoir chez tes parents?
+3000000113	Je vais en faire installer une.
+3000000114	Dans ce cas, achète une porte noire et blanche.
+3000000115	On nettoie ici et ensuite on déménage.
+3000000116	Oui, est-ce que je devrais amener les produits de nettoyage?
+3000000117	Annie va amener un seau et trois éponges.
+3000000118	Oui, j'ai déjà organisé la salle de réception.
+3000000119	J'ai réservé le bateau de couleur rose.
+3000000120	Sarah, je suis vraiment désolée.
+3000000121	Je choisirais un concept rock.
+3000000122	On peut aussi inviter Nirvana à chanter.
+3000000123	Je pense que ça serait une très bonne idée.
+3000000124	Est-ce qu'on devrait avoir du maquillage noir?
+3000000125	Je pense qu'on devrait acheter des ballons noirs.
+3000000126	Je pense qu'on doit aussi avoir des ustensiles noirs.
+3000000127	Elle nous donne ses astuces pour s'y mettre progressivement.
+3000000128	Est-ce qu'il faut acheter de la bouffe?
+3000000129	Alors, on n'a pas besoin d'établir un code vestimentaire.
+3000000130	Alex est l'homme d'affaires de la famille.
+3000000131	Elle décide de tout dans la famille, donc la famille est un peu bizarre.
+3000000132	Peux-tu m'en dire plus sur l'homme d'affaires Alex?
+3000000133	Oleg est très riche, alors il est en train de se construire deux maisons.
+3000000134	Mais j'ai peur de la famille, parce que la famille est un peu agressive.
+3000000135	On pourrait fêter normalement, boire et danser.
+3000000136	Oui, c'est une bonne idée.
+3000000137	Mails ils boivent de l'alcool et qu'est-ce qu'ils vont manger?
+3000000138	Bien sûr qu'ils boivent de l'alcool et ils mangent de tout.
+3000000139	On pourrait aussi passer la nuit sur le bateau.
+3000000140	Ceux qui voudront passer la nuit devront payer.
+3000000141	Tu as dit qu'Alex est un homme d'affaires?
+3000000142	Il possède plusieurs compagnies et travaille dans le domaine de l'automobile.
+3000000143	On doit dire à tout le monde d'apporter un cadeau.
+3000000144	Mais pour un party comme ça, on doit dépenser de l'argent.
+3000000145	Oui, est-ce que je devrais en acheter des blanches ou des colorées?
+3000000146	Oui, il y en a aussi des noires et jaunes.
+3000000147	Je pourrais préparer de petites bouchées pour le party.
+3000000148	Je prendrais des brochettes de fromage et des petites grignotines.
+3000000149	Je suis vraiment très heureux de faire votre connaissance! 
+3000000150	Je te trouve tellement belle aujourd'hui!
+3000000151	J'ai été heureux de rendre visite à ma famille ce week-end!
+3000000152	J'ai bien apprécié le dîner d'hier soir!
+3000000153	Ma nièce est très heureuse de son cadeau d'anniversaire!
+3000000154	Tu as les mêmes yeux que ta mère!
+3000000155	Tu as beaucoup changé depuis la dernière fois que je t'ai vu!
+3000000156	Je me réjouis de rencontrer un vieil ami du lycée ce matin!
+3000000157	C'est l'heure, je dois partir maintenant!
+3000000158	Vous êtes une personne talentueuse!
+3000000159	Je vais passer une très belle journée!
+3000000160	Quelle chance j'ai eu aujourd'hui!
+3000000161	Je sens que ma journée va être magnifique!
+3000000162	J'aimerais bien parler avec mes amis!
+3000000163	Quel beau film nous avons sous les yeux à la télévision!
+3000000164	Qu'il est gentil ton père!
+3000000165	Qu'il est très content ce matin!
+3000000166	Comme cette journée est pleine de bénédiction!
+3000000167	J'ai hâte de finir mon travail!
+3000000168	J'aimerais que nous passions la journée ensemble!
+3000000169	Comme j'ai envie d'être à tes côtés!
+3000000170	Que ces découvertes sont intéressantes!
+3000000171	Comme tu es vraiment cool!
+3000000172	J'attends le week-end avec impatience!
+3000000173	Je ne veux pas te quitter!
+3000000174	Vous êtes vraiment attaché à moi!
+3000000175	Je me confie à toi!
+3000000176	Comme elle a de belles allures aujourd'hui!
+3000000177	Comme les gens sont heureux aujourd'hui!
+3000000178	Quel beau résultat tu as eu à l'école!
+3000000179	Tu as bien chanté pendant le spectacle!
+3000000180	Je reste optimiste peu importe la situation!
+3000000181	Je ne peux pas attendre au repas de midi!
+3000000182	J'aimerais bien t'aider à aller mieux!
+3000000183	Nous sommes fiers de faire partie de votre famille!
+3000000184	Tu as tout mon soutien!
+3000000185	Je suis très reconnaissant de tes efforts!
+3000000186	Tu as bien évolué depuis ton arrivée ici!
+3000000187	Je suis sûr que tu y arrivera!
+3000000188	Nous sommes toujours là si besoin!
+3000000189	Tu es de bonne humeur aujourd'hui!
+3000000190	Il est en pleine forme ce matin!
+3000000191	Je pense que tu vas gagner!
+3000000192	Vous êtes mignon toi et ton copain!
+3000000193	Vous aurez de beaux enfants!
+3000000194	Tu seras une bonne maman!
+3000000195	Je suis heureux d'être devenu votre ami!
+3000000196	J'ai bien aimé la soupe que tu as préparée!
+3000000197	J'ai bien ton stylo fait à la main!
+3000000198	Je souhaite que tu sois heureux avec ton copain!
+3000000199	Tu attires le regard avec tes lunettes!
+3000000200	Je suis en parfaite santé!
+3000000201	Quelle inspiration tu as mon fils!
+3000000202	Nous sommes heureux de faire votre connaissance!
+3000000203	Tu as vraiment l'esprit d'un artiste!
+3000000204	Il fait très beau aujourd'hui!
+3000000205	J'ai fait une belle rencontre ce matin!
+3000000206	Quel bon repas tu as cuisiné!
+3000000207	Tu as bien travaillé aujourd'hui!
+3000000208	Quelle bonne chose tu as prévu pour cette semaine!
+3000000209	Comme le temps passe vite à tes côtés!
+3000000210	Je suis libre car mon patron est parti en voyage d'affaires!
+3000000211	Je vous souhaite mes meilleurs vœux pour cette nouvelle année!
+3000000212	Je me sens bien dans ma peau ici!
+3000000213	Tu peux le faire comme toujours!
+3000000214	Comme nous allons bien nous amuser ce soir!
+3000000215	J'ai passé de bonnes vacances!
+3000000216	Je dois réussir ce test!
+3000000217	J'ai hâte de voir le spectacle!
+3000000218	Je suis content de pouvoir faire un gâteau fait maison!
+3000000219	Toi et moi, on a beaucoup de choses en commun!
+3000000220	Je fais confiance à mon instinct!
+3000000221	C'est vraiment amusant de discuter avec toi!
+3000000222	Je veux regarder ce film tous les jours!
+3000000223	Je suis contente de vivre avec toi!
+3000000224	Je vais regarder la télé toute la soirée!
+3000000225	J'irai au cinéma avec mon ami samedi prochain!
+3000000226	Vous allez me manquer, c'est sûr!
+3000000227	Vous avez un chien très gentil!
+3000000228	Votre maîtresse a une belle écriture!
+3000000229	Elle sait bien jouer avec les enfants!
+3000000230	Je veux aller dîner au restaurant ce soir!
+3000000231	J'espère qu'il fera beau demain!
+3000000232	J'ai hâte de fêter la Saint-Valentin à Venise!
+3000000233	Comme cette maison près du lac est belle!
+3000000234	L'été prochain nous souhaitons faire une croisière!
+3000000235	Votre poème m'a complètement renversé!
+3000000236	Il joue bien avec son piano!
+3000000237	J'ai décidé de manger sainement!
+3000000238	Ton déguisement te va très bien!
+3000000239	Tu es très gentil avec moi!
+3000000240	Je profite de cette belle journée!
+3000000241	Tu as de magnifiques cheveux!
+3000000242	Il fait beau aujourd'hui chez moi!
+3000000243	Tes cheveux sont très brillants!
+3000000244	Je te trouve très intelligent!
+3000000245	Tu danses bien avec ses chaussures!
+3000000246	J'adore faire du shopping avec mes enfants!
+3000000247	Je préfère manger du gâteau au chocolat au petit déjeuner!
+3000000248	Vous avez à cœur le goût de la bonne recette?
+3000000249	J'aime bien vivre à la campagne!
+3000000250	J'ai envoyé un mail à mes parents!
+3000000251	Nous avons besoin de toute l'équipe ce week-end!
+3000000252	Tu as attiré l'attention des spectateurs!
+3000000253	Merci d'avoir pris soin de moi!
+3000000254	Tout va bien pour le moment!
+3000000255	Je suis un homme heureux!
+3000000256	Je veux aller de l'avant!
+3000000257	Je m'estime heureux maintenant!
+3000000258	Tu es une personne sérieuse!
+3000000259	Je suis vraiment désolé de ce qui s'est passé!
+3000000260	Tu es vraiment sûr de toi!
+3000000261	Je suis une femme indépendante!
+3000000262	Tu es quelqu'un de confiant!
+3000000263	Félicitations, tu es le meilleur!
+3000000264	Vous avez vraiment de la patience!
+3000000265	Vous avez beaucoup de qualités!
+3000000266	Je suis sûr que vous pouvez traverser cette épreuve!
+3000000267	Je ne savais pas que vous chantiez aussi bien que ça!
+3000000268	Comme votre voix est magnifique!
+3000000269	Tout le monde sait que tu es gentil!
+3000000270	Comme tu es célèbre dans le quartier!
+3000000271	Tu as beaucoup d'amis mon fils!
+3000000272	Comme il a changé depuis sa naissance!
+3000000273	J'ai décidé de rester positif quoiqu'il arrive!
+3000000274	Quelle forte ressemblance tu as avec ton père!
+3000000275	Tout le monde est content de la victoire de notre équipe!
+3000000276	N'hésitez pas à me parler quand vous avez des soucis!
+3000000277	Tu es la plus intelligente de toute la classe!
+3000000278	Nous aimerions bien t'accompagner à ta fête!
+3000000279	Je suis fière d'être dans la même équipe que vous!
+3000000280	J'ai besoin d'un peu de changement!
+3000000281	J'ai sauté de joie, car il m'a invité à sortir!
+3000000282	Je savais que tu allais réussir!
+3000000283	Tu peux le faire, j'en suis sûr!
+3000000284	J'étais sûr que tu allais gagner!
+3000000285	Comme cet enfant boit beaucoup d'eau!
+3000000286	Je suis sûr que tout ira bien!
+3000000287	J'ai vraiment envie d'être à mon importante réunion de demain!
+3000000288	Je savais que vous apprendriez à nager très vite!
+3000000289	Je suis ravi, car j'ai appris à faire du gâteau sur Internet!
+3000000290	Je te souhaite bonne chance pour ton examen!
+3000000291	J'ai eu beaucoup de chance cette semaine!
+3000000292	J'aime bien me promener avec mon chien!
+3000000293	Je ne peux pas abandonner maintenant!
+3000000294	Je regrette de t'avoir fait du mal!
+3000000295	Je te remercie pour ces petits mots!
+3000000296	J'aime bien collaborer avec vous!
+3000000297	J'ai fait beaucoup de découvertes hier!
+3000000298	Tu fais bien ton travail!
+3000000299	Cette journée m'a apporté beaucoup de belles choses!
+3000000300	Oui, tout s’est vraiment très bien passé!

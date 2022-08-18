@@ -1,0 +1,300 @@
+3000000001	Hei, kan Kari bli med på ferieturen?
+3000000002	Når har dere tid?
+3000000003	Det passer nok best i fellesferien.
+3000000004	Dessverre, det passer ikke for vår familie.
+3000000005	Vi får ta det ved en senere anledning.
+3000000006	Vi kan snakkes om det en annen dag.
+3000000007	Når skal du pakke kofferten?
+3000000008	Nå forsto jeg ikke helt hva du mente.
+3000000009	Jeg må på butikken og handle før jeg pakker kofferten.
+3000000010	Nei, der har jeg ikke vært før.
+3000000011	Det har ikke vi heller, men vi gleder oss veldig.
+3000000012	Det skal visst regne mer i København enn Bergen.
+3000000013	Da er det nok lurt å ta med seg en paraply.
+3000000014	Selv om det er en storby, er det flotte, grønne parker man kan besøke.
+3000000015	Det synes jeg vi skal ta oss tid til.
+3000000016	Selvsagt, men slottsbygningen er det jeg gleder meg mest til.
+3000000017	Maten er fantastisk, men jeg liker ikke de røde pølsene.
+3000000018	Jeg har hørt at folkene er imøtekommende og hyggelige.
+3000000019	Da bestiller jeg flybilletter til juni.
+3000000020	Ja, det høres bra ut.
+3000000021	Jeg må høre med de andre om det passer for dem.
+3000000022	Skal alle de andre bli med?
+3000000023	Nei, det blir oss og Synnøve.
+3000000024	Beklager, da blir vi for mange.
+3000000025	Hvorfor kan ikke alle sammen dra?
+3000000026	Det blir ikke plass i bilen, men kanskje hun kan ta buss?
+3000000027	Jeg har lyst til å bo på hotell, men det er så dyrt.
+3000000028	Vi tenkte å ta med telt.
+3000000029	Det var smart, vi kan dra på camping.
+3000000030	Ja, det er flotte campingplasser rett utenfor byen.
+3000000031	Kevin sier det er fornøyelsesparker der også.
+3000000032	Høres flott ut, da blir nok barna glade.
+3000000033	Har du feriert i Frankrike tidligere?
+3000000034	Nei, men jeg har veldig lyst til det.
+3000000035	Eiffeltårnet er noe alle turister burde se.
+3000000036	Det er rett og slett for lite snø der.
+3000000037	Det kan jeg forstå, en skikkelig vinterferie er det beste.
+3000000038	Om to måneder har vi endelig ferie igjen.
+3000000039	Hvem liker vel ikke en god ferie?
+3000000040	Jeg er min egen sjef, og kan planlegge ferie slik jeg selv ønsker.
+3000000041	Kommer du til å fly tilbake til Spania?
+3000000042	Nei, det blir for mye stress.
+3000000043	Lange flyturer virker avslappende for meg.
+3000000044	For to år siden hadde jeg også lyst til å dra dit.
+3000000045	Hva tar du med deg til København?
+3000000046	Jeg tar bare med meg klær og toalettsaker.
+3000000047	Vi tenkte å ta taxi fra flyplassen.
+3000000048	Det høres ut som en bra idé.
+3000000049	Onkelen min bor i Danmark, så han kan sikkert kjøre oss dit vi skal.
+3000000050	Jeg vil gjerne sitte på med onkelen din.
+3000000051	Hvorfor har du ikke lyst til det?
+3000000052	Det var ikke vondt ment, jeg foretrekker bare å kjøre selv.
+3000000053	Studerer eller jobber du her i byen?
+3000000054	Jeg studerer til et fagbrev.
+3000000055	Det høres spennende ut, hvor gammel er du?
+3000000056	Jeg er 25 år gammel, men jeg tenkte å ta en doktorgrad.
+3000000057	Imponerende, jeg håper du lykkes.
+3000000058	Hvem skal betale for ferien?
+3000000059	Min far skal betale, jeg har ikke penger siden jeg studerer.
+3000000060	Kommer han til å betale for alle?
+3000000061	Han er nok villig til å betale om du spør pent.
+3000000062	Jeg forstår, men hva med barna?
+3000000063	Om jeg husker rett, så skulle bestemor betale for barna.
+3000000064	Marthe sover i køyesenga, mens Martin må sove på madrassen på gulvet.
+3000000065	Det er greit, men da bytter vi neste helg.
+3000000066	Vi har en avtale om du lover å spille Kurt Nilsen på bilturen.
+3000000067	Det er greit for meg.
+3000000068	Hva skal vi finne på når vi kommer frem til hytta?
+3000000069	Jeg foreslår at vi kan spille kort.
+3000000070	Barna vil helst spille Monopol, men det orker ikke jeg.
+3000000071	Ikke jeg heller, jeg vil gå på ski hele påsken!
+3000000072	Jeg er ikke så flink til å stå på ski.
+3000000073	Det gjør ingenting, vi går i sakte tempo og nyter solen.
+3000000074	Det er ikke vann eller strøm på hytta, men det går fint.
+3000000075	Det tenkte jeg ikke på, men du har rett.
+3000000076	Jeg vokste opp på gård, så slike forhold er jeg godt vant til.
+3000000077	Hvilken gård vokste du opp på?
+3000000078	Det var langt ute på vidda, du har nok ikke hørt om stedet.
+3000000079	Hvilke dyr hadde dere da dere vokste opp?
+3000000080	Vi hadde griser, også hadde vi en hund som vi kalte for Passopp.
+3000000081	Har du møtt Håkon tidligere?
+3000000082	Ja, han er tvillingbroren til Kjartan.
+3000000083	Det visste jeg ikke, men de ligner jo på hverandre.
+3000000084	I grunn ikke, men du har kanskje bare sett bilder av han.
+3000000085	Nei da, han jobber på den lokale dagligvarebutikken.
+3000000086	Nei, du tar nok feil, han er jo kokk.
+3000000087	Da blander jeg nok han og en annen person.
+3000000088	Det kan hende den beste.
+3000000089	Jeg lærte meg å stå på ski i Sverige.
+3000000090	Jeg betalte en skiinstruktør for å få rett teknikk.
+3000000091	Det var lurt, kanskje jeg også skal gjøre det.
+3000000092	Det synes jeg du skal gjøre.
+3000000093	Det blir mye reise, blir ikke det kostbart?
+3000000094	Det var verdt hver eneste krone.
+3000000095	Var du i Sverige samtidig som oss?
+3000000096	Kun den siste dagen, synd vi ikke hadde bedre tid.
+3000000097	Hanne flyttet til Sverige, gjorde hun ikke?
+3000000098	Nei, Hanne flyttet til Finland.
+3000000099	Hvor lang tid tar det å fly?
+3000000100	Flyet bruker kun 40 minutter, men vi må vente på terminalen i to timer.
+3000000101	Er det mulig å bestille mat på flyplassen?
+3000000102	Selvfølgelig, men hjemmelaget smaker bedre.
+3000000103	Leiligheten har fire rom, det tror jeg skal holde.
+3000000104	Håper ikke du har glemt at Liv også skal flytte inn.
+3000000105	Hvitevarer er heldigvis inkludert i kjøpet.
+3000000106	Jeg tror ikke vi behøver en mikrobølgeovn.
+3000000107	Liv fortalte meg at hun kan ta med kaffetrakter.
+3000000108	Hvilken farge er det på kjøkkenet?
+3000000109	Kjøkkenet er gammelt, og veggene er malt brune.
+3000000110	Det går greit, men har du lyst til å male det hvitt?
+3000000111	Det blir for mye arbeid, dessuten er ikke Liv interessert i det.
+3000000112	Da kjøper jeg inn maling, slik at jeg kan gjøre det selv.
+3000000113	Dette er min firbeinte venn, Mons.
+3000000114	Mons er en veldig søt pus, men jeg er allergisk.
+3000000115	Beklager, det visste jeg ikke.
+3000000116	Badet vårt er svært lite, og det er ikke vindu.
+3000000117	Er det ventilasjon på baderommet?
+3000000118	Ja, det må vi ha, ellers blir det fuktskader.
+3000000119	Vi kan diskutere det senere, jeg er dessverre opptatt.
+3000000120	Vi ønsker at gardinene skal være grå.
+3000000121	Hannas mor sa hun kunne sy gardiner, vi kan høre med henne.
+3000000122	Nå er kjøkkenet ferdig, neste prosjekt er baderommet.
+3000000123	Husker du hvor stort badet er?
+3000000124	Nei, jeg husker ikke hvor mange kvadratmeter det er.
+3000000125	Stua er faktisk veldig stor, jeg tror den var 20 kvadratmeter.
+3000000126	Sivert tar med TV, hva tar du med deg?
+3000000127	Jeg tar med en sofa og stuebordet.
+3000000128	Om du ønsker kan jeg ta med gardiner.
+3000000129	Nei, det går bra, jeg tror ikke vi deler samme smak.
+3000000130	Det er kun speilet og garderoben som gjenstår.
+3000000131	Leien er på 8000 kroner, og det er jo slett ikke ille.
+3000000132	Det er to små rom og ett stort rom.
+3000000133	Når vi flytter inn må vi ha en vaskeplan klar.
+3000000134	Hva om alle vasker sitt eget rom, også bytter vi på hvem som vasker stue og bad?
+3000000135	Jeg lager middag i helgen.
+3000000136	Supert, da lager jeg middag på hverdagene.
+3000000137	Jeg synes vi heller kan dele opp til annenhver dag.
+3000000138	Roy kan støvsuge og tørke støv.
+3000000139	Du lager mat på onsdag og fredag, høres det greit ut?
+3000000140	Ja, det passer meg utmerket.
+3000000141	Hvor hadde du tenkt å la pianoet stå?
+3000000142	I utgangspunktet tenkte jeg å la det stå på stuen.
+3000000143	Det er et sykkelstativ her ute, så du kan ta med deg sykkelen din.
+3000000144	Høres fint ut, jeg liker å sykle i marka.
+3000000145	Hvordan skal vi betale leie egentlig?
+3000000146	Jeg snakket med utleier, og han sa vi overfører i begynnelsen av hver måned.
+3000000147	Jeg skjønner, men hva med vann og strøm?
+3000000148	Det kan bli dyrt, så vi må være sparsomme.
+3000000149	Enig, jeg synes ikke vi skal ha fest.
+3000000150	Det håper jeg ikke du mener.
+3000000151	Den som skal ha fest må ta oppvasken en hel uke.
+3000000152	Det var et godt forslag, du er jammen oppfinnsom.
+3000000153	Hvor er en lur plass å legge nøkkelen til ytterdøra?
+3000000154	Kan vi ikke bare legge den under matten?
+3000000155	Jo, det er bedre enn ingenting.
+3000000156	Har alle forstått opplegget nå?
+3000000157	Hva med adressen, må vi ikke endre den?
+3000000158	Adressen er Kirkevegen, kjenner du til gata?
+3000000159	Jeg må på butikken, har du bil jeg kan låne?
+3000000160	Jeg har ikke bil, men du kan spørre Bjarte.
+3000000161	Bjarte er på jobb enda, så vi må vente til i kveld.
+3000000162	Hvilken farge skal vi ha på ytterdøren?
+3000000163	Hva med en mørk blåfarge?
+3000000164	Hallo, Lone har bursdag på mandag.
+3000000165	Det hadde jeg helt glemt, skal vi ha selskap?
+3000000166	Selvfølgelig skal vi ha selskap, men vi må planlegge.
+3000000167	Jeg inviterer 15 gjester til bursdagsselskapet.
+3000000168	Skulle vi ikke organisere dette i fellesskap?
+3000000169	Vi skulle det, men jeg bestemte meg for å sette i gang tidligere.
+3000000170	Det er i orden, men tenk på oss andre neste gang.
+3000000171	Jeg tenkte å bestille en rosa marsipankake fra bakeriet.
+3000000172	Det er ikke en god idé, du vet jo at Lone er ei rockejente.
+3000000173	Ja, da ringer jeg og sier vi skal ha den i sort.
+3000000174	Bakeriet sier at ordren ikke kan endres.
+3000000175	Det går helt fint, vi får oss en god latter.
+3000000176	Skal vi leie inn et rockeband til bursdagen?
+3000000177	Ja det kan vi, hva med Kurt Nilsen?
+3000000178	Hvem leker med hvem?
+3000000179	Da ville vi vært like langt.
+3000000180	Jeg synes vi skal kjøpe sorte ballonger.
+3000000181	Det kan vi, men vi behøver ikke la alt være i sorte farger.
+3000000182	Jeg har dårlig råd, så jeg synes dekorasjonene bør være så simple som mulig.
+3000000183	Du har rett, folk kommer for å feire Lone.
+3000000184	Fortell meg mer om familien din.
+3000000185	Fride er den eldste, og hun tar det meste av beslutninger.
+3000000186	Det høres ut som at de har det bra.
+3000000187	Ja, alle får komme med sine egne meninger.
+3000000188	Hun har påvirket de i en positiv retning.
+3000000189	Lone har fortalt meg at Olaf er veldig energisk.
+3000000190	Olaf er veldig rik, så nå skal han bygge to nye hus.
+3000000191	Det høres ut som en koselig familie, jeg synes vi skal invitere dem.
+3000000192	Jeg aner ikke, du får bestemme selv.
+3000000193	Greit, når synes du vi skal starte?
+3000000194	Vi kan begynne klokken åtte, hva synes du om det?
+3000000195	Det passer for meg, så da sier vi det slik.
+3000000196	Vi må fortelle alle at de må ta med gave.
+3000000197	Ja, det kan vi gjøre, men jeg tror de fleste vil gjøre det uansett.
+3000000198	Hvor mye brus tror du vi må handle?
+3000000199	Vi som nå prøver å kutte dette utslippet, har det litt som førskolelærere.
+3000000200	Sukkerfri, vanlig, eller begge deler?
+3000000201	Lone liker ikke sukkerfri, kjøp vanlig du.
+3000000202	Husk å sende ut invitasjonene til folk.
+3000000203	Ja det skal jeg gjøre, men hvor lenge skal selskapet vare?
+3000000204	Jeg tenker at seks timer burde holde.
+3000000205	Vi kan kjøpe en god bok i gave til henne.
+3000000206	Hvilke bøker liker hun å lese?
+3000000207	Men vi har langt fra gitt opp.
+3000000208	Ja, du kan kjøpe hele serien til henne.
+3000000209	Hele serien koster 2000 kroner, hva med en parfyme i stedet?
+3000000210	Jeg tror hun blir mer fornøyd med en bok.
+3000000211	Du kan gjøre hva du selv vil, men jeg kommer til å kjøpe en parfyme.
+3000000212	Beklager at jeg ikke kunne komme, hvordan var selskapet?
+3000000213	Det var fantastisk, helt utrolig.
+3000000214	Sier du det, hva gjorde dere?
+3000000215	Vi leste bøker og koste oss.
+3000000216	Det høres litt annerledes ut enn det jeg selv er vant til.
+3000000217	Ja, det var annerledes og det var det som gjorde det uforglemmelig.
+3000000218	Det kan jeg tenke meg, men det hørtes litt rart ut.
+3000000219	Hva gjorde du og Maren forrige uke?
+3000000220	Vi var på en gjesteforelesning.
+3000000221	Så hyggelig, lærte dere noe?
+3000000222	Foreleseren hadde medisinsk bakgrunn, så vi lærte mye interessant.
+3000000223	Visste du at menneskekroppen består av hele 70% vann?
+3000000224	Det visste jeg allerede, men jeg er stolt av deg.
+3000000225	Hei, hvordan går det med deg?
+3000000226	Jeg hørte du hadde en krangel med gutta?
+3000000227	Ja, hvor hørte du det?
+3000000228	Svein, sønnen til Olaf, fortalte meg det.
+3000000229	Han sa du gikk hjem tidlig, stemmer det?
+3000000230	Ja, det er sant det han har fortalt deg.
+3000000231	Jeg stolte på han, hvorfor skulle han lyve til meg?
+3000000232	Du kan stole på folk flest.
+3000000233	Foreldrene hans har sagt at han ikke får begynne på universitetet.
+3000000234	Ja, men foreldrene er ikke noen akademikere selv.
+3000000235	De fleste foreldre ønsker at barna skal gå på skolen.
+3000000236	Vet du hva du snakker om?
+3000000237	Kan du ikke heller svare på spørsmålet mitt?
+3000000238	Hvilket spørsmål sikter du til?
+3000000239	Jeg lurte på hvorfor du endret mening.
+3000000240	Fride reddet livet mitt, og jeg vil alltid være takknemlig for det.
+3000000241	Kan du fortelle hva det var som hendte?
+3000000242	Det var en bil som nesten kjørte på meg, men Fride trakk meg ut av veibanen.
+3000000243	Det var virkelig modig gjort, det er bra du har en så god venn som Fride.
+3000000244	Sigurd studerer medisin han også, går dere på samme universitet?
+3000000245	Nei, han studerer i utlandet.
+3000000246	Det gjør Stine også, men hun har blitt syk.
+3000000247	Har hun blitt syk?
+3000000248	Jeg er ikke sikker, men hun må visst opereres.
+3000000249	Hun bor med sin tante som tar godt vare på henne.
+3000000250	Det er godt å høre, håper det går bedre med henne etter operasjonen.
+3000000251	Hvordan går det med Gunnar?
+3000000252	Han er snart ferdig med jusstudiene.
+3000000253	Han er rik og har tre biler.
+3000000254	Ville ikke han bli lege?
+3000000255	Nei, han sa han syntes at det hørtes kjedelig ut.
+3000000256	Det tror jeg ikke noe på, jeg tror ikke han hadde gode nok karakterer.
+3000000257	Han var glad og blid som barn.
+3000000258	Vel, vi har alle våre problemer.
+3000000259	Det er sant, men jeg synes han kunne fortalt det til oss.
+3000000260	Jeg har forståelse for det, man trenger ikke fortelle alt til alle.
+3000000261	Det går fint med min familie, men jeg har i grunn ikke kontakt med de lengre.
+3000000262	Er det en spesiell grunn til det?
+3000000263	De flyttet til Tyskland, og jeg planlegger å besøke dem snart.
+3000000264	De giftet seg i Østerrike, men bor nå i Tyskland.
+3000000265	Det stemmer det, nå husker jeg.
+3000000266	Bryllupskjolen var veldig pen på henne.
+3000000267	Jeg synes bryllupsdressen til han også var stilig.
+3000000268	Hørte du at faren til Jens har fått seg en ny jobb?
+3000000269	Ja, jeg var i begravelsen, håper det går bedre med han og familien nå.
+3000000270	Jeg sendte min kondolanse til han.
+3000000271	Det var fint gjort, det går nok bra til slutt.
+3000000272	Ja, dere har vært venner siden barnehagen, stemmer ikke det?
+3000000273	Vi var nære venner, men vi har mistet kontakten i det siste.
+3000000274	Hei, hvordan var turen i sommer?
+3000000275	Det var kaldt, men veldig fint.
+3000000276	Det var godt å høre, håper dere har det fint fortsatt.
+3000000277	Jeg tenkte å stå på ski i morgen, vil du være med?
+3000000278	I morgen er den store vennedagen, har du kjøpt noe til meg?
+3000000279	Det har jeg ikke hørt om tidligere, kan du forklare litt nærmere?
+3000000280	Man feirer dagen i par, og kjøper en gave til hverandre.
+3000000281	Kan Karl være med oss?
+3000000282	Nei, det er meningen at man ikke skal være flere enn to.
+3000000283	Når kommer de hjem fra jobb?
+3000000284	Jeg tror de sa at de var ferdig før klokken fire i dag.
+3000000285	Det vet jeg, men når er de hjemme?
+3000000286	Kanskje klokken fem, hvordan det?
+3000000287	Ingen grunn, jeg bare lurer jeg.
+3000000288	Har du husket å klippe plenen?
+3000000289	Ja, det gjorde jeg i går rett før det begynte å regne.
+3000000290	Jeg kjøpte meg en ny plenklipper rett før forrige sesong.
+3000000291	Ble du fornøyd med den nye plenklipperen?
+3000000292	Nei, det er alltid noe galt med den.
+3000000293	Det var leit å høre, du bør klage til selgeren.
+3000000294	Jeg har ikke badet på lenge, har du lyst til å være med til stranden?
+3000000295	Jeg har eksamen i morgen, så jeg må studere.
+3000000296	Har du allerede førerkort for bil?
+3000000297	Nei, jeg må melde meg opp til førerprøve hos Vegvesenet.
+3000000298	Hvorfor har du ikke gjort det enda?
+3000000299	Jeg har hatt så mye å gjøre, det har rett og slett ikke vært tid.
+3000000300	Jeg tok førerprøven forrige uke.

@@ -1,0 +1,300 @@
+3000000001	Agora eu entendo você.
+3000000002	Eu esqueci completamente disso.
+3000000003	Como você esqueceu isso?
+3000000004	Como você sabe disso?
+3000000005	É uma boa ideia.
+3000000006	É verdade, planejamos assim.
+3000000007	Ela é muito corajosa.
+3000000008	Ele é muito esperto.
+3000000009	Ele não tem celular.
+3000000010	Estes são apenas rumores.
+3000000011	Estamos na mesma universidade?
+3000000012	Eu conheci o Artur.
+3000000013	Eu espontaneamente inventei algo.
+3000000014	Agora temos tudo planejado.
+3000000015	Eu não acredito nisso. 
+3000000016	Eu não posso acreditar.
+3000000017	Eu não tenho carro.
+3000000018	Isso seria uma alternativa.
+3000000019	Já esclarecemos os serviços.
+3000000020	Nós somos três pessoas.
+3000000021	Obrigado, sou eu também.
+3000000022	Quem te disse isso?
+3000000023	Você não começa sistematicamente. 
+3000000024	Como queremos fazer isso?
+3000000025	Você é muito inteligente.
+3000000026	Você esteve na Turquia?
+3000000027	Você pode decidir sozinha.
+3000000028	Você tem alguma ideia?
+3000000029	Você tem uma bicicleta?
+3000000030	A dança está mesmo pronta?
+3000000031	Acho que é o bastante.
+3000000032	Olha, eu esqueci de novo.
+3000000033	Ah, agora eu consigo lembrar.
+3000000034	Como devem ser as decorações?
+3000000035	Como ela se parece agora? 
+3000000036	Devo comprar algo para ela?
+3000000037	Esse é um bom argumento. 
+3000000038	Finalmente ela faz algo também.
+3000000039	Eu acho que é melhor.
+3000000040	Esse sempre foi meu sonho.
+3000000041	Agora podemos começar da cozinha.
+3000000042	Isso é justo para todos.
+3000000043	Eu moro em Porto Alegre. 
+3000000044	Eu não acredito nisso agora.
+3000000045	Eu não estou dizendo nada.
+3000000046	Eu quero saber em detalhes.
+3000000047	Eu pensei que era verdade.
+3000000048	Eu quero ir lá também.
+3000000049	O tempo está muito quente.
+3000000050	Eu tenho um gato persa.
+3000000051	Eu tenho uma boa ideia.
+3000000052	Isso deve ser o suficiente.
+3000000053	A que horas queremos começar?
+3000000054	Eu quero pintar de branco.
+3000000055	Isso foi tudo mais cedo.
+3000000056	Isso não parece tão bem.
+3000000057	O que ela te comprou?
+3000000058	Nós também podemos ir lá.
+3000000059	Não, ela recentemente se casou.
+3000000060	Ele trabalha muito duro internacionalmente.
+3000000061	Não, eu não tenho carro.
+3000000062	No entanto, sinto pena dela.
+3000000063	Nós temos tudo planejado agora. 
+3000000064	Eu ficaria muito interessado nisso.
+3000000065	O que Sarah está fazendo?
+3000000066	Ok, eu concordo com isso.
+3000000067	Esse é o nosso segredo.
+3000000068	Os outros vão levar comida?
+3000000069	Podemos começar às oito horas.
+3000000070	Quem queremos convidar a todos?
+3000000071	Ela também gosta dos filmes.
+3000000072	Sim, ele também conseguiu ajuda. 
+3000000073	Sim, estou um pouco esquecida.
+3000000074	Todos devem passar suas roupas.
+3000000075	Este é um verdadeiro talento.
+3000000076	Eu sou um pouco esquecida.
+3000000077	Temos mesmo uma cozinha disponível?
+3000000078	Você não precisa me dizer.
+3000000079	Você pode estudar na biblioteca.
+3000000080	Você poderia acreditar nela sim. 
+3000000081	Quando você vai fazer compras?
+3000000082	A cozinha tem quinze metros quadrados.
+3000000083	Acho que devemos comprar balões pretos.
+3000000084	Ambas são muito legais e boas.
+3000000085	Como fazemos com as compras semanais?
+3000000086	Devo escrever tudo em uma folha?
+3000000087	Então eu vou comprar um tapete.
+3000000088	Então você compra toda a série.
+3000000089	Eu acho isso muito corajoso dela.
+3000000090	Eu acho o aluguel muito barato.
+3000000091	Eu acho que é melhor também.
+3000000092	Eu admiro várias músicas, até punk. 
+3000000093	Isso é muito importante para mim.
+3000000094	Eu estive lá por quatro meses.
+3000000095	Eu mesma irei criar um convite.
+3000000096	Eu não entendi sua pergunta corretamente.
+3000000097	Eu não vou contar a ninguém.
+3000000098	Eu os achei educados e respeitosos.
+3000000099	Eu também estava na Opera House.
+3000000100	Eu também te pedi isso também.
+3000000101	Mas ela vai aprender muito rapidamente.
+3000000102	Me conta! Como eles se conheceram?
+3000000103	Não, ela está em outra universidade.
+3000000104	Não, eu não quero comprar perfume.
+3000000105	Ainda temos que pensar no corredor.
+3000000106	Nós vamos voar em duas semanas.
+3000000107	Sarah era uma garota muito trabalhadora.
+3000000108	O que sua família está fazendo?
+3000000109	Ok, eu vou voar com você.
+3000000110	Ótimo, mas quero voar à noite.
+3000000111	Para que precisamos de um console?
+3000000112	Pela mesma razão eu gostei dela.
+3000000113	Porque ela é minha melhor amiga.
+3000000114	A universidade começará em três semanas.
+3000000115	Quando você tem férias no inverno?
+3000000116	Queremos nos mudar daqui duas semanas.
+3000000117	Sim, acredito que devemos confiar nela.
+3000000118	Sim, claro que temos uma cozinha.
+3000000119	Sim, devo comprar colorido ou padrão?
+3000000120	Sim, eu já organizei o salão.
+3000000121	Nós também podemos usar algo azul.
+3000000122	Quantas garrafas de cola devo comprar?
+3000000123	Sim, o preço é muito caro.
+3000000124	Sim, queremos pintá-las de branco também? 
+3000000125	No momento não consigo mais pensar.
+3000000126	Eu vou falar com meu pai.
+3000000127	Talvez ainda consigamos efetuar algumas mudanças.
+3000000128	Uma viagem cultural dura três dias.
+3000000129	Você não precisa mais dizer nada. 
+3000000130	Você não respondeu a minha pergunta.
+3000000131	Acho que não precisamos de um micro-ondas.
+3000000132	Agora eu organizei tudo para 15 convidados.
+3000000133	É provavelmente uma família muito bem sucedida.
+3000000134	Ela ainda é muito bonita e magra.
+3000000135	Eu falei com ela na semana passada.
+3000000136	Então ele provavelmente teve uma conversa importante.
+3000000137	Eu acho que não posso dizer isso.
+3000000138	Se você quiser, podemos celebrar lá também.
+3000000139	Eu diria que nós podemos dividir tudo.
+3000000140	Nós não lhe damos nada em comum.
+3000000141	Eu espero que você conheça a família.
+3000000142	Eu estive no Sudão com meu pai.
+3000000143	Eu gostaria de conhecer melhor a família.
+3000000144	Eu não teria nenhum problema com isso.
+3000000145	Eu pedi o barco extra em rosa.
+3000000146	Eu pensei que alugaríamos um carro lá.
+3000000147	Eu quero passar as férias com você.
+3000000148	Eu provavelmente voltarei para a cidade amanhã.
+3000000149	Mas você sempre fica ao meu lado.
+3000000150	A principal coisa que você me diz.
+3000000151	Não, nossos vizinhos não concordariam com isso.
+3000000152	Nós limpamos aqui e depois nos mudamos.
+3000000153	O que aconteceu que salvou sua vida?
+3000000154	O que sua família acha dos punks?
+3000000155	O que você quer escrever no convite?
+3000000156	Oh, há quanto tempo você esteve lá?
+3000000157	Ok, então vamos a um hotel barato.
+3000000158	O problema é como vamos transportar tudo.
+3000000159	Eu pensei em celebrar em um barco.
+3000000160	Podemos comprar um bom livro para ela.
+3000000161	Por que o irmão não faz nada? 
+3000000162	Porque você não usa aquele shorts jeans?
+3000000163	Quando a festa deve acontecer de novo?
+3000000164	Que tal chamarmos Júlia para vir conosco?
+3000000165	Receitas com lentilha podem ser a solução.
+3000000166	Seu pai tem uma empresa de mudança.
+3000000167	As pessoas vêm celebrar e não comer.
+3000000168	Sim, claro que podemos terminar o assunto.
+3000000169	Sim, devo pegar os produtos de limpeza?
+3000000170	Ele logo termina seus estudos de direito.
+3000000171	Sim, eu ficaria muito feliz com isso. 
+3000000172	Isso é muito legal da sua parte.
+3000000173	Sim, mas ele não nos contou também.
+3000000174	Sim, podemos ir lá no próximo verão. 
+3000000175	Sim, tenho muitos móveis e muitos livros.
+3000000176	O que queremos fazer com a família?
+3000000177	Também podemos comprar luzes coloridas de fadas.
+3000000178	Também podemos organizar tudo desde o começo.
+3000000179	Você concorda que devo comprar uma apenas?
+3000000180	Acho desnecessário que os convidados tragam comida.
+3000000181	Você realmente acha que isso me interessa?
+3000000182	Você tem muitas roupas e muitos móveis?
+3000000183	Vou comprar as duas que mais gostei.
+3000000184	Me conta, eu sou curiosa e adoro novidades. 
+3000000185	As paredes são todas amarelas, podemos pintá-las juntas.
+3000000186	Como você resolveu com o escritório de registro?
+3000000187	Ele teve que tomar um monte de medicação.
+3000000188	Estou curioso sobre o que você vai dizer. 
+3000000189	Você está certa, temos que planejar muito bem.
+3000000190	Eu não entendo de que século eles são.
+3000000191	Eu pegaria espetos de queijo e pequenos lanches.
+3000000192	Eu penso que se todos fossemos seria bom.
+3000000193	Eu poderia preparar finger food para a festa.
+3000000194	Eu posso te recomendar um bom protetor solar.
+3000000195	Eu sugiro que todos limpem seu próprio quarto.
+3000000196	Eu também amo a cultura e a comida.
+3000000197	Existem dois quartos pequenos e um grande quarto.
+3000000198	Ficamos felizes em saber que Luiza está recuperada.
+3000000199	Você vai ter tudo o que você quer.
+3000000200	Mas eu achei que você morasse no Japão.
+3000000201	Mas eu não tenho mais contato com eles.
+3000000202	Nós vamos limpar a casa na próxima semana.
+3000000203	Não, eles falam inglês um com o outro. 
+3000000204	Se não celebrarmos lá, nos devolva o dinheiro.
+3000000205	Nós poderíamos comemorar normalmente, então dance e beba.
+3000000206	O irmão é médico e tem muito dinheiro.
+3000000207	O que você conversou um com o outro?
+3000000208	Por que não podemos todos ir para lá?
+3000000209	Por que você sabe tão bem sobre isso?
+3000000210	Quem sabe vamos todos, podemos organizar uma surpresa. 
+3000000211	Será ótimo se tivermos três meninas morando juntas.
+3000000212	Seria muito bom se você pudesse vir comigo.
+3000000213	Sim, a mãe dela vai costurar para nós.
+3000000214	Sim, falei com ela ontem e ela concorda.
+3000000215	Sim, Júlia acha que isso é bom também.
+3000000216	Sim, mas não sei se eles aceitarão você.
+3000000217	Sim, mas temos que comprar tudo muito barato.
+3000000218	Somos muito amigas da Sofia e da Bruna. 
+3000000219	Todo mundo pode ir às compras por semana.
+3000000220	Um pequeno armário para nossos utensílios se encaixaria?
+3000000221	Você concorda com o que acabei de escrever?
+3000000222	Você quer que eu pegue um travesseiro comigo?
+3000000223	E quanto a Linda? Ela pode realmente falar a língua?
+3000000224	Ela pediu algo do Augusto e depois não pagou.
+3000000225	Em outra tigela, misture a lentilha e o requeijão. 
+3000000226	O que você leva com você para o voo?
+3000000227	Eu não sei quando e onde eu quero gastar.
+3000000228	Eu não sei quantos metros quadrados o banheiro tem.
+3000000229	Eu vou trazer a mesa de jantar com cadeiras.
+3000000230	Isso é bom, senão teríamos que pagar pelo bicicletário.
+3000000231	Nosso banheiro é muito pequeno e não há janela.
+3000000232	Você pode por favor responder a minha pergunta anterior?
+3000000233	Me conte um pouquinho! O que é que você fez?
+3000000234	Não importa porque ela mentiu para o irmão dele.
+3000000235	O proprietário não quer que penduremos algo na parede.
+3000000236	Ok, então eu vou assumir o serviço de banheiro.
+3000000237	Olá, você gostaria de morar em um apartamento conosco?
+3000000238	Penso que poderia convidar eles também, vai ser divertido.
+3000000239	Quando eu estava lá, eu estava em um camelo.
+3000000240	Sim, eles também estão disponíveis em preto e amarelo.
+3000000241	Sim, quando estávamos na mesma escola, ele estava doente.
+3000000242	Você disse que Felipe é um homem de negócios.
+3000000243	Você pode fazer o seu trabalho regularmente de férias?
+3000000244	Vou levar roupas e produtos de higiene pessoal comigo.
+3000000245	Vou me mudar para um apartamento com a Júlia.
+3000000246	Vou trazer o sofá e uma mesa de café.
+3000000247	A família é muito legal e eu sou uma dessas.
+3000000248	Acho que podemos mesclar com prata, assim fica mais leve.
+3000000249	Acho que só precisamos de um guarda-roupa e um espelho.
+3000000250	Acredito que foi um mal entendido, logo estará tudo bem.
+3000000251	Claro que eu quero dizer sim, a ideia é legal.
+3000000252	Eu acho que não está correto o que Sarah fez.
+3000000253	Por que não pode pensar e simplesmente devolver o pacote?
+3000000254	Meu pai comprou uma casa lá e vai trabalhar lá.
+3000000255	Não, ele achou chato e ficou abaixo do nível dele.
+3000000256	Não, lembrei que meu pai tem uma empresa de mudança.
+3000000257	Ninguém tem problema com eles, só acham que são engraçados.
+3000000258	Olá, eu e Bruna voaremos para Dubai durante as férias.
+3000000259	Sim, eles são muito pobres e nem sequer têm casa.
+3000000260	Vamos colocar nossas ideias e buscar o que achamos correto.
+3000000261	Você mora em um palácio na casa dos seus pais?
+3000000262	A cirurgia dela foi bem e como ela está indo agora?
+3000000263	Fernanda acabou de me dizer, que também pode trazer uma TV.
+3000000264	Estava muito quente, por isso não devemos esquecer a nossa água.
+3000000265	Não, são 20 minutos de distância, mas podemos ir de trem.
+3000000266	O apartamento tem três quartos, a casa seria suficiente para nós.
+3000000267	O valor que ele vai receber da indenização é muito alto. 
+3000000268	Ok, todo mundo compra seus próprios móveis para o seu quarto.
+3000000269	Por que você não tem contato com eles? Existe uma razão específica?
+3000000270	Sim, mas sempre achei que ele não tinha problemas com ele.
+3000000271	Sim, mas vamos fazer outro dia quando limparmos a casa toda.
+3000000272	Para que não fique entediante, poderíamos depois plantar ervas na cozinha.
+3000000273	Também podemos passar a noite com seu primo em Abu Dhabi.
+3000000274	Temos que dizer a todos que eles precisam trazer um presente.
+3000000275	Tente conversar com ela, vocês vão achar uma saída para isso.
+3000000276	Como algo importante deve ser esclarecido? Como pagamos por água e eletricidade?
+3000000277	Ontem ela me enviou uma foto de como ela estava trabalhando.
+3000000278	A Júlia é nem próxima deles e tem o contato de todos. 
+3000000279	Agora ela está de volta em casa e está indo muito bem.
+3000000280	Ele é muito rico e possui três carros e tem três casas.
+3000000281	Eu acho que é bom que ela esteja com a tia agora.
+3000000282	Se você quiser, também posso cozinhar todas as sextas, sábados e domingos.
+3000000283	Toda família é diferente porém não significa que são melhores ou piores. 
+3000000284	Em uma panela, em fogo médio, aqueça o óleo e doure a cebola.
+3000000285	Eu quase morri uma vez porque esqueci de respirar quando estava na água.
+3000000286	Para o banheiro, precisamos de um tapete, cortinas, cortina de chuveiro e espelho.
+3000000287	Que cor tem a porta da frente e o apartamento tem piso aquecido?
+3000000288	Desde que eu sou a chefe, eu posso planejar minhas férias eu mesma.
+3000000289	Sim, o homem é um médico sênior e ele também é muito famoso.
+3000000290	Mas podemos comer no verão na varanda e no inverno na sala de estar.
+3000000291	Em um refratário médio untado, intercale camadas da mistura de arroz e de lentilha. 
+3000000292	Acho que devemos dividir a soma por três e então todas podem pagar uma parte.
+3000000293	Dá uma satisfação extra saber que você está ajudando o planeta em vez de danificá-lo.
+3000000294	É exatamente isso que a ciência climática pede que façamos para alcançar as metas climáticas.
+3000000295	Retire, decore com a cebola reservada e sirva, se desejar, acompanhado de salada de alface.
+3000000296	Em uma tigela, cubra a lentilha com água fervente e deixe de molho por 1 hora.
+3000000297	Como você sabe, eu sou uma estudante de medicina e em breve terei meu primeiro exame.
+3000000298	Você diz que é rica e depois diz que não quer chamar a atenção para si mesma.
+3000000299	Sim, sou a favor e a cozinha, a sala de estar e o banheiro devem estar sempre limpos.
+3000000300	Em uma tigela, misture a linguiça, o tomate, o molho de tomate, a salsa, o arroz, o orégano, metade da muçarela e reserve.

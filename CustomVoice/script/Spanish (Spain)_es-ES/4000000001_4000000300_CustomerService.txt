@@ -1,0 +1,300 @@
+4000000001	Como es una cuenta antigua, seguramente tiene más de quince años, entonces, no hay necesidad de hacer la validación.
+4000000002	Y ya, simplemente, tiene que hacer ese proceso.
+4000000003	Bueno, no sé si tiene alguna otra consulta adicional o eso ya sería todo.
+4000000004	Entonces, deseo que tenga un excelente resto del día.
+4000000005	En ese caso, pues dependería de la información de los archivos y aplicaciones.
+4000000006	En caso de que hoy no nos brinden información, yo lo que haría es enviarle un correo electrónico.
+4000000007	Tan pronto recibamos la notificación del área de desarrollo, lo primero que haremos es llamarle o enviarle un correo electrónico.
+4000000008	En ese caso, indíqueme su correo.
+4000000009	Sí, sí, le voy dando referencias.
+4000000010	Perfecto, permítame, por favor, hacer la verificación.
+4000000011	Estoy enviando un código de seguridad, por favor verifíquelo en la cuenta de su correo.
+4000000012	Sí, y así debe alcanzar al departamento técnico.
+4000000013	Muy bien, vale, muchas gracias, hasta luego.
+4000000014	Indíqueme nuevamente qué sigue después de su apellido.
+4000000015	Con un distribuidor o si no, con soporte técnico.
+4000000016	Le indico el número de soporte, ¿de acuerdo?
+4000000017	Te cuento, he logrado verificar tu información con los especialistas en correo electrónico.
+4000000018	Podremos escalar tu caso con ellos para que te puedan solicitar más información, más preguntas o hasta incluso esas capturas.
+4000000019	Perfecto, claro, en este caso, ellos se comunicarán contigo aproximadamente en veinticuatro horas mientras validan tu solicitud.
+4000000020	Por favor, demos clic en el icono de inicio del programa.
+4000000021	Si no, nosotros no lo podemos hacer.
+4000000022	Aquí lo importante es lo siguiente.
+4000000023	Bien, de nuevo le repito que nosotros no somos el área encargada.
+4000000024	Lo que yo puedo hacer por usted, es enviarle a usted el formulario.
+4000000025	Primero voy a solicitar unos datos suyos para dejar el registro de la llamada.
+4000000026	Indíqueme una cuenta alternativa y a esa cuenta se lo podría enviar.
+4000000027	Claro, necesito esos datos para poder realizar el proceso.
+4000000028	Bueno, en este momento acabo de generar el número de incidencia con el cual queda el registro de esta llamada.
+4000000029	El correo electrónico estaría llegando más o menos en unos diez o quince minutos.
+4000000030	Vale, dígame el número que me acaba de decir.
+4000000031	De acuerdo, y ¿usted ya intentó realizar algún procedimiento?
+4000000032	Es correcto, ese es el número de incidencia que tiene.
+4000000033	Y a esto se le llama número de incidencia.
+4000000034	Correcto, entonces realice el procedimiento y en un lapso de veinticuatro horas le estarán contestando.
+4000000035	Escriba la justificación exacta de por qué no puede asociar un documento de estos.
+4000000036	Hace falta que meta este número.
+4000000037	También le llegará una pequeña encuesta de satisfacción para calificar mi atención y mi servicio.
+4000000038	Para que pueda habilitar nuevamente esta cuenta y realizar el cambio.
+4000000039	Es para validar que esa sea la persona que la está administrando.
+4000000040	Vale, porque tenemos un problema con lo que es la cuenta original.
+4000000041	Se tienen que regir a los procedimientos que ya están establecidos.
+4000000042	Eso lo va a enviar y reportar directamente al área encargada.
+4000000043	Dependiendo de lo que ellos le digan pues se tendría que seguir el procedimiento.
+4000000044	Vale, pero tenga en cuenta que esos son los procesos que ya están establecidos.
+4000000045	Te piden que tenga un espacio con una capacidad de por lo menos ocho gigas.
+4000000046	Vale Francisco, muchísimas gracias por la espera.
+4000000047	Mis compañeros te enviaron unos enlaces.
+4000000048	Pues, ¿qué es lo que pasa en este caso?
+4000000049	¿Usted está interesado en hacer la instalación limpia del sistema operativo?
+4000000050	Vale, ¿qué es lo que pasa Francisco?
+4000000051	La única solución que nos proponen ellos para solucionar el inconveniente rápidamente, es hacer una instalación limpia.
+4000000052	En ese caso, pues no sé señor Francisco, yo de antemano le pido excusas por este inconveniente.
+4000000053	A ver qué nos dicen respecto a esta solución.
+4000000054	En algunos casos se ha resuelto de alguna manera pero no en todos los casos ha funcionado.
+4000000055	Los procedimientos que se brindan no son cien por ciento garantizados.
+4000000056	Voy a seguir con la espera a ver si hay suerte y a corto plazo podemos solucionar esto.
+4000000057	Para poder ayudarle a solucionar el inconveniente.
+4000000058	Vale, muchísimas gracias Francisco, le agradezco la comprensión.
+4000000059	Vale, por favor indíqueme el número de incidencia y verificamos qué fue lo que se realizó en ese caso.
+4000000060	Bienvenido al área de soporte técnico para hogar, le habla Juan Sánchez.
+4000000061	¿En algún momento le pidieron los datos para registrarse?
+4000000062	Ahora vuelvo con usted, no me vaya a colgar.
+4000000063	Tiene una licencia de compra con nosotros.
+4000000064	Bienvenido al área de cuentas y facturación, ¿con quién tengo el gusto de hablar?
+4000000065	¿Tiene la fecha aproximada de compra?
+4000000066	Ángel, mucho gusto, ¿cómo puedo ayudarlo?
+4000000067	Señor Ángel, ¿puede por favor indicarme la cuenta con la que hizo la compra?
+4000000068	Voy a solicitarle de dos a tres minutos, ¿de acuerdo?
+4000000069	Hola, bienvenido a nuestra tienda para empresa.
+4000000070	Si me permite un poco, voy a tratar de encontrar el número de teléfono correcto.
+4000000071	Son opciones que no son para empresas.
+4000000072	Estas son las opciones para los consumidores.
+4000000073	Un momentito y le compruebo si ese es el número.
+4000000074	De nada, hasta luego, tenga un buen día.
+4000000075	Elige aquí la opción de cliente doméstico y después soporte técnico para que le puedan asistir, ¿de acuerdo?
+4000000076	Con todo gusto, ¿tiene otra consulta?
+4000000077	Perfecto, recuerde que le asistió Gina del área de activaciones.
+4000000078	Que tenga un feliz día, hasta luego, adiós.
+4000000079	De acuerdo, no se preocupe señor Antonio, vamos a verificar si efectivamente su producto ha sido activado anteriormente.
+4000000080	Dice que la licencia la acaba de adquirir, ¿verdad?
+4000000081	Bueno, vamos a hacer la validación.
+4000000082	Perfecto, indíqueme todos estos números de forma seguida sin detenerse, por favor.
+4000000083	En este momento, el error que se está generando es, efectivamente, con su clave de producto.
+4000000084	No ha sido válido y por esa razón no está generando la activación.
+4000000085	El dispositivo ya estaba en uso, ¿verdad?
+4000000086	Indíqueme por favor la clave del producto que tiene de forma seguida.
+4000000087	Indíquemela y validamos cuál es el inconveniente.
+4000000088	Tiene que reiniciar el equipo para verificarlo.
+4000000089	Le voy a verificar los códigos que me ha indicado hasta el momento, ¿de acuerdo?
+4000000090	Indíqueme el último grupo, por favor.
+4000000091	Muy amable por su información, permítame unos minutos mientras lo validamos en el sistema.
+4000000092	Bueno, en este momento el estado de la licencia del producto no genera ningún tipo de resultado.
+4000000093	Es decir que se puede activar nuevamente, pero la licencia ya ha sido utilizada antes.
+4000000094	Efectivamente, el producto fue activado por primera vez en el año dos mil dieciséis.
+4000000095	Entonces acá hay dos opciones que usted puede realizar.
+4000000096	Una licencia que no se haya usado antes.
+4000000097	La segunda opción es que si usted desea conservar ese producto puede comunicarse a la línea de soporte.
+4000000098	Para validar de otra forma la activación debido a que la clave no le permite activarlo, ¿de acuerdo?
+4000000099	Depende de la opción que usted quiera.
+4000000100	Hable con soporte para que le ayude a activar el producto.
+4000000101	Y rellenaste el formulario también, ¿verdad?
+4000000102	Cooperar con los especialistas de correo.
+4000000103	Permíteme por favor, voy a ir con nuestros ingenieros de correo electrónico para verificar qué opciones nos pueden dar ellos.
+4000000104	Los ingenieros se pondrían en contacto contigo a esa cuenta de arroba pepito punto com.
+4000000105	La cuenta a la que me indicaste que sí tenías acceso sería la cuenta alternativa, ¿verdad?
+4000000106	Comprendo, ¿los formularios hace cuánto los llenaste?
+4000000107	Excelente, ¿tienes dónde tomar nota del número con el cual vamos a realizar ese proceso?
+4000000108	Nosotros lo podríamos verificar con los especialistas de correo electrónico.
+4000000109	Vale, en principio se pone en contacto conmigo a través del teléfono y si no por correo.
+4000000110	Claro que sí, vamos a verificar la mejor forma de asistirte para conocer qué procede de la facturación.
+4000000111	Si fuera necesario, podríamos generar algún tipo de escalamiento con nuestros ingenieros de cuentas de correo electrónico.
+4000000112	Bienvenido al área de facturación de la empresa, habla Manuela.
+4000000113	En este caso, ¿con cuál rellenaste los formularios?
+4000000114	No está jugando con otra cuenta.
+4000000115	Ya en varias ocasiones intentamos recuperarla a través de la recuperación de contraseña.
+4000000116	Indícame por favor un número telefónico para que pudiéramos comunicarte si llega a ser necesario.
+4000000117	¿Hace cuánto que no puedes acceder a tu cuenta?
+4000000118	Pero a la cuenta como tal, ¿no ingresa desde hace muchos años?
+4000000119	Vale, ¿a qué cuenta, correo electrónico del teléfono o nombre del programa estás tratando de regresar?
+4000000120	Bueno, ¿dónde debemos ponernos en contacto contigo?
+4000000121	Vale, acabamos de enviarte un código.
+4000000122	Sí, pues realmente el procedimiento para poder recuperar la contraseña es el que está siguiendo señorita.
+4000000123	¿Tienes la cuenta en uno de los siguientes productos nuestros?
+4000000124	¿Has comprado alguna vez algo de nuestra web?
+4000000125	Contesta las siguientes preguntas del juego para confirmar que estás en una cuenta tuya.
+4000000126	¿Cómo se llamaba tu perfil con el cual jugabas en la consola?
+4000000127	Vale, ese nombre lo tienes que poner aquí.
+4000000128	Vivir en la ciudad tiene la ventaja que te acerca a todo: escuelas, medios de transporte, supermercados, etc. 
+4000000129	Actualmente están funcionando con esta cuenta de colegio.
+4000000130	Lo único que se guarda es la cuenta del centro y la clave.
+4000000131	Envíe esa documentación y especifique muy detalladamente, tal cual como lo ha hecho conmigo.
+4000000132	Entonces solicite que cambien la fecha de nacimiento.
+4000000133	¿Es suficiente o necesita realizar otro proceso?
+4000000134	Sí, pero yo estoy operativo hasta este viernes.
+4000000135	Por favor, envíemelo a la mayor brevedad posible.
+4000000136	Bien, permítame entonces de dos o tres minutos.
+4000000137	Hola, buenos días, mi nombre es Israel Martín.
+4000000138	Ese procedimiento se hace mediante digamos un proceso adicional.
+4000000139	No está el nombre particular de tal persona.
+4000000140	Lo que sucede señor Hernández, es que la cuenta está dirigida básicamente a una institución.
+4000000141	Para eso existe un dominio empresarial.
+4000000142	En este momento aún siguen trabajando y no nos han dado una respuesta.
+4000000143	Eso es lo que nos dicen ellos a nosotros.
+4000000144	No somos encargados del desarrollo de las actualizaciones.
+4000000145	Estoy a la espera de darle vuelta a la solución.
+4000000146	No le dieron otro número de incidencia.
+4000000147	Sí, es una persona, un informático.
+4000000148	Con mucho gusto vamos a validar la compra y lo transfiero con soporte técnico.
+4000000149	Vale, dame un segundo que te pongo en el altavoz.
+4000000150	No me aparece registrado con una cuenta que le pertenezca.
+4000000151	Nosotros no nos ocupamos de eso, nos ocupamos solamente de la venta de material informático.
+4000000152	¿Y no le dio también algunas opciones a hacer?
+4000000153	Un número de teléfono que le di con las opciones.
+4000000154	No les indique su número tarjeta de crédito ni el código de seguridad.
+4000000155	Gracias a ti, permíteme por favor de dos a tres minutos en la línea y ya retomo tu llamada.
+4000000156	Bien, ya confirmo la cuenta nuevamente porque ahora en el sistema no la encuentra.
+4000000157	¿A cuál se refiere ahora mismo?
+4000000158	Entiendo Esteban, ¿hace cuánto que me indicaste aquel último formulario?
+4000000159	Me he quedado así, sin poder ayudarla.
+4000000160	¿Cuál es la pregunta de seguridad que viene después?
+4000000161	Eso es el nombre del perfil con el cual jugaba en la consola.
+4000000162	Ese es el nombre del perfil.
+4000000163	El que dice "mensual" es el sitio correcto.
+4000000164	La identificación es otra cosa distinta.
+4000000165	Se va a hacer de la forma que le estoy indicando, porque no hay ninguna otra alternativa para poderlo hacer.
+4000000166	Sí, de esta forma se puede solucionar, recuerde lo que le digo.
+4000000167	Es simplemente una validación, ya sea del rector o ya sea de alguna persona administrativa de allí.
+4000000168	Ingrese al formulario indicando básicamente esa misma justificación que usted me dice a mí.
+4000000169	En ese caso, lo que le pido es que haga las opciones para los consumidores.
+4000000170	En este caso, lo que yo voy a hacer es la transferencia de manera interna.
+4000000171	Es con el mayor de los gustos Esteban, que tengas un feliz día y recuerda que te asistió Manuela.
+4000000172	Entiendo, pero bueno, ¿qué es lo que desea hacer?
+4000000173	Señorita tengo una pregunta, en el perfil puso el nombre correcto, ¿verdad?
+4000000174	OK, ¿cuál es el nombre de perfil que puso?
+4000000175	OK, después me dijo que le venía una pregunta que le estaba pidiendo la identificación, ¿no?
+4000000176	Perdón, ¿qué dice de la tarjeta?
+4000000177	Verifique todos sus correos a ver si le llegó a uno.
+4000000178	Tengo su cuenta en la pantalla, le voy a enviar un código de verificación.
+4000000179	Es un código de seis dígitos.
+4000000180	Sí, eso se lo acabo de mandar yo y es para yo poder ingresar a la cuenta.
+4000000181	¿En qué paso se quedó el procedimiento?
+4000000182	Muy bien, sí, vamos a verificar la cuenta.
+4000000183	Tenga consideración que puede tomarnos hasta veinticuatro horas.
+4000000184	Eso significa que le van a responder.
+4000000185	Le comento, en el correo le están indicando que van a revisar el caso.
+4000000186	Como le comento, van a revisar el caso.
+4000000187	Le van a hacer un seguimiento a la cuenta.
+4000000188	Sí, sí, por eso le comento que es un procedimiento que se tiene que llevar a cabo, señorita.
+4000000189	Entonces tiene que esperar este tiempo para que le puedan dar una respuesta.
+4000000190	Ese correo guárdelo por si le dan una respuesta insatisfactoria.
+4000000191	Desactive la autorrenovación para que ya no se le cobre.
+4000000192	También se puede devolver si está hecho incorrectamente.
+4000000193	Como le comento, lo que puedo hacer únicamente sería desactivarle la autorrenovación.
+4000000194	Entonces me confirma quiere que le quite la autorrenovación para que no se le cobre, ¿verdad?
+4000000195	Entonces vamos a estar a la espera de que le respondan.
+4000000196	Espere una respuesta por parte de nuestro equipo para que puedan evaluar lo que es la situación.
+4000000197	Bueno, entonces olvidó la contraseña del correo y quiere remover la tarjeta de la cuenta, ¿correcto?
+4000000198	Sí, le va a escalar nuevamente el caso.
+4000000199	Bueno, supongamos que le den una respuesta insatisfactoria, entonces se va a comunicar con nosotros.
+4000000200	Le estoy explicando lo que va a proceder en caso de que le dé una respuesta insatisfactoria.
+4000000201	Le va a pedir ciertos datos y va a volver a escalar otro reporte más elaborado.
+4000000202	Tiene la tarjeta de crédito guardada en su cuenta.
+4000000203	La puede recuperar mediante un proceso de recuperación de contraseña.
+4000000204	Bueno, tendría que leerme textualmente qué es lo que le pide.
+4000000205	Nosotros no podemos manipular la contraseña señorita, tiene que seguir ese procedimiento.
+4000000206	Señorita, me puede dar su nombre y apellido, ¿por favor?
+4000000207	OK, ¿cuál es el correo electrónico que desea recuperar?
+4000000208	¿Me lo puede deletrear por favor?
+4000000209	Muy bien, entonces ahora ya tiene lo que sería la suscripción, señor.
+4000000210	Entonces mire, al parecer su suscripción está próxima a expirar mañana.
+4000000211	¿Le puedo ayudar en algo más?
+4000000212	Muy bien, de nada, por mi parte sería todo.
+4000000213	Muy bien, por favor, ya me puede proporcionar la dirección de correo electrónico donde tiene su perfil del juego.
+4000000214	Muy bien, para poderlo revisar necesito el código de verificación.
+4000000215	El teléfono registrado en la cuenta.
+4000000216	Muy bien, ¿me puede brindar algún teléfono de contacto en caso de que se llegue a cortar la llamada?
+4000000217	Muy bien, permítame dos minutos para revisar la información de la cuenta.
+4000000218	Permíteme un minuto más por favor, gracias.
+4000000219	Una pregunta, ¿cuál es el problema que está teniendo?
+4000000220	Mire, le comento, lo que usted compró fue una tarjeta de regalo de diez euros.
+4000000221	La de un mes sigue teniendo el mismo costo de siete euros, bueno seis noventa y nueve.
+4000000222	Un minuto más, sigo trabajando con la suscripción señor, gracias.
+4000000223	Muy bien, disculpe la demora, señor.
+4000000224	Ya que se había mantenido una renovación automática encendida y no había sido posible saldarse.
+4000000225	Esta tarjeta se había puesto como predeterminada, entonces, debido a eso se llegó a suspender.
+4000000226	Ahorita está la autorrenovación encendida, ¿quiere que la mantenga así o que la quite?
+4000000227	Muy bien, entonces, ahora ya tiene lo que sería la suscripción mensual, señor.
+4000000228	¿La tarjeta está a nombre de quién?
+4000000229	¿Y ya verificó el número de la tarjeta?
+4000000230	Muy bien, por motivos de seguridad le he enviado un código a la cuenta de correo que me ha dado.
+4000000231	Puede llamarnos al mismo número y nos da este número para confirmar lo sucedido el día de hoy.
+4000000232	Este saldo tiene que estar regresando a la cuenta.
+4000000233	Es cuestión de días que lo tenga de regreso a su cuenta.
+4000000234	Sí, en este caso se le van a aplicar los tres.
+4000000235	Los tres van a estar regresando ahí a su cuenta.
+4000000236	Claro que sí señorita Mónica, igualmente, buena tarde.
+4000000237	En el caso de que usted no lo vea que está regresando, usted puede hacer la reclamación que comentó.
+4000000238	Le aparece una ventana que dice ejecutar.
+4000000239	Ahí en ejecutar, usted va a escribir lo siguiente.
+4000000240	Haga clic en "siguiente" o en "aceptar".
+4000000241	Puede activar su licencia por primera vez para el uso del hogar.
+4000000242	Si se puede activar su licencia le indicaría la confirmación y si no, pues le digo qué pasos debe seguir.
+4000000243	Le voy a indicar el identificador de confirmación para que usted lo digite en los bloques que hay.
+4000000244	¿Cómo está buscando el bloque exactamente?
+4000000245	Muy buenos días, ¿qué producto desea activar?
+4000000246	De acuerdo, usted usaba ¿qué versión de Pepito diez exactamente?
+4000000247	¿Usted sabe exactamente la versión de Pepito diez que desea activar?
+4000000248	Bienvenido a la línea de soporte técnico de hogar.
+4000000249	Bueno, popularmente utilizan un software para hacer acceso remoto.
+4000000250	Entiendo, entonces ahí no hay ningún tipo de incidente de momento, no se preocupe.
+4000000251	Debe comunicarse con nosotros y nosotros desde aquí le indicamos qué hacer, ¿de acuerdo?
+4000000252	¿A usted le hicieron accesos remotos a su equipo y le realizaron algunos procesos dentro del mismo?
+4000000253	Lo que le envían es un mensaje de scam de este tipo.
+4000000254	Quieren dañar su sistema operativo y generar una mala imagen de nosotros o adicionalmente obtener su información personal.
+4000000255	Le hago una pregunta, ¿usted alcanzó a proporcionar algún número de tarjeta para pagar algún servicio?
+4000000256	Las soluciones que debe proporcionar son las siguientes.
+4000000257	En este caso estos mensajes son totalmente falsos.
+4000000258	En estos casos hay que hacer el reporte respectivo.
+4000000259	Bueno señor, le voy a enviar un formulario.
+4000000260	Le voy a enviar un formulario a su cuenta de correo electrónico que me suministre.
+4000000261	Entonces, indíqueme por favor su nombre completo.
+4000000262	Nosotros nunca nos contactamos con nuestros usuarios, sino que los usuarios se contactan con nosotros vía este servicio.
+4000000263	Por favor, tome nota, el número de caso que es catorce veintisiete.
+4000000264	Cualquier consulta que usted tenga le voy a indicar el número telefónico para España.
+4000000265	En este caso se comunica desde España, ¿cierto?
+4000000266	Vale, entonces no es un teléfono gratuito.
+4000000267	Nosotros desde aquí no generamos ningún tipo de costo por esta llamada.
+4000000268	Bueno, para la validación debemos verificar por el asistente telefónico.
+4000000269	Muy amable, permítame un minuto mientras validamos.
+4000000270	Bueno, los códigos de esta licencia son para uso empresarial.
+4000000271	Por favor, oprima "aceptar" o "siguiente" y me indica qué visualiza.
+4000000272	De acuerdo, solo reinicie los aplicativos para que se guarden los cambios.
+4000000273	Buen día señor Marcos, ¿en qué le puedo asistir?
+4000000274	Sí señor, con mucho gusto señor Miguel.
+4000000275	Muy bien, ¿me puede indicar por favor un número de teléfono?
+4000000276	Perfecto, muchas gracias por la información señor Miguel.
+4000000277	Muy bien, entonces el número de caso es el siguiente.
+4000000278	Muy buenos días, gracias por llamar a nuestro servicio, le atiende Alejandro.
+4000000279	OK, dígame, ¿qué fue lo que le decía?
+4000000280	Déjeme verificar señor, porque como le comento, normalmente no son reembolsables.
+4000000281	Muchísimas gracias por su tiempo en línea, señorita.
+4000000282	Es lo que trato de explicarle, si es positiva, le van a hacer el cambio de contraseña.
+4000000283	Con estos números, usted se va a comunicar nuevamente y el agente le va a volver a escalar el caso.
+4000000284	Yo la entiendo a la perfección, como le comento, solamente seguimos procesos que están en el sistema.
+4000000285	OK, bueno, vamos a tener que revisarlo.
+4000000286	En ese caso, no hay forma de que nosotros podamos removerlo.
+4000000287	Recomendaría mantener el saldo siempre, ya que, si se llega a suspender nuevamente, puede ser que haya después algún problema.
+4000000288	Gracias por comunicarse con nosotros, mi nombre es Ángel.
+4000000289	Cuando haya recibido el código, me dice los seis dígitos, por favor.
+4000000290	Ya no estamos reteniendo el balance, es decir, nosotros no estamos levantando ningún tipo de retención temporal o algo similar.
+4000000291	Simplemente, nosotros lo retuvimos por un momento.
+4000000292	Sí, como le comento, el saldo en sí tiene que liberarse.
+4000000293	Oprima por favor en su teclado, la tecla derecha y al mismo tiempo oprima la de la izquierda.
+4000000294	Haga clic en "aceptar", no en "cerrar", y luego reinicie su equipo para que se efectúen los cambios.
+4000000295	Si está encendido, desconéctelo y apáguelo forzadamente.
+4000000296	Muy buenos días, según entiendo, en el momento le llegó un mensaje.
+4000000297	Allí, probablemente un analista se comunique con usted para validar qué fue lo que sucedió.
+4000000298	Entonces llegado el momento, el área encargada de este tipo de reportes se podrá en contacto con usted.
+4000000299	De acuerdo, indíqueme estos números por favor, sin detenerse.
+4000000300	Nada más, muchas gracias, recuerde, mi nombre es Gina, del área de activaciones.

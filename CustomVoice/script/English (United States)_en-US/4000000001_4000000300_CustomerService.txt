@@ -1,0 +1,300 @@
+4000000001	I created a ticket number for you as a reference to this call. 
+4000000002	OK, I just wanted to check if I was able to address all your concerns.
+4000000003	Do you want to write it down?
+4000000004	Thank you so much, you too!
+4000000005	I could definitely help you with that one, OK?
+4000000006	Yes, of course I could. 
+4000000007	Welcome to Customer Service. 
+4000000008	How can we help you today?
+4000000009	Hello, and thank you for using our live chat service.
+4000000010	Is there something in particular we can help you with?
+4000000011	How are you doing today?
+4000000012	May I ask why you contacted our chat service today?
+4000000013	How may we assist you today?
+4000000014	This is not for sale.
+4000000015	It's great to see you again.
+4000000016	Did you want to pick up where you left off?
+4000000017	I wanted to mention that this chat may be recorded for quality assurance.
+4000000018	This chat may be recorded and used for training purposes.
+4000000019	This chat will be recorded for quality assurance purposes and for further follow-up if needed.
+4000000020	We understand how you feel.
+4000000021	We’re going to take care of this for you right now.
+4000000022	We're deeply sorry about that.
+4000000023	Great to see you again, XYZ. 
+4000000024	I hope you’re doing well. 
+4000000025	Would you like me to show you some different products?
+4000000026	Let me check and see what I can do for you.
+4000000027	You’re connected to XYZ at Customer Service.
+4000000028	We’re very sorry, but we are not allowed to ship overseas at this time.
+4000000029	We apologize for the inconvenience, but our shipping options are limited at this time.
+4000000030	Nice to have you here again. 
+4000000031	May I suggest this as an alternative?
+4000000032	To best meet your needs, I would recommend the following.
+4000000033	I feel that the best way to solve your issue would be as follows.
+4000000034	I understand how you feel.
+4000000035	Would you like to speak with a supervisor?
+4000000036	I would need to get approval from my manager for that request.
+4000000037	May I transfer you to their line?
+4000000038	Would you like me to refer you to my supervisor?
+4000000039	I may need to check with my manager to accommodate that request.
+4000000040	If you would prefer, you may contact our phone support line.
+4000000041	Our customer service phone number is as follows.
+4000000042	If you'd rather speak with an agent directly, you can reach us at this number.
+4000000043	You may need to visit one of our in-store locations to accommodate that request.
+4000000044	Would you like us to find the nearest location to you?
+4000000045	We're sorry, but an issue like that can only be handled at one location.
+4000000046	The nearest store to you is here.
+4000000047	How can I help you this time around?
+4000000048	Would it be all right if I transferred you to the correct department?
+4000000049	Do you want to check out something new?
+4000000050	I believe my colleague will be able to best meet your needs.
+4000000051	Is it okay with you if I transfer you to her?
+4000000052	We genuinely appreciate your effort in bringing this to our attention.
+4000000053	However, my colleague would be happy to speak with you.
+4000000054	Please hold on for one moment while I transfer you.
+4000000055	I'm transferring you right now.
+4000000056	We'll be back with you in just a moment.
+4000000057	My colleague is available to speak with you.
+4000000058	May I put you on hold for a moment while they review your information?
+4000000059	I'll need to transfer you to another agent to get your problem resolved.
+4000000060	Will you hold for a moment while I contact my colleague?
+4000000061	My colleague is the one who will be able to best handle your issue.
+4000000062	Please hold for a moment while I contact her line.
+4000000063	Yes, he is available if you would prefer to speak with him.
+4000000064	Of course, I can transfer you to him if you would prefer.
+4000000065	I'm sorry, but she is currently unavailable.
+4000000066	Would you like to leave him a message?
+4000000067	Let us look into it.
+4000000068	It may take us a moment to review that information.
+4000000069	May we put you on hold?
+4000000070	We’ll review your information and have an answer for you very shortly.
+4000000071	We apologize, but all of our agents are currently assisting other customers.
+4000000072	Please hold for the next available agent.
+4000000073	We're sorry, all of our agents are on the line with other customers now.
+4000000074	If you can hold for a couple of minutes, we’ll contact you very soon.
+4000000075	There are currently five customers ahead of you in line.
+4000000076	You are allowed three devices on the network for no additional cost.
+4000000077	We expect that an agent will be available to help you shortly.
+4000000078	There are currently three customers in line.
+4000000079	An agent should be free to assist you very shortly.
+4000000080	Thank you very much for holding, and sorry about that wait!
+4000000081	Thanks for noticing this and letting us know. 
+4000000082	We do apologize about that wait, but we’re ready to assist you.
+4000000083	We thank you for holding and apologize about the wait.
+4000000084	We'll need to collect a little bit of additional information before we proceed.
+4000000085	To meet your needs, we'll need to verify some of your information.
+4000000086	May I ask for some more information before we continue?
+4000000087	I'll need your full credit card number, expiration date, and security code.
+4000000088	May have your current billing address?
+4000000089	To place your order, I'll need either a credit or debit card.
+4000000090	Before we proceed, may I ask you to verify your current home address?
+4000000091	And what is the listed zip code of your current account?
+4000000092	May I have your account number listed on your bill?
+4000000093	If you give me your account number, I can begin looking up your information.
+4000000094	If you would verify your date of birth, we can look up your account information.
+4000000095	I assure of quick help on that.
+4000000096	We may need to use screen sharing to diagnose your issue.
+4000000097	Can you please share your screen with me?
+4000000098	We're having a little trouble diagnosing your issue based on the information provided.
+4000000099	Is it okay for us to remotely access your computer?
+4000000100	We aren't able to solve this issue without some more information.
+4000000101	It would be a great help to us if we could remotely access your computer.
+4000000102	Sorry your payment failed.
+4000000103	Could you please tell us more about the problem you’re facing? 
+4000000104	May I provide assistance in helping you decide?
+4000000105	For how long have you been troubled by this? 
+4000000106	We can review your options again if you'd like!
+4000000107	If you'd like to wait, we can save your information for you.
+4000000108	We can give you some time to think about it.
+4000000109	We're positive that you'll be satisfied.
+4000000110	Your order has been delivered!
+4000000111	We're confident that you'll be happy with that option.
+4000000112	It looks like you're visiting quite a few pages without making a purchase!
+4000000113	Have you taken any step yourself?
+4000000114	It's been a while since you've contacted us!
+4000000115	Feel free to let us know if you need any help during your order.
+4000000116	It's been a while since you've last checked your shopping cart.
+4000000117	Are you ready to check out, or can we help you browse our selection?
+4000000118	It looks like you've been inactive for a while.
+4000000119	Can we help you find anything?
+4000000120	Could you please confirm your order ID?
+4000000121	Do you need help locating something?
+4000000122	It seems like you've been inactive for a few minutes.
+4000000123	I feel bad to hear you have had to face this problem. 
+4000000124	Could you elaborate a bit more so that I can know it better?
+4000000125	Please feel free to use our live chat service if you have any questions.
+4000000126	This promotion is currently going on through the end of the month.
+4000000127	Right now we're offering a discount on these items.
+4000000128	You should know that we're currently offering a discount on these items.
+4000000129	Would you like to take advantage of this limited-time offer?
+4000000130	In order to serve you better, we would need you to share more information. 
+4000000131	We do apologize, but the time limit on that promotion has expired.
+4000000132	Could you please fill up this form?
+4000000133	I can list the other specials we currently have going on right now.
+4000000134	Could we interest you in these items as well?
+4000000135	They complement each other nicely.
+4000000136	Customers in the past have found that purchasing these items together made their lives easier.
+4000000137	These products will not be able to be used together.
+4000000138	Would you still like to proceed?
+4000000139	These items are not compatible.
+4000000140	Would you like to return to the store?
+4000000141	May we suggest this product as an alternative?
+4000000142	It won’t take more than one minute.
+4000000143	I intend to deliver you the best experience. 
+4000000144	So, take some time out and fill this little form.
+4000000145	Sorry, you seem to have connected to the wrong department. 
+4000000146	Let us take you to the right team.
+4000000147	Your query is valid. 
+4000000148	If you'd like to hear all of your shipping options, we can list them.
+4000000149	However, I am not the right person to help with that. 
+4000000150	Let me connect you to the department specialized for such matters.
+4000000151	I now need to take your case to the senior representative. 
+4000000152	We can get it done by today.
+4000000153	I will take it from here. 
+4000000154	Please feel free to contact us again if you have any more problems.
+4000000155	Thank you for using our live chat service.
+4000000156	I am now closing this chat.
+4000000157	If you have any more issues, please don't hesitate to let us know.
+4000000158	May I connect your call to them?
+4000000159	Dear Peter, it may take me some time to retrieve the information you seek. 
+4000000160	We hope to see you again!
+4000000161	We hope to hear from you again!
+4000000162	We appreciate your service and hope to hear from you soon!
+4000000163	It's been a while since your last response.
+4000000164	Please respond within the next few minutes or this chat will be ended.
+4000000165	Try moving closer to your router to better connectivity.
+4000000166	Hello, it seems that you are away.
+4000000167	May I put on hold till that time?
+4000000168	If you still need my help, you can request a chat again.
+4000000169	If servers are busy then there might be a slight delay.
+4000000170	If you have further issues, you can reach us here.
+4000000171	Thanks, Allan, for bringing this up. 
+4000000172	Dear, your problem is genuine. 
+4000000173	Let me find out and get back to you.
+4000000174	We can make sure to have it sent to you as soon as possible.
+4000000175	I can place the order for you now.
+4000000176	Please let me know if there's anything else I can do to better assist you.
+4000000177	I will send you a replacement right away.
+4000000178	Please accept my apologies again for the inconvenience.
+4000000179	According to the tracking number, your order is due to arrive on Monday.
+4000000180	I appreciate you bringing this to my attention.
+4000000181	I'm working to fix it as quickly as possible.
+4000000182	However, I need to check with my team to update you on this further. 
+4000000183	I will follow up with you when I know more.
+4000000184	Thank you for your patience.
+4000000185	I am sorry that my response time may be slower than usual.
+4000000186	Your feedback is important to me.
+4000000187	I will get back to you as soon as possible.
+4000000188	Thanks for getting in touch!
+4000000189	I actually created a tutorial for the exact issue you described.
+4000000190	If that doesn't help resolve your issue, please feel free to contact me again.
+4000000191	Is there anything else I can assist you with today?
+4000000192	I'm always happy to help.
+4000000193	I understand how upsetting this must be.
+4000000194	I'm going to do everything I can to fix the problem for you.
+4000000195	I really hope that helps.
+4000000196	We hope you had a satisfactory experience with us today.
+4000000197	We look forward to working with you in the future.
+4000000198	I can certainly take care of that for you.
+4000000199	Could you please hold on there for a few seconds? 
+4000000200	May I suggest this instead?
+4000000201	I understand your request. 
+4000000202	The XYZ team is better handled to help you with that. 
+4000000203	I've done the same thing myself before, so I can definitely relate.
+4000000204	I'm truly sorry about that.
+4000000205	It looks like you're purchasing an incompatible accessory.
+4000000206	We're sorry, but that promotion is over.
+4000000207	Morning, Chris speaking, how may I help you? 
+4000000208	Call me if you need me to bring over something else.
+4000000209	Will you be picking up in-store or shall we ship it to you?
+4000000210	Would you mind being put on hold in the for a while?
+4000000211	You should call the shipping line since it’s only updated on the web.
+4000000212	Let me give you the container number here.
+4000000213	We sincerely apologize for the inconvenience caused to you due to that. 
+4000000214	It is actually confined to ship.
+4000000215	Ok just one moment here. 
+4000000216	Perfect, then let me contact them. 
+4000000217	I am sorry to hear about that. 
+4000000218	You should not have had to go through it.
+4000000219	I’m just checking the status of a billing, please.
+4000000220	Ok, what's the billing number?
+4000000221	We feel bad for the unpleasant experience you had to go through. 
+4000000222	We’re sorry and we can confirm the earliest solution to your problem.
+4000000223	Thanks for buying from us! 
+4000000224	I also cleared an issue, should be available for pick up then.
+4000000225	Oh, how many days of free time?
+4000000226	Let us fix the issue immediately.  
+4000000227	Your free trial will expire tomorrow.
+4000000228	We hope you’re having a good time with our product.
+4000000229	How has been your experience with our product? 
+4000000230	You may need to refresh the page to see the new updates.
+4000000231	We will contact you again soon later.
+4000000232	If any issue, we’re just a call away.
+4000000233	I hope you’re not facing the same issue again. 
+4000000234	I see, so the charges would technically start on the fourth.
+4000000235	Hit the refresh button and see if the form pops up.
+4000000236	If you ever come across this problem, feel free to reach out to us.
+4000000237	I can completely understand why you’re so upset. 
+4000000238	Hey Chris, how are you doing? 
+4000000239	I can assure you, such issues won't be repeated ever again.
+4000000240	Good morning, I’m Christina, may I help you?
+4000000241	Do you want me to call you back? 
+4000000242	I’m hoping you can call me back.
+4000000243	Okay no problem, I will call you back. 
+4000000244	Select "debug" from the options list.
+4000000245	Good afternoon, Kristy here, how can I help you?
+4000000246	I want to see the status of a container. 
+4000000247	Can I get the number please?
+4000000248	You’re a valuable customer to us and your frustration is completely valid. 
+4000000249	Ok, one moment please while I pull it up. 
+4000000250	Anyone in your place would feel the same. 
+4000000251	Can you pull an internal report for me?
+4000000252	Fill out a crash report and our technicians will get back to you shortly.
+4000000253	Can you please check the system again and make sure it is the correct container?
+4000000254	Try and see if you can move your cursor now.
+4000000255	Can you help me check my list of charges, please?
+4000000256	I assure you a quick resolution to the problem.
+4000000257	So, after those days it goes up?
+4000000258	Huge thanks for using our product for this long.
+4000000259	You can add this class to your schedule for an additional charge.
+4000000260	Let me know when you get prompted by the download wizard. 
+4000000261	How about we put a freeze on your account? 
+4000000262	Is there anything else I can do for you?
+4000000263	No, that's all, thank you. 
+4000000264	Ok, thank you, have a nice day, bye-bye. 
+4000000265	Our best guys are already on it. 
+4000000266	We need to get an invoice for the charge made in March.
+4000000267	Can you send me the billing number for the container?
+4000000268	It just depends on how many my warehouse can take. 
+4000000269	How many containers will you pick up today?
+4000000270	I can do one right now but I think both need to be picked up. 
+4000000271	If the items are released then the charges are guaranteed. 
+4000000272	If there anyway I can take up the containers tomorrow.
+4000000273	Ok, sure, let me just email you.
+4000000274	Yes, that’s why I’m trying to get this information.
+4000000275	Yes, no problem, just send us the message.
+4000000276	I will also need the proof of release when I pick up the containers.
+4000000277	Okay, no problem, I will just send you the invoice.
+4000000278	Hi, how are you doing?
+4000000279	Make sure you select the enterprise version of the software.
+4000000280	You can't pause the download.
+4000000281	I got a call from you that’s why I called you back. 
+4000000282	Would you like an invoice?
+4000000283	We will provide you with the invoice.
+4000000284	It is probably the wrong number, then.
+4000000285	We don’t support your device at the moment.
+4000000286	Once we get everything up and running, we will get back to you.
+4000000287	I am your personal customer care manager.
+4000000288	Oh, they gave the wrong number then, sorry. 
+4000000289	Unplug the computer if your screen freezes.
+4000000290	Good afternoon, who am I speaking to? 
+4000000291	I did a real billing on your website. 
+4000000292	I’ll give you a direct phone number for the real billing department.
+4000000293	Ok, that would be great!
+4000000294	Why don’t you take our valid coupon?
+4000000295	Make sure there aren't any other devices connected on the network.
+4000000296	Are there any exports remaining at all?
+4000000297	Let me get my team on it.
+4000000298	How long is the wait time?
+4000000299	You made a wise choice contacting our support. 
+4000000300	Ok, I will keep waiting, then.

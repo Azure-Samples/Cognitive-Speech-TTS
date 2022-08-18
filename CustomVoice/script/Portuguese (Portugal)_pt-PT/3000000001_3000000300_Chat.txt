@@ -1,0 +1,300 @@
+3000000001	Olá, eu e a Rita vamos ao Japão nas férias.
+3000000002	Vocês já reservaram os bilhetes?
+3000000003	Dá para ser daqui a duas semanas?
+3000000004	Nessa altura também estou de férias. 
+3000000005	Fazemos todos juntos logo à noite?
+3000000006	Sim, pode ser em tua casa?
+3000000007	Prepara-te para o calor de lá.
+3000000008	Sim, ouvi dizer que a temperatura média no verão é de 35 graus.
+3000000009	Também estávamos a pensar em alugar um carro.
+3000000010	A nossa carta de condução funciona, ou precisamos de ter a carta internacional?
+3000000011	Estão a pensar em viajar por todo o Japão?
+3000000012	Por quanto é que fica?
+3000000013	Acho que foram 30 euros, salvo erro.
+3000000014	Ou alguma região especifica?
+3000000015	Até gosto mais assim, não passamos muito tempo em viagem.
+3000000016	Sim, era o que estávamos a pensar. 
+3000000017	O que vocês decidirem, por mim tudo bem.
+3000000018	O que gostarias de mudar ou melhorar no teu dia-a-dia?
+3000000019	Estou satisfeita com minha vida quotidiana.
+3000000020	Apenas tenho curiosidade de saber.
+3000000021	O meu dia-a-dia é quase sempre bem planeado.
+3000000022	Ando sempre muito cansada.
+3000000023	Podes sempre ler um livro ou ouvir música.
+3000000024	Não consigo focar em nada e também não consigo dormir.
+3000000025	Tens que acordar muito cedo?
+3000000026	Sim, tenho que acordar cedo. 
+3000000027	E se numa só casa pudesse explorar, descobrir e provar tudo aquilo que um vinho de talha tem para lhe oferecer?
+3000000028	Achas que meditar pode ajudar?
+3000000029	Ela é professora de Yoga.
+3000000030	Ela tem a sua própria escola de Yoga?
+3000000031	E aonde é que vai ser? 
+3000000032	Eu posso pensar sobre isso.
+3000000033	Por ano, são 364 euros.
+3000000034	Quantas vezes por semana?
+3000000035	Mas a lista de espera é grande.
+3000000036	E onde é que fica a escola?
+3000000037	Fica a 20 minutos da minha casa.
+3000000038	Olha, a Inês faz anos na segunda. 
+3000000039	Temos que planear alguma coisa.
+3000000040	O que vamos fazer?
+3000000041	Deixa estar, eu posso organizar tudo.
+3000000042	Vamos para as Galerias ou alugamos um barco no Douro?
+3000000043	Dotada de um terror único, esta é a casa onde vai poder conhecer as raízes deste vinho tão aclamado. 
+3000000044	Quantos convidados, mais ou menos?
+3000000045	Pelas minhas contas eram umas 15 pessoas? Não era?
+3000000046	Pensei que íamos organizar juntas.
+3000000047	Hum, isso é puxado. 
+3000000048	Estou aqui a ver, o barco fica por 900 euros por noite.
+3000000049	Encontrei um por 500 euros.
+3000000050	Dá para quantas pessoas?
+3000000051	Acho que é um bom negócio.
+3000000052	A Inês vai ficar muito feliz.
+3000000053	Fazemos a festa com multas?
+3000000054	Sim, acho uma muita boa ideia.
+3000000055	Olá, tens planos para hoje?
+3000000056	Tenho que ir às compras, e tu?
+3000000057	Tenho que limpar e cozinhar.
+3000000058	Como foi a vossa ida ao esqui, ontem?
+3000000059	Estava muito frio, mas divertimo-nos muito.
+3000000060	Nós amanhã também vamos. 
+3000000061	Se não tiveres, compra uma termos para cada um de vocês.
+3000000062	Ainda bem que disseste, para levar água ou chá quente.
+3000000063	Amanhã é o dia dos amigos, já me compraste um presente?
+3000000064	É por isso que tenho que ir às compras hoje.
+3000000065	É o dia que se dá pequenas lembranças aos amigos.
+3000000066	Porque é que se comemora esse dia?
+3000000067	Para que os amigos não se esqueçam um dos outros. 
+3000000068	O que devo dar à Rita?
+3000000069	Pode ser simplesmente um bolo caseiro, ou um sabonete.
+3000000070	No ano passado comemorei o dia com a Rita.
+3000000071	Sim, é apenas uma lembrança e uma desculpa para passarem o dia juntas.
+3000000072	Então podíamos fazer uma maratona da Guerra das Estrelas, que achas?
+3000000073	Sim, com direito a pipocas e tudo.
+3000000074	Como o devo decorar?
+3000000075	Vais sempre decorar o teu quarto?
+3000000076	Sim, estive pensar sobre isso. 
+3000000077	Eu pintaria um quadro e pendurava-o.
+3000000078	Sim, eu gostava de fazer isso. 
+3000000079	Eu tenho as paredes de cor-de-rosa e azul.
+3000000080	E onde é compraste a tua mobília?
+3000000081	Eles são muito bons.
+3000000082	No fundo, é um saber fazer que tem passado de geração em geração e que hoje é um dos grandes símbolos desta região. 
+3000000083	Nem sempre é assim?
+3000000084	Porque é que dizes isso?
+3000000085	Uma vez tive um vaso caro.
+3000000086	A mesma coisa com as roupas.
+3000000087	Como é que sabes se algo é de boa ou má qualidade?
+3000000088	Normalmente vejo onde elas são feitas.
+3000000089	As condições de trabalho também são importantes para mim.
+3000000090	E ainda que tenha passado por períodos complicados, hoje é uma das técnicas mais aclamadas tanto por produtores como por consumidores.
+3000000091	As crianças não vão à escola?
+3000000092	Não, as crianças não vão à escola porque não têm dinheiro.
+3000000093	Como é que sabes disso tudo? Já estiveste no Bangladesh?
+3000000094	Não, vi um documentário sobre a indústria têxtil no Bangladesh.
+3000000095	Também gostava de ver esse documentário.
+3000000096	Sabes por anda a Beatriz? 
+3000000097	Está nos Estados Unidos, vai ficar lá durante duas semanas.
+3000000098	Já não falamos à muito tempo.
+3000000099	Sim, a empresa dela provavelmente pagou por tudo
+3000000100	É uma bastante empresa grande.
+3000000101	Zangaste-te com ela, não foi?
+3000000102	Sim, há duas semanas atrás que não falamos uma com a outra.
+3000000103	Sim, tem descontos de 70%. 
+3000000104	Sim, comprei muitas coisas.
+3000000105	Eu comprei decorações e cobertores para a casa.
+3000000106	Quanto é que gastastes, se não for indiscreto?
+3000000107	Gastei por volta dos 497 euros.
+3000000108	Mas custou um pouco a sair do bolso.
+3000000109	Como é a tua empresa?
+3000000110	A minha empresa é muito injusta, paga mais aos homens do que às mulheres.
+3000000111	Isso é muito mau.
+3000000112	A vida delas é muito dura.
+3000000113	Ouve, uma pergunta rápida, se puder ser.
+3000000114	Tenho uma entrevista de emprego à tarde.
+3000000115	Podias ficar com a Cris umas horas depois das aulas?
+3000000116	Não tem problema nenhum.
+3000000117	Posso ir ao Festival da Canção? 
+3000000118	Não podes ir sozinha ao festival.
+3000000119	Ninguém quer ir a um festival com os pais.
+3000000120	O pai disse que eu podia ir.
+3000000121	O pai disse que deixa se tu deixares.
+3000000122	O teu pai só quer ser o bom da fita porque sabe que eu digo que não.
+3000000123	Quando poderei ir a concertos sozinha?
+3000000124	Terás de ir sempre comigo para o resto da vida.
+3000000125	Mesmo com a tua idade?
+3000000126	Bati os ovos com stevia a gosto, adicionei o iogurte e o mel e bati mais um pouco.
+3000000127	Mãe, vamos fazer uma aposta?
+3000000128	O que queres apostar?
+3000000129	Aguentar um dia e dizer Sim a tudo.
+3000000130	Queres saber uma coisa? Porque não?
+3000000131	A fachada é como uma casa e o prédio vai crescendo em blocos.
+3000000132	Só consigo dormir duas horas por dia.
+3000000133	Aceito, menina, porque sei que não vou recuar.
+3000000134	Achas mesmo que vais aguentar?
+3000000135	E quando perderes, e vais, sou tão divertida que ainda poderás ir ao teu concerto.
+3000000136	De um lado, parece uma casa, do outro, um prédio.
+3000000137	Vou sentar-me ao teu lado, damos as mãos e acenamos como loucas.
+3000000138	Disse-lhe que podia ficar com o bilhete.
+3000000139	Tu não vais, minha menina.
+3000000140	Vai a prima da Laura, a Júlia. 
+3000000141	É melhor dizeres à Júlia, prima da Laura, para não ter esperanças.
+3000000142	Segundo sei, foi uma aposta e vou ganhar.
+3000000143	E vais adorar porque me amas.
+3000000144	Sei que queres a tua independência e que sou chata.
+3000000145	Então porque não posso ir sozinha?
+3000000146	Se não te levar ao concerto, não vais a lado nenhum.
+3000000147	És sempre a mesma coisa.
+3000000148	Bem menina, estás de castigo.
+3000000149	Não acredito que me levaste a pensar que tinhas mudado.
+3000000150	Não se trata de confiança.
+3000000151	Todos têm áreas exteriores com jardins orgânicos, plantas, flores, vegetação, pedras naturais.
+3000000152	Pode entrar, se faz favor.
+3000000153	Sou a Isabel Torres.
+3000000154	Foi gerente na Piponas, há 12 anos atrás?
+3000000155	Sim, adorava o trabalho, mas tive filhos e, durante algum tempo, foi demasiado.
+3000000156	Aposto que é melhor em multitarefas.
+3000000157	Não deixei de trabalhar, só deixei de ser paga.
+3000000158	Pensam que foi um acidente.
+3000000159	Claro que deve ser.
+3000000160	Ouça, adorava contratá-la, a sério, mas é uma posição básica.
+3000000161	Obrigada na mesma pelo seu tempo.
+3000000162	Não tinha mais nada.
+3000000163	Está tudo bem por aí?
+3000000164	Recebeste as fotos que enviei?
+3000000165	Mas não as abri.
+3000000166	Estava à tua espera. 
+3000000167	Como foi a visita?
+3000000168	Todo o cuidado é pouco. 
+3000000169	Espera até veres a biblioteca.
+3000000170	Foste à biblioteca por mim?
+3000000171	Às vezes, leio livros sem bonecos, Carlos.
+3000000172	Não sei se sou bom o suficiente para estar aqui.
+3000000173	Não terias uma bolsa se não fosses suficientemente bom.
+3000000174	A faculdade não é como a secundária.
+3000000175	Se não, era muito fácil.
+3000000176	Já compraste alguma coisa?
+3000000177	Não respondeste, fiquei aflito.
+3000000178	É uma longa história.
+3000000179	Que bom ver-te, estás bem?
+3000000180	Deve ser estranho voltar para casa com isto tudo.
+3000000181	Agora é a nossa casa e não vejo o meu pai tão feliz há muito tempo.
+3000000182	Obrigada, significa muito ouvir isso.
+3000000183	O senhor está a gostar do seu trabalho?
+3000000184	Há noites que correr melhor.
+3000000185	Eu já notei que os clientes gostam de si.
+3000000186	Bom, eu tento ser simpático.
+3000000187	Ao contrário de mim que cada vez gosto menos de si.
+3000000188	Mas não sei o motivo.
+3000000189	Mas os clientes gostam de si, então se quiser trabalhar a tempo inteiro, pode fazê-lo.
+3000000190	Deixe-me pensar sobre isso.
+3000000191	Queres ouvir as boas ou as más notícias?
+3000000192	Eu prefiro as boas, eu já não me aguento com mais más notícias.
+3000000193	Bem, a boa é que vais tocar no Festival Luz.
+3000000194	É um festival inteiro!
+3000000195	Não é no maior palco.
+3000000196	Eu não quero saber da tenda, é a Luz! 
+3000000197	Qual é o segredo para ser um bom pai?
+3000000198	Prédio de seis pisos e 12 apartamentos conquistou prémio em Nova Iorque.
+3000000199	Diga apenas alguns exemplos.
+3000000200	Dar-lhes a liberdade de serem o que quiserem ser.
+3000000201	Também concordo com essa política.
+3000000202	Ser pai e amigo deles.
+3000000203	Essa é a tua resposta?
+3000000204	E obrigá-los a ficarem na escola.
+3000000205	Diz lá uma resposta de jeito.
+3000000206	Bem assim é fácil.
+3000000207	Pai, onde estão as calças suplentes?
+3000000208	Foram ontem para a lavandaria.
+3000000209	As minhas calças rasgaram-se. 
+3000000210	Pronto, eu passo pela lavandaria e deixo-tas na escola.
+3000000211	Como prédio de luxo, a venda será personalizada e os preços não são divulgados.
+3000000212	Vai, antes que chegues atrasada.
+3000000213	Cem gramas de funcho contêm apenas 32 calorias. 
+3000000214	Luís, tenho uma coisa para te contar.
+3000000215	Já não era sem tempo.
+3000000216	Desculpa, apanhei trânsito na avenida.
+3000000217	Não há problema, se a Elisa for connosco ao baile, pois não?
+3000000218	O seu constituinte principal é a água, seguido de fibra.
+3000000219	Não há problema nenhum.
+3000000220	O que estavas a dizer?
+3000000221	Era por causa do baile.
+3000000222	Passas-me a chave inglesa, se faz favor?
+3000000223	Está na caixa de ferramentas ali em cima.
+3000000224	És uma bela ajudante.
+3000000225	Desde quando é que és médico?
+3000000226	Mas se julgas que nunca discutíamos, estás muito enganada.
+3000000227	Por que razão te metes em tantas brigas?
+3000000228	Uma pessoa tem de aprender a cuidar de si.
+3000000229	Os meus pais já me mandaram a psicólogos.
+3000000230	Mas todos temos problemas, não é?
+3000000231	Dei cabo da nossa amizade.
+3000000232	Achas mesmo que posso mudar?
+3000000233	Haverá pouco que não podes fazer.
+3000000234	Eu queria falar contigo.
+3000000235	Não há nada para falar.
+3000000236	Tenho pena de ter mentido ao Luís sobre o Nuno e eu. 
+3000000237	Elisa, eu e a tua mãe fomos amigas durante mais de 20 anos.
+3000000238	Eu sei, desde dos 2 anos.
+3000000239	Ela era a minha melhor amiga. 
+3000000240	Programei o forno a 180 graus.
+3000000241	Claro que estou a falar a sério.
+3000000242	Mas não me lembro das discussões. 
+3000000243	Não é isso que sinto agora.
+3000000244	Tens sorte, se tiveres um verdadeiro bom amigo.
+3000000245	Eu sei que tenho sorte.
+3000000246	Só tens de perceber como o manter.
+3000000247	Como é que tu estás?
+3000000248	Aquilo que eu sei é que nos perdoávamos sempre.
+3000000249	As tua paredes estão pintadas de quê?
+3000000250	Eu também tive saudades tuas.
+3000000251	Já estás quase com 2 metros.
+3000000252	Tu moras mesmo na praia?
+3000000253	Moro sim senhora, que achas?
+3000000254	Posso ir nadar todos os dias.
+3000000255	Cuidado, se fores para a água.
+3000000256	O que deseja beber?
+3000000257	Um batido de morango, se faz favor.
+3000000258	Deseja mais alguma coisa?
+3000000259	Desculpa, foi sem querer, estás bem?
+3000000260	As portas desta casa estão abertas todos os dias, prontas a recebê-lo. 
+3000000261	Peço imensa desculpa, foi sem querer mesmo.
+3000000262	Nota-se mesmo pela tua cara.
+3000000263	Vou comprar-te outra camisola.
+3000000264	Sabes o que mais? 
+3000000265	Deixa-me mostrar-te a hospitalidade sulista.
+3000000266	É isso que dizem quando se estão a fazer a uma miúda que não conhecem?
+3000000267	Não quero nem saber da tua camisola.
+3000000268	E eu pensar que só andavas aos encontrões.
+3000000269	Só estou aqui para a outra equipa poder recuperar o fôlego.
+3000000270	Quanto vale um grande prémio?
+3000000271	Porque é que não me vens ver jogar?
+3000000272	Tenho outras coisas para fazer, obrigada.
+3000000273	O que são estas coisas todas?
+3000000274	Estou a fazer um vitral para a igreja que há ao fundo da rua.
+3000000275	Como é que aquilo aconteceu?
+3000000276	Ninguém sabe ao certo. 
+3000000277	Estas quase a terminar.
+3000000278	Infelizmente, neste momento, não ando à procura de um ajudante.
+3000000279	Eu podia ajudar-te, pai.
+3000000280	Mas gostavas de visitar alguma cidade em particular?
+3000000281	E eu trabalho de graça!
+3000000282	Numa frigideira já quente, tostei as sementes de funcho que depois esmaguei, transformando-as em pó, num almofariz.
+3000000283	Que bom, quando começo?
+3000000284	Já não a vejo há dias.
+3000000285	Mana, consegues ser um pouco mais simpática com o pai?
+3000000286	O que é que foi que e fiz?
+3000000287	Eu não quero voltar a perdê-lo.
+3000000288	Reparaste na cara dele quando te viu aqui?
+3000000289	A cara dele normal?
+3000000290	Ele estava mesmo muito entusiasmado.
+3000000291	Está bem, eu prometo ser mais simpática para ele.
+3000000292	Onde é que estiveste até a estas horas?
+3000000293	Já não tenho 12 anos.
+3000000294	É quase 1h da manhã.
+3000000295	Não precisas de ficar acordado à minha espera. 
+3000000296	Eu não me preocupava contigo quando tinhas 12 anos.
+3000000297	E agora preocupas-te com isso?
+3000000298	Se vais ficar cá em casa vais ter de cumprir as regras.
+3000000299	Mas eu não quero estar aqui, pai.
+3000000300	Vamos dar o nosso melhor para nos entendermos, está bem?

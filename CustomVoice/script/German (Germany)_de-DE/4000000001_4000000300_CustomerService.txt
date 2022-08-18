@@ -1,0 +1,300 @@
+4000000001	OK, also in diesem Fall kann ich Sie weiterleiten.
+4000000002	Geben Sie mir bitte ihre Installations-ID durch.
+4000000003	Wenn Sie ein bisschen nach unten gehen sehen Sie dort Apps und dann müsste dort auch Universität stehen.
+4000000004	Ich wollte Ihnen auch eine Bearbeitungsnummer nennen für unser heutiges Gespräch.
+4000000005	OK, also in diesem Moment kann ich Sie weiterleiten.
+4000000006	Das ist ein Formular, dass Sie ausfüllen müssen.
+4000000007	Das ist mit der E-Mail-Adresse verbunden. 
+4000000008	Dann bräuchte ich noch die sechs Zahlen aus der Nachricht von Ihnen.
+4000000009	Dann vielen Dank für ihren Anruf, einen schönen Tag wünsch ich Ihnen noch.
+4000000010	Das sind sechs Zahlen, die brauche ich bitte von Ihnen.
+4000000011	Überprüfen Sie bitte kurz ihren Posteingang und lesen Sie mir den Code vor.
+4000000012	Dann bräuchte ich die sechs Zahlen bitte von Ihnen, aus der Nachricht.
+4000000013	Ich werde Sie an meine Kollegen von der technischen Abteilung weiterleiten.
+4000000014	Dank dem Energiesparmodus schaltet sich der Eiswürfelbereiter automatisch nach Beendigung des Programms aus.
+4000000015	Sie müssen mir den Code am Telefon vorlesen, bitte.
+4000000016	Ihr Anruf wird gehalten, bitte warten Sie einen Moment.
+4000000017	Sobald er zurück ist, würde ich mit Ihnen die beste Option suchen.
+4000000018	Dann wählen Sie bitte diese Nummer noch mal.
+4000000019	Dann sagen Sie mir jetzt mal bitte diese E-Mail-Adresse.
+4000000020	Haben Sie das auf unserer Webseite gekauft?
+4000000021	Dann müssen Sie sich einen lokalen Techniker holen.
+4000000022	Die Angebote richten sich ausschließlich an Endkunden mit einer Lieferanschrift in Deutschland. 
+4000000023	OK, Sie müssen die E-Mail abrufen und dann auf den Link schauen.
+4000000024	Lassen Sie mich hier kurz mal nachschauen.
+4000000025	Selbst harte Zutaten lassen sich leicht zerkleinern.
+4000000026	Könnten Sie mir bitte diese Meldung vorlesen?
+4000000027	Haben Sie dieses Produkt neu gekauft?
+4000000028	Ich muss diese Lizenz im System eingeben.
+4000000029	Fragen Sie bitte auch den Verkäufer warum die Lizenz schon im Jahr zweitausendsechzehn aktiviert wurde.
+4000000030	Statte deine Fahrzeug-Sammlung mit exklusiven, authentischen Modellen aus, die speziell für Erwachsene entwickelt wurden. 
+4000000031	Der Mindestbestellwert muss 69 € bezogen auf die im Warenkorb befindlichen Artikel aus diesen Kategorien übersteigen.
+4000000032	Bleiben Sie bitte kurz in der Leitung.
+4000000033	Könnte ich die Bestellung für Sie abschließen?
+4000000034	Das nutzen Sie grade nur auf einem Gerät.
+4000000035	Ich sehe, dass Sie während der Installation keinen gültigen Produktschlüssel eingegeben haben.
+4000000036	Dann wenden Sie sich bitte an ihren Händler.
+4000000037	Mit welchem Zahlungsmittel möchten Sie das Produkt kaufen?
+4000000038	Melden Sie dies bitte an die Polizei und die werden Ihnen irgendwie weiterhelfen.
+4000000039	Ich werde Sie eben ganz kurz mal hier überprüfen.
+4000000040	Warten sie kurz bitte.
+4000000041	Bitte sagen Sie mir ob Sie aus Deutschland anrufen?
+4000000042	Es ertönt ein Alarm, wenn das Eisfach voll ist oder das Wasser nicht ausreicht.
+4000000043	Warum können Sie dieses Abo nicht verwenden?
+4000000044	Hier bekommen Sie täglich lohnende Deals bequem auf einen Blick.
+4000000045	Bekommen Sie irgendeine Meldung in Word?
+4000000046	Im Gerätemanager können Sie die Audiogeräte sehen.
+4000000047	Was haben Sie ungefähr dafür bezahlt?
+4000000048	Haben Sie vielleicht auch eine Bearbeitungsnummer erhalten?
+4000000049	Ich danke sehr schön, dass Sie drangeblieben sind.
+4000000050	Das hat sich wahrscheinlich auf etwas anderes bezogen.
+4000000051	Welche Version haben Sie?
+4000000052	Niemals anrufen, wenn Sie eine Telefonnummer auf dem Bildschirm sehen.
+4000000053	Ich muss Sie zuerst überprüfen und ich brauche von Ihnen einen Verifizierungscode.
+4000000054	In so einem Fall würde ich Sie bitten sich bei den sogenannten Benefit Administratoren in Ihrer Firma zu melden.
+4000000055	Ich werde Ihnen jetzt einen Verifizierungscode senden und den müssen Sie mir bitte vorlesen.
+4000000056	Ein einfacher Knopfdruck startet die Programme und beendet diese nach Ablauf der vorgesehen Zeit selbstständig.
+4000000057	Unser System wird Ihre ID überprüfen.
+4000000058	Können Sie mir bitte den Produktschlüssel durchgeben?
+4000000059	Bitte tragen Sie das unter dem Schritt drei in den leeren Feldern ein.
+4000000060	Ich bitte Sie um Geduld. 
+4000000061	Die Schnäppchenjagd ist oft mit Mühe und Zeit verbunden – und kostet manchmal auch Nerven.
+4000000062	Dann gebe ich Ihnen mal den Namen von diesem Skype-Konto
+4000000063	Also jetzt stelle ich Sie durch.
+4000000064	Ich dokumentiere den Fall, damit Sie am Ende auch eine Bearbeitungsnummer bekommen.
+4000000065	Sie können das nicht mehr installieren. 
+4000000066	Haben Sie vielleicht eine Kreditkarte, die Sie benutzen können?
+4000000067	Ich denke das passiert wenn Sie keine automatische Verlängerung gewählt haben.
+4000000068	Wir werden den Verkäufer kontaktieren müssen, wenn Sie das nicht schon gemacht haben.
+4000000069	Sie können das nicht mehr aktivieren mit Ihrem Produktschlüssel.
+4000000070	Auf der hinteren Seite finden Sie eine zwölfstellige Zahl.
+4000000071	Bitte geben Sie mir die Installations-ID durch.
+4000000072	Unter was für ein Zahlungsmittel möchten Sie das Produkt kaufen?
+4000000073	Bitte schließen Sie alle Fenster auf Ihrem Bildschirm.
+4000000074	Jetzt kommen Sie zur Installations-ID, also neun Gruppen von Zahlen.
+4000000075	Das herausnehmbare Messer mixt Zutaten schnell und fein und kann nach Verwendung unter fließenden Wasser oder im Geschirrspüler gereinigt werden.
+4000000076	Dann probieren Sie es einfach noch mal mit diesem Formular.
+4000000077	Auf der Seite für die telefonische Aktivierung sehen Sie die Installation-ID.
+4000000078	Folgendes Herr Dietrich: Ich habe Ihnen das Geld zurückerstattet.
+4000000079	Also von mir können Sie eine solche Lizenz nicht kaufen, weil wir nur Privatkunden unterstützen.
+4000000080	Mit diesem Produktschlüssel können Sie leider nicht mehr aktivieren.
+4000000081	Natürlich spreche ich ein bisschen langsamer, sodass Sie den Code direkt eingeben können.
+4000000082	Klicken Sie bitte unten auf Bestätigungs-ID eingeben.
+4000000083	Weiter kann ich Ihnen sowieso nicht helfen.
+4000000084	Geben Sie mir kurz Ihre E-Mail-Adresse durch.
+4000000085	Bitte sagen Sie mir, Sie rufen uns aus Deutschland an.
+4000000086	Dann kommen Sie automatisch auf die richtige Seite oder Sie scrollen ganz nach unten und klicken Niederlande an.
+4000000087	In dem Gerätemanager können Sie die Audiogeräte sehen.
+4000000088	Dann müssen Sie die wiederkehrende Abrechnung einschalten.
+4000000089	Wenn Sie dann noch Fragen haben sollten, kurz auf meine Nachricht antworten.
+4000000090	Die Sache ist die, Sie müssen jetzt erstmal Guthaben aufladen und dann wird es aktiviert.
+4000000091	Oder Sie rufen kurz an und geben uns den Auftrag und wir machen das dann.
+4000000092	Können Sie den Lautsprecher bitte ausmachen oder näher an den Hörer kommen?
+4000000093	Ich muss Sie nur noch verifizieren.
+4000000094	Genau das wird bei Ihnen abgebucht.
+4000000095	Drücken Sie einfach den Einschaltknopf.
+4000000096	Ich geh davon aus, dass es eine E-Mail-Adresse Ihrer Tochter ist.
+4000000097	Aber am besten sprechen Sie mit ihr und fragen sie wo sie das gekauft hat.
+4000000098	Ich kann es gerne machen. 
+4000000099	Nein, ich brauche Ihre E-Mail Addresse jetzt nicht.
+4000000100	Jetzt müssen Sie diese Seite schließen, dann wieder öffnen und dann sollten Sie keine Fehlermeldungen mehr kriegen.
+4000000101	Nachdem das fertig ist, müssen Sie es schließen und erneut aufmachen.
+4000000102	Ich könnte im System nachschauen. 
+4000000103	Sie haben dieses Produkt auch für dieses Jahr bezahlt.
+4000000104	Das System erkennt automatisch, wo Sie sind und vielleicht hat das nicht richtig funktioniert.
+4000000105	Ich mache das von hier für Sie.
+4000000106	Dann öffnen Sie bitte ein leeres Word Dokument.
+4000000107	Ich will Ihnen erklären, wie Sie das aktivieren können.
+4000000108	Ich brauche von Ihnen ihre E-Mail Adresse.
+4000000109	Das i-Tüpfelchen bilden ein Luftkühlsystem zum Schutz vor Überhitzung und ein praktisches Stampfer-Zubehör.
+4000000110	Ich werde Sie jetzt an die geschäftliche Fachabteilung weiterleiten.
+4000000111	Also bekommen Sie eine Fehlermeldung oder wird die Option einfach nicht angezeigt?
+4000000112	Falls das der Fall ist brauchen sie eine Recovery-Datei und die werden Sie nicht im Internet finden.
+4000000113	Hauptsache ist, dass Sie diese Recovery auch wirklich starten können.
+4000000114	Das werden Sie bei lizenzierten Händlern vermutlich nicht finden können.
+4000000115	Ich werde Sie zu unserem Techniker weiterleiten.
+4000000116	Heute kann ich Sie nicht weiterleiten weil alle unsere Techniker besetzt sind.
+4000000117	Der Mindestbestellwert muss 50 € übersteigen. 
+4000000118	Wie gesagt, ich kann Ihnen eine Anleitung schicken.
+4000000119	Da können Sie sich gleich auf diese Ticketnummer berufen.
+4000000120	Da werden Sie weitergeleitet, also bitte notieren Sie sich die Ticketnummer.
+4000000121	Ich kann Ihnen das in der E-Mail schicken.
+4000000122	Dann erhalten Sie noch einen Monat zusätzlich.
+4000000123	Sie bekommen also eine E-Mail mit einem Link.
+4000000124	Können Sie das bitte laut und langsamer wiederholen?
+4000000125	Ich habe keine E-Mail von Ihnen bekommen.
+4000000126	Hauptsache ist, dass Sie die richtige Version von Parallels installiert haben.
+4000000127	Da müssen Sie sich an Parallel Support wenden und dort nachfragen, wie man das genau macht.
+4000000128	Sie müssen den Schlüssel auch nicht zurückgeben.
+4000000129	Dann können Sie problemlos ihr Geburtsdatum ändern.
+4000000130	Sie sollen das unbedingt machen und nur dann können Sie dieses Datum ändern.
+4000000131	Sie bekommen keine Fehlermeldung mehr, wenn Sie sich anmelden.
+4000000132	Ich schicke gleich einen Verifizierungscode an diese E-Mail-Adresse den Sie mir bitte vorlesen wenn Sie ihn bekommen haben.
+4000000133	Ich überprüfe etwas und dann bin ich gleich zurück.
+4000000134	Könnten Sie so lange am Telefon bleiben?
+4000000135	Ich sag Ihnen dann den anderen Link und dann sind wir soweit.
+4000000136	Sie brauchen sich keine Sorgen zu machen, wegen den neunzig Tagen, das hat sich wahrscheinlich auf etwas anderes bezogen.
+4000000137	Darf ich Sie bitte fragen, wo Sie diese Lizenz erworben haben?
+4000000138	Haben Sie kürzlich die Hardware des Rechners getauscht?
+4000000139	Keine Barauszahlung möglich und nicht mit anderen Gutscheinen kombinierbar. 
+4000000140	Die bekommen Sie auch in einer weiteren Nachricht von uns.
+4000000141	Ich gebe Ihnen ihre Bearbeitungsnummer durch. 
+4000000142	Können Sie den Kollegen diese bestimmte Bearbeitungsnummer durchgeben?
+4000000143	Darf ich Sie fragen ob Sie mit den Kollegen schon ihre Installations-ID überprüft haben?
+4000000144	Sitzen Sie im Moment vor dem Rechner?
+4000000145	Darf ich Sie bitte fragen ob Sie vielleicht während der Aktivierung einen Fehlercode erhalten?
+4000000146	In diesem Ausführungsfenster geben Sie bitte Folgendes ein.
+4000000147	Wählen Sie bitte die Region, die Sie möchten, aus und dann klicken Sie auf weiter.
+4000000148	Können Sie mir bitte diesen Fehler kurz beschreiben?
+4000000149	Ich möchte Sie auch darüber informieren, so dass Sie es wissen.
+4000000150	Einen zweiten Monitor haben Sie nicht?
+4000000151	Haben Sie die neuesten Treiber installiert?
+4000000152	Können Sie das noch mal wiederholen?
+4000000153	Darf ich sonst noch was für Sie tun?
+4000000154	Bei der telefonischen Aktivierung müssen Sie normalerweise eine Installations-ID angezeigt bekommen.
+4000000155	Möchten Sie mir einmal diese Installations-ID vorlesen?
+4000000156	Ich bräuchte von Ihnen einmal ihren Vor- und Nachnamen.
+4000000157	Von mir bekommen Sie dann auch eine E-Mail, dass Sie uns kontaktiert haben.
+4000000158	Ich muss Sie nur einen Moment auf die Warteschleife legen damit ich das ein bisschen überprüfen kann.
+4000000159	Ich habe es ein bisschen überprüft um zu sehen ob ich etwas für Sie machen kann.
+4000000160	Bitte bleiben Sie kurz dran damit ich die Verbindung durchführen kann.
+4000000161	Wenn Sie hier ihre Handynummer hinterlegt haben erhalten sie den Code per SMS.
+4000000162	Ich kann den Code, den Sie damals erstellt haben, nicht aufrufen.
+4000000163	Das System hat jetzt eine Bestätigungs-ID generiert.
+4000000164	Woher haben Sie diesen Produktschlüssel bekommen?
+4000000165	Können Sie mir bitte diesen Produktschlüssel durchgeben.
+4000000166	Der Gutscheincode wird nach Prüfung der Erstanmelder-Voraussetzung in einer separaten E-Mail an die angegebene E-Mail-Adresse zugestellt.
+4000000167	Ich werde Ihnen jetzt hier einen Verifizierungscode senden und den müssen Sie mir bitte vorlesen.
+4000000168	Ich habe Ihnen aus Sicherheitsgründen einen Verifizierungscode per E-Mail geschickt.
+4000000169	Die Einlösung des Versandkosten-Gutscheins erfolgt automatisch.
+4000000170	Dann muss ich Sie an unsere technische Abteilung weiterleiten. 
+4000000171	Wie viel haben Sie dafür bezahlt?
+4000000172	Ich kann Ihnen weiterhelfen, aber Sie sind jetzt in der Aktivierungslinie.
+4000000173	Um ehrlich zu sein kann ich das nicht kontrollieren, aber ich werde Sie zur richtigen Abteilung weiterleiten.
+4000000174	Wegen Datenschutz habe ich Ihnen kurz einen Code an die E-Mail gesendet.
+4000000175	Ich kann die Zahlung jetzt für Sie ändern.
+4000000176	Ich schicke jetzt die Bestellung für Sie ab.
+4000000177	Dann werde ich versuchen Sie direkt mit den Technikern zu verbinden.
+4000000178	Ich muss Sie mal eben in die Warteschleife bei den Technikern reinschieben und dann müssen wir warten.
+4000000179	Das heißt, er muss sich das selber angucken, weil wenn er Ihnen Fragen stellt dann dauert das fünf Stunden länger.
+4000000180	Sie müssen in den nächsten Tagen auf jeden Fall auf ihre Bankkarten schauen.
+4000000181	Meist muss man sich mühsam Angebote zusammensuchen. 
+4000000182	Sie haben ihr Geburtsdatum nicht eingegeben, als Sie das Konto erstellt haben.
+4000000183	Über die Kreditkarte können Sie dann das richtige Geburtsdatum eingeben und bestätigen lassen.
+4000000184	Ich brauche entweder die E-Mail-Adresse mit der Sie diese Lizenz verknüpft haben oder die Zahlungsmethode.
+4000000185	Wiederholen Sie mir den vierten Block. 
+4000000186	Das wäre dann sozusagen vom zweiundzwanzigsten Juli bis zum zweiundzwanzigsten August.
+4000000187	Habe ich das so richtig verstanden?
+4000000188	Also wir sind bis achtzehn Uhr da.
+4000000189	Damit wir ab heute diese Lizenz verlängert.
+4000000190	Das ist die neueste Version.
+4000000191	Ist doch im Prinzip ein komplett neuer Rechner und so gesehen ist eine neue Lizenz dafür verwendet worden.
+4000000192	Sie wurden nicht in den Daten des Systems gefunden.
+4000000193	Änderungen und Irrtümer vorbehalten.
+4000000194	Wir können das Konto nicht zurücksetzen.
+4000000195	Da wir hier Privatkundensupport sind, habe ich nicht die beste Einsicht auf ihr Konto.
+4000000196	Ich habe hier einen Fehler.
+4000000197	Sie meinen jetzt so ein kleines Pop-up-Fenster, nehme ich an.
+4000000198	Das bleibt genauso wie es schon jetzt auf ihrem Computer ist.
+4000000199	Laut unserer Auszeichnungen wurde dieser Schlüssel bereits auf einem anderen Computer aktiviert.
+4000000200	Geben Sie mir auch eine E-Mail-Adresse, ich dokumentiere den Fall damit Sie auch am Ende eine Bearbeitungsnummer bekommen.
+4000000201	Sie müssen sich an diesem Konto erstmal anmelden.
+4000000202	Das ist eine Version, die abgemeldet worden ist.
+4000000203	Kann ich mich auf ihrem Computer einloggen und dann schauen?
+4000000204	Es kann sein, dass unsere E-Mails auch dort landen.
+4000000205	Das ist die Bestellnummer, die mir hier im Bestellverlauf angezeigt wird.
+4000000206	Ich kann gerne einmal drauf schauen aber das ist alles systemabhängig.
+4000000207	Was für ein Produkt ist das genau?
+4000000208	Das müssen wir jetzt nicht machen.
+4000000209	Ich werde einen Support Code an diese E-Mail-Adresse senden müssen.
+4000000210	Das scheint noch in Bearbeitung zu sein.
+4000000211	Ich versuche diesen Kauf mit Ihrer Mastercard durchzuführen.
+4000000212	Ich habe die Nummer vom Reparaturauftrag hier.
+4000000213	Dann schreibe ich Ihnen gleich die E-Mail.
+4000000214	Dann bekomme ich Zugriff auf ihre Daten.
+4000000215	Ich gebe Ihnen gleich die Telefonnummer von der Abteilung.
+4000000216	Sie müssen sich einfach in unserem Konto anmelden.
+4000000217	Hier habe ich zwei Sachen von Ihnen bekommen.
+4000000218	Schauen wir mal, was hier passiert ist.
+4000000219	Wie gesagt, ich würde an Ihrer Stelle einfach mal die ganzen Passwörter ändern.
+4000000220	Dann werden die Kollegen genau wissen, worum es sich handelt.
+4000000221	Gibt es die Möglichkeit ein bisschen lauter zu sprechen?
+4000000222	Ich versuche das mit professioneller Hilfe zu lösen.
+4000000223	Sie haben es vom Konto aus installiert. 
+4000000224	Es dauert eine Weile bis der Code erzeugt ist.
+4000000225	Ja, das kann passieren, aber diese Fehler tritt sehr selten auf.
+4000000226	Somit stehen vielfältigen und perfekt gemixten Zubereitungen nichts mehr im Wege.
+4000000227	Ich verstehe die Regel und ich verstehe das System.
+4000000228	Ich habe nicht verstanden, was möchten Sie wissen?
+4000000229	Zusätzlich zu dieser Authentifizierung wird jetzt noch mal eine Handy oder telefonische Aktivierung gefordert.
+4000000230	Ihre Zustimmung gilt für folgende Zwecke und Verarbeitungen in diesem Angebot.
+4000000231	Schnäppchen wie Tablets oder Smartphones, Küchengadgets oder andere Alltagshelfer.
+4000000232	Diese Firma ist kein lizensierter Händler von uns.
+4000000233	Ich sehe auch, dass das offenbar ganz komisch läuft.
+4000000234	Es ist nicht von unserer Seite. 
+4000000235	Ich habe schon eine Lösung für ihre Situation gefunden.
+4000000236	Habe ich das auch richtig verstanden?
+4000000237	Wenn nicht, dann haben wir noch einen.
+4000000238	Das sieht jetzt auch schon viel besser aus.
+4000000239	Wir haben hier weder Einblick, noch wissen wir warum das passiert ist.
+4000000240	Der Kunden Support kann keine weiteren Informationen über diese Option bereitstellen.
+4000000241	Ich werden Ihnen jetzt die Bestätigungs-ID geben.
+4000000242	Aber ich kann Ihnen nicht versprechen, dass es funktionieren wird.
+4000000243	Ohne eine Lizenznummer werde ich nicht in der Lage sein Ihnen zu helfen.
+4000000244	Sie sind bei mir jetzt gerade direkt beim Surface Support rausgekommen.
+4000000245	Sie können in diesem Fall nur das Kennwort wechseln.
+4000000246	Ich mache jetzt weiter mit dem zweiten Block und danach mit dem Dritten und so weiter.
+4000000247	Das kann ich Ihnen nicht beantworten.
+4000000248	Ihr Konto oder Kennwort stimmt nicht.
+4000000249	Was für Optionen haben wir da?
+4000000250	Zur Verifizierung benötige ich dann den sechsstelligen Zahlencode.
+4000000251	Dann können wir diese Stornierung hier rausnehmen.
+4000000252	Im Nachgang ist ganz wichtig, dass Sie die automatische Verlängerung auch rausnehmen.
+4000000253	Ich habe hier die Möglichkeit nach der E-Mail-Adresse zu suchen.
+4000000254	Sie haben dieses Produkt nicht mit dieser E-Mail-Adresse gekauft.
+4000000255	Diese Bestellung wurde nicht abgeschlossen und ich sage Ihnen warum.
+4000000256	Ich habe jetzt auch eine Bestellnummer.
+4000000257	Wir werden jetzt diese Bestellung abschließen.
+4000000258	Jetzt versuche ich diese Bestellung einfach abzuschließen.
+4000000259	Die Bestellung wurde erfolgreich abgeschlossen.
+4000000260	Sie kriegen in kurzer Zeit eine Bestellbestätigung per E-Mail.
+4000000261	Sie müssen sich noch einmal anmelden, um das zu aktivieren.
+4000000262	Dankeschön fürs warten, folgendes Herr Dietrich, ich habe Ihnen das Geld zurückerstattet.
+4000000263	Das In-Place-Update ist eine quasi Wiederherstellung. 
+4000000264	Das war früher eine Option, aber das ist nicht mehr möglich.
+4000000265	Die Reinigung des Standmixers sollte genauso einfach sein wie die Verwendung.
+4000000266	Das muss ich jetzt machen.
+4000000267	Das schicke ich Ihnen gerne per E-Mail.
+4000000268	Da scheint immer noch etwas nicht zu stimmen. 
+4000000269	Sie werden von unserem Kollegen eine Antwort per E-Mail bekommen.
+4000000270	Ich habe ihr Konto gefunden, aber das war nur eine generelle Frage.
+4000000271	Es gibt kein Angebot in Form eines Rabattes auf den Preis.
+4000000272	Dieses Angebot kostet fünfhundert Euro für die Volumenlizenzen.
+4000000273	Diese Lizenzen sind ungültig für die Aktivierung.
+4000000274	Wir haben in diesem Moment eine Bestimmungs-ID bekommen und das heißt, dass ihr Produkt aktiviert werden kann.
+4000000275	Das freut mich sehr zu hören. 
+4000000276	Natürlich ein bisschen langsamer, sodass Sie die direkt eingeben können.
+4000000277	Bis die Lizenz überprüft ist, darf ich bitte Ihre E-Mai-Adresse und Ihren Namen noch mal haben?
+4000000278	Zumindest die Symptome sehen sehr danach aus.
+4000000279	Wie ist es denn zu diesem Problem gekommen?
+4000000280	Irgendwie sind die Grafikkartentreiber oder Bildschirmtreiber halt nicht auf dem aktuellsten Stand.
+4000000281	Sofern ich das optisch beurteilen kann scheint kein Problem vorzuliegen.
+4000000282	Das scheint ein Hardwareproblem in Zusammenhang mit der Grafikkarte zu sein.
+4000000283	Das System arbeitet daran.
+4000000284	Was ist das für ein Programm bitte?
+4000000285	Und jetzt auf diesem Bildschirm die gesamte Tastenkombination so schnell wie möglich eingeben.
+4000000286	Das ist eine Tastenkombination um diesen Jugendschutz zurückzusetzen.
+4000000287	Sie müssen dann diese Tastenkombination so schnell wie möglich eingeben.
+4000000288	Ein Konto in Ihrer Konsole ist als Heimkonsole gesetzt.
+4000000289	Sie müssen sich nicht unbedingt mit einer E-Mail-Adresse dort anmelden.
+4000000290	Könnten Sie mir die Nummer bitte vorlesen.
+4000000291	Ich habe hier eine Visakarte die mit fünfundzwanzig dreiundachtzig endet.
+4000000292	Ich stell mal kurz die Aufzeichnung ab.
+4000000293	Bei der kleinsten Frage bitte anrufen und wir klären es dann.
+4000000294	Wenn kein Internet da ist oder nur schlechtes Internet, dann wird das nicht möglich sein.
+4000000295	Die Techniker werden sich auf ihren Rechner schalten wollen.
+4000000296	Mit Hilfe des praktischen Sichtfensters im Deckel haben sie jederzeit den Überblick über die produzierten Eiswürfel ohne den Deckel zu öffnen.
+4000000297	Wir versuchen an die Daten der Kunden heranzukommen.
+4000000298	Wir wissen nicht, was auf ihrem Gerät passiert und wir reden auch Deutsch mit Ihnen.
+4000000299	Der Betrag konnte dann wahrscheinlich nicht abgebucht werden.
+4000000300	Ich muss ein neues Programm öffnen, damit wir das überprüfen können.

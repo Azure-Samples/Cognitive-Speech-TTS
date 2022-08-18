@@ -1,0 +1,300 @@
+4000000001	Gratis levering er tilgængelig for alle køb.
+4000000002	Spørg venligst en af vores kollegaer om hjælp.
+4000000003	Vi har gratis dag til dag levering på alle køb.
+4000000004	Butikken har åben fra ti til sytten.
+4000000005	Der er tyve procent på alle bukser.
+4000000006	Alle medlemmer kan optjene point.
+4000000007	Dem sælger vi ikke mere.
+4000000008	Vi tager imod returneringer op til tredive dage efter køb.
+4000000009	Der skal fremvises kvittering ved returnering.
+4000000010	Vent venligst et øjeblik mens vi finder produktet.
+4000000011	Medbring ID hvis du skal købe alkohol.
+4000000012	Gavekort kan indløses i alle vores butikker.
+4000000013	Genstande mærket med rød er halv pris.
+4000000014	Hvilken størrelse vil du have skoene i?
+4000000015	De er desværre ikke på lager.
+4000000016	Vi tilbyder altid gratis hjemmelevering.
+4000000017	Vi prioriterer kundeservice højt og behandler alle klager seriøst.
+4000000018	Udsalgsvarer kan desværre ikke returneres.
+4000000019	Vi har denne vare i flere størrelser.
+4000000020	Vi får en ny leverance på tirsdag.
+4000000021	Alle priser er inklusiv moms.
+4000000022	Vi sælger desværre ikke dette produkt længere.
+4000000023	Vi har desværre ikke nogen på lager lige nu.
+4000000024	Vil du tilføje mere til din ordre?
+4000000025	Er du medlem af kundeklubben?
+4000000026	Forventet leveringstid er tre til fem dage.
+4000000027	Vi har den kun i medium.
+4000000028	Vil du prøve dem her?
+4000000029	Vi har dem også i en større størrelse, hvis de ikke passer.
+4000000030	Hvilken slags sko leder du efter?
+4000000031	Foretrækker du rød eller brun?
+4000000032	Sæt dig ned og prøv dem.
+4000000033	Er det til dig eller en anden?
+4000000034	Vi har også denne kjole i en mindre størrelse.
+4000000035	Lad mig tjekke vores hjemmeside for at se, om vi har denne model.
+4000000036	Mærk materialet, det er meget blødt.
+4000000037	Ring til mig, hvis jeg skal komme med noget andet.
+4000000038	Vil du have det pakket ind?
+4000000039	Jeg hæfter bare kvitteringen fast til tasken.
+4000000040	Dybdegående serier og artikler om tidens aktuelle emner og erhvervsprofiler.
+4000000041	Skal du også købe en skærm?
+4000000042	Vi har skærme i alle størrelser.
+4000000043	Dette er den nyeste model, der lige udkom i sidste uge.
+4000000044	Alle frugter og grøntsager i denne sektion er økologiske.
+4000000045	Vi importere dette oksekød fra New Zealand, og det er hundrede procent hormonfrit.
+4000000046	Det kan vi også levere til dig, hvis du foretrækker det.
+4000000047	Det kan du finde i delikatesseafdelingen.
+4000000048	Vi burde få flere jordbær ind i løbet af de næste par dage.
+4000000049	Sidst jeg tjekkede, havde vi kun det mærke.
+4000000050	Det er et koreansk firma, og de har lavet biler i årevis.
+4000000051	Alle vores instruktører er certificerede.
+4000000052	Vores ansøgningsproces er nem og hurtig.
+4000000053	Vi tilbyder fuld returret hvis du ikke er tilfreds med kurset.
+4000000054	Vi tilbyder legater til talentfulde unge.
+4000000055	Vi har studerende fra hele verden.
+4000000056	Vi tilbyder desværre kun gruppetimer.
+4000000057	Du vil se en forbedring inden for kun to uger.
+4000000058	Vi skræddersyr vores kurser til dine behov.
+4000000059	Hver lektion er femogfyrre minutter lang.
+4000000060	Du kan tale med en vejleder.
+4000000061	Der er et begrænset antal pladser.
+4000000062	Vores instruktører er de bedste indenfor deres felt.
+4000000063	Der er kun tre pladser tilbage på litteratur-kurset.
+4000000064	Der er et gratis webinar i morgen.
+4000000065	Du kan tilføje denne klasse til dit skema mod et ekstra beløb.
+4000000066	Vores introforløb starter denne mandag.
+4000000067	Vores skemaer er meget fleksible.
+4000000068	Der er venteliste på nogle klasser.
+4000000069	Studerende vil modtage et certifikat.
+4000000070	Dit produkt er stadig under garanti.
+4000000071	Hvad kan jeg hjælpe med?
+4000000072	Vi kan erstatte det gratis.
+4000000073	Du kan kun få fuld refundering inden for tredive dage efter køb.
+4000000074	Bring venligst produktet til en butik sammen med kvitteringen.
+4000000075	Har du købt det i butikken i Aalborg?
+4000000076	Du kan returnere varen hos kundeservice.
+4000000077	Du kan bringe varen til butikken eller sende den til os.
+4000000078	Kan du fortælle mig ordrenummeret?
+4000000079	Kan du fortælle mig varenummeret?
+4000000080	Du kan reklamere produktet på vores hjemmeside.
+4000000081	Du kan reklamere produktet ved at indlevere det i butikken.
+4000000082	Vil du have en erstatning eller refundering?
+4000000083	Vi kan reparere det for dig.
+4000000084	Sagde du at telefonen ikke vil tænde mere?
+4000000085	Fysisk overlast er ikke dækket af garantien, så vi kan ikke erstatte produktet.
+4000000086	Vi vil gerne kreditere dig prisen på produktet.
+4000000087	Vi sender en reparatør ud i morgen for at kigge på den.
+4000000088	Vi er ikke ansvarlige for vandskader.
+4000000089	Jeg sender ordrebekræftelsen til din mail.
+4000000090	Der er et år tilbage af din garanti.
+4000000091	Vi kan desværre ikke gøre noget, før du finder din kvittering.
+4000000092	Hvornår opstod fejlen på produktet først?
+4000000093	Du vil modtage refunderingen inden for tre hverdage.
+4000000094	Har du tid til at svare på et par spørgsmål om kundetilfredshed?
+4000000095	Jeg beklager, men du kan ikke returnere produktet uden en kvittering.
+4000000096	Send os venligst en detaljeret beskrivelse af skaden på produktet.
+4000000097	Sagde du, at telefonen ikke vil tænde?
+4000000098	Kan du huske, hvilken dag du købte produktet?
+4000000099	Produktet skal være i original indpakning.
+4000000100	Du tilkøbte ikke en garanti, da du købte produktet.
+4000000101	Digital konsultering er vores ekspertise.
+4000000102	Vores produkter er effektive og skalerbare.
+4000000103	Vi tilbyder tilpassede løsninger til netop dine behov.
+4000000104	ERP er vores specialitet.
+4000000105	Vandfald og agil udvikling bruges til at tackle dine softwareudviklingsprojekter.
+4000000106	Vores produkter gør vores kunder konkurrencedygtigere på det globale marked.
+4000000107	Vi hjælper virksomheder i vækst til at implementere komplekse forretningssystemer.
+4000000108	Vi er den førende udbyder af professionelle datatjenester.
+4000000109	Vores resultater taler for sig selv.
+4000000110	Vi tilbyder globale løsninger til globalt integrerede kunder.
+4000000111	Vi har over tyve års implementering erfaring .
+4000000112	Vi hjælper kunder med at overvinde udfordringer på et marked i hurtig forandring.
+4000000113	Kundeengagement er det vigtigste for os.
+4000000114	Vores team af eksperter kan tackle selv de mest presserende problemer ved hjælp af maskinlæring.
+4000000115	 Vores stærke sider er dyb brancheviden og gennemgående analyser
+4000000116	Vores kunder har nydt gavn af forbedrede forretningsprocesser og øget overskud.
+4000000117	Vi leverer løsninger til en række interne og eksterne kunder.
+4000000118	 Vores prioritet er at opnå kritisk indsigt for vores kunder
+4000000119	Du skal bruge den nyeste version af appen for at fortsætte.
+4000000120	Har du prøvet at genstarte computeren?
+4000000121	Fryser skærmen stadig, når du åbner programmet?
+4000000122	Hvordan kan jeg hjælpe dig i dag?
+4000000123	Tag enheden ud, da den kan være blevet overophedet.
+4000000124	Deaktiver alle antivirusprogrammer, da det kan påvirke overførslen.
+4000000125	Hold dig opdateret med Danmarks største digitale erhvervsmedie.
+4000000126	Klik på ikonet i øverste højre hjørne.
+4000000127	Kontroller, at der er tilstrækkelig plads på disken.
+4000000128	Har du stadig en sort skærm?
+4000000129	Det kan være nødvendigt at geninstallere softwaren.
+4000000130	Du siger til, hvis du har brug for hjælp.
+4000000131	Hvis den ikke er downloadet på to minutter, skal du genstarte enheden.
+4000000132	Prøv at lukke unødvendige faner.
+4000000133	Prøv at foretage fejlfinding på appen.
+4000000134	Du skal bruge mere plads på harddisken.
+4000000135	Opdater enheden til den nyeste version, før du fortsætter.
+4000000136	Du er nødt til at frigøre mere diskplads til denne opdatering.
+4000000137	Prøv at klikke på ikonet "værktøj" under fanen Indstillinger.
+4000000138	Prøv at genstarte computeren først.
+4000000139	Jeg er lige her, hvis du har brug for hjælp.
+4000000140	Velkommen, hvad kan jeg gøre for dig?
+4000000141	Har du opdateret din enhed for nylig?
+4000000142	Vi kan sende en tekniker over klokken femten.
+4000000143	Til den her serie køber man låg ved siden af gryderne.
+4000000144	Prøv at hente filerne til skrivebordet.
+4000000145	Brug søgefunktionen nederst i venstre hjørne.
+4000000146	Du skal opgradere systemet, før du kan gemme ændringer.
+4000000147	Et overblik, som sikrer, at du er på forkant og rustet til en morgendag, der måske ikke ligner dagen i dag.
+4000000148	Kan du fortælle mig produktnøglen?
+4000000149	Sørg for at vente et par sekunder, før du tænder computeren igen.
+4000000150	Desværre understøttes softwaren ikke af din enhed.
+4000000151	Jeg tror, der er et problem med serveren.
+4000000152	Hej Sara, tak for din henvendelse.
+4000000153	Ud fra hvad jeg kan se er en anden enhed tilsluttet netværket.
+4000000154	Jeg tror, din gratis prøveperiode udløb i går.
+4000000155	Slet overførselspakken, når du har hentet den.
+4000000156	Jeg tror, at din enhed har forbindelsesproblemer.
+4000000157	Har du downloadet antivirus-software for nylig?
+4000000158	Kontroller, at der ikke er aktiveret nogen firewalls, når du opretter forbindelse til netværket.
+4000000159	Du kan betale et månedligt abonnementsgebyr eller en engangsbetaling.
+4000000160	Vent et par sekunder, før du annullerer overførslen.
+4000000161	Prøv at se, om du kan flytte markøren nu.
+4000000162	Du kan opgradere til premium-versionen gratis.
+4000000163	Sørg for, at der ikke er andre enheder tilsluttet netværket.
+4000000164	Vi understøtter ikke din enhed i øjeblikket.
+4000000165	Du kan ikke sætte overførslen på pause.
+4000000166	Din gratis prøveperiode udløber i morgen.
+4000000167	Hvis serverne er optaget, kan der være en lille forsinkelse.
+4000000168	Tilmeld dig vores gratis nyhedsbrev.
+4000000169	Vi er kendetegnet ved vores forskellighed.
+4000000170	Det her tv er femoghalvtreds tommer.
+4000000171	Din ordre er leveret!
+4000000172	Din nye sikkerhedskode er ni to én ni to.
+4000000173	Bedøm din oplevelse på en skala fra én til fem.
+4000000174	Din pizza er på vej!
+4000000175	Hvis du spørger mig, ville jeg helt sikkert vælge præmium opgradering.
+4000000176	Alle vores brugte køretøjer er ovre på højre side.
+4000000177	Hvis du køber nu, betaler du ingen renter for det næste år.
+4000000178	Har du handlet med os før?
+4000000179	Vi opkræver for poser, så kunderne medbringer derfor normalt deres egne.
+4000000180	Vil du have en elektronisk kopi af din kvittering?
+4000000181	Du kan finde flere af vores produkter i vores online butik.
+4000000182	Det produkt, du spørger om, sælges kun online.
+4000000183	Lad mig prøve at slå modelnummeret op.
+4000000184	Hvis det er en gave, kan jeg pakke den ind for dig.
+4000000185	Beklager, vi tager kun kontanter.
+4000000186	Hvilken størrelse bruger du normalt ?
+4000000187	Prøv disse to og se hvilken der passer bedre.
+4000000188	Vi tilbyder certifikat- og diplomuddannelser.
+4000000189	Det tager normalt fire år at gennemføre, men nogle mennesker gør det på mindre.
+4000000190	Vi har mange muligheder for folk, der ønsker at studere på deltid.
+4000000191	De fleste af stipendierne er meritbaserede.
+4000000192	Vi accepterer for øjeblikket ikke ansøgninger på dette kursus.
+4000000193	Dette kursus tilbydes kun i dagtimerne.
+4000000194	Har du tjekket vores aftenskoleprogram?
+4000000195	Hvor erfaren med computere vil du sige, du er?
+4000000196	Vores instruktører har alle studeret på musikkonservatoriet.
+4000000197	Vi tilbyder gruppeundervisning og privatundervisning.
+4000000198	De fleste af vores studerende er fra Asien, men vi har også nogle fra Europa.
+4000000199	På grund af den nuværende globale situation har vi kun onlinekurser.
+4000000200	Skolen arrangerer aktiviteter hver weekend, der hjælper eleverne med at øve det, de har lært.
+4000000201	Der er normalt en hel del lektier, så kurset passer ikke alle.
+4000000202	De fleste kurser er om morgenen.
+4000000203	Klasserne er fra otte til elleve hver morgen.
+4000000204	Vores bokseklasse er den populæreste.
+4000000205	Du kan medbringe dit eget udstyr, eller du kan bruge det, vi har til rådighed.
+4000000206	Sikkerhedsudstyr er obligatorisk for alle.
+4000000207	Det har et rigtig godt billede.
+4000000208	Bare send det tilbage til os, så tager vi os af det.
+4000000209	Er det okay, hvis jeg sætter dig på hold i et minut?
+4000000210	Hvad er problemet med dit tv?
+4000000211	Har du købt en udvidet garanti?
+4000000212	Vi kan sende dig en erstatning eller refundere dine penge.
+4000000213	Det ser ud til, at din bærbare computer ikke er kompatibel med docken.
+4000000214	Forsendelse er ikke dækket af garantien.
+4000000215	Lad mig bekræfte din adresse.
+4000000216	Det tager normalt et par dage at ordne og højst en uge.
+4000000217	Mens den bliver repareret, kan du leje en af vores biler.
+4000000218	Vi skal bare bekræfte dine oplysninger først.
+4000000219	Alle returneringer kræver en kvittering.
+4000000220	Hvis du støder på problemer, er du velkommen til at ringe til os.
+4000000221	Vi ringer for at informere dig om, at det produkt du har købt er blevet tilbagekaldt.
+4000000222	Batterierne holder kun et par år, så det lyder, som om dine skal udskiftes.
+4000000223	Jeg ringer for at fortælle dig, at din ordre er blevet forsinket.
+4000000224	I dit abonnement er der inkluderet et års lagerplads i skyen.
+4000000225	Vi dækker alle brancher og har en løsning til både store og små virksomheder.
+4000000226	Overophedning er et almindeligt problem for denne model, og dækket af garantien.
+4000000227	Tag den med til et af vores servicecentre for at få den repareret.
+4000000228	Jeg er ikke i stand til at give den slags oplysninger over telefonen.
+4000000229	Vi vil gerne stille dig et par spørgsmål om dit produkt.
+4000000230	Er du villig til at deltage i en hurtig undersøgelse om dit køb?
+4000000231	Hej, vi ringer bare for at sikre os, at dine apparater fungerer korrekt.
+4000000232	Vi sender dig en erstatning, hvis vores tekniker ikke er i stand til at løse problemet.
+4000000233	Kunne du tænke dig at deltage i vores loyalitetsprogram?
+4000000234	Du kan få femten procent i rabat, hvis du tilmelder dig vores nyhedsbrev.
+4000000235	Vi hjælper kunder med at forbedre effektiviteten og til at innovere for fremtiden.
+4000000236	Længden af et projekt afhænger af forskellige faktorer, såsom budget og organisationsstørrelse.
+4000000237	Hvert projekt er designet til at imødekomme vores kunders specifikke behov.
+4000000238	Vi fokuserer på vores kunders succes.
+4000000239	Det er også på tilbud i den her uge.
+4000000240	Omfanget bestemmes primært ud fra forretningsmål og problemstillinger.
+4000000241	Vi anbefaler typisk en vurderingsfase i begyndelsen af hvert projekt.
+4000000242	Vi eliminerer rejser så meget som muligt for at spare tid og penge.
+4000000243	Hvordan hjælper vi jer bedst i gang?
+4000000244	Designfasen bruges til at tilrettelægge et træningsprogram fra start til slut.
+4000000245	Kortlægning af forretningsprocesser er afgørende for forbedring af forretningsprocesser.
+4000000246	Forbedring af forretningsprocesser kan kun ske gennem nøjagtig procesdokumentation.
+4000000247	Din organisationsstrategi er afgørende for at definere, hvordan din virksomhed skal fungere.
+4000000248	Vi kan udvikle og levere omfattende rapportering for enhver form for medarbejderundersøgelse.
+4000000249	Der skelnes mellem store og små bogstaver i din adgangskode.
+4000000250	Vil du stave dit fornavn?
+4000000251	Okay, jeg skal bruge den kode, tak.
+4000000252	Er der et ikon for det?
+4000000253	Så den har en sort skærm?
+4000000254	Der er intet, der kan gøres.
+4000000255	Men vi har også det her som er fem tommer større.
+4000000256	Ja, du fik ti procent rabat.
+4000000257	Den er ikke på tilbud, men har en rigtig fornuftig lav pris.
+4000000258	Jeg kommer tilbage om et øjeblik.
+4000000259	Beder den dig om produktnøglen?
+4000000260	Klik nu på "næste" for at aktivere din software.
+4000000261	Lad os se, på hvilken konto det var.
+4000000262	Jeg tjekker det lige hurtigt hos mig.
+4000000263	Okay, kan jeg bede dig om at logge ind.
+4000000264	Tryk på tænd/sluk-knappen for at starte op.
+4000000265	I kan hente pakken ved vores udlevering.
+4000000266	Har computeren forbindelse til internettet?
+4000000267	Udleveringen er omme på den anden side af bygningen.
+4000000268	Skal i have en vogn til at få den hen til bilen?
+4000000269	Bliv kontaktet vedrørende et skræddersyet virksomhedsabonnement, som passer til din virksomhed eller afdeling.
+4000000270	Ja, jeg er her stadig.
+4000000271	Ja, det kunne være en af grundene.
+4000000272	Vi tilbyder muligheden for at afprøve et virksomhedsabonnement.
+4000000273	Vent et øjeblik, så burde det komme tilbage igen.
+4000000274	Jeg tror, at vi har et stort problem.
+4000000275	Den bliver i så glade for.
+4000000276	Jeg er her, har du bekræftelseskoden?
+4000000277	Okay, har du et installations-id hos dig?
+4000000278	Kan du se noget på skærmen?
+4000000279	Du modtager en bekræftelseskode.
+4000000280	Jeg er her for at hjælpe dig til at aktivere softwaren.
+4000000281	Derfor er din ordre lidt forsinket.
+4000000282	Vi kan ikke gøre andet lige nu.
+4000000283	Må jeg bede om din e-mailadresse til at komme i gang?
+4000000284	Blev refusionen ikke udstedt den otte og tyvende februar?
+4000000285	Vi får det løst så hurtigt som muligt.
+4000000286	Okay, så logger jeg bare ud af din computer nu.
+4000000287	Har du et andet telefonnummer?
+4000000288	Det er jeg med på, men først og fremmest er det ikke vores skyld.
+4000000289	Nej, bare giv mig et par minutter.
+4000000290	Så vil jeg give dig et download link.
+4000000291	Okay, giv mig et øjeblik, så jeg kan slå det op.
+4000000292	Ok, hvordan logger du ind på din computer?
+4000000293	Den aktiveres muligvis automatisk, når installationen er fuldført.
+4000000294	Tjek både din e-mail og din telefon for bekræftelseskoden.
+4000000295	Din pakke er blevet sendt!
+4000000296	Gennemfør dit køb nu og få ti procent rabat!
+4000000297	Dit kontoudtog er nu tilgængeligt på din konto.
+4000000298	Du er logget af denne session.
+4000000299	Du har overskredet din datagrænse for denne måned.
+4000000300	Denne e-mail er muligvis ikke sikker, er du sikker på, at du vil åbne den?
