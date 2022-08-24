@@ -24,7 +24,7 @@
 4000000024	Ok, per poter modificare la fattura le invierò adesso un messaggio sul cellulare.
 4000000025	Mi dice cortesemente qual è il numero del suo conto?
 4000000026	Ok, mi dia un numero di telefono, nel caso dovesse cadere la linea.
-4000000027	Signore, qual è il problema? Non riesce ad effettuare l’attivazione?
+4000000027	Signore, qual è il problema?
 4000000028	Mi può dire il suo nome per esteso?
 4000000029	Signora, deve accedere alla sezione in alto a destra.
 4000000030	È un codice valido per tre mesi.

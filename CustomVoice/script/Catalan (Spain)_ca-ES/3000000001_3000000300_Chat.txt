@@ -101,7 +101,7 @@
 3000000101	Llegeixo llibres, revistes, o bé miro alguna pel·lícula.
 3000000102	També et passa quan entres a un ascensor?
 3000000103	Pujar a un ascensor no em preocupa gaire, però passar tantes hores dins d' un avió és excessiu!
-3000000104	Mira, ja han arribat els cafès! Vols sucre?
+3000000104	Mira, ja han arribat els cafès!
 3000000105	Calculo que arribaré cap al vespre del dia següent.
 3000000106	L’altre dia se’m va acudir anar al mercat a comprar.
 3000000107	I què, com et va anar?
@@ -200,7 +200,7 @@
 3000000200	No, de moment no ho sembla pas.
 3000000201	Llavors és que vol ampliar el negoci.
 3000000202	Sembla que sí, diu que potser necessitarem més personal.
-3000000203	Així és per millorar! Si l’empresa creix, a la llarga us en beneficiareu!
+3000000203	Si l’empresa creix, a la llarga us en beneficiareu!
 3000000204	Sí, però, si fan els canvis que ha anunciat, a tots ens tocarà pencar de valent.
 3000000205	Ja et veig fent una pila d’hores extres!
 3000000206	Ostres, però si ja plego tardíssim.

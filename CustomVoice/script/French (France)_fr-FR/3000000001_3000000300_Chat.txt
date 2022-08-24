@@ -121,7 +121,7 @@
 3000000121	C’est la récompense de tous tes efforts !
 3000000122	Ce résultat t’a demandé de la patience et tu as réussi !
 3000000123	Tu as fait ça, puis ça et ça a fonctionné !
-3000000124	Bravo ! Tu as fait un dessin !
+3000000124	Tu as fait un dessin !
 3000000125	J’adore te regarder aider ta sœur !
 3000000126	Regarde comme ton ami est joyeux quand tu souris !
 3000000127	Tu as continué, même quand c’était dur !
@@ -235,14 +235,14 @@
 3000000235	Vous avez bien nettoyé le tableau !
 3000000236	Combien j’aime le chant du vent dans les arbres !
 3000000237	J’ai trouvé ce film très amusant !
-3000000238	Ah ! Comme il fait chaud aujourd’hui !
+3000000238	Comme il fait chaud aujourd’hui !
 3000000239	Comme j’ai hâte de pouvoir m’amuser dehors !
 3000000240	Tes cadeaux d’anniversaire sont finalement arrivés !
 3000000241	Je serai magicien et j’aurai un chapeau magique !
 3000000242	Dimanche prochain, ce sera mon anniversaire !
 3000000243	Ce soir, nous aurons enfin le temps de jouer !
 3000000244	Cette année, le poirier aura beaucoup de fruits !
-3000000245	Promis ! Je ne serai plus dans la lune !
+3000000245	Je ne serai plus dans la lune !
 3000000246	Je ressens à ce moment précis de la joie et de la satisfaction !
 3000000247	Tu mangeras quand tu en auras envie !
 3000000248	Demain, j’aurai enfin un nouveau cartable !
@@ -256,11 +256,11 @@
 3000000256	Nous serons mieux à l’ombre !
 3000000257	Elle sera belle avec cette robe !
 3000000258	Comme il fait beau cet après-midi !
-3000000259	Quel film ! Il m’a fait rire du début à la fin !
+3000000259	Il m’a fait rire du début à la fin !
 3000000260	Hier, nous avons gagné le match !
 3000000261	Nous passerons vous voir ce week-end promis !
 3000000262	En rentrant, je vais vous préparer à manger !
-3000000263	Hourra ! C’est notre équipe qui a gagné la partie !
+3000000263	C’est notre équipe qui a gagné la partie !
 3000000264	Je ne peux pas croire que j’ai gagné autant d'argent !
 3000000265	Mon père achètera bientôt une nouvelle voiture !
 3000000266	Nous terminerons notre puzzle ce soir !
@@ -272,7 +272,7 @@
 3000000272	Comme c’est super que tu aies réussi ton examen !
 3000000273	Fais attention à tes oreilles !
 3000000274	Comme tu es resplendissante avec ce chandail bleu !
-3000000275	Promis ! Nous disons que la vérité !
+3000000275	Nous disons que la vérité !
 3000000276	Réfléchis bien à ce que tu dis !
 3000000277	Rien ne la prédestinait pourtant à devenir une architecte en herbe.
 3000000278	Ce que je voudrais retrouver ma jeunesse d’antan !

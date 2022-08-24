@@ -175,7 +175,7 @@
 4000000175	Dobrze, zaraz sprawdzę na którym koncie możemy znaleźć te informacje.
 4000000176	Przeprowadzę Panią przez proces instalacji.
 4000000177	Odpowiedź na to pytanie powinna znajdować się w instrukcji użytkowania.
-4000000178	Nieraz jednak dostępne porty różnią się od siebie, np. funkcją szybkiego ładowania.
+4000000178	Dzięki tym czterem wskazówkom pokażemy Ci, jak możesz zacząć mówić w nowym języku w zaledwie 3 tygodnie.
 4000000179	Tak, otrzyma Pani zniżkę na zakup kolejnego produktu.
 4000000180	Czy cokolwiek pojawiło się na ekranie?
 4000000181	Często dzięki temu nadają się nawet do ładowania dwóch urządzeń jednocześnie.

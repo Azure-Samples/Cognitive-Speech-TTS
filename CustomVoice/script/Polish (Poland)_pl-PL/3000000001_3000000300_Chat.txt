@@ -43,7 +43,7 @@
 3000000043	Studiowałam we Wrocławiu, a potem znalazłam pracę w Warszawie.
 3000000044	No tak, wszyscy mają jakieś problemy.
 3000000045	Nie wiem, nie widziałam jej już pół roku.
-3000000046	Ładne profilowe zdjęcie! Gdzie ścinałaś włosy?
+3000000046	Gdzie ścinałaś włosy?
 3000000047	W mojej rodzinie też mamy taki problem.
 3000000048	Nowy wykładowca wydaje się być w porządku.
 3000000049	Jest ambitna i zawsze walczy o swoje.
@@ -79,7 +79,7 @@
 3000000079	Może potrzebujesz lekarza, tydzień to już długo.
 3000000080	Poczekam jeszcze kilka dni i zobaczę.
 3000000081	Wszystko będzie dobrze, nie martw się.
-3000000082	Pamiętasz, jak rozmawiałyśmy o lekcjach hiszpańskiego? Dalej chcesz się uczyć?
+3000000082	Pamiętasz, jak rozmawiałyśmy o lekcjach hiszpańskiego?
 3000000083	A gdzie dokładnie się wybieracie?
 3000000084	Znalazłam szkołę językową, mają teraz kursy w promocji.
 3000000085	Czy zajęcia są tylko od poniedziałku do piątku, czy w weekendy też?
@@ -107,13 +107,13 @@
 3000000107	To dobrze, bo chyba nawet cena jest korzystniejsza.
 3000000108	W przyszłym tygodniu zapytam szefa, jak planuje rozdzielać urlopy.
 3000000109	Będziemy w kontakcie, trzymaj się.
-3000000110	Cześć! Kupiłeś już najnowszy kryminał naszego ulubionego autora?
+3000000110	Kupiłeś już najnowszy kryminał naszego ulubionego autora?
 3000000111	Najpierw chciałem skończyć poprzednią książkę, i tak kupuję za dużo.
 3000000112	Jeśli jeszcze nie masz, to mogę ci pożyczyć.
 3000000113	Ze względu na to, że zioło można zaliczyć do chwastów, nie jest konieczne, aby szukać go na specjalnych uprawach, czy plantacjach.
 3000000114	Masz czas w przyszły weekend?
 3000000115	W piątek jadę do mojej dziewczyny, wracam w niedzielę po południu.
-3000000116	 Kończę pracę o 18, a ty?
+3000000116	Kończę pracę o 18, a ty?
 3000000117	Chyba że wolisz spotkać się na mieście?
 3000000118	Sylwia nie może zostać sama nawet na chwilę, bo mały zaczyna płakać.
 3000000119	Ok, to do następnego weekendu!
@@ -156,7 +156,7 @@
 3000000156	Mam nadzieję, że kotek nie narobi nam bałaganu.
 3000000157	Na pewno nie narobi bałaganu.
 3000000158	Dobrze, że Julia będzie miała towarzystwo.
-3000000159	Cały czas zostajesz przy swoim zdaniu? Nie chcesz drugiego dziecka?
+3000000159	Cały czas zostajesz przy swoim zdaniu?
 3000000160	Znowu długi czas spędzę w domu.
 3000000161	Tak, pamiętam, jakie to było dla ciebie trudne.
 3000000162	Poza tym nie mogę sobie pozwolić na kolejną przerwę w pracy.
@@ -228,7 +228,7 @@
 3000000228	Do 8 tysięcy będzie w porządku?
 3000000229	Nie ma opcji, muszę zmienić plan.
 3000000230	Jego ulubiona drużyna nie gra teraz w Polsce, ale możesz kupić mu koszulkę zawodnika.
-3000000231	Dzięki za podpowiedź! Przy okazji, będzie alkohol czy każdy w swoim zakresie?
+3000000231	Przy okazji, będzie alkohol czy każdy w swoim zakresie?
 3000000232	Nie wiem, ale na wszelki wypadek lepiej weź coś swojego.
 3000000233	Jak było dzisiaj w szkole?
 3000000234	Nudno, nic ciekawego się nie działo.

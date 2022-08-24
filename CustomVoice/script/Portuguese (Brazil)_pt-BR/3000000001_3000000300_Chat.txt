@@ -99,7 +99,7 @@
 3000000099	Eu também estava na Opera House.
 3000000100	Eu também te pedi isso também.
 3000000101	Mas ela vai aprender muito rapidamente.
-3000000102	Me conta! Como eles se conheceram?
+3000000102	Como eles se conheceram?
 3000000103	Não, ela está em outra universidade.
 3000000104	Não, eu não quero comprar perfume.
 3000000105	Ainda temos que pensar no corredor.
@@ -121,7 +121,7 @@
 3000000121	Nós também podemos usar algo azul.
 3000000122	Quantas garrafas de cola devo comprar?
 3000000123	Sim, o preço é muito caro.
-3000000124	Sim, queremos pintá-las de branco também? 
+3000000124	Sim, queremos pintá-las de branco também?
 3000000125	No momento não consigo mais pensar.
 3000000126	Eu vou falar com meu pai.
 3000000127	Talvez ainda consigamos efetuar algumas mudanças.

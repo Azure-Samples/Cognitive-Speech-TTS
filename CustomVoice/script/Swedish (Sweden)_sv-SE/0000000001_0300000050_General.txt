@@ -27,8 +27,7 @@
 0000000027	Hur mycket getingar det blir under en sommar beror på olika saker, som till exempel tillgång till föda och boplatser. 
 0000000028	Flygbranschen ser introduktionen av biobränslen som en viktig möjlighet för flyget att minska användningen av fossila bränslen och därmed även minska flygets klimatpåverkan.
 0000000029	Medborgarinflytande, en förändrad syn på hemmet och ökad mångfald kommer sannolikt att prägla framtidens arkitektur och stadsutveckling.
-0000000030	"
-Alla ekosystem påverkas av klimatförändringarna och ett allt varmare klimat har omfattande konsekvenser för den svenska naturmiljön."
+0000000030	"Alla ekosystem påverkas av klimatförändringarna och ett allt varmare klimat har omfattande konsekvenser för den svenska naturmiljön."
 0000000031	I Sverige finns en lång historik av att stödja kombinationen idrott och studier på gymnasienivå, till exempel genom idrottsgymnasier, vilket etablerades redan 1972.
 0000000032	Forskning visar att skogen har läkande effekter på människors fysiska och psykiska hälsa och att den dessutom kan fylla en andlig funktion, även för de som inte är religiösa.
 0000000033	Närmare hälften av alla bilar i Sverige kan vara laddbara om tio år och utsläppen kan minska med 60 procent.

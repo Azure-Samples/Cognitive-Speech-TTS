@@ -112,10 +112,10 @@
 4000000112	Vi hjælper kunder med at overvinde udfordringer på et marked i hurtig forandring.
 4000000113	Kundeengagement er det vigtigste for os.
 4000000114	Vores team af eksperter kan tackle selv de mest presserende problemer ved hjælp af maskinlæring.
-4000000115	 Vores stærke sider er dyb brancheviden og gennemgående analyser
+4000000115	Vores stærke sider er dyb brancheviden og gennemgående analyser
 4000000116	Vores kunder har nydt gavn af forbedrede forretningsprocesser og øget overskud.
 4000000117	Vi leverer løsninger til en række interne og eksterne kunder.
-4000000118	 Vores prioritet er at opnå kritisk indsigt for vores kunder
+4000000118	Vores prioritet er at opnå kritisk indsigt for vores kunder
 4000000119	Du skal bruge den nyeste version af appen for at fortsætte.
 4000000120	Har du prøvet at genstarte computeren?
 4000000121	Fryser skærmen stadig, når du åbner programmet?

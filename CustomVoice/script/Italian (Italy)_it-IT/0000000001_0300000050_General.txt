@@ -113,7 +113,7 @@
 0000000113	E sulle terre emerse tra gli acquitrini, vivono i puma e diverse specie di rettili e scimmie, e trovano rifugio specie altrove estinte come il giaguaro e il formichiere. 
 0000000114	Purtroppo da 20 anni non funziona più il treno che attraversava la palude, ma diversi operatori locali visitano il Pantanal con barche e mezzi fuoristrada.
 0000000115	Risalire con un battello i suoi bracci d’acqua che si inoltrano per migliaia di chilometri nella giungla è una delle più emozionanti avventure che un viaggiatore possa affrontare.
-0000000116	Situato nel punto più a nord del parco, è immerso nella biodiversità della foresta primaria. Un soggiorno permette di approfondire cultura e tradizioni locali dando un aiuto concreto agli indigeni. 
+0000000116	Situato nel punto più a nord del parco, è immerso nella biodiversità della foresta primaria.
 0000000117	Gli ospiti possono pescare con tecniche tradizionali, fabbricare monili con semi, macinare la farina di manioca. 
 0000000118	Per il 55% degli intervistati si tratta di un’ottima alternativa ai mezzi di trasporto pubblici. 
 0000000119	Storie emozionanti sono le protagoniste della rassegna, nella continua sfida tra l’uomo e la montagna con le sue pareti rocciose e le grandi falesie.

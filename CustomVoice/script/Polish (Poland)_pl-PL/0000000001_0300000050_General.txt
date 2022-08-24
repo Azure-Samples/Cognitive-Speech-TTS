@@ -1,6 +1,6 @@
 0000000001	Tuż przed świętami Bożego Narodzenia koszykarze Śląska rozegrają pierwszy z serii trzech meczów w Hali Stulecia.
 0000000002	Taktyka Anderssona była dość prosta – skierować przeciwnika na skrzydło i zapraszać go do gry w tej strefie.
-0000000003	 Wówczas mieli wielkie oczekiwania, skończyło się na ćwierćfinale z Anglią, teraz zagrają z Ukrainą, do której mają szacunek, ale wiedzą, że są w stanie z nią wygrać.
+0000000003	Wówczas mieli wielkie oczekiwania, skończyło się na ćwierćfinale z Anglią, teraz zagrają z Ukrainą, do której mają szacunek, ale wiedzą, że są w stanie z nią wygrać.
 0000000004	Być może tej jednej bramki gdzieś nam po drodze zabrakło, żeby teraz być w innych nastrojach.
 0000000005	Pozostało nam już chyba tylko przypomnieć to, jak to wielkie strzelanie dla portugalskiej kadry się zaczęło.
 0000000006	Poszedł pod prąd, odsłonił się na niewyobrażalny poziom krytyki, w końcu dopiął swego, stał się pionierem na bardzo grząskim gruncie, lecz, żeby osiągnąć sukces, musiał wiele poświęcić.
@@ -60,7 +60,7 @@
 0000000060	Niecałe dwadzieścia minut potem na lewej stronie Przemysław Frankowski wrzucił w stronę Lewandowskiego, defensorzy minęli się z piłką i nasz snajper ze spokojem wykończył, doprowadzając do remisu.
 0000000061	Przebiśniegi kwitną od lutego do kwietnia, a szczególnie lubią lasy łęgowe i podmokłe, półcieniste tereny.
 0000000062	Trzeba jednak wiedzieć na co zwracać uwagę podczas zakupów, żeby nie dać się nabrać na chwytliwe hasła reklamowe.
-0000000063	 Jeśli chcemy kupić naprawdę dobry produkt, powinniśmy wiedzieć nie tylko czego szukać, ale także czego unikać. 
+0000000063	Jeśli chcemy kupić naprawdę dobry produkt, powinniśmy wiedzieć nie tylko czego szukać, ale także czego unikać. 
 0000000064	Spod warstw ziemi ukazał się mur, a za nim na wpół zasypana ziemią krypta grobowa i ozdobna trumna cynowa. 
 0000000065	W domu możemy starannie sprawdzić składy, wyszukując w Internecie informacje o poszczególnych składnikach lub markach kosmetyków.
 0000000066	Prace na wysokościach są bardzo trudne i wymagające, aby przemieszczać ciężkie przedmioty o dużych gabarytach, potrzebna jest wiedza i doświadczenie.
@@ -75,16 +75,16 @@
 0000000075	Z tego względu rośnie popularność agencji pracy tymczasowej, z których to korzysta coraz więcej pracowników oraz pracodawców.
 0000000076	Na dłuższe wyprawy warto zabrać nie tylko wodę, ale również dedykowane dla zwierząt płyny izotoniczne.
 0000000077	Psy i koty z już trwającym problemem skórnym mogą odczuć nasilenie objawów w związku z intensywną ekspozycją na promienie słoneczne.
-0000000078	 Lemoniadę możemy przygotować samodzielnie, jednakże w ciepłe dni nie mamy ochoty siedzieć w gorącym domu, a wolimy ten czas spędzić na zewnątrz, ciesząc się słoneczną pogodą.
-0000000079	 Według niektórych badań picie gorących napojów podczas upałów pomaga ugasić pragnienie dużo bardziej niż picie zimnych. 
+0000000078	Lemoniadę możemy przygotować samodzielnie, jednakże w ciepłe dni nie mamy ochoty siedzieć w gorącym domu, a wolimy ten czas spędzić na zewnątrz, ciesząc się słoneczną pogodą.
+0000000079	Według niektórych badań picie gorących napojów podczas upałów pomaga ugasić pragnienie dużo bardziej niż picie zimnych. 
 0000000080	Dla organizmu najlepsza będzie woda, ale warto pamiętać, że również inne napoje, w tym te słodkie wliczają się do dziennego zapotrzebowania.
-0000000081	 Z prośbą o interwencję mieszkańcy zwrócili się do Wojewódzkiego Inspektoratu Ochrony Środowiska we Wrocławiu, a od właściciela zakładu domagają się eliminacji występujących uciążliwości zapachowych.
+0000000081	Z prośbą o interwencję mieszkańcy zwrócili się do Wojewódzkiego Inspektoratu Ochrony Środowiska we Wrocławiu, a od właściciela zakładu domagają się eliminacji występujących uciążliwości zapachowych.
 0000000082	Jednak inwestycja w wiedzę, w edukację jest tym, co pozostaje na lata i procentuje w przyszłości.
 0000000083	W trosce o bezpieczeństwo dzieci i dorosłych, udających się na letni wypoczynek, policjanci będą prowadzić kontrole autokarów.
 0000000084	Wykaz ten zawiera zestawienie punktów z terenu kraju wraz z numerami telefonów kontaktowych, gdzie można uzyskać informacje na temat możliwości przeprowadzenia doraźnych kontroli autobusów i kierowców.
 0000000085	Do zwiedzania dodatkowo zachęcić mają wakacyjne atrakcje, jakie zespół jaworzyńskiego muzeum przygotował dla młodszych i nieco starszych miłośników techniki kolejowej.
 0000000086	Ponieważ problem wycinek nie dotyczy tylko naszej letniej bazy, myślę, że jesienią przygotujemy wspólne działania harcerzy z całej Polski i skierujemy petycje do parlamentarzystów, Lasów Państwowych, ministerstw, premiera.
-0000000087	 Przy zakupie karnetu na konfrontacje kibice otrzymają upominek od klubu i jednego z jego partnerów.
+0000000087	Przy zakupie karnetu na konfrontacje kibice otrzymają upominek od klubu i jednego z jego partnerów.
 0000000088	Pracownicy, którzy zostali zwolnieni z powodu pandemii, mają dzięki pracy tymczasowej możliwość na szybkie znalezienie kolejnego pracodawcy. 
 0000000089	Obecnie największym problemem w rolnictwie jest wzrost cen nawozów, bo one znacząco podnoszą koszty produkcji.
 0000000090	Rzadko zdarza się sytuacja, w której przedsiębiorca nie posiadałby w ewidencji środków trwałych żadnego składnika majątku.

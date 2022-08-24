@@ -62,9 +62,7 @@
 0000000062	På konkurrencens egen hjemmeside bliver denne ælling kaldt »uimodståelig«, og det er vist det mest rammende ord.
 0000000063	Pollenundersøgelser fra disse perioder viser også generelt tæt skov, selvom der er en tydelig tendens til lidt mere åbne skove i slutningen af mellemistiderne end i begyndelsen. 
 0000000064	I forhold til bevaring af biodiversitet, er det derfor mest relevant at se på, hvilke faktorer der har formet den nuværende biodiversitet siden istiden. 
-0000000065	"På meget sandede, næringsfattige jorde viser pollenundersøgelser, at urskoven var mere åben, men stadig med tæt plantedække.
-
-"
+0000000065	"På meget sandede, næringsfattige jorde viser pollenundersøgelser, at urskoven var mere åben, men stadig med tæt plantedække."
 0000000066	Sandsynligvis er udvaskning af fosfor derfor ansvarlig for, at skovene gennem mellemistiderne langsomt bliver mere åbne.
 0000000067	Under hver istid skete en uddøen af både planter og dyr i Europa, så biodiversiteten er derfor langt lavere nu end førhen. 
 0000000068	Hver gang klimaet mildnedes, spredte flora og fauna sig nordpå, men ikke alle arter nåede med, eller de ankom i forskellig rækkefølge. 

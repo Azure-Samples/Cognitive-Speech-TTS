@@ -274,7 +274,7 @@
 3000000274	Jeg tror, du læser en masse bøger.
 3000000275	Ved middagstid går jeg på universitetet for at lære.
 3000000276	Jeg spiser det meste af tiden min frokost i cafeteriet.
-3000000277	Hvordan ser dine middage ud?
+3000000277	Hvordan ser din middag ud?
 3000000278	Om aftenen kommer jeg hjem og spiser min middag.
 3000000279	Så gør jeg mig klar til at gå i seng og ser som regel en eller anden serie.
 3000000280	Om aftenen tager jeg altid et brusebad, og derefter drikker jeg så en kop kaffe.

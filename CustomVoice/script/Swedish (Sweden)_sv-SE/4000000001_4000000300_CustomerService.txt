@@ -1,4 +1,4 @@
-4000000001	Hej och välkommen till kundtjänst! Hur kan jag hjälpa till?
+4000000001	Hej och välkommen till kundtjänst!
 4000000002	Jag kan självklart hjälpa dig med ditt ärende via telefon.
 4000000003	Våra ordinarie öppettider är mellan klockan 8 och 17 på vardagar.
 4000000004	Är du kund hos oss sen tidigare?

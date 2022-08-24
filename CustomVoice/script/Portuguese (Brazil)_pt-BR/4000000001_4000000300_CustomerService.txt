@@ -6,7 +6,7 @@
 4000000006	Tenha uma excelente semana.
 4000000007	Um instante, por favor.
 4000000008	Vamos tentar resolver agora.
-4000000009	César, obrigado por ter aguardado. 
+4000000009	César, obrigado por ter aguardado.
 4000000010	Informe os seus dados pessoais.
 4000000011	Eduardo, obrigado por aguardar novamente.
 4000000012	Podemos começar novamente, caso prefira!
@@ -21,7 +21,7 @@
 4000000021	A minha recomendação é só aguardar.
 4000000022	A senhora pode fazer isso agora?
 4000000023	Aguarde mais um momento, por favor.
-4000000024	Ainda está no prazo de reembolso. 
+4000000024	Ainda está no prazo de reembolso.
 4000000025	Certo você prefere inserir pelo site.
 4000000026	Como posso te ajudar hoje Fabiana?
 4000000027	Compreendo que a situação esteja complicada.
@@ -30,53 +30,53 @@
 4000000030	É através realmente através dessa conta?
 4000000031	Eu compreendo, estou tentando te auxiliar.
 4000000032	Eu vou reenviar o e-mail, tá? 
-4000000033	Exatamente, ele formata o H. D. 
-4000000034	Exato, a versão que está instalada. 
-4000000035	Já vai constar na nossa solicitação. 
-4000000036	Lamento o ocorrido, vamos tentar resolver! 
+4000000033	Todo mundo tem opiniões quando se trata de comida.
+4000000034	Exato, a versão que está instalada.
+4000000035	Já vai constar na nossa solicitação.
+4000000036	Lamento o ocorrido, vamos tentar resolver!
 4000000037	Não, porque não trocou a numeração.
-4000000038	O sistema está localizando a conta. 
+4000000038	O sistema está localizando a conta.
 4000000039	Para você também, tudo de bom.
 4000000040	Pode clicar nesse link, por favor.
 4000000041	Precisamos aguardar ele realizar esse download.
 4000000042	Só mais um momento, tá OK?
 4000000043	A capacidade de todos os componentes, exatamente.
 4000000044	A financeira geralmente funciona da seguinte forma.
-4000000045	A gente até pode inserir por aqui. 
+4000000045	A gente até pode inserir por aqui.
 4000000046	A placa de vídeo é a mesma.
 4000000047	Acho que não vai dar para aguardar.
 4000000048	Agora escolha a mídia a ser usada.
-4000000049	Aí nós fazemos essa mediação, tá OK? 
+4000000049	Aí nós fazemos essa mediação, tá OK?
 4000000050	Clique em compartilhamento, insira o e-mail dela.
 4000000051	Como é que vai querer isso automaticamente?
-4000000052	Deixe aberto por favor, assim consigo acessar. 
+4000000052	Deixe aberto por favor, assim consigo acessar.
 4000000053	Disse que retornaria a uma e trinta.
 4000000054	É um processo bem rápido, bem tranquilo.
 4000000055	Então a máquina já desligou o sistema?
 4000000056	Entendi, é que foi encaminhado para você.
 4000000057	Espera só um momentinho que está carregando.
 4000000058	Está OK, só um momento, por favor.
-4000000059	Isso - eu alterei para esse aí. 
+4000000059	Isso - eu alterei para esse aí.
 4000000060	Lá tem outras maneiras de fazer aquisição.
 4000000061	Mais um minuto que ainda está conectando.
 4000000062	Na loja tem como comprar a chave.
 4000000063	Não, vamos entrar em contato de novo.
 4000000064	O senhor tem essas duas opções, Carlos.
-4000000065	OK, deixa eu verificar aqui sua conta. 
+4000000065	OK, deixa eu verificar aqui sua conta.
 4000000066	Outro caso é se o senhor instalar.
 4000000067	Pode deixar baixando, continuaremos amanhã de manhã.
 4000000068	Por gentileza, me informe seu nome completo
 4000000069	Por gentileza, você poderia especificar seu problema?
 4000000070	Qual é o e-mail que está bloqueado?
 4000000071	Que bom ter você com a gente.
-4000000072	Tá certo, você tem seus direitos sim. 
-4000000073	Tentarei explicar novamente para o senhor entender. 
+4000000072	Tá certo, você tem seus direitos sim.
+4000000073	Tentarei explicar novamente para o senhor entender.
 4000000074	Você pode passar para mim por favor?
 4000000075	A mensagem pede 'selecionar idioma, edição e arquitetura'.
 4000000076	A senhora tem o número dele, os dados?
 4000000077	Aí não tem opção de cheque, não é?
 4000000078	Correto, eu posso finalizar aqui para você confirmar.
-4000000079	E aí, a gente instalou um pacote lá. 
+4000000079	E aí, a gente instalou um pacote lá.
 4000000080	É o seguinte: essa renovação foi feita automaticamente.
 4000000081	É que tem que gerar a chave lá.
 4000000082	Ele vai mandar um código de segurança, então.
@@ -84,8 +84,8 @@
 4000000084	Eu teria que fazer cancelamento total da assinatura.
 4000000085	Ficaria grata se você pudesse me avaliar, OK?
 4000000086	Infelizmente nesse momento não há o que fazer.
-4000000087	Já encaminhei a autorização para sincronização das telas. 
-4000000088	Mas não se preocupe, eu vou lhe ajudar. 
+4000000087	Já encaminhei a autorização para sincronização das telas.
+4000000088	Mas não se preocupe, eu vou lhe ajudar.
 4000000089	Meu nome é Ana, em que posso ajudar?
 4000000090	Vamos enviar um técnico para avaliar seu equipamento.
 4000000091	Não é possível processar sua solicitação neste momento.
@@ -99,17 +99,17 @@
 4000000099	Sim, agora você vai me dar um código.
 4000000100	Sinceras desculpas pelo ocorrido, desconsidere a informação anterior.
 4000000101	Só um minuto enquanto eu verifico suas informações!
-4000000102	Tenho que verificar aqui no sistema, tudo bem? 
+4000000102	Tenho que verificar aqui no sistema, tudo bem?
 4000000103	Um instante por favor,  enquanto eu verifico aqui.
 4000000104	Vai sair um número de protocolo para você.
-4000000105	Vamos lá e tenta digitar um e-mail, tá? 
+4000000105	Vamos lá e tenta digitar um e-mail, tá?
 4000000106	Vou lhe passar todos valores e taxas correspondentes.
 4000000107	Ter um cartão de crédito com as principais bandeiras.
 4000000108	É muito importante que o senhor deixe sempre atualizado as informações do update porque protege o computador do senhor.
 4000000109	Aguarde enquanto faço a pesquisa, pode demorar um pouco.
 4000000110	Ajudo o senhor tem mais alguma informação que necessita?
 4000000111	Assim que ele der alguma opção, você me informa.
-4000000112	Bom, no caso, Eduardo, o pagamento depende do pacote. 
+4000000112	Bom, no caso, Eduardo, o pagamento depende do pacote.
 4000000113	Confirma para mim, soletrando o seu e-mail, por favor.
 4000000114	De nada, a senhora deseja uma coisa a mais?
 4000000115	Exato, esse plano a cobertura é com quarto individual.
@@ -117,34 +117,34 @@
 4000000117	É referente à atualização lá das informações, não é?
 4000000118	É você poderia anotar número de protocolo desse atendimento.
 4000000119	Eu estou verificando esse código que foi informado, tá?
-4000000120	Eu preciso que você responda esse formulário, por favor. 
+4000000120	Eu preciso que você responda esse formulário, por favor.
 4000000121	Flávio, um momento que ainda estou tentando conectar, tá?
-4000000122	Foi encaminhado um procedimento por e-mail para você, certo? 
+4000000122	Foi encaminhado um procedimento por e-mail para você, certo?
 4000000123	Gostaria de saber se há outros detalhes a acrescentar.
 4000000124	Marcos, você consegue calcular e retornar a chamada também.
-4000000125	Margarete, eu adotei os procedimentos para correção dos problemas. 
+4000000125	Margarete, eu adotei os procedimentos para correção dos problemas.
 4000000126	Não compreendi o seu problema, pode repetir, por gentileza?
 4000000127	Um dos cinco números sorteados para os prêmios principais.
 4000000128	O seu computador é um desktop, não é isso?
 4000000129	OK, deixa eu fazer uma pesquisa aqui no sistema.
-4000000130	Para iniciarmos é necessário que eu confirme alguns dados. 
-4000000131	Pelo número do pedido eu não consigo localizar, senhor. 
-4000000132	Perfeito, eu vou enviar um código para esse e-mail. 
+4000000130	Para iniciarmos é necessário que eu confirme alguns dados.
+4000000131	Pelo número do pedido eu não consigo localizar, senhor.
+4000000132	Perfeito, eu vou enviar um código para esse e-mail.
 4000000133	Pode ir na loja e comprar aquele cartãozinho, sabe?
 4000000134	Podemos realizar essa alteração caso a senhora realmente queira.
 4000000135	Por favor, qual o jogo que você está interessado?
 4000000136	Por volta das dez e vinte mais ou menos.
-4000000137	Pronto, aí ele vai pedir para aceitar os termos. 
+4000000137	Pronto, aí ele vai pedir para aceitar os termos.
 4000000138	Sim qual é o seu e-mail vinculado a conta.
 4000000139	Vou lhe enviar um código para ativarmos o atendimento.
 4000000140	A intenção da senhora seria cancelar esse serviço, não é?
 4000000141	Acho que ele vai chegar das duas formas para você.
-4000000142	Antes de iniciarmos seu atendimento eu preciso confirmar seus dados. 
+4000000142	Antes de iniciarmos seu atendimento eu preciso confirmar seus dados.
 4000000143	Para fazer o seu cadastro, siga os passos a seguir.
 4000000144	Vou lhe passar os valores de cada modalidade de plano.
 4000000145	Compreendo sua posição e o impacto que você está sentindo.
 4000000146	Confirmando a compra do produto só um momento por favor.
-4000000147	É assim: deixa eu lhe te explicar primeiro, por gentileza. 
+4000000147	É assim: deixa eu lhe te explicar primeiro, por gentileza.
 4000000148	Então posso considerar a solicitação do senhor ela foi resolvida?
 4000000149	Estou fazendo o possível para resolver a sua questão senhora!
 4000000150	Informe seu nome completo para registro de contato, por favor.
@@ -154,14 +154,14 @@
 4000000154	Não medirei esforços para tentar ajudá-lo da melhor maneira possível.
 4000000155	O senhor vai ter que soletrar para mim, por favor.
 4000000156	O sistema ainda está gerando o código de verificação, tá?
-4000000157	Então, pode me descrever, por gentileza, novamente, o que acontece? 
+4000000157	Então, pode me descrever, por gentileza, novamente, o que acontece?
 4000000158	Para iniciarmos o atendimento eu vou precisar confirmar alguns dados.
 4000000159	Nós temos um técnico para amanhã de manhã, pode ser?
 4000000160	Posso considerar que as suas dúvidas foram resolvidas com sucesso?
 4000000161	Posso só te adiantar o número do protocolo da ligação?
 4000000162	Pronto, agora vamos aguardar aqui mais uns três minutinhos, viu?
 4000000163	Pronto, o aplicativo aqui já identificou a sua a internet.
-4000000164	Sim, eu vou te ajudar com esta solicitação, OK Eduardo? 
+4000000164	Sim, eu vou te ajudar com esta solicitação, OK Eduardo?
 4000000165	Só que nós não garantimos suporte caso dê algum problema.
 4000000166	Só um minuto que eu já vou efetuar a transferência.
 4000000167	Status dele aparece pendente você colocou todas as informações certinhas.
@@ -169,27 +169,27 @@
 4000000169	Tem como transferir para eles ou eu preciso ligar novamente?
 4000000170	Vamos verificar o motivo do cartão não ter sido liberado.
 4000000171	Verifique, por favor, se já recebeu aquele código de validação.
-4000000172	Você não precisa confirmar código, você não precisa enviar código. 
+4000000172	Você não precisa confirmar código, você não precisa enviar código.
 4000000173	A orientação levará aproximadamente 30 minutos, o senhor tem tempo agora?
-4000000174	Aqui ele conseguiu gerar o processo da atualização das cinco iniciais. 
+4000000174	Aqui ele conseguiu gerar o processo da atualização das cinco iniciais.
 4000000175	Deixa eu ver qual que é esse erro aqui, espera aí.
 4000000176	Deixa só o sistema localizar aqui que a gente já faz.
-4000000177	Desculpa, a ligação está cortando, não consigo identificar o seu nome. 
+4000000177	Desculpa, a ligação está cortando, não consigo identificar o seu nome.
 4000000178	É, aí ele vai pedir aí ele vai pedir a chave.
 4000000179	Então vou solicitar dois dados para realizar a transferência, tudo bem?
 4000000180	Espera aí que ele voltou a solicitação e eu encaminhei novamente.
 4000000181	Existe algum outro detalhe que a senhora deseja adicionar na reclamação?
-4000000182	Marlon, eu vou precisar de alguns dados para seguir o atendimento. 
-4000000183	Na verdade, ele fica registrado aqui no seu e-mail, não é? 
-4000000184	Não se preocupe, aqui a gente está para te ajudar, viu? 
-4000000185	No dia vinte e quatro de fevereiro, você efetuou a compra. 
+4000000182	Marlon, eu vou precisar de alguns dados para seguir o atendimento.
+4000000183	Na verdade, ele fica registrado aqui no seu e-mail, não é?
+4000000184	Não se preocupe, aqui a gente está para te ajudar, viu?
+4000000185	No dia vinte e quatro de fevereiro, você efetuou a compra.
 4000000186	O limite do cartão dependerá da análise da sua renda, senhora.
 4000000187	O senhor chegou testar o console com outra fonte de alimentação?
 4000000188	O senhor pode verificar essa forma também de parcelamento, tudo bem?
 4000000189	Para sermos assertivos gostaria de repassar os pontos da sua questão.
 4000000190	Podemos fazer essa verificação, para isso preciso de alguns dados adicionais.
-4000000191	Senhora, fui informada que a previsão de retorno é duas horas. 
-4000000192	Temos que ver como é que está essa sua situação aqui. 
+4000000191	Senhora, fui informada que a previsão de retorno é duas horas.
+4000000192	Temos que ver como é que está essa sua situação aqui.
 4000000193	Você pode verificar no nosso fórum ou entrar em contato conosco.
 4000000194	Vou criar uma solicitação para uma análise completa da sua conta.
 4000000195	A senhora deseja mais alguma informação que eu posso passar para você?
@@ -197,7 +197,7 @@
 4000000197	Assim que você receber ele você me passa por gentileza, tá bom?
 4000000198	Certo, só um momento que eu estou tentando conectar remoto novamente, tá?
 4000000199	Então aqui a gente vai colocar todas as atualizações que são importantes.
-4000000200	Eu só vou pedir para a senhora aguardar um momento, por favor. 
+4000000200	Eu só vou pedir para a senhora aguardar um momento, por favor.
 4000000201	Informo que o prazo é de até 5 dias úteis, começando hoje.
 4000000202	O que eu poderia falar a respeito seria com nosso suporte técnico.
 4000000203	O senhor me informa, por favor, senhor Felipe, o seu nome completo.
@@ -221,13 +221,13 @@
 4000000221	Então tudo bem, vamos estabelecer então a conexão do acesso remoto, por favor.
 4000000222	O valor do prêmio é proporcional à quantidade de frações que for adquirida.
 4000000223	Foi enviado um formulário para você responder com várias questões esse mesmo e-mail.
-4000000224	Infelizmente sem o código não consigo verificar se a conta é sua mesmo. 
+4000000224	Infelizmente sem o código não consigo verificar se a conta é sua mesmo.
 4000000225	Lá embaixo no final da página, depois do contrato, clica no botão 'aceito'.
 4000000226	Me fala seu e-mail para contato que você vinculou à assinatura, por gentileza.
 4000000227	O senhor só pode contar de zero a sessenta segundos, é o suficiente.
-4000000228	Perfeito, então vamos tentar já com esse endereço de e-mail primeiro do senhor. 
+4000000228	Perfeito, então vamos tentar já com esse endereço de e-mail primeiro do senhor.
 4000000229	Por aqui eu não consigo alterar, vou transferir você para o setor responsável!
-4000000230	Quando você entrar em contato conosco novamente, é só nos fornecer esse número. 
+4000000230	Quando você entrar em contato conosco novamente, é só nos fornecer esse número.
 4000000231	Sim, ele vai funcionar normalmente ele só vai fazer a reinstalação do produto.
 4000000232	Sim, vou lhe informar todos os detalhes, para isso preciso acessar seu cadastro.
 4000000233	Só um momento, por gentileza, que eu estou atualizando meu sistema, tudo bem?
@@ -236,7 +236,7 @@
 4000000236	Vamos resolver juntos, para isso preciso que o senhor me informe o código.
 4000000237	Vão entrar em contato com você no prazo de setenta e duas horas.
 4000000238	Vem a chave, a senhora coloca na sua conta e consegue utilizar normalmente.
-4000000239	Antes de passar o telefone, a senhora pode me fornecer alguns dados para registro? 
+4000000239	Antes de passar o telefone, a senhora pode me fornecer alguns dados para registro?
 4000000240	No momento da compra, é escolhido o número impresso no bilhete que quer concorrer.
 4000000241	Ele está fazendo a cobrança de setenta e nove reais a cada três meses.
 4000000242	Entra nele, por favor, é uma página que em cima é preto e laranja.
@@ -261,7 +261,7 @@
 4000000261	E já verifica se foi se foi ativada, de fato, a sua assinatura, tá bom?
 4000000262	E o senhor usa mídia física na máquina que o senhor deseja fazer a instalação?
 4000000263	Isso será resolvido para você - o setor responsável vai entrar em contato com você.
-4000000264	Para aqui, você só vai ligar para confirmar se de fato foi consolidada, tá bom? 
+4000000264	Para aqui, você só vai ligar para confirmar se de fato foi consolidada, tá bom?
 4000000265	Nesse caso, se ainda estiver dentro do prazo, eu posso refazer o processo de reembolso.
 4000000266	No celular e no e-mail alternativo que você deixou cadastrado aqui como e-mail de contato.
 4000000267	OK, mas então, se você entrar no seu perfil, você já não tem que utilizar.
@@ -283,18 +283,18 @@
 4000000283	O senhor está com medo de perder no caso os produtos que o senhor já tem, correto?
 4000000284	Para consolidar essa ativação da sua assinatura, só vou pedir para que você continue aguardando, tudo bem?
 4000000285	Você sabe me informar, mais ou menos, qual foi a data que você comprou a o jogo?
-4000000286	Dessa forma, você fica com uma máquina que teve o sistema reinstalado num H. D. que foi formatado.
-4000000287	Como eu já expliquei: eu vou passar para o setor responsável para verificar isso daí no meu sistema. 
+4000000286	A ideia era criar um espaço amplo para receber amigos e fazer música, um passatempo do proprietário.
+4000000287	Como eu já expliquei: eu vou passar para o setor responsável para verificar isso daí no meu sistema.
 4000000288	Ele vai gerar um procedimento, fazer uma verificação e uma validação técnica para saber se realmente é elegível.
 4000000289	Muito obrigado, de nada uma boa tarde para você.
 4000000290	Vamos colocar dois mil e treze, então só um momento que vou entrar em contato com nosso técnico.
 4000000291	Você pode até utilizar caso você comprar, mas só que nós não vamos garantir que vai funcionar, OK?
 4000000292	OK, senhor Kelly, pode ficar tranquilo que eu vou verificar para o senhor e vou te ajudar nessa questão.
 4000000293	Pode colocar as credenciais do acesso porque a conexão do acesso é aquele código que você me deu antes.
-4000000294	Vou precisar verificar essa informação porque, como é para empresa, eu não consigo te dar resposta aqui de imediato. 
-4000000295	É vai abrir está O. K. não então é que é cobrou o mês passado e você paga agora entendeu.
+4000000294	Vou precisar verificar essa informação porque, como é para empresa, eu não consigo te dar resposta aqui de imediato.
+4000000295	A cozinha também precisava ser reorganizada com armários novos e aumentar a área de trabalho, para que o cliente pudesse cozinhar – outro hobby seu.
 4000000296	Eu posso colocar uma informação de prioridade para que ele entre em contato mais rápido possível aí com a senhora.
 4000000297	No momento que ele identificar a conexão novamente com a internet, ele vai fazer a reconexão do aplicativo automático, tá?
 4000000298	Perfeito, só vou é complementar as minhas informações aqui e entrarei em contato com o nosso suporte técnico, tá bom?
 4000000299	Se a sua solicitação ela foi resolvida, se ficaram claras as informações, poderá atribuir uma nota ao meu atendimento também.
-4000000300	Tudo bem, então a gente vai fazer o seguinte: eu vou verificar o que a gente pode estar fazendo aqui. 
+4000000300	Tudo bem, então a gente vai fazer o seguinte: eu vou verificar o que a gente pode estar fazendo aqui.
