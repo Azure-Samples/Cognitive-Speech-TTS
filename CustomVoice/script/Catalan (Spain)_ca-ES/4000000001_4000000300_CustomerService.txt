@@ -241,7 +241,7 @@
 4000000241	Si tens pensat fer el pagament per domiciliació bancària, necessito que emplenis també aquest document.
 4000000242	Veu una icona amb forma de monitor situada a la part superior de la finestra?
 4000000243	Deixa l' ordinador apagat uns quants minuts.
-4000000244	Espera uns minuts perquè es refresqui la memòria cau de dades internes.
+4000000244	Espera uns minuts per que es refresqui la memòria cau de dades internes.
 4000000245	Prem el botó d' encesa de l'ordinador.
 4000000246	Potser hagis de dur-la a el servei tècnic perquè li facin un diagnòstic.
 4000000247	En acabar de iniciar-se, tornarà a la manera normal.

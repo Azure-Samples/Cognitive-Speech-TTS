@@ -30,7 +30,7 @@
 0000000030	Consulta de Cartomancia com projeção no futuro, saiba precaver-se para ficar mais confiante no seu destino.
 0000000031	Cursos completos ficando a possuir uma boa ferramenta de auto conhecimento ou satisfazer a sua curiosidade e aprofundar conhecimentos.
 0000000032	Porém, ela não deve ser definitiva ao ponto de influenciar e de paralisar o seu comportamento, face ao seu poder de ação e de livre arbítrio.
-0000000033	 Um olhar profundo e esclarecedor, apresentando uma perspetiva para um futuro aproximado, integrado na história de cada um e alicerçado nas vivências. 
+0000000033	Um olhar profundo e esclarecedor, apresentando uma perspetiva para um futuro aproximado, integrado na história de cada um e alicerçado nas vivências. 
 0000000034	No aroma é um vinho muito rico, em que dominam as notas de resina, citrinas e também florais.
 0000000035	Os seus aromas frutados mantêm-se num final longo e persistente, deixando no palato o tom clássico e atraente do nosso Alentejo.
 0000000036	De perfil jovem e atrativo, este vinho apresenta uma cor granada e aromas de groselha, ameixas vermelhas e algumas especiarias.

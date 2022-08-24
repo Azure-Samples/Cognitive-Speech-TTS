@@ -188,7 +188,7 @@
 3000000188	Skulle vi kunna få se menyn, tack?
 3000000189	Jag skulle gärna vilja ha löjromstoast till förrätt.
 3000000190	Rekommenderar ni något speciellt på menyn?
-3000000191	Vilken tid börjar filmen? Hinner vi köpa popcorn först?
+3000000191	Vilken tid börjar filmen?
 3000000192	Vi ska fira min mammas 75-årsdag genom att gå ut på restaurang.
 3000000193	Vi borde kunna hitta den här boken till ett bättre pris på nätet.
 3000000194	Jag gillar ditt förslag.
@@ -228,7 +228,7 @@
 3000000228	Du som vet så mycket om trädgårdsskötsel, kan inte du ge mig lite tips?
 3000000229	Jätteroligt att det går bra för ditt nya företag!
 3000000230	Vi lägger ganska lite pengar på mat, men mycket på resor.
-3000000231	Berätta! Vad gjorde ni igår kväll?
+3000000231	Vad gjorde ni igår kväll?
 3000000232	Min farmor älskar att dansa, promenera och ta hand om trädgården.
 3000000233	Hoppas att du kommer lära dig mycket nytt under kursen.
 3000000234	Du ska veta hur otroligt stolt jag är över dig!
@@ -239,7 +239,7 @@
 3000000239	Såhär i slutet av arbetslivet ser man saker och ting på ett lite annorlunda sätt. 
 3000000240	Jag mår som allra bäst när jag får vara aktiv och slipper sitta stilla.
 3000000241	Jag trivs väldigt bra med mitt arbete som undersköterska. 
-3000000242	Vad vill du göra nu? Ska vi åka in till stan?
+3000000242	Vad vill du göra nu?
 3000000243	Hur mycket kommer du tjäna på ditt nya jobb? 
 3000000244	Mina svärföräldrar har varit så generösa i samband med flytten.
 3000000245	Hur mycket fick du betala för klippningen?
@@ -259,7 +259,7 @@
 3000000259	Vad var anledningen till att du flyttade till Stockholm?
 3000000260	Jag känner mig verkligen som hemma hos dem.
 3000000261	Kan du snälla svara på min fråga?
-3000000262	Så roligt att ni skaffat hund! Hur kom det sig att ni valde just den här rasen?
+3000000262	Hur kan jag hjälpa till?
 3000000263	Allt är bra med min bror.
 3000000264	Det är bara att fråga mig om du undrar något. 
 3000000265	Det var verkligen länge sen vi satt ner och pratade såhär.
@@ -284,7 +284,7 @@
 3000000284	Min dotter pluggar design i London.
 3000000285	Det är bra att planerna kring den nya vägen kommer upp till diskussion.
 3000000286	Du behöver inte berätta för mig.
-3000000287	Hur vet du vad han heter? Har ni jobbat ihop?
+3000000287	Hur vet du vad han heter?
 3000000288	Vi kommer snart flytta till Uppsala, eftersom min kille har fått ett bra jobberbjudande där.
 3000000289	Du som är så duktig kommer lära dig snabbt.
 3000000290	Jag kommer ihåg vår fröken från ettan.
@@ -293,7 +293,7 @@
 3000000293	Jag är så nyfiken på vad du kommer att säga om mitt förslag.
 3000000294	Jag mötte min sons lärare på stan och vi pratade lite.
 3000000295	Det var så länge sen jag träffade henne.
-3000000296	Borde jag köpa något till svärmor i julklapp? Kanske något klädesplagg?
+3000000296	Hinner vi köpa popcorn först?
 3000000297	Det innebär så mycket glädje att arbeta inom äldreomsorgen.
 3000000298	Vad gör jag om jag har glömt mitt lösenord?
 3000000299	Jag måste storhandla idag.

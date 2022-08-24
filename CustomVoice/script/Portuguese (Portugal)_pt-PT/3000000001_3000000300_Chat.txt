@@ -42,7 +42,7 @@
 3000000042	Vamos para as Galerias ou alugamos um barco no Douro?
 3000000043	Dotada de um terror único, esta é a casa onde vai poder conhecer as raízes deste vinho tão aclamado. 
 3000000044	Quantos convidados, mais ou menos?
-3000000045	Pelas minhas contas eram umas 15 pessoas? Não era?
+3000000045	Pelas minhas contas eram umas 15 pessoas?
 3000000046	Pensei que íamos organizar juntas.
 3000000047	Hum, isso é puxado. 
 3000000048	Estou aqui a ver, o barco fica por 900 euros por noite.
@@ -90,7 +90,7 @@
 3000000090	E ainda que tenha passado por períodos complicados, hoje é uma das técnicas mais aclamadas tanto por produtores como por consumidores.
 3000000091	As crianças não vão à escola?
 3000000092	Não, as crianças não vão à escola porque não têm dinheiro.
-3000000093	Como é que sabes disso tudo? Já estiveste no Bangladesh?
+3000000093	Como é que sabes disso tudo?
 3000000094	Não, vi um documentário sobre a indústria têxtil no Bangladesh.
 3000000095	Também gostava de ver esse documentário.
 3000000096	Sabes por anda a Beatriz? 
@@ -127,7 +127,7 @@
 3000000127	Mãe, vamos fazer uma aposta?
 3000000128	O que queres apostar?
 3000000129	Aguentar um dia e dizer Sim a tudo.
-3000000130	Queres saber uma coisa? Porque não?
+3000000130	Queres saber uma coisa?
 3000000131	A fachada é como uma casa e o prédio vai crescendo em blocos.
 3000000132	Só consigo dormir duas horas por dia.
 3000000133	Aceito, menina, porque sei que não vou recuar.

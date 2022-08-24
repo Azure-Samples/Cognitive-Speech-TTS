@@ -1,11 +1,11 @@
 3000000001	Hoi, hoe gaat het met je?
 3000000002	Ja goed, lang niet meer gesproken.
 3000000003	Ook goed, ik ben momenteel bezig met een tweede studie.
-3000000004	Oh ja? Welke studie volg je momenteel dan?
+3000000004	Welke studie volg je momenteel dan?
 3000000005	Het valt niet echt mee, maar ik wil het zeker afronden.
 3000000006	Heb je plannen voor na je studie?
 3000000007	Jazeker, ik ben van plan om te verhuizen naar het buitenland.
-3000000008	Wat leuk! Waar wil je heen?
+3000000008	Waar wil je heen?
 3000000009	Het weer zal je waarschijnlijk ook niet tegenvallen.
 3000000010	Nou, ik ben toch wel een beetje jaloers op je.
 3000000011	Heb jij ook wel eens gedacht aan verhuizen naar het buitenland?
@@ -95,7 +95,7 @@
 3000000095	Wordt het dan een cultureel tripje of meer een strandvakantie?
 3000000096	Ik denk dat het een combinatie wordt.
 3000000097	Je hebt er veel te zien, maar er zijn ook zat stranden.
-3000000098	Mijn zomer wordt een beetje saai, maar weet je wat ook leuk is? In de winter op vakantie gaan!
+3000000098	In de winter op vakantie gaan!
 3000000099	Bedoel je dat je dan op wintervakantie gaat?
 3000000100	Ja oké dat is ook leuk, maar ik bedoelde eigenlijk iets anders.
 3000000101	Wat bedoel je dan precies?

@@ -200,7 +200,7 @@
 3000000200	Perché non vuoi dirmelo, pensavo che fossimo amici.
 3000000201	Che brutta notizia che mi hai dato, ancora stento a crederci.
 3000000202	Eravamo migliori amici una volta, poi ci siamo persi di vista.
-3000000203	 Secondo me gli farebbe piacere rivederti.
+3000000203	Secondo me gli farebbe piacere rivederti.
 3000000204	Probabile, ma voglio aspettare tempi migliori. 
 3000000205	Ti va di andare a fare compere con me?
 3000000206	Almeno è quello che ha detto tua madre una volta!
@@ -208,7 +208,7 @@
 3000000208	Se penso che lo scorso anno ho festeggiato il mio compleanno con Donatella mi viene da piangere.
 3000000209	Luca e Mara dovrebbero tornare da scuola verso le 14. 
 3000000210	Rimettiti al più presto, allora. 
-3000000211	Che cucini di buono oggi? Hai già qualche idea?
+3000000211	Che cucini di buono oggi?
 3000000212	Oggi devo occuparmi del giardino. 
 3000000213	Volevo andare in piscina.
 3000000214	Ma guarda che sto bene, se andate al cinema vengo volentieri.
@@ -234,7 +234,7 @@
 3000000234	Ho già ordinato un paio di camicie Armani ad un prezzo davvero ridicolo!
 3000000235	Ah, pensavo avessi cominciato a lavorare. 
 3000000236	Ti andrebbe di andare a cena con me stasera?
-3000000237	Ma non sei andata al cinema ieri? Vuoi andarci anche stasera?
+3000000237	Ma non sei andata al cinema ieri?
 3000000238	Che film volevi vedere e dove pensavi di cenare?
 3000000239	Io preferisco pulire la cucina, se per te non è un problema.
 3000000240	Guarda che pulisco meglio di te. 
@@ -261,7 +261,7 @@
 3000000261	Sono soddisfatto della mia vita.
 3000000262	Tento sempre di organizzare al meglio le mie giornate.
 3000000263	Ho troppi pensieri per la mente.
-3000000264	Devi svegliarti presto domani? O possiamo restare a parlare ancora un po'?
+3000000264	Devi svegliarti presto domani?
 3000000265	Pensi che la meditazione possa aiutarmi?
 3000000266	Lei è esperta di yoga.
 3000000267	Cosa direbbe Andrea se lo sapesse?
