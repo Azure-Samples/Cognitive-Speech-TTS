@@ -1,10 +1,10 @@
 # Read this first
 
-This sample training set ("Dataset") includes a sample script (SampleScript.txt), the associated audios (SampleAudios.zip) and a sample voice talent verbal statement (VoiceTalentVerbalStatement.wav).
+This sample training set ("Dataset") includes a sample script (SampleScript.txt), the associated audios (SampleAudios.zip) and a sample voice talent verbal statement (VoiceTalentVerbalStatement.wav). This readme file should be read in conjunction with the [License](License-MustRead.md) for the Dataset. 
 
 ## Sample script and audios
 
-* The sample script and associated audios include 300 utterances that can be used directly for training.
+* The sample script and associated audios include 300 utterances that can be used as a reference for your training data format. You can also upload the sample data for training.
 * To learn more about training data, see [Types of training data](https://learn.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data#types-of-training-data).
 
 ## Voice talent verbal statement
@@ -15,6 +15,6 @@ This sample training set ("Dataset") includes a sample script (SampleScript.txt)
 ## References
 
 * [Prepare training data](https://learn.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-prepare-data)
-
+* [License for the Dataset](License-MustRead.md)
   
 
