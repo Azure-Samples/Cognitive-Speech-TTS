@@ -112,7 +112,7 @@ def ackaud():
     pronAssessmentParams = str(pronAssessmentParamsBase64, "utf-8")
 
     # build request
-    url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s" % (region, language)
+    url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s&usePipelineVersion=0" % (region, language)
     headers = { 'Accept': 'application/json;text/xml',
                 'Connection': 'Keep-Alive',
                 'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
