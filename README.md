@@ -23,6 +23,7 @@ Below are latest updates from Azure TTS.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2022.12 [Azure Custom Neural Voice introduces new emotional styles to support brand voices](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-custom-neural-voice-introduces-new-emotional-styles-to/ba-p/3695831)
 * 2022.11 [Azure Cognitive Services releases new languages and voices for Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-cognitive-services-releases-new-languages-and-voices-for/ba-p/3672286)
 * 2022.10 [Azure Neural TTS voices upgraded to 48kHz with HiFiNet2 vocoder](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-voices-upgraded-to-48khz-with-hifinet2-vocoder/ba-p/3665252)
 * 2022.09 [Introducing AI-generated voices for Azure neural text to speech service](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/introducing-ai-generated-voices-for-azure-neural-text-to-speech/ba-p/3637815)
