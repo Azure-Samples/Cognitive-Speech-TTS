@@ -19,6 +19,7 @@ Below are latest updates from Azure TTS.
 * Kahoot! (Education) - [Makes learning more accessible for everyone with Azure Cognitive Services](https://customers.microsoft.com/en-us/story/1379629341340415380-kahoot-partner-professional-services-azure-cognitive-services)
 * Hongdandan (Audiobook) - [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
 * NTT Disruption Jibo (Assistant) - [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
+* Low resource TTS challenge winners - [“面向蒙古语的低资源语音合成竞赛（Mongolian Text-to-Speech Challenge under Low-Resource Scenario](https://mp.weixin.qq.com/s/Uh90ihN76vsHPCQDpyatYA)
 
 # Azure Cognitive Service TTS Blog and News
 
