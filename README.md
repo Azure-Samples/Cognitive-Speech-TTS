@@ -2,7 +2,7 @@
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  The REST API samples are just provided as referrence when SDK is not supported on the desired platform. 
 
-Below are latest updates from Azure TTS. 
+Below are latest updates from Azure TTS. It is udpated regularly. 
 
 # Azure Cognitive Service TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
