@@ -20,10 +20,12 @@ Below are latest updates from Azure TTS. It is updated regularly.
 * Hongdandan (Audiobook) - [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
 * NTT Disruption Jibo (Assistant) - [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
 * Low resource TTS challenge winners - [“面向蒙古语的低资源语音合成竞赛（Mongolian Text-to-Speech Challenge under Low-Resource Scenario](https://mp.weixin.qq.com/s/Uh90ihN76vsHPCQDpyatYA)
+* [Lightweight, multispeaker,multilingual TTS challenge winner](https://sites.google.com/view/syspinttschallenge2023/leaderboard/main-leaderboard)
 
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.02 [Speech Service Update – Hierarchical Transformer for Pronunciation Assessment](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/speech-service-update-hierarchical-transformer-for-pronunciation/ba-p/3740866)
 * 2023.01 [Low-resource technology updates for Azure Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/low-resource-technology-updates-for-azure-neural-text-to-speech/ba-p/3716922)
 * 2023.01 [Azure Neural TTS now available on devices for disconnected and hybrid scenarios](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-now-available-on-devices-for-disconnected-and/ba-p/3716797)
 * 2022.12 [Azure Custom Neural Voice introduces new emotional styles to support brand voices](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-custom-neural-voice-introduces-new-emotional-styles-to/ba-p/3695831)
