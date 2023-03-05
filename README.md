@@ -25,6 +25,7 @@ Below are latest updates from Azure TTS. It is updated regularly.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.03 [3 Microsoft Azure AI product features that accelerate language learning](https://azure.microsoft.com/en-us/blog/3-microsoft-azure-ai-product-features-that-accelerate-language-learning/)
 * 2023.02 [Speech Service Update – Hierarchical Transformer for Pronunciation Assessment](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/speech-service-update-hierarchical-transformer-for-pronunciation/ba-p/3740866)
 * 2023.01 [Low-resource technology updates for Azure Neural Text-to-Speech](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/low-resource-technology-updates-for-azure-neural-text-to-speech/ba-p/3716922)
 * 2023.01 [Azure Neural TTS now available on devices for disconnected and hybrid scenarios](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-now-available-on-devices-for-disconnected-and/ba-p/3716797)
