@@ -1,0 +1,139 @@
+.loading {
+    border: 3px solid #bdc0c4;
+    border-top: 3px solid #0078d4;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    animation: spin 2s linear infinite;
+    cursor: default;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.audio-player-box {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 20%);
+    width: 400px;
+}
+
+.audio-player-box-float {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 20%);
+    position: absolute;
+    left: 50px;
+    top: 0px;
+    width: 400px;
+}
+
+.float-player-switch {
+    position: relative;
+    display: inline-block;
+}
+
+.listen-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.player-area {
+    margin: 1rem 1.5rem 0 1.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.player-progress {
+    display: none;
+    width: 100%;
+}
+
+.audio-view-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0px;
+    margin-right: 1rem;
+    height: 100%;
+    justify-content: center;
+    width: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.seek-bar {
+    -webkit-appearance: none;
+    margin: auto 1rem;
+    width: 100%;
+    flex: 1;
+    height: 4px;
+    background-color: #c8c6c4;
+    border-radius: 5px;
+    background-size: 0% 100%;
+    background-image: linear-gradient(#0078d4, #0078d4);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 14px;
+    width: 14px;
+    background: #fff;
+    border-radius: 7px;
+    border: solid 2px #0078d4;
+}
+
+.player-tip {
+    margin: auto 0;
+}
+
+.audio-time {
+    margin: auto;
+}
+
+.no-cached-audio-time {
+    margin: auto 0;
+    display: none;
+}
+
+.label-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 1.5rem 0.5rem calc(2.5rem + 28px);
+    color: #707070;
+}
+
+.player-logo {
+    display: flex;
+    flex-direction: row;
+    color: black;
+}
+
+.space {
+    display: inline-block;
+    margin-right: 0.25rem;
+}
