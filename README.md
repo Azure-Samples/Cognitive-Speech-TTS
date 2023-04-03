@@ -25,7 +25,7 @@ Below are latest updates from Azure TTS. It is updated regularly.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
-* 2024.04 [HelloTalk: The world's largest language exchange platform empowers language learners with Azure AI](https://customers.microsoft.com/en-us/story/1615006392710416983-hellotalk-azure-ai-education-china)
+* 2023.04 [HelloTalk: The world's largest language exchange platform empowers language learners with Azure AI](https://customers.microsoft.com/en-us/story/1615006392710416983-hellotalk-azure-ai-education-china)
 * 2023.03 [Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling](https://arxiv.org/abs/2303.03926)
 * 2023.03 [FoundationTTS: Text-to-Speech for ASR Customization with Generative Language Model](https://arxiv.org/abs/2303.02939)
 * 2023.03 [3 Microsoft Azure AI product features that accelerate language learning](https://azure.microsoft.com/en-us/blog/3-microsoft-azure-ai-product-features-that-accelerate-language-learning/)
