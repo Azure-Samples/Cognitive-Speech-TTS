@@ -21,6 +21,12 @@ In cmd line, type the following commands:
 1. cd BrowserJS
    \\activate your virtualenv\\
 2. pip install -r requirements.txt
-3. set FLASK_APP=application.py
-4. set FLASK_ENV=development
+3. set FLASK_APP=application.py  
+4. set FLASK_ENV=development   
 5. flask run
+
+Note: For Ubuntu, change `set` to `export`
+
+3. `export FLASK_APP=application.py`
+4. `export FLASK_ENV=development`
+
