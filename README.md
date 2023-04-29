@@ -25,6 +25,7 @@ Below are latest updates from Azure TTS. It is updated regularly.
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.05 [NaturalSpeech 2:Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers](https://speechresearch.github.io/naturalspeech2/)
 * 2023.04 [Azure Neural TTS Web Player: let your website speak for itself](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-web-player-let-your-website-speak-for-itself/ba-p/3807577)
 * 2023.04 [HelloTalk: The world's largest language exchange platform empowers language learners with Azure AI](https://customers.microsoft.com/en-us/story/1615006392710416983-hellotalk-azure-ai-education-china)
 * 2023.03 [Speak Foreign Languages with Your Own Voice: Cross-Lingual Neural Codec Language Modeling](https://arxiv.org/abs/2303.03926)
