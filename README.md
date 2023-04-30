@@ -4,6 +4,9 @@ Microsoft Text to speech service now is officially supported by [Speech SDK](htt
 
 Below are latest updates from Azure TTS. It is updated regularly. 
 
+# Azure TTS Discord Channels
+A space for developers and enthusiasts to collaborate and share feedbacks to Azure TTS. [Join Discord](https://discord.gg/EwXpH8THQR)
+
 # Azure Cognitive Service TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
 * Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
