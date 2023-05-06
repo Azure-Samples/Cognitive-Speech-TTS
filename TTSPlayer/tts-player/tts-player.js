@@ -1,3 +1,12 @@
+/*
+    ttsPlayerConfig.playerId:
+        localhost:44311
+        develop.customvoice.api.speech-test.microsoft.com
+        centraluseuap.customvoice.api.speech.microsoft.com
+        eastus2.customvoice.api.speech.microsoft.com
+        More global regions: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/regions#speech-service
+        chinaeast2.customvoice.api.speech.azure.cn
+*/
 function ttsPlayer({ ttsPlayerConfig, sourceLocation, voice, style, isFlat, divNames, xPaths, requestId, ssmlTemplate, styles, isLogging, isDebugging }) {
 
     let logClickTime;
@@ -312,7 +321,7 @@ function ttsPlayer({ ttsPlayerConfig, sourceLocation, voice, style, isFlat, divN
                     audioControl.play();
                 } else {
                     elementAttrFunc.playOrPauseButton_SetLoadingIcon();
-                    console.time("fetch-audio-data-time")
+                    console.time("fetch-audio-data-time");
                     logClickTime = new Date().getTime();
                     isDebugging ? apiHelper.setAudioSrcAttrFromDebugging() : apiHelper.buildUrlAndSetAudioSrcAttr();
                 }
@@ -349,10 +358,14 @@ function ttsPlayer({ ttsPlayerConfig, sourceLocation, voice, style, isFlat, divN
                 audioControl.oncanplay = _ => {
                     if (isLogging) console.timeEnd('fetch-audio-data-time');
                     const fetchAudioTime = Math.floor(new Date().getTime() - logClickTime);
-                    const logUrl = `https://${ttsPlayerConfig.environment}/api/texttospeech/v3.0-beta1/TTSWebPagePlayerSynthesis/log?playerId=${ttsPlayerConfig.playerId}&&value=${fetchAudioTime}&&voice=${voice}&&logKind=PlayFirstByteLatency&&requestId=${util.createUUID()}`
+                    const currentSrc = audioControl.currentSrc;
+                    let reg = new RegExp("(^|&)" + "requestId" + "=([^&]*)(&|$)", "i");
+                    const matchedParams = currentSrc.substr(1).match(reg);
+                    const _requestId = matchedParams?.[2] || null;
+                    const logUrl = `https://${ttsPlayerConfig.environment}/api/texttospeech/v3.0-beta1/TTSWebPagePlayerSynthesis/log?playerId=${ttsPlayerConfig.playerId}&&value=${fetchAudioTime}&&voice=${voice}&&logKind=PlayFirstByteLatency&&requestId=${_requestId}`
                     fetch(logUrl, { method: "POST" }).catch(e => {
-                        console.error(e)
-                    })
+                        console.error(e);
+                    });
                 }
                 audioControl.ontimeupdate = _ => {
                     if (audioControl.currentTime && seekBar && !isDragging) {
