@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <script>
+    </script>
+    <script src="./tts-player/tts-player.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="./tts-player/tts-player.css" />
+    <script>
+        function onPageLoad() {
+            ttsPlayer({
+                // This player configuration is used for TTS player library
+                ttsPlayerConfig: {
+                    playerId: "C046A922-4FEF-4B3B-8A3A-93BF550A7D58",
+                    environment: "eastus2.customvoice.api.speech.microsoft.com",
+                    // Player will be rendered under div element with ID: parentElement
+                    playerParentDivId: "tts-player",
+                    playerLibPath: "./tts-player"
+                },
+                sourceLocation: "3631210",
+                voice: "en-US-JennyNeural",
+                isFlat: true
+            });
+        }
+    </script>
+</head>
+
+<body onload="onPageLoad()">
+    <div id="tts-player"></div>
+</body>
+
+</html>
