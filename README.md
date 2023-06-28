@@ -26,12 +26,16 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 * Kahoot! (Education) - [Makes learning more accessible for everyone with Azure Cognitive Services](https://customers.microsoft.com/en-us/story/1379629341340415380-kahoot-partner-professional-services-azure-cognitive-services)
 * Hongdandan (Audiobook) - [Chinese nonprofit uses text-to-speech technology to expand access to audiobooks for people who are blind](https://customers.microsoft.com/en-us/story/1354789827417233208-hongdandan-nonprofit-azure-cognitive-services)
 * NTT Disruption Jibo (Assistant) - [NTT Disruption transforms healthcare experiences with social robot jibo and Azure AI](https://customers.microsoft.com/en-us/story/1356767288597410480-ntt-disruption-partner-professional-services-azure-cognitive-services)
-* Low resource TTS challenge winners - [“面向蒙古语的低资源语音合成竞赛（Mongolian Text-to-Speech Challenge under Low-Resource Scenario](https://mp.weixin.qq.com/s/Uh90ihN76vsHPCQDpyatYA)
-* [Lightweight, multispeaker,multilingual TTS challenge winner](https://sites.google.com/view/syspinttschallenge2023/leaderboard/main-leaderboard)
+* Berlitz [Berlitz empowered 500,000 language learners using Azure AI Speech](https://customers.microsoft.com/en-us/story/1650519804730300378-berlitz-language-azure-ai-speech-usa)
+* NCMMSC2022: Low resource TTS challenge winners - [“面向蒙古语的低资源语音合成竞赛（Mongolian Text-to-Speech Challenge under Low-Resource Scenario](https://mp.weixin.qq.com/s/Uh90ihN76vsHPCQDpyatYA)
+* [ICASSP 2023 Lightweight, multispeaker,multilingual TTS challenge winner](https://sites.google.com/view/syspinttschallenge2023/leaderboard/main-leaderboard)
+* [Blizzard Challenge 2021](http://www.festvox.org/blizzard/blizzard2021.html): 1st place Winner in Spanish TTS Challenge
+* [Blizzard Challenge 2023](https://www.synsig.org/index.php/Blizzard_Challenge_2023): 1st place Winner in French audiobook TTS Challenge 
 
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.06 [Azure AI Neural TTS enhanced expressiveness for Chinese voices with upgraded prosody breaks](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-ai-neural-tts-enhanced-expressiveness-for-chinese-voices/ba-p/3858411)
 * 2023.05 [NaturalSpeech 2:Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers](https://speechresearch.github.io/naturalspeech2/)
 * 2023.04 [Azure Neural TTS Web Player: let your website speak for itself](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-web-player-let-your-website-speak-for-itself/ba-p/3807577)
 * 2023.04 [HelloTalk: The world's largest language exchange platform empowers language learners with Azure AI](https://customers.microsoft.com/en-us/story/1615006392710416983-hellotalk-azure-ai-education-china)
