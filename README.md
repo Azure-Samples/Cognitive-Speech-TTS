@@ -35,6 +35,8 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.07 [Project Gutenberg brings free audiobooks to the global community with AI-generated book narration](https://customers.microsoft.com/en-us/story/1646266241611394912-project-gutenberg-nonprofit-azure-synapse-analytics-azure-ai-services)
+* 2023.07 [Creating a branded AI voice that conveys emotions and speaks multiple languages](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/creating-a-branded-ai-voice-that-conveys-emotions-and-speaks/ba-p/3876336)
 * 2023.06 [Azure AI Neural TTS enhanced expressiveness for Chinese voices with upgraded prosody breaks](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-ai-neural-tts-enhanced-expressiveness-for-chinese-voices/ba-p/3858411)
 * 2023.05 [NaturalSpeech 2:Latent Diffusion Models are Natural and Zero-Shot Speech and Singing Synthesizers](https://speechresearch.github.io/naturalspeech2/)
 * 2023.04 [Azure Neural TTS Web Player: let your website speak for itself](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/azure-neural-tts-web-player-let-your-website-speak-for-itself/ba-p/3807577)
