@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2021 (https://www.liquid-technologies.com)-->
+<xs:schema xmlns:ssml="http://www.w3.org/2001/10/synthesis" xmlns="http://www.w3.org/2001/mstts" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2001/mstts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation=".\ssml.xsd" namespace="http://www.w3.org/2001/10/synthesis" />
+    <xs:element name="backgroundaudio">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="src" type="xs:string" use="required" />
+                    <xs:attribute name="volume" default="1">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="100" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="fadein" default="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="10000" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="fadeout" default="0">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:float">
+                                <xs:minInclusive value="0" />
+                                <xs:maxInclusive value="10000" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="silence">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="type" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="Leading" />
+                                <xs:enumeration value="leading" />
+                                <xs:enumeration value="Leading-exact" />
+                                <xs:enumeration value="leading-exact" />
+                                <xs:enumeration value="Tailing" />
+                                <xs:enumeration value="tailing" />
+                                <xs:enumeration value="Tailing-exact" />
+                                <xs:enumeration value="tailing-exact" />
+                                <xs:enumeration value="Sentenceboundary" />
+                                <xs:enumeration value="sentenceboundary" />
+                                <xs:enumeration value="Sentenceboundary-exact" />
+                                <xs:enumeration value="sentenceboundary-exact" />
+                                <xs:enumeration value="Comma-exact" />
+                                <xs:enumeration value="comma-exact" />
+                                <xs:enumeration value="Semicolon-exact" />
+                                <xs:enumeration value="semicolon-exact" />
+                                <xs:enumeration value="Enumerationcomma-exact" />
+                                <xs:enumeration value="enumerationcomma-exact" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="value" use="required">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:pattern value="\d+(s|ms)" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="audioduration">
+      <xs:complexType>
+        <xs:simpleContent>
+          <xs:extension base="emptyStringType">
+            <xs:attribute name="value" type="xs:string" use="required" />
+            <xs:anyAttribute processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="viseme">
+      <xs:complexType>
+        <xs:simpleContent>
+          <xs:extension base="emptyStringType">
+            <xs:attribute name="type" type="xs:string" use="required" />
+            <xs:anyAttribute processContents="lax" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="express-as">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="ssml:pGroup" />
+            <xs:attribute name="styledegree">
+                <xs:simpleType>
+                    <xs:restriction base="xs:float" />
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="role">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string" />
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="style" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string" />
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="emptyStringType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="0" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="numberwithpercentagerelative">
+        <xs:union memberTypes="ssml:percent ssml:relative xs:float" />
+    </xs:simpleType>
+    <xs:simpleType name="expresss.style">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="newscast-formal" />
+            <xs:enumeration value="newscast-casual" />
+            <xs:enumeration value="narration-professional" />
+            <xs:enumeration value="customerservice" />
+            <xs:enumeration value="chat" />
+            <xs:enumeration value="cheerful" />
+            <xs:enumeration value="empathetic" />
+            <xs:enumeration value="assistant" />
+            <xs:enumeration value="newscast" />
+            <xs:enumeration value="calm" />
+            <xs:enumeration value="sad" />
+            <xs:enumeration value="angry" />
+            <xs:enumeration value="fearful" />
+            <xs:enumeration value="disgruntled" />
+            <xs:enumeration value="serious" />
+            <xs:enumeration value="affectionate" />
+            <xs:enumeration value="gentle" />
+            <xs:enumeration value="lyrical" />
+            <xs:enumeration value="depressed" />
+            <xs:enumeration value="embarrassed" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="express.role">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Girl" />
+            <xs:enumeration value="Boy" />
+            <xs:enumeration value="YoungAdultFemale" />
+            <xs:enumeration value="YoungAdultMale" />
+            <xs:enumeration value="OlderAdultFemale" />
+            <xs:enumeration value="OlderAdultMale" />
+            <xs:enumeration value="SeniorFemale" />
+            <xs:enumeration value="SeniorMale" />
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

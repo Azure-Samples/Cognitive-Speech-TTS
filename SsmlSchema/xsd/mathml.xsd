@@ -1,0 +1,5035 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns="http://www.w3.org/1998/Math/MathML" elementFormDefault="qualified" targetNamespace="http://www.w3.org/1998/Math/MathML" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="mspace">
+    <xs:complexType>
+      <xs:attribute name="width" type="xs:string" />
+      <xs:attribute name="height" type="xs:string" />
+      <xs:attribute name="depth" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mprescripts">
+    <xs:complexType>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="none">
+    <xs:complexType>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="malignmark">
+    <xs:complexType>
+      <xs:attribute name="edge">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="left" />
+            <xs:enumeration value="right" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="maligngroup">
+    <xs:complexType>
+      <xs:attribute name="groupalign" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sep">
+    <xs:complexType>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="inverse">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ident">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="compose">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="exp">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="abs">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="conjugate">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="factorial">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="minus">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="quotient">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="divide">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="power">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="rem">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="plus">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="max">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="min">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="times">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gcd">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="exists">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="forall">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="and">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="or">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="xor">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="not">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="implies">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="log">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="int">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="diff">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="partialdiff">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ln">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setdiff">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="union">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="intersect">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sum">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="product">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="limit">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sin">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cos">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tan">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sec">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="csc">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cot">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sinh">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cosh">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tanh">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sech">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="csch">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="coth">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arcsin">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arccos">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="arctan">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mean">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sdev">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="variance">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="median">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mode">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="moment">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="determinant">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="transpose">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="selector">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="neq">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="eq">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gt">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lt">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="geq">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="leq">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="in">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notin">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notsubset">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="notprsubset">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="subset">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="prsubset">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="tendsto">
+    <xs:complexType>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="type" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ci">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="mi" />
+        <xs:element ref="mn" />
+        <xs:element ref="mo" />
+        <xs:element ref="mtext" />
+        <xs:element ref="ms" />
+        <xs:element ref="mspace" />
+        <xs:element ref="mrow" />
+        <xs:element ref="mfrac" />
+        <xs:element ref="msqrt" />
+        <xs:element ref="mroot" />
+        <xs:element ref="mstyle" />
+        <xs:element ref="merror" />
+        <xs:element ref="mpadded" />
+        <xs:element ref="mphantom" />
+        <xs:element ref="mfenced" />
+        <xs:element ref="msub" />
+        <xs:element ref="msup" />
+        <xs:element ref="msubsup" />
+        <xs:element ref="munder" />
+        <xs:element ref="mover" />
+        <xs:element ref="munderover" />
+        <xs:element ref="mmultiscripts" />
+        <xs:element ref="mtable" />
+        <xs:element ref="mtr" />
+        <xs:element ref="mtd" />
+        <xs:element ref="maligngroup" />
+        <xs:element ref="malignmark" />
+        <xs:element ref="maction" />
+      </xs:choice>
+      <xs:attribute name="type" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="cn">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="sep" />
+        <xs:element ref="mi" />
+        <xs:element ref="mn" />
+        <xs:element ref="mo" />
+        <xs:element ref="mtext" />
+        <xs:element ref="ms" />
+        <xs:element ref="mspace" />
+        <xs:element ref="mrow" />
+        <xs:element ref="mfrac" />
+        <xs:element ref="msqrt" />
+        <xs:element ref="mroot" />
+        <xs:element ref="mstyle" />
+        <xs:element ref="merror" />
+        <xs:element ref="mpadded" />
+        <xs:element ref="mphantom" />
+        <xs:element ref="mfenced" />
+        <xs:element ref="msub" />
+        <xs:element ref="msup" />
+        <xs:element ref="msubsup" />
+        <xs:element ref="munder" />
+        <xs:element ref="mover" />
+        <xs:element ref="munderover" />
+        <xs:element ref="mmultiscripts" />
+        <xs:element ref="mtable" />
+        <xs:element ref="mtr" />
+        <xs:element ref="mtd" />
+        <xs:element ref="maligngroup" />
+        <xs:element ref="malignmark" />
+        <xs:element ref="maction" />
+      </xs:choice>
+      <xs:attribute name="type" type="xs:string" />
+      <xs:attribute default="10" name="base" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="apply">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="reln">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lambda">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="condition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="declare">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="type" type="xs:string" />
+      <xs:attribute default="local" name="scope" type="xs:string" />
+      <xs:attribute default="1" name="nargs" type="xs:string" />
+      <xs:attribute default="function-model" name="occurence" type="xs:string" />
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="semantics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="annotation">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute default="" name="encoding" type="xs:string" />
+          <xs:attribute name="class" type="xs:string" />
+          <xs:attribute name="style" type="xs:string" />
+          <xs:attribute name="id" type="xs:ID" />
+          <xs:attribute name="other" type="xs:string" />
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="annotation-xml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="" name="encoding" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="interval">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="closed" name="closure" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="set">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="list">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="numeric" name="order" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="vector">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="matrix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="matrixrow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="fn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute default="" name="definitionURL" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="lowlimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="uplimit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bvar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="degree">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="logbase">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="reln" />
+          <xs:element ref="lambda" />
+          <xs:element ref="condition" />
+          <xs:element ref="declare" />
+          <xs:element ref="sep" />
+          <xs:element ref="semantics" />
+          <xs:element ref="annotation" />
+          <xs:element ref="annotation-xml" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="lowlimit" />
+          <xs:element ref="uplimit" />
+          <xs:element ref="bvar" />
+          <xs:element ref="degree" />
+          <xs:element ref="logbase" />
+          <xs:element ref="inverse" />
+          <xs:element ref="ident" />
+          <xs:element ref="abs" />
+          <xs:element ref="conjugate" />
+          <xs:element ref="exp" />
+          <xs:element ref="factorial" />
+          <xs:element ref="not" />
+          <xs:element ref="ln" />
+          <xs:element ref="sin" />
+          <xs:element ref="cos" />
+          <xs:element ref="tan" />
+          <xs:element ref="sec" />
+          <xs:element ref="csc" />
+          <xs:element ref="cot" />
+          <xs:element ref="sinh" />
+          <xs:element ref="cosh" />
+          <xs:element ref="tanh" />
+          <xs:element ref="sech" />
+          <xs:element ref="csch" />
+          <xs:element ref="coth" />
+          <xs:element ref="arcsin" />
+          <xs:element ref="arccos" />
+          <xs:element ref="arctan" />
+          <xs:element ref="determinant" />
+          <xs:element ref="transpose" />
+          <xs:element ref="quotient" />
+          <xs:element ref="divide" />
+          <xs:element ref="power" />
+          <xs:element ref="rem" />
+          <xs:element ref="implies" />
+          <xs:element ref="setdiff" />
+          <xs:element ref="fn" />
+          <xs:element ref="compose" />
+          <xs:element ref="plus" />
+          <xs:element ref="times" />
+          <xs:element ref="max" />
+          <xs:element ref="min" />
+          <xs:element ref="gcd" />
+          <xs:element ref="and" />
+          <xs:element ref="or" />
+          <xs:element ref="xor" />
+          <xs:element ref="union" />
+          <xs:element ref="intersect" />
+          <xs:element ref="mean" />
+          <xs:element ref="sdev" />
+          <xs:element ref="variance" />
+          <xs:element ref="median" />
+          <xs:element ref="mode" />
+          <xs:element ref="selector" />
+          <xs:element ref="root" />
+          <xs:element ref="minus" />
+          <xs:element ref="log" />
+          <xs:element ref="int" />
+          <xs:element ref="diff" />
+          <xs:element ref="partialdiff" />
+          <xs:element ref="sum" />
+          <xs:element ref="product" />
+          <xs:element ref="limit" />
+          <xs:element ref="moment" />
+          <xs:element ref="exists" />
+          <xs:element ref="forall" />
+          <xs:element ref="neq" />
+          <xs:element ref="in" />
+          <xs:element ref="notin" />
+          <xs:element ref="notsubset" />
+          <xs:element ref="notprsubset" />
+          <xs:element ref="tendsto" />
+          <xs:element ref="eq" />
+          <xs:element ref="leq" />
+          <xs:element ref="lt" />
+          <xs:element ref="geq" />
+          <xs:element ref="gt" />
+          <xs:element ref="subset" />
+          <xs:element ref="prsubset" />
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mstyle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="form">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="prefix" />
+            <xs:enumeration value="infix" />
+            <xs:enumeration value="postfix" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fence">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="separator">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="lspace" type="xs:string" />
+      <xs:attribute name="rspace" type="xs:string" />
+      <xs:attribute name="stretchy">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="symmetric">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="maxsize" type="xs:string" />
+      <xs:attribute name="minsize" type="xs:string" />
+      <xs:attribute name="largeop">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="movablelimits">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="accent">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="lquote" type="xs:string" />
+      <xs:attribute name="rquote" type="xs:string" />
+      <xs:attribute name="linethickness" type="xs:string" />
+      <xs:attribute name="scriptlevel" type="xs:string" />
+      <xs:attribute name="scriptsizemultiplier" type="xs:string" />
+      <xs:attribute name="scriptminsize" type="xs:string" />
+      <xs:attribute name="background" type="xs:string" />
+      <xs:attribute name="open" type="xs:string" />
+      <xs:attribute name="close" type="xs:string" />
+      <xs:attribute name="separators" type="xs:string" />
+      <xs:attribute name="subscriptshift" type="xs:string" />
+      <xs:attribute name="superscriptshift" type="xs:string" />
+      <xs:attribute name="accentunder">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="align" type="xs:string" />
+      <xs:attribute name="rowalign" type="xs:string" />
+      <xs:attribute name="columnalign" type="xs:string" />
+      <xs:attribute name="groupalign" type="xs:string" />
+      <xs:attribute name="alignmentscope" type="xs:string" />
+      <xs:attribute name="rowspacing" type="xs:string" />
+      <xs:attribute name="columnspacing" type="xs:string" />
+      <xs:attribute name="rowlines" type="xs:string" />
+      <xs:attribute name="columnlines" type="xs:string" />
+      <xs:attribute name="frame">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="none" />
+            <xs:enumeration value="solid" />
+            <xs:enumeration value="dashed" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="framespacing" type="xs:string" />
+      <xs:attribute name="equalrows" type="xs:string" />
+      <xs:attribute name="equalcolumns" type="xs:string" />
+      <xs:attribute name="displaystyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rowspan" type="xs:string" />
+      <xs:attribute name="columnspan" type="xs:string" />
+      <xs:attribute name="edge">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="left" />
+            <xs:enumeration value="right" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="actiontype" type="xs:string" />
+      <xs:attribute name="selection" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="merror">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mphantom">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mrow">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mfrac">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="linethickness" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="msqrt">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mroot">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="msub">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="subscriptshift" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="msup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="superscriptshift" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="msubsup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="subscriptshift" type="xs:string" />
+      <xs:attribute name="superscriptshift" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mmultiscripts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="subscriptshift" type="xs:string" />
+      <xs:attribute name="superscriptshift" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="munder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="accentunder">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mover">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="accent">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="munderover">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="accent">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="accentunder">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mtable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="align" type="xs:string" />
+      <xs:attribute name="rowalign" type="xs:string" />
+      <xs:attribute name="columnalign" type="xs:string" />
+      <xs:attribute name="groupalign" type="xs:string" />
+      <xs:attribute name="alignmentscope" type="xs:string" />
+      <xs:attribute name="rowspacing" type="xs:string" />
+      <xs:attribute name="columnspacing" type="xs:string" />
+      <xs:attribute name="rowlines" type="xs:string" />
+      <xs:attribute name="columnlines" type="xs:string" />
+      <xs:attribute name="frame">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="none" />
+            <xs:enumeration value="solid" />
+            <xs:enumeration value="dashed" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="framespacing" type="xs:string" />
+      <xs:attribute name="equalrows" type="xs:string" />
+      <xs:attribute name="equalcolumns" type="xs:string" />
+      <xs:attribute name="displaystyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mtr">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="rowalign" type="xs:string" />
+      <xs:attribute name="columnalign" type="xs:string" />
+      <xs:attribute name="groupalign" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mtd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="rowalign" type="xs:string" />
+      <xs:attribute name="columnalign" type="xs:string" />
+      <xs:attribute name="groupalign" type="xs:string" />
+      <xs:attribute name="rowspan" type="xs:string" />
+      <xs:attribute name="columnspan" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="maction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="actiontype" type="xs:string" />
+      <xs:attribute name="selection" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mfenced">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="open" type="xs:string" />
+      <xs:attribute name="close" type="xs:string" />
+      <xs:attribute name="separators" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mpadded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mprescripts" />
+          <xs:element ref="none" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="width" type="xs:string" />
+      <xs:attribute name="height" type="xs:string" />
+      <xs:attribute name="depth" type="xs:string" />
+      <xs:attribute name="lspace" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mi">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="malignmark" />
+      </xs:choice>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mn">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="malignmark" />
+      </xs:choice>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mo">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="malignmark" />
+      </xs:choice>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="form">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="prefix" />
+            <xs:enumeration value="infix" />
+            <xs:enumeration value="postfix" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fence">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="separator">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="lspace" type="xs:string" />
+      <xs:attribute name="rspace" type="xs:string" />
+      <xs:attribute name="stretchy">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="symmetric">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="maxsize" type="xs:string" />
+      <xs:attribute name="minsize" type="xs:string" />
+      <xs:attribute name="largeop">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="movablelimits">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="accent">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="true" />
+            <xs:enumeration value="false" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="mtext">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="malignmark" />
+      </xs:choice>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ms">
+    <xs:complexType mixed="true">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="malignmark" />
+      </xs:choice>
+      <xs:attribute name="fontsize" type="xs:string" />
+      <xs:attribute name="fontweight">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="bold" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontstyle">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="normal" />
+            <xs:enumeration value="italic" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="fontfamily" type="xs:string" />
+      <xs:attribute name="color" type="xs:string" />
+      <xs:attribute name="lquote" type="xs:string" />
+      <xs:attribute name="rquote" type="xs:string" />
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="math">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="mi" />
+          <xs:element ref="mn" />
+          <xs:element ref="mo" />
+          <xs:element ref="mtext" />
+          <xs:element ref="ms" />
+          <xs:element ref="mspace" />
+          <xs:element ref="mrow" />
+          <xs:element ref="mfrac" />
+          <xs:element ref="msqrt" />
+          <xs:element ref="mroot" />
+          <xs:element ref="mstyle" />
+          <xs:element ref="merror" />
+          <xs:element ref="mpadded" />
+          <xs:element ref="mphantom" />
+          <xs:element ref="mfenced" />
+          <xs:element ref="msub" />
+          <xs:element ref="msup" />
+          <xs:element ref="msubsup" />
+          <xs:element ref="munder" />
+          <xs:element ref="mover" />
+          <xs:element ref="munderover" />
+          <xs:element ref="mmultiscripts" />
+          <xs:element ref="mtable" />
+          <xs:element ref="mtr" />
+          <xs:element ref="mtd" />
+          <xs:element ref="maligngroup" />
+          <xs:element ref="malignmark" />
+          <xs:element ref="maction" />
+          <xs:element ref="ci" />
+          <xs:element ref="cn" />
+          <xs:element ref="apply" />
+          <xs:element ref="fn" />
+          <xs:element ref="lambda" />
+          <xs:element ref="reln" />
+          <xs:element ref="interval" />
+          <xs:element ref="list" />
+          <xs:element ref="matrix" />
+          <xs:element ref="matrixrow" />
+          <xs:element ref="set" />
+          <xs:element ref="vector" />
+          <xs:element ref="semantics" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="class" type="xs:string" />
+      <xs:attribute name="style" type="xs:string" />
+      <xs:attribute name="id" type="xs:ID" />
+      <xs:attribute name="other" type="xs:string" />
+      <xs:attribute name="macros" type="xs:string" />
+      <xs:attribute name="mode" type="xs:string" />
+      <xs:attribute name="type" type="xs:string" />
+      <xs:attribute name="name" type="xs:string" />
+      <xs:attribute name="height" type="xs:string" />
+      <xs:attribute name="width" type="xs:string" />
+      <xs:attribute name="baseline" type="xs:string" />
+      <xs:attribute default="scroll" name="overflow">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="scroll" />
+            <xs:enumeration value="elide" />
+            <xs:enumeration value="truncate" />
+            <xs:enumeration value="scale" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="altimg" type="xs:string" />
+      <xs:attribute name="alttext" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
