@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid Studio 2021 (https://www.liquid-technologies.com)-->
+<xs:schema xmlns:mstts="http://www.w3.org/2001/mstts" xmlns="http://www.w3.org/2001/10/synthesis" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.w3.org/2001/10/synthesis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation=".\ssml_mstts.xsd" namespace="http://www.w3.org/2001/mstts" />
+    <xs:import schemaLocation=".\xml.xsd" namespace="http://www.w3.org/XML/1998/namespace" />
+    <xs:import schemaLocation=".\mathml.xsd" namespace="http://www.w3.org/1998/Math/MathML" />
+    <xs:element name="speak">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="mstts:backgroundaudio" minOccurs="0" maxOccurs="1" />
+                <xs:element ref="voice" minOccurs="1" maxOccurs="unbounded" />
+            </xs:sequence>
+            <xs:attribute ref="xml:lang" use="required" />
+            <xs:attribute name="version" type="version.datatype" use="required" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="voice">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="voiceChild" />
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="effect" type="xs:string" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="voiceChild">
+        <xs:choice>
+            <xs:element ref="prosody" />
+            <xs:element ref="break" />
+            <xs:element ref="bookmark" />
+            <xs:element ref="mark" />
+            <xs:element ref="lang" />
+            <xs:element ref="phoneme" />
+            <xs:element ref="lexicon" />
+            <xs:element ref="p" />
+            <xs:element ref="s" />
+            <xs:element ref="say-as" />
+            <xs:element ref="sub" />
+            <xs:element ref="audio" />
+            <xs:element ref="emphasis" />
+            <xs:group ref="mstts.elments" />
+            <xs:any namespace="http://www.w3.org/1998/Math/MathML" />
+        </xs:choice>
+    </xs:group>
+    <xs:element name="break">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="time" type="duration" />
+                    <xs:attribute name="strength" default="medium" type="strength.datatype" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bookmark">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="mark" type="xs:string" use="required" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="mark">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="lang">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="langChild" />
+            <xs:attribute ref="xml:lang" use="required" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="langChild">
+        <xs:choice>
+            <xs:element ref="phoneme" />
+        </xs:choice>
+    </xs:group>
+    <xs:element name="lexicon">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="emptyStringType">
+                    <xs:attribute name="uri" type="xs:string" use="required" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="p">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="pChild" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="pChild">
+        <xs:choice>
+            <xs:element ref="s" />
+            <xs:group ref="sChild" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="pGroup">
+        <xs:choice>
+            <xs:element ref="p" />
+            <xs:group ref="pChild" />
+        </xs:choice>
+    </xs:group>
+    <xs:element name="s">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="sChild" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="sChild">
+        <xs:choice>
+            <xs:element ref="break" />
+            <xs:element ref="sub" />
+            <xs:element ref="phoneme" />
+            <xs:element ref="say-as" />
+            <xs:element ref="bookmark" />
+            <xs:element ref="mark" />
+            <xs:element ref="prosody" />
+            <xs:element ref="lang" />
+            <xs:element ref="audio" />
+            <xs:element ref="emphasis" />
+            <xs:element ref="lexicon" />
+            <xs:element ref="mstts:express-as" />
+            <xs:any namespace="http://www.w3.org/1998/Math/MathML" />
+        </xs:choice>
+    </xs:group>
+    <xs:element name="phoneme">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="alphabet">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="ipa" />
+                                <xs:enumeration value="x-ipa" />
+                                <xs:enumeration value="x-microsoft-sapi" />
+                                <xs:enumeration value="sapi" />
+                                <xs:enumeration value="x-sapi" />
+                                <xs:enumeration value="ups" />
+                                <xs:enumeration value="x-ups" />
+                                <xs:enumeration value="x-microsoft-ups" />
+                                <xs:enumeration value="x-sampa" />
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="ph" type="xs:string" use="required" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="prosody">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="pGroup" />
+            <xs:attribute name="pitch" type="pitch.datatype" />
+            <xs:attribute name="rate" type="rate.datatype" />
+            <xs:attribute name="volume" type="volume.datatype" />
+            <xs:attribute name="range" type="range.datatype" />
+            <xs:attribute name="duration" type="duration" />
+            <xs:attribute name="contour" type="contour.datatype" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="audio">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="pGroup" />
+            <xs:attribute name="src" type="xs:anyURI" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="say-as">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="detail" type="xs:string" />
+                    <xs:attribute name="format" type="xs:string" />
+                    <xs:attribute name="interpret-as" type="xs:string" use="required" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="sub">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="alias" type="xs:string" use="required" />
+                    <xs:anyAttribute processContents="lax" />
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="emphasis">
+        <xs:complexType mixed="true">
+            <xs:group minOccurs="0" maxOccurs="unbounded" ref="emphasisChild" />
+            <xs:attribute name="level" default="moderate" type="level.datatype" />
+            <xs:anyAttribute processContents="lax" />
+        </xs:complexType>
+    </xs:element>
+    <xs:group name="emphasisChild">
+        <xs:choice>
+            <xs:element ref="break" />
+            <xs:element ref="sub" />
+            <xs:element ref="phoneme" />
+            <xs:element ref="say-as" />
+            <xs:element ref="bookmark" />
+            <xs:element ref="mark" />
+            <xs:element ref="prosody" />
+            <xs:element ref="lang" />
+            <xs:element ref="audio" />
+            <xs:element ref="mstts:express-as" />
+        </xs:choice>
+    </xs:group>
+    <xs:group name="mstts.elments">
+        <xs:choice>
+            <xs:any namespace="http://www.w3.org/2001/mstts" />
+        </xs:choice>
+    </xs:group>
+    <xs:simpleType name="emptyStringType">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="0" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="duration">
+        <xsd:annotation>
+            <xsd:documentation> Duration follows "Times" in CCS specification; e.g. "25ms", "3s" </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(\+)?([0-9]*\.)?[0-9]+(ms|s)?" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="phonemetype.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="default" />
+            <xsd:pattern value="ruby" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="fetchhint.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="safe" />
+            <xsd:pattern value="prefetch" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="onvoicefailure.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="priorityselect" />
+            <xsd:pattern value="keepexisting" />
+            <xsd:pattern value="processorchoice" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="orderingitem.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="name" />
+            <xsd:pattern value="languages" />
+            <xsd:pattern value="gender" />
+            <xsd:pattern value="age" />
+            <xsd:pattern value="variant" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="orderinglist.datatype">
+        <xsd:list itemType="orderingitem.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ordering.datatype">
+        <xsd:union memberTypes="orderinglist.datatype emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="requireditem.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="name" />
+            <xsd:pattern value="languages" />
+            <xsd:pattern value="gender" />
+            <xsd:pattern value="age" />
+            <xsd:pattern value="variant" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="requiredlist.datatype">
+        <xsd:list itemType="requireditem.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="required.datatype">
+        <xsd:union memberTypes="requiredlist.datatype emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="languages.datatype">
+        <xsd:union memberTypes="xsd:NMTOKENS emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="variant.datatype">
+        <xsd:union memberTypes="xsd:positiveInteger emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="age.datatype">
+        <xsd:union memberTypes="xsd:nonNegativeInteger emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="emptystring.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="0" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="timedesignation.datatype">
+        <xsd:annotation>
+            <xsd:documentation> Time designation following Time in CSS2 </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(\+)?([0-9]*\.)?[0-9]+(ms|s)" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="role.datatype">
+        <xsd:list itemType="xsd:QName" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="onlangfailure.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="changevoice" />
+            <xsd:pattern value="ignoretext" />
+            <xsd:pattern value="ignorelang" />
+            <xsd:pattern value="processorchoice" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="alphabet.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(ipa|x-.*)" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="name.datatype">
+        <xsd:union memberTypes="voicenames.datatype emptystring.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="voicenames.datatype">
+        <xsd:list itemType="voicename.datatype" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="voicename.datatype">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="\S+" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="version.datatype">
+        <xsd:restriction base="xsd:NMTOKEN" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="strength.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="none" />
+            <xsd:enumeration value="x-weak" />
+            <xsd:enumeration value="weak" />
+            <xsd:enumeration value="medium" />
+            <xsd:enumeration value="strong" />
+            <xsd:enumeration value="x-strong" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="level.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="strong" />
+            <xsd:enumeration value="moderate" />
+            <xsd:enumeration value="none" />
+            <xsd:enumeration value="reduced" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="gender.datatype">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="male" />
+            <xsd:enumeration value="female" />
+            <xsd:enumeration value="neutral" />
+            <xsd:enumeration value="" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="contour.datatype">
+        <xsd:annotation>
+            <xsd:documentation> (Number%,pitch.datatype) </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(\(([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)%,\s?(([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)Hz|[+\-]([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)Hz|[+\-]?([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)%|[+\-]([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)st|x-high|high|medium|low|x-low|default)\)\s?)*" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="volume.datatype">
+        <xsd:union memberTypes="db.datatype percent volume.scale xsd:float" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="rate.datatype">
+        <xsd:union memberTypes="number percent nonnegpercent speed.scale" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="range.datatype">
+        <xsd:union memberTypes="hertz.number hertz.relative percent semitone height.scale" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="pitch.datatype">
+        <xsd:union memberTypes="hertz.number hertz.relative percent semitone height.scale" />
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="volume.scale">
+        <xsd:annotation>
+            <xsd:documentation> descriptive values for volume </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="silent" />
+            <xsd:enumeration value="x-soft" />
+            <xsd:enumeration value="soft" />
+            <xsd:enumeration value="medium" />
+            <xsd:enumeration value="loud" />
+            <xsd:enumeration value="x-loud" />
+            <xsd:enumeration value="default" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="speed.scale">
+        <xsd:annotation>
+            <xsd:documentation> descriptive values for speed </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="x-fast" />
+            <xsd:enumeration value="fast" />
+            <xsd:enumeration value="medium" />
+            <xsd:enumeration value="slow" />
+            <xsd:enumeration value="x-slow" />
+            <xsd:enumeration value="default" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="height.scale">
+        <xsd:annotation>
+            <xsd:documentation> descriptive values for height </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="x-high" />
+            <xsd:enumeration value="high" />
+            <xsd:enumeration value="medium" />
+            <xsd:enumeration value="low" />
+            <xsd:enumeration value="x-low" />
+            <xsd:enumeration value="default" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="db.datatype">
+        <xsd:annotation>
+            <xsd:documentation> soundLevel and prosody volume: +/- N.N dB </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="(\+|-)?([0-9]*\.)?[0-9]+dB" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="hertz.relative">
+        <xsd:annotation>
+            <xsd:documentation> relative Hertz: e.g. +10Hz, -5.5Hz, +1.5Hz, +9.Hz,+.45Hz </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[+\-]([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)Hz" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="hertz.number">
+        <xsd:annotation>
+            <xsd:documentation> number Hertz: e.g. 10Hz, 5.5Hz, 1.5Hz,, 9.Hz,, .45Hz </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)Hz" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="semitone">
+        <xsd:annotation>
+            <xsd:documentation> Modeled on relative datatype: e.g. +4.5st, -.45st </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[+\-]([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)st" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="nonnegpercent">
+        <xsd:annotation>
+            <xsd:documentation> Modeled on number datatype: e.g. 4.5%, .45% </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)%" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="percent">
+        <xsd:annotation>
+            <xsd:documentation> Modeled on number datatype: e.g. +4.5%, -.45% </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[+\-]?([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)%" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="relative">
+        <xsd:annotation>
+            <xsd:documentation> Modeled on number datatype: e.g. +4.5, -.45 </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[+\-]([0-9]+|[0-9]+.[0-9]*|[0-9]*.[0-9]+)" />
+        </xsd:restriction>
+    </xs:simpleType>
+    <xs:simpleType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="number">
+        <xsd:annotation>
+            <xsd:documentation> number: e.g. 10, 5.5, 1.5, 9., .45 </xsd:documentation>
+        </xsd:annotation>
+        <xsd:restriction base="xsd:decimal" />
+    </xs:simpleType>
+</xs:schema>

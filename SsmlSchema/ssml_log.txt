@@ -1,0 +1,53 @@
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+Pass!
+voice: The required attribute 'name' is missing.
+break: The 'http://www.w3.org/2001/10/synthesis:break' element is invalid - The value '123' is invalid according to its datatype 'String' - The actual length is greater than the MaxLength value.
+type: The 'type' attribute is invalid - The value 'boundary' is invalid according to its datatype 'String' - The Enumeration constraint failed.
+value: The 'value' attribute is invalid - The value '200m' is invalid according to its datatype 'String' - The Pattern constraint failed.
+p: The element 'p' in namespace 'http://www.w3.org/2001/10/synthesis' has invalid child element 'p' in namespace 'http://www.w3.org/2001/10/synthesis'. List of possible elements expected: 's, break, sub, phoneme, say-as, bookmark, mark, prosody, lang, audio, emphasis, lexicon' in namespace 'http://www.w3.org/2001/10/synthesis' as well as 'express-as' in namespace 'http://www.w3.org/2001/mstts' as well as any element in namespace 'http://www.w3.org/1998/Math/MathML'.
+s: The element 's' in namespace 'http://www.w3.org/2001/10/synthesis' has invalid child element 's' in namespace 'http://www.w3.org/2001/10/synthesis'. List of possible elements expected: 'break, sub, phoneme, say-as, bookmark, mark, prosody, lang, audio, emphasis, lexicon' in namespace 'http://www.w3.org/2001/10/synthesis' as well as 'express-as' in namespace 'http://www.w3.org/2001/mstts' as well as any element in namespace 'http://www.w3.org/1998/Math/MathML'.
+bookmark: The required attribute 'mark' is missing.
+viseme: The required attribute 'type' is missing.
+speak: The element 'speak' in namespace 'http://www.w3.org/2001/10/synthesis' has incomplete content. List of possible elements expected: 'backgroundaudio' in namespace 'http://www.w3.org/2001/mstts' as well as 'voice' in namespace 'http://www.w3.org/2001/10/synthesis'.
+express-as: The required attribute 'style' is missing.
+s: The element 'lang' in namespace 'http://www.w3.org/2001/10/synthesis' has invalid child element 's' in namespace 'http://www.w3.org/2001/10/synthesis'. List of possible elements expected: 'phoneme' in namespace 'http://www.w3.org/2001/10/synthesis'.
+rate: The 'rate' attribute is invalid - The value '+30.00d' is invalid according to its datatype 'http://www.w3.org/2001/10/synthesis:rate.datatype' - The value '+30.00d' is not valid according to any of the memberTypes of the union.
+volume: The 'volume' attribute is invalid - The value '+p0.00%' is invalid according to its datatype 'http://www.w3.org/2001/10/synthesis:volume.datatype' - The value '+p0.00%' is not valid according to any of the memberTypes of the union.
+pitch: The 'pitch' attribute is invalid - The value 'veryh' is invalid according to its datatype 'http://www.w3.org/2001/10/synthesis:pitch.datatype' - The value 'veryh' is not valid according to any of the memberTypes of the union.
+contour: The 'contour' attribute is invalid - The value '(60%,-60%)-(100%,+80%)' is invalid according to its datatype 'http://www.w3.org/2001/10/synthesis:contour.datatype' - The Pattern constraint failed.
+level: The 'level' attribute is invalid - The value 'moderate1' is invalid according to its datatype 'http://www.w3.org/2001/10/synthesis:level.datatype' - The Enumeration constraint failed.
+audio: The required attribute 'src' is missing.
+audioduration: The required attribute 'value' is missing.
+volume: The 'volume' attribute is invalid - The value 'abc' is invalid according to its datatype 'Float' - The string 'abc' is not a valid Single value.
+alphabet: The 'alphabet' attribute is invalid - The value 'ipe' is invalid according to its datatype 'String' - The Enumeration constraint failed.
+lexicon: The required attribute 'uri' is missing.
+say-as: The required attribute 'interpret-as' is missing.
+sub: The required attribute 'alias' is missing.
