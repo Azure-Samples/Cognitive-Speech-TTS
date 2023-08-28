@@ -1,0 +1,14 @@
+{
+  "RuleSetList": [
+    {
+      "SupportLanguage": [ "zh-CN" ],
+      "RuleList": [
+        {
+          "SearchPattern": "\\b\\-(\\d+℃)",
+          "ReplacePattern": "零下$1",
+          "Comment": "readout :"
+        }
+      ]
+    }
+  ]
+}
