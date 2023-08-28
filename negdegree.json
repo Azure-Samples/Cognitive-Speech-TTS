@@ -5,7 +5,7 @@
       "RuleList": [
         {
           "SearchPattern": "\\-(\\d+℃)",
-          "ReplacePattern": "负$1",
+          "ReplacePattern": "零下$1",
           "Comment": "readout :"
         }
       ]
