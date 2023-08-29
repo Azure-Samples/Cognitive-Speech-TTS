@@ -38,3 +38,6 @@ Why did the tomato turn red?
 
 [TTS]The restaurant owner, shocked by what just happened[TTS]
 ```
+
+## Known issues
+The sentence separator is pretty simple, which may do wrong separation for some cases.
