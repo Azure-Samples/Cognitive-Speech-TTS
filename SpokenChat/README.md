@@ -1,0 +1,1 @@
+This is a example for E2E solution of SR + chatgpt + TTS
