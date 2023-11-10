@@ -5,7 +5,7 @@ Microsoft Text to speech service now is officially supported by [Speech SDK](htt
 Below are latest updates from Azure TTS. It is updated regularly. 
 
 # Azure TTS Discord Channels
-A space for developers and enthusiasts to collaborate and share feedbacks to Azure TTS. [Join Discord](https://discord.gg/EwXpH8THQR)
+A space for developers and enthusiasts to collaborate and share feedbacks to Azure TTS. [Join Discord](https://discord.gg/r8HgUTUmWA)
 
 # Azure Cognitive Service TTS Customer Story 
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
@@ -35,6 +35,8 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.10 [Introducing 7 new realistic AI voices optimized for conversations in 7 languages for public preview](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-7-new-realistic-ai-voices-optimized-for/ba-p/3971966)
+* 2023.09 [Introducing super realistic AI voices optimized for conversations](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-super-realistic-ai-voices-optimized-for/ba-p/3933744)
 * 2023.08 [Introducing new multilingual voices supporting 41 languages and accents with auto language detection](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-new-multilingual-voices-supporting-41-languages-and/ba-p/3891443)
 * 2023.07 [Project Gutenberg brings free audiobooks to the global community with AI-generated book narration](https://customers.microsoft.com/en-us/story/1646266241611394912-project-gutenberg-nonprofit-azure-synapse-analytics-azure-ai-services)
 * 2023.07 [Creating a branded AI voice that conveys emotions and speaks multiple languages](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/creating-a-branded-ai-voice-that-conveys-emotions-and-speaks/ba-p/3876336)
