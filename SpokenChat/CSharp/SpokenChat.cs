@@ -1,22 +1,13 @@
-using Azure.AI.OpenAI;
+// Note: The Azure OpenAI client library for .NET is in preview.
+// Install the .NET library via NuGet: dotnet add package Azure.AI.OpenAI --prerelease
 using Azure;
+using Azure.AI.OpenAI;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 
-// Azure OpenAI setup
-var apiBase = "OPEN_AI_ENDPOINT"; // Add your endpoint here
-var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY"); // Add your OpenAI API key here
-var deploymentId = "DEPLOYMENT_NAME"; // Add your deployment ID here
-
 // setup speech configuration 
 var speechConfig = SpeechConfig.FromSubscription(
-  Environment.GetEnvironmentVariable("OPENAI_API_KEY"), "eastus");
-
-// Azure Cognitive Search setup
-var searchEndpoint = "SEARCH_ENDPOINT"; // Add your Azure Cognitive Search endpoint here
-var searchKey = Environment.GetEnvironmentVariable("SEARCH_KEY"); // Add your Azure Cognitive Search admin key here
-var searchIndexName = "speechdoc"; // Add your Azure Cognitive Search index name here
-var client = new OpenAIClient(new Uri(apiBase), new AzureKeyCredential(apiKey!));
+  Environment.GetEnvironmentVariable("AI_SERVICES_KEY"), "eastus2");
 
 // Get the text from the microphone
 speechConfig.SpeechRecognitionLanguage = "en-US";
@@ -25,47 +16,31 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 Console.WriteLine("Say something...");
 var speechResult = await recognizer.RecognizeOnceAsync();
 
-var chatCompletionsOptions = new ChatCompletionsOptions()
-{
+OpenAIClient client = new OpenAIClient(
+  new Uri("https://docs-azure-ai-resource-aiservices.openai.azure.com/"),
+  new AzureKeyCredential(Environment.GetEnvironmentVariable("AI_SERVICES_KEY")));
+
+  Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync(
+  "gpt-35-turbo-16k",
+  new ChatCompletionsOptions()
+  {
     Messages =
     {
-        new ChatMessage(ChatRole.User, speechResult.Text)
+      new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information."),
+      new ChatMessage(ChatRole.User, speechResult.Text)
     },
-    // The addition of AzureChatExtensionsOptions enables the use of Azure OpenAI capabilities that add to
-    // the behavior of Chat Completions, here the "using your own data" feature to supplement the context
-    // with information from an Azure Cognitive Search resource with documents that have been indexed.
-    AzureExtensionsOptions = new AzureChatExtensionsOptions()
-    {
-        Extensions =
-        {
-            new AzureCognitiveSearchChatExtensionConfiguration()
-            {
-                SearchEndpoint = new Uri(searchEndpoint),
-                IndexName = searchIndexName,
-                SearchKey = new AzureKeyCredential(searchKey!),
-            }
-        }
-    }
-};
+    Temperature = (float)0.7,
+    MaxTokens = 800,
 
-var response = await client.GetChatCompletionsAsync(
-    deploymentId,
-    chatCompletionsOptions);
 
-var message = response.Value.Choices[0].Message;
-// The final, data-informed response still appears in the ChatMessages as usual
-Console.WriteLine($"{message.Role}: {message.Content}");
-// Responses that used extensions will also have Context information that includes special Tool messages
-// to explain extension activity and provide supplemental information like citations.
-Console.WriteLine($"Citations and other information:");
-foreach (var contextMessage in message.AzureExtensionsContext.Messages)
-{
-    // Note: citations and other extension payloads from the "tool" role are often encoded JSON documents
-    // and need to be parsed as such; that step is omitted here for brevity.
-    Console.WriteLine($"{contextMessage.Role}: {contextMessage.Content}");
-}
+    NucleusSamplingFactor = (float)0.95,
+    FrequencyPenalty = 0,
+    PresencePenalty = 0,
+  });
 
+
+ChatCompletions response = responseWithoutStream.Value;
 // Set a voice name for synthesis
-speechConfig.SpeechSynthesisVoiceName = "en-US-AmberNeural";
+speechConfig.SpeechSynthesisVoiceName = "en-US-JasonNeural";
 using var synthesizer = new SpeechSynthesizer(speechConfig);
 await synthesizer.SpeakTextAsync(response.Value.Choices[0].Message.Content);
