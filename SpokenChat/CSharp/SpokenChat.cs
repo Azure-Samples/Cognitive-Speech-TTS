@@ -9,9 +9,9 @@ using System.Text;
 
 // setup speech configuration 
 var speechConfig = SpeechConfig.FromSubscription(
-    Environment.GetEnvironmentVariable("AI_SERVICES_KEY"), "eastus");
+    Environment.GetEnvironmentVariable("AI_SERVICES_KEY"), "eastus2");
 
-// Get the text from the microphone
+// Speech to text from the microphone
 speechConfig.SpeechRecognitionLanguage = "en-US";
 using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
