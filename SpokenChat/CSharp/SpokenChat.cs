@@ -4,12 +4,14 @@ using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
+using System.Linq;
+using System.Text;
 
 // setup speech configuration 
 var speechConfig = SpeechConfig.FromSubscription(
-  Environment.GetEnvironmentVariable("AI_SERVICES_KEY"), "eastus2");
+    Environment.GetEnvironmentVariable("AI_SERVICES_KEY"), "eastus2");
 
-// Get the text from the microphone
+// Speech to text from the microphone
 speechConfig.SpeechRecognitionLanguage = "en-US";
 using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
 using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
@@ -17,30 +19,53 @@ Console.WriteLine("Say something...");
 var speechResult = await recognizer.RecognizeOnceAsync();
 
 OpenAIClient client = new OpenAIClient(
-  new Uri("https://docs-azure-ai-resource-aiservices.openai.azure.com/"),
-  new AzureKeyCredential(Environment.GetEnvironmentVariable("AI_SERVICES_KEY")));
+    new Uri("https://docs-azure-ai-resource-aiservices.openai.azure.com/"),
+    new AzureKeyCredential(Environment.GetEnvironmentVariable("AI_SERVICES_KEY")));
 
-  Response<ChatCompletions> responseWithoutStream = await client.GetChatCompletionsAsync(
-  "gpt-35-turbo-16k",
-  new ChatCompletionsOptions()
-  {
-    Messages =
+
+using var responseWithoutStream = await client.GetChatCompletionsStreamingAsync(
+    new ChatCompletionsOptions()
     {
-      new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information."),
-      new ChatMessage(ChatRole.User, speechResult.Text)
-    },
-    Temperature = (float)0.7,
-    MaxTokens = 800,
+        Messages =
+        {
+            new ChatMessage(ChatRole.System, @"You are an AI assistant that helps people find information."),
+            new ChatMessage(ChatRole.User, speechResult.Text)
+        },
+        Temperature = (float)0.7,
+        MaxTokens = 800,
 
 
-    NucleusSamplingFactor = (float)0.95,
-    FrequencyPenalty = 0,
-    PresencePenalty = 0,
-  });
+        NucleusSamplingFactor = (float)0.95,
+        FrequencyPenalty = 0,
+        PresencePenalty = 0,
+        DeploymentName = "gpt-35-turbo"
+    });
 
+// Sentence end symbols for splitting the response into sentences.
+List<string> sentenceSaperators = new() { ".", "!", "?", ";", "。", "！", "？", "；", "\n" };
+StringBuilder gptBuffer = new();
 
-ChatCompletions response = responseWithoutStream.Value;
 // Set a voice name for synthesis
 speechConfig.SpeechSynthesisVoiceName = "en-US-JasonNeural";
 using var synthesizer = new SpeechSynthesizer(speechConfig);
-await synthesizer.SpeakTextAsync(response.Value.Choices[0].Message.Content);
+await foreach (var message in responseWithoutStream.EnumerateValues())
+{
+    var text = message.ContentUpdate;
+    if (string.IsNullOrEmpty(text))
+    {
+        continue;
+    }
+
+    gptBuffer.Append(text);
+    Console.Write(text);
+
+    if (sentenceSaperators.Any(text.Contains))
+    {
+        var sentence = gptBuffer.ToString().Trim();
+        if (!string.IsNullOrEmpty(sentence))
+        {
+            await synthesizer.SpeakTextAsync(sentence);
+            gptBuffer.Clear();
+        }
+    }
+}
