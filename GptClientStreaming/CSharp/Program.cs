@@ -7,12 +7,14 @@
     using Microsoft.CognitiveServices.Speech;
     using Microsoft.CognitiveServices.Speech.Audio;
     using static System.Net.Mime.MediaTypeNames;
-
+    using System.IO;
+    using System.Xml.Linq;
 
     internal class Program
     {
         private static OpenAIClient aoaiClient;
         private static SpeechSynthesizer ttsClient;
+        private static PullAudioOutputStream pullStream;
         private static StringBuilder gptBuffer = new();
         private static string ssmlTemplate = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' " +
                                              "xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'>" +
@@ -24,15 +26,91 @@
         private static string query = "Tell me a joke about 100 words.";
         private static MemoryStream audioBuffer = new();
 
+
+        public class StreamingSpeechSynthesizer
+        {
+            private SpeechSynthesizer ttsClient;
+            private PullAudioOutputStream pullStream;
+            private SpeechConfig config;
+            private ManualResetEvent done = new ManualResetEvent(false);
+
+            public StreamingSpeechSynthesizer()
+            {
+                config = SpeechConfig.FromSubscription(Environment.GetEnvironmentVariable("AZURE_TTS_API_KEY"), Environment.GetEnvironmentVariable("AZURE_TTS_REGION"));
+                config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Audio24Khz160KBitRateMonoMp3);
+
+                // create pull audio stream 
+                this.pullStream = AudioOutputStream.CreatePullStream();
+                var streamConfig = AudioConfig.FromStreamOutput(pullStream);
+                this.ttsClient = new SpeechSynthesizer(config, streamConfig);
+            }
+
+            public async Task SpeakSentence(string text)
+            {
+                var ssml = string.Format(ssmlTemplate, SecurityElement.Escape(text.ToString()));
+                lock (consoleLock)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write($"[SentToTTS]");
+                    Console.ResetColor();
+                }
+
+                await this.ttsClient.SpeakSsmlAsync(ssml);
+            }
+
+            public void Stop()
+            {
+                if (this.ttsClient != null)
+                {
+                    this.ttsClient.Dispose();
+                    this.ttsClient = null;
+                }
+
+
+                PullAudioOutputStream stream = AudioOutputStream.CreatePullStream();
+                var streamConfig = AudioConfig.FromStreamOutput(pullStream);
+                var client = new SpeechSynthesizer(config, streamConfig);
+
+                done.WaitOne();
+                this.ttsClient = client;
+                this.pullStream = stream;
+                done.Reset();
+            }
+
+            public int ReadTts(byte[] buffer)
+            {
+                int filled =  (int)this.pullStream.Read(buffer);
+                if (filled == 0)
+                {
+                    done.Set();
+                }
+
+                return filled;
+            }
+
+            ~StreamingSpeechSynthesizer()
+            {
+                if (this.ttsClient != null)
+                {
+                    this.ttsClient.Dispose();
+                    this.ttsClient = null;
+                }
+            }
+
+        }
+
+
         public static async Task Main(string[] args)
         {
             // setup aoai and tts client
             Setup();
             Console.OutputEncoding = Encoding.UTF8;
 
+            StreamingSpeechSynthesizer streamingSpeechSynthesizer = new StreamingSpeechSynthesizer();
+
             // streaming get gpt response
             var responseStream = await aoaiClient!.GetChatCompletionsStreamingAsync(
-                deploymentOrModelName: "gpt-4",
+                deploymentOrModelName: "gpt-35-turbo",
                 new ChatCompletionsOptions()
                 {
                     Messages =
@@ -46,6 +124,23 @@
                     FrequencyPenalty = 0,
                     PresencePenalty = 0,
                 });
+
+            // Start a new task to read out the synthesizer stream.
+            Task readTask = Task.Run(() => {
+                byte[] buffer = new byte[4096];
+                int filledSize = 0;
+                int totalSize = 0;
+                while ((filledSize = streamingSpeechSynthesizer.ReadTts(buffer)) > 0)
+                {
+                    Console.WriteLine($"\n[READ] {filledSize} bytes received.");
+                    totalSize += filledSize;
+
+                    audioBuffer.Write(buffer, 0, (int)filledSize);
+                }
+
+                Console.WriteLine($"[READ] totally {totalSize} bytes received.");
+            });
+
 
             using var streamingChatCompletions = responseStream.Value;
             await foreach (var choice in streamingChatCompletions.GetChoicesStreaming())
@@ -66,24 +161,25 @@
                     }
 
                     // send to tts service to speak
-                    await OnGptTokenRecieve(text);
+                    await OnGptTokenRecieve(streamingSpeechSynthesizer, text);
                 }
             }
 
             // speak the remaining text in buffer if have
             if (gptBuffer.Length > 0)
             {
-                var ssml = string.Format(ssmlTemplate, SecurityElement.Escape(gptBuffer.ToString()));
-                await SpeakSentence(ssml);
+                await streamingSpeechSynthesizer.SpeakSentence(SecurityElement.Escape(gptBuffer.ToString()));
                 gptBuffer.Clear();
             }
 
+            streamingSpeechSynthesizer.Stop();
+
             // write audio buffer to file to verify
             audioBuffer.Close();
-            File.WriteAllBytes("gpt.wav", audioBuffer.ToArray());
+            File.WriteAllBytes("gpt.mp3", audioBuffer.ToArray());
         }
 
-        private static async Task OnGptTokenRecieve(string token)
+        private static async Task OnGptTokenRecieve(StreamingSpeechSynthesizer streamingSpeechSynthesizer, string token)
         {
             if (string.IsNullOrEmpty(token))
             {
@@ -95,26 +191,15 @@
             {
                 var sentence = gptBuffer + token;
                 gptBuffer.Clear();
-                var ssml = string.Format(ssmlTemplate, SecurityElement.Escape(sentence));
-                await SpeakSentence(ssml);
-                ;           }
+                await streamingSpeechSynthesizer.SpeakSentence(SecurityElement.Escape(sentence));
+            }
             else
             {
                 gptBuffer.Append(token);
             }
         }
 
-        private static async Task SpeakSentence(string ssml)
-        {
-            lock (consoleLock)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write($"[TTS]");
-                Console.ResetColor();
-            }
-            await ttsClient.SpeakSsmlAsync(ssml);
-        }
-
+   
         private static void Setup()
         {
             if (File.Exists("env.txt"))
@@ -129,17 +214,6 @@
             aoaiClient = new OpenAIClient(
                 new Uri(Environment.GetEnvironmentVariable("AZURE_OPENAI_ENDPOINT")!),
                 new AzureKeyCredential(Environment.GetEnvironmentVariable("AZURE_OPENAI_API_KEY")!));
-
-            var config = SpeechConfig.FromSubscription(Environment.GetEnvironmentVariable("AZURE_TTS_API_KEY"), Environment.GetEnvironmentVariable("AZURE_TTS_REGION"));
-            config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw24Khz16BitMonoPcm);
-            ttsClient = new SpeechSynthesizer(config, null);
-            ttsClient.Synthesizing += TtsClientOnSynthesizing; 
-        }
-
-        // write audio data to buffer
-        private static void TtsClientOnSynthesizing(object? sender, SpeechSynthesisEventArgs e)
-        {
-            audioBuffer.Write(e.Result.AudioData);
         }
     }
 }
