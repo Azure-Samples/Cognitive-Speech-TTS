@@ -13,14 +13,7 @@
     internal class Program
     {
         private static OpenAIClient aoaiClient;
-        private static SpeechSynthesizer ttsClient;
-        private static PullAudioOutputStream pullStream;
         private static StringBuilder gptBuffer = new();
-        private static string ssmlTemplate = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' " +
-                                             "xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'>" +
-                                             "<voice name='Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)'>" +
-                                             "{0}" +
-                                             "</voice></speak>";
         private static List<string> sentenceSaperators = new() { ".", "!", "?", ";", "。", "！", "？", "；", "\n" };
         private static object consoleLock = new();
         private static string query = "Tell me a joke about 100 words.";
@@ -29,6 +22,12 @@
 
         public class StreamingSpeechSynthesizer
         {
+            private static string ssmlTemplate = "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' " +
+                                                 "xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'>" +
+                                                 "<voice name='Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)'>" +
+                                                 "{0}" +
+                                                 "</voice></speak>";
+
             private SpeechSynthesizer ttsClient;
             private PullAudioOutputStream pullStream;
             private SpeechConfig config;
