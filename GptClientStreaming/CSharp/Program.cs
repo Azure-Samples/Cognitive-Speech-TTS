@@ -77,7 +77,7 @@
                 }
 
                 done.Reset();
-                await this.ttsClient.SpeakSsmlAsync(ssml);
+                await this.ttsClient.StartSpeakingSsmlAsync(ssml);
             }
 
             public async Task Stop()
