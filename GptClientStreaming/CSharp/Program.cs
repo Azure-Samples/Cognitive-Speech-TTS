@@ -58,7 +58,7 @@
                 {
                     var sentence = gptBuffer + token;
                     gptBuffer.Clear();
-                    await SpeakSentence(SecurityElement.Escape(sentence));
+                    await SpeakSentence(sentence);
                 }
                 else
                 {
