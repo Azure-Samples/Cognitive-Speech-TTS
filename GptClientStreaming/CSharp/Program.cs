@@ -9,16 +9,15 @@
     using static System.Net.Mime.MediaTypeNames;
     using System.IO;
     using System.Xml.Linq;
+    using static TtsClientStreaming.Program;
+    using Microsoft.CognitiveServices.Speech.Speaker;
 
     internal class Program
     {
         private static OpenAIClient aoaiClient;
-        private static StringBuilder gptBuffer = new();
-        private static List<string> sentenceSaperators = new() { ".", "!", "?", ";", "。", "！", "？", "；", "\n" };
         private static object consoleLock = new();
         private static string query = "Tell me a joke about 100 words.";
         private static MemoryStream audioBuffer = new();
-
 
         public class StreamingSpeechSynthesizer
         {
@@ -28,6 +27,8 @@
                                                  "{0}" +
                                                  "</voice></speak>";
 
+            private static StringBuilder gptBuffer = new();
+            private static List<string> sentenceSaperators = new() { ".", "!", "?", ";", "。", "！", "？", "；", "\n" };
             private SpeechSynthesizer ttsClient;
             private PullAudioOutputStream pullStream;
             private SpeechConfig config;
@@ -42,9 +43,30 @@
                 this.pullStream = AudioOutputStream.CreatePullStream();
                 var streamConfig = AudioConfig.FromStreamOutput(pullStream);
                 this.ttsClient = new SpeechSynthesizer(config, streamConfig);
+                done.Set();
             }
 
-            public async Task SpeakSentence(string text)
+            public async Task Speak(string token)
+            {
+                if (string.IsNullOrEmpty(token))
+                {
+                    return;
+                }
+
+                // if token is a sentence separator, speak the sentence in buffer
+                if (sentenceSaperators.Any(token.Contains))
+                {
+                    var sentence = gptBuffer + token;
+                    gptBuffer.Clear();
+                    await SpeakSentence(SecurityElement.Escape(sentence));
+                }
+                else
+                {
+                    gptBuffer.Append(token);
+                }
+            }
+
+            private async Task SpeakSentence(string text)
             {
                 var ssml = string.Format(ssmlTemplate, SecurityElement.Escape(text.ToString()));
                 lock (consoleLock)
@@ -54,11 +76,20 @@
                     Console.ResetColor();
                 }
 
+                done.Reset();
                 await this.ttsClient.SpeakSsmlAsync(ssml);
             }
 
-            public void Stop()
+            public async Task Stop()
             {
+                // speak the remaining text in buffer if have
+                if (gptBuffer.Length > 0)
+                {
+                    await SpeakSentence(SecurityElement.Escape(gptBuffer.ToString()));
+                    gptBuffer.Clear();
+                }
+
+
                 if (this.ttsClient != null)
                 {
                     this.ttsClient.Dispose();
@@ -73,7 +104,6 @@
                 done.WaitOne();
                 this.ttsClient = client;
                 this.pullStream = stream;
-                done.Reset();
             }
 
             public int ReadTts(byte[] buffer)
@@ -160,42 +190,16 @@
                     }
 
                     // send to tts service to speak
-                    await OnGptTokenRecieve(streamingSpeechSynthesizer, text);
+                    await streamingSpeechSynthesizer.Speak(text);
                 }
             }
 
-            // speak the remaining text in buffer if have
-            if (gptBuffer.Length > 0)
-            {
-                await streamingSpeechSynthesizer.SpeakSentence(SecurityElement.Escape(gptBuffer.ToString()));
-                gptBuffer.Clear();
-            }
 
-            streamingSpeechSynthesizer.Stop();
+            await streamingSpeechSynthesizer.Stop();
 
             // write audio buffer to file to verify
             audioBuffer.Close();
             File.WriteAllBytes("gpt.mp3", audioBuffer.ToArray());
-        }
-
-        private static async Task OnGptTokenRecieve(StreamingSpeechSynthesizer streamingSpeechSynthesizer, string token)
-        {
-            if (string.IsNullOrEmpty(token))
-            {
-                return;
-            }
-
-            // if token is a sentence separator, speak the sentence in buffer
-            if (sentenceSaperators.Any(token.Contains))
-            {
-                var sentence = gptBuffer + token;
-                gptBuffer.Clear();
-                await streamingSpeechSynthesizer.SpeakSentence(SecurityElement.Escape(sentence));
-            }
-            else
-            {
-                gptBuffer.Append(token);
-            }
         }
 
    
