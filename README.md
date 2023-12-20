@@ -35,6 +35,7 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2023.12 [Introducing more multilingual AI voices optimized for conversations](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/introducing-more-multilingual-ai-voices-optimized-for/ba-p/4012832)
 * 2023.11 [Azure AI Speech launches Personal Voice in preview](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-launches-personal-voice-in-preview/ba-p/3982957)
 * 2023.11 [Azure AI Speech announces public preview of text to speech avatar](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-announces-public-preview-of-text-to-speech/ba-p/3981448)
 * 2023.10 [Introducing 7 new realistic AI voices optimized for conversations in 7 languages for public preview](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-7-new-realistic-ai-voices-optimized-for/ba-p/3971966)
