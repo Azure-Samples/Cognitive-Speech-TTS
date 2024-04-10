@@ -15,8 +15,5 @@ public static class VideoTranslationConstant
         DeploymentEnvironment.DevelopEUS,
         DeploymentEnvironment.CanaryUSCX,
         DeploymentEnvironment.ProductionEUS,
-
-        // This region doesn't support GPT.
-        DeploymentEnvironment.ProductionWEU,
     };
 }
