@@ -35,6 +35,9 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2024.05 [Create personalized voices with Azure AI Speech](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/create-personalized-voices-with-azure-ai-speech/ba-p/4147073)
+* 2024.03 [9 More Realistic AI Voices for Conversations Now Generally Available](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/9-more-realistic-ai-voices-for-conversations-now-generally/ba-p/4099471)
+* 2024.02 [Announcing OpenAI text-to-speech voices on Azure OpenAI Service and Azure AI Speech](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/announcing-openai-text-to-speech-voices-on-azure-openai-service/ba-p/4049696)
 * 2024.01 [Azure AI Speech launches new zero-shot TTS models for Personal Voice](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-launches-new-zero-shot-tts-models-for-personal/ba-p/4044521)
 * 2023.12 [Introducing more multilingual AI voices optimized for conversations](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/introducing-more-multilingual-ai-voices-optimized-for/ba-p/4012832)
 * 2023.11 [Azure AI Speech launches Personal Voice in preview](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-launches-personal-voice-in-preview/ba-p/3982957)
