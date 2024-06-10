@@ -35,7 +35,9 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2024.05 [Announcing Video Translation & Speech Translation API Enhancements](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/announcing-video-translation-amp-speech-translation-api/ba-p/4148007)
 * 2024.05 [Create personalized voices with Azure AI Speech](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/create-personalized-voices-with-azure-ai-speech/ba-p/4147073)
+* 2024.04 [How OPPO is using Azure AI Speech to bring new innovative Ai features to their phones](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/how-oppo-is-using-azure-ai-speech-to-bring-new-innovative-ai/ba-p/4144308)
 * 2024.03 [9 More Realistic AI Voices for Conversations Now Generally Available](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/9-more-realistic-ai-voices-for-conversations-now-generally/ba-p/4099471)
 * 2024.02 [Announcing OpenAI text-to-speech voices on Azure OpenAI Service and Azure AI Speech](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/announcing-openai-text-to-speech-voices-on-azure-openai-service/ba-p/4049696)
 * 2024.01 [Azure AI Speech launches new zero-shot TTS models for Personal Voice](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-launches-new-zero-shot-tts-models-for-personal/ba-p/4044521)
