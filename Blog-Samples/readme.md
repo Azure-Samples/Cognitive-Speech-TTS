@@ -1,1 +1,4 @@
-This is the place to put all blog related samples
+- This is the place to put all blog related samples
+- Owner will create a folder for each month
+- Owner will upload the audio into the target folder
+- Owner will share the raw url from Github for blog purpose
