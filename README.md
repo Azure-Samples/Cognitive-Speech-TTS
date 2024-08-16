@@ -35,6 +35,9 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2024.08 [Experience the Power of Our Expanded Collection of 60+ Realistic Multilingual Voices](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/experience-the-power-of-our-expanded-collection-of-60-realistic/ba-p/4213717)
+* 2024.07 [TTS Avatar GA](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/what-is-text-to-speech-avatar)
+* 2024.06 [Make your voice chatbots more engaging with new text to speech features](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/make-your-voice-chatbots-more-engaging-with-new-text-to-speech/ba-p/4178463)
 * 2024.05 [Announcing Video Translation & Speech Translation API Enhancements](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/announcing-video-translation-amp-speech-translation-api/ba-p/4148007)
 * 2024.05 [Create personalized voices with Azure AI Speech](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/create-personalized-voices-with-azure-ai-speech/ba-p/4147073)
 * 2024.04 [How OPPO is using Azure AI Speech to bring new innovative Ai features to their phones](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/how-oppo-is-using-azure-ai-speech-to-bring-new-innovative-ai/ba-p/4144308)
