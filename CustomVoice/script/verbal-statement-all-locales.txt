@@ -52,11 +52,14 @@ English (United States)_en-US:
 Finnish (Finland)_fi-FI:
 "Minä [etunimesi ja sukunimesi] tiedostan, että [yhtiön nimi] käyttää ääninauhotteitani ääneni synteettisen version luomiseen ja sen käyttämiseen."
 
+French (Belgium)_fr-BE
+Je, [soussigné e prénom et nom], déclare avoir pris connaissance que mes données vocales seront utilisées par [nom de la société] pour produire une version synthétique de ma voix.
+
 French (Canada)_fr-CA: 
 "Je [indiquez votre prénom et nom] comprends que les enregistrements de ma voix seront utilisés par [indiquez le nom de l'entreprise] pour créer une voix synthétique à partir de mes enregistrements."
 
 French (France)_fr-FR: 
-"Je, [nom et prénom], déclare être informé que les enregistrements de ma voix seront utilisés par [nom de l’entreprise] pour créer et utiliser une version synthétique dema voix."
+"Je, [nom et prénom], déclare être informé que les enregistrements de ma voix seront utilisés par [nom de l’entreprise] pour créer et utiliser une version synthétique de ma voix."
   
 French (Switzerland)_fr-CH:
 "Je, [soussigné e prénom et nom], déclare avoir pris connaissance que mes données vocales seront utilisées par [nom de la société] pour produire une version synthétique de ma voix."
@@ -92,7 +95,7 @@ Japanese (Japan)_ja-JP:
 "私（姓名を記入）は自身の音声を（会社名を記入）が使用し、合成音声を作り使用されることに同意します。"
 
 Korean (Korea)_ko-KR: 
-"나는 [본인의 이름을 말씀하세요] 내 목소리의 녹음을 이용해 합성 버전을 만들어 사용된다는 것을 [회사 이름을 말씀하세요]알고 있습니다."
+"나 [본인의 이름을 말씀하세요]은(는) [회사 이름을 말씀하세요]이(가) 내 목소리의 녹음을 이용해 합성 버전을 만들어 사용한다는 것을 알고 있습니다."
   
 Malay (Malaysia)_ms-MY:
 "Saya [nyatakan nama anda] menyedari bahawa rakaman suara saya akan digunakan oleh [nyatakan nama syarikat] untuk membuat dan menggunakan versi sintetik suara saya."
