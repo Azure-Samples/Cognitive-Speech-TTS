@@ -117,7 +117,6 @@ def GenerateAudio(ssml, outaudio):
     import azure.cognitiveservices.speech as speechsdk
     import os
     speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-    # speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SUBSCRIPTION_KEY_DEV"), endpoint="https://dev.tts-frontend.speech-test.microsoft.com/synthesize/internal?traffictype=videodubber")
 
     # Creates an audio configuration that points to an audio file.
     audio_output = speechsdk.audio.AudioOutputConfig(filename=outaudio)
@@ -271,18 +270,5 @@ def GeneratePodcastFromUrl(url, outaudio = None):
 
 # main func
 if __name__ == "__main__":
-    # GeneratePodcastFromUrl("https://kyutai.org/Moshi.pdf")
-    # GeneratePodcastFromUrl(R'https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/new-hd-voices-preview-in-azure-ai-speech-contextual-and/ba-p/4258325')
-    # GeneratePodcastFromUrl(R"https://azure.microsoft.com/en-us/blog/announcing-new-products-and-features-for-azure-openai-service-including-gpt-4o-realtime-preview-with-audio-and-speech-capabilities/")
-    # GeneratePodcastFromUrl(R"https://blogs.microsoft.com/blog/2024/10/01/an-ai-companion-for-everyone/")
-    # GeneratePodcastFromUrl(R"https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/voicerag-an-app-pattern-for-rag-voice-using-azure-ai-search-and/ba-p/4259116", "voicerag.wav")
-
-    # GeneratePodcastFromUrl(R"https://arxiv.org/pdf/2409.17692", "mio.wav")
-    GeneratePodcastFromUrl(R"https://arxiv.org/pdf/2410.00767", "livespeech2.wav")
-
-#     GenerateAudio("""
-#         <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'><voice name='en-us-emma2:DragonHDLatestNeural' parameters='temperature=1.0'>
-# haha, haha, haha
-# </voice></speak>
-
-# """, "test.wav")
+    GeneratePodcastFromUrl("https://kyutai.org/Moshi.pdf")
+   
