@@ -2,12 +2,12 @@
 import os
 
 # setuop your AOAI endpoint, key and speech resource etc.
-AOAI_KEY = os.environ.get('AOAI_GPT4O_KEY')
-AOAI_ENDPOINT = "https://<your_aoai_endpoint>.openai.azure.com/"
+AOAI_KEY = "35ceaf65f9014ee995680856d90870f5"  #os.environ.get('AOAI_GPT4O_KEY')
+AOAI_ENDPOINT = "https://avena-oai-gpt4o.openai.azure.com/"
 AOAI_MODEL_NAME = "gpt-4o"
 AOAI_MODEL_VERSION = "2024-02-15-preview"
-speech_key = os.environ.get('SUBSCRIPTION_SPEECH_KEY')
-service_region = os.environ.get('SUBSCRIPTION_SPEECH_REGION')
+speech_key = "00806f7d2f6a4faea4fb202347c9c5ed" #os.environ.get('SUBSCRIPTION_SPEECH_KEY')
+service_region = "eastus"  #os.environ.get('SUBSCRIPTION_SPEECH_REGION')
 
 def printwithtime(*args):
     # show milliseconds
@@ -17,9 +17,19 @@ def printwithtime(*args):
 # download file from url
 def download(url, filename):
     import requests
-    response = requests.get(url)
-    with open(filename, 'wb') as file:
-        file.write(response.content)    
+
+    # if url start with http or https
+    if not url.startswith("http") or not url.startswith("https"):
+        # copy the file
+        import shutil
+        shutil.copy(url, filename)
+    else:
+        response = requests.get(url)
+        with open(filename, 'wb') as file:
+            file.write(response.content)    
+
+     # return context type
+    return response.headers['content-type']
 
 # convert pdf to text
 def pdf2text(pdf_file):
@@ -31,6 +41,7 @@ def pdf2text(pdf_file):
         page = pdf_reader.pages[page_num]
         text += "\n" + page.extract_text()
 
+    print("Text extracted from pdf: ", text)
     return text
 
 # generate first page image
@@ -70,8 +81,8 @@ def CreatePodcastSsml(text):
         Think step by step, grasp the key points of the paper, and explain them in a conversational tone, at the end, summarize. 
         Output into SSML format like below, please don't change voice name
 	    <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'>
-	    <voice name='en-us-andrew2:DragonHDLatestNeural'>Yeah, probably a ton of it, let's be real.</voice> 
-        <voice name='en-us-emma2:DragonHDLatestNeural'>Right! So, Notebook LM is like having this super-smart research assistant who not only reads all of it for you but can also answer any question you have about that information.</voice>
+	    <voice name='en-us-brian:DragonHDLatestNeural'>text</voice> 
+        <voice name='en-us-emma2:DragonHDLatestNeural'>text</voice>
         </speak>
         """
     podcasttext = ""
@@ -105,8 +116,8 @@ def CreatePodcastSsml(text):
 def GenerateAudio(ssml, outaudio):
     import azure.cognitiveservices.speech as speechsdk
     import os
-    # speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-    speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SUBSCRIPTION_KEY_DEV"), endpoint="https://dev.tts-frontend.speech-test.microsoft.com/synthesize/internal?traffictype=videodubber")
+    speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+    # speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SUBSCRIPTION_KEY_DEV"), endpoint="https://dev.tts-frontend.speech-test.microsoft.com/synthesize/internal?traffictype=videodubber")
 
     # Creates an audio configuration that points to an audio file.
     audio_output = speechsdk.audio.AudioOutputConfig(filename=outaudio)
@@ -132,19 +143,41 @@ def GeneratePodcast(url, outaudio, coverimage = None):
     printwithtime("Generating podcast from pdf file: ", url)
     # download the file
     print("Downloading file")
-    download(url, temp_pdf)
+    ct = download(url, temp_pdf)
+    print("Content type: ", ct)
 
-    # convert pdf to text
-    printwithtime("Converting pdf to text")
-    text = pdf2text(temp_pdf)
+    # if it is pdf
+    if ct != "application/pdf":
+        # extract text from file
+        printwithtime("Extracting text from url as html")
+        import requests
+        from bs4 import BeautifulSoup
 
-    # generate cover image
-    printwithtime("Generating cover image")
-    pdfimage = outaudio.split(".")[0] + ".png"
-    GenerateCoverImage(temp_pdf, pdfimage)
+        # add user agent as windows
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+        }
+        # response = requests.get(url)
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        text = soup.get_text()
+        temp_pdf = ""
+        
+    else:
+        # convert pdf to text
+        printwithtime("Converting pdf to text")
+        text = pdf2text(temp_pdf)
 
-    if coverimage is None:
-        coverimage = pdfimage        
+        # generate cover image
+        printwithtime("Generating cover image")
+        pdfimage = outaudio.split(".")[0] + ".png"
+        GenerateCoverImage(temp_pdf, pdfimage)
+
+        if coverimage is None:
+            coverimage = pdfimage        
+
+    print ("Text: ", text)
+
 
     # create podcast ssml
     printwithtime("Creating podcast ssml")
@@ -162,9 +195,7 @@ def GeneratePodcast(url, outaudio, coverimage = None):
 def GenerateVideo(audiofile, pdffile, outvideo):
     from moviepy.editor import ImageClip, concatenate_videoclips, AudioClip, AudioFileClip
 
-    import fitz
-    # open the pdf file
-    pdf_document = fitz.open(pdffile)
+
 
 
     # List to store individual image clips
@@ -175,11 +206,17 @@ def GenerateVideo(audiofile, pdffile, outvideo):
     audio = AudioSegment.from_file(audiofile)
     duration = audio.duration_seconds
 
-    # number of pages
-    num_pages = len(pdf_document) + 1
+    import fitz
+    if os.path.exists(pdffile):
+        # open the pdf file
+        pdf_document = fitz.open(pdffile)
+        # number of pages
+        num_pages = len(pdf_document) + 1
 
-    if num_pages > 0:
-        duration_per_page = duration / num_pages
+        if num_pages > 0:
+            duration_per_page = duration / num_pages
+    else:
+        duration_per_page = duration
 
     # Create an ImageClip from each image
     cover = "aiunboxed.png"
@@ -191,24 +228,26 @@ def GenerateVideo(audiofile, pdffile, outvideo):
     cover_image = ImageClip(cover)
     cwidth, cheight = cover_image.size
 
-    for page in pdf_document:
-        # get the first page
-        first_page = page
 
-        # get the image of the first page with high resolution
-        image = first_page.get_pixmap(matrix=fitz.Matrix(2, 2))        
+    if os.path.exists(pdffile):
+        for page in pdf_document:
+            # get the first page
+            first_page = page
 
-        img = "page.png"
-        # save the image
-        image.save(img)
+            # get the image of the first page with high resolution
+            image = first_page.get_pixmap(matrix=fitz.Matrix(2, 2))        
 
-        # Create an ImageClip from each image
-        clip = ImageClip(img, duration=duration_per_page)  # Duration of 3 seconds per image       
+            img = "page.png"
+            # save the image
+            image.save(img)
 
-        # resize the image to cover image size
-        resized_clip = clip.resize(height = cheight)
-    
-        clips.append(resized_clip)
+            # Create an ImageClip from each image
+            clip = ImageClip(img, duration=duration_per_page)  # Duration of 3 seconds per image       
+
+            # resize the image to cover image size
+            resized_clip = clip.resize(height = cheight)
+        
+            clips.append(resized_clip)
 
     # Concatenate the clips to form the final slideshow
     slideshow = concatenate_videoclips(clips, method="compose")
@@ -232,5 +271,18 @@ def GeneratePodcastFromUrl(url, outaudio = None):
 
 # main func
 if __name__ == "__main__":
-    GeneratePodcastFromUrl("https://kyutai.org/Moshi.pdf")
-   
+    # GeneratePodcastFromUrl("https://kyutai.org/Moshi.pdf")
+    # GeneratePodcastFromUrl(R'https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/new-hd-voices-preview-in-azure-ai-speech-contextual-and/ba-p/4258325')
+    # GeneratePodcastFromUrl(R"https://azure.microsoft.com/en-us/blog/announcing-new-products-and-features-for-azure-openai-service-including-gpt-4o-realtime-preview-with-audio-and-speech-capabilities/")
+    # GeneratePodcastFromUrl(R"https://blogs.microsoft.com/blog/2024/10/01/an-ai-companion-for-everyone/")
+    # GeneratePodcastFromUrl(R"https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/voicerag-an-app-pattern-for-rag-voice-using-azure-ai-search-and/ba-p/4259116", "voicerag.wav")
+
+    # GeneratePodcastFromUrl(R"https://arxiv.org/pdf/2409.17692", "mio.wav")
+    GeneratePodcastFromUrl(R"https://arxiv.org/pdf/2410.00767", "livespeech2.wav")
+
+#     GenerateAudio("""
+#         <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'><voice name='en-us-emma2:DragonHDLatestNeural' parameters='temperature=1.0'>
+# haha, haha, haha
+# </voice></speak>
+
+# """, "test.wav")
