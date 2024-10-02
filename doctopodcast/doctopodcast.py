@@ -105,8 +105,7 @@ def CreatePodcastSsml(text):
 def GenerateAudio(ssml, outaudio):
     import azure.cognitiveservices.speech as speechsdk
     import os
-    # speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
-    speech_config = speechsdk.SpeechConfig(subscription=os.getenv("SUBSCRIPTION_KEY_DEV"), endpoint="https://dev.tts-frontend.speech-test.microsoft.com/synthesize/internal?traffictype=videodubber")
+    speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
 
     # Creates an audio configuration that points to an audio file.
     audio_output = speechsdk.audio.AudioOutputConfig(filename=outaudio)
