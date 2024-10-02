@@ -2,12 +2,12 @@
 import os
 
 # setuop your AOAI endpoint, key and speech resource etc.
-AOAI_KEY = "35ceaf65f9014ee995680856d90870f5"  #os.environ.get('AOAI_GPT4O_KEY')
-AOAI_ENDPOINT = "https://avena-oai-gpt4o.openai.azure.com/"
+AOAI_KEY = os.environ.get('AOAI_GPT4O_KEY')
+AOAI_ENDPOINT = "https://<YourAOAI>.openai.azure.com/"
 AOAI_MODEL_NAME = "gpt-4o"
 AOAI_MODEL_VERSION = "2024-02-15-preview"
-speech_key = "00806f7d2f6a4faea4fb202347c9c5ed" #os.environ.get('SUBSCRIPTION_SPEECH_KEY')
-service_region = "eastus"  #os.environ.get('SUBSCRIPTION_SPEECH_REGION')
+speech_key = os.environ.get('SUBSCRIPTION_SPEECH_KEY')
+service_region = os.environ.get('SUBSCRIPTION_SPEECH_REGION')
 
 def printwithtime(*args):
     # show milliseconds
