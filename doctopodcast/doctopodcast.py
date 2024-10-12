@@ -81,7 +81,7 @@ def CreatePodcastSsml(text):
         Think step by step, grasp the key points of the paper, and explain them in a conversational tone, at the end, summarize. 
         Output into SSML format like below, please don't change voice name
 	    <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xmlns:mstts='https://www.w3.org/2001/mstts' xml:lang='en-US'>
-	    <voice name='en-us-brian:DragonHDLatestNeural'>text</voice> 
+	    <voice name='en-us-andrew2:DragonHDLatestNeural'>text</voice> 
         <voice name='en-us-emma2:DragonHDLatestNeural'>text</voice>
         </speak>
         """
