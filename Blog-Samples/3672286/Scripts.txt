@@ -1,0 +1,50 @@
+en-AU-AnnetteNeural-General-Audio	They each accounted for less than 5% of the urinary metabolites.
+en-AU-CarlyNeural-General-Audio	What a lovely bouquet of flowers!
+en-AU-DarrenNeural-General-Audio	I have something here for little Edward.
+en-AU-DuncanNeural-General-Audio	I have come to ask your pardon.
+en-AU-ElsieNeural-General-Audio	Click through to learn more!
+en-AU-FreyaNeural-General-Audio	You need to use about 10 grammes of sugar.
+en-AU-JoanneNeural-General-Audio	The programme teaches you how to eventually run 5 km with ease.
+en-AU-KenNeural-General-Audio	The development site is situated within a new 12 kilometre touristic zone.
+en-AU-KimNeural-General-Audio	It's almost as if it is a lifetime goal.
+en-AU-NeilNeural-General-Audio	I think you have been asleep.
+en-AU-TimNeural-General-Audio	You need to use about 10 grammes of sugar.
+en-AU-TinaNeural-General-Audio	It is a beautiful day, but yesterday it was cold.
+es-ES-AbrilNeural-General-Audio	Tu cumpleaños es el once de noviembre.
+es-ES-ArnauNeural-General-Audio	Desde mañana lunes, se podrán celebrar reuniones al aire libre entre seis personas.
+es-ES-DarioNeural-General-Audio	En dos días el 70 % pasará a la fase 2.
+es-ES-EliasNeural-General-Audio	El Ejecutivo tiene un plan de recuperación del turismo.
+es-ES-EstrellaNeural-General-Audio	Los establecimientos tendrán que firmar una declaración responsable de compromiso.
+es-ES-IreneNeural-General-Audio	Su portátil es de marca H P.
+es-ES-LaiaNeural-General-Audio	Eso no significa que no vaya a haber campaña.
+es-ES-LiaNeural-General-Audio	¿Es la digitalización la clave de nuestro futuro?
+es-ES-NilNeural-General-Audio	Además, está planteando emprender acciones legales.
+es-ES-SaulNeural-General-Audio	Ese es uno de sus grandes objetivos.
+es-ES-TeoNeural-General-Audio	Empezó a trabajar en esta empresa el 17 de septiembre de 2015.
+es-ES-TrianaNeural-General-Audio	El denunciante aseguró que el detenido transportaba un envío.
+es-ES-VeraNeural-General-Audio	Los precios han subido un 30 % desde el año pasado.
+eu-ES-AinhoaNeural-General-Audio	Euskaltzaindiak hiri honetarako onartutako euskal izen bakarra Bilbo da.
+eu-ES-AnderNeural-General-Audio	Neguko Olinpiar Jokoak neguko kirolak aurkezteko sortu ziren.
+hy-AM-AnahitNeural-General-Audio	Իսկ ի՞նչն եք ամենից շատ հավանել Հայաստանում:
+hy-AM-HaykNeural-General-Audio	Կանադայի հոկեյի հավաքականը դարձավ աշխարհի չեմպիոն։
+ja-JP-AoiNeural-General-Audio	冬の雪山でスノーボードして休暇を楽しみたい。
+ja-JP-DaichiNeural-General-Audio	ジョギングするために、必要な服装を準備する。
+ja-JP-MayuNeural-General-Audio	植物を植えるのは面白い。
+ja-JP-NaokiNeural-General-Audio	冷蔵庫が壊れたのでカスタマサービスに電話する。
+ja-JP-ShioriNeural-General-Audio	流行りのアプリを使ってみよう。
+ko-KR-BongJinNeural-General-Audio	동작을 최소화하는 것도 필요하다.
+ko-KR-GookMinNeural-General-Audio	내일 저녁 6시에 회의를 진행 할 예정입니다.
+ko-KR-JiminNeural-General-Audio	자극의 위치가 크게 바뀌었다는 사실을 발견했다.
+ko-KR-SeoHyeonNeural-General-Audio	마라톤 동호인들이 참여하였다.
+ko-KR-SoonBokNeural-General-Audio	평균 37%의 완화도를 보인 걸로 나타났다.
+ko-KR-YuJinNeural-General-Audio	충분한 영양 섭취는 건강에 중요하다
+en-GB-RyanNeural-Chat-Audio	I can chill out a little in such a hot summer. Are you good at swimming?
+en-GB-SoniaNeural-Cheerful-Audio	I am as happy as Larry because my sister is coming to see me.
+en-GB-SoniaNeural-Sad-Audio	Jane’s heart sank when she found out that she had lost her job.
+en-GB-RyanNeural-Cheerful-Audio	I'd be happy knowing you're safe.
+fr-FR-HenriNeural-Cheerful-Audio	Elle est radieuse, la grossesse lui va bien.
+fr-FR-HenriNeural-Sad-Audio	Je ne sais pas pourquoi, mais j’ai le cafard.
+es-MX-JorgeNeural-Cheerful-Audio	Carla es una chica muy alegre y siempre sonríe.
+it-IT-IsabellaNeural-Cheerful-Audio	Il colloquio è andato alla grande, sono proprio soddisfatto.
+it-IT-IsabellaNeural-Chat-Audio	Okay, mi va bene. In quel periodo ho anche io le vacanze. Avete già prenotato i biglietti?
+es-MX-JorgeNeural-Chat-Audio	Platica conmigo cuando tengas tiempo. 
