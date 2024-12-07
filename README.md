@@ -35,6 +35,8 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2024.11 [Latest updates to the Azure AI Speech Service: video translator API, customized avatar](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/latest-updates-to-the-azure-ai-speech-service/4300129)
+* 2024.09 [New HD voices preview in Azure AI Speech: contextual and realistic output evolved](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/new-hd-voices-preview-in-azure-ai-speech-contextual-and-realistic-output-evolved/4258325)
 * 2024.08 [Experience the Power of Our Expanded Collection of 60+ Realistic Multilingual Voices](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/experience-the-power-of-our-expanded-collection-of-60-realistic/ba-p/4213717)
 * 2024.07 [TTS Avatar GA](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/what-is-text-to-speech-avatar)
 * 2024.06 [Make your voice chatbots more engaging with new text to speech features](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/make-your-voice-chatbots-more-engaging-with-new-text-to-speech/ba-p/4178463)
@@ -47,6 +49,7 @@ Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft 
 * 2023.12 [Introducing more multilingual AI voices optimized for conversations](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/introducing-more-multilingual-ai-voices-optimized-for/ba-p/4012832)
 * 2023.11 [Azure AI Speech launches Personal Voice in preview](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-launches-personal-voice-in-preview/ba-p/3982957)
 * 2023.11 [Azure AI Speech announces public preview of text to speech avatar](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/azure-ai-speech-announces-public-preview-of-text-to-speech/ba-p/3981448)
+* 2023.10 [Project Gutenberg open audiobook is recognized with one of the top 200 best inventions of 2023](https://time.com/collection/best-inventions-2023/6324762/project-gutenberg-open-audiobook-collection/)
 * 2023.10 [Introducing 7 new realistic AI voices optimized for conversations in 7 languages for public preview](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-7-new-realistic-ai-voices-optimized-for/ba-p/3971966)
 * 2023.09 [Introducing super realistic AI voices optimized for conversations](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-super-realistic-ai-voices-optimized-for/ba-p/3933744)
 * 2023.08 [Introducing new multilingual voices supporting 41 languages and accents with auto language detection](https://techcommunity.microsoft.com/t5/azure-ai-services-blog/introducing-new-multilingual-voices-supporting-41-languages-and/ba-p/3891443)
