@@ -28,56 +28,133 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #
 
-import requests
 import base64
-import json
+import requests
 import time
+import uuid
 
-subscriptionKey = "{SubscriptionKey}" # replace this with your subscription key
-region = "{Region}" # replace this with the region corresponding to your subscription key, e.g. westus, eastasia
+subscription_key = "{SubscriptionKey}"  # replace this with your subscription key
+region = "{Region}"  # replace this with the region corresponding to your subscription key, e.g. westus, eastasia
 
-# a common wave header, with zero audio length
-# since stream data doesn't contain header, but the API requires header to fetch format information, so you need post this header as first chunk for each query
-WaveHeader16K16BitMono = bytes([ 82, 73, 70, 70, 78, 128, 0, 0, 87, 65, 86, 69, 102, 109, 116, 32, 18, 0, 0, 0, 1, 0, 1, 0, 128, 62, 0, 0, 0, 125, 0, 0, 2, 0, 16, 0, 0, 0, 100, 97, 116, 97, 0, 0, 0, 0 ])
+# A common wave header, with zero audio length
+# Since stream data doesn't contain header, but the API requires header to fetch format information,
+# so you need post this header as first chunk for each query
+WaveHeader16K16BitMono = bytes(
+    [
+        82,
+        73,
+        70,
+        70,
+        78,
+        128,
+        0,
+        0,
+        87,
+        65,
+        86,
+        69,
+        102,
+        109,
+        116,
+        32,
+        18,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        128,
+        62,
+        0,
+        0,
+        0,
+        125,
+        0,
+        0,
+        2,
+        0,
+        16,
+        0,
+        0,
+        0,
+        100,
+        97,
+        116,
+        97,
+        0,
+        0,
+        0,
+        0,
+    ]
+)
 
-# a generator which reads audio data chunk by chunk
-# the audio_source can be any audio input stream which provides read() method, e.g. audio file, microphone, memory stream, etc.
+
+# A generator which reads audio data chunk by chunk.
+# The audio_source can be any audio input stream which provides read() method,
+# e.g. audio file, microphone, memory stream, etc.
 def get_chunk(audio_source, chunk_size=1024):
-  yield WaveHeader16K16BitMono
-  while True:
-    time.sleep(chunk_size / 32000) # to simulate human speaking rate
-    chunk = audio_source.read(chunk_size)
-    if not chunk:
-      global uploadFinishTime
-      uploadFinishTime = time.time()
-      break
-    yield chunk
+    yield WaveHeader16K16BitMono
+    while True:
+        time.sleep(chunk_size / 32000)  # to simulate human speaking rate
+        chunk = audio_source.read(chunk_size)
+        if not chunk:
+            global upload_finish_time
+            upload_finish_time = time.time()
+            break
+        yield chunk
 
-# build pronunciation assessment parameters
-referenceText = "Good morning."
-pronAssessmentParamsJson = "{\"ReferenceText\":\"%s\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\"}" % referenceText
-pronAssessmentParamsBase64 = base64.b64encode(bytes(pronAssessmentParamsJson, 'utf-8'))
-pronAssessmentParams = str(pronAssessmentParamsBase64, "utf-8")
 
-# build request
-url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us" % region
-headers = { 'Accept': 'application/json;text/xml',
-            'Connection': 'Keep-Alive',
-            'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
-            'Ocp-Apim-Subscription-Key': subscriptionKey,
-            'Pronunciation-Assessment': pronAssessmentParams,
-            'Transfer-Encoding': 'chunked',
-            'Expect': '100-continue' }
+# Build pronunciation assessment parameters
+locale = "en-US"
+audio_file = open("../goodmorning.pcm", "rb")
+reference_text = "Good morning."
+enable_prosody_assessment = True
+phoneme_alphabet = "SAPI"  # IPA or SAPI
+enable_miscue = True
+nbest_phoneme_count = 5
+pron_assessment_params_json = (
+    '{"GradingSystem":"HundredMark","Dimension":"Comprehensive","ReferenceText":"%s","EnableProsodyAssessment":"%s",'
+    '"PhonemeAlphabet":"%s","EnableMiscue":"%s","NBestPhonemeCount":"%s"}'
+    % (reference_text, enable_prosody_assessment, phoneme_alphabet, enable_miscue, nbest_phoneme_count)
+)
+pron_assessment_params_base64 = base64.b64encode(bytes(pron_assessment_params_json, "utf-8"))
+pron_assessment_params = str(pron_assessment_params_base64, "utf-8")
 
-audioFile = open('../goodmorning.pcm', 'rb')
+# https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-get-speech-session-id#provide-session-id-using-rest-api-for-short-audio
+session_id = uuid.uuid4().hex
 
-# send request with chunked data
-response = requests.post(url=url, data=get_chunk(audioFile), headers=headers)
-getResponseTime = time.time()
-audioFile.close()
+# Build request
+url = f"https://{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1"
+url = f"{url}?format=detailed&language={locale}&X-ConnectionId={session_id}"
+headers = {
+    "Accept": "application/json;text/xml",
+    "Connection": "Keep-Alive",
+    "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
+    "Ocp-Apim-Subscription-Key": subscription_key,
+    "Pronunciation-Assessment": pron_assessment_params,
+    "Transfer-Encoding": "chunked",
+    "Expect": "100-continue",
+}
 
-resultJson = json.loads(response.text)
-print(json.dumps(resultJson, indent=4))
+print(f"II URL: {url}")
+print(f"II Config: {pron_assessment_params_json}")
 
-latency = getResponseTime - uploadFinishTime
-print("Latency = %sms" % int(latency * 1000))
+# Send request with chunked data
+response = requests.post(url=url, data=get_chunk(audio_file), headers=headers)
+get_response_time = time.time()
+audio_file.close()
+
+# Show Session ID
+print(f"II Session ID: {session_id}")
+
+if response.status_code != 200:
+    print(f"EE Error code: {response.status_code}")
+    print(f"EE Error message: {response.text}")
+    exit()
+else:
+    print(f"II Response: {response.json()}")
+
+latency = get_response_time - upload_finish_time
+print(f"II Latency: {int(latency * 1000)}ms")
