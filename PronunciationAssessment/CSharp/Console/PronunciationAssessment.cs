@@ -55,15 +55,15 @@ namespace PronunciationAssessment
             this.subscriptionKey = subscriptionKey;
         }
 
-        public int Start(string referenceText, int samplingRate = 16000)
+        public int Start(string referenceText, bool enableProsodyAssessment, string phonemeAlphabet, bool enableMiscue, int nBestPhonemeCount, string sessionId, int samplingRate = 16000)
         {
             int ret = 0;
             try
             {
-                var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"{referenceText}\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"Phoneme\",\"Dimension\":\"Comprehensive\"}}";
+                var pronAssessmentParamsJson = $"{{\"ReferenceText\":\"{referenceText}\",\"EnableProsodyAssessment\":\"{enableProsodyAssessment}\",\"PhonemeAlphabet\":\"{phonemeAlphabet}\",\"EnableMiscue\":\"{enableMiscue}\",\"NBestPhonemeCount\":\"{nBestPhonemeCount}\",\"GradingSystem\":\"HundredMark\",\"Granularity\":\"Phoneme\",\"Dimension\":\"Comprehensive\"}}";
                 var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson);
                 var pronAssessmentParams = Convert.ToBase64String(pronAssessmentParamsBytes);
-                string url = $"https://{this.region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language={this.locale}";
+                string url = $"https://{this.region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?format=detailed&language={this.locale}&X-ConnectionId={sessionId}";
                 request = (HttpWebRequest)HttpWebRequest.Create(url);
 
                 request.SendChunked = true;
