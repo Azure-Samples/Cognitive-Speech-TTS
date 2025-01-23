@@ -1,7 +1,7 @@
 HTTP Samples for Pronunciation Assessment
 =========================================
 
-This folder contains samples of using HTTP REST Call for Microsoft Cognitive Services (formerly Project Oxford)
+This folder contains samples of using HTTP REST Call for Microsoft Cognitive Services
 Pronunciation Assessment REST APIs. You can check the [introduction page](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-to-text) for what pronunciation assessment is.
 
 The samples

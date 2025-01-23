@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
-// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// Microsoft Cognitive Services: https://www.microsoft.com/cognitive-services
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.
@@ -41,6 +41,12 @@ namespace PronunciationAssessment
             var region = "{Region}"; // replace this with the region corresponding to your subscription key, e.g. westus, eastasia
 
             var referenceText = "Welcome to use Microsoft Cognitive Services pronunciation assessment API!";
+            var enableProsodyAssessment = true;
+            var phonemeAlphabet = "SAPI"; // IPA or SAPI
+            var enableMiscue = true;
+            var nBestPhonemeCount = 5;
+
+            string sessionId = Guid.NewGuid().ToString();
 
             var pronAssessment = new PronunciationAssessment(CultureInfo.GetCultureInfo("en-US"), region, subscriptionKey);
             var recorder = new Recorder(pronAssessment);
@@ -48,10 +54,11 @@ namespace PronunciationAssessment
             Console.WriteLine("Please press any key to start recording, and then read along below text after recording started:");
             Console.WriteLine("\r\n  " + referenceText + "\r\n");
             Console.ReadKey(true);
-            recorder.Start(referenceText);
+            recorder.Start(referenceText, enableProsodyAssessment, phonemeAlphabet, enableMiscue, nBestPhonemeCount, sessionId);
             Console.WriteLine("Recording started. Please read along above text. And after you finish reading it, press any key to stop recording.");
             Console.ReadKey(true);
             Console.WriteLine("Recording stopped.");
+            Console.WriteLine($"Session ID: {sessionId}");
             Console.WriteLine("Here is the assessment result on your pronunciation:");
             recorder.Stop();
             Console.ReadKey(true);
