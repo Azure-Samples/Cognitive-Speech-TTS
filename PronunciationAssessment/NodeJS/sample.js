@@ -33,20 +33,27 @@
 
 const request = require("request");
 const fs = require("fs");
+const { v4: uuidv4 } = require('uuid');
 
 var subscriptionKey = "{SubscriptionKey}" // replace this with your subscription key
 var region = "{Region}" // replace this with the region corresponding to your subscription key, e.g. westus, eastasia
 
 // build pronunciation assessment parameters
 var referenceText = "Good morning.";
-var pronAssessmentParamsJson = `{"ReferenceText":"${referenceText}","GradingSystem":"HundredMark","Dimension":"Comprehensive"}`;
+var language = "en-us";
+var enableProsodyAssessment = true;
+var phonemeAlphabet = "SAPI";  // IPA or SAPI
+var enableMiscue = true;
+var nBestPhonemeCount = 5;
+var pronAssessmentParamsJson = `{"ReferenceText":"${referenceText}","GradingSystem":"HundredMark","Dimension":"Comprehensive","EnableMiscue":${enableMiscue},"EnableProsodyAssessment":${enableProsodyAssessment},"PhonemeAlphabet":"${phonemeAlphabet}","NBestPhonemeCount":"${nBestPhonemeCount}"}`;
 var pronAssessmentParams = Buffer.from(pronAssessmentParamsJson, 'utf-8').toString('base64');
+var sessionID = uuidv4();
 
 // build request
 var options = {
     method: 'POST',
     baseUrl: `https://${region}.stt.speech.microsoft.com/`,
-    url: 'speech/recognition/conversation/cognitiveservices/v1?language=en-us',
+    url: `speech/recognition/conversation/cognitiveservices/v1?language=${language}&format=detailed&X-ConnectionId=${sessionID}`,
     headers: {
         'Accept': 'application/json;text/xml',
         'Connection': 'Keep-Alive',
@@ -59,6 +66,9 @@ var options = {
 }
 
 var uploadFinishTime;
+
+// Show Session ID
+console.log(`Session ID: ${sessionID}`);
 
 var req = request.post(options);
 req.on("response", (resp) => {
