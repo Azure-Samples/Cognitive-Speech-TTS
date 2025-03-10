@@ -2,6 +2,7 @@
     var accuracyscore = document.getElementById('accuracyscore');
     var fluencyscore = document.getElementById('fluencyscore');
     var completenessscore = document.getElementById('completenessscore');
+    var prosodyscore = document.getElementById('prosodyscore');
     var pronscore = document.getElementById('pronscore');
     var wordsomitted = document.getElementById('wordsomitted');
     var wordsinserted = document.getElementById('wordsinserted');
@@ -147,7 +148,7 @@
     
     var soundAllowed = function (stream) {
         permission = true;
-        audioContent = new AudioContext();
+        audioContent = new AudioContext({sampleRate: 16000});
         gumStream = stream;
         audioStream = audioContent.createMediaStreamSource( stream );
         rec = new Recorder(audioStream,{numChannels:1})
@@ -383,6 +384,7 @@
         accuracyscore.innerText = data.AccuracyScore;
         fluencyscore.innerText = data.FluencyScore;
         completenessscore.innerText = data.CompletenessScore;
+        prosodyscore.innerText = data.ProsodyScore;
         pronscore.innerText = parseInt(data.PronScore, 10);
 
         fillDetails(data.Words);

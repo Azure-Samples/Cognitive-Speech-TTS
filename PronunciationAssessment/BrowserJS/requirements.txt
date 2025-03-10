@@ -20,3 +20,4 @@ typed-ast
 urllib3
 Werkzeug
 wrapt
+uuid

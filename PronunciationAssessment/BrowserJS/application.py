@@ -1,7 +1,6 @@
 import requests
 import base64
-import json
-import time
+import uuid
 import random
 import azure.cognitiveservices.speech as speechsdk
 
@@ -13,6 +12,58 @@ subscription_key = '<SPEECH_SERVICE_SUBSCRIPTION_KEY>'
 region = "<SPEECH_SERVICE_REGION>"
 language = "en-US"
 voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
+
+WaveHeader16K16BitMono = bytes(
+    [
+        82,
+        73,
+        70,
+        70,
+        78,
+        128,
+        0,
+        0,
+        87,
+        65,
+        86,
+        69,
+        102,
+        109,
+        116,
+        32,
+        18,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        128,
+        62,
+        0,
+        0,
+        0,
+        125,
+        0,
+        0,
+        2,
+        0,
+        16,
+        0,
+        0,
+        0,
+        100,
+        97,
+        116,
+        97,
+        0,
+        0,
+        0,
+        0,
+    ]
+)
+
 
 @app.route("/")
 def index():
@@ -89,47 +140,51 @@ def getstory():
 @app.route("/ackaud", methods=["POST"])
 def ackaud():
     f = request.files['audio_data']
-    reftext = request.form.get("reftext")
-    #    f.save(audio)
-    #print('file uploaded successfully')
+    reference_text = request.form.get("reftext")
 
     # a generator which reads audio data chunk by chunk
     # the audio_source can be any audio input stream which provides read() method, e.g. audio file, microphone, memory stream, etc.
     def get_chunk(audio_source, chunk_size=1024):
+        yield WaveHeader16K16BitMono
         while True:
-            #time.sleep(chunk_size / 32000) # to simulate human speaking rate
             chunk = audio_source.read(chunk_size)
             if not chunk:
-                #global uploadFinishTime
-                #uploadFinishTime = time.time()
                 break
             yield chunk
 
     # build pronunciation assessment parameters
-    referenceText = reftext
-    pronAssessmentParamsJson = "{\"ReferenceText\":\"%s\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\",\"EnableMiscue\":\"True\"}" % referenceText
-    pronAssessmentParamsBase64 = base64.b64encode(bytes(pronAssessmentParamsJson, 'utf-8'))
-    pronAssessmentParams = str(pronAssessmentParamsBase64, "utf-8")
+    enable_prosody_assessment = True
+    phoneme_alphabet = "SAPI"  # IPA or SAPI
+    enable_miscue = True
+    nbest_phoneme_count = 5
+    pron_assessment_params_json = (
+        '{"GradingSystem":"HundredMark","Dimension":"Comprehensive","ReferenceText":"%s","EnableProsodyAssessment":"%s",'
+        '"PhonemeAlphabet":"%s","EnableMiscue":"%s","NBestPhonemeCount":"%s"}'
+        % (reference_text, enable_prosody_assessment, phoneme_alphabet, enable_miscue, nbest_phoneme_count)
+    )
+    pron_assessment_params_base64 = base64.b64encode(bytes(pron_assessment_params_json, "utf-8"))
+    pron_assessment_params = str(pron_assessment_params_base64, "utf-8")
+
+    # https://learn.microsoft.com/en-us/azure/ai-services/speech-service/how-to-get-speech-session-id#provide-session-id-using-rest-api-for-short-audio
+    session_id = uuid.uuid4().hex
 
     # build request
-    url = "https://%s.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=%s" % (region, language)
-    headers = { 'Accept': 'application/json;text/xml',
-                'Connection': 'Keep-Alive',
-                'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
-                'Ocp-Apim-Subscription-Key': subscription_key,
-                'Pronunciation-Assessment': pronAssessmentParams,
-                'Transfer-Encoding': 'chunked',
-                'Expect': '100-continue' }
+    url = f"https://{region}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1"
+    url = f"{url}?format=detailed&language={language}&X-ConnectionId={session_id}"
+    headers = {
+        "Accept": "application/json;text/xml",
+        "Connection": "Keep-Alive",
+        "Content-Type": "audio/wav; codecs=audio/pcm; samplerate=16000",
+        "Ocp-Apim-Subscription-Key": subscription_key,
+        "Pronunciation-Assessment": pron_assessment_params,
+        "Transfer-Encoding": "chunked",
+        "Expect": "100-continue",
+    }
 
-    #audioFile = open('audio.wav', 'rb')
     audioFile = f
     # send request with chunked data
     response = requests.post(url=url, data=get_chunk(audioFile), headers=headers)
-    #getResponseTime = time.time()
     audioFile.close()
-
-    #latency = getResponseTime - uploadFinishTime
-    #print("Latency = %sms" % int(latency * 1000))
 
     return response.json()
 
