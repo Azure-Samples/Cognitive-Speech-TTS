@@ -14,6 +14,58 @@ region = "<SPEECH_SERVICE_REGION>"
 language = "en-US"
 voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
 
+WaveHeader16K16BitMono = bytes(
+    [
+        82,
+        73,
+        70,
+        70,
+        78,
+        128,
+        0,
+        0,
+        87,
+        65,
+        86,
+        69,
+        102,
+        109,
+        116,
+        32,
+        18,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        128,
+        62,
+        0,
+        0,
+        0,
+        125,
+        0,
+        0,
+        2,
+        0,
+        16,
+        0,
+        0,
+        0,
+        100,
+        97,
+        116,
+        97,
+        0,
+        0,
+        0,
+        0,
+    ]
+)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -96,6 +148,7 @@ def ackaud():
     # a generator which reads audio data chunk by chunk
     # the audio_source can be any audio input stream which provides read() method, e.g. audio file, microphone, memory stream, etc.
     def get_chunk(audio_source, chunk_size=1024):
+        yield WaveHeader16K16BitMono
         while True:
             #time.sleep(chunk_size / 32000) # to simulate human speaking rate
             chunk = audio_source.read(chunk_size)

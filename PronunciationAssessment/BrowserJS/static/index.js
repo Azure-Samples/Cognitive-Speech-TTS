@@ -147,7 +147,7 @@
     
     var soundAllowed = function (stream) {
         permission = true;
-        audioContent = new AudioContext();
+        audioContent = new AudioContext({sampleRate: 16000});
         gumStream = stream;
         audioStream = audioContent.createMediaStreamSource( stream );
         rec = new Recorder(audioStream,{numChannels:1})
