@@ -142,19 +142,14 @@ def getstory():
 def ackaud():
     f = request.files['audio_data']
     reftext = request.form.get("reftext")
-    #    f.save(audio)
-    #print('file uploaded successfully')
 
     # a generator which reads audio data chunk by chunk
     # the audio_source can be any audio input stream which provides read() method, e.g. audio file, microphone, memory stream, etc.
     def get_chunk(audio_source, chunk_size=1024):
         yield WaveHeader16K16BitMono
         while True:
-            #time.sleep(chunk_size / 32000) # to simulate human speaking rate
             chunk = audio_source.read(chunk_size)
             if not chunk:
-                #global uploadFinishTime
-                #uploadFinishTime = time.time()
                 break
             yield chunk
 
@@ -174,15 +169,10 @@ def ackaud():
                 'Transfer-Encoding': 'chunked',
                 'Expect': '100-continue' }
 
-    #audioFile = open('audio.wav', 'rb')
     audioFile = f
     # send request with chunked data
     response = requests.post(url=url, data=get_chunk(audioFile), headers=headers)
-    #getResponseTime = time.time()
     audioFile.close()
-
-    #latency = getResponseTime - uploadFinishTime
-    #print("Latency = %sms" % int(latency * 1000))
 
     return response.json()
 
