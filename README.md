@@ -35,6 +35,8 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 # Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
+* 2024.3 [March 2025: Azure AI Speech’s HD voices are generally available and more](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/march-2025-azure-ai-speech%E2%80%99s-hd-voices-are-generally-available-and-more/4398951)
+* 2024.2 [Azure AI Speech text to speech Feb 2025 updates: New HD voices and more](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/azure-ai-speech-text-to-speech-feb-2025-updates-new-hd-voices-and-more/4387263)
 * 2024.12 [Azure AI voices in Arabic improved pronunciation](https://techcommunity.microsoft.com/blog/Azure-AI-Services-blog/azure-ai-voices-in-arabic-improved-pronunciation/4360306)
 * 2024.11 [Latest updates to the Azure AI Speech Service: video translator API, customized avatar](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/latest-updates-to-the-azure-ai-speech-service/4300129)
 * 2024.09 [New HD voices preview in Azure AI Speech: contextual and realistic output evolved](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/new-hd-voices-preview-in-azure-ai-speech-contextual-and-realistic-output-evolved/4258325)
