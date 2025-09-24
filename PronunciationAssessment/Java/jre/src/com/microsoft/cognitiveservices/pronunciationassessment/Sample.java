@@ -2,9 +2,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
-// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// Microsoft Cognitive Services : https://www.microsoft.com/cognitive-services
 //
-// Microsoft Cognitive Services (formerly Project Oxford) GitHub:
+// Microsoft Cognitive Services GitHub:
 // https://github.com/Microsoft/Cognitive-Speech-TTS
 //
 // Copyright (c) Microsoft Corporation
@@ -39,6 +39,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.Base64;
+import java.util.UUID;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -54,12 +55,18 @@ public class Sample {
 		
 		// build pronunciation assessment parameters
 		String referenceText = "Good morning.";
-		String pronAssessmentParamsJson = "{\"ReferenceText\":\"" + referenceText + "\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\"}";
+		Boolean enableProsodyAssessment = true;
+		String phonemeAlphabet = "SAPI"; // IPA or SAPI
+		Boolean enableMiscue = true;
+		Integer nBestPhonemeCount = 5;
+		String pronAssessmentParamsJson = "{\"ReferenceText\":\"" + referenceText + "\",\"EnableProsodyAssessment\":\"" + enableProsodyAssessment + "\",\"PhonemeAlphabet\":\"" + phonemeAlphabet + "\",\"EnableMiscue\":\"" + enableMiscue + "\",\"NBestPhonemeCount\":\"" + nBestPhonemeCount + "\",\"GradingSystem\":\"HundredMark\",\"Dimension\":\"Comprehensive\"}";
 		byte[] pronAssessmentParamsBase64 = Base64.getEncoder().encode(pronAssessmentParamsJson.getBytes("utf-8"));
 		String pronAssessmentParams = new String(pronAssessmentParamsBase64, "utf-8");
 		
 		// build request (when re-run below code in short time, the connect can be cached and reused behind, with lower connecting time cost)
-		URL url = new URL("https://" + region + ".stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-us");
+		String locale = "en-US";
+		String sessionId = UUID.randomUUID().toString();
+		URL url = new URL("https://" + region + ".stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?format=detailed&language=" + locale + "&X-ConnectionId=" + sessionId);
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
@@ -103,6 +110,7 @@ public class Sample {
 		
 		String result = new String(responseBuffer, "utf-8"); // the result is a JSON, you can parse it with a JSON library 
 
+		System.out.println("Session ID:" + sessionId);
 		System.out.println("Pronunciation assessment result:\n");
 		System.out.println(result);
 		

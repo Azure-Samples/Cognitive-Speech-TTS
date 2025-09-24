@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license.
 //
-// Microsoft Cognitive Services (formerly Project Oxford): https://www.microsoft.com/cognitive-services
+// Microsoft Cognitive Services: https://www.microsoft.com/cognitive-services
 //
 // Copyright (c) Microsoft Corporation
 // All rights reserved.
@@ -64,9 +64,9 @@ namespace PronunciationAssessment
             waveIn.RecordingStopped += WaveIn_Stopped;
         }
 
-        public void Start(string referenceText)
+        public void Start(string referenceText, bool enableProsodyAssessment, string phonemeAlphabet, bool enableMiscue, int nBestPhonemeCount, string sessionId)
         {
-            pronunciationAssessment.Start(referenceText, waveIn.WaveFormat.SampleRate);
+            pronunciationAssessment.Start(referenceText, enableProsodyAssessment, phonemeAlphabet, enableMiscue, nBestPhonemeCount, sessionId, waveIn.WaveFormat.SampleRate);
             pronunciationAssessment.WriteWavHeader(sampleRate: waveIn.WaveFormat.SampleRate);
 
             waveIn.StartRecording();
