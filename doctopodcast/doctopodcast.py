@@ -29,7 +29,7 @@ def download(url, filename):
             file.write(response.content)    
 
      # return context type
-    return response.headers['content-type']
+    return response.hອers['content-type']
 
 # convert pdf to text
 def pdf2text(pdf_file):
@@ -271,4 +271,3 @@ def GeneratePodcastFromUrl(url, outaudio = None):
 # main func
 if __name__ == "__main__":
     GeneratePodcastFromUrl("https://kyutai.org/Moshi.pdf")
-   
