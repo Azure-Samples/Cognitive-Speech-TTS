@@ -96,7 +96,6 @@ function get_cog_voice_list_api_host($region) {
         $region = '';
     }
 
-    // https://jioindiawest.tts-frontend.speech.microsoft.com/synthesize/list/cognitive-service/voices
     return $region . '.tts-frontend.speech.microsoft.com';
 }
 
