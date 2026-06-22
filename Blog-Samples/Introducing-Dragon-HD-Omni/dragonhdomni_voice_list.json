@@ -489,28 +489,7 @@
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "de-de-olivacantique:DragonHDOmniLatestNeural",
-        "Locale": "de-de",
-        "Description": "A lively and warm adult female voice in German.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "de-de-orohelecho:DragonHDOmniLatestNeural",
-        "Locale": "de-de",
-        "Description": "An adult male German voice, vibrant, dynamic, and brimming with lively energy.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "de-de-perlanami:DragonHDOmniLatestNeural",
-        "Locale": "de-de",
-        "Description": "A warm, genuine middle-aged male voice in German",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+      {
         "Voice Name": "de-de-ralf:DragonHDOmniLatestNeural",
         "Locale": "de-de",
         "Description": "A German-speaking adult male voice with a professional and articulate tone, well-suited for an informative podcast or an audiobook.",
@@ -678,46 +657,11 @@
         "Gender": "Male",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "en-gb-amarillomirfak:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A warm-hearted and sage middle-aged female voice with a British accent, delivering compassionate and perceptive remarks.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-gb-azabachetiticaca:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A vibrant grown male voice with a British intonation, well-suited for captivating audiobook storytelling.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+      {
         "Voice Name": "en-gb-bella:DragonHDOmniLatestNeural",
         "Locale": "en-gb",
         "Description": "This is an enthusiastic and professional young adult British female voice with a crisp delivery, perfect for e-learning or a tech podcast.",
         "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-gb-cafecacao:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A young woman’s adult voice, British in accent, adeptly expressing sorrow and distress.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-gb-citronauriga:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A mature male gent with a traditional British accent, featuring a deep-toned, sage voice that comes across as seasoned and contemplative.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "en-gb-coralblizzard:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "An irritated teenage male voice with a British accent, ideal for a teen character conveying annoyance.",
-        "Gender": "Male",
         "Age Group": "Young Adult"
     },
     {
@@ -741,14 +685,7 @@
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "en-gb-kurorainbow:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A heartfelt and refined middle-aged female voice with a British accent, ideal for nostalgic or emotionally resonant readings.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "en-gb-libby:DragonHDOmniLatestNeural",
         "Locale": "en-gb",
         "Description": "A clear-sounding voice with great versatility that can adapt to any use case and speak in a way that's easy to understand.",
@@ -761,20 +698,6 @@
         "Description": "A child voice that's great at conveying curiousity.",
         "Gender": "Female",
         "Age Group": "Child"
-    },
-    {
-        "Voice Name": "en-gb-mochasaimaa:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A tolerant grown-up male voice, featuring a British accent, and delivered in a serene and empathetic manner.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-gb-nacaraegean:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "An engaging adult female voice with a British accent, distinct and commanding, ideal for broadcasting and formal announcements.",
-        "Gender": "Female",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "en-gb-noah:DragonHDOmniLatestNeural",
@@ -805,34 +728,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "en-gb-perlaoratorio:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A genuine middle-aged female narrator with a British accent, ideal for reliable and heartfelt storytelling.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-gb-platabanane:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A British-accented mature male voice, characterized by a dignified and reputable tone, conveying politeness and refinement.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-gb-rojocilantro:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "An affable, mature midlife male voice with a British inflection, fitting for a nurturing and encouraging companion role.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-gb-rubiganges:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A youthful adult academic with a British accent, knowledgeable and conversational in tone, rendering intricate subjects approachable and captivating.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "en-gb-ryan:DragonHDOmniLatestNeural",
         "Locale": "en-gb",
         "Description": "A bright and engaging voice, capturing attention with its vibrant and inviting tone.",
@@ -857,13 +752,6 @@
         "Voice Name": "en-gb-thomas:DragonHDOmniLatestNeural",
         "Locale": "en-gb",
         "Description": "A young British male voice with a smooth, knowledgeable tone, ideal for a tech podcast or educational content.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-gb-turquesapastorale:DragonHDOmniLatestNeural",
-        "Locale": "en-gb",
-        "Description": "A laid-back young male comic with a British accent, dishing out lines in a lighthearted, witty manner.",
         "Gender": "Male",
         "Age Group": "Young Adult"
     },
@@ -1120,20 +1008,6 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "en-us-azabachestratus:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A mature male vocal with an amiable, natural tone, boasting a American accent—resembling an approachable, down-to-earth next-door neighbor.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-azullegato:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A serene and gentle mature female voice with a standard American accent, ideally suited for audiobook narration and meditation guidance.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "en-us-brandon:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "An honest and soft-spoken voice that's warm and good for conversation, connecting with users on a personal level and building trust.",
@@ -1155,13 +1029,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "en-us-charcoalsolaria:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A gritty, middle-aged masculine voice with a neutral American accent, ideal for debates and forceful arguments.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "en-us-christopher:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A warm voice for imparting information, especially for conversation,  great for conveying information in a fun and approachable way.",
@@ -1172,20 +1039,6 @@
         "Voice Name": "en-us-cora:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A softer voice with a touch of melancholy that conveys understanding and empathy, delivering content in a sensitive and compassionate way.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-creamcetus:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A middle-aged woman's hesitant, tense voice with a American accent, expressing nervousness and doubt.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-crimsonmoderato:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A lively and vibrant adult female voice with a neutral American accent, well-suited for dynamic and uplifting messaging.",
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
@@ -1207,13 +1060,6 @@
         "Voice Name": "en-us-derek:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A formal, knowledgeable voice that exudes confidence.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-doreauriga:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A jolly, seasoned middle-aged male voice with a general American accent, upbeat and amiable.",
         "Gender": "Male",
         "Age Group": "Adult"
     },
@@ -1258,27 +1104,6 @@
         "Description": "Fable voice from OpenAI, a voice with a touch of mystery and intrigue (gender unspecified).",
         "Gender": "Neutral",
         "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-garnetbasilic:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A middle-aged, mature woman's voice with a American accent, exuding authority and a dominant presence.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-graphiterhodium:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A bold and dramatic male voice, ideal for movie trailers.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "en-us-grisadamant:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A dominant adult male leader with a standard American accent, speaking nonchalantly with an authoritative demeanor.",
-        "Gender": "Male",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "en-us-guy:DragonHDOmniLatestNeural",
@@ -1330,20 +1155,6 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "en-us-lavandagigue:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An elderly male voice that is reflective, conveying wisdom and nostalgia.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "en-us-lemonnebula:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An engaging mature female voice with a neutral American accent, well-suited for news reporting and documentary voiceover.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "en-us-lewis:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A confident, formal voice that conveys expertise and authority.",
@@ -1365,13 +1176,6 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "en-us-marfilvictoria:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A young adult female voice that is lively and radiant, full of energy and brightness.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "en-us-marin:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A clear young female voice that is of average pitch, amiable and approachable.",
@@ -1386,23 +1190,9 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "en-us-mielescarcha:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An animated and vibrant young woman's voice with a standard American accent, brimming with energy and brightness.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "en-us-monica:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A mature voice that conveys a strong sense of believability, perfect for delivering content in the best possible way",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-mostazapenumbra:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A female voice that sounds excited and enthusiastic, as if announcing great news.",
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
@@ -1421,30 +1211,9 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "en-us-olivepoivre:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An adult female voice that is calm and soothing, perfect for meditation guides.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "en-us-onyx:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "Onyx voice from OpenAI, a confident and authoritative male voice.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-peachshannon:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A vibrant and fervent young adult male combatant's voice, with a neutral American accent, ready for combat.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-pewtermalachite:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An adult male voice boasting a neutral American accent, alluring and compelling, well-suited for commercial ads and promotional content.",
         "Gender": "Male",
         "Age Group": "Adult"
     },
@@ -1469,35 +1238,7 @@
         "Gender": "Male",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "en-us-rougepearl:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A mature male boasting a rich, low-pitched and authoritative vocal quality, paired with a American accent, exuding a sense of authority and strength.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-rubibiwa:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An adult male voice with a standard American accent, sonorous and dependable, embodying genuineness and reliability.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-rubicalima:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A youthful female voice with a lively, playful quality, neutral American accent, perfect for animated cartoons and children's entertainment.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-safranobsidian:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A male voice of a young adult, featuring a standard American accent, exuding a demeanor of arrogant dependability.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
+   {
         "Voice Name": "en-us-samuel:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "An expressive voice that feels warm and sincere.",
@@ -1511,14 +1252,7 @@
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "en-us-sandchili:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An adult male voice carrying a general American accent, soft yet full-bodied, with a comforting and reassuring warmth.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "en-us-sara:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A female teenager voice with a wide range of expressive capabilities that can convey any emotion with ease and keep users engaged.",
@@ -1540,20 +1274,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "en-us-silvergalatea:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A young adult female voice with a standard American accent, merging fanciful playfulness with watchful wariness.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-slatenebulis:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A restrained, cool adult male voice with a neutral American accent, carrying an air of distance and introspection.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "en-us-steffan:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A pleasant sounding voice that can be someone you know.",
@@ -1564,20 +1284,6 @@
         "Voice Name": "en-us-tony:DragonHDOmniLatestNeural",
         "Locale": "en-us",
         "Description": "A versatile voice that can sound both casual and professional, adaptable to any use case and situation.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "en-us-turquoisecrepusculo:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "A young adult woman's voice, self-assured and resolute, with a general American accent, articulate and assertive.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "en-us-violetvivace:DragonHDOmniLatestNeural",
-        "Locale": "en-us",
-        "Description": "An engaging elderly male narrator with an icy, aloof tone and a standard American accent.",
         "Gender": "Male",
         "Age Group": "Adult"
     },
@@ -1708,24 +1414,10 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "es-es-abricotabeto:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A no-nonsense, resolute middle-aged female manager's voice in Spanish.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "es-es-abril:DragonHDOmniLatestNeural",
         "Locale": "es-es",
         "Description": "A professional female voice from Spain with a smooth, slightly breathy tone, well-suited for narrating audiobooks or educational content.",
         "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-akahortensia:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "Mature, determined adult male voice in Standard Spanish.",
-        "Gender": "Male",
         "Age Group": "Adult"
     },
     {
@@ -1757,34 +1449,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "es-es-azulnile:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "An enthralling middle-aged male narrator voice in Spanish, ideal for storytelling.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-bleuetganges:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A lively and warm young adult female voice speaking Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-es-bleuetpoivre:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A serious, contemplative young adult male tone in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-es-bronzemistfall:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A commanding, no-nonsense adult male leader's voice in Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "es-es-dario:DragonHDOmniLatestNeural",
         "Locale": "es-es",
         "Description": "This young adult male speaker from Spain has an energetic, fast-paced delivery and an enthusiastic tone, making his voice a great fit for a technology podcast or an explainer video.",
@@ -1811,41 +1475,6 @@
         "Description": "A young female speaker from Spain with a calm and professional tone, well-suited for a technology podcast or an audiobook.",
         "Gender": "Female",
         "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-es-garnetmusgo:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A charming, deep-resonant middle-aged male voice in Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-graphitegarda:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A cultivated and elegant mature woman's voice in neutral Spanish.",
-        "Gender": "Female",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "es-es-grisperleallemande:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A contemplative and logical adult male voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-hazelmashu:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "An overly particular, high-strung middle-aged female hostess's voice in Spanish.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-indigovanille:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A vibrant middle-aged female voice in Spanish, fitting for anime characters.",
-        "Gender": "Female",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "es-es-irene:DragonHDOmniLatestNeural",
@@ -1890,32 +1519,11 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "es-es-mintfrostbite:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A candid, restless grown woman's voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "es-es-nil:DragonHDOmniLatestNeural",
         "Locale": "es-es",
         "Description": "This adult male speaker from Spain has a professional and smooth delivery, making his voice a great fit for corporate presentations or documentary narration.",
         "Gender": "Male",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-rojofer:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "Mid-life male companion's gentle, seasoned tone in Spanish",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-es-safiromizar:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "Standard Spanish voice of a witty young adult male comedian",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "es-es-saul:DragonHDOmniLatestNeural",
@@ -1929,13 +1537,6 @@
         "Locale": "es-es",
         "Description": "Serene and understated, a young adult male voice in Standard Spanish.",
         "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-es-slateola:DragonHDOmniLatestNeural",
-        "Locale": "es-es",
-        "Description": "A distinct, steady, and self-assured young adult woman’s voice in Spanish.",
-        "Gender": "Female",
         "Age Group": "Young Adult"
     },
     {
@@ -2002,97 +1603,13 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "es-mx-abricotcassiopeia:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A strong, commanding young adult male soldier's youthful and bold voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-abricotdiminuendo:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A narrative, expressive middle-aged female voice, delivered in Mexican Spanish, perfect for storytelling.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-akashine:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Serene and understated, a young adult male voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-amarillorubis:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A contemplative and logical adult male voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-amarilloyuki:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A cultivated and elegant mature woman's voice in neutral Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-azabachebeurre:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Upbeat and dynamic young adult male voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "es-mx-beatriz:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "This young female Mexican Spanish voice has a smooth, professional tone, making it well-suited for e-learning or informational podcasts.",
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "es-mx-bleumarinenimbus:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A meticulous, high-strung middle-aged female hostess’s voice, spoken in Mexican Spanish, lively and precise.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-blushvinagre:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Stern and authoritative young adult female boss's voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-bronzethyme:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Mature, determined adult male voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-brunrocio:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Midlife male's gritty voice suited for debating in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-burgundytowada:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A concerned and contemplative mature woman's voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-cafepulsar:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A male adult voice with consistent and dependable qualities in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+     {
         "Voice Name": "es-mx-candela:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "This is an engaging, young adult Mexican Spanish female voice with a professional and polished tone, ideal for documentary narration or an informative podcast.",
@@ -2114,48 +1631,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "es-mx-cenizaumbra:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A quirky, jovial elderly male's voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "es-mx-charcoalionian:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A captivating middle-aged male narrator’s voice, expressed in Mexican Spanish, perfect for storytelling.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-chartreusestarfall:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A vibrant middle-aged female voice, voiced in Mexican Spanish, ideal for animated or lively roles.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-cielopersil:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A dynamic and fervent young adult male warrior's voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-coralpasteque:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A firm, pragmatic middle-aged female manager’s voice, voiced in Mexican Spanish, no-nonsense and clear.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-crimsonastra:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A charming and level-headed mature male's voice in Standard Spanish, suited for a managerial role.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "es-mx-dalia:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "A bright and upbeat voice, perfect for adding enthusiasm and energy to any dialogue.",
@@ -2163,59 +1638,10 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "es-mx-framboisepimienta:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A serious, contemplative young adult male tone in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "es-mx-gerardo:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "A young Mexican male voice with an engaging and enthusiastic tone, making it well-suited for a tech podcast or an explainer video.",
         "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-grisperlefraise:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A wise, impartial middle-aged female voice, articulated in Mexican Spanish, balanced and authoritative.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-hazelnatsu:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A commanding, no-nonsense adult male leader's voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-hazelphoebe:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A sharp-witted and playfully whimsical young adult woman's voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-honeymalachite:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A gentle and tranquil young adult female voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-honeyorionis:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "The resolute and self-assured voice of a young adult queen in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-indigodiminuendo:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A steady, self-assured young adult woman’s voice, spoken in Mexican Spanish, clear and poised.",
-        "Gender": "Female",
         "Age Group": "Young Adult"
     },
     {
@@ -2254,27 +1680,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "es-mx-magentahorizonte:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A deep, resonant middle-aged male voice, expressed in Mexican Spanish, exuding confidence and warmth.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-magentaumami:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A hoarse adult male ghostly voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "es-mx-mandarinafuyu:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A convincing and engaging young adult female voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "es-mx-marina:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "A child voice that's great at conveying curiousity",
@@ -2282,58 +1687,9 @@
         "Age Group": "Child"
     },
     {
-        "Voice Name": "es-mx-mauveiron:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "An innocent young adult male voice, modeled after Rudolph, in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-melonlirio:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "An ethereal, nurturing voice of a mature woman, akin to a caring girlfriend, in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-mieldaybreak:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A strong, assertive adult male voice, rendered in Mexican Spanish, echoing Arnold-style confidence.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-navybronzee:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A candid, restless grown woman's voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-navyhyperion:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A fiery young adult male voice in Standard Spanish expressing anger.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-noirfraise:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A talkative, conversational young adult female voice in Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "es-mx-nuria:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "A young Mexican Spanish female with a professional and engaging tone, well-suited for a podcast or an explainer video.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-pardobrisa:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "An adaptable young-adult female voice in Standard Spanish.",
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
@@ -2345,67 +1701,11 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "es-mx-perlaerable:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Haughty yet composed, the voice of a young adult male mentor in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-prunedolce:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A romantic, emotionally rich middle-aged male voice, performed in Mexican Spanish, tender and heartfelt.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "es-mx-renata:DragonHDOmniLatestNeural",
         "Locale": "es-mx",
         "Description": "A young Mexican female voice with a smooth, professional yet friendly tone, well-suited for corporate narration or e-learning.",
         "Gender": "Female",
         "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-safiroaki:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "An elderly male's contemplative and tranquil voice in Standard Spanish.",
-        "Gender": "Male",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "es-mx-safirotasman:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A lively and warm young adult female voice speaking Standard Spanish.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-slateraisin:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A resolute, seasoned middle-aged female leader’s voice, expressed in Mexican Spanish, confident and strong.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-slaterubino:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Standard Spanish voice of a witty young adult male comedian",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "es-mx-turquoisegeneva:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "Mid-life male companion's gentle, seasoned tone in Standard Spanish",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "es-mx-verdepoire:DragonHDOmniLatestNeural",
-        "Locale": "es-mx",
-        "Description": "A seasoned midlife male's robust and commanding voice in neutral Spanish.",
-        "Gender": "Male",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "es-mx-yago:DragonHDOmniLatestNeural",
@@ -2674,13 +1974,6 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "fr-fr-caramelotsuki:DragonHDOmniLatestNeural",
-        "Locale": "fr-fr",
-        "Description": "A composed, serene mature female French speaker, articulate and unhurried.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "fr-fr-celeste:DragonHDOmniLatestNeural",
         "Locale": "fr-fr",
         "Description": "This young adult French female voice has a smooth, professional delivery, making it ideal for narrating a tech podcast or educational material.",
@@ -2723,13 +2016,6 @@
         "Age Group": "Child"
     },
     {
-        "Voice Name": "fr-fr-framboisetulipan:DragonHDOmniLatestNeural",
-        "Locale": "fr-fr",
-        "Description": "A timeless mature male French voice, well-suited to narrative storytelling.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "fr-fr-henri:DragonHDOmniLatestNeural",
         "Locale": "fr-fr",
         "Description": "A strong and calm voice, projecting both power and serenity in communication.",
@@ -2770,20 +2056,6 @@
         "Description": "A middle-aged French male voice with a smooth, articulate tone, well-suited for narrating a documentary or a technology podcast.",
         "Gender": "Male",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "fr-fr-nacarmargarita:DragonHDOmniLatestNeural",
-        "Locale": "fr-fr",
-        "Description": "An adult male voice, sensible and poised, in French.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "fr-fr-navyromarin:DragonHDOmniLatestNeural",
-        "Locale": "fr-fr",
-        "Description": "A young adult female lead vocal with a filmic timbre, ideally suited for cinematic productions.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "fr-fr-remy:DragonHDOmniLatestNeural",
@@ -2996,74 +2268,11 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "id-id-azabachequarzo:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "An endearing and charming young woman's voice in Indonesian.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-cenizatenuto:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "A forthright and self-confident young adult woman's voice in Indonesian.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-coralfromage:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "An adult female's captivating and enchanting voice in Indonesian.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "id-id-gadis:DragonHDOmniLatestNeural",
         "Locale": "id-id",
         "Description": "A middle-aged Indonesian female, speaking in a formal and measured tone that would be perfect for news broadcasting or corporate narration.",
         "Gender": "Female",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "id-id-indigosage:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "A tender, quietly-spoken young adult female voice in Indonesian.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-mostazamarmara:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "A male young adult voice in Indonesian, grown-up and steadfast, conveying resolve.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-orocypress:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "A tranquil and composed Indonesian young adult female voice.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-prunearpeggio:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "An Indonesian voice of a composed, authoritative, and bossy adult male leader.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "id-id-safiromonzon:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "Cool and reticent young adult male voice in Indonesian.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "id-id-slatemotivo:DragonHDOmniLatestNeural",
-        "Locale": "id-id",
-        "Description": "An empathetic and nurturing Indonesian young adult male voice.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "is-is-gudrun:DragonHDOmniLatestNeural",
@@ -3093,14 +2302,7 @@
         "Gender": "Male",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "it-it-brunnami:DragonHDOmniLatestNeural",
-        "Locale": "it-it",
-        "Description": "An Italian timeless midlife masculine narrative voice.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "it-it-calimero:DragonHDOmniLatestNeural",
         "Locale": "it-it",
         "Description": "A middle-aged Italian man with a steady, professional tone, well-suited for narrating audiobooks or documentaries.",
@@ -3125,13 +2327,6 @@
         "Voice Name": "it-it-elsa:DragonHDOmniLatestNeural",
         "Locale": "it-it",
         "Description": "A confident and crisp voice, delivering messages with clarity and self-assurance.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "it-it-esmeraldaglow:DragonHDOmniLatestNeural",
-        "Locale": "it-it",
-        "Description": "A composed and assiduous mature female leader's voice in Italian.",
         "Gender": "Female",
         "Age Group": "Adult"
     },
@@ -3185,13 +2380,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "it-it-lavandabijou:DragonHDOmniLatestNeural",
-        "Locale": "it-it",
-        "Description": "Composed and valiant middle-aged female protagonist's voice in Italian.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "it-it-lisandro:DragonHDOmniLatestNeural",
         "Locale": "it-it",
         "Description": "This young adult Italian male has a smooth, professional voice with a neutral, confident tone, making it ideal for a news report or corporate narration.",
@@ -3227,55 +2415,13 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "it-it-slatehalo:DragonHDOmniLatestNeural",
-        "Locale": "it-it",
-        "Description": "A merciless Italian voice belonging to a grown female roaming sorceress.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "ja-jp-aoi:DragonHDOmniLatestNeural",
         "Locale": "ja-jp",
         "Description": "A child voice that's great at conveying curiousity",
         "Gender": "Female",
         "Age Group": "Child"
     },
-    {
-        "Voice Name": "ja-jp-azulvivace:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A welcoming and guileless mature male voice in Standard Japanese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ja-jp-cenizaheather:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A sophisticated and cerebral young adult male Japanese voice, projecting an age beyond his years.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ja-jp-charcoalkussharo:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A Japanese voice of a young-sounding, devoted adult male knight.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ja-jp-coralequinox:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A welcoming and energetic male adult student's voice in Standard Japanese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ja-jp-crematilleul:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A honeyed and elegant mature woman's voice in Standard Japanese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "ja-jp-daichi:DragonHDOmniLatestNeural",
         "Locale": "ja-jp",
         "Description": "A middle-aged Japanese male voice with a calm, formal tone, suitable for a documentary or corporate presentation.",
@@ -3317,14 +2463,7 @@
         "Gender": "Female",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "ja-jp-mostazabrisa:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "An enchanting and soft mature male butler's voice in Japanese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "ja-jp-nanami:DragonHDOmniLatestNeural",
         "Locale": "ja-jp",
         "Description": "A bright and cheerful voice, offering a lively and uplifting tone for every situation.",
@@ -3339,52 +2478,10 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "ja-jp-navypulsar:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "Steadfast and determined Japanese voice of an adult princess",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ja-jp-rojocantique:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "A reliable, consistent adult woman's speaking voice in Japanese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ja-jp-sableabedul:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "Serene and enchanting mature female Japanese voice",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ja-jp-safransaimaa:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "The warm-hearted and jovial voice of a middle-aged male izakaya proprietor speaking Japanese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "ja-jp-shiori:DragonHDOmniLatestNeural",
         "Locale": "ja-jp",
         "Description": "The speaker is a middle-aged Japanese female with a steady, professional delivery, making her voice ideal for narration or informational content.",
         "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ja-jp-silvervulpecula:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "Gentle and enchanting mature female Japanese voice.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ja-jp-slateadriatic:DragonHDOmniLatestNeural",
-        "Locale": "ja-jp",
-        "Description": "An authoritative, mature middle-aged male voice in Japanese.",
-        "Gender": "Male",
         "Age Group": "Adult"
     },
     {
@@ -3465,83 +2562,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "ko-kr-cafehalo:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A calm and unflustered mature female voice, ideal for an \"airheaded\" character in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-caramelocadenza:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A courteous and demure young adult woman's \"childhood companion\" voice in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-celestebrote:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A valiant, unwavering young adult female warrior's voice in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-cieloargentum:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A dynamic, lively adult male voice in Standard Korean, characterized by a \"cheerful, cool youthful\" essence.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-coppervinagre:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A dynamic and upbeat adult woman's voice with a perky \"younger sister\" tone in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-cremaamande:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A vibrant youthful adult male student athlete's voice in Standard Korean.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-cremamercury:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "An impish, lively, and enchanting middle-aged \"big sister\" voice in Korean.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-esmeraldasunstone:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A mature woman's detached and frigid voice in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-framboisecurcuma:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A mild and sophisticated young adult male voice with a thoughtful senior-like quality, in Korean.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-garnetmatcha:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A fervent and spirited teenaged young adult male's voice in Standard Korean.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-goldprocyon:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "Cool and collected mature male voice delivered in Standard Korean.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "ko-kr-gookmin:DragonHDOmniLatestNeural",
         "Locale": "ko-kr",
         "Description": "A middle-aged Korean man with a professional and engaging tone, making it well-suited for a corporate presentation or educational narration.",
@@ -3568,76 +2588,6 @@
         "Description": "A Korean female with a smooth, professional tone, suitable for narrating a documentary or an e-learning module.",
         "Gender": "Female",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-marfilsteel:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A steady and serene middle-aged gentleman's voice in Korean.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-mauvedelphinus:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A lighthearted, roguish, and overconfident young adult male's voice in Standard Korean.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-mintchili:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A middle-aged, alluring \"enchanting sister\" voice in Korean.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-mochacannelle:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "An authoritative, low-pitched voice of a self-assured middle-aged boss in Korean.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-nacarpersil:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A spirited and dynamic, nurturing young adult female voice in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-olivalepus:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "Vigorous and energetic voice of a young female in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-pardoobertura:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A piercing, forceful middle-aged male voice using Korean.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "ko-kr-pistachefraise:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A strong, valiant young adult male's voice in Standard Korean.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-roseclove:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A spirited and bold adult female adventurer's voice in Standard Korean, characterized by playful and adventurous qualities.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "ko-kr-sandovercast:DragonHDOmniLatestNeural",
-        "Locale": "ko-kr",
-        "Description": "A tenacious and resolved young adult woman's voice in Standard Korean.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "ko-kr-seohyeon:DragonHDOmniLatestNeural",
@@ -3913,66 +2863,10 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "pt-br-amarilloshikotsu:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A witty young male adult comic's voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "pt-br-antonio:DragonHDOmniLatestNeural",
         "Locale": "pt-br",
         "Description": "A bright and upbeat voice, adding energy and enthusiasm to every message.",
         "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-blancodouro:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A convincing and captivating young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleuarpeggio:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A cheerful middle-aged male Santa-like voice, in Brazilian Portuguese, brimming with festive joy.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleuetheatwave:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A theatrical and sophisticated young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleumarinenebula:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A robust, fearless young adult male soldier’s voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleumarinepino:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A soft and contemplative young man's voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleunova:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A lively and warm young adult female neighbor’s voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-bleupepper:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A seasoned middle-aged female supervisor’s voice, voiced in Brazilian Portuguese, firm and authoritative.",
-        "Gender": "Female",
         "Age Group": "Adult"
     },
     {
@@ -3983,79 +2877,9 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "pt-br-cenizagaillarde:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A mischievous and enticing young adult female schoolgirl's voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-charcoalaegean:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A melancholic young adult female voice in Portuguese, conveying distressed feelings.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-coralirrawaddy:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A grown-up midlife male voice, reliable and genial, suited for a partner, in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-coralnatsu:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A disheartened and sorrowful adolescent male's speaking voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-creamastralis:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A quirky and funny middle-aged male senior’s voice, in Brazilian Portuguese, humorous and lighthearted.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-cremaorta:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A powerful middle-aged male debater’s voice, rendered in Brazilian Portuguese, strong and persuasive.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-crimsonganymede:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A managerial middle-aged woman’s voice, delivered in Brazilian Portuguese, exuding authority and resolve.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "pt-br-donato:DragonHDOmniLatestNeural",
         "Locale": "pt-br",
         "Description": "A young to middle-aged Brazilian Portuguese man with an upbeat, dynamic tone well-suited for a podcast or presentation.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-dorecassiopeia:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A menacing, shadowy, and foreboding voice of an adult male Grim Reaper, in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-doreredwood:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An authoritative and motivating young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-doretiber:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An earnest youthful adult male voice in Portuguese, expressing anger.",
         "Gender": "Male",
         "Age Group": "Young Adult"
     },
@@ -4088,94 +2912,17 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "pt-br-fucsiaceltic:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A level-headed middle-aged male manager’s voice, in Brazilian Portuguese, calm and professional.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-fucsiavolta:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An affectionate middle-aged female voice, in Brazilian Portuguese, dreamy and caring, like a loving girlfriend.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-garnetpolonaise:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A cartoonish, pompous young adult female voice in Standard Portuguese, brimming with personality.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
         "Voice Name": "pt-br-giovanna:DragonHDOmniLatestNeural",
         "Locale": "pt-br",
         "Description": "A young female Brazilian Portuguese voice with a friendly and engaging tone, well-suited for a podcast or educational video.",
         "Gender": "Female",
         "Age Group": "Young Adult"
     },
-    {
-        "Voice Name": "pt-br-goldgaillarde:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A middle-aged female narrator’s voice, in Brazilian Portuguese, ideal for storytelling.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-graphitemoonstone:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A heartfelt middle-aged male voice, in Brazilian Portuguese, typical of a romantic husband.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-honeyromarin:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A seductive, enigmatic adult male specter's voice in Standard Portuguese, mysterious and captivating.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-honeyselene:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An anxious and contemplative middle-aged woman’s voice, voiced in Brazilian Portuguese, tense yet thoughtful.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+     {
         "Voice Name": "pt-br-humberto:DragonHDOmniLatestNeural",
         "Locale": "pt-br",
         "Description": "A young Brazilian Portuguese male with an energetic and engaging tone, making it well-suited for a podcast or an explainer video.",
         "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-indigorubis:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An engaging and delightful mature female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-ivorynocturne:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A mature male voice with a steady, dependable quality in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-ivorysmeraldo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A captivating and charming adult woman's voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-jadevanille:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A resolute and confident voice of a young adult queen, in Standard Portuguese.",
-        "Gender": "Female",
         "Age Group": "Young Adult"
     },
     {
@@ -4184,20 +2931,6 @@
         "Description": "The speaker is an adult Brazilian Portuguese male with a professional and even-paced delivery, ideal for corporate narration or educational content.",
         "Gender": "Male",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-kuronile:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A talkative, conversational young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-lavandatitan:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "Affable and captivating young adult male voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "pt-br-leila:DragonHDOmniLatestNeural",
@@ -4221,219 +2954,11 @@
         "Age Group": "Child"
     },
     {
-        "Voice Name": "pt-br-lilacaurum:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A robust and commanding middle-aged male veteran’s voice, in Brazilian Portuguese, fearless and bold.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-macerio:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A clear and confident voice with an upbeat tone",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-manuela:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A young Brazilian Portuguese female voice with a smooth, polished delivery, well-suited for an informative podcast or e-learning content.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-marfilcumulus:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An upbeat and dynamic young adult male voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-mauvecacao:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An overbearing yet composed young adult male mentor's voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-mauvemarmara:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A dedicated, youthful female young adult instructor's voice in standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-mielplatinum:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A jolly, lighthearted middle-aged male voice, spoken in Brazilian Portuguese, cheerful and fun.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-nacarmonzon:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A mechanical, stern young adult female supervisor's voice in Standard Portuguese",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-nacarrondo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A lively middle-aged female voice in Portuguese, ideal for anime characters.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-navytitan:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A consistent male adult voice reminiscent of Arnold, in Standard Portuguese, robust and resolute.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
+        "Voice N
     {
         "Voice Name": "pt-br-nicolau:DragonHDOmniLatestNeural",
         "Locale": "pt-br",
         "Description": "A young Brazilian Portuguese male voice with a neutral, thoughtful tone and a smooth finish, well-suited for a tech podcast or an explainer video.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-olivaalbahaca:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A serene, dignified, authoritative mature male leader's voice in Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-olivayuki:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An enchanting, captivating mature queenly female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-olivetoccata:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A crafty adult male voice, in Brazilian Portuguese, Grinch-like in tone with sly, mischievous undertones.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-opalopianissimo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An innocent young adult female voice in Rudolph's stylistic manner, in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-orodubhe:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A candid and restless middle-aged woman’s voice, in Brazilian Portuguese, lively and expressive.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-orosteel:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A graceful and emotional young woman's voice in Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-pardocristallo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "Charming and playful young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-pardolait:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A contemplative and logical mature male voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-peachallemande:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A young adult male's colloquial, erudite voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-platacrescendo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A distinct and self-assured young adult female voice in Brazilian Portuguese, steady and expressive for versatile use.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-rojocomo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A dynamic, fervent youthful adult male warrior's voice in Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-rojonebulis:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "Reserved, cool, and composed young adult masculine voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-rojotremolo:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A determined young adult male voice in Brazilian Portuguese, strong and confident with a polished tone.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-roseebeurre:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A warm-hearted young adult woman’s voice, spoken in Brazilian Portuguese, gentle and inviting.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-br-roseecassiopeia:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A velvety, wise middle-aged woman’s voice in Brazilian Portuguese, warm and full of depth.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-sableciclon:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A serene and collected middle-aged male leader’s voice, in Brazilian Portuguese, calm and wise.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-safranfraise:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "An eccentric middle-aged male voice, in Brazilian Portuguese, dramatic and full of personality.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-sepiabronzee:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A hesitant and tense middle-aged woman’s voice, voiced in Brazilian Portuguese, nervous yet expressive.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-sepiamoderato:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "A spirited and stunning adult woman's voice in Standard Portuguese, radiating confidence.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-br-tealarena:DragonHDOmniLatestNeural",
-        "Locale": "pt-br",
-        "Description": "In Standard Portuguese, a soft and delicate young adult male voice.",
         "Gender": "Male",
         "Age Group": "Young Adult"
     },
@@ -4458,70 +2983,7 @@
         "Gender": "Female",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "pt-pt-akamadrigal:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A melancholic young adult female voice in Portuguese, conveying distressed feelings.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-ambertarragon:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A middle-aged woman's velvety and sage voice in Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-bleumarineheatwave:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A serene, dignified, authoritative mature male leader's voice in Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-brunpalladium:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A smart, youthful female voice in Standard Portuguese, crisp and articulate.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-caramelohymne:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "An earnest youthful adult male voice in Portuguese, expressing anger.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-caramelopianissimo:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "Reserved, cool, and composed young adult masculine voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-cenizanoisette:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A crafty adult male voice, Grinch-like in tone, speaking Portuguese, with mischievous and sly undertones.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-copperzinc:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A resolute middle-aged male debater's voice in Portuguese, powerful and commanding.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-cremaoratorio:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A resolute young adult male voice in European Portuguese, clear and assertive, ideal for professional contexts.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
+     {
         "Voice Name": "pt-pt-duarte:DragonHDOmniLatestNeural",
         "Locale": "pt-pt",
         "Description": "A serious and deep voice, offering a tone of gravity and importance in critical discussions.",
@@ -4535,84 +2997,14 @@
         "Gender": "Female",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "pt-pt-griscourante:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "Endearing and sweet young adult female voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-grisperlecantata:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A mature gentleman with a deep-toned voice speaking Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-hazelstratus:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A cartoonish, pompous young adult female voice in Standard Portuguese, brimming with personality.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-ivoryhyperion:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "An enchanting voice of a middle-aged male narrator in Portuguese, well-suited for storytelling.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-marfilelara:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A lively middle-aged female voice in Portuguese, ideal for anime characters.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-opalogalaxy:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A poised and confident young adult female voice in European Portuguese, refined and reliable for various applications.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-platamarmara:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A captivating and charming adult woman's voice in Standard Portuguese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "pt-pt-raquel:DragonHDOmniLatestNeural",
         "Locale": "pt-pt",
         "Description": "A calm and bright voice, balancing serenity with positivity to create an optimistic tone.",
         "Gender": "Female",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "pt-pt-scarletmercury:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A soft and contemplative young man's voice in Standard Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "pt-pt-tangerinesapphire:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A grave midlife masculine tone in Standard Portuguese, evocative of a godfather, projecting authority.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "pt-pt-turquoisemarcato:DragonHDOmniLatestNeural",
-        "Locale": "pt-pt",
-        "Description": "A dynamic, fervent youthful adult male warrior's voice in Portuguese.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
+   {
         "Voice Name": "ro-ro-alina:DragonHDOmniLatestNeural",
         "Locale": "ro-ro",
         "Description": "A young to middle-aged Romanian female voice with a professional, neutral tone and a measured pace, well-suited for news reporting or formal narration.",
@@ -4886,95 +3278,11 @@
         "Age Group": "Young Adult"
     },
     {
-        "Voice Name": "zh-cn-amarillogaronne:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "Voice of an unrestrained and headstrong adult male friend speaking Standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-amberopal:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A calm and easygoing adult female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-amberromarin:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A middle-aged female news presenter boasting a polished, broadcast-style tone in Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-beigeventisca:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A mild young adult male voice in Standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-blancophoenix:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A sincere and dedicated male young adult voice in Standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-bleumarinecristal:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A gentle and clear young adult female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-cafeportamento:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "An adult male gentleman with an alluring and engaging voice in Standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-caramelotiber:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A mature female voice in Standard Mandarin, articulate, erudite, and informed.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-creampersil:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A gentle and mellow grown-up female voice in Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-fucsiavictoria:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A kind and nurturing adult female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-graphiteaurora:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A middle-aged male announcer voice in Mandarin, richly resonant, articulate, and commanding.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "zh-cn-guangxi-yunqi:DragonHDOmniLatestNeural",
         "Locale": "zh-cn-guangxi",
         "Description": "A middle-aged male with a strong Southern Chinese Guangxi accent, speaking in a high-pitched, theatrical, and nagging tone suitable for character acting or comedy.",
         "Gender": "Male",
         "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-hazeleneldo:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "An uninhibited and free-souled adult male voice in Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
     },
     {
         "Voice Name": "zh-cn-henan-yundeng:DragonHDOmniLatestNeural",
@@ -4983,112 +3291,7 @@
         "Gender": "Male",
         "Age Group": "Adult"
     },
-    {
-        "Voice Name": "zh-cn-honeymori:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A sage and melodious midlife woman's voice in Mandarin Chinese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-lavandaabeto:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A contemplative and direct young adult male voice in Standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-liaoning-xiaobei:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn-liaoning",
-        "Description": "A friendly, casual, and gentle voice with a Chinese Liaoning accent, approachable and soothing.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-lilacrubis:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "An amiable, sharp-toned adult woman's \"bestie\" voice in Mandarin—warm, clear, and friendly with a crisp timbre.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-magentamalachite:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A grown male voice with electronic, robot-like timbre, ideal for science fiction or futuristic content in Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-mandarinavolta:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "An inquisitive, explorative adult woman's voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-mochaabedul:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "An authentic, uplifting adult male voice in standard Mandarin.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-mostazascotia:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A soft and compassionate elderly female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Senior"
-    },
-    {
-        "Voice Name": "zh-cn-nacarpasteque:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A haughty mature female voice in Mandarin, exuding self-assurance and an air of superiority.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-navytormenta:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A soft, compassionate middle-aged female voice in Mandarin, warm and nurturing.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-roseebro:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A soft and comforting senior adult female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-rosequasar:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A sophisticated and enchanting adult female voice in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-safiroscherzo:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "Gentle and warm vocal quality of a young adult female in Standard Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-scarletwaltz:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A young-sounding, honeyed, and endearing female spirit's voice in Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-sepiagirasol:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A calm and dependable voice of a middle-aged male corporate executive in Mandarin, projecting trustworthiness.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
+   {
         "Voice Name": "zh-cn-shaanxi-xiaoni:DragonHDOmniLatestNeural",
         "Locale": "zh-cn-shaanxi",
         "Description": "A confident, engaging, and casual voice that keeps the conversation both lively and relaxed.",
@@ -5108,27 +3311,6 @@
         "Description": "A young Chinese man with a lively, conversational tone and a hint of a regional accent, making it well-suited for a podcast or vlogging.",
         "Gender": "Male",
         "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-cn-silverjadeite:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A lyrical mature male radio presenter in Standard Mandarin, featuring a velvety, charming, and captivating speaking style.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-silvermarmara:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A mature male voice in Standard Mandarin, warm and melodious, fluid and emotionally expressive.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-cn-tangerinegigue:DragonHDOmniLatestNeural",
-        "Locale": "zh-cn",
-        "Description": "A gentle and compassionate middle-aged female voice in Mandarin.",
-        "Gender": "Female",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "zh-cn-xiaochen:DragonHDOmniLatestNeural",
@@ -5341,41 +3523,6 @@
         "Age Group": "Adult"
     },
     {
-        "Voice Name": "zh-hk-blancoflore:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "A young adult female Hong Kong Cantonese speaker with an upbeat and engaging tone, whose crisp delivery would be well-suited for tutorials or public announcements.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-hk-blancoshaula:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "An endearing, calming Cantonese voice belonging to a young adult female.",
-        "Gender": "Female",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-hk-brundill:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "An emotionally rich and lighthearted mature male voice in Cantonese.",
-        "Gender": "Male",
-        "Age Group": "Adult"
-    },
-    {
-        "Voice Name": "zh-hk-grispimienta:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "A friendly and upbeat young adult male voice from Hong Kong, speaking in a smooth, presentational style well-suited for a podcast.",
-        "Gender": "Male",
-        "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-hk-hazelpulsar:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "Serene and mild Cantonese voice of a mature woman",
-        "Gender": "Female",
-        "Age Group": "Adult"
-    },
-    {
         "Voice Name": "zh-hk-hiugaai:DragonHDOmniLatestNeural",
         "Locale": "zh-hk",
         "Description": "A clear-sounding voice with great versatility that can adapt to any use case and speak in a way that's easy to understand.",
@@ -5388,13 +3535,6 @@
         "Description": "A bright and upbeat voice that brings energy and positivity to any conversation.",
         "Gender": "Female",
         "Age Group": "Young Adult"
-    },
-    {
-        "Voice Name": "zh-hk-perlacourante:DragonHDOmniLatestNeural",
-        "Locale": "zh-hk",
-        "Description": "Genial and compassionate mature female voice in Cantonese.",
-        "Gender": "Female",
-        "Age Group": "Adult"
     },
     {
         "Voice Name": "zh-hk-wanlung:DragonHDOmniLatestNeural",
