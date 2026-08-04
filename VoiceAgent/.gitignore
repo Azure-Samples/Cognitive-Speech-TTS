@@ -1,0 +1,6 @@
+.venv/
+samples/.env
+samples/.env.tip
+samples/__pycache__/
+agent-reply-*.wav
+voice-agent-output/
