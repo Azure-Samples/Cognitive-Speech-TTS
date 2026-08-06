@@ -23,9 +23,9 @@ files.
    allowlisting. Also confirm that the customer can access the project.
 3. Copy `samples/.env.example` to `samples/.env` and populate only the values
    required by the selected scenario.
-4. Install `azure-ai-voiceagents` from the Azure SDK for Python branch
-   `xitzhang/prompt-voice-agent-private-preview`, then install
-   `samples/requirements.txt`.
+4. From `VoiceAgent`, run `python -m pip install -r samples/requirements.txt`.
+  The requirements file installs the bundled private-preview
+  `azure-ai-voiceagents` wheel and all other sample dependencies.
 5. Run the matching sample:
    - `python samples/simple_rest_lifecycle.py`
    - `python samples/basic_voice_agent.py`

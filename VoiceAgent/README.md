@@ -11,8 +11,8 @@ Voice agents now are available in `swedencentral` and `francecentral` regions.
   Voice Agent team, and wait for confirmation that the subscription has been
   allowlisted for the private preview.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
-- Install the [private-preview](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/prompt-voice-agent-private-preview/sdk/voiceagents/azure-ai-voiceagents) `azure-ai-voiceagents` package from the
-  Azure SDK for Python preview branch.
+- This repository includes the `azure-ai-voiceagents` wheel built from the
+  [Azure SDK for Python private-preview branch](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/prompt-voice-agent-private-preview/sdk/voiceagents/azure-ai-voiceagents).
 - A microphone, speakers or headset, and PortAudio for the audio samples.
 
 ## Set up
@@ -26,6 +26,10 @@ python -m pip install -r samples\requirements.txt
 Copy-Item samples\.env.example samples\.env
 ```
 
+The single `pip install` command installs every sample dependency, including
+the bundled private-preview wheel under `dist/`. No Azure SDK source checkout
+is required.
+
 Set the project endpoint in `samples/.env`:
 
 ```dotenv
@@ -36,7 +40,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 ## Samples
 
 | File | Lifecycle |
-|---|---|
+| --- | --- |
 | `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
 | `samples/basic_voice_agent.py` | Create and patch a basic agent, or connect to an existing agent, then converse through the microphone. |
 | `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |
@@ -46,9 +50,13 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/download_conversation_artifacts.py` | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | `samples/download_conversation_traces.py` | Download correlated Application Insights rows by conversation id. |
 
-The reusable AI coding skill is under
-`skills/voice-agent-private-preview`.
+Reusable AI coding skills are under `skills/`:
 
+- `voice-agent-private-preview` creates and tests private-preview voice agents.
+- `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
+  and returns its MCP URL and Foundry project connection ID.
+- `provision-foundry-toolbox` creates an Azure AI Search index from local files
+  and returns the new Foundry Toolbox name and immutable version.
 
 ## Run the agent samples
 
@@ -196,7 +204,6 @@ The local `.env` uses the existing
 python samples\voice_agent_with_toolbox.py
 ```
 
-
 ## Tracing and evaluation in Azure AI Foundry
 
 When the conversation ends, click the URL printed in the terminal log to view
@@ -236,11 +243,10 @@ instead of downloading WAV data through the service.
 Conversation and audio download requires the agent to have been created with
 `store=true`. All agents created by these samples enable it.
 
-
 ## Troubleshooting
 
 | Symptom | Action |
-|---|---|
+| --- | --- |
 | `401` or `403` | Sign in again and confirm project access. |
 | `404` during create or connect | Confirm preview enablement and region support. |
 | Model not found | Set a voice-capable managed model or Foundry deployment. |
