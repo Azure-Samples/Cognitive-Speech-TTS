@@ -19,21 +19,20 @@ from typing import Any, Final, Optional
 from urllib.parse import quote, urlparse, urlunparse
 
 import aiohttp
-from azure.ai.voiceagents.aio import VoiceAgentsClient
-from azure.ai.voiceagents.models import (
-    AgentDefinitionOptInKeys,
-    AzureVoice,
-    MCPTool,
-    ServerVadTurnDetection,
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.models import (
+    RealtimeAudioFormatsAudioPcm,
+    VoiceAgentAudioConfig,
+    VoiceAgentAudioInputConfig,
+    VoiceAgentAudioOutputConfig,
     VoiceAgentDefinition,
-    VoiceAudioConfig,
-    VoiceAudioFormat,
-    VoiceAudioInputConfig,
-    VoiceAudioOutputConfig,
-    VoiceInputTranscription,
-    VoiceNoiseReduction,
-    VoiceNoiseReductionType,
+    VoiceAgentInputTranscription,
+    VoiceAgentMcpTool,
+    VoiceAgentNoiseReduction,
+    VoiceAgentNoiseReductionType,
+    VoiceAgentServerVadTurnDetection,
     VoiceOutputModality,
+    VoiceType,
 )
 from azure.ai.voicelive.aio import connect
 from azure.core.pipeline.transport import AioHttpTransport
@@ -45,7 +44,6 @@ from foundry_trace_url import build_foundry_trace_url
 
 load_dotenv()
 
-PREVIEW: Final = AgentDefinitionOptInKeys.VOICE_AGENTS_V1_PREVIEW
 PREVIEW_HEADERS: Final = {"Foundry-Features": "VoiceAgents=V1Preview"}
 API_VERSION: Final = "v1"
 SAMPLE_RATE: Final = 24000
@@ -346,34 +344,30 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
         else None
     )
 
-    audio_config = VoiceAudioConfig(
-        input=VoiceAudioInputConfig(
-            format=VoiceAudioFormat(type="audio/pcm", rate=SAMPLE_RATE),
-            turn_detection=ServerVadTurnDetection(
+    audio_config = VoiceAgentAudioConfig(
+        input=VoiceAgentAudioInputConfig(
+            format=RealtimeAudioFormatsAudioPcm(rate=SAMPLE_RATE),
+            turn_detection=VoiceAgentServerVadTurnDetection(
                 threshold=0.5,
                 prefix_padding_ms=300,
                 silence_duration_ms=700,
             ),
-            noise_reduction=VoiceNoiseReduction(
-                type=VoiceNoiseReductionType.AZURE_DEEP_NOISE_SUPPRESSION
+            noise_reduction=VoiceAgentNoiseReduction(
+                type=VoiceAgentNoiseReductionType.AZURE_DEEP_NOISE_SUPPRESSION
             ),
-            transcription=VoiceInputTranscription(
+            transcription=VoiceAgentInputTranscription(
                 model="whisper-1",
                 language="en-US",
             ),
         ),
-        output=VoiceAudioOutputConfig(
-            format=VoiceAudioFormat(type="audio/pcm", rate=SAMPLE_RATE),
-            voice=AzureVoice(
-                type="azure-standard",
-                name=os.getenv(
-                    "AZURE_VOICE_AGENTS_VOICE", "en-US-AvaNeural"
-                ),
-            ),
+        output=VoiceAgentAudioOutputConfig(
+            format=RealtimeAudioFormatsAudioPcm(rate=SAMPLE_RATE),
+            voice=os.getenv("AZURE_VOICE_AGENTS_VOICE", "en-US-AvaNeural"),
+            voice_type=VoiceType.AZURE_STANDARD,
         ),
     )
     tool = (
-        MCPTool(
+        VoiceAgentMcpTool(
             server_label=os.getenv(
                 "AZURE_VOICE_AGENTS_MCP_SERVER_LABEL", "my-mcp-server"
             ),
@@ -391,14 +385,15 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
             headers={"Accept-Encoding": "gzip, deflate"},
         )
     )
-    async with credential, VoiceAgentsClient(
+    async with credential, AIProjectClient(
         endpoint=endpoint,
         credential=credential,
+        allow_preview=True,
         transport=transport,
     ) as client:
         if create_new:
-            await client.voice_agents.create_voice_agent(
-                name=agent_name,
+            await client.agents.create_version(
+                agent_name=agent_name,
                 description="MCP microphone lifecycle sample.",
                 definition=VoiceAgentDefinition(
                     model_type=model_type,
@@ -416,15 +411,11 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
                     tools=[tool],
                     store=True,
                 ),
-                foundry_features=PREVIEW,
             )
             print(f"Created voice agent: {agent_name}")
 
         else:
-            await client.voice_agents.get_voice_agent(
-                agent_name,
-                foundry_features=PREVIEW,
-            )
+            await client.agents.get(agent_name=agent_name)
             print(f"Using existing voice agent: {agent_name}")
 
         conversation_id = await run_microphone_session(

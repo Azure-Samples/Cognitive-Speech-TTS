@@ -11,8 +11,9 @@ Voice agents now are available in `swedencentral` and `francecentral` regions.
   Voice Agent team, and wait for confirmation that the subscription has been
   allowlisted for the private preview.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
-- This repository includes the `azure-ai-voiceagents` wheel built from the
-  [Azure SDK for Python private-preview branch](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/prompt-voice-agent-private-preview/sdk/voiceagents/azure-ai-voiceagents).
+- This repository includes the `azure-ai-projects` wheel built from the
+  [Azure SDK for Python vnext branch](https://github.com/Azure/azure-sdk-for-python/tree/feature/azure-ai-projects/vnext/sdk/ai/azure-ai-projects).
+  See [the SDK build record](dist/README.md) for its source commit and checksum.
 - A microphone, speakers or headset, and PortAudio for the audio samples.
 
 ## Set up
@@ -30,6 +31,14 @@ The single `pip install` command installs every sample dependency, including
 the bundled private-preview wheel under `dist/`. No Azure SDK source checkout
 is required.
 
+These samples require the bundled SDK, not a PyPI build with the same version
+number. If reusing an environment that already has `azure-ai-projects` 2.6.1,
+replace it explicitly:
+
+```powershell
+python -m pip install --force-reinstall --no-deps .\dist\azure_ai_projects-2.6.1-py3-none-any.whl
+```
+
 Set the project endpoint in `samples/.env`:
 
 ```dotenv
@@ -42,7 +51,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | File | Lifecycle |
 | --- | --- |
 | `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
-| `samples/basic_voice_agent.py` | Create and patch a basic agent, or connect to an existing agent, then converse through the microphone. |
+| `samples/basic_voice_agent.py` | Create and version a basic agent, or connect to an existing agent, then converse through the microphone. |
 | `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |
 | `samples/voice_agent_with_foundry_iq.py` | Create a Foundry IQ agent, converse through the microphone, and display tool arguments/output. |
 | `samples/voice_agent_with_local_function.py` | Execute `add_numbers` in the client, return its output, and hear the response. |
@@ -73,10 +82,11 @@ You can alternatively set `AZURE_VOICE_AGENTS_AGENT_NAME` in `.env`.
 
 ### Simple REST creation
 
-The REST sample sends the agent name, description, and definition to:
+The REST sample puts the agent name in the URL and sends the description and
+definition to the same version-creation endpoint used by the SDK:
 
 ```text
-POST <project-endpoint>/voice_agents?api-version=v1
+POST <project-endpoint>/agents/<agent-name>/versions?api-version=v1
 Authorization: Bearer <Microsoft Entra token>
 Foundry-Features: VoiceAgents=V1Preview
 Content-Type: application/json
@@ -86,19 +96,35 @@ Content-Type: application/json
 python samples\simple_rest_lifecycle.py
 ```
 
-### Basic agent: create, patch, and microphone chat
+### Basic agent: create, version, and microphone chat
 
-The basic sample creates an agent through the Python SDK:
+The basic sample uses `VoiceAgentDefinition` and the audio/tool models from
+`azure.ai.projects.models`. It creates an agent version through
+`AIProjectClient` with preview features enabled:
 
 ```python
-client.voice_agents.create_voice_agent(
-    name=agent_name,
-    definition=definition,
-    foundry_features=AgentDefinitionOptInKeys.VOICE_AGENTS_V1_PREVIEW,
-)
+from azure.ai.projects.aio import AIProjectClient
+
+async with AIProjectClient(
+    endpoint=endpoint,
+    credential=credential,
+    allow_preview=True,
+) as client:
+    version = await client.agents.create_version(
+        agent_name=agent_name,
+        definition=definition,
+    )
 ```
 
-Updating its definition creates a new immutable version.
+To update the definition, call `client.agents.create_version` again with the
+same agent name. The returned version identifier is `version.version`.
+Retrieve an existing agent with `client.agents.get(agent_name=agent_name)`.
+The SDK supplies the management preview header; the Voice Live WebSocket
+connection still supplies `Foundry-Features: VoiceAgents=V1Preview` explicitly.
+
+Audio output uses a voice-name string and a separate `voice_type`, for example
+`VoiceAgentAudioOutputConfig(voice="en-US-AvaNeural",
+voice_type=VoiceType.AZURE_STANDARD)`.
 
 ```powershell
 python samples\basic_voice_agent.py
@@ -226,7 +252,7 @@ voice-agent-output/<conversation-id>/
 ├── merged.wav
 └── turns/
     ├── 001_user_<item-id>.wav
-    ├── 002_assistant_<item-id>.wav
+    ├── 002_agent_<item-id>.wav
     └── ...
 ```
 
@@ -237,11 +263,28 @@ voice-agent-output/<conversation-id>/
   agent on the right.
 
 Set `AZURE_VOICE_AGENTS_OUTPUT_DIR` in `.env` to change the output directory.
-For bring-your-own storage, the JSON manifest records the returned blob paths
-instead of downloading WAV data through the service.
+For bring-your-own storage, the JSON manifest records the returned blob URIs
+(`blob_uri`) instead of downloading WAV data through the service.
+
+The downloader uses `client.beta.voice_agents.conversations` for conversation
+metadata, item/response listing, and audio downloads. These beta operations
+automatically send the voice-agent preview header.
 
 Conversation and audio download requires the agent to have been created with
 `store=true`. All agents created by these samples enable it.
+
+## Validate without Azure access
+
+With the sample dependencies installed, run from this directory:
+
+```powershell
+python -m compileall -q samples skills
+python -m unittest discover -s tests -v
+```
+
+The tests exercise the bundled SDK's request serialization, preview headers,
+agent versioning, and conversation/audio downloads with a mocked transport.
+They do not create Azure resources or open the microphone.
 
 ## Troubleshooting
 
