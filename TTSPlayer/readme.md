@@ -14,7 +14,7 @@
    > \- demo.html
 
 # TTS Player WordPress plugin
-**This plugin is in private preview stage, please test it before going to production.**
+**This plugin is in preview stage, please test it before going to production.**
 
 **How to build WordPress plugin?**
 1. Download folder **./tts-player** to local.
