@@ -61,9 +61,16 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/voice_agent_with_foundry_iq.py` | Create a Foundry IQ agent, converse through the microphone, and display tool arguments/output. |
 | `samples/voice_agent_with_local_function.py` | Execute `add_numbers` in the client, return its output, and hear the response. |
 | `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
+| `samples/example1_finance_with_handoff/` | Publish a generic Finance English Realtime handoff graph with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
+| `samples/example2_finance_with_OTP_and_Officer_Search/` | Publish a flat Finance Agent for OTP verification and loan-officer search with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
+| [`setup_subscription.md`](setup_subscription.md) | Start with an Azure subscription and prepare the shared Foundry resource, Project, identities, RBAC, endpoint, and ARM ID before continuing in a self-contained example. |
 | `samples/download_conversation_artifacts.py` | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | `samples/download_conversation_traces.py` | Download correlated Application Insights rows by conversation id. |
 | [C# voice agent sample](samples/CSharp/README.md) | Create and manage a temporary agent or use an existing agent, stream audio over WebSocket, and read persisted conversations and recordings with the .NET SDK. |
+
+The two Finance directory samples use their own `requirements.txt` files.
+They install a pinned vNext `azure-ai-projects` source build and do not use the
+bundled `azure-ai-voiceagents` wheel described by the common setup above.
 
 Reusable AI coding skills are under `skills/`:
 

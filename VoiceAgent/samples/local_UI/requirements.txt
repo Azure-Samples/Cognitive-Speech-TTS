@@ -1,0 +1,6 @@
+aiohttp>=3.10.0,<4.0.0
+azure-ai-projects>=2.3.0,<3.0.0
+azure-identity>=1.17.0,<2.0.0
+python-dotenv>=1.0.1,<2.0.0
+requests>=2.31.0,<3.0.0
+websockets>=13.0,<16.0

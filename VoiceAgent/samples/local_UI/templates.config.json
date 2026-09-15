@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "finance-example",
+      "folder": "../example1_finance_with_handoff",
+      "name": "Example 1: Finance with Handoff",
+      "category": "Financial services",
+      "summary": "A multi-stage outbound lending workflow with live handoff visibility.",
+      "accent_color": "#147d64",
+      "mcp": {
+        "server_url": "https://envoy-om-dv-wu2-00-02-12.onlinectsdev.speech-test.microsoft.com/mcp/finance",
+        "token_env": "VOICE_AGENT_TEMPLATE_FINANCE_EXAMPLE_MCP_TOKEN"
+      }
+    },
+    {
+      "id": "finance-with-otp-and-officer-search",
+      "folder": "../example2_finance_with_OTP_and_Officer_Search",
+      "name": "Example 2: Finance with OTP and Officer Search",
+      "category": "Mortgage",
+      "summary": "Verify a caller by OTP, discuss financing, and find the requested loan officer.",
+      "accent_color": "#50c9ce",
+      "mcp": {
+        "server_url": "https://envoy-om-dv-wu2-00-02-12.onlinectsdev.speech-test.microsoft.com/mcp/umw-v3",
+        "token_env": "VOICE_AGENT_TEMPLATE_FINANCE_OTP_OFFICER_SEARCH_MCP_TOKEN"
+      }
+    }
+  ]
+}
