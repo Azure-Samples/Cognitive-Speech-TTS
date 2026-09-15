@@ -4,7 +4,7 @@ description: >-
   Create, configure, test, and troubleshoot Azure AI Foundry voice
   agents in the customer private preview. Use when asked to create a basic
   voice agent, add an MCP or Foundry IQ knowledge tool, connect with the Voice
-  Live SDK, diagnose preview access errors, or produce safe customer-ready
+  Agent SDK, diagnose preview access errors, or produce safe customer-ready
   voice-agent sample code.
 ---
 
@@ -25,8 +25,9 @@ files.
    required by the selected scenario.
 4. From `VoiceAgent`, run `python -m pip install -r samples/requirements.txt`.
   The requirements file installs the bundled private-preview
-  `azure-ai-projects` wheel from `feature/azure-ai-projects/vnext` and all other
-  sample dependencies. Use this wheel, not a same-version PyPI build.
+  `azure-ai-projects` 2.7.0b1 wheel from `xitzhang/voice-agent-pupr`, its
+  `[realtime]` extra, and all other sample dependencies. Use this wheel, not a
+  same-version PyPI build.
 5. Run the matching sample:
    - `python samples/simple_rest_lifecycle.py`
    - `python samples/basic_voice_agent.py`
@@ -58,8 +59,9 @@ files.
   knowledge base, run a live microphone session, print MCP arguments and output,
   and capture the conversation id.
 - For local functions, declare a `VoiceAgentFunctionTool` with
-  `RealtimeFunctionToolParameters`, execute it in the connected client, send
-  `FunctionCallOutputItem`, and explicitly request the follow-up response.
+  `RealtimeFunctionToolParameters`, execute it in the connected client, then
+  wait for `response.done` before sending
+  `RealtimeConversationItemFunctionCallOutput` and requesting the follow-up response.
   The voice function tool has no `strict` option.
 - For Toolbox, attach a versioned `VoiceAgentToolboxTool`, run a microphone session,
   and print the MCP arguments and output.
@@ -73,10 +75,14 @@ files.
 
 ## Required preview behavior
 
-- Add `Foundry-Features: VoiceAgents=V1Preview` to REST and WebSocket requests.
+- Add `Foundry-Features: VoiceAgents=V1Preview` to direct REST requests.
 - Use `azure.ai.projects.aio.AIProjectClient(allow_preview=True, ...)`.
-  The SDK supplies management preview headers. Conversation operations under
-  `client.beta.voice_agents.conversations` supply their own preview header.
+  Reuse this client for `client.realtime.connect(agent_name=agent_name)`.
+  The SDK supplies the WebSocket URL, authentication, and preview headers;
+  do not use `azure-ai-voicelive` or override private connection methods.
+  Send raw PCM bytes with `connection.input_audio_buffer.append(audio=pcm)`.
+  Conversation operations under `client.agent_endpoint_conversations` also
+  supply their preview header when `allow_preview=True`.
 - Use the project endpoint form
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
 - Enable persistence (`store=True`) when creating agents so artifacts can be

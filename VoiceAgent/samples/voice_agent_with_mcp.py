@@ -1,9 +1,9 @@
 """Run the full MCP voice-agent lifecycle with live microphone audio.
 
-The sample creates or reuses an MCP-enabled agent, opens a Voice Live session,
-prints user/agent transcripts, plays response audio, reads the persisted
-conversation, and saves per-turn and merged audio. The agent remains available
-after the sample exits. Use a headset to reduce echo.
+The sample creates or reuses an MCP-enabled agent, opens a Voice Agent session,
+prints user/agent transcripts, plays response audio, and captures the persisted
+conversation id. Use the separate artifact downloader for JSON and audio.
+The agent remains available after the sample exits. Use a headset to reduce echo.
 """
 
 from __future__ import annotations
@@ -16,10 +16,9 @@ import os
 import queue
 import uuid
 from typing import Any, Final, Optional
-from urllib.parse import quote, urlparse, urlunparse
 
 import aiohttp
-from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.aio import AIProjectClient, AsyncRealtimeConnection
 from azure.ai.projects.models import (
     RealtimeAudioFormatsAudioPcm,
     RealtimeConversationItemType,
@@ -36,7 +35,6 @@ from azure.ai.projects.models import (
     VoiceOutputModality,
     VoiceType,
 )
-from azure.ai.voicelive.aio import connect
 from azure.core.pipeline.transport import AioHttpTransport
 from azure.identity.aio import DefaultAzureCredential
 from dotenv import load_dotenv
@@ -46,8 +44,6 @@ from foundry_trace_url import build_foundry_trace_url
 
 load_dotenv()
 
-PREVIEW_HEADERS: Final = {"Foundry-Features": "VoiceAgents=V1Preview"}
-API_VERSION: Final = "v1"
 SAMPLE_RATE: Final = 24000
 CHUNK_SAMPLES: Final = 1200
 
@@ -65,7 +61,7 @@ def required_env(name: str) -> str:
 
 
 def event_value(event: Any, name: str) -> Any:
-    """Read a field from a typed Voice Live event or an open mapping."""
+    """Read a field from a typed Voice Agent event or an open mapping."""
     value = getattr(event, name, None)
     if value is None and hasattr(event, "get"):
         value = event.get(name)
@@ -91,23 +87,10 @@ def format_mcp_value(value: Any) -> str:
     return json.dumps(value, indent=2, ensure_ascii=False, default=str)
 
 
-def realtime_url(endpoint: str, agent_name: str) -> str:
-    """Build the voice agent's dedicated WebSocket URL."""
-    parsed = urlparse(endpoint)
-    scheme = "wss" if parsed.scheme == "https" else "ws"
-    path = (
-        parsed.path.rstrip("/")
-        + f"/agents/{quote(agent_name, safe='')}/endpoint/protocols/voice"
-    )
-    return urlunparse(
-        (scheme, parsed.netloc, path, "", f"api-version={API_VERSION}", "")
-    )
-
-
 class AudioProcessor:
     """Capture microphone PCM and play response PCM with barge-in support."""
 
-    def __init__(self, connection: Any) -> None:
+    def __init__(self, connection: AsyncRealtimeConnection) -> None:
         self.connection = connection
         self.loop: Optional[asyncio.AbstractEventLoop] = None
         self.audio = pyaudio.PyAudio()
@@ -125,14 +108,13 @@ class AudioProcessor:
         return sequence
 
     def start_capture(self) -> None:
-        """Stream microphone frames to the Voice Live input buffer."""
+        """Stream PCM frames through the Voice Agent SDK input buffer."""
         self.loop = asyncio.get_running_loop()
 
         def callback(in_data, _frame_count, _time_info, _status):
-            audio = base64.b64encode(in_data).decode("ascii")
             assert self.loop is not None
             asyncio.run_coroutine_threadsafe(
-                self.connection.input_audio_buffer.append(audio=audio),
+                self.connection.input_audio_buffer.append(audio=in_data),
                 self.loop,
             )
             return (None, pyaudio.paContinue)
@@ -201,35 +183,26 @@ class AudioProcessor:
 
 
 async def run_microphone_session(
-    endpoint: str,
-    credential: DefaultAzureCredential,
+    client: AIProjectClient,
     agent_name: str,
 ) -> Optional[str]:
     """Run a hands-free session and return its persisted conversation id."""
     if pyaudio is None:
         raise RuntimeError("Install pyaudio to use the microphone sample.")
 
-    session = connect(
-        credential=credential,
-        endpoint=endpoint,
-        api_version=API_VERSION,
-        headers=PREVIEW_HEADERS,
-    )
-    agent_url = realtime_url(endpoint, agent_name)
-    session._prepare_url = lambda: agent_url  # type: ignore[attr-defined]
     conversation_id: Optional[str] = None
     argument_deltas: dict[str, list[str]] = {}
     printed_arguments: set[str] = set()
     printed_outputs: set[str] = set()
 
-    async with session as connection:
+    async with client.realtime.connect(agent_name=agent_name) as connection:
         processor = AudioProcessor(connection)
-        processor.start_playback()
-        processor.start_capture()
-        print("Speak now. Pause to let the agent answer.")
-        print("Talk over the response to interrupt it. Press Ctrl-C to finish.")
-
         try:
+            processor.start_playback()
+            processor.start_capture()
+            print("Speak now. Pause to let the agent answer.")
+            print("Talk over the response to interrupt it. Press Ctrl-C to finish.")
+
             async for event in connection:
                 event_type = event_value(event, "type")
                 if (
@@ -425,8 +398,7 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
             print(f"Using existing voice agent: {agent_name}")
 
         conversation_id = await run_microphone_session(
-            endpoint,
-            credential,
+            client,
             agent_name,
         )
         if conversation_id:
