@@ -25,7 +25,8 @@ files.
    required by the selected scenario.
 4. From `VoiceAgent`, run `python -m pip install -r samples/requirements.txt`.
   The requirements file installs the bundled private-preview
-  `azure-ai-voiceagents` wheel and all other sample dependencies.
+  `azure-ai-projects` wheel from `feature/azure-ai-projects/vnext` and all other
+  sample dependencies. Use this wheel, not a same-version PyPI build.
 5. Run the matching sample:
    - `python samples/simple_rest_lifecycle.py`
    - `python samples/basic_voice_agent.py`
@@ -46,8 +47,9 @@ files.
 ## Scenario rules
 
 - For simple REST, demonstrate creation with explicit preview headers.
-- For the basic SDK sample, demonstrate create, `update_voice_agent`, live
-  microphone chat, and conversation-id capture.
+- For the basic SDK sample, demonstrate `client.agents.create_version` for
+  initial creation and definition updates, live microphone chat, and
+  conversation-id capture. Read the returned identifier from `version.version`.
 - For `mcp`, require `AZURE_VOICE_AGENTS_MCP_CONNECTION_ID`; prefer a Foundry
   project connection instead of inline headers or tokens. Run a live microphone
   session, print the MCP arguments and output, and capture the conversation id.
@@ -55,11 +57,16 @@ files.
   project connection. Instruct the agent to ground factual answers in the
   knowledge base, run a live microphone session, print MCP arguments and output,
   and capture the conversation id.
-- For local functions, declare a strict `FunctionTool`, execute it in the
-  connected client, send `FunctionCallOutputItem`, and explicitly request the
-  follow-up response.
-- For Toolbox, attach a versioned `VoiceToolboxTool`, run a microphone session,
+- For local functions, declare a `VoiceAgentFunctionTool` with
+  `RealtimeFunctionToolParameters`, execute it in the connected client, send
+  `FunctionCallOutputItem`, and explicitly request the follow-up response.
+  The voice function tool has no `strict` option.
+- For Toolbox, attach a versioned `VoiceAgentToolboxTool`, run a microphone session,
   and print the MCP arguments and output.
+- For MCP and Foundry IQ, use `VoiceAgentMcpTool`.
+- Use models from `azure.ai.projects.models`, including
+  `VoiceAgentAudioConfig` and `RealtimeAudioFormatsAudioPcm`. Set audio output
+  `voice` to the voice-name string and `voice_type` to `VoiceType.AZURE_STANDARD`.
 - Use `model_type=managed` for a service-managed model.
 - Use `model_type=self_deployed` only when `model` is a deployment in the
   customer's Foundry project.
@@ -67,18 +74,21 @@ files.
 ## Required preview behavior
 
 - Add `Foundry-Features: VoiceAgents=V1Preview` to REST and WebSocket requests.
-- Pass `AgentDefinitionOptInKeys.VOICE_AGENTS_V1_PREVIEW` to SDK management
-  operations.
+- Use `azure.ai.projects.aio.AIProjectClient(allow_preview=True, ...)`.
+  The SDK supplies management preview headers. Conversation operations under
+  `client.beta.voice_agents.conversations` supply their own preview header.
 - Use the project endpoint form
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
-- Keep persistence disabled for simple management samples. Enable it for the
-  microphone lifecycles so artifacts can be downloaded later.
-- Accept an optional existing agent name for every agent sample. Skip creation
-  and modification when a name is supplied.
+- Enable persistence (`store=True`) when creating agents so artifacts can be
+  downloaded after microphone sessions.
+- Accept an optional existing agent name for every agent sample. Use
+  `client.agents.get(agent_name=agent_name)` and skip creation and modification
+  when a name is supplied.
 - Build the Foundry traces-page URL by discovering the account resource through
   Azure Resource Graph and applying the UI's compact ARM resource encoding.
 - Download microphone artifacts only in the standalone downloader, under
-  `AZURE_VOICE_AGENTS_OUTPUT_DIR`.
+  `AZURE_VOICE_AGENTS_OUTPUT_DIR`. For customer-owned storage, record `blob_uri`
+  instead of calling the service's audio-download methods.
 - Download correlated Application Insights rows by conversation id. Read the
   component ARM resource ID from `.env`, save the KQL and JSON results beside
   the conversation artifacts, and allow for ingestion delay.
@@ -86,6 +96,7 @@ files.
 ## Validation
 
 - Run `python -m compileall samples`.
+- Run `python -m unittest discover -s tests -v` for offline SDK contract tests.
 - Import every sample with the supplied preview wheel installed.
 - Validate this skill with the skill creator's `quick_validate.py`.
 - Scan the customer package for secrets, internal host names, local paths,

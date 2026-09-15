@@ -40,7 +40,8 @@ def build_definition() -> dict:
         "audio": {
             "output": {
                 "format": {"type": "audio/pcm", "rate": 24000},
-                "voice": {"type": "azure-standard", "name": voice},
+                "voice": voice,
+                "voice_type": "azure-standard",
             }
         },
         "output_modalities": ["text", "audio"],
@@ -73,11 +74,10 @@ def main() -> None:
         }
         if create_new:
             response = requests.post(
-                f"{endpoint}/voice_agents",
+                f"{endpoint}/agents/{quote(agent_name, safe='')}/versions",
                 params={"api-version": API_VERSION},
                 headers=headers,
                 json={
-                    "name": agent_name,
                     "description": "Simple REST creation sample.",
                     "definition": build_definition(),
                 },
@@ -85,7 +85,7 @@ def main() -> None:
             )
         else:
             response = requests.get(
-                f"{endpoint}/voice_agents/{quote(agent_name, safe='')}",
+                f"{endpoint}/agents/{quote(agent_name, safe='')}",
                 params={"api-version": API_VERSION},
                 headers=headers,
                 timeout=60,

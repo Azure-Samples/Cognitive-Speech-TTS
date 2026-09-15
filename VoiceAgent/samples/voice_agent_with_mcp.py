@@ -19,21 +19,22 @@ from typing import Any, Final, Optional
 from urllib.parse import quote, urlparse, urlunparse
 
 import aiohttp
-from azure.ai.voiceagents.aio import VoiceAgentsClient
-from azure.ai.voiceagents.models import (
-    AgentDefinitionOptInKeys,
-    AzureVoice,
-    MCPTool,
-    ServerVadTurnDetection,
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.models import (
+    RealtimeAudioFormatsAudioPcm,
+    RealtimeConversationItemType,
+    RealtimeServerEventType,
+    VoiceAgentAudioConfig,
+    VoiceAgentAudioInputConfig,
+    VoiceAgentAudioOutputConfig,
     VoiceAgentDefinition,
-    VoiceAudioConfig,
-    VoiceAudioFormat,
-    VoiceAudioInputConfig,
-    VoiceAudioOutputConfig,
-    VoiceInputTranscription,
-    VoiceNoiseReduction,
-    VoiceNoiseReductionType,
+    VoiceAgentInputTranscription,
+    VoiceAgentMcpTool,
+    VoiceAgentNoiseReduction,
+    VoiceAgentNoiseReductionType,
+    VoiceAgentServerVadTurnDetection,
     VoiceOutputModality,
+    VoiceType,
 )
 from azure.ai.voicelive.aio import connect
 from azure.core.pipeline.transport import AioHttpTransport
@@ -45,20 +46,10 @@ from foundry_trace_url import build_foundry_trace_url
 
 load_dotenv()
 
-PREVIEW: Final = AgentDefinitionOptInKeys.VOICE_AGENTS_V1_PREVIEW
 PREVIEW_HEADERS: Final = {"Foundry-Features": "VoiceAgents=V1Preview"}
 API_VERSION: Final = "v1"
 SAMPLE_RATE: Final = 24000
 CHUNK_SAMPLES: Final = 1200
-
-AUDIO_DELTA_EVENTS: Final = {
-    "response.audio.delta",
-    "response.output_audio.delta",
-}
-AUDIO_TRANSCRIPT_EVENTS: Final = {
-    "response.audio_transcript.done",
-    "response.output_audio_transcript.done",
-}
 
 try:
     import pyaudio
@@ -240,46 +231,52 @@ async def run_microphone_session(
 
         try:
             async for event in connection:
-                event_type = str(event_value(event, "type") or "")
-                if event_type == "input_audio_buffer.speech_started":
+                event_type = event_value(event, "type")
+                if (
+                    event_type
+                    == RealtimeServerEventType.INPUT_AUDIO_BUFFER_SPEECH_STARTED
+                ):
                     processor.skip_pending_audio()
                     print("(listening...)")
                 elif (
                     event_type
-                    == "conversation.item.input_audio_transcription.completed"
+                    == RealtimeServerEventType.CONVERSATION_ITEM_INPUT_AUDIO_TRANSCRIPTION_COMPLETED
                 ):
                     print(f"You:   {event_value(event, 'transcript')}")
-                elif event_type in AUDIO_DELTA_EVENTS:
+                elif event_type == RealtimeServerEventType.RESPONSE_OUTPUT_AUDIO_DELTA:
                     processor.queue_audio(
                         audio_bytes(event_value(event, "delta"))
                     )
-                elif event_type in AUDIO_TRANSCRIPT_EVENTS:
+                elif (
+                    event_type
+                    == RealtimeServerEventType.RESPONSE_OUTPUT_AUDIO_TRANSCRIPT_DONE
+                ):
                     transcript = (
                         event_value(event, "transcript")
                         or event_value(event, "text")
                         or ""
                     )
                     print(f"Agent: {transcript}")
-                elif event_type == "conversation.created":
-                    conversation_id = (
-                        event_value(event, "conversation_id")
-                        or event_value(
-                            event_value(event, "conversation"), "id"
-                        )
-                        or conversation_id
-                    )
-                elif event_type == "error":
+                elif event_type == RealtimeServerEventType.SESSION_CREATED:
+                    conversation_id = event_value(event, "conversation_id")
+                elif event_type == RealtimeServerEventType.ERROR:
                     error = event_value(event, "error")
                     print(
                         "Session error: "
                         f"{event_value(error, 'message') or 'unknown error'}"
                     )
-                elif event_type == "response.mcp_call_arguments.delta":
+                elif (
+                    event_type
+                    == RealtimeServerEventType.RESPONSE_MCP_CALL_ARGUMENTS_DELTA
+                ):
                     item_id = str(event_value(event, "item_id") or "")
                     delta = event_value(event, "delta")
                     if isinstance(delta, str):
                         argument_deltas.setdefault(item_id, []).append(delta)
-                elif event_type == "response.mcp_call_arguments.done":
+                elif (
+                    event_type
+                    == RealtimeServerEventType.RESPONSE_MCP_CALL_ARGUMENTS_DONE
+                ):
                     item_id = str(event_value(event, "item_id") or "")
                     arguments = event_value(event, "arguments")
                     if not isinstance(arguments, str):
@@ -290,18 +287,21 @@ async def run_microphone_session(
                             f"{format_mcp_value(arguments)}"
                         )
                         printed_arguments.add(item_id)
-                elif event_type == "response.mcp_call.completed":
+                elif event_type == RealtimeServerEventType.RESPONSE_MCP_CALL_COMPLETED:
                     item_id = str(event_value(event, "item_id") or "")
                     output = event_value(event, "output")
                     if output is not None:
                         print(f"MCP output:\n{format_mcp_value(output)}")
                         printed_outputs.add(item_id)
                 elif event_type in {
-                    "response.output_item.done",
-                    "conversation.item.done",
+                    RealtimeServerEventType.RESPONSE_OUTPUT_ITEM_DONE,
+                    RealtimeServerEventType.CONVERSATION_ITEM_DONE,
                 }:
                     item = event_value(event, "item") or {}
-                    if event_value(item, "type") == "mcp_call":
+                    if (
+                        event_value(item, "type")
+                        == RealtimeConversationItemType.MCP_CALL
+                    ):
                         item_id = str(event_value(item, "id") or "")
                         name = event_value(item, "name")
                         if name:
@@ -319,12 +319,16 @@ async def run_microphone_session(
                                 f"MCP output:\n{format_mcp_value(output)}"
                             )
                             printed_outputs.add(item_id)
-                elif event_type == "response.mcp_call.failed":
+                elif event_type == RealtimeServerEventType.RESPONSE_MCP_CALL_FAILED:
                     print(
                         "MCP call failed:\n"
                         f"{format_mcp_value(event)}"
                     )
-                elif event_type.startswith("mcp_list_tools."):
+                elif event_type in {
+                    RealtimeServerEventType.MCP_LIST_TOOLS_IN_PROGRESS,
+                    RealtimeServerEventType.MCP_LIST_TOOLS_COMPLETED,
+                    RealtimeServerEventType.MCP_LIST_TOOLS_FAILED,
+                }:
                     print(f"(MCP event: {event_type})")
         except (KeyboardInterrupt, asyncio.CancelledError):
             print("\nEnding session...")
@@ -346,34 +350,30 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
         else None
     )
 
-    audio_config = VoiceAudioConfig(
-        input=VoiceAudioInputConfig(
-            format=VoiceAudioFormat(type="audio/pcm", rate=SAMPLE_RATE),
-            turn_detection=ServerVadTurnDetection(
+    audio_config = VoiceAgentAudioConfig(
+        input=VoiceAgentAudioInputConfig(
+            format=RealtimeAudioFormatsAudioPcm(rate=SAMPLE_RATE),
+            turn_detection=VoiceAgentServerVadTurnDetection(
                 threshold=0.5,
                 prefix_padding_ms=300,
                 silence_duration_ms=700,
             ),
-            noise_reduction=VoiceNoiseReduction(
-                type=VoiceNoiseReductionType.AZURE_DEEP_NOISE_SUPPRESSION
+            noise_reduction=VoiceAgentNoiseReduction(
+                type=VoiceAgentNoiseReductionType.AZURE_DEEP_NOISE_SUPPRESSION
             ),
-            transcription=VoiceInputTranscription(
+            transcription=VoiceAgentInputTranscription(
                 model="whisper-1",
                 language="en-US",
             ),
         ),
-        output=VoiceAudioOutputConfig(
-            format=VoiceAudioFormat(type="audio/pcm", rate=SAMPLE_RATE),
-            voice=AzureVoice(
-                type="azure-standard",
-                name=os.getenv(
-                    "AZURE_VOICE_AGENTS_VOICE", "en-US-AvaNeural"
-                ),
-            ),
+        output=VoiceAgentAudioOutputConfig(
+            format=RealtimeAudioFormatsAudioPcm(rate=SAMPLE_RATE),
+            voice=os.getenv("AZURE_VOICE_AGENTS_VOICE", "en-US-AvaNeural"),
+            voice_type=VoiceType.AZURE_STANDARD,
         ),
     )
     tool = (
-        MCPTool(
+        VoiceAgentMcpTool(
             server_label=os.getenv(
                 "AZURE_VOICE_AGENTS_MCP_SERVER_LABEL", "my-mcp-server"
             ),
@@ -391,14 +391,15 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
             headers={"Accept-Encoding": "gzip, deflate"},
         )
     )
-    async with credential, VoiceAgentsClient(
+    async with credential, AIProjectClient(
         endpoint=endpoint,
         credential=credential,
+        allow_preview=True,
         transport=transport,
     ) as client:
         if create_new:
-            await client.voice_agents.create_voice_agent(
-                name=agent_name,
+            await client.agents.create_version(
+                agent_name=agent_name,
                 description="MCP microphone lifecycle sample.",
                 definition=VoiceAgentDefinition(
                     model_type=model_type,
@@ -416,15 +417,11 @@ async def lifecycle(configured_agent_name: Optional[str] = None) -> None:
                     tools=[tool],
                     store=True,
                 ),
-                foundry_features=PREVIEW,
             )
             print(f"Created voice agent: {agent_name}")
 
         else:
-            await client.voice_agents.get_voice_agent(
-                agent_name,
-                foundry_features=PREVIEW,
-            )
+            await client.agents.get(agent_name=agent_name)
             print(f"Using existing voice agent: {agent_name}")
 
         conversation_id = await run_microphone_session(

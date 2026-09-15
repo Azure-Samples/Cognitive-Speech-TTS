@@ -13,16 +13,15 @@ from pathlib import Path
 from typing import Any
 
 import aiohttp
-from azure.ai.voiceagents.aio import VoiceAgentsClient
-from azure.ai.voiceagents.models import AgentDefinitionOptInKeys
-from azure.core.pipeline.transport import AioHttpTransport
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.aio.operations import BetaVoiceAgentsConversationsOperations
+from azure.ai.projects.models import VoiceConversation
 from azure.core.exceptions import HttpResponseError
+from azure.core.pipeline.transport import AioHttpTransport
 from azure.identity.aio import DefaultAzureCredential
 from dotenv import load_dotenv
 
 load_dotenv()
-
-PREVIEW = AgentDefinitionOptInKeys.VOICE_AGENTS_V1_PREVIEW
 
 
 def required_env(name: str) -> str:
@@ -60,20 +59,19 @@ async def _write_stream(stream: Any, path: Path) -> None:
 
 
 async def _wait_for_completed_conversation(
-    conversations: Any,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     timeout_seconds: float,
-) -> Any:
+) -> VoiceConversation:
     """Wait until persistence finishes before requesting final audio."""
     deadline = asyncio.get_running_loop().time() + timeout_seconds
     last_status = "unknown"
     while asyncio.get_running_loop().time() < deadline:
         try:
-            conversation = await conversations.get_agent_conversation(
+            conversation = await conversations.get(
                 agent_name,
                 conversation_id,
-                foundry_features=PREVIEW,
             )
         except HttpResponseError as error:
             if error.status_code != 404:
@@ -97,7 +95,7 @@ async def _wait_for_completed_conversation(
 
 
 async def _save_item_audio(
-    conversations: Any,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     items: list[dict[str, Any]],
@@ -112,11 +110,10 @@ async def _save_item_audio(
         if not item_id:
             continue
         try:
-            metadata = await conversations.get_agent_conversation_item_audio(
+            metadata = await conversations.get_audio_item(
                 agent_name,
                 conversation_id,
                 item_id,
-                foundry_features=PREVIEW,
             )
         except HttpResponseError as error:
             # Text and tool items normally have no audio.
@@ -125,27 +122,24 @@ async def _save_item_audio(
             raise
 
         audio_index += 1
-        role = str(metadata.role or item.get("role") or "item")
+        metadata_json = _json_value(metadata)
+        role = str(metadata_json.get("role") or item.get("role") or "item")
         filename = (
             f"{audio_index:03d}_{_safe_filename(role)}_"
             f"{_safe_filename(item_id)}.wav"
         )
         output_path = turns_dir / filename
-        metadata_json = _json_value(metadata)
 
-        if metadata.blob_path:
+        if metadata.blob_uri:
             print(
                 f"Turn audio for {item_id} is in customer storage: "
-                f"{metadata.blob_path}"
+                f"{metadata.blob_uri}"
             )
         else:
-            stream = (
-                await conversations.get_agent_conversation_item_audio_content(
-                    agent_name,
-                    conversation_id,
-                    item_id,
-                    foundry_features=PREVIEW,
-                )
+            stream = await conversations.download_audio_item(
+                agent_name,
+                conversation_id,
+                item_id,
             )
             await _write_stream(stream, output_path)
 
@@ -153,7 +147,7 @@ async def _save_item_audio(
             {
                 "item_id": item_id,
                 "role": role,
-                "file": None if metadata.blob_path else str(output_path),
+                "file": None if metadata.blob_uri else str(output_path),
                 "metadata": metadata_json,
             }
         )
@@ -161,7 +155,7 @@ async def _save_item_audio(
 
 
 async def _save_merged_audio(
-    conversations: Any,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     output_path: Path,
@@ -171,26 +165,24 @@ async def _save_merged_audio(
     deadline = asyncio.get_running_loop().time() + timeout_seconds
     while asyncio.get_running_loop().time() < deadline:
         try:
-            metadata = await conversations.get_agent_conversation_audio(
+            metadata = await conversations.get_audio(
                 agent_name,
                 conversation_id,
-                foundry_features=PREVIEW,
             )
             metadata_json = _json_value(metadata)
-            if metadata.blob_path:
+            if metadata.blob_uri:
                 print(
                     "Merged audio is in customer storage: "
-                    f"{metadata.blob_path}"
+                    f"{metadata.blob_uri}"
                 )
                 return {
                     "file": None,
                     "metadata": metadata_json,
                 }
 
-            stream = await conversations.get_agent_conversation_audio_content(
+            stream = await conversations.download_audio(
                 agent_name,
                 conversation_id,
-                foundry_features=PREVIEW,
             )
             await _write_stream(stream, output_path)
             return {
@@ -209,7 +201,7 @@ async def _save_merged_audio(
 
 
 async def download_conversation_artifacts(
-    client: VoiceAgentsClient,
+    client: AIProjectClient,
     agent_name: str,
     conversation_id: str,
 ) -> Path:
@@ -228,7 +220,7 @@ async def download_conversation_artifacts(
     turns_dir = conversation_dir / "turns"
     turns_dir.mkdir(parents=True, exist_ok=True)
 
-    conversations = client.agent_endpoint_conversations
+    conversations = client.beta.voice_agents.conversations
     conversation = await _wait_for_completed_conversation(
         conversations,
         agent_name,
@@ -237,18 +229,18 @@ async def download_conversation_artifacts(
     )
     items = [
         _json_value(item)
-        async for item in conversations.list_agent_conversation_items(
+        async for item in conversations.list_items(
             agent_name,
             conversation_id,
-            foundry_features=PREVIEW,
+            order="asc",
         )
     ]
     responses = [
         _json_value(response)
-        async for response in conversations.list_agent_conversation_responses(
+        async for response in conversations.list_responses(
             agent_name,
             conversation_id,
-            foundry_features=PREVIEW,
+            order="asc",
         )
     ]
 
@@ -315,9 +307,10 @@ async def download(agent_name: str, conversation_id: str) -> None:
             headers={"Accept-Encoding": "gzip, deflate"},
         )
     )
-    async with credential, VoiceAgentsClient(
+    async with credential, AIProjectClient(
         endpoint=endpoint,
         credential=credential,
+        allow_preview=True,
         transport=transport,
     ) as client:
         await download_conversation_artifacts(

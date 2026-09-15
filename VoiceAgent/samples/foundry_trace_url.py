@@ -19,11 +19,7 @@ RESOURCE_GRAPH_URL = (
     "?api-version=2022-10-01"
 )
 DEFAULT_PROVIDER = "Microsoft.CognitiveServices"
-TRACE_FLIGHTS = (
-    "voice_first_experience",
-    "voice_agent_bundle",
-    "voice_first_agent_query_auth_dynamic_resource",
-)
+TRACE_FLIGHT = "voice_agent_bundle"
 
 
 def _parse_project_endpoint(endpoint: str) -> tuple[str, str]:
@@ -166,4 +162,4 @@ async def build_foundry_trace_url(
         "https://ai.azure.com/nextgen/r/"
         f"{encoded_resource}/build/agents/{quote(agent_name, safe='')}/traces"
     )
-    return f"{path}?{urlencode({'flight': ','.join(TRACE_FLIGHTS)})}"
+    return f"{path}?{urlencode({'flight': TRACE_FLIGHT})}"
