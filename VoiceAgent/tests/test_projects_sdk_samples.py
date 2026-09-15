@@ -24,8 +24,7 @@ from urllib.parse import parse_qs, urlparse
 from zipfile import ZipFile
 
 from aiohttp import WSMessage, WSMsgType
-from azure.ai.projects.aio import AIProjectClient
-from azure.ai.voicelive.aio import VoiceLiveConnection
+from azure.ai.projects.aio import AIProjectClient, AsyncRealtimeConnection
 from azure.core.credentials import AccessToken
 from azure.core.exceptions import HttpResponseError
 from azure.core.pipeline.transport import AsyncHttpResponse, AsyncHttpTransport
@@ -204,20 +203,37 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
         wheels = list((ROOT / "dist").glob("*.whl"))
         self.assertEqual(len(wheels), 1)
         wheel = wheels[0]
-        self.assertEqual(wheel.name, "azure_ai_projects-2.6.1-py3-none-any.whl")
+        self.assertEqual(wheel.name, "azure_ai_projects-2.7.0b1-py3-none-any.whl")
         self.assertIn(
             hashlib.sha256(wheel.read_bytes()).hexdigest(),
             (ROOT / "dist" / "README.md").read_text(encoding="utf-8"),
         )
         self.assertIn(
-            f"./dist/{wheel.name}",
+            f"./dist/{wheel.name}[realtime]",
             (ROOT / "samples" / "requirements.txt").read_text(encoding="utf-8"),
         )
         with ZipFile(wheel) as archive:
             self.assertIsNone(archive.testzip())
+            self.assertTrue(
+                all(
+                    name.startswith(("azure/", "azure_ai_projects-2.7.0b1.dist-info/"))
+                    for name in archive.namelist()
+                ),
+                "Build the wheel from a clean SDK checkout without stale build outputs.",
+            )
             self.assertIn(
                 "azure/ai/projects/aio/operations/_operations.py",
                 archive.namelist(),
+            )
+            for name in (
+                "azure/ai/projects/_realtime.py",
+                "azure/ai/projects/aio/_realtime.py",
+                "azure_ai_projects-2.7.0b1.dist-info/licenses/LICENSE",
+            ):
+                self.assertIn(name, archive.namelist())
+            self.assertIn(
+                b"Provides-Extra: realtime",
+                archive.read("azure_ai_projects-2.7.0b1.dist-info/METADATA"),
             )
             installed_root = Path(
                 importlib.import_module("azure.ai.projects").__file__
@@ -268,10 +284,22 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(parsed.query, "flight=voice_agent_bundle")
         self.assertTrue(parsed.path.endswith(f"/build/agents/{AGENT_NAME}/traces"))
 
-    async def run_microphone_events(self, sample, events, *, cancel=False):
+    def test_samples_have_no_voice_live_dependency(self):
+        requirements = (ROOT / "samples" / "requirements.txt").read_text()
+        self.assertNotIn("azure-ai-voicelive", requirements)
+        for path in sorted((ROOT / "samples").glob("*.py")):
+            with self.subTest(sample=path.name):
+                source = path.read_text(encoding="utf-8")
+                self.assertNotIn("azure.ai.voicelive", source)
+                self.assertNotIn("_prepare_url", source)
+
+    async def run_microphone_events(
+        self, sample, events, *, cancel=False, capture_error=None
+    ):
         websocket = MagicMock()
         websocket.close_code = 1000
         websocket.send_str = AsyncMock()
+        websocket.close = AsyncMock()
         websocket.receive = AsyncMock(
             side_effect=[
                 *(WSMessage(WSMsgType.TEXT, json.dumps(event), "") for event in events),
@@ -280,32 +308,118 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
                 else WSMessage(WSMsgType.CLOSE, 1000, ""),
             ]
         )
-        # Exercise the real SDK decoder: conversation_id is an extra mapping
-        # field on the current Voice Live SDK's ServerEventSessionCreated model.
-        connection = VoiceLiveConnection(MagicMock(), websocket)
+        # Mock only the network boundary. The Projects SDK owns the handshake,
+        # credential scopes, URL, event decoding, serialization, and cleanup.
         session = MagicMock()
-        session.__aenter__.return_value = connection
-        session.__aexit__.return_value = False
-        with (
-            patch.object(sample, "connect", return_value=session),
-            patch.object(sample, "AudioProcessor") as processor,
-            patch.object(sample, "pyaudio", object()),
-            redirect_stdout(io.StringIO()) as output,
-        ):
-            result = await sample.run_microphone_session(
-                ENDPOINT, OfflineCredential(), AGENT_NAME
-            )
-        processor.assert_called_once_with(connection)
+        session.ws_connect = AsyncMock(return_value=websocket)
+        session.close = AsyncMock()
+        credential = OfflineCredential()
+        credential.get_token = AsyncMock(wraps=credential.get_token)
+        transport = OfflineTransport(
+            lambda request: self.fail("Realtime must not send a management request.")
+        )
+        async with AIProjectClient(
+            ENDPOINT, credential, allow_preview=True, transport=transport
+        ) as client:
+            with (
+                patch("aiohttp.ClientSession", return_value=session),
+                patch.object(sample, "AudioProcessor") as processor,
+                patch.object(sample, "pyaudio", object()),
+                redirect_stdout(io.StringIO()) as output,
+            ):
+                processor.return_value.start_capture.side_effect = capture_error
+                if capture_error is None:
+                    result = await sample.run_microphone_session(client, AGENT_NAME)
+                else:
+                    with self.assertRaises(type(capture_error)) as raised:
+                        await sample.run_microphone_session(client, AGENT_NAME)
+                    self.assertIs(raised.exception, capture_error)
+                    result = None
+        processor.assert_called_once()
+        self.assertIsInstance(processor.call_args.args[0], AsyncRealtimeConnection)
         processor.return_value.start_capture.assert_called_once()
         processor.return_value.start_playback.assert_called_once()
         processor.return_value.shutdown.assert_called_once()
-        session.__aexit__.assert_awaited_once()
+        credential.get_token.assert_awaited_once_with("https://ai.azure.com/.default")
+        session.ws_connect.assert_awaited_once()
+        handshake = session.ws_connect.await_args
+        self.assertEqual(
+            handshake.args,
+            (
+                "wss://sample.services.ai.azure.com/api/projects/sample"
+                f"/agents/{AGENT_NAME}/endpoint/protocols/voice",
+            ),
+        )
+        self.assertEqual(handshake.kwargs["params"]["api-version"], "v1")
+        self.assertIn("ai-projects/2.7.0b1", handshake.kwargs["params"]["x-ms-client-sdk"])
+        self.assertEqual(
+            handshake.kwargs["headers"]["Foundry-Features"], "VoiceAgents=V1Preview"
+        )
+        self.assertEqual(
+            handshake.kwargs["headers"]["Authorization"], "Bearer offline-test-token"
+        )
+        self.assertEqual(handshake.kwargs["protocols"], ("realtime",))
+        websocket.close.assert_awaited_once()
+        session.close.assert_awaited_once()
         return SimpleNamespace(
             conversation_id=result,
             audio=processor.return_value,
             websocket=websocket,
             output=output.getvalue(),
         )
+
+    async def test_microphone_cleanup_on_capture_failure(self):
+        for sample in SAMPLES:
+            with self.subTest(sample=sample.__name__):
+                await self.run_microphone_events(
+                    sample, [], capture_error=RuntimeError("No microphone available.")
+                )
+
+    async def test_microphone_passes_pcm_bytes_to_projects_sdk(self):
+        pcm = b"\x01\x00\xff\x7f" * 24
+        loop = asyncio.get_running_loop()
+        for sample in SAMPLES:
+            with self.subTest(sample=sample.__name__):
+                websocket = MagicMock()
+                websocket.send_str = AsyncMock()
+                connection = AsyncRealtimeConnection(websocket, MagicMock())
+                pyaudio = MagicMock()
+                scheduled = []
+
+                def schedule(coroutine, target_loop):
+                    self.assertIs(target_loop, loop)
+                    scheduled.append(coroutine)
+
+                with (
+                    patch.object(sample, "pyaudio", pyaudio),
+                    patch.object(
+                        sample.asyncio, "run_coroutine_threadsafe", side_effect=schedule
+                    ),
+                    patch.object(
+                        connection.input_audio_buffer,
+                        "append",
+                        AsyncMock(wraps=connection.input_audio_buffer.append),
+                    ) as append,
+                ):
+                    processor = sample.AudioProcessor(connection)
+                    try:
+                        processor.start_capture()
+                        callback = pyaudio.PyAudio.return_value.open.call_args.kwargs[
+                            "stream_callback"
+                        ]
+                        self.assertEqual(
+                            callback(pcm, len(pcm) // 2, None, None),
+                            (None, pyaudio.paContinue),
+                        )
+                        self.assertEqual(len(scheduled), 1)
+                        await scheduled[0]
+                        append.assert_awaited_once_with(audio=pcm)
+                    finally:
+                        processor.shutdown()
+                websocket.send_str.assert_awaited_once()
+                sent = json.loads(websocket.send_str.await_args.args[0])
+                self.assertEqual(sent["type"], "input_audio_buffer.append")
+                self.assertEqual(base64.b64decode(sent["audio"]), pcm)
 
     async def test_microphone_reads_session_created_conversation_id(self):
         for sample in SAMPLES:
@@ -452,6 +566,10 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
                     call_id="call-1",
                     name="add_numbers",
                 ),
+                wire_event(
+                    "response.done",
+                    response={"id": "response-1", "status": "completed", "output": []},
+                ),
             ],
         )
         sent = [
@@ -464,6 +582,60 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(sent[0]["item"]["call_id"], "call-1")
         self.assertEqual(json.loads(sent[0]["item"]["output"]), {"sum": 12.0})
         self.assertEqual(sent[1]["type"], "response.create")
+
+    async def test_local_function_waits_for_response_done(self):
+        result = await self.run_microphone_events(
+            importlib.import_module("voice_agent_with_local_function"),
+            [
+                wire_event(
+                    "response.function_call_arguments.done",
+                    item_id="function-1",
+                    call_id="call-1",
+                    name="add_numbers",
+                    arguments='{"a": 5, "b": 7}',
+                )
+            ],
+        )
+        result.websocket.send_str.assert_not_awaited()
+        self.assertIn("Local function: add_numbers", result.output)
+
+    async def test_local_function_submits_all_outputs_before_one_follow_up(self):
+        result = await self.run_microphone_events(
+            importlib.import_module("voice_agent_with_local_function"),
+            [
+                *(
+                    wire_event(
+                        "response.function_call_arguments.done",
+                        item_id=f"function-{number}",
+                        call_id=f"call-{number}",
+                        name="add_numbers",
+                        arguments=json.dumps({"a": number, "b": 7}),
+                    )
+                    for number in (1, 2)
+                ),
+                wire_event(
+                    "response.done",
+                    response={"id": "response-1", "status": "completed", "output": []},
+                ),
+                wire_event(
+                    "response.done",
+                    response={"id": "response-2", "status": "completed", "output": []},
+                ),
+            ],
+        )
+        sent = [
+            json.loads(call.args[0])
+            for call in result.websocket.send_str.await_args_list
+        ]
+        self.assertEqual(
+            [event["type"] for event in sent],
+            ["conversation.item.create", "conversation.item.create", "response.create"],
+        )
+        self.assertEqual([event["item"]["call_id"] for event in sent[:2]], ["call-1", "call-2"])
+        self.assertEqual(
+            [json.loads(event["item"]["output"]) for event in sent[:2]],
+            [{"sum": 8.0}, {"sum": 9.0}],
+        )
 
     async def run_lifecycle(self, sample, transport, existing_name=None):
         microphone = AsyncMock(return_value=CONVERSATION_ID)
@@ -494,6 +666,10 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
             output = stack.enter_context(redirect_stdout(io.StringIO()))
             await sample.lifecycle(existing_name)
         microphone.assert_awaited_once()
+        self.assertIsInstance(microphone.await_args.args[0], AIProjectClient)
+        self.assertEqual(len(microphone.await_args.args), 2)
+        if existing_name:
+            self.assertEqual(microphone.await_args.args[1], existing_name)
         self.assertTrue(transport.session.closed)
         return output.getvalue()
 
@@ -736,7 +912,7 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
         ) as client:
             with self.assertRaises(HttpResponseError) as raised:
                 await artifacts._wait_for_completed_conversation(
-                    client.beta.voice_agents.conversations,
+                    client.agent_endpoint_conversations,
                     AGENT_NAME,
                     CONVERSATION_ID,
                     timeout_seconds=1,
