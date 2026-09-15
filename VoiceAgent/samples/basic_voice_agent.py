@@ -21,6 +21,7 @@ import aiohttp
 from azure.ai.projects.aio import AIProjectClient
 from azure.ai.projects.models import (
     RealtimeAudioFormatsAudioPcm,
+    RealtimeServerEventType,
     VoiceAgentAudioConfig,
     VoiceAgentAudioInputConfig,
     VoiceAgentAudioOutputConfig,
@@ -46,15 +47,6 @@ PREVIEW_HEADERS: Final = {"Foundry-Features": "VoiceAgents=V1Preview"}
 API_VERSION: Final = "v1"
 SAMPLE_RATE: Final = 24000
 CHUNK_SAMPLES: Final = 1200
-
-AUDIO_DELTA_EVENTS: Final = {
-    "response.audio.delta",
-    "response.output_audio.delta",
-}
-AUDIO_TRANSCRIPT_EVENTS: Final = {
-    "response.audio_transcript.done",
-    "response.output_audio_transcript.done",
-}
 
 try:
     import pyaudio
@@ -223,35 +215,35 @@ async def run_microphone_session(
 
         try:
             async for event in connection:
-                event_type = str(event_value(event, "type") or "")
-                if event_type == "input_audio_buffer.speech_started":
+                event_type = event_value(event, "type")
+                if (
+                    event_type
+                    == RealtimeServerEventType.INPUT_AUDIO_BUFFER_SPEECH_STARTED
+                ):
                     processor.skip_pending_audio()
                     print("(listening...)")
                 elif (
                     event_type
-                    == "conversation.item.input_audio_transcription.completed"
+                    == RealtimeServerEventType.CONVERSATION_ITEM_INPUT_AUDIO_TRANSCRIPTION_COMPLETED
                 ):
                     print(f"You:   {event_value(event, 'transcript')}")
-                elif event_type in AUDIO_DELTA_EVENTS:
+                elif event_type == RealtimeServerEventType.RESPONSE_OUTPUT_AUDIO_DELTA:
                     processor.queue_audio(
                         audio_bytes(event_value(event, "delta"))
                     )
-                elif event_type in AUDIO_TRANSCRIPT_EVENTS:
+                elif (
+                    event_type
+                    == RealtimeServerEventType.RESPONSE_OUTPUT_AUDIO_TRANSCRIPT_DONE
+                ):
                     transcript = (
                         event_value(event, "transcript")
                         or event_value(event, "text")
                         or ""
                     )
                     print(f"Agent: {transcript}")
-                elif event_type == "conversation.created":
-                    conversation_id = (
-                        event_value(event, "conversation_id")
-                        or event_value(
-                            event_value(event, "conversation"), "id"
-                        )
-                        or conversation_id
-                    )
-                elif event_type == "error":
+                elif event_type == RealtimeServerEventType.SESSION_CREATED:
+                    conversation_id = event_value(event, "conversation_id")
+                elif event_type == RealtimeServerEventType.ERROR:
                     error = event_value(event, "error")
                     print(
                         "Session error: "

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import asyncio
+import base64
 import hashlib
 import importlib
 import io
@@ -16,11 +18,14 @@ from collections import deque
 from contextlib import ExitStack, redirect_stdout
 from http import HTTPStatus
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
 from urllib.parse import parse_qs, urlparse
 from zipfile import ZipFile
 
+from aiohttp import WSMessage, WSMsgType
 from azure.ai.projects.aio import AIProjectClient
+from azure.ai.voicelive.aio import VoiceLiveConnection
 from azure.core.credentials import AccessToken
 from azure.core.exceptions import HttpResponseError
 from azure.core.pipeline.transport import AsyncHttpResponse, AsyncHttpTransport
@@ -158,6 +163,20 @@ def conversation(status="completed"):
     }
 
 
+def session_created(**fields):
+    return {
+        "type": "session.created",
+        "event_id": "event-session-created",
+        "session": {"id": "session-not-conversation", "model": "gpt-realtime"},
+        **fields,
+    }
+
+
+def wire_event(event_type, **fields):
+    """Keep wire fixtures independent of the SDK enums used for dispatch."""
+    return {"type": event_type, "event_id": f"event-{event_type}", **fields}
+
+
 def audio_metadata(item_id=None, blob_uri=None):
     metadata = {
         "conversation_id": CONVERSATION_ID,
@@ -220,6 +239,231 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
             for path in sorted((ROOT / "skills").rglob("*.py")):
                 with self.subTest(path=str(path.relative_to(ROOT))):
                     runpy.run_path(str(path))
+
+    async def test_trace_url_uses_only_voice_agent_bundle(self):
+        trace_urls = importlib.import_module("foundry_trace_url")
+        subscription_id = "00000000-0000-0000-0000-000000000001"
+        with (
+            patch.object(
+                trace_urls,
+                "_list_subscription_ids",
+                AsyncMock(return_value=[subscription_id]),
+            ),
+            patch.object(
+                trace_urls,
+                "_find_account_resource",
+                AsyncMock(
+                    return_value={
+                        "subscriptionId": subscription_id,
+                        "resourceGroup": "sample-rg",
+                    }
+                ),
+            ),
+        ):
+            url = await trace_urls.build_foundry_trace_url(
+                ENDPOINT, AGENT_NAME, OfflineCredential()
+            )
+        self.assertIsNotNone(url)
+        parsed = urlparse(url)
+        self.assertEqual(parsed.query, "flight=voice_agent_bundle")
+        self.assertTrue(parsed.path.endswith(f"/build/agents/{AGENT_NAME}/traces"))
+
+    async def run_microphone_events(self, sample, events, *, cancel=False):
+        websocket = MagicMock()
+        websocket.close_code = 1000
+        websocket.send_str = AsyncMock()
+        websocket.receive = AsyncMock(
+            side_effect=[
+                *(WSMessage(WSMsgType.TEXT, json.dumps(event), "") for event in events),
+                asyncio.CancelledError()
+                if cancel
+                else WSMessage(WSMsgType.CLOSE, 1000, ""),
+            ]
+        )
+        # Exercise the real SDK decoder: conversation_id is an extra mapping
+        # field on the current Voice Live SDK's ServerEventSessionCreated model.
+        connection = VoiceLiveConnection(MagicMock(), websocket)
+        session = MagicMock()
+        session.__aenter__.return_value = connection
+        session.__aexit__.return_value = False
+        with (
+            patch.object(sample, "connect", return_value=session),
+            patch.object(sample, "AudioProcessor") as processor,
+            patch.object(sample, "pyaudio", object()),
+            redirect_stdout(io.StringIO()) as output,
+        ):
+            result = await sample.run_microphone_session(
+                ENDPOINT, OfflineCredential(), AGENT_NAME
+            )
+        processor.assert_called_once_with(connection)
+        processor.return_value.start_capture.assert_called_once()
+        processor.return_value.start_playback.assert_called_once()
+        processor.return_value.shutdown.assert_called_once()
+        session.__aexit__.assert_awaited_once()
+        return SimpleNamespace(
+            conversation_id=result,
+            audio=processor.return_value,
+            websocket=websocket,
+            output=output.getvalue(),
+        )
+
+    async def test_microphone_reads_session_created_conversation_id(self):
+        for sample in SAMPLES:
+            for cancel in (False, True):
+                with self.subTest(sample=sample.__name__, cancel=cancel):
+                    result = await self.run_microphone_events(
+                        sample,
+                        [session_created(conversation_id=CONVERSATION_ID)],
+                        cancel=cancel,
+                    )
+                    self.assertEqual(result.conversation_id, CONVERSATION_ID)
+
+    async def test_microphone_does_not_use_session_id_as_conversation_id(self):
+        for sample in SAMPLES:
+            for fields in ({}, {"conversation_id": None}):
+                with self.subTest(sample=sample.__name__, fields=fields):
+                    result = await self.run_microphone_events(
+                        sample, [session_created(**fields)]
+                    )
+                    self.assertIsNone(result.conversation_id)
+
+    async def test_microphone_dispatches_current_audio_and_transcript_events(self):
+        pcm = b"\x01\x00\x02\x00"
+        events = [
+            session_created(conversation_id=CONVERSATION_ID),
+            wire_event(
+                "input_audio_buffer.speech_started",
+                item_id="user-1",
+                audio_start_ms=0,
+            ),
+            wire_event(
+                "conversation.item.input_audio_transcription.completed",
+                item_id="user-1",
+                content_index=0,
+                transcript="Hello from the caller.",
+            ),
+            wire_event(
+                "response.output_audio.delta",
+                response_id="response-1",
+                item_id="agent-1",
+                output_index=0,
+                content_index=0,
+                delta=base64.b64encode(pcm).decode(),
+            ),
+            wire_event(
+                "response.output_audio_transcript.done",
+                response_id="response-1",
+                item_id="agent-1",
+                output_index=0,
+                content_index=0,
+                transcript="Hello from the agent.",
+            ),
+            wire_event("error", error={"message": "Sample session error."}),
+        ]
+        for sample in SAMPLES:
+            with self.subTest(sample=sample.__name__):
+                result = await self.run_microphone_events(sample, events)
+                self.assertEqual(result.conversation_id, CONVERSATION_ID)
+                result.audio.queue_audio.assert_called_once_with(pcm)
+                result.audio.skip_pending_audio.assert_called_once()
+                self.assertIn("You:   Hello from the caller.", result.output)
+                self.assertIn("Agent: Hello from the agent.", result.output)
+                self.assertIn("Session error: Sample session error.", result.output)
+
+    async def test_microphone_dispatches_mcp_events(self):
+        events = [
+            wire_event("mcp_list_tools.in_progress"),
+            wire_event("mcp_list_tools.completed"),
+            wire_event("mcp_list_tools.failed"),
+            wire_event(
+                "response.mcp_call_arguments.delta",
+                item_id="mcp-1",
+                delta='{"query": "enum-test"}',
+            ),
+            wire_event("response.mcp_call_arguments.done", item_id="mcp-1"),
+            wire_event(
+                "response.mcp_call.completed",
+                item_id="mcp-1",
+                output="completed-output",
+            ),
+            wire_event(
+                "response.output_item.done",
+                item={
+                    "id": "mcp-2",
+                    "type": "mcp_call",
+                    "name": "output-item-tool",
+                    "arguments": "{}",
+                    "output": "output-item-output",
+                },
+            ),
+            wire_event(
+                "conversation.item.done",
+                item={
+                    "id": "mcp-3",
+                    "type": "mcp_call",
+                    "name": "conversation-item-tool",
+                    "arguments": "{}",
+                    "output": "conversation-item-output",
+                },
+            ),
+            wire_event(
+                "response.mcp_call.failed",
+                item_id="mcp-4",
+                error={"message": "MCP failure details."},
+            ),
+        ]
+        for name in (
+            "voice_agent_with_mcp",
+            "voice_agent_with_foundry_iq",
+            "voice_agent_with_toolbox",
+        ):
+            with self.subTest(sample=name):
+                result = await self.run_microphone_events(
+                    importlib.import_module(name), events
+                )
+                for status in ("in_progress", "completed", "failed"):
+                    self.assertIn(
+                        f"(MCP event: mcp_list_tools.{status})", result.output
+                    )
+                for expected in (
+                    "enum-test",
+                    "completed-output",
+                    "MCP tool: output-item-tool",
+                    "output-item-output",
+                    "MCP tool: conversation-item-tool",
+                    "conversation-item-output",
+                    "MCP call failed:",
+                    "MCP failure details.",
+                ):
+                    self.assertIn(expected, result.output)
+
+    async def test_microphone_dispatches_local_function_events(self):
+        result = await self.run_microphone_events(
+            importlib.import_module("voice_agent_with_local_function"),
+            [
+                wire_event(
+                    "response.function_call_arguments.delta",
+                    item_id="function-1",
+                    delta='{"a": 5, "b": 7}',
+                ),
+                wire_event(
+                    "response.function_call_arguments.done",
+                    item_id="function-1",
+                    call_id="call-1",
+                    name="add_numbers",
+                ),
+            ],
+        )
+        sent = [
+            json.loads(call.args[0])
+            for call in result.websocket.send_str.await_args_list
+        ]
+        self.assertEqual(len(sent), 2)
+        self.assertEqual(sent[0]["type"], "conversation.item.create")
+        self.assertEqual(sent[0]["item"]["type"], "function_call_output")
+        self.assertEqual(sent[0]["item"]["call_id"], "call-1")
+        self.assertEqual(json.loads(sent[0]["item"]["output"]), {"sum": 12.0})
+        self.assertEqual(sent[1]["type"], "response.create")
 
     async def run_lifecycle(self, sample, transport, existing_name=None):
         microphone = AsyncMock(return_value=CONVERSATION_ID)

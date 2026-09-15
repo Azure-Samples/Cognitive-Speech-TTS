@@ -126,6 +126,10 @@ Audio output uses a voice-name string and a separate `voice_type`, for example
 `VoiceAgentAudioOutputConfig(voice="en-US-AvaNeural",
 voice_type=VoiceType.AZURE_STANDARD)`.
 
+Microphone samples use `RealtimeServerEventType` from `azure.ai.projects.models`
+for event dispatch, including `SESSION_CREATED` and `RESPONSE_OUTPUT_AUDIO_DELTA`.
+They follow the new Voice Agent protocol, without legacy audio-event aliases.
+
 ```powershell
 python samples\basic_voice_agent.py
 ```
@@ -237,8 +241,10 @@ the trace in the Azure AI Foundry portal and run evaluations.
 
 ## Download conversation and audio
 
-Microphone samples do not automatically read persisted data. After a session,
-copy the printed agent name and conversation id and run:
+Microphone samples capture the top-level `conversation_id` from the
+`session.created` event and print it when the session ends. They do not
+automatically read persisted data. Copy the printed agent name and conversation
+id and run:
 
 ```powershell
 python samples\download_conversation_artifacts.py <agent-name> <conversation-id>
