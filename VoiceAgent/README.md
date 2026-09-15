@@ -1,6 +1,6 @@
-# Voice agents private preview
+# Voice agents preview
 
-Voice agents now are available in `swedencentral` and `francecentral` regions.
+Voice agents now are available in all Foundry Agent regions including South India
 
 The setup below is for the Python samples. For .NET, use the standalone
 [C# voice agent sample](samples/CSharp/README.md) and the bundled
