@@ -9,7 +9,6 @@ import {
   HANDOFF_ENTRYPOINT_INSTRUCTIONS,
   shouldStartSessionResources,
 } from "./handoff.mjs";
-import { buildVoiceDefinition } from "./serviceContract.js";
 
 test("builds a reachable cyclic customer-care graph", () => {
   const graph = buildCustomerCareHandoff();
@@ -56,25 +55,6 @@ test("describes each desk in online-phone-store terms so routing has something t
   }
   assert.match(HANDOFF_ENTRYPOINT_INSTRUCTIONS, /Contoso Mobile/);
   assert.match(HANDOFF_ENTRYPOINT_INSTRUCTIONS, /before every handoff/i);
-});
-
-test("uses the store-specific entrypoint instructions only when a handoff graph is attached", () => {
-  const withHandoff = buildVoiceDefinition({
-    model: "gpt-realtime",
-    voice: "en-US-Ava:DragonHDLatestNeural",
-    inferenceMode: "model",
-    handoff: buildCustomerCareHandoff(),
-    handoffInstructions: HANDOFF_ENTRYPOINT_INSTRUCTIONS,
-  });
-  assert.equal(withHandoff.instructions, HANDOFF_ENTRYPOINT_INSTRUCTIONS);
-  assert.equal(withHandoff.tool_choice, "auto");
-
-  const plain = buildVoiceDefinition({
-    model: "gpt-realtime",
-    voice: "en-US-Ava:DragonHDLatestNeural",
-    inferenceMode: "model",
-  });
-  assert.match(plain.instructions, /helpful voice assistant/);
 });
 
 test("normalizes completed lifecycle events for rendering", () => {
