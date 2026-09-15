@@ -2,6 +2,11 @@
 
 Voice agents now are available in `swedencentral` and `francecentral` regions.
 
+The setup below is for the Python samples. For .NET, use the standalone
+[C# voice agent sample](samples/CSharp/README.md) and the bundled
+`Azure.AI.Projects.Agents` 3.0.0-beta.3 preview SDK. The C# sample requires
+.NET 8 or later, but does not require Python or audio-device dependencies.
+
 ## Prerequisites
 
 - Python 3.10 or later.
@@ -49,6 +54,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
 | `samples/download_conversation_artifacts.py` | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | `samples/download_conversation_traces.py` | Download correlated Application Insights rows by conversation id. |
+| [C# voice agent sample](samples/CSharp/README.md) | Create and manage a temporary agent or use an existing agent, stream audio over WebSocket, and read persisted conversations and recordings with the .NET SDK. |
 
 Reusable AI coding skills are under `skills/`:
 
