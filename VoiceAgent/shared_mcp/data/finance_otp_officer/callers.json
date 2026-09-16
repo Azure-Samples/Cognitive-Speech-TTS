@@ -1,0 +1,11 @@
+{
+  "callers": [
+    {
+      "caller_id": "caller-demo",
+      "fixture": "fictional",
+      "display_name": "Demo Broker",
+      "company": "Great Lakes Mortgage Brokers",
+      "note": "Default fictional fixture caller. The portable sample accepts the reserved test code 12345007."
+    }
+  ]
+}

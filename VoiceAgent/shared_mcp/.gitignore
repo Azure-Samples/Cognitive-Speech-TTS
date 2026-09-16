@@ -1,0 +1,7 @@
+.azure/*
+!.azure/deployment-plan.md
+.env
+config/generated/
+state/
+__pycache__/
+*.pyc

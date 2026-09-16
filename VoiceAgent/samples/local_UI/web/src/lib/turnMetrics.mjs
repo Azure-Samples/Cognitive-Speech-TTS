@@ -6,8 +6,8 @@
 
 const isNumber = (value) => typeof value === "number" && Number.isFinite(value);
 
-export const LATENCY_PIXELS_PER_SECOND = 160;
 export const ALL_TURN_OUTLIER_PERCENT = 50;
+export const LATENCY_VISUAL_REFERENCE_MS = 2000;
 
 export const LATENCY_TONE_LEGEND = [
   { tone: "timeout", label: "Idle timeout" },
@@ -346,6 +346,17 @@ function phaseDefinition(turn, startAtMs, endAtMs, tools, responses) {
       reason: "Configured silence window accumulated before the timeout event fired",
     };
   }
+  if (
+    turn.startSource === "agent_playback_end"
+    && Math.abs(startAtMs - turn.startedAtMs) < 1
+  ) {
+    return {
+      category: "inter_response_pause",
+      label: "Perceived pause",
+      tone: "other",
+      reason: "Silence from the end of the previous Agent utterance until this utterance became audible",
+    };
+  }
   if (turn.startSource === "idle_timeout" && isAt(turn.timeoutTriggeredAtMs)) {
     return {
       category: "timeout_response_startup",
@@ -466,6 +477,7 @@ function milestoneLabel(turn, timestamp, tools, responses) {
       server_vad: "server speech_stopped",
       text_input: "text input sent",
       idle_timeout: "idle timeout window start",
+      agent_playback_end: "previous Agent speech end",
       response_created: "response.created",
     }[turn.startSource] || "turn start";
   }
@@ -722,16 +734,17 @@ export function snapshotTurnMetrics(turn) {
   };
 }
 
-export function latencyBarWidthPx(value) {
-  if (!isNumber(value)) return 0;
-  return Math.max(0, (value / 1000) * LATENCY_PIXELS_PER_SECOND);
+export function latencyBarPercent(value, total) {
+  if (!isNumber(value) || !isNumber(total) || total <= 0) return 0;
+  return Math.max(0, Math.min(100, (value / total) * 100));
 }
 
 export function latencyRulerTicks(value) {
-  if (!isNumber(value)) return [0, 1];
+  if (!isNumber(value) || value <= 0) return [0];
+  const intervals = Math.min(4, Math.max(1, Math.ceil(value / 1000)));
   return Array.from(
-    { length: Math.max(2, Math.ceil(value / 1000) + 1) },
-    (_, index) => index,
+    { length: intervals + 1 },
+    (_, index) => Math.round((value * index) / intervals),
   );
 }
 
@@ -1174,7 +1187,7 @@ export function buildAllTurnLatencyTable(messages = []) {
       message?.type === "assistant"
       && message.metrics?.complete
       && isNumber(message.metrics.endToEndMs)
-      && ["user_last_voiced", "server_vad", "text_input", "idle_timeout"].includes(
+      && ["user_last_voiced", "server_vad", "text_input", "idle_timeout", "agent_playback_end"].includes(
         message.metrics.startSource,
       )
     ))
@@ -1197,13 +1210,14 @@ export function buildAllTurnLatencyTable(messages = []) {
       key: "total",
       label: "Total",
       kind: "latency",
-      description: "Turn start to scheduled playback of first speech, including the configured silence window for idle-timeout turns.",
+      description: "Perceived wait to scheduled playback of this reply: from user/timeout start for the first reply, or from the previous Agent speech end for a consecutive reply.",
       scope: "envelope",
-      startLabel: "User or timeout turn start",
+      startLabel: "Previous audible turn boundary",
       endLabel: "Agent speech/playback",
       interpretation: "This is the full observed wait before the Agent became audible. On idle-timeout turns, a high value is expected because Total includes the configured silence-policy window.",
       caveats: [
         "The preferred voice start is the last voiced microphone PCM sample; server speech_stopped is used only as an explicit proxy.",
+        "Consecutive Agent replies start at the scheduled end of the previous reply's last voiced PCM frame.",
         "Idle-timeout turns start at timeout_triggered receipt minus the event's audio window duration.",
         "The preferred end is scheduled playback of first speech; first voiced PCM or first audio packet may be used when playback is unavailable.",
         "Total equals the sum of the mutually exclusive atomic phase columns.",
@@ -1265,8 +1279,8 @@ function sumExclusionReason(message, ordinal) {
       ? "Initial greeting; no preceding user speech"
       : "Server-triggered response; no user-speech boundary";
   }
-  if (!["user_last_voiced", "server_vad"].includes(source)) {
-    return "No recorded user-speech trigger";
+  if (!["user_last_voiced", "server_vad", "agent_playback_end"].includes(source)) {
+    return "No recorded audible trigger boundary";
   }
   if (!metrics.complete) return "Response is not complete";
   if (!isNumber(metrics.endToEndMs)) return "No measurable Agent speech/playback";

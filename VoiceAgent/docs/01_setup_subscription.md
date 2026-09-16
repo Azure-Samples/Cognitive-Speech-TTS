@@ -1,12 +1,14 @@
-# Set up a Microsoft Foundry subscription for Voice Agent samples
+# 01 - Set up a Microsoft Foundry subscription
 
 ## Conclusion
 
-This guide turns an otherwise empty Azure subscription into a Microsoft Foundry
-Project that is ready for one of the repository's self-contained Voice Agent
-examples. It is the shared setup source of truth. Do not continue to an example until
-provisioning, identifiers, role assignments, preview eligibility, and region
-availability are all verified.
+This guide selects an existing Microsoft Foundry Project or creates one in an
+empty Azure subscription. It is the shared source of truth for subscription,
+Project endpoint, permissions, model mode, and region eligibility. Do not
+continue to an example until those values are verified.
+
+After completing the criteria below, continue with
+[02: MCP settings, deployment, and development](./02_mcp_settings.md).
 
 ## Completion criteria
 
@@ -17,6 +19,8 @@ availability are all verified.
 - The deployment user has both management-plane and Agent data-plane access.
 - The Project managed identity has Agent data-plane access.
 - `PROJECT_ENDPOINT`, `PROJECT_ID`, and `FOUNDRY_SCOPE` are populated.
+- The Finance definitions' `model_type` and exact `model` identifier match a
+  mode available to the Project.
 
 ## 1. Confirm preview and region eligibility
 
@@ -26,8 +30,29 @@ from this repository: the current repository overview names `swedencentral`
 and `francecentral`, but availability can change and customer subscriptions can
 have different enablement.
 
-Do not silently substitute a normal prompt Agent or another model when
-`kind: voice` or managed `gpt-realtime` is unavailable.
+Do not silently substitute a normal prompt Agent or change to self-deployed
+mode when `kind: voice` or the requested managed realtime model is unavailable.
+
+The two Finance definitions default to this versioned service-managed Voice
+Agent model:
+
+```json
+"model_type": "managed",
+"model": "gpt-realtime-2.1"
+```
+
+This does not reference a customer-created account deployment. Managed model
+identifiers vary by Project. Start with `gpt-realtime-2.1`. If publication
+reports it unsupported, explicitly set `VOICE_AGENT_MODEL=gpt-realtime-1.5`
+and retry. If neither is enabled, use another exact managed identifier
+confirmed for that Project, such as `gpt-realtime-2.1-mini`; do not use the
+unversioned `gpt-realtime` alias as a compatibility fallback.
+
+Set the same `VOICE_AGENT_MODEL` value in both Finance sample `.env` files and
+the Local UI `.env`. If every confirmed versioned identifier fails, use a
+Project in an eligible region or ask the Voice Agent service owner to confirm
+the subscription-region-model combination. Do not change the sample to
+self-deployed mode to work around a managed-model failure.
 
 ## 2. Install tools and sign in
 
@@ -55,6 +80,101 @@ az account show \
 ```
 
 Stop if the displayed subscription is not the one the customer intends to use.
+
+Subscription aliases used in conversation or internal documentation may not
+be accepted by Azure CLI. Resolve the exact name or ID with a structured query:
+
+```bash
+az account list --all \
+  --query "[?contains(name, 'Online') || contains(name, 'Meeting')].{name:name,id:id,state:state,isDefault:isDefault}" \
+  --output table
+```
+
+Use words relevant to the customer's subscription instead of `Online` and
+`Meeting`. Then set `SUBSCRIPTION` to the returned exact name or ID.
+
+## Existing Project fast path
+
+Do this before creating resources when the customer already has a Foundry
+Project. Project names are nested ARM resource names, so a plain
+`az resource list --name <project>` can return no result even when the Project
+exists.
+
+When the Project name is unknown, enumerate all Projects in the active
+subscription first:
+
+```bash
+az resource list \
+  --resource-type Microsoft.CognitiveServices/accounts/projects \
+  --query "[].{name:name,resourceGroup:resourceGroup,location:location,id:id}" \
+  --output table
+```
+
+Select only a Project whose account, resource group, workload owner, purpose,
+and confirmed Voice Agent region match the customer setup. Resource discovery
+does not prove that an unrelated Project is approved for this workload. Ask
+the customer for the intended Project ARM ID when those criteria do not select
+one unambiguously.
+
+```bash
+FOUNDRY_PROJECT="<existing-project-name>"
+
+PROJECT_ID="$(
+  az resource list \
+    --resource-type Microsoft.CognitiveServices/accounts/projects \
+    --query "[?ends_with(name, '/${FOUNDRY_PROJECT}')].id | [0]" \
+    --output tsv
+)"
+
+: "${PROJECT_ID:?Project was not found in the active subscription}"
+
+PROJECT_ENDPOINT="$(
+  az rest \
+    --method get \
+    --url "https://management.azure.com${PROJECT_ID}?api-version=2025-06-01" \
+    --query 'properties.endpoints."AI Foundry API"' \
+    --output tsv
+)"
+
+FOUNDRY_SCOPE="${PROJECT_ID%/projects/*}"
+FOUNDRY_RESOURCE="${FOUNDRY_SCOPE##*/}"
+RESOURCE_GROUP="${PROJECT_ID#*/resourceGroups/}"
+RESOURCE_GROUP="${RESOURCE_GROUP%%/*}"
+LOCATION="$(
+  az rest \
+    --method get \
+    --url "https://management.azure.com${PROJECT_ID}?api-version=2025-06-01" \
+    --query location \
+    --output tsv
+)"
+
+printf 'PROJECT_ENDPOINT=%s\nPROJECT_ID=%s\nFOUNDRY_SCOPE=%s\nRESOURCE_GROUP=%s\nFOUNDRY_RESOURCE=%s\nLOCATION=%s\n' \
+  "${PROJECT_ENDPOINT}" \
+  "${PROJECT_ID}" \
+  "${FOUNDRY_SCOPE}" \
+  "${RESOURCE_GROUP}" \
+  "${FOUNDRY_RESOURCE}" \
+  "${LOCATION}"
+```
+
+If multiple Projects with the same name are visible, query all matches and
+select by account, resource group, and subscription instead of taking `[0]`:
+
+```bash
+az resource list \
+  --resource-type Microsoft.CognitiveServices/accounts/projects \
+  --query "[?ends_with(name, '/${FOUNDRY_PROJECT}')].{name:name,id:id,resourceGroup:resourceGroup,location:location}" \
+  --output table
+```
+
+Verify the returned endpoint has this exact shape:
+
+```text
+https://<account>.services.ai.azure.com/api/projects/<project>
+```
+
+Then continue with identity and role verification in sections 7 through 11.
+Do not run the resource creation sections for an existing Project.
 
 ## 3. Choose names
 
@@ -218,6 +338,11 @@ PROJECT_STATE="$(
 test "${PROJECT_STATE}" = "Succeeded"
 ```
 
+Account deployment lists describe customer-created deployments. They do not
+prove whether the service-managed Voice Agent model is enabled. Use the
+publication and session gates in [03: Start and run the samples](./03_run_samples.md)
+after preview eligibility and region support are confirmed.
+
 ## 7. Resolve identity object IDs without Microsoft Graph
 
 Decode the deployment identity's object ID from an ARM access token. This
@@ -263,7 +388,7 @@ PROJECT_PRINCIPAL_ID="$(
 The examples need two permission planes:
 
 | Role | Why |
-|---|---|
+| --- | --- |
 | `Cognitive Services Contributor` | Create and manage the Foundry account, Project, and Project connections |
 | `Cognitive Services User` | Call the AIServices Agent data-plane APIs, including Agent create/read/invoke |
 
@@ -304,20 +429,44 @@ the replacement must include the corresponding management actions and
 
 ## 9. Verify roles and provisioning
 
-```bash
-az role assignment list \
-  --assignee-object-id "${USER_OBJECT_ID}" \
-  --scope "${FOUNDRY_SCOPE}" \
-  --include-inherited \
-  --query "[].{role:roleDefinitionName,scope:scope}" \
-  --output table
+Use ARM REST for role verification. Unlike `az role assignment list`, these
+queries do not ask Microsoft Graph to resolve principal display information.
+The principal filter includes assignments inherited from parent scopes.
 
-az role assignment list \
-  --assignee-object-id "${PROJECT_PRINCIPAL_ID}" \
-  --scope "${FOUNDRY_SCOPE}" \
-  --include-inherited \
-  --query "[].{role:roleDefinitionName,scope:scope}" \
-  --output table
+```bash
+AUTHORIZATION_API_VERSION="2022-04-01"
+
+role_definition_id() {
+  local role_name="$1"
+  az rest \
+    --method get \
+    --url "https://management.azure.com${FOUNDRY_SCOPE}/providers/Microsoft.Authorization/roleDefinitions?api-version=${AUTHORIZATION_API_VERSION}" \
+    --url-parameters "\$filter=roleName eq '${role_name}'" \
+    --query "value[0].id" \
+    --output tsv
+}
+
+principal_role_definition_ids() {
+  local principal_id="$1"
+  az rest \
+    --method get \
+    --url "https://management.azure.com${FOUNDRY_SCOPE}/providers/Microsoft.Authorization/roleAssignments?api-version=${AUTHORIZATION_API_VERSION}" \
+    --url-parameters "\$filter=principalId eq '${principal_id}'" \
+    --query "value[].properties.roleDefinitionId" \
+    --output tsv
+}
+
+CONTRIBUTOR_ROLE_ID="$(role_definition_id "Cognitive Services Contributor")"
+USER_ROLE_ID="$(role_definition_id "Cognitive Services User")"
+USER_ROLE_IDS="$(principal_role_definition_ids "${USER_OBJECT_ID}")"
+PROJECT_ROLE_IDS="$(principal_role_definition_ids "${PROJECT_PRINCIPAL_ID}")"
+
+: "${CONTRIBUTOR_ROLE_ID:?Could not resolve Cognitive Services Contributor}"
+: "${USER_ROLE_ID:?Could not resolve Cognitive Services User}"
+
+grep -Fxiq "${CONTRIBUTOR_ROLE_ID}" <<<"${USER_ROLE_IDS}"
+grep -Fxiq "${USER_ROLE_ID}" <<<"${USER_ROLE_IDS}"
+grep -Fxiq "${USER_ROLE_ID}" <<<"${PROJECT_ROLE_IDS}"
 
 az cognitiveservices account project show \
   --resource-group "${RESOURCE_GROUP}" \
@@ -325,31 +474,6 @@ az cognitiveservices account project show \
   --project-name "${FOUNDRY_PROJECT}" \
   --query "{state:properties.provisioningState,endpoint:properties.endpoints.\"AI Foundry API\",id:id,principalId:identity.principalId}" \
   --output json
-```
-
-Require all expected role assignments:
-
-```bash
-USER_ROLES="$(
-  az role assignment list \
-    --assignee-object-id "${USER_OBJECT_ID}" \
-    --scope "${FOUNDRY_SCOPE}" \
-    --include-inherited \
-    --query "[].roleDefinitionName" \
-    --output tsv
-)"
-PROJECT_ROLES="$(
-  az role assignment list \
-    --assignee-object-id "${PROJECT_PRINCIPAL_ID}" \
-    --scope "${FOUNDRY_SCOPE}" \
-    --include-inherited \
-    --query "[].roleDefinitionName" \
-    --output tsv
-)"
-
-grep -Fxq "Cognitive Services Contributor" <<<"${USER_ROLES}"
-grep -Fxq "Cognitive Services User" <<<"${USER_ROLES}"
-grep -Fxq "Cognitive Services User" <<<"${PROJECT_ROLES}"
 ```
 
 Role assignments can take several minutes to propagate. Wait and retry the
@@ -385,9 +509,12 @@ Use the `${PROJECT_ENDPOINT}` produced above as
 
 Continue in exactly one scenario README:
 
-- [Example 1: Finance with Handoff](samples/example1_finance_with_handoff/README.md)
-- [Example 2: Finance with OTP and Officer Search](samples/example2_finance_with_OTP_and_Officer_Search/README.md)
-- [Local template dashboard](samples/local_UI/README.md)
+- [02: MCP settings, deployment, and development](./02_mcp_settings.md)
+- [03: Start and run the samples](./03_run_samples.md)
+- [Example 1: Finance with Handoff](../samples/example1_finance_with_handoff/README.md)
+- [Example 2: Finance with OTP and Officer Search](../samples/example2_finance_with_OTP_and_Officer_Search/README.md)
+- [Local UI](../samples/local_UI/README.md)
+- [Finance examples architecture and documentation index](./README.md)
 
 Those directories are self-contained after subscription setup. They own their
 MCP endpoint and connection requirements, SDK installation, publication,

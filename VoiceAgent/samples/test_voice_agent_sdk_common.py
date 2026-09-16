@@ -14,6 +14,7 @@ from unittest.mock import patch
 from voice_agent_sdk_common import (
     EventPrinter,
     _canonical_definition,
+    _load_settings,
     _realtime_url,
     _validate_agent_name,
     _validate_project_endpoint,
@@ -29,6 +30,12 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             _validate_project_endpoint("https://<account>/api/projects/<project>")
+        with self.assertRaises(ValueError):
+            _validate_project_endpoint("https://evil.example/api/projects/stolen")
+        with self.assertRaises(ValueError):
+            _validate_project_endpoint(
+                "https://account.services.ai.azure.com.evil.example/api/projects/stolen"
+            )
         with self.assertRaises(ValueError):
             _validate_agent_name("invalid agent name")
 
@@ -98,6 +105,8 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
 
         self.assertEqual(first_name, "first-agent")
         self.assertEqual(second_name, "second-agent")
+        self.assertEqual(first["model_type"], "managed")
+        self.assertEqual(second["model_type"], "managed")
         self.assertEqual(first["model"], "first-model")
         self.assertEqual(second["model"], "second-model")
         self.assertEqual(
@@ -108,6 +117,62 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             second["tools"][0]["project_connection_id"],
             "second-connection",
         )
+
+    def test_mcp_config_switch_overrides_sample_mcp_values(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            sample_dir = Path(directory)
+            config_dir = sample_dir / "config"
+            config_dir.mkdir()
+            (config_dir / "shared.env").write_text(
+                "\n".join(
+                    [
+                        "VOICE_AGENT_MCP_SERVER_URL="
+                        "https://shared.example/mcp/finance",
+                        "VOICE_AGENT_MCP_CONNECTION_ID=shared-connection",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            (sample_dir / ".env").write_text(
+                "\n".join(
+                    [
+                        "AZURE_AI_PROJECT_ENDPOINT="
+                        "https://account.services.ai.azure.com/api/projects/project",
+                        "VOICE_AGENT_MCP_CONFIG=config/shared.env",
+                        "VOICE_AGENT_MCP_SERVER_URL=https://internal.example/mcp",
+                        "VOICE_AGENT_MCP_CONNECTION_ID=internal-connection",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            with patch.dict(os.environ, {}, clear=True):
+                settings = _load_settings(sample_dir)
+
+        self.assertEqual(
+            settings["VOICE_AGENT_MCP_SERVER_URL"],
+            "https://shared.example/mcp/finance",
+        )
+        self.assertEqual(
+            settings["VOICE_AGENT_MCP_CONNECTION_ID"],
+            "shared-connection",
+        )
+
+    def test_mcp_config_switch_reports_missing_file(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            sample_dir = Path(directory)
+            (sample_dir / ".env").write_text(
+                "VOICE_AGENT_MCP_CONFIG=missing.env\n",
+                encoding="utf-8",
+            )
+            with patch.dict(os.environ, {}, clear=True):
+                with self.assertRaisesRegex(
+                    RuntimeError,
+                    "VOICE_AGENT_MCP_CONFIG does not exist",
+                ):
+                    _load_settings(sample_dir)
 
     def test_canonicalizes_service_audio_defaults(self) -> None:
         authored = {
@@ -200,6 +265,31 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             ],
         )
 
+    def test_sample_env_defaults_match_committed_model_mode(self) -> None:
+        samples = Path(__file__).resolve().parent
+        for directory in (
+            "example1_finance_with_handoff",
+            "example2_finance_with_OTP_and_Officer_Search",
+        ):
+            sample = samples / directory
+            definition = json.loads(
+                (sample / "agent.json").read_text(encoding="utf-8")
+            )["definition"]
+            defaults = {
+                key.strip(): value.strip()
+                for line in (sample / ".env.example").read_text(
+                    encoding="utf-8"
+                ).splitlines()
+                if line and not line.startswith("#") and "=" in line
+                for key, value in [line.split("=", 1)]
+            }
+            self.assertEqual(definition["model_type"], "managed")
+            self.assertNotIn("VOICE_AGENT_MODEL_TYPE", defaults)
+            self.assertEqual(
+                defaults["VOICE_AGENT_MODEL"],
+                definition["model"],
+            )
+
     def test_counts_handoff_and_mcp_call_evidence(self) -> None:
         printer = EventPrinter(verbose=False)
         with contextlib.redirect_stdout(io.StringIO()):
@@ -223,7 +313,6 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         self.assertEqual(summary["handoff_events"], 1)
         self.assertEqual(summary["mcp_events"], 2)
         self.assertEqual(summary["mcp_call_events"], 1)
-
 
 if __name__ == "__main__":
     unittest.main()

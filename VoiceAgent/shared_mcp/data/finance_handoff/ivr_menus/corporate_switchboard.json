@@ -1,0 +1,32 @@
+{
+  "menu_id": "corporate_switchboard",
+  "entry_node_id": "main",
+  "human_node_id": "agent_queue",
+  "voicemail_node_id": "voicemail",
+  "nodes": {
+    "main": {
+      "prompt": "For sales, press one. For customer service, press two. To speak to a representative, press zero.",
+      "options": [
+        { "digits": "1", "label": "sales", "goes_to": "sales_queue" },
+        { "digits": "2", "label": "customer service", "goes_to": "service_menu" },
+        { "digits": "0", "label": "speak to a representative", "goes_to": "agent_queue" }
+      ]
+    },
+    "service_menu": {
+      "prompt": "For an existing loan, press one. For a new application, press two. To speak to a representative, press nine.",
+      "options": [
+        { "digits": "1", "label": "existing loan", "goes_to": "agent_queue" },
+        { "digits": "2", "label": "new application", "goes_to": "agent_queue" },
+        { "digits": "9", "label": "speak to a representative", "goes_to": "agent_queue" }
+      ]
+    },
+    "sales_queue": {
+      "prompt": "All our sales lines are busy. Please leave a message after the tone.",
+      "options": [
+        { "digits": "0", "label": "leave a message", "goes_to": "voicemail" }
+      ]
+    },
+    "agent_queue": { "prompt": "Connecting you now.", "options": [] },
+    "voicemail": { "prompt": "Please leave a message after the tone.", "options": [] }
+  }
+}

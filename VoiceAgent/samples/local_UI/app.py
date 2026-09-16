@@ -25,13 +25,15 @@ import requests
 from aiohttp import WSMsgType, web
 from azure.ai.projects import AIProjectClient
 from azure.identity import AzureCliCredential, DefaultAzureCredential
-from dotenv import load_dotenv
+from dotenv import dotenv_values, load_dotenv
 from session_log import SessionRecorder
 
 
 ROOT = Path(__file__).resolve().parent
 STATIC_DIR = ROOT / "static"
 SAMPLES_DIR = ROOT.parent
+VOICE_AGENT_ROOT = SAMPLES_DIR.parent
+DOCS_DIR = VOICE_AGENT_ROOT / "docs"
 DEFAULT_TEMPLATE_CONFIG = ROOT / "templates.config.json"
 TOKEN_SCOPE = "https://ai.azure.com/.default"
 ARM_TOKEN_SCOPE = "https://management.azure.com/.default"
@@ -43,6 +45,14 @@ MCP_PROBE_TIMEOUT_SECONDS = 15
 MCP_PROTOCOL_VERSION = "2025-06-18"
 PROJECT_COOKIE = "voice_agent_local_ui_project"
 AGENT_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,62}$")
+FOUNDRY_PROJECT_HOST = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.services\.ai\.azure\.com$",
+    re.IGNORECASE,
+)
+TEMPLATE_AGENT_PREFIX = "gft-"
+TEMPLATE_AGENT_NAME = re.compile(
+    r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$"
+)
 APP_CONFIG_KEY = web.AppKey("local_ui_config", object)
 LOGGER = logging.getLogger("voice_agent_local_ui")
 
@@ -64,14 +74,21 @@ def validate_project_endpoint(value: str) -> str:
     parts = [part for part in parsed.path.split("/") if part]
     if (
         parsed.scheme != "https"
-        or not parsed.netloc
-        or len(parts) < 3
-        or parts[-2] != "projects"
+        or not parsed.hostname
+        or not FOUNDRY_PROJECT_HOST.fullmatch(parsed.hostname)
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parts[:2] != ["api", "projects"]
+        or len(parts) != 3
+        or parsed.query
+        or parsed.fragment
         or "<" in endpoint
         or ">" in endpoint
     ):
         raise ValueError(
-            "Project endpoint must be HTTPS and end in /api/projects/<project-name>."
+            "Project endpoint must be an Azure Foundry URL in the form "
+            "https://<account>.services.ai.azure.com/api/projects/<project-name>."
         )
     return endpoint
 
@@ -82,6 +99,23 @@ def validate_agent_name(value: str) -> str:
         raise ValueError(
             "Agent name must be 1-63 characters and contain only letters, "
             "numbers, '.', '_', or '-'."
+        )
+    return name
+
+
+def template_agent_name(requested_name: str, template_id: str) -> str:
+    base_name = requested_name.strip() or f"{template_id}-{uuid.uuid4().hex[:8]}"
+    base_name = re.sub(r"[^A-Za-z0-9-]+", "-", base_name).strip("-")
+    name = (
+        base_name
+        if base_name.startswith(TEMPLATE_AGENT_PREFIX)
+        else f"{TEMPLATE_AGENT_PREFIX}{base_name}"
+    )
+    if not TEMPLATE_AGENT_NAME.fullmatch(name):
+        raise ValueError(
+            "Template Agent name must be at most 59 characters before the "
+            f"required '{TEMPLATE_AGENT_PREFIX}' prefix and may contain only "
+            "letters, numbers, and hyphens."
         )
     return name
 
@@ -170,7 +204,7 @@ def decode_mcp_response(response: requests.Response) -> dict[str, Any]:
     return json.loads(text) if text.strip() else {}
 
 
-def mcp_handshake(url: str) -> dict[str, Any]:
+def mcp_handshake(url: str, bearer_token: str = "") -> dict[str, Any]:
     validate_mcp_probe_url(url)
     session = requests.Session()
     session.trust_env = False
@@ -178,6 +212,10 @@ def mcp_handshake(url: str) -> dict[str, Any]:
         "Content-Type": "application/json",
         "Accept": "application/json, text/event-stream",
     }
+    if bearer_token:
+        headers["Authorization"] = (
+            f"Bearer {normalize_bearer_token(bearer_token)}"
+        )
     started = time.perf_counter()
     try:
         initialized = session.post(
@@ -455,7 +493,9 @@ class TemplateSource:
     accent: str
     summary: str
     mcp_server_url: str
-    mcp_token_env: str
+    mcp_connection_id: str
+    mcp_config_path: Path | None
+    mcp_token_file: Path | None
 
 
 class TemplateCatalog:
@@ -463,9 +503,15 @@ class TemplateCatalog:
         self,
         config_path: Path = DEFAULT_TEMPLATE_CONFIG,
         allowed_root: Path = SAMPLES_DIR,
+        mcp_root: Path | None = None,
     ) -> None:
         self.config_path = config_path.resolve()
         self.allowed_root = allowed_root.resolve()
+        self.mcp_root = (
+            mcp_root.resolve()
+            if mcp_root is not None
+            else (self.allowed_root.parent / "shared_mcp").resolve()
+        )
         self._sources: tuple[TemplateSource, ...] = ()
         self._documents: dict[str, dict[str, Any]] = {}
         self._errors: list[dict[str, str]] = []
@@ -527,6 +573,39 @@ class TemplateCatalog:
                 mcp_config = entry.get("mcp") or {}
                 if not isinstance(mcp_config, dict):
                     raise ValueError("mcp must be an object")
+                mcp_config_path = None
+                mcp_file_values: dict[str, str] = {}
+                mcp_config_file = str(
+                    mcp_config.get("config_file") or ""
+                ).strip()
+                if mcp_config_file:
+                    mcp_config_path = (
+                        self.config_path.parent / mcp_config_file
+                    ).resolve()
+                    if not mcp_config_path.is_relative_to(self.mcp_root):
+                        raise ValueError(
+                            f"mcp.config_file must resolve under {self.mcp_root}"
+                        )
+                    if mcp_config_path.is_file():
+                        mcp_file_values = {
+                            key: str(value)
+                            for key, value in dotenv_values(
+                                mcp_config_path
+                            ).items()
+                            if value is not None
+                        }
+                mcp_token_file = None
+                mcp_token_file_value = str(
+                    mcp_config.get("token_file") or ""
+                ).strip()
+                if mcp_token_file_value:
+                    mcp_token_file = (
+                        self.config_path.parent / mcp_token_file_value
+                    ).resolve()
+                    if not mcp_token_file.is_relative_to(self.mcp_root):
+                        raise ValueError(
+                            f"mcp.token_file must resolve under {self.mcp_root}"
+                        )
                 source = TemplateSource(
                     id=template_id,
                     name=str(entry.get("name") or "").strip(),
@@ -535,21 +614,44 @@ class TemplateCatalog:
                     accent=str(entry.get("accent_color") or "#147d64").strip(),
                     summary=str(entry.get("summary") or "").strip(),
                     mcp_server_url=str(
-                        mcp_config.get("server_url") or ""
+                        mcp_file_values.get("VOICE_AGENT_MCP_SERVER_URL")
+                        or mcp_config.get("server_url")
+                        or ""
                     ).strip(),
-                    mcp_token_env=str(
-                        mcp_config.get("token_env") or ""
+                    mcp_connection_id=str(
+                        mcp_file_values.get("VOICE_AGENT_MCP_CONNECTION_ID")
+                        or mcp_config.get("connection_id")
+                        or ""
                     ).strip(),
+                    mcp_config_path=mcp_config_path,
+                    mcp_token_file=mcp_token_file,
                 )
                 document = self._load(source)
                 if list(iter_mcp_tools(document["definition"])):
-                    if not source.mcp_server_url:
+                    if not source.mcp_server_url and source.mcp_config_path is None:
                         raise ValueError("mcp.server_url is required for an MCP template")
-                    validate_https_url(source.mcp_server_url, "mcp.server_url")
-                    if source.mcp_token_env and not re.fullmatch(
-                        r"[A-Z][A-Z0-9_]{1,127}", source.mcp_token_env
+                    if source.mcp_server_url:
+                        validate_https_url(source.mcp_server_url, "mcp.server_url")
+                    if source.mcp_connection_id and not re.fullmatch(
+                        r"[A-Za-z0-9][A-Za-z0-9._-]*",
+                        source.mcp_connection_id,
                     ):
-                        raise ValueError("mcp.token_env must be an environment variable name")
+                        raise ValueError(
+                            "MCP connection ID has an invalid format"
+                        )
+                    if (
+                        source.mcp_config_path is not None
+                        and source.mcp_config_path.is_file()
+                        and not (
+                            source.mcp_server_url
+                            and source.mcp_connection_id
+                        )
+                    ):
+                        raise ValueError(
+                            "mcp.config_file must define both "
+                            "VOICE_AGENT_MCP_SERVER_URL and "
+                            "VOICE_AGENT_MCP_CONNECTION_ID"
+                        )
             except (OSError, ValueError, RuntimeError, json.JSONDecodeError) as error:
                 self._errors.append(
                     {"id": template_id or f"entry-{index}", "error": str(error)}
@@ -609,6 +711,12 @@ class TemplateCatalog:
         definition = document["definition"]
         graph = template_graph_view(definition)
         mcp_tools = list(iter_mcp_tools(definition))
+        connection_configured = bool(
+            source.mcp_server_url
+            and source.mcp_connection_id
+            and source.mcp_token_file is not None
+            and source.mcp_token_file.is_file()
+        )
         tool_servers: dict[str, dict[str, Any]] = {}
         tools: list[dict[str, Any]] = []
         for tool in mcp_tools:
@@ -658,10 +766,12 @@ class TemplateCatalog:
             "issues": [],
             "yaml": json.dumps(document, indent=2),
             "mcp": {
-                "auth_configured": bool(
-                    source.mcp_token_env and os.getenv(source.mcp_token_env, "").strip()
+                "auth_configured": connection_configured,
+                "connection_configured": connection_configured,
+                "configuration_required": bool(
+                    mcp_tools and not connection_configured
                 ),
-                "token_required": bool(mcp_tools),
+                "token_required": False,
             },
         }
 
@@ -687,9 +797,11 @@ class AppConfig:
         credential_mode: str = "default",
         template_config: Path = DEFAULT_TEMPLATE_CONFIG,
         data_dir: Path | None = None,
+        voice_model: str = "",
     ) -> None:
         self.endpoint = validate_project_endpoint(endpoint) if endpoint else ""
         self.credential_mode = credential_mode.strip().lower() or "default"
+        self.voice_model = voice_model.strip()
         if self.credential_mode not in {"default", "cli"}:
             raise ValueError("Credential mode must be 'default' or 'cli'.")
         self.catalog = TemplateCatalog(template_config)
@@ -1248,10 +1360,100 @@ async def templates_env(request: web.Request) -> web.Response:
 
 
 async def get_template(request: web.Request) -> web.Response:
-    detail = get_config(request).catalog.detail(request.match_info["template_id"])
+    config = get_config(request)
+    detail = config.catalog.detail(request.match_info["template_id"])
     if detail is None:
         raise web.HTTPNotFound(text="Unknown template.")
+    if config.voice_model:
+        detail["model"] = config.voice_model
+        for group in detail.get("config_groups") or []:
+            for item in group.get("items") or []:
+                if item.get("label") == "Model":
+                    item["value"] = config.voice_model
     return web.json_response(detail)
+
+
+async def probe_template_mcp(request: web.Request) -> web.Response:
+    catalog = get_config(request).catalog
+    template_id = request.match_info["template_id"]
+    source = catalog.source(template_id)
+    document = catalog.document(template_id)
+    if source is None or document is None:
+        raise web.HTTPNotFound(text="Unknown template.")
+    report = {
+        "ok": False,
+        "reached": False,
+        "server_url": source.mcp_server_url,
+        "project_connection_id": source.mcp_connection_id,
+        "guide_url": "/guide/run-samples",
+        "start_command": "cd VoiceAgent/shared_mcp && ./scripts/e2e-local.sh",
+        "checked_at": time.strftime("%H:%M:%S", time.localtime()),
+    }
+    if (
+        not source.mcp_server_url
+        or not source.mcp_connection_id
+        or source.mcp_token_file is None
+        or not source.mcp_token_file.is_file()
+    ):
+        return web.json_response(
+            {
+                **report,
+                "error": (
+                    "Local MCP configuration is not ready. "
+                    "Start the local MCP E2E, then reload templates."
+                ),
+            }
+        )
+    try:
+        bearer_token = normalize_bearer_token(
+            source.mcp_token_file.read_text(encoding="utf-8")
+        )
+        result = await asyncio.to_thread(
+            mcp_handshake,
+            source.mcp_server_url,
+            bearer_token,
+        )
+    except McpProbeError as error:
+        return web.json_response(
+            {
+                **report,
+                "reached": bool(error.http_status),
+                "auth_gate": error.http_status in {401, 403},
+                "http_status": error.http_status,
+                "latency_ms": error.latency_ms,
+                "error": str(error),
+            }
+        )
+    except Exception as error:
+        return web.json_response(
+            {**report, "error": f"{type(error).__name__}: {error}"}
+        )
+    expected_tools = {
+        name
+        for tool in iter_mcp_tools(document["definition"])
+        for name in tool.get("allowed_tools") or []
+        if isinstance(name, str) and name
+    }
+    observed_tools = set(result["tools"])
+    missing_tools = sorted(expected_tools - observed_tools)
+    if missing_tools:
+        return web.json_response(
+            {
+                **report,
+                **result,
+                "error": f"MCP tools/list is missing expected tools: {missing_tools}",
+            }
+        )
+    return web.json_response(
+        {
+            **report,
+            **result,
+            "ok": True,
+            "reached": True,
+            "auth_gate": False,
+            "message": "MCP handshake and tools/list succeeded.",
+        }
+    )
 
 
 async def cleanup_failed_connection(
@@ -1280,33 +1482,30 @@ async def publish_template(request: web.Request) -> web.Response:
     source = config.catalog.source(template_id)
     if document is None or source is None:
         raise web.HTTPNotFound(text="Unknown template.")
-    connection: dict[str, str] | None = None
     try:
         body = await request.json()
         if not isinstance(body, dict):
             raise ValueError("Expected a JSON object.")
         requested_name = str(body.get("name") or "").strip()
-        name = validate_agent_name(
-            requested_name or f"{template_id}-{uuid.uuid4().hex[:8]}"
-        )
+        name = template_agent_name(requested_name, template_id)
         mcp_tools = list(iter_mcp_tools(document["definition"]))
         connection_name = ""
         if mcp_tools:
-            configured_token = (
-                os.getenv(source.mcp_token_env, "").strip()
-                if source.mcp_token_env
-                else ""
-            )
+            if (
+                not source.mcp_server_url
+                or not source.mcp_connection_id
+                or source.mcp_token_file is None
+                or not source.mcp_token_file.is_file()
+            ):
+                raise ValueError(
+                    "The local MCP config is not ready. Run "
+                    "VoiceAgent/shared_mcp/scripts/e2e-local.sh and reload templates."
+                )
+            connection_name = source.mcp_connection_id
             bearer_token = normalize_bearer_token(
-                configured_token or str(body.get("mcp_auth_token") or "")
+                source.mcp_token_file.read_text(encoding="utf-8")
             )
-            connection_base = re.sub(
-                r"[^a-z0-9-]+", "-", name.lower()
-            ).strip("-") or "voice-agent"
-            connection_name = (
-                f"{connection_base[:48].rstrip('-')}-mcp-{uuid.uuid4().hex[:6]}"
-            )
-            connection = await asyncio.to_thread(
+            await asyncio.to_thread(
                 sdk_create_mcp_connection,
                 config,
                 endpoint=endpoint,
@@ -1314,10 +1513,9 @@ async def publish_template(request: web.Request) -> web.Response:
                 server_url=source.mcp_server_url,
                 bearer_token=bearer_token,
             )
-            connection_name = connection["name"]
         definition = materialize_template(
             document,
-            model=str(body.get("model") or ""),
+            model=str(body.get("model") or config.voice_model),
             voice=str(body.get("voice") or ""),
             mcp_server_url=source.mcp_server_url,
             mcp_connection_id=connection_name,
@@ -1325,9 +1523,8 @@ async def publish_template(request: web.Request) -> web.Response:
     except (json.JSONDecodeError, ValueError) as error:
         raise web.HTTPBadRequest(text=str(error)) from error
     except Exception as error:
-        cleanup_error = await cleanup_failed_connection(config, connection)
         return web.json_response(
-            {"error": f"{type(error).__name__}: {error}.{cleanup_error}"}, status=502
+            {"error": f"{type(error).__name__}: {error}."}, status=502
         )
 
     try:
@@ -1340,9 +1537,8 @@ async def publish_template(request: web.Request) -> web.Response:
             definition=definition,
         )
     except Exception as error:
-        cleanup_error = await cleanup_failed_connection(config, connection)
         return web.json_response(
-            {"error": f"{type(error).__name__}: {error}.{cleanup_error}"}, status=502
+            {"error": f"{type(error).__name__}: {error}."}, status=502
         )
     return web.json_response(
         {
@@ -1350,7 +1546,7 @@ async def publish_template(request: web.Request) -> web.Response:
             "agent_name": result["name"],
             "backend": project_name(endpoint),
             "source_agent_name": str(document.get("name") or template_id),
-            "mcp_connection_name": connection["name"] if connection else "",
+            "mcp_connection_name": connection_name,
         },
         status=201,
     )
@@ -1479,6 +1675,10 @@ async def templates_index(_: web.Request) -> web.FileResponse:
     return web.FileResponse(STATIC_DIR / "templates.html")
 
 
+async def examples_guide(_: web.Request) -> web.FileResponse:
+    return web.FileResponse(DOCS_DIR / "03_run_samples.md")
+
+
 async def close_app(app: web.Application) -> None:
     get_config_from_app(app).close()
 
@@ -1493,6 +1693,7 @@ def build_app(config: AppConfig) -> web.Application:
     app.router.add_get("/", index)
     app.router.add_get("/templates", templates_index)
     app.router.add_get("/templates/", templates_index)
+    app.router.add_get("/guide/run-samples", examples_guide)
     app.router.add_get("/healthz", health)
     app.router.add_get("/api/config", config_info)
     app.router.add_get("/api/projects", list_projects)
@@ -1503,6 +1704,10 @@ def build_app(config: AppConfig) -> web.Application:
     app.router.add_get("/api/templates", list_templates)
     app.router.add_get("/api/templates/env", templates_env)
     app.router.add_get("/api/templates/{template_id}", get_template)
+    app.router.add_get(
+        "/api/templates/{template_id}/mcp/probe",
+        probe_template_mcp,
+    )
     app.router.add_post("/api/templates/{template_id}/publish", publish_template)
     app.router.add_get("/api/sessions/{agent}", bridge_session)
     app.router.add_get(
@@ -1596,6 +1801,7 @@ def main() -> None:
         args.credential_mode,
         args.template_config,
         args.data_dir,
+        os.getenv("VOICE_AGENT_MODEL", ""),
     )
     access_logger = configure_file_logging(args.data_dir.resolve())
     LOGGER.info(

@@ -1,0 +1,21 @@
+{
+  "campaign_id": "personal_loan_preapproved",
+  "product_name": "pre-approved personal loan",
+  "min_amount_inr": 50000,
+  "max_amount_inr": 1500000,
+  "allowed_tenures_months": [12, 24, 36, 48, 60],
+  "default_tenure_months": 12,
+  "annual_rate_percent": 14.5,
+  "max_foir": 0.5,
+  "min_monthly_income_inr": 25000,
+  "processing_fee_percent": 2.0,
+  "insurance_premium_inr": 3500,
+  "rate_negotiable": false,
+  "internal_floor_rate_percent": 12.9,
+  "rate_tiers": [
+    { "up_to_amount_inr": 400000, "annual_rate_percent": 13.5 },
+    { "up_to_amount_inr": 800000, "annual_rate_percent": 14.5 },
+    { "up_to_amount_inr": 1200000, "annual_rate_percent": 16.0 },
+    { "up_to_amount_inr": 1500000, "annual_rate_percent": 18.0 }
+  ]
+}

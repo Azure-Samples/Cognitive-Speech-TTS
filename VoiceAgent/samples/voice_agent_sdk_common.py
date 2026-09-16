@@ -39,6 +39,10 @@ HANDOFF_EVENTS = {
     "session.handoff.completed",
     "session.handoff.aborted",
 }
+FOUNDRY_PROJECT_HOST = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.services\.ai\.azure\.com$",
+    re.IGNORECASE,
+)
 
 
 def _load_settings(sample_dir: Path) -> dict[str, str]:
@@ -47,6 +51,25 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         for key, value in dotenv_values(sample_dir / ".env").items()
         if value is not None
     }
+    mcp_config_value = (
+        os.getenv("VOICE_AGENT_MCP_CONFIG")
+        or file_values.get("VOICE_AGENT_MCP_CONFIG")
+        or ""
+    ).strip()
+    mcp_config_values: dict[str, str] = {}
+    if mcp_config_value:
+        mcp_config_path = Path(mcp_config_value).expanduser()
+        if not mcp_config_path.is_absolute():
+            mcp_config_path = sample_dir / mcp_config_path
+        if not mcp_config_path.is_file():
+            raise RuntimeError(
+                f"VOICE_AGENT_MCP_CONFIG does not exist: {mcp_config_path}"
+            )
+        mcp_config_values = {
+            key: str(value)
+            for key, value in dotenv_values(mcp_config_path).items()
+            if value is not None
+        }
     names = {
         "AZURE_AI_PROJECT_ENDPOINT",
         "AZURE_CREDENTIAL_MODE",
@@ -55,10 +78,17 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         "VOICE_AGENT_MCP_SERVER_URL",
         "VOICE_AGENT_MCP_CONNECTION_ID",
     }
-    return {
-        name: (os.getenv(name) or file_values.get(name) or "").strip()
-        for name in names
-    }
+    settings: dict[str, str] = {}
+    for name in names:
+        configured_value = (
+            mcp_config_values.get(name, "")
+            if name.startswith("VOICE_AGENT_MCP_")
+            else ""
+        )
+        settings[name] = (
+            os.getenv(name) or configured_value or file_values.get(name) or ""
+        ).strip()
+    return settings
 
 
 def _sync_credential(settings: Mapping[str, str]) -> Any:
@@ -92,15 +122,22 @@ def _validate_project_endpoint(endpoint: str) -> str:
     parts = [part for part in parsed.path.split("/") if part]
     if (
         parsed.scheme != "https"
-        or not parsed.netloc
-        or len(parts) < 3
-        or parts[-2] != "projects"
+        or not parsed.hostname
+        or not FOUNDRY_PROJECT_HOST.fullmatch(parsed.hostname)
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parts[:2] != ["api", "projects"]
+        or len(parts) != 3
+        or parsed.query
+        or parsed.fragment
         or "<" in value
         or ">" in value
     ):
         raise ValueError(
-            "AZURE_AI_PROJECT_ENDPOINT must be HTTPS and end in "
-            "/api/projects/<project-name>."
+            "AZURE_AI_PROJECT_ENDPOINT must be an Azure Foundry URL in the "
+            "form https://<account>.services.ai.azure.com/api/projects/"
+            "<project-name>."
         )
     return value
 
@@ -259,6 +296,11 @@ def _validate_readback(
             "Published version model does not match the requested model: "
             f"{observed.get('model')!r} != {expected.get('model')!r}."
         )
+    if observed.get("model_type") != expected.get("model_type"):
+        raise RuntimeError(
+            "Published version model type does not match the requested model type: "
+            f"{observed.get('model_type')!r} != {expected.get('model_type')!r}."
+        )
     if require_handoff and not isinstance(observed.get("handoff"), dict):
         raise RuntimeError("Published Finance version lost its handoff graph.")
 
@@ -336,6 +378,7 @@ def publish_agent(
         "version": version_id,
         "definition_mode": mode,
         "kind": observed.get("kind"),
+        "model_type": observed.get("model_type"),
         "model": observed.get("model"),
         "mcp_connections": sorted(
             {

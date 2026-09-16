@@ -329,18 +329,20 @@ button.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
 .msg.assistant .bubble { max-width: 100%; background: var(--gray-100); }
 .turn-metrics { width: min(100%, 31rem); margin: 0.35rem 0 0 0.2rem; color: #0f766e;
                 font-size: 0.68rem; line-height: 1.3; }
-.compact-latency-trigger { width: 100%; display: grid; grid-template-columns: auto minmax(6rem, 1fr) auto;
-                           align-items: center; gap: 0.45rem; padding: 0.28rem 0.42rem;
+.compact-latency-trigger { width: 100%; display: flex; flex-direction: column;
+                           align-items: stretch; gap: 0.28rem; padding: 0.4rem 0.5rem;
                            border: 1px solid #bfdbfe; background: #f8fbff; color: #315b9b;
                            text-align: left; overflow: hidden; }
 .compact-latency-trigger:hover { border-color: #60a5fa; box-shadow: 0 0 0 2px rgba(96,165,250,0.14); }
+.compact-latency-heading { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .compact-latency-label { font-weight: 700; white-space: nowrap; }
 .compact-latency-trigger strong { color: #315f5b; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.compact-latency-scroll { min-width: 0; overflow-x: auto; padding: 0.14rem 0; scrollbar-width: thin; }
-.compact-latency-canvas { position: relative; display: block; height: 0.58rem;
-                          border-radius: 999px; background: transparent; overflow: hidden; }
+.compact-latency-scroll { width: 100%; min-width: 0; overflow: hidden; padding: 0.08rem 0; }
+.compact-latency-canvas { position: relative; display: block; height: 1rem;
+                          border: 1px solid #94a3b8; border-radius: 999px;
+                          background: #dbe3ec; overflow: hidden; }
 .compact-latency-fill { position: relative; display: flex; height: 100%;
-                        border-radius: inherit; background: #67b7b0; overflow: hidden; }
+                        min-width: 1rem; border-radius: inherit; background: #67b7b0; overflow: hidden; }
 .compact-latency-fill::after { content: ""; position: absolute; inset: 0;
                                background: linear-gradient(105deg, transparent 30%,
                                            rgba(255,255,255,0.82) 48%, transparent 66%);
@@ -401,8 +403,8 @@ button.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
 .turn-metric { white-space: nowrap; }
 .user-turn-metrics .turn-metric b { color: #1d4ed8; }
 
-/* Per-turn latency dialog. Every width uses the same 160 px/s scale and may scroll horizontally;
-   no duration is clamped to a visual maximum. */
+/* Per-turn latency dialog. Timelines use proportional widths so long waits stay readable without
+   creating nested horizontal scrollbars. */
 .latency-dialog-backdrop { position: fixed; z-index: 1000; inset: 0; display: flex; align-items: center;
                            justify-content: center; padding: clamp(0.5rem, 1.5vw, 1.5rem);
                            background: rgba(15,23,42,0.58); }
@@ -430,16 +432,15 @@ button.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
 .latency-tone-legend > span { display: inline-flex; align-items: center; gap: 0.3rem; }
 .latency-tone-swatch { width: 0.72rem; height: 0.72rem; flex: 0 0 auto;
                        border: 1px solid rgba(15,23,42,0.14); border-radius: 3px; }
-.latency-detail-scroll, .latency-phase-scroll { overflow-x: auto; padding: 0.3rem 0 0.7rem;
-                                               scrollbar-width: thin; }
-.latency-detail-canvas { position: relative; min-width: 160px; height: 2.2rem;
-                         background: repeating-linear-gradient(to right, transparent 0, transparent 159px,
-                                     rgba(100,116,139,0.28) 159px, rgba(100,116,139,0.28) 160px); }
-.latency-detail-segments { display: flex; height: 0.9rem; overflow: visible;
-                           border-radius: 999px; background: var(--gray-200); }
+.latency-detail-scroll, .latency-phase-scroll { min-width: 0; overflow: hidden; padding: 0.3rem 0 0.7rem; }
+.latency-detail-canvas { position: relative; width: 100%; min-width: 0; height: 2.2rem;
+                         background: linear-gradient(to right, transparent, rgba(100,116,139,0.06)); }
+.latency-detail-segments { display: flex; height: 1.25rem; overflow: visible;
+                           border: 1px solid #64748b; border-radius: 999px; background: #dbe3ec; }
 .latency-ruler { position: absolute; left: 0; right: 0; top: 1.2rem; height: 1rem; color: #64748b;
                  font-size: 0.62rem; }
 .latency-ruler span { position: absolute; transform: translateX(-0.1rem); }
+.latency-ruler span:last-child { transform: translateX(-100%); }
 .latency-phase-list { display: flex; flex-direction: column; gap: 0.65rem; }
 .latency-phase-card { position: relative; padding: 0.7rem; border: 1px solid var(--gray-200);
                       border-radius: 8px; background: var(--gray-50); outline: none; }
@@ -464,11 +465,10 @@ button.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
                               justify-content: center; border-radius: 50%; background: #e2e8f0;
                               color: #475569; font-size: 0.65rem; font-weight: 700; }
 .latency-phase-title strong { font-variant-numeric: tabular-nums; color: #315f5b; }
-.latency-phase-canvas { min-width: 160px; height: 0.58rem; overflow: hidden; border-radius: 999px;
-                        background: repeating-linear-gradient(to right, #e5e7eb 0, #e5e7eb 159px,
-                                    #94a3b8 159px, #94a3b8 160px); }
+.latency-phase-canvas { width: 100%; min-width: 0; height: 1rem; overflow: hidden;
+                       border: 1px solid #94a3b8; border-radius: 999px; background: #dbe3ec; }
 .latency-phase-fill { display: block; height: 100%; border-radius: inherit;
-                      background: #94a3b8; }
+                      min-width: 1rem; background: #64748b; }
 .latency-phase-card p { margin: 0.2rem 0 0; color: var(--muted); font-size: 0.72rem; line-height: 1.4; }
 
 .latency-table-note, .latency-table-empty { margin: 0; color: var(--muted); font-size: 0.72rem;
