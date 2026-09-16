@@ -1,4 +1,0 @@
-interface:
-  display_name: "Voice Agent Private Preview"
-  short_description: "Create and test private-preview voice agents"
-  default_prompt: "Use $voice-agent-private-preview to create and test a voice agent safely."

@@ -12,12 +12,9 @@ The setup below is for the Python samples. For .NET, use the standalone
 - Python 3.10 or later.
 - An Azure AI Foundry project endpoint:
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
-- Provide the Azure subscription ID that contains the Foundry project to the
-  Voice Agent team, and wait for confirmation that the subscription has been
-  allowlisted for the private preview.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
 - This repository includes the `azure-ai-projects` wheel built from the
-  [Azure SDK for Python vnext branch](https://github.com/Azure/azure-sdk-for-python/tree/feature/azure-ai-projects/vnext/sdk/ai/azure-ai-projects).
+  [Azure SDK for Python voice-agent-pupr branch](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/voice-agent-pupr/sdk/ai/azure-ai-projects).
   See [the SDK build record](dist/README.md) for its source commit and checksum.
 - A microphone, speakers or headset, and PortAudio for the audio samples.
 
@@ -33,15 +30,16 @@ Copy-Item samples\.env.example samples\.env
 ```
 
 The single `pip install` command installs every sample dependency, including
-the bundled private-preview wheel under `dist/`. No Azure SDK source checkout
-is required.
+the bundled preview 2.7.0b1 wheel under `dist/` with its `[realtime]`
+dependencies. No Azure SDK source checkout or Voice Live SDK is required.
 
 These samples require the bundled SDK, not a PyPI build with the same version
-number. If reusing an environment that already has `azure-ai-projects` 2.6.1,
+number. If reusing an environment that already has `azure-ai-projects` 2.7.0b1,
 replace it explicitly:
 
 ```powershell
-python -m pip install --force-reinstall --no-deps .\dist\azure_ai_projects-2.6.1-py3-none-any.whl
+python -m pip install --force-reinstall --no-deps .\dist\azure_ai_projects-2.7.0b1-py3-none-any.whl
+python -m pip install -r samples\requirements.txt
 ```
 
 Set the project endpoint in `samples/.env`:
@@ -138,8 +136,24 @@ async with AIProjectClient(
 To update the definition, call `client.agents.create_version` again with the
 same agent name. The returned version identifier is `version.version`.
 Retrieve an existing agent with `client.agents.get(agent_name=agent_name)`.
-The SDK supplies the management preview header; the Voice Live WebSocket
-connection still supplies `Foundry-Features: VoiceAgents=V1Preview` explicitly.
+The same Projects client opens the Voice Agent realtime session:
+
+```python
+async with client.realtime.connect(agent_name=agent_name) as connection:
+    # The SDK accepts PCM bytes and handles base64 encoding.
+    await connection.input_audio_buffer.append(audio=pcm_bytes)
+    async for event in connection:
+        # Handle transcripts, audio, and tool events.
+        ...
+```
+
+The SDK owns authentication, the agent WebSocket URL, and the
+`Foundry-Features: VoiceAgents=V1Preview` header. No private URL overrides or
+Voice Live SDK imports are needed. The agent's stored definition controls the
+session; the samples do not send a replacement `session.update`.
+
+See the upstream [Voice Agent SDK samples](https://github.com/Azure/azure-sdk-for-python/tree/f84c5330f4246892455f33fccdf9503a774ecf66/sdk/ai/azure-ai-projects/samples/agents/voice)
+for additional realtime usage.
 
 Audio output uses a voice-name string and a separate `voice_type`, for example
 `VoiceAgentAudioOutputConfig(voice="en-US-AvaNeural",
@@ -219,9 +233,10 @@ talk over the agent to test barge-in and press Ctrl-C to finish.
 ### Client-executed local function
 
 A `function` tool is executed by the connected client. The client receives the
-function name and JSON arguments, runs local application code, sends a
-`function_call_output` conversation item, and requests the model's follow-up
-response.
+function name and JSON arguments and runs local application code. After the
+function-call response's `response.done` event, it sends a typed
+`RealtimeConversationItemFunctionCallOutput` and requests the model's follow-up
+response. Waiting avoids a concurrent-response error.
 
 ```powershell
 python samples\voice_agent_with_local_function.py
@@ -291,9 +306,9 @@ Set `AZURE_VOICE_AGENTS_OUTPUT_DIR` in `.env` to change the output directory.
 For bring-your-own storage, the JSON manifest records the returned blob URIs
 (`blob_uri`) instead of downloading WAV data through the service.
 
-The downloader uses `client.beta.voice_agents.conversations` for conversation
-metadata, item/response listing, and audio downloads. These beta operations
-automatically send the voice-agent preview header.
+The downloader uses `client.agent_endpoint_conversations` for conversation
+metadata, item/response listing, and audio downloads. With `allow_preview=True`,
+these operations automatically send the voice-agent preview header.
 
 Conversation and audio download requires the agent to have been created with
 `store=true`. All agents created by these samples enable it.
@@ -307,9 +322,11 @@ python -m compileall -q samples skills
 python -m unittest discover -s tests -v
 ```
 
-The tests exercise the bundled SDK's request serialization, preview headers,
-agent versioning, and conversation/audio downloads with a mocked transport.
-They do not create Azure resources or open the microphone.
+The tests exercise the bundled SDK's WebSocket handshake, authentication and
+preview headers, PCM serialization, event decoding, function-call ordering,
+agent versioning, and conversation/audio downloads. Only network and microphone
+boundaries are mocked; the tests use the real Projects SDK. They do not create
+Azure resources or open the microphone.
 
 ## Troubleshooting
 
