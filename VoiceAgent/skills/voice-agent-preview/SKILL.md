@@ -1,14 +1,14 @@
 ---
-name: voice-agent-private-preview
+name: voice-agent-preview
 description: >-
   Create, configure, test, and troubleshoot Azure AI Foundry voice
-  agents in the customer private preview. Use when asked to create a basic
+  agents in preview. Use when asked to create a basic
   voice agent, add an MCP or Foundry IQ knowledge tool, connect with the Voice
   Agent SDK, diagnose preview access errors, or produce safe customer-ready
   voice-agent sample code.
 ---
 
-# Voice Agent private preview
+# Voice Agent preview
 
 Use the customer package next to this skill. Keep examples concise, use
 environment-based authentication, and never place credentials in generated
@@ -18,13 +18,11 @@ files.
 
 1. Confirm the Foundry project endpoint, model, and requested lifecycle:
    simple REST, simple SDK, MCP microphone, or Foundry IQ microphone.
-2. Confirm that the customer provided the Foundry project's Azure subscription
-   ID to the Voice Agent team and that the team confirmed private-preview
-   allowlisting. Also confirm that the customer can access the project.
+2. Confirm that the customer can access the Foundry project.
 3. Copy `samples/.env.example` to `samples/.env` and populate only the values
    required by the selected scenario.
 4. From `VoiceAgent`, run `python -m pip install -r samples/requirements.txt`.
-  The requirements file installs the bundled private-preview
+  The requirements file installs the bundled preview
   `azure-ai-projects` 2.7.0b1 wheel from `xitzhang/voice-agent-pupr`, its
   `[realtime]` extra, and all other sample dependencies. Use this wheel, not a
   same-version PyPI build.

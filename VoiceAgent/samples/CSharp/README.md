@@ -1,7 +1,7 @@
 # Foundry voice agent C# sample
 
 This standalone console application uses the bundled
-`Azure.AI.Projects.Agents` **3.0.0-beta.3** private-preview SDK. It is adapted
+`Azure.AI.Projects.Agents` **3.0.0-beta.3** preview SDK. It is adapted
 from the SDK's `Sample_VoiceAgent.cs` test fixture; no Azure SDK source checkout,
 NUnit, or internal test framework is required.
 
@@ -16,9 +16,6 @@ recordings. The complete implementation is in
 - .NET 8 SDK or later.
 - An Azure AI Foundry project endpoint:
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
-- Voice agents private-preview access in a supported region. See the
-  [VoiceAgent prerequisites](../../README.md#prerequisites), including
-  subscription allowlisting.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity
   with access to the project.
 - A voice-capable model deployment or access to a service-managed voice model

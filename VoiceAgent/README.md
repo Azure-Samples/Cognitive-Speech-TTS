@@ -12,9 +12,6 @@ The setup below is for the Python samples. For .NET, use the standalone
 - Python 3.10 or later.
 - An Azure AI Foundry project endpoint:
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
-- Provide the Azure subscription ID that contains the Foundry project to the
-  Voice Agent team, and wait for confirmation that the subscription has been
-  allowlisted for the private preview.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
 - This repository includes the `azure-ai-projects` wheel built from the
   [Azure SDK for Python voice-agent-pupr branch](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/voice-agent-pupr/sdk/ai/azure-ai-projects).
@@ -33,7 +30,7 @@ Copy-Item samples\.env.example samples\.env
 ```
 
 The single `pip install` command installs every sample dependency, including
-the bundled private-preview 2.7.0b1 wheel under `dist/` with its `[realtime]`
+the bundled preview 2.7.0b1 wheel under `dist/` with its `[realtime]`
 dependencies. No Azure SDK source checkout or Voice Live SDK is required.
 
 These samples require the bundled SDK, not a PyPI build with the same version
@@ -68,7 +65,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 
 Reusable AI coding skills are under `skills/`:
 
-- `voice-agent-private-preview` creates and tests private-preview voice agents.
+- `voice-agent-preview` creates and tests preview voice agents.
 - `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
   and returns its MCP URL and Foundry project connection ID.
 - `provision-foundry-toolbox` creates an Azure AI Search index from local files
