@@ -1,30 +1,62 @@
 ---
 name: debug-local-session
 description: >-
-  Debug a Voice Agent session recorded by VoiceAgent/samples/local_UI. Use
-  when given a local UI run ID, local-ui web ID, Voice Live sess_ ID, Foundry
-  conv_ ID, Agent name, or a symptom such as startup errors, handoff aborted,
-  MCP failure, silence, unexpected close, or missing session records. Locate
-  meta.json, timeline.log, events.jsonl, and server.log; identify the first
-  fault domain; and decide whether to inspect Foundry traces or a tool backend.
+  Debug the Finance Voice Agent stack across local setup, Foundry Project and
+  model deployment, Agent publication/version, RemoteTool connection, shared
+  MCP deployment/routes, Local UI bridge, and recorded sessions. Use for setup
+  failures, wrong Project/model, publish errors, disabled Try it now, MCP auth
+  or tool failures, handoff aborts, silence, unexpected close, missing
+  recordings, or any run/session/Voice Live/Foundry ID. Correlate local stack
+  logs, generated MCP config, Project connections, Agent definitions, session
+  recordings, Foundry traces, and MCP business state to identify the first
+  failing boundary.
 ---
 
-# Debug Local Session
+# Debug the Finance Voice Agent stack
 
-Debug the recorded session before attempting to reproduce it. This UI runs
-locally but connects to the official Foundry Voice Agent endpoint; do not treat
-it as a local Voice Live/orchestrator session.
+Work from `VoiceAgent/`. Read [references/system-map.md](references/system-map.md)
+before diagnosing Project, deployment, connection, MCP, or UI ownership.
+
+The Local UI runs locally and connects to the official Foundry Voice Agent
+endpoint.
 
 ## Workflow
 
-1. Determine the actual data directory.
+1. Preserve identity before restarting anything.
+   - Capture the exact Foundry Project endpoint, Agent name/version, model type
+     and deployment name, local run/web ID, `sess_*`, `conv_*`, and UTC window.
+   - Do not correlate sessions only by close timestamps or similar Agent names.
+
+2. Check local process boundaries:
+
+   ```bash
+   ./scripts/manage-local-finance-mcp-and-ui.sh status
+   curl -fsS http://127.0.0.1:18003/healthz
+   curl -fsS http://127.0.0.1:18098/healthz
+   ```
+
+   Read `.local-finance-mcp-and-ui/mcp.log` and
+   `.local-finance-mcp-and-ui/local-ui.log` when a process is not ready.
+
+3. If setup, publication, or **Try it now** fails before a recording exists:
+   - Run `./scripts/setup-local-finance-examples.sh --check`.
+   - Confirm all three `.env` files select the intended Project.
+   - Confirm `model_type` and `model` identify an available model deployment.
+   - Inspect `shared_mcp/config/generated/example*.local.env`; never print
+     `shared_mcp/state/local/token`.
+   - Call both Local UI template probe endpoints. An MCP is ready only after
+     authenticated HTTP 200 `initialize` and `tools/list` with all expected
+     Agent tools.
+   - Verify the selected Project contains the referenced RemoteTool connection
+     before changing prompts or business logic.
+
+4. If a recording exists, determine the actual data directory.
    - Prefer `--data-dir` from the running `app.py` command.
    - Otherwise use `LOCAL_UI_DATA_DIR`.
    - Otherwise use `~/.voice-agent-local-ui`.
    - Do not assume the current shell user started the UI.
 
-2. From `VoiceAgent`, resolve the recording with the bundled
-   analyzer:
+5. Resolve the recording with the bundled analyzer:
 
    ```bash
    python skills/debug-local-session/scripts/analyze_session.py --list
@@ -36,17 +68,21 @@ it as a local Voice Live/orchestrator session.
    multiple recordings, use an exact ID or add `--latest` only when the newest
    run is intentionally the target. Use `--json` for structured output.
 
-3. Read evidence in this order:
+6. Read evidence in this order:
    1. `meta.json` for identity, UTC window, upstream, final node, counters, and
       bridge errors.
    2. `timeline.log` for the compact event sequence.
    3. `events.jsonl` for exact error codes, handoff edge/node IDs, and item IDs.
    4. `server.log*` only for bridge/auth/process failures or a missing record.
 
-4. Stop at the first missing or failed expected transition:
+7. Stop at the first missing or failed expected transition:
 
    | Evidence | Primary fault domain |
    |---|---|
+   | Setup checker fails | Local dependencies, auth, environment, or missing `.env` |
+   | MCP health/probe fails | Container, Dev Tunnel/Container App, bearer credential, route, or tool inventory |
+   | Publish rejects `model_type` or `model` | Wrong Project, model mode, or deployment name |
+   | Publish reports unresolved connection | Wrong Project or missing/stale RemoteTool connection |
    | No recording directory | Wrong data directory, recorder initialization, or process ownership |
    | No `session.created` | Credential, WebSocket, Foundry route, or session bootstrap |
    | Early `error` such as `tool_connection_unresolved` | Published definition, Project connection, or Vienna materialization |
@@ -56,7 +92,7 @@ it as a local Voice Live/orchestrator session.
    | `bridge` error in meta/server log | Local UI proxy or network transport |
    | Normal close with no failure | No recorded infrastructure failure; business correctness remains unproven |
 
-5. Escalate only after fixing the local evidence.
+8. Escalate only after fixing the local evidence.
    - Use `conv_*` with `samples/download_conversation_traces.py` when the recording
      proves the event reached the official service but does not expose the
      internal owner.
@@ -64,6 +100,50 @@ it as a local Voice Live/orchestrator session.
      attempt or target preparation involving it.
    - Preserve the failed recording, then run a control with the same
      Agent/version. Do not restart or redeploy before preserving evidence.
+
+## Evidence quality rules
+
+- Prove the baseline before assigning a feature failure. If Project access,
+  model publication, or plain session establishment also fails, classify the
+  MCP/handoff case as blocked or inconclusive rather than blaming the feature.
+- "No MCP log" proves only that the request did not reach MCP. Before assigning
+  the fault upstream, prove that the same endpoint was healthy at that time
+  through health/probe evidence or successful calls immediately before/after.
+- A browser can prove what it did not receive, not which server component owes
+  the next event. For a stuck post-tool turn, use the Foundry trace to check
+  whether `execute_tool` has a result and whether a second `chat` follows it.
+- Foundry trace ingestion can be delayed. Requery before finalizing a
+  conclusion from an apparently truncated timeline.
+- Use `PASS`, `FAIL`, `BLOCKED_EXTERNAL`, or `INCONCLUSIVE` explicitly. Do not
+  report a product failure when the closest control fails the same way.
+
+## Required relationship checks
+
+Always confirm these joins instead of validating each component in isolation:
+
+1. UI-selected Project = Project where the Agent version is published.
+2. Agent `model_type` + `model` = an eligible managed model or exact
+   self-deployed deployment in that Project/account.
+3. Agent `project_connection_id` = a RemoteTool connection in the same Project.
+4. Connection target = the route in the generated example config.
+5. Connection bearer credential = `SHARED_MCP_TOKEN` used by the active MCP
+   deployment.
+6. Route tool inventory includes every `allowed_tools` entry in the exact
+   published Agent definition.
+7. Session MCP item/call ID = the backend log/business-state operation being
+   investigated.
+
+## Project and deployment controls
+
+- Treat each `sample.py publish` or UI **Try it now** as a new immutable Agent
+  version; verify the exact version rather than the Agent name alone.
+- The checked-in Finance definitions use `model_type: self_deployed`; `model`
+  is the exact deployment name, not the underlying model family.
+- The local MCP path is Docker `:18003` -> named Dev Tunnel -> Foundry
+  RemoteTool connection. The Azure path is Container App -> RemoteTool
+  connection. Do not mix generated `.local.env` and `.shared.env`.
+- The UI is a local credentialed proxy and recorder. Foundry, not the browser,
+  invokes MCP tools.
 
 ## Recording semantics
 

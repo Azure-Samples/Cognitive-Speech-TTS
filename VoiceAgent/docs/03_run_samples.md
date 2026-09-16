@@ -540,6 +540,20 @@ only when both template probes report HTTP 200 and list the expected tools.
 
 ## Troubleshooting
 
+For cross-layer diagnosis, use the shared
+[`debug-local-session` Skill](../skills/debug-local-session/):
+
+```bash
+cd VoiceAgent
+./scripts/manage-local-finance-mcp-and-ui.sh status
+python skills/debug-local-session/scripts/analyze_session.py --list
+python skills/debug-local-session/scripts/analyze_session.py <session-id>
+```
+
+It covers setup, Project/model deployment, Agent publication/version,
+RemoteTool connection, MCP route/auth/tools, Local UI bridge, and session
+recordings.
+
 | Symptom | Cause | Resolution |
 | --- | --- | --- |
 | `files.pythonhosted.org` TLS or connection failure during Docker build | Docker or its proxy cannot reach the default PyPI file host | Set `PIP_INDEX_URL` to a customer-approved mirror for both dependency installation and `e2e-local.sh` |

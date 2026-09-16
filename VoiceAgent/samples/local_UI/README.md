@@ -172,10 +172,16 @@ Live `sess_*`, Foundry `conv_*`, or Agent name. Start with `meta.json`, then
 read `timeline.log`, and inspect `events.jsonl` only when the timeline does not
 explain the failure.
 
-Use [04: Debug a local UI session](../../docs/04_debug_session.md) and the bundled
-[`skills/debug-local-session`](../../skills/debug-local-session/) analyzer for the
-evidence-first workflow, fault-domain table, exact commands, and reporting
-format.
+Use [04: Debug a local UI session](../../docs/04_debug_session.md) and the
+canonical shared
+[`VoiceAgent/skills/debug-local-session`](../../skills/debug-local-session/)
+Skill for Project/model, Agent version, connection, MCP, UI bridge, and session
+failures. From `VoiceAgent`, start with:
+
+```bash
+python skills/debug-local-session/scripts/analyze_session.py --list
+python skills/debug-local-session/scripts/analyze_session.py <session-id>
+```
 
 Audio payloads are counted and coalesced rather than written as base64. Token
 level `*.delta` frames are omitted because their completed `.done` event

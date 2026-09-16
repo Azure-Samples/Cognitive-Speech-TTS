@@ -391,3 +391,19 @@ enough for short demonstrations but is not durable across a revision or
 restart. A production implementation must use a customer-owned durable store,
 replace the fake name matcher, rotate credentials, and define its own network
 and retention policies.
+
+## Debug this layer
+
+Use the shared [`debug-local-session` Skill](../skills/debug-local-session/)
+when a Project connection, authenticated probe, tool inventory, tool call, or
+post-tool response fails:
+
+```bash
+cd VoiceAgent
+./scripts/manage-local-finance-mcp-and-ui.sh status
+python skills/debug-local-session/scripts/analyze_session.py <session-id>
+```
+
+The Skill verifies the join among the selected Project, published Agent
+version, `project_connection_id`, generated route config, active MCP deployment,
+and business tool call ID.

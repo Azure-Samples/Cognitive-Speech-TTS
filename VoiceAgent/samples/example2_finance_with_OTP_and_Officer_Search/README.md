@@ -145,6 +145,21 @@ model response path over the production Voice WebSocket protocol.
 connection, and text turns. `agent.json` remains separate because the local
 template dashboard also consumes that definition directly.
 
+## Debug
+
+Use the shared [`debug-local-session` Skill](../../skills/debug-local-session/)
+for Project/model publication, OTP/officer MCP, Local UI, or recorded-session
+failures:
+
+```bash
+cd VoiceAgent
+python skills/debug-local-session/scripts/analyze_session.py --list
+python skills/debug-local-session/scripts/analyze_session.py <session-id>
+```
+
+The Skill knows this example targets `/mcp/finance-otp-officer` and correlates
+the Foundry MCP item ID with the OTP/officer business state.
+
 ## Boundaries
 
 - The sample does not create the Foundry Project or deploy the model.

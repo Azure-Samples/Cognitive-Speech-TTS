@@ -7,8 +7,8 @@ cloud-log search. Every bridged session has enough identity and event evidence
 to identify the first failed transition; only then query the Foundry trace or
 the relevant tool backend.
 
-This UI is local, but its Voice WebSocket connects to the official Foundry
-Voice Agent endpoint. It is not a local Voice Live/orchestrator stack.
+This UI is local, and its Voice WebSocket connects to the official Foundry
+Voice Agent endpoint.
 
 Use the [architecture and documentation index](./README.md) for the component
 map, the [local UI guide](../samples/local_UI/README.md) for startup, and
