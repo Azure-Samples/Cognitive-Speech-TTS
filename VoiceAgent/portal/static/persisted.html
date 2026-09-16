@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!-- Copyright (c) Microsoft. All rights reserved.
+  Standalone, full-height viewer for a voice agent's server-persisted conversation
+  (design §4.4). Opened in a new tab from the demo's "View persisted" button with
+  ?agent=<name>&conversation=<conv_id>. Reads the turns back through the demo backend's
+  read-only proxies that MIRROR the service API paths
+  (/agents/{agent}/endpoint/protocols/voice/conversations[/{id}/items|/audio|...], with a
+  conversations fallback) — no credential in the browser; each call is shown in the API-call log
+  panel. Plain vanilla JS so it needs no bundle. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Persisted conversation</title>
+  <style>
+    :root {
+      --blue: #1a73e8; --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+      --gray-300: #d1d5db; --text: #1f2937; --muted: #6b7280; --red-700: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+           color: var(--text); background: #fff; display: flex; flex-direction: column; }
+    header { padding: 0.85rem 1.25rem; border-bottom: 1px solid var(--gray-200);
+             display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+    header h1 { font-size: 1.05rem; margin: 0; }
+    header code { font-size: 0.78rem; background: var(--gray-100); padding: 0.15rem 0.4rem;
+                  border-radius: 4px; color: var(--muted); word-break: break-all; }
+    .spacer { flex: 1; }
+    button { font-size: 0.9rem; border-radius: 6px; border: 1px solid var(--gray-300);
+             background: #fff; cursor: pointer; padding: 0.45rem 0.8rem; }
+    button:hover { background: var(--gray-50); }
+    main { flex: 1; overflow-y: auto; padding: 1rem 1.25rem; }
+    .meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.75rem; }
+    .meta.err { color: var(--red-700); }
+    .meta.warn { color: #92400e; }
+    .turn { display: flex; gap: 0.85rem; padding: 0.7rem 0.25rem; border-bottom: 1px solid var(--gray-100); }
+    .role { flex: 0 0 6rem; font-weight: 600; text-transform: capitalize; color: var(--muted); padding-top: 0.1rem; }
+    .turn.assistant .role { color: var(--blue); }
+    .turn.tool .role { color: #7c3aed; }
+    .turn.approval .role { color: #b45309; }
+    .turn.tool, .turn.approval { background: var(--gray-50); }
+    .body { flex: 1; min-width: 0; }
+    .text { white-space: pre-wrap; word-break: break-word; line-height: 1.45; }
+    .text.sub { margin-top: 0.2rem; font-size: 0.82rem; color: var(--muted); }
+    .text.sub code { background: var(--gray-100); border-radius: 4px; padding: 0.05rem 0.3rem;
+                     white-space: pre-wrap; word-break: break-word; }
+    .badges { margin-top: 0.35rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .badge { font-size: 0.72rem; color: var(--muted); background: var(--gray-100);
+             padding: 0.12rem 0.4rem; border-radius: 4px; }
+    .badge.warn { color: #92400e; background: #fef3c7; }
+    .empty { color: var(--muted); padding: 2rem 0; text-align: center; }
+    .recording { margin: 0 0 1rem; padding: 0.75rem; border: 1px solid var(--gray-200);
+                 border-radius: 8px; background: var(--gray-50); }
+    .recording audio { width: 100%; margin-top: 0.5rem; }
+    .recording .rmeta { font-size: 0.8rem; color: var(--muted); }
+    .recording .rmeta.err { color: var(--red-700); }
+    .recording a { font-size: 0.82rem; color: var(--blue); text-decoration: none; }
+    audio.seg { height: 34px; max-width: 22rem; margin-top: 0.45rem; display: block; }
+    /* API-call log panel: shows the Agents service API the page is calling (the portal routes mirror
+       the service path templates, so these are the real service endpoints). */
+    .apilog { margin: 0 0 0.9rem; padding: 0.5rem 0.65rem; border: 1px solid var(--gray-200);
+              border-radius: 8px; background: #0b1020; color: #cbd5e1; font-family: ui-monospace, Menlo,
+              Consolas, monospace; font-size: 0.74rem; max-height: 8rem; overflow-y: auto; }
+    .apilog .hdr { color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.66rem;
+                   margin-bottom: 0.25rem; }
+    .apilog .line { white-space: pre-wrap; word-break: break-all; }
+    .apilog .m { color: #38bdf8; }
+    .apilog .s-ok { color: #4ade80; }
+    .apilog .s-warn { color: #fbbf24; }
+    .apilog .s-err { color: #f87171; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Persisted conversation</h1>
+    <code id="conv">…</code>
+    <span class="spacer"></span>
+    <button id="recordBtn" type="button" title="Build + play the merged stereo recording (user-left / agent-right). Available after the session ends; built once, then served from the same URL.">▶ Merged recording</button>
+    <button id="refresh" type="button">Refresh</button>
+  </header>
+  <main>
+    <div id="apilog" class="apilog"><div class="hdr">Agents service API calls</div></div>
+    <div id="meta" class="meta">Loading…</div>
+    <div id="recording" class="recording" hidden></div>
+    <div id="turns"></div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const agent = (params.get("agent") || "").trim();
+    const requestedConv = (params.get("conversation") || "").trim();
+    const convEl = document.getElementById("conv");
+    const metaEl = document.getElementById("meta");
+    const turnsEl = document.getElementById("turns");
+    const recordingEl = document.getElementById("recording");
+    const apilogEl = document.getElementById("apilog");
+    let currentConv = requestedConv || null;
+    let resolvedByFallback = false;
+
+    // Service-contract bits the browser must send so requests match the service (filled from /config;
+    // safe defaults until then). `api-version` goes on every call; `Foundry-Features` on fetch() calls.
+    const SVC = { apiVersion: "v1", foundryFeatures: "VoiceAgents=V1Preview" };
+    const svc = (path) => path + (path.includes("?") ? "&" : "?") + "api-version=" + encodeURIComponent(SVC.apiVersion);
+    async function loadServiceConfig() {
+      try {
+        const r = await fetch("/config");
+        if (r.ok) {
+          const c = await r.json();
+          if (c.apiVersion) SVC.apiVersion = c.apiVersion;
+          if (c.foundryFeatures) SVC.foundryFeatures = c.foundryFeatures;
+        }
+      } catch (e) { /* keep defaults */ }
+    }
+
+    const esc = (s) => String(s == null ? "" : s).replace(/[&<>"']/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    // The portal routes MIRROR the Agents service API paths (relative to the project). These builders
+    // produce those paths, which we both call (fetch) and print in the API-call log panel.
+    const encAgent = encodeURIComponent(agent);
+    const convsPath = () => `/agents/${encAgent}/endpoint/protocols/voice/conversations`;
+    const convPath = (conv) => `${convsPath()}/${encodeURIComponent(conv)}`;
+    // The persisted view surfaces per-turn metrics badges, so it opts in to the voice_metrics extension
+    // (off by default on the API). svc() appends api-version with the correct ?/& separator.
+    const itemsPath = (conv, after) => {
+      const cursor = after ? `&after=${encodeURIComponent(after)}` : "";
+      return `${convPath(conv)}/items?limit=100&order=asc&include_metrics=true${cursor}`;
+    };
+    const audioPath = (conv) => `${convPath(conv)}/audio`;
+    const audioContentPath = (conv) => `${convPath(conv)}/audio/content`;
+    const itemAudioContentPath = (conv, item) => `${convPath(conv)}/items/${encodeURIComponent(item)}/audio/content`;
+
+    // Print one service API call into the log panel. `status` (once known) colors the line.
+    function logApi(method, path, status) {
+      const line = document.createElement("div");
+      line.className = "line";
+      let sClass = "";
+      if (status != null) sClass = status < 400 ? "s-ok" : (status < 500 ? "s-warn" : "s-err");
+      line.innerHTML = '<span class="m">' + esc(method) + "</span> " + esc(path) +
+        (status != null ? ' <span class="' + sClass + '">' + status + "</span>" : "");
+      apilogEl.appendChild(line);
+      apilogEl.scrollTop = apilogEl.scrollHeight;
+      return line;
+    }
+
+    // Fetch that MATCHES the service contract: adds the api-version query and the Foundry-Features
+    // header (the demo backend injects only the bearer token). Logs the real request line + status.
+    async function apiFetch(method, path, opts) {
+      const full = svc(path);
+      const line = logApi(method, full);
+      const o = opts || {};
+      o.headers = Object.assign({ "Foundry-Features": SVC.foundryFeatures }, o.headers || {});
+      const r = await fetch(full, o);
+      const sClass = r.status < 400 ? "s-ok" : (r.status < 500 ? "s-warn" : "s-err");
+      line.innerHTML += ' <span class="' + sClass + '">' + r.status + "</span>";
+      return r;
+    }
+
+    function itemText(item) {
+      // Realtime content parts (agents-voice): text parts carry `text`
+      // (input_text/output_text); audio parts carry `transcript` (input_audio/output_audio).
+      return ((item && item.content) || [])
+        .map((p) => {
+          if (!p) return "";
+          if (typeof p.text === "string") return p.text;
+          if (typeof p.transcript === "string") return p.transcript;
+          return "";
+        }).join("").trim();
+    }
+
+    // True when a message item carries audio — signalled by an input_audio/output_audio content part in the
+    // realtime schema (the per-turn audio bytes stream from the item's /audio/content route).
+    function hasAudioPart(item) {
+      return ((item && item.content) || []).some((p) =>
+        p && (p.type === "input_audio" || p.type === "output_audio"));
+    }
+
+    // Tool-execution + MCP-approval item types the server persists as their own conversation items
+    // (design §6), rendered alongside the message turns.
+    const TOOL_TYPES = new Set([
+      "function_call", "function_call_output", "mcp_call", "mcp_approval_request", "mcp_approval_response",
+    ]);
+
+    function shortJson(v, n) {
+      if (v == null) return "";
+      let t = typeof v === "string" ? v : JSON.stringify(v);
+      t = t.trim();
+      const max = n || 400;
+      return t.length > max ? t.slice(0, max) + "…" : t;
+    }
+
+    // Renders a tool call / result / MCP approval request+response as a history row.
+    function renderToolItem(item) {
+      const t = item.type;
+      const name = esc(item.name || item.server_label || "tool");
+      const server = item.server_label ? " (" + esc(item.server_label) + ")" : "";
+      let roleTag = "tool", cls = "tool", head = "";
+      const lines = [];
+      if (t === "function_call") {
+        head = "🔧 " + name + "  ·  function call";
+        if (item.arguments) lines.push("args: " + esc(shortJson(item.arguments)));
+      } else if (t === "mcp_call") {
+        head = "🔧 " + name + "  ·  MCP tool" + server;
+        if (item.arguments) lines.push("args: " + esc(shortJson(item.arguments)));
+        if (item.output != null) lines.push("result: " + esc(shortJson(item.output)));
+      } else if (t === "function_call_output") {
+        head = "↩ function result";
+        if (item.output != null) lines.push(esc(shortJson(item.output)));
+      } else if (t === "mcp_approval_request") {
+        roleTag = "approval"; cls = "approval";
+        head = "🔐 approval requested  ·  " + name + server;
+        if (item.arguments) lines.push("args: " + esc(shortJson(item.arguments)));
+      } else if (t === "mcp_approval_response") {
+        roleTag = "approval"; cls = "approval";
+        const ok = item.approve === true || item.approve === "true";
+        head = ok ? "✅ approval granted" : "⛔ approval denied";
+      } else {
+        return "";
+      }
+      const body = '<div class="text">' + head + "</div>" +
+        lines.map((l) => '<div class="text sub"><code>' + l + "</code></div>").join("");
+      return '<div class="turn ' + esc(cls) + '"><div class="role">' + esc(roleTag) +
+             '</div><div class="body">' + body + "</div></div>";
+    }
+
+    function metricsBadges(vm) {
+      if (!vm) return "";
+      // voice_metrics (design §4.4): per-turn ttft/ttfa/itl/duration + barge-in interruption.
+      const ms = (v) => (v == null ? null : v + " ms");
+      const out = [];
+      if (vm.ttft_ms != null) out.push('<span class="badge">⏱ ttft ' + esc(ms(vm.ttft_ms)) + "</span>");
+      if (vm.ttfa_ms != null) out.push('<span class="badge">🔈 ttfa ' + esc(ms(vm.ttfa_ms)) + "</span>");
+      if (vm.itl_avg_ms != null) out.push('<span class="badge">↔ itl ' + esc(ms(vm.itl_avg_ms)) + "</span>");
+      if (vm.duration_ms != null) out.push('<span class="badge">⌛ ' + esc((vm.duration_ms / 1000).toFixed(1)) + "s</span>");
+      if (vm.interrupted) {
+        const at = vm.interrupt_offset_ms != null ? " @ " + (vm.interrupt_offset_ms / 1000).toFixed(1) + "s" : "";
+        out.push('<span class="badge warn">✋ barge-in' + esc(at) + "</span>");
+      }
+      return out.join("");
+    }
+
+    function render(items) {
+      // Render message turns AND the tool-execution / MCP-approval items the server persists (design §6),
+      // in stored order.
+      const renderable = (items || []).filter((i) => i.type === "message" || TOOL_TYPES.has(i.type));
+      if (renderable.length === 0) {
+        turnsEl.innerHTML = '<div class="empty">No turns persisted yet.</div>';
+        return;
+      }
+      turnsEl.innerHTML = renderable.map((item) => {
+        if (item.type !== "message") return renderToolItem(item);
+        const role = item.role || "";
+        const vm = item.voice_metrics || item.voiceMetrics;
+        const audioAvailable = hasAudioPart(item);
+        const badges = (audioAvailable ? '<span class="badge">🔊 audio</span>' : "") + metricsBadges(vm);
+        const itemId = item.id || item.item_id;
+        // Per-turn segment playback/download streams WAV bytes through the demo backend from the item's
+        // /audio/content route (agents-voice getAgentConversationItemAudioContent), so it works even where a
+        // SAS URL can't be minted (e.g. the local blob emulator). The sibling /audio route returns metadata.
+        const seg = (audioAvailable && itemId && currentConv && agent)
+          ? '<audio class="seg" controls preload="none" src="' + esc(svc(itemAudioContentPath(currentConv, itemId))) + '"></audio>'
+          : '';
+        return (
+          '<div class="turn ' + esc(role) + '">' +
+            '<div class="role">' + esc(role) + "</div>" +
+            '<div class="body">' +
+              '<div class="text">' + (esc(itemText(item)) || "—") + "</div>" +
+              (badges ? '<div class="badges">' + badges + "</div>" : "") +
+              seg +
+            "</div>" +
+          "</div>"
+        );
+      }).join("");
+    }
+
+    async function resolveConversationId() {
+      if (requestedConv) return requestedConv;
+      // Fallback: no live conversation id was passed, so pick the agent's most recent conversation.
+      // On a SHARED agent this may be ANOTHER user's session — the caller surfaces a warning.
+      resolvedByFallback = true;
+      const r = await apiFetch("GET", convsPath());
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
+      // Raw service response (pass-through): { data: [ ...conversations ] }.
+      const convs = (d.data || []).slice()
+        .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
+      return convs[0] && convs[0].id;
+    }
+
+    async function loadAllItems(conv) {
+      const items = [];
+      let after = null;
+      for (let page = 0; page < 20; page++) {
+        const r = await apiFetch("GET", itemsPath(conv, after));
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
+        items.push(...(d.data || []));
+        if (!d.has_more) return items;
+        if (!d.last_id || d.last_id === after) {
+          throw new Error("Invalid item pagination cursor returned by the service.");
+        }
+        after = d.last_id;
+      }
+      throw new Error("Conversation item pagination exceeded 20 pages.");
+    }
+
+    async function load() {
+      metaEl.className = "meta";
+      metaEl.textContent = "Loading…";
+      turnsEl.innerHTML = "";
+      if (!agent) { metaEl.className = "meta err"; metaEl.textContent = "Missing ?agent=<name>."; return; }
+      try {
+        const cid = await resolveConversationId();
+        convEl.textContent = cid || "—";
+        currentConv = cid || null;
+        recordingEl.hidden = true;
+        if (!cid) {
+          metaEl.textContent = "No persisted conversation found for this agent yet.";
+          return;
+        }
+        // Follow the service's cursor contract so long conversations are shown in chronological order,
+        // not truncated to the default 20-item descending page.
+        const items = await loadAllItems(cid);
+        const n = items.filter((i) => i.type === "message").length;
+        const nTools = items.filter((i) => TOOL_TYPES.has(i.type)).length;
+        metaEl.textContent = "agent: " + agent + "  •  " + n + " turn" + (n === 1 ? "" : "s") +
+          (nTools ? "  •  " + nTools + " tool/approval item" + (nTools === 1 ? "" : "s") : "") +
+          " persisted (server is sole writer)";
+        if (resolvedByFallback) {
+          metaEl.className = "meta warn";
+          metaEl.textContent = "\u26a0 No live conversation id was passed — showing this agent's MOST RECENT " +
+            "persisted conversation (id " + esc(cid) + "), which on a SHARED agent may be another user's. " +
+            "Start a turn first so the demo captures conversation.created, then reopen View persisted.  —  " +
+            metaEl.textContent;
+        }
+        render(items);
+      } catch (e) {
+        metaEl.className = "meta err";
+        metaEl.textContent = String(e);
+      }
+    }
+
+    async function loadRecording() {
+      if (!agent || !currentConv) {
+        recordingEl.hidden = false;
+        recordingEl.innerHTML = '<div class="rmeta err">Resolve a conversation first.</div>';
+        return;
+      }
+      recordingEl.hidden = false;
+      recordingEl.innerHTML = '<div class="rmeta">Building merged stereo recording (user-left / agent-right)…</div>';
+      try {
+        const r = await apiFetch("GET", audioPath(currentConv));
+        const d = await r.json().catch(() => ({}));
+        if (r.status === 409) {
+          // The merged export is only available after the session ends (design §4.5). This is the RAW
+          // service 409 body, so read the message defensively across the possible error shapes.
+          const msg = (d && (d.message || (d.error && (d.error.message || d.error)) || d.detail || d.title))
+            || "The session is still in progress — the merged recording is available once the call ends.";
+          recordingEl.innerHTML = '<div class="rmeta">' + esc(msg) +
+            ' <a href="#" id="retryRec">Retry</a></div>';
+          const retry = document.getElementById("retryRec");
+          if (retry) retry.addEventListener("click", (ev) => { ev.preventDefault(); loadRecording(); });
+          return;
+        }
+        if (r.status === 404) {
+          recordingEl.innerHTML = '<div class="rmeta">No audio has been recorded for this conversation yet (a text-only or audio-disabled session).</div>';
+          return;
+        }
+        if (!r.ok) throw new Error((d && (d.error || d.message)) || ("HTTP " + r.status));
+        // Raw service VoiceRecordingResponse (pass-through). Conversation reads currently use the
+        // authoritative managed copy, so blob_path is omitted even when a secondary BYOS copy exists.
+        const rec = d || {};
+        const layout = rec.channel_layout || {};
+        const dur = rec.duration_ms != null ? (rec.duration_ms / 1000).toFixed(1) + "s" : "?";
+        const contentUrl = svc(audioContentPath(currentConv));
+        recordingEl.innerHTML =
+          '<div class="rmeta">Merged recording — ' + esc(rec.format || "wav") + " · " +
+            esc(String(rec.channels || 2)) + " ch (left: " + esc(layout.left || "user") +
+            ", right: " + esc(layout.right || "agent") + ") · " + esc(dur) + "</div>" +
+          '<audio controls preload="none" src="' + esc(contentUrl) + '"></audio>' +
+          '<div><a href="' + esc(contentUrl) + '" download="' + esc(currentConv) + '.wav">\u2b07 Download WAV</a></div>';
+      } catch (e) {
+        recordingEl.innerHTML = '<div class="rmeta err">' + esc(String(e)) + "</div>";
+      }
+    }
+
+    document.getElementById("refresh").addEventListener("click", load);
+    document.getElementById("recordBtn").addEventListener("click", loadRecording);
+    convEl.textContent = requestedConv || "(resolving…)";
+    loadServiceConfig().then(load);
+  </script>
+</body>
+</html>

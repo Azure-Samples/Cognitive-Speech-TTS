@@ -1,0 +1,13 @@
+.venv/
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.pytest_cache/
+.run/
+session-logs/
+web/node_modules/
+web/test-results/
+web/playwright-report/
+static/*.map

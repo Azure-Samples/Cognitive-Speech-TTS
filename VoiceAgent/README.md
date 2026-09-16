@@ -7,6 +7,14 @@ The setup below is for the Python samples. For .NET, use the standalone
 `Azure.AI.Projects.Agents` 3.0.0-beta.3 preview SDK. The C# sample requires
 .NET 8 or later, but does not require Python or audio-device dependencies.
 
+## Local web portal
+
+The [Voice Agent portal](portal/README.md) provides a browser-based agent editor,
+YAML version editing, a voice playground, and a standalone WebRTC page. Configure
+your own preview-enabled Azure Foundry project to use it locally. Its
+[upstream pin](portal/UPSTREAM.json) and
+[local change log](portal/CHANGELOG.md) track the standalone port.
+
 ## Prerequisites
 
 - Python 3.10 or later.

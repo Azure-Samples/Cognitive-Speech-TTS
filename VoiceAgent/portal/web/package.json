@@ -1,0 +1,28 @@
+{
+  "name": "voice-agent-portal-web",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Local Voice Agent studio and standalone WebRTC sample.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "esbuild src/main.jsx --bundle --minify --format=iife --jsx=automatic --loader:.jsx=jsx --outfile=../static/bundle.js",
+    "build:webrtc": "esbuild src/webrtc/main.jsx --bundle --minify --format=iife --jsx=automatic --loader:.jsx=jsx --outfile=../static/webrtc-bundle.js",
+    "build:all": "npm run build && npm run build:webrtc",
+    "test": "node --test src/lib/*.test.mjs",
+    "test:ui": "npm run build:all && playwright test",
+    "test:local": "npm run build:all && playwright test --config=playwright.local.config.mjs",
+    "watch": "esbuild src/main.jsx --bundle --sourcemap --format=iife --jsx=automatic --loader:.jsx=jsx --outfile=../static/bundle.js --watch",
+    "watch:webrtc": "esbuild src/webrtc/main.jsx --bundle --sourcemap --format=iife --jsx=automatic --loader:.jsx=jsx --outfile=../static/webrtc-bundle.js --watch"
+  },
+  "dependencies": {
+    "js-yaml": "5.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "esbuild": "0.28.2"
+  }
+}
