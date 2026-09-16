@@ -1,5 +1,9 @@
 # Finance with OTP and Officer Search - vNext SDK sample
 
+Start with the [architecture and documentation index](../../docs/README.md).
+For the complete local MCP serving, publication, and UI workflow, use
+[02: Start and run the samples](../../docs/02_run_samples.md).
+
 ## Conclusion
 
 This sample publishes a customer-neutral, flat, MCP-only Finance Voice Agent
@@ -13,52 +17,49 @@ Because the definition has no handoff graph, publication constructs
 `AIProjectClient.agents.create_version(...)`.
 
 The committed `agent.json` is a self-contained wire definition with matching
-MCP tool contracts. The internal authoring compiler is not required at
-runtime.
+MCP tool contracts. The customer-owned implementation is included in
+`../../shared_mcp`; the internal authoring compiler and the former internal
+`/mcp/umw-v3` compatibility route are not required at runtime.
 
-The currently deployed compatibility route is `/mcp/umw-v3`; it contains the
-pricing, OTP, interest, and officer-search tools required by this generic
-sample. A neutral route alias should replace it before external distribution.
+## When to use this example
+
+Use this example to validate a compact flat Agent driven by one MCP tool set:
+OTP verification, loan calculation, interest capture, officer assignment or
+search, confirmation, and call completion. It has no handoff graph.
+
+Use [Example 1](../example1_finance_with_handoff/README.md) instead when the
+goal is to validate multi-node handoff topology, target activation, and
+stage-specific tool access. Both examples use the same Docker image, but this
+example targets `/mcp/finance-otp-officer`.
 
 ## Prerequisites
 
 - Python 3.10 or later and Git.
 - Access to a Microsoft Foundry Project with a compatible realtime model.
-- A Project connection for the Finance OTP and officer-search MCP server.
+- Permission to deploy the included shared MCP container and create a Project
+  connection.
 - A local Azure identity with permission to manage and invoke Agents.
 
 If you have only a new Azure subscription, complete
-[Set up a Microsoft Foundry subscription](../../setup_subscription.md)
+[Set up a Microsoft Foundry subscription](../../docs/01_setup_subscription.md)
 before configuring this sample.
 
 After that shared step, this README is the source of truth for this scenario's
 MCP connection, `.env`, SDK publication, readback, and runtime validation.
 
-Do not put the MCP credential in this directory. Store it in the Foundry
-Project connection.
+## Deploy the included MCP service
 
-## Create the Project connection
+From `../../shared_mcp`, run:
 
-Obtain the Finance OTP/officer-search MCP HTTPS endpoint and a scoped,
-revocable bearer token from the service owner through an approved secure
-channel.
+```bash
+export AZURE_AI_PROJECT_ENDPOINT="https://<account>.services.ai.azure.com/api/projects/<project>"
+./scripts/deploy.sh
+```
 
-In the newly created Foundry Project:
-
-1. Open **Operate** > **Admin** and select the Project.
-2. Add a remote-tool/MCP connection.
-3. Set the target to the OTP/officer-search MCP HTTPS endpoint.
-4. Select custom-key authentication.
-5. Add key `Authorization` with value `****** scoped-token>`.
-6. Save the connection and record its Project connection name.
-
-The connection must belong to the same Project identified by
-`AZURE_AI_PROJECT_ENDPOINT`. Confirm that the endpoint returns HTTP 401 without
-the bearer token before storing the credential.
-
-The local template dashboard can also create a unique Project connection when
-you select this template and choose **Try it now**. It accepts the scoped token
-once in a password field and does not write it into `agent.json`.
+This deploys the customer-owned container and creates the route-specific
+Foundry connection. The bearer token is stored in the Container App and the
+Project connection, never in `agent.json` or this sample directory. See
+`../../docs/03_mcp_settings.md` for local packaging and deployment details.
 
 ## Configure
 
@@ -67,12 +68,16 @@ cd /path/to/Cognitive-Speech-TTS/VoiceAgent/samples/example2_finance_with_OTP_an
 cp .env.example .env
 ```
 
-Set the Project endpoint, isolated Agent name, MCP server URL, Project
-connection name, and model in `.env`.
+Set the Project endpoint, isolated Agent name, model, and
+`VOICE_AGENT_MCP_CONFIG` in `.env`. The local E2E command writes the default
+config at:
 
-Use the Project endpoint created by the subscription setup guide and the
-connection name created above. Do not copy either value from another
-subscription.
+```dotenv
+VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example2.local.env
+```
+
+Use the Project endpoint created by the subscription setup guide. The selected
+MCP config must have been generated for that same Project.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
@@ -122,6 +127,10 @@ python sample.py run \
 `12345007` is a reserved fictional test code. Never replace it in
 documentation with a real customer credential.
 
+The included loan-officer name search is deliberately fake: it returns one
+random available fictional officer so the portable sample can exercise the
+end-to-end flow without the production phonetic-search dependency.
+
 The client prints turn indexes, not message contents. It does not capture a
 microphone or play audio; it validates the published Voice Agent, MCP, and
 model response path over the production Voice WebSocket protocol.
@@ -134,6 +143,9 @@ template dashboard also consumes that definition directly.
 
 - The sample does not create the Foundry Project or deploy the model.
 - Project connection provisioning is a management-plane prerequisite.
-- The Finance OTP and officer-search MCP backend is remote and is not included.
+- The Finance OTP and officer-search backend is included under `../../shared_mcp`;
+  deployment remains a separate customer-owned step.
+- Name search is a fake random implementation and the filesystem state store is
+  not production-grade.
 - Re-running publish creates another immutable Agent version.
 - Cleanup is intentionally manual to avoid deleting an unrelated Agent.

@@ -36,6 +36,7 @@ export class AudioHandler {
 
     this.isPlaying = false;
     this.nextPlayTime = 0;
+    this.lastScheduledSpeechEndAtMs = null;
     this.playbackQueue = []; // scheduled AudioBufferSourceNodes (for barge-in stop)
     this.playbackWaiters = new Set();
   }
@@ -183,6 +184,14 @@ export class AudioHandler {
     this.nextPlayTime = this.context ? this.context.currentTime : 0;
   }
 
+  beginResponsePlayback() {
+    this.lastScheduledSpeechEndAtMs = null;
+  }
+
+  getLastScheduledSpeechEndAtMs() {
+    return this.lastScheduledSpeechEndAtMs;
+  }
+
   _resolvePlaybackWaiters() {
     if (this.playbackQueue.length > 0) return;
     this.isPlaying = false;
@@ -198,6 +207,7 @@ export class AudioHandler {
   // Barge-in: stop + flush every scheduled audio source so the agent goes silent at once.
   stopStreamingPlayback() {
     this.isPlaying = false;
+    this.lastScheduledSpeechEndAtMs = null;
     this.playbackQueue.forEach((src) => {
       try { src.onended = null; } catch { /* noop */ }
       try { src.disconnect(); } catch { /* noop */ }
@@ -210,7 +220,7 @@ export class AudioHandler {
 
   // Schedule one PCM16 chunk (Uint8Array) for gapless playback. When a speech
   // offset is supplied, return its estimated monotonic playback time.
-  playChunk(chunk, speechOffsetMs = null) {
+  playChunk(chunk, speechOffsetMs = null, speechEndOffsetMs = null) {
     if (!this.context) return null;
     const int16 = new Int16Array(chunk.buffer, chunk.byteOffset, Math.floor(chunk.byteLength / 2));
     if (int16.length === 0) return null;
@@ -227,6 +237,15 @@ export class AudioHandler {
         + Math.max(0, chunkStartTime - this.context.currentTime) * 1000
         + Math.max(0, speechOffsetMs)
       : null;
+    if (Number.isFinite(speechEndOffsetMs)) {
+      const boundedSpeechEndOffsetMs = Math.min(
+        Math.max(0, speechEndOffsetMs),
+        buffer.duration * 1000,
+      );
+      this.lastScheduledSpeechEndAtMs = performance.now()
+        + Math.max(0, chunkStartTime - this.context.currentTime) * 1000
+        + boundedSpeechEndOffsetMs;
+    }
     src.start(chunkStartTime);
     this.nextPlayTime += buffer.duration;
     this.playbackQueue.push(src);

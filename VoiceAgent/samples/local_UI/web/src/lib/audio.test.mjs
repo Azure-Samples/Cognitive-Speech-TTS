@@ -294,8 +294,9 @@ test("waits for every scheduled playback source to finish", async () => {
   assert.equal(handler.isPlaying, false);
 });
 
-test("explicit playback stop releases completion waiters immediately", async () => {
+test("explicit playback stop releases waiters and discards scheduled speech end", async () => {
   const handler = new AudioHandler();
+  handler.lastScheduledSpeechEndAtMs = performance.now() + 1000;
   handler.playbackQueue = [{
     onended: () => {},
     disconnect: () => {},
@@ -307,4 +308,32 @@ test("explicit playback stop releases completion waiters immediately", async () 
 
   await waiting;
   assert.deepEqual(handler.playbackQueue, []);
+  assert.equal(handler.getLastScheduledSpeechEndAtMs(), null);
+});
+
+test("records the scheduled end of voiced playback for the next perceived-latency origin", () => {
+  const handler = new AudioHandler();
+  handler.context = {
+    currentTime: 1,
+    destination: {},
+    createBuffer: (_channels, length, sampleRate) => ({
+      duration: length / sampleRate,
+      getChannelData: () => new Float32Array(length),
+    }),
+    createBufferSource: () => ({
+      buffer: null,
+      connect: () => {},
+      start: () => {},
+      onended: null,
+    }),
+  };
+  handler.startStreamingPlayback();
+  handler.beginResponsePlayback();
+  const before = performance.now();
+
+  handler.playChunk(new Uint8Array(4800), 20, 80);
+
+  const speechEnd = handler.getLastScheduledSpeechEndAtMs();
+  assert.ok(speechEnd >= before + 80);
+  assert.ok(speechEnd <= performance.now() + 80);
 });

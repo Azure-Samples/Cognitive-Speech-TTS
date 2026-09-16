@@ -132,6 +132,7 @@ export function useVoiceSession() {
   const activeUserItemIdRef = useRef(null);
   const latestInputVoiceAtRef = useRef(null);
   const activeInputVoiceAtRef = useRef(null);
+  const lastAssistantSpeechEndAtRef = useRef(null);
   // Client-executed `function` tools (design §6.1). `clientFunctionsRef` is the name -> handler
   // registry the app installs; the rest is the per-session state needed to answer a call exactly
   // once, from the transcript history the client has actually received.
@@ -899,6 +900,7 @@ export function useVoiceSession() {
         const now = monotonicNow();
         const userItemId = evt.item_id || null;
         isUserSpeaking.current = true;
+        lastAssistantSpeechEndAtRef.current = null;
         activeUserItemIdRef.current = userItemId;
         activeInputVoiceAtRef.current = (
           latestInputVoiceAtRef.current != null && now - latestInputVoiceAtRef.current <= 1500
@@ -991,6 +993,13 @@ export function useVoiceSession() {
         break;
       case "response.created":
         activeResponseCountRef.current += 1;
+        if (
+          turnTrackerRef.current.startedAtMs == null
+          && Number.isFinite(lastAssistantSpeechEndAtRef.current)
+        ) {
+          beginTurn(lastAssistantSpeechEndAtRef.current, "agent_playback_end");
+        }
+        if (audioRef.current) audioRef.current.beginResponsePlayback();
         currentAssistantId.current = startAssistantResponse(
           turnTrackerRef.current,
           (evt.response && evt.response.id) || nextLocalId(),
@@ -1075,7 +1084,11 @@ export function useVoiceSession() {
             }
             const audio = ensureAudio();
             if (!audio.isPlaying) audio.startStreamingPlayback();
-            const playbackAtMs = audio.playChunk(bytes, voice.firstVoicedMs);
+            const playbackAtMs = audio.playChunk(
+              bytes,
+              voice.firstVoicedMs,
+              voice.lastVoicedMs == null ? null : voice.lastVoicedMs + 20,
+            );
             if (voice.firstVoicedMs != null) {
               markFirstPlayback(turnTrackerRef.current, playbackAtMs);
             }
@@ -1093,6 +1106,12 @@ export function useVoiceSession() {
         break;
       case "response.audio.done":
       case "response.output_audio.done":
+        if (audioRef.current) {
+          const speechEndAtMs = audioRef.current.getLastScheduledSpeechEndAtMs();
+          if (Number.isFinite(speechEndAtMs)) {
+            lastAssistantSpeechEndAtRef.current = speechEndAtMs;
+          }
+        }
         logEvent("response.audio.done");
         break;
       case "response.done": {
@@ -1368,6 +1387,7 @@ export function useVoiceSession() {
     activeUserItemIdRef.current = null;
     latestInputVoiceAtRef.current = null;
     activeInputVoiceAtRef.current = null;
+    lastAssistantSpeechEndAtRef.current = null;
     resetClientFunctionState();
     setStatus({ text: "connecting...", kind: "warn" });
     const overrideNote = [
@@ -1414,6 +1434,7 @@ export function useVoiceSession() {
       activeUserItemIdRef.current = null;
       latestInputVoiceAtRef.current = null;
       activeInputVoiceAtRef.current = null;
+      lastAssistantSpeechEndAtRef.current = null;
       resetClientFunctionState();
       cleanupAvatar();
       cleanupWebRtc();
@@ -1465,6 +1486,7 @@ export function useVoiceSession() {
     const ws = wsRef.current;
     const trimmed = (text || "").trim();
     if (!trimmed || !ws || ws.readyState !== WebSocket.OPEN) return;
+    lastAssistantSpeechEndAtRef.current = null;
     beginTurn(monotonicNow(), "text_input");
     markTurn("user", trimmed);
     const item = {

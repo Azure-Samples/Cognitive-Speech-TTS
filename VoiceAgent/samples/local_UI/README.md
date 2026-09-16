@@ -5,6 +5,10 @@ choose one of its published Voice Agents, run a microphone or text session, insp
 handoffs, read the transcript and browser-observed latency, and publish a new
 Agent from a sample template.
 
+Use the [architecture and documentation index](../../docs/README.md) for the
+system overview. For the complete local MCP, Agent publication, and UI order,
+use [02: Start and run the samples](../../docs/02_run_samples.md).
+
 ## What the UI includes
 
 - **Live session**: published Agent picker, microphone controls, text fallback,
@@ -12,8 +16,10 @@ Agent from a sample template.
 - **Templates**: a configuration-driven catalog. The checked-in config points
   to the sibling Finance Example and Finance with OTP and Officer Search
   samples; Finance Example demonstrates the multi-node handoff view.
-- **Project selection**: the header lists Foundry Projects visible to the
-  current Azure identity. Switching Project reloads its published Voice Agents.
+- **Project selection**: the header provides a searchable Project text box
+  backed by visible Foundry Project suggestions. Search matches Project names
+  only; the account is shown only as supporting context. You may also paste a
+  full endpoint. Switching Project reloads its published Voice Agents.
 - **Server-side authentication**: Azure credentials and access tokens remain in
   Python. The browser connects only to the local server.
 
@@ -28,6 +34,11 @@ test scheduler and left-side Create/Generate authoring form.
 - Access to a Microsoft Foundry Project that contains Voice Agents.
 - `az login` or another identity supported by `DefaultAzureCredential`.
 - Browser microphone permission. Chrome or Edge is recommended.
+
+These prerequisites are enough to open published Agents in **Live session**.
+Using **Templates** and **Try it now** also requires the Docker, Azure CLI,
+Azure Developer CLI, and Dev Tunnel setup in the
+[02: Start and run the samples](../../docs/02_run_samples.md).
 
 ## Configure and run
 
@@ -47,13 +58,15 @@ Set `AZURE_CREDENTIAL_MODE=cli` to use exactly the identity selected by
 `az login`. The default uses `DefaultAzureCredential`.
 
 The configured endpoint is the initial Project. Use the **Foundry project**
-selector in the page header to switch to another Project visible to the same
-identity. Project discovery uses Azure Resource Graph and requires Reader
-access; invoking an Agent also requires the corresponding data-plane access.
+text box in the page header to search by Project name, select a suggestion, or
+paste a full Project endpoint, then press Enter or **Switch**. Project
+discovery uses Azure Resource Graph and requires Reader access; invoking an
+Agent also requires the corresponding data-plane access.
 
-For one-click **Try it now**, put the scoped trial MCP tokens in the local
-`.env` variables shown in [`.env.example`](./.env.example). If a token is not
-configured, the Templates page asks for it once in a password field.
+Before using **Try it now**, run `../../shared_mcp/scripts/e2e-local.sh`. It
+creates the fixed local MCP tunnel, stores authentication in the two Foundry
+connections, and writes the non-secret configs consumed by this UI. No MCP
+token is entered in the browser or this UI's `.env`.
 
 ## Configure templates
 
@@ -77,9 +90,11 @@ allowlist. Each entry points to a sibling sample folder:
 ```
 
 `folder` is resolved relative to the config file and `agent_file` defaults to
-`agent.json`. The server reads only that Agent JSON; it does not read the
-sibling `.env`, README, validation output, or credentials. Resolved paths must
-remain under `VoiceAgent/samples/`, including after symlink resolution.
+`agent.json`. Agent source paths must remain under `VoiceAgent/samples/`.
+Each default template uses `mcp.config_file` and `mcp.token_file` under
+`VoiceAgent/shared_mcp/`; the server rejects MCP paths outside that directory,
+including after symlink resolution. It does not read the sibling sample
+`.env`, README, or validation output.
 
 Optional presentation fields are `name`, `category`, `summary`, `accent_color`,
 and `enabled`. Without them, the UI uses the Agent document's `name` and
@@ -89,21 +104,35 @@ Set `LOCAL_UI_TEMPLATE_CONFIG` or pass `--template-config` to use a different
 allowlist without changing code. The Templates **Reload** button re-reads both
 the config and every enabled `agent.json`.
 
-Each MCP template also declares a trusted public `mcp.server_url` and a
-`mcp.token_env`. On **Try it now**, the local server:
+For the two default templates, **Try it now** reads the fixed named-tunnel URL
+and connection name from `mcp.config_file`. The local server reads the ignored
+token file and creates or updates that connection in the **currently selected
+Foundry Project/account** before publishing. This prevents an Agent published
+after a Project switch from referencing a connection that exists only under a
+different Foundry account.
 
-1. reads the token from its environment or the one-time password field;
-2. creates a unique `RemoteTool` / `CustomKeys` connection in the selected
+No token is accepted from the browser. Selecting a template automatically runs
+**Test MCP**. The local server reads the ignored token file, performs an
+authenticated MCP handshake and `tools/list`, and verifies that the route
+contains every tool allowed by the template. HTTP 401 or 403 is reported as an
+authentication failure rather than readiness. Try it now and Publish remain
+disabled while the MCP is unavailable or incomplete. The failure panel
+displays the local E2E command and links to the setup guide.
+
+Start `VoiceAgent/shared_mcp/scripts/e2e-local.sh`, leave it running, select **Reload**,
+and use **Test MCP** to retry.
+
+For the default local workflow, the server:
+
+1. reads the ignored local token file on the server;
+2. creates or updates the fixed `RemoteTool` / `CustomKeys` connection in the selected
    Foundry account, storing `Authorization: Bearer ...` in the connection;
 3. publishes an Agent version containing only `project_connection_id`;
 4. opens the new Agent in Live session.
 
 The token is never returned to the browser, written to the Agent definition,
-placed in a URL, logged, or saved locally. The resulting Foundry connection is
-persistent so the published Agent continues to work. Use a distinct,
-pack-scoped, revocable trial token per customer; do not distribute a shared
-production token. The signed-in identity needs permission to write account
-connections as well as publish Agents.
+placed in a URL, or logged. The signed-in identity needs permission to write
+connections as well as publish Agents in the selected Foundry account.
 
 ## Remote-SSH and port forwarding
 
@@ -143,6 +172,11 @@ Live `sess_*`, Foundry `conv_*`, or Agent name. Start with `meta.json`, then
 read `timeline.log`, and inspect `events.jsonl` only when the timeline does not
 explain the failure.
 
+Use [04: Debug a local UI session](../../docs/04_debug_session.md) and the bundled
+[`skills/debug-local-session`](../../skills/debug-local-session/) analyzer for the
+evidence-first workflow, fault-domain table, exact commands, and reporting
+format.
+
 Audio payloads are counted and coalesced rather than written as base64. Token
 level `*.delta` frames are omitted because their completed `.done` event
 contains the assembled text. Session, handoff, completed transcript, tool,
@@ -158,12 +192,20 @@ handling requirements.
 ## Template publication
 
 Publishing creates and enables a new immutable Agent version. Both Finance
-examples contain MCP tools, so the page requires:
+examples contain MCP tools, so the page reads:
 
 - the public MCP server HTTPS URL;
 - the Project connection ID that holds its credential.
 
-No MCP secret is accepted or stored by this UI.
+No MCP secret is accepted from or stored in the browser. The local server uses
+the ignored token file to upsert the fixed connection in the currently
+selected Foundry account before publishing.
+
+Every Agent created from Templates uses the required `gft-` prefix, short for
+`generated_from_template`. A requested name such as `my-finance-agent` is
+published as `gft-my-finance-agent`; an existing `gft-` prefix is not repeated.
+Foundry Agent names do not allow underscores, so the intended `gft_` spelling
+must use the platform-compatible `gft-` form.
 
 ## Tests
 

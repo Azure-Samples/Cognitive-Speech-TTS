@@ -53,6 +53,10 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 
 ## Samples
 
+For the self-contained Finance examples, shared MCP container, local UI,
+architecture, and debugging workflow, start with the
+[Finance examples documentation index](docs/README.md).
+
 | File | Lifecycle |
 | --- | --- |
 | `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
@@ -63,7 +67,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
 | `samples/example1_finance_with_handoff/` | Publish a generic Finance English Realtime handoff graph with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
 | `samples/example2_finance_with_OTP_and_Officer_Search/` | Publish a flat Finance Agent for OTP verification and loan-officer search with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
-| [`setup_subscription.md`](setup_subscription.md) | Start with an Azure subscription and prepare the shared Foundry resource, Project, identities, RBAC, endpoint, and ARM ID before continuing in a self-contained example. |
+| [Finance examples documentation](docs/README.md) | Set up a subscription, run the two Finance samples, configure their shared MCP, and debug local UI sessions. |
 | `samples/download_conversation_artifacts.py` | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | `samples/download_conversation_traces.py` | Download correlated Application Insights rows by conversation id. |
 | [C# voice agent sample](samples/CSharp/README.md) | Create and manage a temporary agent or use an existing agent, stream audio over WebSocket, and read persisted conversations and recordings with the .NET SDK. |
@@ -74,6 +78,8 @@ bundled `azure-ai-voiceagents` wheel described by the common setup above.
 
 Reusable AI coding skills are under `skills/`:
 
+- `debug-local-session` resolves and analyzes recordings created by
+  `samples/local_UI`.
 - `voice-agent-private-preview` creates and tests private-preview voice agents.
 - `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
   and returns its MCP URL and Foundry project connection ID.

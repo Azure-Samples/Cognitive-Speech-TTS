@@ -14,6 +14,7 @@ from unittest.mock import patch
 from voice_agent_sdk_common import (
     EventPrinter,
     _canonical_definition,
+    _load_settings,
     _realtime_url,
     _validate_agent_name,
     _validate_project_endpoint,
@@ -108,6 +109,62 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             second["tools"][0]["project_connection_id"],
             "second-connection",
         )
+
+    def test_mcp_config_switch_overrides_sample_mcp_values(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            sample_dir = Path(directory)
+            config_dir = sample_dir / "config"
+            config_dir.mkdir()
+            (config_dir / "shared.env").write_text(
+                "\n".join(
+                    [
+                        "VOICE_AGENT_MCP_SERVER_URL="
+                        "https://shared.example/mcp/finance",
+                        "VOICE_AGENT_MCP_CONNECTION_ID=shared-connection",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            (sample_dir / ".env").write_text(
+                "\n".join(
+                    [
+                        "AZURE_AI_PROJECT_ENDPOINT="
+                        "https://account.services.ai.azure.com/api/projects/project",
+                        "VOICE_AGENT_MCP_CONFIG=config/shared.env",
+                        "VOICE_AGENT_MCP_SERVER_URL=https://internal.example/mcp",
+                        "VOICE_AGENT_MCP_CONNECTION_ID=internal-connection",
+                    ]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+
+            with patch.dict(os.environ, {}, clear=True):
+                settings = _load_settings(sample_dir)
+
+        self.assertEqual(
+            settings["VOICE_AGENT_MCP_SERVER_URL"],
+            "https://shared.example/mcp/finance",
+        )
+        self.assertEqual(
+            settings["VOICE_AGENT_MCP_CONNECTION_ID"],
+            "shared-connection",
+        )
+
+    def test_mcp_config_switch_reports_missing_file(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            sample_dir = Path(directory)
+            (sample_dir / ".env").write_text(
+                "VOICE_AGENT_MCP_CONFIG=missing.env\n",
+                encoding="utf-8",
+            )
+            with patch.dict(os.environ, {}, clear=True):
+                with self.assertRaisesRegex(
+                    RuntimeError,
+                    "VOICE_AGENT_MCP_CONFIG does not exist",
+                ):
+                    _load_settings(sample_dir)
 
     def test_canonicalizes_service_audio_defaults(self) -> None:
         authored = {

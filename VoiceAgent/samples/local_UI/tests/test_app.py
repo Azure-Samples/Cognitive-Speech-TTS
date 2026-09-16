@@ -5,6 +5,7 @@ import os
 import stat
 import tempfile
 import unittest
+from dataclasses import replace
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -20,6 +21,7 @@ from app import (
     materialize_template,
     normalize_bearer_token,
     sdk_create_mcp_connection,
+    template_agent_name,
     iter_mcp_tools,
     validate_mcp_probe_url,
     validate_agent_name,
@@ -38,6 +40,30 @@ class HelperTests(unittest.TestCase):
             validate_project_endpoint("https://<account>/api/projects/<project>")
         with self.assertRaises(ValueError):
             validate_agent_name("invalid agent name")
+
+    def test_template_agent_name_always_has_generated_prefix(self) -> None:
+        self.assertEqual(
+            template_agent_name("customer-agent", "template"),
+            "gft-customer-agent",
+        )
+        self.assertEqual(
+            template_agent_name("gft-customer-agent", "template"),
+            "gft-customer-agent",
+        )
+        self.assertEqual(
+            template_agent_name("customer_agent.v2", "template"),
+            "gft-customer-agent-v2",
+        )
+        with patch(
+            "app.uuid.uuid4",
+            return_value=SimpleNamespace(hex="abcdef1234567890"),
+        ):
+            self.assertEqual(
+                template_agent_name("", "finance-example"),
+                "gft-finance-example-abcdef12",
+            )
+        with self.assertRaisesRegex(ValueError, "at most 59 characters"):
+            template_agent_name("a" * 60, "template")
 
     def test_materializes_every_mcp_tool_without_mutating_source(self) -> None:
         document = {
@@ -133,18 +159,78 @@ class HelperTests(unittest.TestCase):
         self.assertEqual(catalog.cards(), [])
         self.assertIn("must resolve under", catalog.errors[0]["error"])
 
-    def test_catalog_exposes_mcp_readiness_but_not_token_configuration_name(self) -> None:
-        with patch.dict(
-            os.environ,
-            {"VOICE_AGENT_TEMPLATE_FINANCE_EXAMPLE_MCP_TOKEN": "synthetic-token"},
-            clear=False,
-        ):
-            detail = TemplateCatalog().detail("finance-example")
+    def test_catalog_reports_missing_generated_local_config(self) -> None:
+        detail = TemplateCatalog().detail("finance-example")
+        assert detail is not None
+        self.assertEqual(
+            detail["mcp"]["auth_configured"],
+            detail["mcp"]["connection_configured"],
+        )
+        encoded = json.dumps(detail)
+        self.assertNotIn("VOICE_AGENT_TEMPLATE_FINANCE_EXAMPLE_MCP_TOKEN", encoded)
+
+    def test_catalog_loads_generated_local_mcp_connection(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            samples_dir = root / "samples"
+            ui_dir = samples_dir / "local_UI"
+            sample_dir = samples_dir / "example"
+            config_dir = root / "shared_mcp" / "config" / "generated"
+            token_file = root / "shared_mcp" / "state" / "local" / "token"
+            ui_dir.mkdir(parents=True)
+            sample_dir.mkdir()
+            config_dir.mkdir(parents=True)
+            token_file.parent.mkdir(parents=True)
+            token_file.write_text("synthetic-local-token\n", encoding="utf-8")
+            (sample_dir / "agent.json").write_text(
+                json.dumps(
+                    {
+                        "name": "example",
+                        "definition": {
+                            "kind": "voice",
+                            "tools": [{"type": "mcp"}],
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (config_dir / "example.local.env").write_text(
+                "VOICE_AGENT_MCP_SERVER_URL=https://fixed.example/mcp\n"
+                "VOICE_AGENT_MCP_CONNECTION_ID=fixed-local-mcp\n",
+                encoding="utf-8",
+            )
+            config_path = ui_dir / "templates.config.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "templates": [
+                            {
+                                "id": "example",
+                                "folder": "../example",
+                                "mcp": {
+                                    "config_file": (
+                                        "../../shared_mcp/config/generated/"
+                                        "example.local.env"
+                                    ),
+                                    "token_file": (
+                                        "../../shared_mcp/state/local/token"
+                                    ),
+                                },
+                            }
+                        ],
+                    }
+                ),
+                encoding="utf-8",
+            )
+
+            detail = TemplateCatalog(config_path, samples_dir).detail("example")
+
         assert detail is not None
         self.assertTrue(detail["mcp"]["auth_configured"])
-        encoded = json.dumps(detail)
-        self.assertNotIn("synthetic-token", encoded)
-        self.assertNotIn("VOICE_AGENT_TEMPLATE_FINANCE_EXAMPLE_MCP_TOKEN", encoded)
+        self.assertTrue(detail["mcp"]["connection_configured"])
+        self.assertFalse(detail["mcp"]["configuration_required"])
+        self.assertFalse(detail["mcp"]["token_required"])
 
     def test_mcp_connection_stores_bearer_in_custom_keys(self) -> None:
         endpoint = "https://account.services.ai.azure.com/api/projects/customer"
@@ -273,7 +359,8 @@ class HelperTests(unittest.TestCase):
 
 class HttpSmokeTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self) -> None:
-        self.client = TestClient(TestServer(build_app(AppConfig())))
+        self.config = AppConfig()
+        self.client = TestClient(TestServer(build_app(self.config)))
         await self.client.start_server()
 
     async def asyncTearDown(self) -> None:
@@ -332,73 +419,191 @@ class HttpSmokeTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(other_payload["configured"])
         self.assertEqual(other_payload["endpoint"], "")
 
-    async def test_template_publish_uses_connection_without_exposing_token(self) -> None:
+    def _configure_template_mcp(
+        self,
+        *,
+        server_url: str,
+        connection_id: str = "",
+        token_file: Path | None = None,
+    ) -> None:
+        catalog = self.config.catalog
+        source = catalog.source("finance-example")
+        assert source is not None
+        configured = replace(
+            source,
+            mcp_server_url=server_url,
+            mcp_connection_id=connection_id,
+            mcp_token_file=token_file,
+        )
+        catalog._sources = tuple(
+            configured if item.id == configured.id else item
+            for item in catalog._sources
+        )
+
+    async def test_template_publish_reuses_generated_connection(self) -> None:
         endpoint = "https://account.services.ai.azure.com/api/projects/customer"
         await self.client.post("/api/project", json={"endpoint": endpoint})
-        connection = {
-            "name": "trial-mcp",
-            "id": "/accounts/account/connections/trial-mcp",
-            "account_id": "/subscriptions/sub/resourceGroups/rg/providers/"
-            "Microsoft.CognitiveServices/accounts/account",
-        }
-
-        def publish_stub(*_args, **kwargs):
-            tools = list(iter_mcp_tools(kwargs["definition"]))
-            self.assertTrue(tools)
-            self.assertTrue(
-                all(tool["project_connection_id"] == "trial-mcp" for tool in tools)
+        with tempfile.TemporaryDirectory() as directory:
+            token_file = Path(directory) / "token"
+            token_file.write_text("synthetic-token\n", encoding="utf-8")
+            self._configure_template_mcp(
+                server_url="https://tools.example/mcp",
+                connection_id="fixed-local-mcp",
+                token_file=token_file,
             )
-            self.assertTrue(all("authorization" not in tool for tool in tools))
-            return {
-                "name": kwargs["name"],
-                "version": "1",
-                "definition": kwargs["definition"],
-            }
 
-        with (
-            patch("app.sdk_create_mcp_connection", return_value=connection) as create,
-            patch("app.sdk_publish_template", side_effect=publish_stub),
-        ):
-            response = await self.client.post(
-                "/api/templates/finance-example/publish",
-                json={
-                    "name": "trial-agent",
-                    "model": "gpt-realtime",
-                    "voice": "en-US-AvaNeural",
-                    "mcp_auth_token": "synthetic-token",
-                },
-            )
+            def publish_stub(*_args, **kwargs):
+                self.assertEqual(kwargs["name"], "gft-trial-agent")
+                tools = list(iter_mcp_tools(kwargs["definition"]))
+                self.assertTrue(tools)
+                self.assertTrue(
+                    all(
+                        tool["project_connection_id"] == "fixed-local-mcp"
+                        for tool in tools
+                    )
+                )
+                self.assertTrue(all("authorization" not in tool for tool in tools))
+                return {
+                    "name": kwargs["name"],
+                    "version": "1",
+                    "definition": kwargs["definition"],
+                }
+
+            with (
+                patch("app.sdk_create_mcp_connection") as create,
+                patch("app.sdk_publish_template", side_effect=publish_stub),
+            ):
+                response = await self.client.post(
+                    "/api/templates/finance-example/publish",
+                    json={
+                        "name": "trial-agent",
+                        "model": "gpt-realtime",
+                        "voice": "en-US-AvaNeural",
+                    },
+                )
 
         response_text = await response.text()
         self.assertEqual(response.status, 201, response_text)
         payload = json.loads(response_text)
-        self.assertEqual(payload["mcp_connection_name"], "trial-mcp")
-        self.assertNotIn("synthetic-token", json.dumps(payload))
+        self.assertEqual(payload["agent_name"], "gft-trial-agent")
+        self.assertEqual(payload["mcp_connection_name"], "fixed-local-mcp")
         self.assertEqual(
-            create.call_args.kwargs["bearer_token"], "synthetic-token"
+            create.call_args.kwargs["endpoint"],
+            endpoint,
+        )
+        self.assertEqual(
+            create.call_args.kwargs["bearer_token"],
+            "synthetic-token",
         )
 
-    async def test_template_publish_failure_cleans_up_new_connection(self) -> None:
+    async def test_template_publish_requires_generated_local_token(self) -> None:
         endpoint = "https://account.services.ai.azure.com/api/projects/customer"
         await self.client.post("/api/project", json={"endpoint": endpoint})
-        connection = {
-            "name": "trial-mcp",
-            "id": "/accounts/account/connections/trial-mcp",
-            "account_id": "/subscriptions/sub/resourceGroups/rg/providers/"
-            "Microsoft.CognitiveServices/accounts/account",
-        }
+        self._configure_template_mcp(
+            server_url="https://tools.example/mcp",
+            connection_id="fixed-local-mcp",
+            token_file=Path("/missing/local/mcp-token"),
+        )
         with (
-            patch("app.sdk_create_mcp_connection", return_value=connection),
-            patch("app.sdk_publish_template", side_effect=RuntimeError("publish failed")),
-            patch("app.sdk_delete_mcp_connection") as delete,
+            patch("app.sdk_create_mcp_connection") as create,
+            patch("app.sdk_publish_template") as publish,
         ):
             response = await self.client.post(
                 "/api/templates/finance-example/publish",
-                json={"mcp_auth_token": "synthetic-token"},
+                json={},
             )
 
-        self.assertEqual(response.status, 502)
-        delete.assert_called_once()
+        self.assertEqual(response.status, 400)
+        create.assert_not_called()
+        publish.assert_not_called()
+
+    async def test_template_mcp_probe_rejects_auth_failure(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            token_file = Path(directory) / "token"
+            token_file.write_text("synthetic-token\n", encoding="utf-8")
+            self._configure_template_mcp(
+                server_url="https://tools.example/mcp",
+                connection_id="fixed-local-mcp",
+                token_file=token_file,
+            )
+            with patch(
+                "app.mcp_handshake",
+                side_effect=McpProbeError(
+                    "initialize returned HTTP 401",
+                    latency_ms=12.5,
+                    http_status=401,
+                ),
+            ) as probe:
+                response = await self.client.get(
+                    "/api/templates/finance-example/mcp/probe"
+                )
+
+        self.assertEqual(response.status, 200)
+        payload = await response.json()
+        self.assertFalse(payload["ok"])
+        self.assertTrue(payload["reached"])
+        self.assertTrue(payload["auth_gate"])
+        self.assertEqual(payload["http_status"], 401)
+        probe.assert_called_once_with(
+            "https://tools.example/mcp",
+            "synthetic-token",
+        )
+
+    async def test_template_mcp_probe_returns_start_guide_when_down(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            token_file = Path(directory) / "token"
+            token_file.write_text("synthetic-token\n", encoding="utf-8")
+            self._configure_template_mcp(
+                server_url="https://tools.example/mcp",
+                connection_id="fixed-local-mcp",
+                token_file=token_file,
+            )
+            with patch(
+                "app.mcp_handshake",
+                side_effect=McpProbeError("connection refused"),
+            ):
+                response = await self.client.get(
+                    "/api/templates/finance-example/mcp/probe"
+                )
+
+        self.assertEqual(response.status, 200)
+        payload = await response.json()
+        self.assertFalse(payload["ok"])
+        self.assertFalse(payload["reached"])
+        self.assertEqual(payload["guide_url"], "/guide/run-samples")
+        self.assertIn("e2e-local.sh", payload["start_command"])
+
+    async def test_template_mcp_probe_requires_every_allowed_tool(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            token_file = Path(directory) / "token"
+            token_file.write_text("synthetic-token\n", encoding="utf-8")
+            self._configure_template_mcp(
+                server_url="https://tools.example/mcp",
+                connection_id="fixed-local-mcp",
+                token_file=token_file,
+            )
+            with patch(
+                "app.mcp_handshake",
+                return_value={
+                    "initialize_ms": 10.0,
+                    "tools_ms": 5.0,
+                    "latency_ms": 15.0,
+                    "http_status": 200,
+                    "reached": True,
+                    "server_name": "wrong-server",
+                    "server_version": "1",
+                    "tools": [],
+                },
+            ):
+                response = await self.client.get(
+                    "/api/templates/finance-example/mcp/probe"
+                )
+
+        self.assertEqual(response.status, 200)
+        payload = await response.json()
+        self.assertFalse(payload["ok"])
+        self.assertTrue(payload["reached"])
+        self.assertIn("missing expected tools", payload["error"])
 
     async def test_mcp_probe_uses_published_agent_server(self) -> None:
         endpoint = "https://account.services.ai.azure.com/api/projects/customer"

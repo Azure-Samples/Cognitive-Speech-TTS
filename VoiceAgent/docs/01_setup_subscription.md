@@ -1,4 +1,4 @@
-# Set up a Microsoft Foundry subscription for Voice Agent samples
+# 01 - Set up a Microsoft Foundry subscription
 
 ## Conclusion
 
@@ -7,6 +7,9 @@ Project that is ready for one of the repository's self-contained Voice Agent
 examples. It is the shared setup source of truth. Do not continue to an example until
 provisioning, identifiers, role assignments, preview eligibility, and region
 availability are all verified.
+
+After completing the criteria below, continue with
+[02: Start and run the samples](./02_run_samples.md).
 
 ## Completion criteria
 
@@ -385,9 +388,11 @@ Use the `${PROJECT_ENDPOINT}` produced above as
 
 Continue in exactly one scenario README:
 
-- [Example 1: Finance with Handoff](samples/example1_finance_with_handoff/README.md)
-- [Example 2: Finance with OTP and Officer Search](samples/example2_finance_with_OTP_and_Officer_Search/README.md)
-- [Local template dashboard](samples/local_UI/README.md)
+- [02: Start and run the samples](./02_run_samples.md)
+- [Example 1: Finance with Handoff](../samples/example1_finance_with_handoff/README.md)
+- [Example 2: Finance with OTP and Officer Search](../samples/example2_finance_with_OTP_and_Officer_Search/README.md)
+- [Local UI](../samples/local_UI/README.md)
+- [Finance examples architecture and documentation index](./README.md)
 
 Those directories are self-contained after subscription setup. They own their
 MCP endpoint and connection requirements, SDK installation, publication,

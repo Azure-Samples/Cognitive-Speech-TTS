@@ -47,6 +47,25 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         for key, value in dotenv_values(sample_dir / ".env").items()
         if value is not None
     }
+    mcp_config_value = (
+        os.getenv("VOICE_AGENT_MCP_CONFIG")
+        or file_values.get("VOICE_AGENT_MCP_CONFIG")
+        or ""
+    ).strip()
+    mcp_config_values: dict[str, str] = {}
+    if mcp_config_value:
+        mcp_config_path = Path(mcp_config_value).expanduser()
+        if not mcp_config_path.is_absolute():
+            mcp_config_path = sample_dir / mcp_config_path
+        if not mcp_config_path.is_file():
+            raise RuntimeError(
+                f"VOICE_AGENT_MCP_CONFIG does not exist: {mcp_config_path}"
+            )
+        mcp_config_values = {
+            key: str(value)
+            for key, value in dotenv_values(mcp_config_path).items()
+            if value is not None
+        }
     names = {
         "AZURE_AI_PROJECT_ENDPOINT",
         "AZURE_CREDENTIAL_MODE",
@@ -55,10 +74,17 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         "VOICE_AGENT_MCP_SERVER_URL",
         "VOICE_AGENT_MCP_CONNECTION_ID",
     }
-    return {
-        name: (os.getenv(name) or file_values.get(name) or "").strip()
-        for name in names
-    }
+    settings: dict[str, str] = {}
+    for name in names:
+        configured_value = (
+            mcp_config_values.get(name, "")
+            if name.startswith("VOICE_AGENT_MCP_")
+            else ""
+        )
+        settings[name] = (
+            os.getenv(name) or configured_value or file_values.get(name) or ""
+        ).strip()
+    return settings
 
 
 def _sync_credential(settings: Mapping[str, str]) -> Any:

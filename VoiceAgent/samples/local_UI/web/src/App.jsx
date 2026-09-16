@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { asVoiceAgent } from "./lib/agentCatalog.mjs";
 import { buildHandoffGraph } from "./lib/handoffGraph.mjs";
+import {
+  filterProjectsByName,
+  projectDisplayValue,
+  resolveProjectEndpoint,
+} from "./lib/projectPicker.mjs";
 import { useVoiceSession } from "./hooks/useVoiceSession.js";
 import { ChatPanel } from "./components/ChatPanel.jsx";
 import { HandoffGraphPanel } from "./components/HandoffGraphPanel.jsx";
@@ -32,6 +37,8 @@ export function App() {
   const [agents, setAgents] = useState([]);
   const [agent, setAgent] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [projectInput, setProjectInput] = useState("");
+  const [projectResultsOpen, setProjectResultsOpen] = useState(false);
   const [projectsState, setProjectsState] = useState({ loading: true, error: "" });
   const [agentListState, setAgentListState] = useState({ loading: true, error: "" });
   const session = useVoiceSession();
@@ -43,6 +50,11 @@ export function App() {
       handoffState: session.handoffState,
     });
   }, [agent, session.handoffState]);
+
+  const filteredProjects = useMemo(
+    () => filterProjectsByName(projectInput, projects).slice(0, 30),
+    [projectInput, projects],
+  );
 
   const loadAgents = async (preferredName = "") => {
     setAgentListState({ loading: true, error: "" });
@@ -62,11 +74,17 @@ export function App() {
     }
   };
 
-  const loadProjects = async () => {
+  const loadProjects = async (currentEndpoint = "") => {
     setProjectsState({ loading: true, error: "" });
     try {
       const payload = await readJson("/api/projects");
-      setProjects(payload.projects || []);
+      const visibleProjects = payload.projects || [];
+      setProjects(visibleProjects);
+      setProjectInput((current) => projectDisplayValue(
+        visibleProjects,
+        currentEndpoint,
+        current || cfg?.backend || "",
+      ));
       setProjectsState({ loading: false, error: "" });
     } catch (error) {
       setProjectsState({ loading: false, error: errorMessage(error) });
@@ -77,7 +95,8 @@ export function App() {
     readJson("/api/config")
       .then((payload) => {
         setCfg(customerConfig(payload));
-        void loadProjects();
+        setProjectInput(payload.project || payload.endpoint || "");
+        void loadProjects(payload.endpoint || "");
         if (payload.configured) return loadAgents();
         setAgentListState({
           loading: false,
@@ -106,7 +125,12 @@ export function App() {
   };
 
   const selectProject = async (endpoint) => {
-    if (!endpoint || endpoint === cfg.host) return;
+    if (!endpoint) return;
+    if (endpoint === cfg.host) {
+      setProjectInput(projectDisplayValue(projects, endpoint, cfg.backend));
+      setProjectResultsOpen(false);
+      return;
+    }
     setProjectsState({ loading: true, error: "" });
     setAgent(null);
     setAgents([]);
@@ -122,11 +146,26 @@ export function App() {
         host: selected.endpoint,
         configured: true,
       }));
+      setProjectInput(projectDisplayValue(projects, selected.endpoint, selected.project));
+      setProjectResultsOpen(false);
       await loadAgents();
       setProjectsState({ loading: false, error: "" });
     } catch (error) {
       setProjectsState({ loading: false, error: errorMessage(error) });
     }
+  };
+
+  const submitProject = async (event) => {
+    event.preventDefault();
+    const endpoint = resolveProjectEndpoint(projectInput, projects);
+    if (!endpoint) {
+      setProjectsState({
+        loading: false,
+        error: "Choose a matching suggestion or paste a full Foundry Project endpoint.",
+      });
+      return;
+    }
+    await selectProject(endpoint);
   };
 
   if (!cfg) {
@@ -149,22 +188,88 @@ export function App() {
         </nav>
         <div className="studio-backend">
           <label htmlFor="customer-project">Foundry project</label>
-          <select
-            id="customer-project"
-            value={cfg.host}
-            title={projectsState.error || cfg.host}
-            disabled={session.isConnected || projectsState.loading}
-            onChange={(event) => selectProject(event.target.value)}
-          >
-            {projects.length ? null : (
-              <option value={cfg.host}>
-                {projectsState.loading ? "Discovering visible projects…" : cfg.backend}
-              </option>
-            )}
-            {projects.map((project) => (
-              <option key={project.endpoint} value={project.endpoint}>{project.label}</option>
-            ))}
-          </select>
+          <form className="project-search" onSubmit={submitProject}>
+            <div className="project-search-row">
+              <input
+                id="customer-project"
+                type="text"
+                value={projectInput}
+                placeholder="Type a project name or paste its endpoint"
+                title={projectsState.error || cfg.host}
+                aria-describedby="customer-project-hint"
+                aria-invalid={Boolean(projectsState.error)}
+                autoComplete="off"
+                spellCheck="false"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={projectResultsOpen}
+                aria-controls="customer-project-options"
+                disabled={session.isConnected || projectsState.loading}
+                onFocus={() => setProjectResultsOpen(true)}
+                onBlur={() => setProjectResultsOpen(false)}
+                onKeyDown={(event) => {
+                  if (event.key === "Escape") {
+                    setProjectResultsOpen(false);
+                  }
+                }}
+                onChange={(event) => {
+                  setProjectInput(event.target.value);
+                  setProjectResultsOpen(true);
+                  if (projectsState.error) {
+                    setProjectsState({ loading: false, error: "" });
+                  }
+                }}
+              />
+              <button
+                type="submit"
+                className="project-switch"
+                disabled={
+                  session.isConnected
+                  || projectsState.loading
+                  || !projectInput.trim()
+                }
+              >
+                Switch
+              </button>
+            </div>
+            {projectResultsOpen && !session.isConnected && !projectsState.loading ? (
+              <div
+                id="customer-project-options"
+                className="project-results"
+                role="listbox"
+                aria-label="Matching Foundry projects"
+              >
+                {filteredProjects.length ? filteredProjects.map((project) => (
+                  <button
+                    key={project.endpoint}
+                    type="button"
+                    role="option"
+                    aria-selected={project.endpoint === cfg.host}
+                    className="project-result"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => selectProject(project.endpoint)}
+                  >
+                    <span className="project-result-name">{project.name}</span>
+                    <span className="project-result-account">{project.account}</span>
+                  </button>
+                )) : (
+                  <span className="project-results-empty">
+                    No Project names match this search.
+                  </span>
+                )}
+              </div>
+            ) : null}
+            <span
+              id="customer-project-hint"
+              className={`project-search-hint ${projectsState.error ? "error" : ""}`}
+              role="status"
+            >
+              {projectsState.loading
+                ? "Discovering visible projects…"
+                : projectsState.error
+                  || "Search by Project name. Choose a result to distinguish duplicate names."}
+            </span>
+          </form>
         </div>
       </header>
 

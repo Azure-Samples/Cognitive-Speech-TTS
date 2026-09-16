@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Templates · Voice Agents</title>
-  <link rel="stylesheet" href="/static/template-styles.css?v=20260915-2" />
+  <link rel="stylesheet" href="/static/template-styles.css?v=20260916-1" />
 </head>
 <body>
   <header class="local-template-header">
@@ -74,26 +74,24 @@
             <p class="launch-intro">Publish with the template defaults and start talking.</p>
             <div class="publish-fields">
               <div id="publish-mcp-fields" hidden>
-                <label id="publish-mcp-token-field">
-                  <span>MCP service bearer token <small>not stored locally</small></span>
-                  <input
-                    id="publish-mcp-token"
-                    type="password"
-                    autocomplete="off"
-                    spellcheck="false"
-                    placeholder="Paste the MCP service bearer token"
-                  />
-                </label>
-                <aside class="mcp-security-notice" role="note">
-                  <strong>MCP credential required</strong>
+                <div class="mcp-check-heading">
+                  <strong>MCP service</strong>
+                  <button id="btn-test-mcp" type="button">Test MCP</button>
+                </div>
+                <p id="mcp-test-state" role="status">
+                  Select a template to test its MCP service.
+                </p>
+                <aside id="mcp-start-guide" class="mcp-start-guide" role="note" hidden>
+                  <strong>Start the local MCP first</strong>
                   <p>
-                    For security, this credential cannot be included in the codebase.
-                    To try the MCP connection, request a scoped trial token from your
-                    Voice Agent owner, or contact eng:
-                    <a href="mailto:mengyou@microsoft.com">mengyou@microsoft.com</a>.
+                    Run the local E2E and leave it running. Then reload Templates
+                    and test again.
                   </p>
+                  <code>cd shared_mcp &amp;&amp; ./scripts/e2e-local.sh</code>
+                  <a href="/guide/run-samples" target="_blank" rel="noreferrer">
+                    Open the local MCP setup guide
+                  </a>
                 </aside>
-                <strong id="publish-mcp-auth-state"></strong>
               </div>
             </div>
             <div class="action-stack">
@@ -174,6 +172,6 @@
       </button>
     </section>
   </div>
-  <script type="module" src="/static/template-app.js?v=20260915-3"></script>
+  <script type="module" src="/static/template-app.js?v=20260916-1"></script>
 </body>
 </html>

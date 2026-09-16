@@ -13,7 +13,8 @@ import {
   finishToolCall,
   formatMetricMs,
   indexSessionTools,
-  latencyBarWidthPx,
+  LATENCY_VISUAL_REFERENCE_MS,
+  latencyBarPercent,
   latencyRulerTicks,
   markFirstAudio,
   markFirstPlayback,
@@ -460,11 +461,33 @@ test("detects first and last voiced PCM frames", () => {
   });
 });
 
-test("uses an uncapped fixed 160-pixel-per-second latency scale", () => {
-  assert.equal(latencyBarWidthPx(0), 0);
-  assert.equal(latencyBarWidthPx(1000), 160);
-  assert.equal(latencyBarWidthPx(2500), 400);
-  assert.deepEqual(latencyRulerTicks(2500), [0, 1, 2, 3]);
+test("fits latency bars to their container with proportional widths", () => {
+  assert.equal(LATENCY_VISUAL_REFERENCE_MS, 2000);
+  assert.equal(latencyBarPercent(0, 2500), 0);
+  assert.equal(latencyBarPercent(1000, 2500), 40);
+  assert.equal(latencyBarPercent(2500, 2500), 100);
+  assert.equal(latencyBarPercent(3000, 2500), 100);
+  assert.deepEqual(latencyRulerTicks(2500), [0, 833, 1667, 2500]);
+});
+
+test("measures a consecutive Agent reply from previous speech end", () => {
+  const turn = createTurnTracker(2000, "agent_playback_end");
+  startAssistantResponse(turn, "response-2", 2100);
+  markFirstAudio(turn, 2450);
+  markFirstSpeech(turn, 2460);
+  markFirstPlayback(turn, 2500);
+
+  const snapshot = snapshotTurnMetrics(turn);
+  assert.equal(snapshot.endToEndMs, 500);
+  assert.deepEqual(
+    snapshot.atomicPhases.map(({ label, durationMs }) => [label, durationMs]),
+    [
+      ["Perceived pause", 100],
+      ["Model / speech (combined)", 350],
+      ["Leading silence", 10],
+      ["Playback buffer", 40],
+    ],
+  );
 });
 
 test("atomic phase rounding always adds up to the end-to-end checkpoint", () => {
@@ -593,7 +616,7 @@ test("groups all-turn phases by optimization subsystem instead of timeline order
   );
 });
 
-test("sums only completed user-speech replies and explains every excluded response", () => {
+test("sums completed replies with audible boundaries and explains every excluded response", () => {
   const assistant = (id, startSource, durationMs, atomicPhases, complete = true) => ({
     id,
     type: "assistant",
@@ -605,6 +628,19 @@ test("sums only completed user-speech replies and explains every excluded respon
       atomicPhases,
     },
   });
+  const agentFollowUp = assistant(
+    "agent-follow-up",
+    "agent_playback_end",
+    250,
+    [{ category: "inter_response_pause", durationMs: 250 }],
+  );
+  assert.deepEqual(buildAllTurnLatencyTable([agentFollowUp]).rows.map((row) => row.id), [
+    "agent-follow-up",
+  ]);
+  assert.deepEqual(buildLatencySumAnalysis([agentFollowUp]).includedTurns.map((turn) => turn.id), [
+    "agent-follow-up",
+  ]);
+
   const analysis = buildLatencySumAnalysis([
     assistant("greeting", "response_created", 100, [{ category: "model", durationMs: 100 }]),
     { id: "user-1", type: "user", content: "hello" },

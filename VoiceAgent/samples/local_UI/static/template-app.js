@@ -14,6 +14,10 @@ const state = {
   service: null,
   building: false,
   publishedAgent: "",
+  mcpReady: false,
+  mcpChecking: false,
+  projectConfigured: false,
+  projectName: "",
 };
 
 const templateGraph = new WorkflowGraph($("graph-wrap"), {
@@ -469,20 +473,25 @@ async function selectTemplate(templateId) {
   renderTools($("tools-body"), detail);
   renderIssues($("lint-body"), detail.issues);
   $("yaml-body").textContent = detail.yaml;
-  const mcp = detail.mcp || {};
   $("publish-mcp-fields").hidden = !detail.requires_mcp;
-  $("publish-mcp-token").value = "";
-  $("publish-mcp-token-field").hidden = Boolean(mcp.auth_configured);
-  $("publish-mcp-token").required = Boolean(
-    detail.requires_mcp && !mcp.auth_configured,
-  );
-  $("publish-mcp-auth-state").textContent = mcp.auth_configured
-    ? "Token configured by the local server."
-    : "Paste a scoped token once; it is stored only in the new Foundry connection.";
+  state.mcpReady = !detail.requires_mcp;
+  state.mcpChecking = false;
+  $("mcp-start-guide").hidden = true;
+  $("mcp-test-state").className = "";
+  $("mcp-test-state").textContent = detail.requires_mcp
+    ? "Checking MCP reachability…"
+    : "";
   state.publishedAgent = "";
   $("tpl-result").hidden = true;
   refreshActionState();
-  setResult("tpl-result", "Ready to publish a new independent Agent.", "");
+  setResult(
+    "tpl-result",
+    state.projectConfigured
+      ? "Ready to publish a new independent Agent."
+      : "Choose a Foundry project on Live session, then return to Templates.",
+    state.projectConfigured ? "" : "warn",
+  );
+  if (detail.requires_mcp) await testTemplateMcp();
 }
 
 /* ---------------- voice preview / publish ---------------- */
@@ -547,24 +556,59 @@ function setBuildLocked(locked) {
   $("reload").disabled = locked;
   $("btn-voice").disabled = locked || !(state.publishedAgent || canPublish());
   $("btn-publish").disabled = locked || !canPublish();
+  $("btn-test-mcp").disabled = locked || state.mcpChecking;
   for (const card of document.querySelectorAll("#template-list .template-card")) {
     card.disabled = locked;
   }
 }
 
 function canPublish() {
-  if (!state.template) return false;
+  if (!state.template || !state.projectConfigured) return false;
   if (!state.template.requires_mcp) return true;
-  return Boolean(
-    state.template.mcp?.auth_configured
-      || $("publish-mcp-token").value.trim(),
-  );
+  return state.mcpReady;
 }
 
 function refreshActionState() {
   if (state.building) return;
   $("btn-voice").disabled = !(state.publishedAgent || canPublish());
   $("btn-publish").disabled = !canPublish();
+  $("btn-test-mcp").disabled = !state.template?.requires_mcp || state.mcpChecking;
+}
+
+async function testTemplateMcp() {
+  const template = state.template;
+  if (!template?.requires_mcp || state.mcpChecking) return;
+  const templateId = template.id;
+  state.mcpChecking = true;
+  state.mcpReady = false;
+  $("btn-test-mcp").disabled = true;
+  $("btn-test-mcp").textContent = "Testing…";
+  $("mcp-start-guide").hidden = true;
+  $("mcp-test-state").className = "";
+  $("mcp-test-state").textContent = "Checking MCP reachability…";
+  refreshActionState();
+  try {
+    const result = await api(
+      `/api/templates/${encodeURIComponent(templateId)}/mcp/probe`,
+    );
+    if (state.template?.id !== templateId) return;
+    if (!result.ok) throw new Error(result.error || "MCP is not reachable.");
+    state.mcpReady = true;
+    $("mcp-test-state").className = "good";
+    $("mcp-test-state").textContent = `${result.message} Checked at ${result.checked_at}.`;
+  } catch (error) {
+    if (state.template?.id !== templateId) return;
+    state.mcpReady = false;
+    $("mcp-test-state").className = "bad";
+    $("mcp-test-state").textContent = `MCP check failed: ${error.message}`;
+    $("mcp-start-guide").hidden = false;
+  } finally {
+    if (state.template?.id === templateId) {
+      state.mcpChecking = false;
+      $("btn-test-mcp").textContent = "Test MCP";
+      refreshActionState();
+    }
+  }
 }
 
 async function publishMyAgent(autoOpen = false) {
@@ -580,9 +624,7 @@ async function publishMyAgent(autoOpen = false) {
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          mcp_auth_token: $("publish-mcp-token").value.trim(),
-        }),
+        body: "{}",
       },
     );
     if (state.template?.id !== templateId) {
@@ -606,11 +648,9 @@ async function publishMyAgent(autoOpen = false) {
     $("build-progress").hidden = true;
     state.building = false;
     setBuildLocked(false);
-    $("publish-mcp-token").value = "";
     refreshActionState();
     if (autoOpen) openAgentInDemo(published.agent_name);
   } catch (error) {
-    $("publish-mcp-token").value = "";
     if (state.template?.id === templateId) {
       const message = `Build failed: ${error.message}`;
       state.building = false;
@@ -629,10 +669,16 @@ async function loadEnv() {
   $("roots").textContent = env.templates_root || "—";
 }
 
+async function loadProjectConfig() {
+  const config = await api("/api/config");
+  state.projectConfigured = Boolean(config.configured);
+  state.projectName = config.project || "";
+}
+
 activateTabs($("page-templates"));
 $("btn-voice").addEventListener("click", () => startVoiceChat());
 $("btn-publish").addEventListener("click", () => publishMyAgent(false));
-$("publish-mcp-token").addEventListener("input", refreshActionState);
+$("btn-test-mcp").addEventListener("click", () => testTemplateMcp());
 $("build-progress-close").addEventListener("click", () => {
   $("build-progress").hidden = true;
   setBuildLocked(false);
@@ -646,5 +692,6 @@ $("reload").addEventListener("click", async () => {
   }
 });
 
-loadEnv().catch(() => {});
-loadTemplates().catch((error) => toast(String(error.message), true));
+Promise.all([loadEnv(), loadProjectConfig()])
+  .then(() => loadTemplates())
+  .catch((error) => toast(String(error.message), true));

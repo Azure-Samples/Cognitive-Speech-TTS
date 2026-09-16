@@ -1,0 +1,18 @@
+services:
+  shared-mcp:
+    build:
+      context: .
+      target: runtime
+    image: voice-agent-shared-mcp:local
+    environment:
+      SHARED_MCP_TOKEN: ${SHARED_MCP_TOKEN:?Set SHARED_MCP_TOKEN in .env.local}
+      FINANCE_OTP_DEMO_ACCESS_CODE: ${FINANCE_OTP_DEMO_ACCESS_CODE:-12345007}
+    ports:
+      - "8000:8000"
+    volumes:
+      - shared-mcp-state:/app/state
+    restart: unless-stopped
+
+volumes:
+  shared-mcp-state:
+

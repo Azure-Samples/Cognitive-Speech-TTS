@@ -1,0 +1,106 @@
+{
+  "directory_id": "finance_sample_loan_officers",
+  "description": "Fictional sample loan-officer directory. No real person, NMLS id or extension appears here.",
+  "officers": [
+    {
+      "officer_id": "lo-0001",
+      "full_name": "Michael Brennan",
+      "title": "Senior Loan Officer",
+      "branch": "Pontiac, MI",
+      "nmls_id": "900101",
+      "extension": "4102",
+      "status": "available",
+      "aliases": ["Mike Brennan"]
+    },
+    {
+      "officer_id": "lo-0002",
+      "full_name": "Michelle Brennan",
+      "title": "Loan Officer",
+      "branch": "Pontiac, MI",
+      "nmls_id": "900102",
+      "extension": "4103",
+      "status": "available",
+      "aliases": ["Shelly Brennan"]
+    },
+    {
+      "officer_id": "lo-0003",
+      "full_name": "Priya Raghavan",
+      "title": "Mortgage Loan Originator",
+      "branch": "Troy, MI",
+      "nmls_id": "900103",
+      "extension": "4210",
+      "status": "available",
+      "aliases": []
+    },
+    {
+      "officer_id": "lo-0004",
+      "full_name": "Daniel Okafor",
+      "title": "Senior Mortgage Loan Originator",
+      "branch": "Troy, MI",
+      "nmls_id": "900104",
+      "extension": "4211",
+      "status": "on_another_call",
+      "aliases": ["Dan Okafor"]
+    },
+    {
+      "officer_id": "lo-0005",
+      "full_name": "Sarah Whitfield",
+      "title": "Account Executive",
+      "branch": "Ann Arbor, MI",
+      "nmls_id": "900105",
+      "extension": "4320",
+      "status": "available",
+      "aliases": []
+    },
+    {
+      "officer_id": "lo-0006",
+      "full_name": "Carlos Mendoza",
+      "title": "Loan Officer",
+      "branch": "Ann Arbor, MI",
+      "nmls_id": "900106",
+      "extension": "4321",
+      "status": "available",
+      "aliases": []
+    },
+    {
+      "officer_id": "lo-0007",
+      "full_name": "Aisha Rahman",
+      "title": "Underwriting Team Lead",
+      "branch": "Pontiac, MI",
+      "nmls_id": "900107",
+      "extension": "4405",
+      "status": "available",
+      "aliases": []
+    },
+    {
+      "officer_id": "lo-0008",
+      "full_name": "Jonathan Pierce",
+      "title": "Account Executive",
+      "branch": "Grand Rapids, MI",
+      "nmls_id": "900108",
+      "extension": "4510",
+      "status": "unavailable",
+      "aliases": ["Jon Pierce"]
+    },
+    {
+      "officer_id": "lo-0009",
+      "full_name": "Elena Kowalski",
+      "title": "Senior Account Executive",
+      "branch": "Grand Rapids, MI",
+      "nmls_id": "900109",
+      "extension": "4511",
+      "status": "available",
+      "aliases": []
+    },
+    {
+      "officer_id": "lo-0010",
+      "full_name": "Tyler Nguyen",
+      "title": "Loan Officer",
+      "branch": "Detroit, MI",
+      "nmls_id": "900110",
+      "extension": "4600",
+      "status": "available",
+      "aliases": []
+    }
+  ]
+}

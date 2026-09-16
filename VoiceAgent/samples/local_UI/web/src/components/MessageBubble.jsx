@@ -9,13 +9,13 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import {
   ALL_TURN_OUTLIER_PERCENT,
-  LATENCY_PIXELS_PER_SECOND,
   LATENCY_CHECKPOINTS,
   LATENCY_TONE_LEGEND,
+  LATENCY_VISUAL_REFERENCE_MS,
   buildAllTurnLatencyTable,
   buildLatencySumAnalysis,
   formatMetricMs,
-  latencyBarWidthPx,
+  latencyBarPercent,
   latencyRulerTicks,
 } from "../lib/turnMetrics.mjs";
 // The digit-accuracy demo is the one client function that ships with the portal, and its whole
@@ -211,7 +211,7 @@ function MetricExplanation({ column, children, className = "" }) {
 function AllTurnsTable({ messages, currentMessageId }) {
   const table = buildAllTurnLatencyTable(messages);
   if (!table.rows.length) {
-    return <p className="latency-table-empty">No completed user-triggered turns yet.</p>;
+    return <p className="latency-table-empty">No completed measurable Agent replies yet.</p>;
   }
   return (
     <>
@@ -287,7 +287,7 @@ function LatencySumPanel({ messages }) {
         </div>
       </div>
       <p className="latency-table-note">
-        Ranked by cumulative elapsed time across completed Agent replies that followed user speech.
+        Ranked by cumulative elapsed time across completed Agent replies with an audible trigger boundary.
         A large category is the largest measured optimization opportunity, not a claim that all of it
         can be removed.
       </p>
@@ -335,7 +335,7 @@ function LatencySumPanel({ messages }) {
           ))}
         </div>
       ) : (
-        <p className="latency-table-empty">No completed user-speech-triggered turns to sum yet.</p>
+        <p className="latency-table-empty">No completed measurable Agent replies to sum yet.</p>
       )}
 
       <details className="latency-sum-excluded" open={analysis.excludedTurns.length > 0}>
@@ -370,19 +370,18 @@ function LatencyDialog({ metrics, allMessages, currentMessageId, onClose }) {
   }, [onClose]);
 
   const phases = metrics.atomicPhases || [];
-  const totalWidthPx = latencyBarWidthPx(metrics.endToEndMs);
   const ticks = latencyRulerTicks(metrics.endToEndMs);
-  const canvasWidthPx = ticks[ticks.length - 1] * LATENCY_PIXELS_PER_SECOND;
   const origin = {
     user_last_voiced: "last voiced microphone PCM",
     server_vad: "server speech_stopped (proxy)",
     text_input: "text input sent",
     idle_timeout: "idle timeout window start",
+    agent_playback_end: "previous Agent speech end",
     response_created: "response.created",
   }[metrics.startSource] || "turn start";
   const headlineLabel = metrics.startSource === "idle_timeout"
     ? "Idle timeout→Agent"
-    : "User→Agent";
+    : metrics.startSource === "agent_playback_end" ? "Agent gap" : "User→Agent";
   const end = {
     playback: "scheduled playback of first speech",
     speech_pcm: "first voiced PCM frame",
@@ -443,7 +442,7 @@ function LatencyDialog({ metrics, allMessages, currentMessageId, onClose }) {
             <div className="latency-dialog-total">
               <b>{headlineLabel}</b>
               <strong>{formatMetricMs(metrics.endToEndMs)}</strong>
-              <span>Fixed scale: 1 second = {LATENCY_PIXELS_PER_SECOND}px; no maximum.</span>
+              <span>Overview fits the dialog; phase bars below use a 2-second reference.</span>
             </div>
 
             <div className="latency-tone-legend" aria-label="Latency subsystem colors">
@@ -458,8 +457,8 @@ function LatencyDialog({ metrics, allMessages, currentMessageId, onClose }) {
             </div>
 
             <div className="latency-detail-scroll">
-              <div className="latency-detail-canvas" style={{ width: `${canvasWidthPx}px` }}>
-                <div className="latency-detail-segments" style={{ width: `${totalWidthPx}px` }}>
+              <div className="latency-detail-canvas">
+                <div className="latency-detail-segments">
                   {phases.map((phase) => (
                     <span
                       className={[
@@ -477,14 +476,14 @@ function LatencyDialog({ metrics, allMessages, currentMessageId, onClose }) {
                       onMouseLeave={() => setActivePhaseId(null)}
                       onFocus={() => setActivePhaseId(phase.id)}
                       onBlur={() => setActivePhaseId(null)}
-                      style={{ width: `${latencyBarWidthPx(phase.durationMs)}px` }}
+                      style={{ width: `${latencyBarPercent(phase.durationMs, metrics.endToEndMs)}%` }}
                     />
                   ))}
                 </div>
                 <div className="latency-ruler">
                   {ticks.map((tick) => (
-                    <span key={tick} style={{ left: `${tick * LATENCY_PIXELS_PER_SECOND}px` }}>
-                      {tick}s
+                    <span key={tick} style={{ left: `${latencyBarPercent(tick, metrics.endToEndMs)}%` }}>
+                      {formatMetricMs(tick)}
                     </span>
                   ))}
                 </div>
@@ -515,9 +514,6 @@ function LatencyDialog({ metrics, allMessages, currentMessageId, onClose }) {
 }
 
 function LatencyPhaseCard({ phase, index, active, onActiveChange }) {
-  const phaseWidthPx = latencyBarWidthPx(phase.durationMs);
-  const phaseTicks = latencyRulerTicks(phase.durationMs);
-  const phaseCanvasWidthPx = phaseTicks[phaseTicks.length - 1] * LATENCY_PIXELS_PER_SECOND;
   return (
     <article
       className={`latency-phase-card${active ? " active" : ""}`}
@@ -535,10 +531,10 @@ function LatencyPhaseCard({ phase, index, active, onActiveChange }) {
         <strong>{formatMetricMs(phase.durationMs)}</strong>
       </div>
       <div className="latency-phase-scroll">
-        <div className="latency-phase-canvas" style={{ width: `${phaseCanvasWidthPx}px` }}>
+        <div className="latency-phase-canvas">
           <span
             className={`latency-phase-fill tone-${phase.tone}`}
-            style={{ width: `${phaseWidthPx}px` }}
+            style={{ width: `${latencyBarPercent(phase.durationMs, LATENCY_VISUAL_REFERENCE_MS)}%` }}
           />
         </div>
       </div>
@@ -552,10 +548,13 @@ function LatencyPhaseCard({ phase, index, active, onActiveChange }) {
 
 function CompactLatencyBar({ metrics, onOpen }) {
   const phases = metrics.atomicPhases || [];
-  const totalWidthPx = latencyBarWidthPx(metrics.endToEndMs);
+  const totalWidthPercent = latencyBarPercent(
+    metrics.endToEndMs,
+    LATENCY_VISUAL_REFERENCE_MS,
+  );
   const headlineLabel = metrics.startSource === "idle_timeout"
     ? "Idle timeout→Agent"
-    : "User→Agent";
+    : metrics.startSource === "agent_playback_end" ? "Agent gap" : "User→Agent";
   return (
     <button
       type="button"
@@ -563,22 +562,27 @@ function CompactLatencyBar({ metrics, onOpen }) {
       onClick={onOpen}
       title="Open the complete turn latency analysis"
     >
-      <span className="compact-latency-label">{headlineLabel}</span>
+      <span className="compact-latency-heading">
+        <span className="compact-latency-label">{headlineLabel}</span>
+        <strong>{formatMetricMs(metrics.endToEndMs)}</strong>
+      </span>
       <span className="compact-latency-scroll">
-        <span className="compact-latency-canvas" style={{ width: `${totalWidthPx}px` }}>
-          <span className="compact-latency-fill" style={{ width: `${totalWidthPx}px` }}>
+        <span className="compact-latency-canvas">
+          <span
+            className="compact-latency-fill"
+            style={{ width: `${totalWidthPercent}%` }}
+          >
             {phases.map((phase) => (
               <span
                 className={`atomic-segment tone-${phase.tone}`}
                 key={phase.id}
-                style={{ width: `${latencyBarWidthPx(phase.durationMs)}px` }}
+                style={{ width: `${latencyBarPercent(phase.durationMs, metrics.endToEndMs)}%` }}
               />
             ))}
-            {phases.length ? null : <span className="atomic-segment tone-other" style={{ width: `${totalWidthPx}px` }} />}
+            {phases.length ? null : <span className="atomic-segment tone-other" style={{ width: "100%" }} />}
           </span>
         </span>
       </span>
-      <strong>{formatMetricMs(metrics.endToEndMs)}</strong>
     </button>
   );
 }
