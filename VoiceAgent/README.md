@@ -3,10 +3,11 @@
 Voice agents now are available in all Foundry Agent regions including South India
 
 For a Portal-first walkthrough with an optional Python creator, see
-[Create an agent with Knowledge IQ, custom photo avatar, and Personal Voice](samples/create-agent-with-iq-avatar-voice/README.md).
-Prepare Knowledge and consent-based assets once, then create the agent in
-Foundry Portal or with Python and try it in the Portal. The Python path also
-supports standard voices and an optional custom photo avatar.
+[Create an agent with Knowledge IQ, Andrew Dragon HD, and Harry Business](samples/create-agent-with-iq-avatar-voice/README.md).
+Prepare Knowledge, use the prebuilt Andrew Dragon HD voice and Standard Harry
+Business avatar, then create the agent in Foundry Portal or with Python and
+try it in the Portal. The Python template includes both selections. Custom photo
+avatars and Personal Voice are optional; a no-avatar baseline is also supported.
 The walkthrough includes Knowledge evaluation results, Portal functional checks
 and Python test results. The Portal path needs no local setup; the Python creator
 uses its own minimal setup, without microphone libraries.
@@ -62,7 +63,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 
 | File | Lifecycle |
 | --- | --- |
-| [Knowledge, custom photo avatar and Personal Voice](samples/create-agent-with-iq-avatar-voice/README.md) | Shared Portal resource setup, Portal agent creation (recommended), or optional Python validate/create/read-back. Includes Portal voice interaction, Knowledge evaluation results and Python test results. No local UI. |
+| [Knowledge, Andrew Dragon HD and Harry Business](samples/create-agent-with-iq-avatar-voice/README.md) | Prebuilt Andrew + Standard Harry Business by default; optional custom photo avatar and Personal Voice workflows. Shared Portal setup, Portal agent creation (recommended), or Python validate/create/read-back. Includes Portal interaction and evaluation results. No local UI. |
 | `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
 | `samples/basic_voice_agent.py` | Create and version a basic agent, or connect to an existing agent, then converse through the microphone. |
 | `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |

@@ -107,14 +107,22 @@ def validate_config(config: Any) -> dict[str, Any]:
         "definition",
     )
     if "avatar" in definition:
-        avatar = _object(definition["avatar"], {"type", "character", "customized", "model", "output_protocol"}, "avatar")
-        if avatar.get("type") != "photo_avatar":
-            raise ConfigurationError("avatar.type must be photo_avatar, not the runtime wire value photo-avatar.")
+        common = {"type", "character", "customized", "output_protocol"}
+        avatar = _object(definition["avatar"], common | {"style", "model"}, "avatar")
+        if avatar.get("type") == "video_avatar":
+            _object(avatar, common | {"style"}, "avatar")
+            _text(avatar.get("style"), "avatar.style")
+            if avatar.get("customized") is not False:
+                raise ConfigurationError("avatar.customized must be the boolean false for a standard avatar.")
+        elif avatar.get("type") == "photo_avatar":
+            _object(avatar, common | {"model"}, "avatar")
+            if avatar.get("customized") is not True:
+                raise ConfigurationError("avatar.customized must be the boolean true for a custom photo avatar.")
+            if avatar.get("model") != "vasa-1":
+                raise ConfigurationError("avatar.model must be vasa-1.")
+        else:
+            raise ConfigurationError("avatar.type must be video_avatar or photo_avatar, not a hyphenated runtime wire value.")
         _runtime_name(avatar.get("character"), "avatar.character")
-        if avatar.get("customized") is not True:
-            raise ConfigurationError("avatar.customized must be the boolean true for a custom photo avatar.")
-        if avatar.get("model") != "vasa-1":
-            raise ConfigurationError("avatar.model must be vasa-1.")
         if avatar.get("output_protocol") not in ("webrtc", "websocket"):
             raise ConfigurationError("avatar.output_protocol must be webrtc or websocket.")
     if definition.get("kind") != "voice":
@@ -167,9 +175,12 @@ def validate_config(config: Any) -> dict[str, Any]:
     if (
         not mcp.hostname.endswith(".search.windows.net")
         or not re.fullmatch(r"/knowledgebases/[A-Za-z0-9_-]+/mcp", mcp.path)
-        or mcp.query != "api-version=2026-08-01-preview"
+        or not re.fullmatch(r"api-version=[0-9]{4}-[0-9]{2}-[0-9]{2}(?:-[Pp]review)?", mcp.query)
     ):
-        raise ConfigurationError("Use the Knowledge MCP URL with Search API 2026-08-01-preview.")
+        raise ConfigurationError(
+            "Copy the Search Knowledge MCP URL from the RemoteTool connection target, with exactly one "
+            "api-version=YYYY-MM-DD or YYYY-MM-DD-preview query parameter and no extra parameters."
+        )
     if tool.get("allowed_tools") != ["knowledge_base_retrieve"]:
         raise ConfigurationError("Only knowledge_base_retrieve is allowed.")
     return deepcopy(config)
@@ -334,7 +345,8 @@ def main(argv: list[str] | None = None) -> int:
         config = load_config(args.config)
         if args.command == "validate":
             voice_type = config["definition"]["audio"]["output"]["voice_type"]
-            avatar = "with custom photo avatar" if "avatar" in config["definition"] else "without avatar"
+            avatar_type = config["definition"].get("avatar", {}).get("type")
+            avatar = {"video_avatar": "with standard avatar", "photo_avatar": "with custom photo avatar"}.get(avatar_type, "without avatar")
             print(f"Configuration valid: native Knowledge + {voice_type} {avatar}. No Azure calls made.")
             return 0
         if args.command == "show" and args.version.lower() == "latest":

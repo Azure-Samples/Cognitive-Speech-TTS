@@ -1,7 +1,7 @@
 {
   "project_endpoint": "https://<account>.services.ai.azure.com/api/projects/<project>",
   "agent_name": "<new-agent-name>",
-  "description": "Creation-first Foundry IQ agent with an Azure standard voice.",
+  "description": "Creation-first Foundry IQ agent with Andrew Dragon HD and the standard Harry Business avatar.",
   "definition": {
     "kind": "voice",
     "model_type": "managed",
@@ -20,15 +20,22 @@
       "output": {
         "format": {"type": "audio/pcm", "rate": 24000},
         "voice_type": "azure-standard",
-        "voice": "en-US-AvaNeural"
+        "voice": "en-US-Andrew:DragonHDLatestNeural"
       }
     },
-    "output_modalities": ["text", "audio"],
+    "avatar": {
+      "type": "video_avatar",
+      "character": "harry",
+      "style": "business",
+      "customized": false,
+      "output_protocol": "webrtc"
+    },
+    "output_modalities": ["text", "audio", "avatar"],
     "tools": [
       {
         "type": "mcp",
         "server_label": "foundry-iq",
-        "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=2026-08-01-preview",
+        "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=<search-api-version>",
         "project_connection_id": "<project-connection-name>",
         "allowed_tools": ["knowledge_base_retrieve"],
         "require_approval": "never"

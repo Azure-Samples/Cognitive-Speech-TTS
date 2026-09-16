@@ -36,7 +36,7 @@
       {
         "type": "mcp",
         "server_label": "foundry-iq",
-        "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=2026-08-01-preview",
+        "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=<search-api-version>",
         "project_connection_id": "<project-connection-name>",
         "allowed_tools": ["knowledge_base_retrieve"],
         "require_approval": "never"

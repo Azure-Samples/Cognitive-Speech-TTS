@@ -35,9 +35,11 @@ SDK_REQUIRED = unittest.skipUnless(SDK_AVAILABLE, "Exact bundled Projects SDK de
 
 PERSONAL_MODELS = ("DragonLatestNeural", "DragonHDOmniLatestNeural")
 PROTOCOLS = ("webrtc", "websocket")
+AVATARS = ("none", "standard", "photo")
+SEARCH_API_VERSIONS = ("2026-05-01-preview", "2026-08-01-preview", "2026-04-01", "2025-11-01-Preview")
 
 
-def config(*, personal=False, avatar=False, model=PERSONAL_MODELS[0], protocol=PROTOCOLS[0], example="agent.example.json"):
+def example_config(example="agent.example.json"):
     text = (ROOT / example).read_text(encoding="utf-8")
     for placeholder, value in {
         "<account>": "sample-account",
@@ -45,38 +47,55 @@ def config(*, personal=False, avatar=False, model=PERSONAL_MODELS[0], protocol=P
         "<new-agent-name>": "sample-agent",
         "<search-service>": "sample-search",
         "<knowledge-base>": "sample-knowledge",
+        "<search-api-version>": SEARCH_API_VERSIONS[0],
         "<project-connection-name>": "sample-connection",
         "<personal-voice-name>": "fake-personal-voice",
         "<custom-photo-avatar-name>": "fake-photo-avatar",
     }.items():
         text = text.replace(placeholder, value)
-    settings = json.loads(text)
+    return json.loads(text)
+
+
+def config(*, personal=False, avatar="none", model=PERSONAL_MODELS[0], protocol=PROTOCOLS[0]):
+    settings = example_config()
+    output = settings["definition"]["audio"]["output"]
     if personal:
-        settings["definition"]["audio"]["output"].update(
-            voice_type="azure-personal", voice="fake-personal-voice", personal_voice_model=model,
-        )
-    if avatar:
+        output.update(voice_type="azure-personal", voice="fake-personal-voice", personal_voice_model=model)
+    else:
+        output.update(voice_type="azure-standard", voice="en-US-Andrew:DragonHDLatestNeural")
+        output.pop("personal_voice_model", None)
+    if avatar == "standard":
+        settings["definition"]["avatar"] = {
+            "type": "video_avatar", "character": "harry", "style": "business",
+            "customized": False, "output_protocol": protocol,
+        }
+    elif avatar == "photo":
         settings["definition"]["avatar"] = {
             "type": "photo_avatar", "character": "fake-photo-avatar", "customized": True,
             "model": "vasa-1", "output_protocol": protocol,
         }
-        settings["definition"]["output_modalities"] = ["text", "audio", "avatar"]
+    elif avatar == "none":
+        settings["definition"].pop("avatar", None)
+    else:
+        raise ValueError(f"Unknown test avatar: {avatar}")
+    settings["definition"]["output_modalities"] = ["text", "audio"] + (["avatar"] if avatar != "none" else [])
     return settings
 
 
 def combinations():
     for personal in (False, True):
-        for avatar in (False, True):
+        for avatar in AVATARS:
             for model in PERSONAL_MODELS if personal else (None,):
-                for protocol in PROTOCOLS if avatar else (None,):
+                for protocol in PROTOCOLS if avatar != "none" else (None,):
                     yield config(personal=personal, avatar=avatar, model=model, protocol=protocol)
 
 
 def asset_mismatches(settings):
+    definition = settings["definition"]
     replacements = {
         "avatar": {
-            "type": "photo-avatar", "character": "fake-other-avatar", "customized": False,
-            "model": "other-model", "output_protocol": "websocket",
+            "type": "photo-avatar", "character": "fake-other-avatar", "customized": True,
+            "style": "casual", "model": "other-model", "output_protocol": "websocket",
         },
         "output": {
             "voice_type": "azure-standard", "voice": "fake-other-voice",
@@ -84,9 +103,17 @@ def asset_mismatches(settings):
         },
     }
     for section, fields in replacements.items():
+        original = definition.get("avatar", {}) if section == "avatar" else definition["audio"]["output"]
         for key, replacement in fields.items():
+            if key not in original:
+                continue
+            if replacement == original[key]:
+                replacement = {
+                    "customized": False, "voice_type": "azure-personal",
+                    "personal_voice_model": "DragonLatestNeural", "output_protocol": "webrtc",
+                }[key]
             for mode in ("missing", "changed", "null"):
-                actual = deepcopy(settings["definition"])
+                actual = deepcopy(definition)
                 target = actual["avatar"] if section == "avatar" else actual["audio"]["output"]
                 if mode == "missing":
                     del target[key]
@@ -94,14 +121,16 @@ def asset_mismatches(settings):
                     target[key] = replacement if mode == "changed" else None
                 yield f"{section}.{key}.{mode}", actual
     for key in ("avatar", "output_modalities"):
-        actual = deepcopy(settings["definition"])
-        del actual[key]
-        yield f"{key}.missing", actual
-    actual = deepcopy(settings["definition"])
-    actual["avatar"]["customized"] = 1
-    yield "avatar.customized.integer", actual
-    actual = deepcopy(settings["definition"])
-    actual["output_modalities"] = ["text", "audio"]
+        if key in definition:
+            actual = deepcopy(definition)
+            del actual[key]
+            yield f"{key}.missing", actual
+    if "avatar" in definition:
+        actual = deepcopy(definition)
+        actual["avatar"]["customized"] = int(actual["avatar"]["customized"])
+        yield "avatar.customized.integer", actual
+    actual = deepcopy(definition)
+    actual["output_modalities"] = ["text", "audio"] if "avatar" in definition else ["text", "audio", "avatar"]
     yield "output_modalities.changed", actual
 
 
@@ -137,7 +166,7 @@ class ConfigurationTests(unittest.TestCase):
         validated["definition"]["tools"].clear()
         self.assertEqual(len(original["definition"]["tools"]), 1)
 
-    def test_four_combinations_and_models_and_protocols(self):
+    def test_six_combinations_and_models_and_protocols(self):
         for settings in combinations():
             with self.subTest(definition=settings["definition"]), patch.object(socket, "socket", side_effect=AssertionError("network")):
                 self.assertEqual(app.validate_config(settings), settings)
@@ -166,11 +195,28 @@ class ConfigurationTests(unittest.TestCase):
             with self.subTest(filename=filename), self.assertRaises(app.ConfigurationError):
                 app.load_config(ROOT / filename)
 
+    def test_default_example_selects_andrew_and_harry_business(self):
+        settings = example_config()
+        self.assertEqual(app.validate_config(settings), settings)
+        self.assertEqual(settings["definition"]["audio"]["output"], {
+            "format": {"type": "audio/pcm", "rate": 24000},
+            "voice_type": "azure-standard", "voice": "en-US-Andrew:DragonHDLatestNeural",
+        })
+        self.assertEqual(settings["definition"]["avatar"], {
+            "type": "video_avatar", "character": "harry", "style": "business",
+            "customized": False, "output_protocol": "webrtc",
+        })
+        self.assertEqual(settings["definition"]["output_modalities"], ["text", "audio", "avatar"])
+
     def test_personal_example_valid_after_placeholder_replacement(self):
-        settings = config(example="agent.personal.example.json")
+        settings = example_config("agent.personal.example.json")
         self.assertEqual(app.validate_config(settings), settings)
         self.assertEqual(settings["definition"]["audio"]["output"]["voice_type"], "azure-personal")
-        self.assertEqual(settings["definition"]["avatar"]["character"], "fake-photo-avatar")
+        self.assertEqual(settings["definition"]["audio"]["output"]["personal_voice_model"], "DragonLatestNeural")
+        self.assertEqual(settings["definition"]["avatar"], {
+            "type": "photo_avatar", "character": "fake-photo-avatar", "customized": True,
+            "model": "vasa-1", "output_protocol": "webrtc",
+        })
 
     def test_rejects_invalid_configurations(self):
         cases = [
@@ -242,18 +288,18 @@ class ConfigurationTests(unittest.TestCase):
         )
         for field in ("voice", "character"):
             for value in values:
-                settings = config(personal=True, avatar=True)
+                settings = config(personal=True, avatar="photo")
                 asset = settings["definition"]["audio"]["output"] if field == "voice" else settings["definition"]["avatar"]
                 asset[field] = value
                 with self.subTest(field=field, value=value):
                     self.assert_rejected_before_client(settings)
-            settings = config(personal=True, avatar=True)
+            settings = config(personal=True, avatar="photo")
             asset = settings["definition"]["audio"]["output"] if field == "voice" else settings["definition"]["avatar"]
             del asset[field]
             self.assert_rejected_before_client(settings)
 
     def test_opaque_runtime_names_are_not_classified_as_known_ids(self):
-        settings = config(personal=True, avatar=True)
+        settings = config(personal=True, avatar="photo")
         # Local syntax cannot determine whether an opaque value is a valid runtime asset name.
         name = "00000000-0000-0000-0000-000000000000"
         settings["definition"]["audio"]["output"]["voice"] = name
@@ -261,33 +307,56 @@ class ConfigurationTests(unittest.TestCase):
         self.assertEqual(app.validate_config(settings), settings)
 
     def test_avatar_fields_are_all_required(self):
-        for key in config(avatar=True)["definition"]["avatar"]:
-            settings = config(avatar=True)
-            del settings["definition"]["avatar"][key]
-            with self.subTest(key=key):
-                self.assert_rejected_before_client(settings)
-        for value in (None, {}, [], "photo_avatar"):
-            settings = config(avatar=True)
+        for avatar in ("standard", "photo"):
+            for key in config(avatar=avatar)["definition"]["avatar"]:
+                settings = config(avatar=avatar)
+                del settings["definition"]["avatar"][key]
+                with self.subTest(avatar=avatar, key=key):
+                    self.assert_rejected_before_client(settings)
+        for value in (None, {}, [], "photo_avatar", "video_avatar"):
+            settings = config(avatar="standard")
             settings["definition"]["avatar"] = value
             with self.subTest(value=value):
                 self.assert_rejected_before_client(settings)
 
     def test_avatar_values_are_strict_without_fallback(self):
-        for key, value in (
-            ("type", "photo-avatar"), ("type", "video_avatar"), ("type", None),
-            ("customized", False), ("customized", 1), ("customized", "true"),
-            ("model", "other-model"), ("model", None),
+        common = [
+            ("type", "photo-avatar"), ("type", "video-avatar"), ("type", None), ("type", "unknown"),
+            ("customized", None), ("customized", 0), ("customized", 1), ("customized", "false"),
             ("output_protocol", "WebRTC"), ("output_protocol", "https"), ("output_protocol", None),
-        ):
-            settings = config(avatar=True)
-            settings["definition"]["avatar"][key] = value
-            with self.subTest(key=key, value=value):
-                self.assert_rejected_before_client(settings)
+        ]
+        for avatar in ("standard", "photo"):
+            cases = common + (
+                [("type", "photo_avatar"), ("customized", True), ("model", "vasa-1"), ("model", None)]
+                if avatar == "standard" else
+                [("type", "video_avatar"), ("customized", False), ("model", "other-model"), ("model", None), ("style", "business"), ("style", None)]
+            )
+            for key, value in cases:
+                settings = config(avatar=avatar)
+                settings["definition"]["avatar"][key] = value
+                with self.subTest(avatar=avatar, key=key, value=value):
+                    self.assert_rejected_before_client(settings)
+
+    def test_standard_avatar_requires_nonempty_style_and_runtime_character(self):
+        for field in ("style", "character"):
+            values = [None, "", " ", 42, [], {}, "<replace-me>", " business ", "${STYLE}"]
+            if field == "character":
+                values += ["https://example.invalid/avatar", "./photo.png", "bad\nname"]
+            for value in values:
+                settings = config(avatar="standard")
+                settings["definition"]["avatar"][field] = value
+                with self.subTest(field=field, value=value):
+                    self.assert_rejected_before_client(settings)
+
+    def test_standard_avatar_does_not_hardcode_a_platform_catalog(self):
+        settings = config(avatar="standard")
+        settings["definition"]["avatar"].update(character="lisa", style="casual-sitting")
+        self.assertEqual(app.validate_config(settings), settings)
 
     def test_avatar_modality_matches_presence_exactly(self):
-        for avatar in (False, True):
+        for avatar in AVATARS:
             invalid = [["text"], ["audio"], ["audio", "text"], ["text", "audio", "avatar", "avatar"]]
-            invalid.append(["text", "audio"] if avatar else ["text", "audio", "avatar"])
+            invalid.append(["text", "audio"] if avatar != "none" else ["text", "audio", "avatar"])
             for modalities in invalid:
                 settings = config(avatar=avatar)
                 settings["definition"]["output_modalities"] = modalities
@@ -295,27 +364,28 @@ class ConfigurationTests(unittest.TestCase):
                     self.assert_rejected_before_client(settings)
 
     def test_asset_extra_fields_and_profile_remapping_rejected(self):
-        for section in ("voice", "avatar", "definition", "config"):
-            for key, value in (
-                ("speakerProfileId", "fake-profile"), ("profileId", "fake-profile"),
-                ("photoAvatarId", "fake-id"), ("url", "https://example.invalid/photo.png"),
-                ("headers", {"Foundry-Features": "fake-override"}), ("extra_body", {}),
-                ("style", "casual"), ("video", {}), ("scene", {}),
-            ):
-                settings = config(personal=True, avatar=True)
-                target = {
-                    "voice": settings["definition"]["audio"]["output"],
-                    "avatar": settings["definition"]["avatar"],
-                    "definition": settings["definition"], "config": settings,
-                }[section]
-                target[key] = value
-                with self.subTest(section=section, key=key):
-                    self.assert_rejected_before_client(settings)
+        for avatar in ("standard", "photo"):
+            for section in ("voice", "avatar", "definition", "config"):
+                for key, value in (
+                    ("speakerProfileId", "fake-profile"), ("profileId", "fake-profile"),
+                    ("photoAvatarId", "fake-id"), ("url", "https://example.invalid/photo.png"),
+                    ("headers", {"Foundry-Features": "fake-override"}), ("extra_body", {}),
+                    ("video", {}), ("scene", {}),
+                ):
+                    settings = config(personal=True, avatar=avatar)
+                    target = {
+                        "voice": settings["definition"]["audio"]["output"],
+                        "avatar": settings["definition"]["avatar"],
+                        "definition": settings["definition"], "config": settings,
+                    }[section]
+                    target[key] = value
+                    with self.subTest(avatar=avatar, section=section, key=key):
+                        self.assert_rejected_before_client(settings)
 
     def test_pcm_restriction_is_unchanged(self):
         for direction in ("input", "output"):
             for value in ({"type": "audio/pcm", "rate": 16000}, {"type": "audio/opus", "rate": 24000}):
-                settings = config(personal=True, avatar=True)
+                settings = config(personal=True, avatar="photo")
                 settings["definition"]["audio"][direction]["format"] = value
                 with self.subTest(direction=direction, value=value):
                     self.assert_rejected_before_client(settings)
@@ -331,6 +401,46 @@ class ConfigurationTests(unittest.TestCase):
             settings["definition"]["tools"][0][key] = value
             with self.subTest(key=key), self.assertRaises(app.ConfigurationError):
                 app.validate_config(settings)
+
+    def test_mcp_api_versions_are_preserved_without_a_version_allowlist(self):
+        for version in SEARCH_API_VERSIONS:
+            settings = example_config()
+            tool = settings["definition"]["tools"][0]
+            tool["server_url"] = tool["server_url"].split("?", 1)[0] + f"?api-version={version}"
+            with self.subTest(version=version), patch.object(socket, "socket", side_effect=AssertionError("network")):
+                self.assertEqual(app.validate_config(settings), settings)
+
+    def test_mcp_requires_one_explicit_version_and_no_extra_parameters(self):
+        queries = (
+            "", "?", "?api-version=", "?api-version", "?other=2026-05-01-preview",
+            "?api-version=latest", "?api-version=v1", "?api-version=2026-5-1-preview",
+            "?api-version=２０２６-０５-０１-preview", "?api-version=<search-api-version>",
+            "?api-version=2026-05-01-preview&api-version=2026-08-01-preview",
+            "?api-version=2026-05-01-preview&api-version=2026-05-01-preview",
+            "?api-version=2026-05-01-preview&sig=fake", "?api-version=2026-05-01-preview&token=fake",
+            "?api-version=2026-05-01-preview&other=value", "?api-version=2026-05-01-preview&",
+            "?api-version=2026-05-01-preview;sig=fake", "?api-version=2026-05-01-preview%26sig%3Dfake",
+        )
+        for query in queries:
+            settings = example_config()
+            tool = settings["definition"]["tools"][0]
+            tool["server_url"] = tool["server_url"].split("?", 1)[0] + query
+            with self.subTest(query=query):
+                self.assert_rejected_before_client(settings)
+
+    def test_mcp_host_path_and_credentials_remain_restricted(self):
+        urls = (
+            "http://sample-search.search.windows.net/knowledgebases/sample/mcp",
+            "https://sample-search.search.windows.net.evil.invalid/knowledgebases/sample/mcp",
+            "https://user:password@sample-search.search.windows.net/knowledgebases/sample/mcp",
+            "https://sample-search.search.windows.net/indexes/sample/mcp",
+            "https://sample-search.search.windows.net/knowledgebases/sample/retrieve",
+        )
+        for url in urls:
+            settings = example_config()
+            settings["definition"]["tools"][0]["server_url"] = url + "?api-version=2026-05-01-preview"
+            with self.subTest(url=url):
+                self.assert_rejected_before_client(settings)
 
     def test_invalid_vad_values(self):
         for key, value in [("threshold", True), ("threshold", float("nan")), ("threshold", 2), ("prefix_padding_ms", -1), ("silence_duration_ms", "500")]:
@@ -438,15 +548,15 @@ class LifecycleTests(unittest.TestCase):
                 self.assertTrue(app.create_agent(client, settings)["definition_verified"])
 
     def test_all_asset_readback_fields_must_match_the_request(self):
-        settings = config(personal=True, avatar=True)
-        for label, actual in asset_mismatches(settings):
-            client = client_for(settings)
-            client.agents.get_version.return_value["definition"] = actual
-            with self.subTest(label=label), self.assertRaises(app.LifecycleError) as failure:
-                app.create_agent(client, settings)
-            self.assertFalse(failure.exception.report["definition_verified"])
-            self.assertEqual(failure.exception.report["creation_status"], "created")
-            self.assertEqual(failure.exception.report["version_id"], "version-object-id")
+        for settings in combinations():
+            for label, actual in asset_mismatches(settings):
+                client = client_for(settings)
+                client.agents.get_version.return_value["definition"] = actual
+                with self.subTest(settings=settings, label=label), self.assertRaises(app.LifecycleError) as failure:
+                    app.create_agent(client, settings)
+                self.assertFalse(failure.exception.report["definition_verified"])
+                self.assertEqual(failure.exception.report["creation_status"], "created")
+                self.assertEqual(failure.exception.report["version_id"], "version-object-id")
 
     def test_unrequested_avatar_and_personal_model_injections_rejected(self):
         for personal in (False, True):
@@ -456,7 +566,7 @@ class LifecycleTests(unittest.TestCase):
                 client.agents.get_version.return_value["definition"]["avatar"] = avatar
                 with self.subTest(personal=personal, avatar=avatar), self.assertRaises(app.LifecycleError):
                     app.create_agent(client, settings)
-        for avatar in (False, True):
+        for avatar in AVATARS:
             for model in ("", "DragonLatestNeural"):
                 settings = config(avatar=avatar)
                 client = client_for(settings)
@@ -603,7 +713,7 @@ class HttpContractTests(unittest.TestCase):
             "definition": settings["definition"], "description": settings["description"],
         })
 
-    def test_real_sdk_create_readback_four_combinations_models_protocols(self):
+    def test_real_sdk_create_readback_six_combinations_models_protocols(self):
         for settings in combinations():
             with self.subTest(settings=settings):
                 client, transport, credential = self.client(settings, self.steps(settings))
@@ -634,23 +744,66 @@ class HttpContractTests(unittest.TestCase):
                         self.assertIsNone(definition.avatar)
                     self.assertEqual(definition.as_dict(), settings["definition"])
 
-    def test_real_sdk_deserialized_asset_mismatches_preserve_partial_reports(self):
-        settings = config(personal=True, avatar=True)
-        for label, actual in asset_mismatches(settings):
+    def test_real_sdk_preserves_mcp_api_version_in_create_and_show(self):
+        for version in SEARCH_API_VERSIONS:
+            settings = example_config()
+            tool = settings["definition"]["tools"][0]
+            tool["server_url"] = tool["server_url"].split("?", 1)[0] + f"?api-version={version}"
+            with self.subTest(version=version):
+                client, transport, _ = self.client(settings, self.steps(settings))
+                self.assertTrue(app.create_agent(client, settings)["definition_verified"])
+                self.assert_requests(settings, transport)
+                client, transport, _ = self.client(settings, self.steps(settings)[2:])
+                self.assertTrue(app.show_agent(client, settings, self.VERSION)["definition_verified"])
+                self.assertEqual([request.method for request in transport.requests], ["GET", "GET"])
+                self.assertEqual(transport.steps, [])
+
+    def test_real_sdk_rejects_changed_mcp_api_version_on_readback(self):
+        for version in SEARCH_API_VERSIONS:
+            settings = example_config()
+            tool = settings["definition"]["tools"][0]
+            base_url = tool["server_url"].split("?", 1)[0]
+            tool["server_url"] = base_url + f"?api-version={version}"
+            replacement = "2026-08-01-preview" if version != "2026-08-01-preview" else "2026-05-01-preview"
+            actual = deepcopy(settings["definition"])
+            actual["tools"][0]["server_url"] = base_url + f"?api-version={replacement}"
             client, transport, _ = self.client(settings, self.steps(settings, actual=actual))
-            with self.subTest(label=label), self.assertRaises(app.LifecycleError) as failure:
+            with self.subTest(version=version), self.assertRaises(app.LifecycleError) as failure:
                 app.create_agent(client, settings)
             self.assert_requests(settings, transport)
+            self.assertFalse(failure.exception.report["definition_verified"])
             self.assertEqual(failure.exception.report["creation_status"], "created")
             self.assertEqual(failure.exception.report["version_id"], self.VERSION_ID)
-            self.assertFalse(failure.exception.report["definition_verified"])
+
+    def test_real_sdk_default_template_create_and_show(self):
+        settings = example_config()
+        client, transport, _ = self.client(settings, self.steps(settings))
+        self.assertTrue(app.create_agent(client, settings)["definition_verified"])
+        self.assert_requests(settings, transport)
+        client, transport, _ = self.client(settings, self.steps(settings)[2:])
+        self.assertTrue(app.show_agent(client, settings, self.VERSION)["definition_verified"])
+        self.assertEqual([request.method for request in transport.requests], ["GET", "GET"])
+        self.assertEqual(transport.steps, [])
+
+    def test_real_sdk_deserialized_asset_mismatches_preserve_partial_reports(self):
+        for settings in combinations():
+            for label, actual in asset_mismatches(settings):
+                client, transport, _ = self.client(settings, self.steps(settings, actual=actual))
+                with self.subTest(settings=settings, label=label), self.assertRaises(app.LifecycleError) as failure:
+                    app.create_agent(client, settings)
+                self.assert_requests(settings, transport)
+                self.assertEqual(failure.exception.report["creation_status"], "created")
+                self.assertEqual(failure.exception.report["version_id"], self.VERSION_ID)
+                self.assertFalse(failure.exception.report["definition_verified"])
 
     def test_real_sdk_rejects_unrequested_asset_injection(self):
-        for personal, avatar, field in ((False, False, "avatar"), (True, False, "avatar"), (False, True, "personal_voice_model")):
+        cases = [(personal, "none", "avatar") for personal in (False, True)]
+        cases += [(False, avatar, "personal_voice_model") for avatar in AVATARS]
+        for personal, avatar, field in cases:
             settings = config(personal=personal, avatar=avatar)
             actual = deepcopy(settings["definition"])
             if field == "avatar":
-                actual["avatar"] = config(avatar=True)["definition"]["avatar"]
+                actual["avatar"] = config(avatar="photo")["definition"]["avatar"]
             else:
                 actual["audio"]["output"][field] = "DragonLatestNeural"
             client, transport, _ = self.client(settings, self.steps(settings, actual=actual))
@@ -669,7 +822,7 @@ class HttpContractTests(unittest.TestCase):
             self.assert_requests(settings, transport)
 
     def test_real_sdk_existing_name_never_posts(self):
-        settings = config(personal=True, avatar=True)
+        settings = config(personal=True, avatar="photo")
         steps = self.steps(settings)
         client, transport, _ = self.client(settings, [steps[-1]])
         with self.assertRaisesRegex(app.LifecycleError, "already exists"):
@@ -678,7 +831,7 @@ class HttpContractTests(unittest.TestCase):
         self.assertEqual(transport.steps, [])
 
     def test_real_sdk_creation_failure_has_one_post_and_no_retry(self):
-        settings = config(personal=True, avatar=True)
+        settings = config(personal=True, avatar="photo")
         steps = self.steps(settings)[:2]
         method, path, _, _ = steps[1]
         steps[1] = (method, path, 503, {"error": {"code": "Unavailable", "message": "Fake private response"}})
@@ -692,7 +845,7 @@ class HttpContractTests(unittest.TestCase):
         self.assertNotIn("Fake private response", str(failure.exception))
 
     def test_real_sdk_show_uses_exact_version_and_only_gets(self):
-        settings = config(personal=True, avatar=True)
+        settings = config(personal=True, avatar="photo")
         client, transport, _ = self.client(settings, self.steps(settings)[2:])
         report = app.show_agent(client, settings, self.VERSION)
         self.assertTrue(report["definition_verified"])
@@ -722,14 +875,15 @@ class CliTests(unittest.TestCase):
 
     def test_validate_describes_each_requested_combination(self):
         for personal in (False, True):
-            for avatar in (False, True):
+            for avatar in AVATARS:
                 settings = config(personal=personal, avatar=avatar)
                 self.config_path.write_text(json.dumps(settings), encoding="utf-8")
                 with self.subTest(personal=personal, avatar=avatar), patch.object(socket, "socket", side_effect=AssertionError("network")):
                     code, out, _ = self.run_cli("validate")
                 self.assertEqual(code, 0)
                 self.assertIn(settings["definition"]["audio"]["output"]["voice_type"], out)
-                self.assertIn("with custom photo avatar" if avatar else "without avatar", out)
+                expected = {"none": "without avatar", "standard": "with standard avatar", "photo": "with custom photo avatar"}
+                self.assertIn(expected[avatar], out)
                 self.assertIn("No Azure calls", out)
 
     def test_missing_config_fails_without_network(self):
