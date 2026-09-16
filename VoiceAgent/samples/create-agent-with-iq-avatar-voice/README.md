@@ -258,7 +258,7 @@ Use the agent from your chosen creation path:
 
 ## Results and cleanup
 
-[Evaluation results](docs/evaluation.md) records the 252-question Knowledge benchmark, initial failure analysis, Portal functional result and Python test results. Per-question answers or recordings are not required in the public sample. The Python templates set `store=false`; for Portal-created agents, review the applicable storage, access and retention settings. Do not enable recording merely to fill an evaluation summary.
+[Evaluation results](docs/evaluation.md) records the 252-question Knowledge benchmark, final failure breakdown, Portal functional result and Python test results. Per-question answers or recordings are not required in the public sample. The Python templates set `store=false`; for Portal-created agents, review the applicable storage, access and retention settings. Do not enable recording merely to fill an evaluation summary.
 
 For cleanup, review the agent/version created for this sample. Remove only explicitly approved resources through supported interfaces. **Do not delete a reused KB, connection, storage container or personal asset** just because the sample is finished. Removing an agent does not remove its dependencies. Follow the applicable retention policy for consent and biometric data.
 

@@ -8,7 +8,7 @@ Last updated: September 16, 2026.
 
 The benchmark covers Theodore Roosevelt questions across 30 quiz groups, using `gpt-4o` with Foundry IQ in Foundry Portal text interactions. A declined answer counts as FAIL when the benchmark expects an answer.
 
-The totals below include these updates and measure final-answer correctness.
+The totals below measure final-answer correctness.
 
 | Metric | Result |
 | --- | --- |
@@ -47,7 +47,7 @@ Recorded on September 16, 2026, using bundled Azure AI Projects 2.7.0b1 and Open
 | Offline test suite | **49 passed; 0 skipped** | Configuration, typed models, lifecycle, CLI and bundled SDK HTTP contracts with synthetic in-memory responses |
 | Direct CLI smoke checks | **8 expected outcomes passed** | Help; four valid configurations; two unresolved templates and one invalid model correctly rejected with exit code 2 |
 
-Commands for the Python checks are in [Run Python offline checks](../README.md#run-python-offline-checks).
+See [Run Python offline checks](../README.md#run-python-offline-checks) for the unit-test and CLI help commands.
 
 ## Data handling
 
