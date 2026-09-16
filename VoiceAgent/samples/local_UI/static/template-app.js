@@ -575,6 +575,30 @@ function refreshActionState() {
   $("btn-test-mcp").disabled = !state.template?.requires_mcp || state.mcpChecking;
 }
 
+function mcpProbeSummary(result) {
+  const endpoint = result?.server_url || "unknown endpoint";
+  let status = "unreachable";
+  if (result?.ok) {
+    status = `authenticated and ready (HTTP ${result.http_status || 200})`;
+  } else if (result?.auth_gate) {
+    status = `authentication failed (HTTP ${result.http_status || "unknown"})`;
+  } else if (result?.reached) {
+    status = `responded with HTTP ${result.http_status || "unknown"}`;
+  }
+  const details = [
+    `Endpoint: ${endpoint}`,
+    `Status: ${status}`,
+  ];
+  if (result?.server_name) {
+    details.push(
+      `Server: ${result.server_name}${result.server_version ? ` ${result.server_version}` : ""}`,
+    );
+  }
+  if (Array.isArray(result?.tools)) details.push(`Tools: ${result.tools.length}`);
+  if (result?.checked_at) details.push(`Checked: ${result.checked_at}`);
+  return details.join(" · ");
+}
+
 async function testTemplateMcp() {
   const template = state.template;
   if (!template?.requires_mcp || state.mcpChecking) return;
@@ -597,12 +621,13 @@ async function testTemplateMcp() {
     if (!result.ok) throw new Error(result.error || "MCP is not reachable.");
     state.mcpReady = true;
     $("mcp-test-state").className = "good";
-    $("mcp-test-state").textContent = `${result.message} Checked at ${result.checked_at}.`;
+    $("mcp-test-state").textContent = mcpProbeSummary(result);
   } catch (error) {
     if (state.template?.id !== templateId) return;
     state.mcpReady = false;
     $("mcp-test-state").className = "bad";
-    $("mcp-test-state").textContent = `MCP check failed: ${error.message}`;
+    const summary = recovery ? `${mcpProbeSummary(recovery)} · ` : "";
+    $("mcp-test-state").textContent = `${summary}Error: ${error.message}`;
     $("mcp-start-command").textContent = recovery?.start_command
       || "cd VoiceAgent/shared_mcp && ./scripts/e2e-local.sh";
     $("mcp-guide-link").href = recovery?.guide_url || "/guide/run-samples";
