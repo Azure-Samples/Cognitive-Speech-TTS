@@ -5,11 +5,11 @@ Voice agents now are available in all Foundry Agent regions including South Indi
 > For a standalone **Knowledge + Avatar + Voice** browser sample, see
 > [Voice Live with Foundry IQ](samples/voice-live-foundry-iq-avatar/README.md).
 > It uses public Azure Voice Live and `invocations_ws`, Python 3.13, and its own
-> requirements. Follow its README instead of the private-preview setup below;
-> it does not use the bundled Projects SDK wheel, Voice Agent private-preview
-> allowlisting, or PortAudio. Avatar is optional, with an explicit enable setting.
+> requirements. Follow its README instead of the Projects SDK setup below;
+> it does not use the bundled Projects SDK wheel or PortAudio. Avatar is optional,
+> with an explicit enable setting.
 
-The setup below is for the private-preview Python samples. For .NET, use the standalone
+The setup below is for the Python samples. For .NET, use the standalone
 [C# voice agent sample](samples/CSharp/README.md) and the bundled
 `Azure.AI.Projects.Agents` 3.0.0-beta.3 preview SDK. The C# sample requires
 .NET 8 or later, but does not require Python or audio-device dependencies.

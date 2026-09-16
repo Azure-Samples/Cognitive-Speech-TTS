@@ -12,12 +12,12 @@ Microsoft has no responsibility to you or others with respect to any of these sa
 
 This sample deploys a Microsoft Foundry hosted agent that bridges the public `invocations_ws` 2.0 protocol to Azure Voice Live. Voice Live calls a Foundry IQ knowledge base over MCP and streams grounded speech and text to a browser using an Azure standard voice.
 
-This standalone sample uses the public Azure Voice Live SDK and its own Python 3.13 dependencies, not the bundled private-preview Projects SDK used by other samples in this directory. Follow this README rather than the parent directory's private-preview setup.
+This standalone sample uses the public Azure Voice Live SDK and its own Python 3.13 dependencies, not the bundled preview Projects SDK used by other samples in this directory. Follow this README rather than the parent directory's Projects SDK setup.
 
 The implementation extends the official [`invocations_ws/hello-world`](https://github.com/microsoft-foundry/foundry-samples/tree/main/samples/python/hosted-agents/bring-your-own/invocations_ws/hello-world) sample without adding an orchestration framework or a second protocol.
 
 > [!WARNING]
-> Local knowledge-answer and unknown-answer tests have passed. Avatar is an experimental opt-in: service transport tests have passed, and local manual browser checks of playback, audio/video synchronization, and interruption passed with Ava before automatic greeting was added. The greeting still needs manual playback and interruption validation. These checks do not establish cross-browser or long-running reliability. Hosted deployment and cloud E2E validation have not been completed.
+> Local knowledge-answer and unknown-answer tests have passed. Avatar is an experimental opt-in: service transport tests have passed, and local manual browser validation has passed with Ava and automatic greeting enabled, covering playback, audio/video synchronization, and interruption. These checks do not establish cross-browser or long-running reliability. Hosted deployment and cloud E2E validation have not been completed.
 
 ## What the sample demonstrates
 
@@ -296,7 +296,7 @@ python src/voice-live-foundry-iq-avatar/e2e_local.py --require-avatar --timeout 
 
 This requires the Knowledge MCP call, expected final answer text, video bytes, and successful response completion with no error. It does not require separate PCM bytes and does not prove that the video contains an audible, synchronized answer; idle video alone is insufficient.
 
-Manually verify a known answer has audible speech and matching lip movement, an unknown question is acknowledged as unknown, microphone questions work, and stop/reconnect starts a fresh session. Repeat these checks after changing the voice or browser. Local manual Avatar validation passed with Ava before automatic greeting was added, including speaking during an answer. Repeat playback and interruption checks for the greeting-enabled version. Interruption remains best-effort: media fragments do not carry a response ID, so late fragments after cancellation cannot be reliably attributed to an old response.
+Manually verify a known answer has audible speech and matching lip movement, an unknown question is acknowledged as unknown, microphone questions work, and stop/reconnect starts a fresh session. Repeat these checks after changing the voice or browser. Local manual Avatar validation passed with Ava and automatic greeting enabled, including playback, audio/video synchronization, and interruption. Interruption remains best-effort: media fragments do not carry a response ID, so late fragments after cancellation cannot be reliably attributed to an old response.
 
 To return to the default Knowledge-only mode, set `AZURE_VOICELIVE_ENABLE_AVATAR=false` and restart. The default headless test remains unchanged and does not require video support.
 
