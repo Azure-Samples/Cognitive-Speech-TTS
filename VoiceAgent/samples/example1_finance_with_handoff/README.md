@@ -79,6 +79,12 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example1.local.env
 Use the Project endpoint created by the subscription setup guide. The selected
 MCP config must have been generated for that same Project.
 
+The portable default is `VOICE_AGENT_MODEL_TYPE=managed` with
+`VOICE_AGENT_MODEL=gpt-realtime`. If the Project instead has a customer-created
+voice-capable deployment, set `VOICE_AGENT_MODEL_TYPE=self-deployed` and set
+`VOICE_AGENT_MODEL` to its exact deployment name. Do not edit `agent.json` for
+a machine-specific deployment.
+
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
 
@@ -145,7 +151,7 @@ template dashboard also consumes that definition directly.
   a separate customer-owned step.
 - The included filesystem state store is for a single-replica sample, not
   production durability.
-- The committed definition intentionally pins managed `gpt-realtime`, even if
-  another Finance publication profile uses a cascaded model.
+- The committed definition defaults to managed `gpt-realtime`; `.env` may
+  select a compatible self-deployed model without changing the portable source.
 - Re-running publish creates another immutable Agent version.
 - Cleanup is intentionally manual to avoid deleting an unrelated Agent.

@@ -128,6 +128,33 @@ Set a valid `AZURE_AI_PROJECT_ENDPOINT` in both files. Use
 `AZURE_CREDENTIAL_MODE=cli` when the intended publishing identity is the one
 selected by `az login`.
 
+Choose the model mode that exists in that Project:
+
+```dotenv
+# Service-managed Voice Agent model.
+VOICE_AGENT_MODEL_TYPE=managed
+VOICE_AGENT_MODEL=gpt-realtime
+```
+
+```dotenv
+# Customer-created Foundry model deployment.
+VOICE_AGENT_MODEL_TYPE=self-deployed
+VOICE_AGENT_MODEL=<exact-deployment-name>
+```
+
+`model_type` and the deployment name are separate. Do not change `agent.json`
+for one machine: set both values in each sample `.env`. If publication rejects
+`model_type=managed` but the Project has a compatible deployment, list the
+account deployments and use the exact deployment name:
+
+```bash
+az cognitiveservices account deployment list \
+  --resource-group "$RESOURCE_GROUP" \
+  --name "$FOUNDRY_RESOURCE" \
+  --query "[].{name:name,state:properties.provisioningState,model:properties.model.name}" \
+  --output table
+```
+
 The checked-in `.env.example` files already select the canonical local MCP
 configs:
 

@@ -74,6 +74,7 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         "AZURE_AI_PROJECT_ENDPOINT",
         "AZURE_CREDENTIAL_MODE",
         "VOICE_AGENT_NAME",
+        "VOICE_AGENT_MODEL_TYPE",
         "VOICE_AGENT_MODEL",
         "VOICE_AGENT_MCP_SERVER_URL",
         "VOICE_AGENT_MCP_CONNECTION_ID",
@@ -146,6 +147,14 @@ def _validate_agent_name(agent_name: str) -> str:
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,62}", agent_name):
         raise ValueError("VOICE_AGENT_NAME must be a valid Agent name.")
     return agent_name
+
+
+def _validate_model_type(model_type: str) -> str:
+    if model_type not in {"managed", "self-deployed"}:
+        raise ValueError(
+            "VOICE_AGENT_MODEL_TYPE must be 'managed' or 'self-deployed'."
+        )
+    return model_type
 
 
 def _validate_mcp_settings(server_url: str, connection_id: str) -> None:
@@ -253,6 +262,9 @@ def load_materialized_agent(
         raise RuntimeError("Set VOICE_AGENT_NAME or provide name in agent.json.")
     agent_name = _validate_agent_name(agent_name_value)
 
+    model_type = settings.get("VOICE_AGENT_MODEL_TYPE", "").strip()
+    if model_type:
+        definition["model_type"] = _validate_model_type(model_type)
     model = settings.get("VOICE_AGENT_MODEL", "").strip()
     if model:
         definition["model"] = model
@@ -295,6 +307,11 @@ def _validate_readback(
         raise RuntimeError(
             "Published version model does not match the requested model: "
             f"{observed.get('model')!r} != {expected.get('model')!r}."
+        )
+    if observed.get("model_type") != expected.get("model_type"):
+        raise RuntimeError(
+            "Published version model type does not match the requested model type: "
+            f"{observed.get('model_type')!r} != {expected.get('model_type')!r}."
         )
     if require_handoff and not isinstance(observed.get("handoff"), dict):
         raise RuntimeError("Published Finance version lost its handoff graph.")
@@ -373,6 +390,7 @@ def publish_agent(
         "version": version_id,
         "definition_mode": mode,
         "kind": observed.get("kind"),
+        "model_type": observed.get("model_type"),
         "model": observed.get("model"),
         "mcp_connections": sorted(
             {

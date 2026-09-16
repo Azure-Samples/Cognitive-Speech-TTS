@@ -17,6 +17,7 @@ from voice_agent_sdk_common import (
     _load_settings,
     _realtime_url,
     _validate_agent_name,
+    _validate_model_type,
     _validate_project_endpoint,
     load_materialized_agent,
 )
@@ -38,6 +39,10 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             )
         with self.assertRaises(ValueError):
             _validate_agent_name("invalid agent name")
+        self.assertEqual(_validate_model_type("managed"), "managed")
+        self.assertEqual(_validate_model_type("self-deployed"), "self-deployed")
+        with self.assertRaises(ValueError):
+            _validate_model_type("deployment")
 
     def test_materializes_each_sample_without_environment_leakage(self) -> None:
         template = {
@@ -60,12 +65,14 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         environments = [
             (
                 "first-agent",
+                "managed",
                 "first-model",
                 "https://first.example/mcp",
                 "first-connection",
             ),
             (
                 "second-agent",
+                "self-deployed",
                 "second-model",
                 "https://second.example/mcp",
                 "second-connection",
@@ -76,7 +83,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             root = Path(directory)
             sample_dirs = []
             for index, values in enumerate(environments):
-                agent_name, model, server_url, connection_id = values
+                agent_name, model_type, model, server_url, connection_id = values
                 sample_dir = root / str(index)
                 sample_dir.mkdir()
                 (sample_dir / "agent.json").write_text(
@@ -89,6 +96,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                             "AZURE_AI_PROJECT_ENDPOINT="
                             "https://account.services.ai.azure.com/api/projects/project",
                             f"VOICE_AGENT_NAME={agent_name}",
+                            f"VOICE_AGENT_MODEL_TYPE={model_type}",
                             f"VOICE_AGENT_MODEL={model}",
                             f"VOICE_AGENT_MCP_SERVER_URL={server_url}",
                             f"VOICE_AGENT_MCP_CONNECTION_ID={connection_id}",
@@ -105,6 +113,8 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
 
         self.assertEqual(first_name, "first-agent")
         self.assertEqual(second_name, "second-agent")
+        self.assertEqual(first["model_type"], "managed")
+        self.assertEqual(second["model_type"], "self-deployed")
         self.assertEqual(first["model"], "first-model")
         self.assertEqual(second["model"], "second-model")
         self.assertEqual(
