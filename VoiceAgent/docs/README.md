@@ -19,6 +19,21 @@ The scenario-specific source of truth remains with each example:
 This `README.md` owns only the architecture and navigation. The numbered
 documents own procedures.
 
+## Setup and troubleshooting map
+
+| Need or failure | Source of truth |
+| --- | --- |
+| Select a subscription, find an existing Project endpoint, create a Project, or verify `gpt-realtime` mode and region support | [01: Subscription and Foundry Project](./01_setup_subscription.md) |
+| Build through a Python package mirror, install or authenticate Dev Tunnel, create MCP connections, or diagnose missing `*.local.env` files | [02: MCP settings and E2E](./02_mcp_settings.md) |
+| Create the two sample virtual environments, prepare the UI environment, start services in order, or choose a UI port | [03: Run samples and local UI](./03_run_samples.md) |
+| Diagnose a session that reached the Voice WebSocket | [04: Debug a local UI session](./04_debug_session.md) |
+
+The local MCP E2E path uses the identity from `az login` for Project discovery
+and connection creation. It does not publish Agents and does not require
+`azd auth login`. Each sample or the local UI publishes its selected Agent
+after MCP readiness. Azure Developer CLI remains a prerequisite only for the
+Azure Container Apps deployment path.
+
 ## Architecture
 
 The browser and sample CLIs do not execute MCP tools themselves. They publish
@@ -108,34 +123,49 @@ credential to call the selected MCP route.
 
 ## Fastest complete local workflow
 
-After the one-time prerequisites in
-[03: Start and run the samples](./03_run_samples.md):
+For the first run, complete these in order:
+
+1. Select the exact subscription and discover or create the Project endpoint
+  in [01: Subscription and Foundry Project](./01_setup_subscription.md).
+2. Create both Finance virtual environments, the Local UI environment, and
+  all three `.env` files in
+  [03: Start and run the samples](./03_run_samples.md).
+3. Install and authenticate Dev Tunnel as described in
+  [02: MCP settings and E2E](./02_mcp_settings.md).
+4. Start E2E and wait for its final success lines:
 
 ```bash
-cd VoiceAgent/shared_mcp
-./scripts/e2e-local.sh
+cd VoiceAgent
+./scripts/local-stack.sh restart
 ```
 
-Leave that command running. In another terminal:
+The command safely stops stale MCP, Dev Tunnel, and Dashboard processes owned
+by this repository; starts a fresh MCP E2E and Dashboard; then verifies both
+template MCP probes. It prints the Dashboard URL when the full stack is ready.
+
+Use the same script for lifecycle operations:
 
 ```bash
-cd VoiceAgent/samples/local_UI
-cp .env.example .env
-# Set AZURE_AI_PROJECT_ENDPOINT and, if needed, AZURE_CREDENTIAL_MODE=cli.
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python app.py --host 127.0.0.1 --port 8097
+./scripts/local-stack.sh status
+./scripts/local-stack.sh stop
 ```
 
-Open `http://localhost:8097`, or forward remote port `8097` from the same VS
-Code Remote-SSH window. In **Templates**, choose either Finance example and
-select **Try it now**.
+The local workflow is fully ready only when all three layers pass:
+
+1. MCP: `e2e-local.sh` prints `e2e_local=passed` and
+  `local_runtime=ready`, then remains running.
+2. Sample CLI: each scenario's `sample.py publish` and `sample.py check`
+  report matching requested/readback fingerprints.
+3. Dashboard: **Reload** clears any pre-E2E catalog cache, **Test MCP** reports
+  HTTP 200 for the selected template, and **Try it now** publishes a `gft-`
+  Agent version.
 
 ## Local and Azure deployment boundaries
 
-`e2e-local.sh` is the full local closed loop: it packages and starts the MCP
-container, hosts it through a named Dev Tunnel, creates connections, publishes
-both Agents, and runs smoke tests.
+`e2e-local.sh` is the MCP local closed loop: it packages and starts the MCP
+container, hosts it through a named Dev Tunnel, verifies both route contracts,
+creates connections, writes generated config, and remains running. Agent
+publication belongs to each sample CLI or the local UI.
 
 `deploy.sh` deploys the shared MCP image to Azure Container Apps and creates
 the two Foundry connections and generated configs. It does not create the

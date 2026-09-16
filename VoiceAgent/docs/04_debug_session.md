@@ -57,7 +57,7 @@ a recording missing.
 ### What each file proves
 
 | File | Use it for | Important limitation |
-|---|---|---|
+| --- | --- | --- |
 | `meta.json` | IDs, Agent, backend, upstream, UTC window, final node, counters, bridge errors | `errors: []` does not exclude handoff or MCP failures |
 | `timeline.log` | Compact ordering of session, handoff, tool, audio-summary, and close events | It omits detailed error objects and transcript text |
 | `events.jsonl` | Exact event fields, error codes, edge/node IDs, item IDs, transcripts, and usage | Long fields are clipped; audio and token deltas are omitted |
@@ -127,7 +127,7 @@ rg -n \
 Use this ownership table:
 
 | First missing or failed evidence | Primary fault domain | Next evidence |
-|---|---|---|
+| --- | --- | --- |
 | No session directory | Wrong data dir, recorder initialization, or process owner | Running command and `server.log*` |
 | No `session.created` | Credential, WebSocket, route, or Foundry bootstrap | Bridge error and server traceback |
 | Early `error` with `tool_connection_unresolved` | Published tool connection or Vienna materialization | Error code/label and Project connection |

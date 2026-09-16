@@ -8,7 +8,8 @@ For the complete local MCP serving, publication, and UI workflow, use
 
 This sample publishes a generic Finance English Realtime profile through
 the preview `azure-ai-projects` unified Agents API and runs a text-only Voice
-WebSocket smoke test. The profile uses managed `gpt-realtime` with a 13-node,
+WebSocket smoke test. The profile uses a self-deployed `gpt-realtime`
+deployment with a 13-node,
 24-edge `handoff` graph. Because `handoff` is not in the pinned typed
 `VoiceAgentDefinition`, publication uses the SDK's raw-body `create_version`
 overload and verifies that the graph survives readback.
@@ -151,7 +152,7 @@ template dashboard also consumes that definition directly.
   a separate customer-owned step.
 - The included filesystem state store is for a single-replica sample, not
   production durability.
-- The committed definition defaults to managed `gpt-realtime`; `.env` may
-  select a compatible self-deployed model without changing the portable source.
+- The committed definition expects a self-deployed Foundry deployment named
+  `gpt-realtime`.
 - Re-running publish creates another immutable Agent version.
 - Cleanup is intentionally manual to avoid deleting an unrelated Agent.

@@ -3,6 +3,7 @@ set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 IMAGE_NAME="${SHARED_MCP_IMAGE:-voice-agent-shared-mcp:local}"
+PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 
 command -v docker >/dev/null 2>&1 || {
   echo "ERROR: docker is required" >&2
@@ -10,6 +11,7 @@ command -v docker >/dev/null 2>&1 || {
 }
 
 docker build \
+  --build-arg PIP_INDEX_URL="${PIP_INDEX_URL}" \
   --build-context \
     handoff_agent="${ROOT}/../samples/example1_finance_with_handoff" \
   --build-context \
@@ -17,6 +19,10 @@ docker build \
   --target test \
   -t voice-agent-shared-mcp:test \
   "${ROOT}"
-docker build --target runtime -t "${IMAGE_NAME}" "${ROOT}"
+docker build \
+  --build-arg PIP_INDEX_URL="${PIP_INDEX_URL}" \
+  --target runtime \
+  -t "${IMAGE_NAME}" \
+  "${ROOT}"
 
 echo "package_complete image=${IMAGE_NAME}"

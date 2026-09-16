@@ -8,8 +8,8 @@ For the complete local MCP serving, publication, and UI workflow, use
 
 This sample publishes a customer-neutral, flat, MCP-only Finance Voice Agent
 through the preview `azure-ai-projects` unified Agents API and runs a text-only
-Voice WebSocket smoke test. It uses managed `gpt-realtime`, American English,
-and business tools for OTP, loan-offer discussion, explicit interest,
+Voice WebSocket smoke test. It uses a self-deployed `gpt-realtime` deployment,
+American English, and business tools for OTP, loan-offer discussion, explicit interest,
 loan-officer selection, callback, and call disposition.
 
 Because the definition has no handoff graph, publication constructs

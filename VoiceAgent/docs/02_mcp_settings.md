@@ -28,12 +28,8 @@ only liveness status.
 | Goal | Command | Port / reachability | What remains running |
 | --- | --- | --- | --- |
 | Build the image and run container tests | `./scripts/package.sh` | No listener | Nothing |
-| Exercise MCP directly on one machine | `./scripts/run-local.sh` | `127.0.0.1:8000`; not reachable by Foundry | Docker Compose service |
 | Run the complete local Foundry path | `./scripts/e2e-local.sh` | Local `18003` plus a public named Dev Tunnel | Container and tunnel host |
 | Deploy customer-owned Azure hosting | `AZURE_AI_PROJECT_ENDPOINT=... ./scripts/deploy.sh` | Azure Container App HTTPS URL | Azure resources |
-
-Use port `8000` only for direct local protocol development. Use the `18003`
-E2E path when a published Foundry Agent must call the local MCP.
 
 ## Important sample limitation
 
@@ -51,8 +47,8 @@ for real customer data.
 
 Prerequisites:
 
-- Docker with `docker compose`
-- Bash and OpenSSL
+- Docker
+- Bash
 
 Build the runtime image and run all MCP tests inside the image:
 
@@ -64,94 +60,128 @@ cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
 The resulting image is `voice-agent-shared-mcp:local`. Override it with
 `SHARED_MCP_IMAGE`.
 
-## Run locally
+### Use another Python package index
+
+The Docker build uses `https://pypi.org/simple` by default. If the Docker
+network or corporate proxy cannot complete TLS requests to
+`files.pythonhosted.org`, use a package index that also hosts the package files:
 
 ```bash
-./scripts/run-local.sh
+PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple \
+   ./scripts/package.sh
 ```
 
-The command generates a private `.env.local` bearer token on first use and
-starts the service at `http://127.0.0.1:8000`.
+`PIP_INDEX_URL` is passed into both the test and runtime Docker targets. A
+mirror must be approved by the customer's security policy; the example above
+is not a Microsoft-operated service.
 
-Useful endpoints:
+## Run the complete local MCP E2E
 
-```text
-GET  http://127.0.0.1:8000/healthz
-POST http://127.0.0.1:8000/mcp/finance-handoff
-POST http://127.0.0.1:8000/mcp/finance-otp-officer
-```
-
-Foundry cannot call a laptop's `localhost`. Use the local E2E command below to
-host this same local container through a persistent named Dev Tunnel. Its
-public HTTPS URL remains stable across runs while the tunnel ID and port stay
-the same.
-
-## Deploy and configure both Agents
+This is the only supported local workflow for publishing the Finance templates
+or selecting **Try it now** in the local UI. Building the image alone does not
+create a public MCP address, Project connections, or generated template config.
 
 Prerequisites:
 
 - Azure CLI authenticated with `az login`
-- Azure Developer CLI authenticated with `azd auth login`
 - Docker
-- Permission to create a resource group, Container Registry, Log Analytics,
-  Container Apps resources, and an `AcrPull` role assignment
+- Python 3.10 or later
+- OpenSSL and `curl`
+- Dev Tunnel CLI authenticated with a Microsoft or GitHub identity
 - Permission to create connections in the target Foundry Project
 
-Run:
+The local workflow uses Azure CLI for Project discovery and connection
+creation. It does not require Azure Developer CLI or `azd auth login`.
+
+### Install Dev Tunnel CLI on Linux or WSL
 
 ```bash
-export AZURE_AI_PROJECT_ENDPOINT="https://<account>.services.ai.azure.com/api/projects/<project>"
+curl -sL https://aka.ms/DevTunnelCliInstall | bash
+
+# The installer commonly uses ~/bin on Linux and WSL.
+export PATH="$HOME/bin:$PATH"
+devtunnel --version
+```
+
+Persist the `PATH` update in the user's shell profile when the executable is
+installed under `~/bin`. Confirm the actual installer output before choosing a
+directory.
+
+### Authenticate Dev Tunnel
+
+Start with the normal interactive flow:
+
+```bash
+devtunnel user login
+devtunnel user show
+```
+
+If an organization's Entra Conditional Access policy returns:
+
+```text
+Your sign-in was successful but does not meet the criteria to access this resource.
+```
+
+use a GitHub identity for Dev Tunnel development:
+
+```bash
+devtunnel user login --github --use-device-code-auth
+devtunnel user show
+```
+
+This changes only the Dev Tunnel identity. Azure resource operations still use
+the identity selected by `az login`. External customers can create and host a
+tunnel with their own supported Microsoft or GitHub account. A customer tenant
+or network policy can still prohibit Dev Tunnel; in that case use the Azure
+Container Apps deployment path instead.
+
+The script creates the tunnel with anonymous network reachability so Foundry
+can call it. The MCP routes are not anonymous: they still require the bearer
+token stored in the Project connection.
+
+### Run E2E
+
+Set `AZURE_AI_PROJECT_ENDPOINT` or configure it in the example1 `.env` as
+shown in [03: Run samples and local UI](./03_run_samples.md), then run:
+
+```bash
+az account show --output table
+devtunnel user show
+
 cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
-./scripts/deploy.sh
+PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}" \
+   ./scripts/e2e-local.sh
 ```
 
-The first run creates a unique azd environment name and may ask for the Azure
-subscription and location. Later runs reuse the selected environment. To make
-it non-interactive, set `AZURE_SUBSCRIPTION_ID`, `AZURE_LOCATION`, and
-optionally `AZURE_ENV_NAME` before running the command.
+The script requires authenticated `az` and `devtunnel` CLIs. It:
 
-The deployment command:
+- packages the image and starts `voice-agent-shared-mcp-local` on port `18003`;
+- creates or reuses a named Dev Tunnel and local bearer token;
+- verifies public health and unauthenticated HTTP 401 behavior;
+- creates or updates two `RemoteTool` Project connections through Azure CLI;
+- writes `config/generated/example1.local.env` and `example2.local.env`;
+- verifies authenticated `initialize` and `tools/list` against both public MCP
+   routes and checks each route against its sample `agent.json` tool contract;
+- remains running so the sample CLIs or local UI can publish and invoke Agents.
 
-1. creates or selects an azd environment;
-2. generates a 256-bit bearer token if the environment does not already have
-   one;
-3. runs `azd up`;
-4. confirms that unauthenticated MCP access returns HTTP 401 on both routes;
-5. uses the bearer token to run MCP `initialize` and `tools/list` on both
-   routes and verifies every tool allowed by the corresponding `agent.json`;
-6. creates or updates two Foundry remote-tool connections;
-7. writes two non-secret Agent config files under `config/generated/`.
-
-The token remains in the local azd environment, the Container App secret, and
-the Foundry Project connections. It is not written to either Agent config.
-
-## Run the complete local MCP E2E
-
-The repeatable E2E packages the image, starts the fixed
-`voice-agent-shared-mcp-local` container on port `18003`, publishes it through
-a persistent named Dev Tunnel protected by the MCP bearer token, creates
-stable Foundry connections, publishes both `*-local-e2e` Agents, and runs both
-Voice WebSocket smoke tests:
+Project connection creation uses the active Azure CLI subscription. If the
+Project is not found, select its exact subscription and retry:
 
 ```bash
-./scripts/e2e-local.sh
+az account set --subscription "<exact-subscription-name-or-id>"
 ```
 
-The script requires both sample `.env` files and their Python dependencies,
-plus authenticated `azd` and `devtunnel` CLIs. It verifies:
-
-- public health and unauthenticated HTTP 401 behavior;
-- example1 handoff and MCP-call evidence;
-- example2 MCP tool discovery and OTP-call evidence;
-- published definition/readback fingerprints.
+Use the discovery procedure in
+[01: Existing Project fast path](./01_setup_subscription.md#existing-project-fast-path)
+when the endpoint or subscription is unknown.
 
 The first run creates and records the tunnel ID in
 `state/local/devtunnel-id`; later runs reuse that tunnel, its fixed URL, the
 token in `state/local/token`, and the two connection names. Evidence is written
 under `state/e2e/<UTC-run-id>/`.
 
-The container and tunnel remain active after the tests so both published
-Agents stay runnable. Press `Ctrl+C` to stop hosting them. The named tunnel
+The container and tunnel remain active after the tests so downstream Agents
+can call both MCP routes. Press `Ctrl+C` to stop hosting them. The named tunnel
 itself is retained, so the next run restores the same address. For CI, set
 `SHARED_MCP_E2E_KEEP_RUNNING=0`; the script then exits immediately and cleans
 up its local container and tunnel host process. The isolated Foundry Agents,
@@ -170,8 +200,8 @@ config/generated/example1.local.env
 config/generated/example2.local.env
 ```
 
-It uses those files itself when publishing. While the E2E script is still
-running, you can publish or invoke either sample from another terminal:
+The sample CLIs and local UI read those files when publishing. While the E2E
+script is still running, publish or invoke either sample from another terminal:
 
 ```bash
 cd ../samples/example1_finance_with_handoff
@@ -189,6 +219,68 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example2.local.env \
 
 The config files contain only the MCP URL and Foundry connection name. The
 bearer token stays in the Foundry connection and local E2E state.
+
+Do not treat the existence of those files as E2E success. Wait for all of these
+lines and leave the command running:
+
+```text
+e2e_local=passed artifacts=...
+fixed_tunnel_id=...
+example1_config=...
+example2_config=...
+local_runtime=ready base_url=https://...
+Press Ctrl+C to stop the local MCP container and dev tunnel.
+```
+
+### Local E2E failures seen during setup
+
+| Error | Meaning | Resolution |
+| --- | --- | --- |
+| `devtunnel is required` | CLI is missing or its install directory is not on `PATH` | Install it, add the reported directory such as `~/bin` to `PATH`, and verify `devtunnel --version` |
+| Dev Tunnel sign-in does not meet access criteria | Entra Conditional Access rejected that auth flow | Use `devtunnel user login --github --use-device-code-auth`, or use Azure hosting if customer policy prohibits Dev Tunnel |
+| `configure AZURE_AI_PROJECT_ENDPOINT` | Example 1 `.env` is missing or still contains the placeholder | Discover the endpoint with Azure CLI and copy it into both sample `.env` files |
+| Project not found in active Azure CLI subscription | Endpoint and active subscription do not match | Run `az account set` with the exact subscription name or ID |
+| UI says `The local MCP config is not ready` | E2E has not reached connection/config generation, or a prior failed run left an offline config | Run E2E to the final success lines, keep it running, then select **Reload** in Templates |
+
+## Deploy to Azure Container Apps
+
+Use this path when Dev Tunnel is prohibited or the MCP needs customer-owned
+Azure hosting.
+
+Prerequisites:
+
+- Azure CLI authenticated with `az login`
+- Azure Developer CLI authenticated with `azd auth login`
+- Docker
+- Permission to create a resource group, Container Registry, Log Analytics,
+  Container Apps resources, and an `AcrPull` role assignment
+- Permission to create connections in the target Foundry Project
+
+```bash
+export AZURE_AI_PROJECT_ENDPOINT="https://<account>.services.ai.azure.com/api/projects/<project>"
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
+./scripts/deploy.sh
+```
+
+The first run creates a unique azd environment and may ask for subscription
+and location. Set `AZURE_SUBSCRIPTION_ID`, `AZURE_LOCATION`, and optionally
+`AZURE_ENV_NAME` for a non-interactive run. Unlike local E2E, this path needs
+`azd` because `azd up` provisions the Azure infrastructure and stores its
+outputs. If Conditional Access rejects `azd auth login`, use an authentication
+method approved by the customer's administrator; GitHub Dev Tunnel login does
+not authenticate Azure Developer CLI.
+
+The deployment command:
+
+1. creates or selects an azd environment;
+2. generates a 256-bit bearer token if needed;
+3. runs `azd up`;
+4. verifies HTTP 401 and authenticated MCP protocol/tool inventory;
+5. creates or updates two Foundry remote-tool connections through Azure CLI;
+6. writes `example1.shared.env` and `example2.shared.env`.
+
+The token remains in the local azd environment, Container App secret, and
+Foundry Project connections. It is not written to either Agent config.
 
 ## Change or extend the MCP
 
@@ -276,13 +368,16 @@ The Azure Container Apps deployment writes `example1.shared.env` and
 `example2.shared.env` instead. Select those files only when switching from the
 local named tunnel to the deployed service.
 
-To recreate only the Foundry connections and generated config without
-redeploying:
+After an Azure deployment, recreate only the Foundry connections and generated
+shared config from the currently selected azd environment:
 
 ```bash
 AZURE_AI_PROJECT_ENDPOINT="https://.../api/projects/..." \
   ./scripts/configure-agent.sh
 ```
+
+For local Dev Tunnel config, rerun `e2e-local.sh`; the standalone command does
+not create or host a local tunnel.
 
 ## Architecture and persistence
 

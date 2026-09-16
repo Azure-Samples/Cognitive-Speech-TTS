@@ -252,12 +252,12 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             },
         )
 
-        self.assertEqual(finance["model_type"], "managed")
+        self.assertEqual(finance["model_type"], "self_deployed")
         self.assertEqual(finance["model"], "gpt-realtime")
         self.assertEqual(len(finance["handoff"]["nodes"]), 13)
         self.assertEqual(len(finance["handoff"]["edges"]), 24)
 
-        self.assertEqual(otp_officer_search["model_type"], "managed")
+        self.assertEqual(otp_officer_search["model_type"], "self_deployed")
         self.assertEqual(otp_officer_search["model"], "gpt-realtime")
         self.assertNotIn("handoff", otp_officer_search)
         self.assertEqual(

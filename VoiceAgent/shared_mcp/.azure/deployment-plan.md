@@ -87,7 +87,6 @@ VoiceAgent/
     README.md
     azure.yaml
     Dockerfile
-    compose.yaml
     requirements.txt
     app/
       shared_mcp/
@@ -99,7 +98,7 @@ VoiceAgent/
     infra/
     scripts/
       package.sh
-      run-local.sh
+      e2e-local.sh
       deploy.sh
       configure-agent.sh
     config/
@@ -218,14 +217,13 @@ change. The deliverable is deployment-ready source and commands.
 - `app/shared_mcp/finance_otp_officer/`: vendored OTP, pricing, interest, and
   officer workflow with fake random name search.
 - `data/`: fictional Finance, caller, candidate, and officer fixtures.
-- `Dockerfile`, `compose.yaml`, and `scripts/package.sh`: local packaging and
-  execution.
+- `Dockerfile` and `scripts/package.sh`: local packaging and container tests.
 - `azure.yaml`, `infra/`, and `scripts/deploy.sh`: Azure Container Apps
   deployment.
 - `scripts/configure-agent.sh` and `config/`: route-specific Foundry
   connections and non-secret Agent config generation.
-- `scripts/e2e-local.sh`: repeatable Docker, Dev Tunnel, Foundry connection,
-  Agent publication, and Voice WebSocket E2E.
+- `scripts/e2e-local.sh`: repeatable Docker, Dev Tunnel, authenticated MCP
+  route validation, Foundry connection, and generated local config workflow.
 - `tests/test_shared_mcp.py`: auth, inventory, fixture, fake-search, and
   business-service tests.
 - Updated shared SDK loader and both sample configurations/documentation.
@@ -306,7 +304,8 @@ customer.
 | Python tests | Shared SDK tests plus shared MCP tests | 8 + 7 passed |
 | Container package | `scripts/package.sh` | Docker test and runtime targets passed |
 | MCP protocol | Live runtime image, both routes | Initialize/tools-list passed; OTP tool passed |
-| Foundry E2E | `scripts/e2e-local.sh` plus active-version rerun | Both Agents published and invoked with required MCP evidence |
+| MCP E2E | `scripts/e2e-local.sh` | Both public routes passed authenticated protocol and tool-contract validation |
+| Agent publication | Each scenario's `sample.py publish`, `check`, and `run` | Both Agents published and invoked independently with required MCP evidence |
 | RBAC static review | `infra/modules/acr-pull-role.bicep` | Least-privilege `AcrPull` at ACR scope |
 | Provision preview | Requires customer azd environment | Deferred |
 | Policy validation | Requires customer subscription | Deferred |

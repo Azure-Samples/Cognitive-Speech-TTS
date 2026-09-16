@@ -2,11 +2,10 @@
 
 ## Conclusion
 
-This guide turns an otherwise empty Azure subscription into a Microsoft Foundry
-Project that is ready for one of the repository's self-contained Voice Agent
-examples. It is the shared setup source of truth. Do not continue to an example until
-provisioning, identifiers, role assignments, preview eligibility, and region
-availability are all verified.
+This guide selects an existing Microsoft Foundry Project or creates one in an
+empty Azure subscription. It is the shared source of truth for subscription,
+Project endpoint, permissions, model mode, and region eligibility. Do not
+continue to an example until those values are verified.
 
 After completing the criteria below, continue with
 [02: MCP settings, deployment, and development](./02_mcp_settings.md).
@@ -20,6 +19,8 @@ After completing the criteria below, continue with
 - The deployment user has both management-plane and Agent data-plane access.
 - The Project managed identity has Agent data-plane access.
 - `PROJECT_ENDPOINT`, `PROJECT_ID`, and `FOUNDRY_SCOPE` are populated.
+- The Finance definitions' `model_type` and `model` match a mode available to
+  the Project.
 
 ## 1. Confirm preview and region eligibility
 
@@ -31,6 +32,26 @@ have different enablement.
 
 Do not silently substitute a normal prompt Agent or another model when
 `kind: voice` or managed `gpt-realtime` is unavailable.
+
+The two Finance definitions currently declare:
+
+```json
+"model_type": "self_deployed",
+"model": "gpt-realtime"
+```
+
+That requires a successful account deployment named `gpt-realtime`. If a
+customer wants the service-managed model instead, both definitions must use
+`model_type: managed`, and the subscription and Project region must support it.
+If publication says `Model 'gpt-realtime' is not supported in managed mode in
+this region`, the definition is still requesting managed mode; switch it back
+to `self_deployed` for an existing deployment or use an eligible managed-model
+Project region. Do not change only the model name.
+
+```json
+"model_type": "self_deployed",
+"model": "<existing-deployment-name>"
+```
 
 ## 2. Install tools and sign in
 
@@ -58,6 +79,85 @@ az account show \
 ```
 
 Stop if the displayed subscription is not the one the customer intends to use.
+
+Subscription aliases used in conversation or internal documentation may not
+be accepted by Azure CLI. Resolve the exact name or ID with a structured query:
+
+```bash
+az account list --all \
+  --query "[?contains(name, 'Online') || contains(name, 'Meeting')].{name:name,id:id,state:state,isDefault:isDefault}" \
+  --output table
+```
+
+Use words relevant to the customer's subscription instead of `Online` and
+`Meeting`. Then set `SUBSCRIPTION` to the returned exact name or ID.
+
+## Existing Project fast path
+
+Do this before creating resources when the customer already has a Foundry
+Project. Project names are nested ARM resource names, so a plain
+`az resource list --name <project>` can return no result even when the Project
+exists.
+
+```bash
+FOUNDRY_PROJECT="<existing-project-name>"
+
+PROJECT_ID="$(
+  az resource list \
+    --resource-type Microsoft.CognitiveServices/accounts/projects \
+    --query "[?ends_with(name, '/${FOUNDRY_PROJECT}')].id | [0]" \
+    --output tsv
+)"
+
+: "${PROJECT_ID:?Project was not found in the active subscription}"
+
+PROJECT_ENDPOINT="$(
+  az rest \
+    --method get \
+    --url "https://management.azure.com${PROJECT_ID}?api-version=2025-06-01" \
+    --query 'properties.endpoints."AI Foundry API"' \
+    --output tsv
+)"
+
+FOUNDRY_SCOPE="${PROJECT_ID%/projects/*}"
+FOUNDRY_RESOURCE="${FOUNDRY_SCOPE##*/}"
+RESOURCE_GROUP="${PROJECT_ID#*/resourceGroups/}"
+RESOURCE_GROUP="${RESOURCE_GROUP%%/*}"
+LOCATION="$(
+  az rest \
+    --method get \
+    --url "https://management.azure.com${PROJECT_ID}?api-version=2025-06-01" \
+    --query location \
+    --output tsv
+)"
+
+printf 'PROJECT_ENDPOINT=%s\nPROJECT_ID=%s\nFOUNDRY_SCOPE=%s\nRESOURCE_GROUP=%s\nFOUNDRY_RESOURCE=%s\nLOCATION=%s\n' \
+  "${PROJECT_ENDPOINT}" \
+  "${PROJECT_ID}" \
+  "${FOUNDRY_SCOPE}" \
+  "${RESOURCE_GROUP}" \
+  "${FOUNDRY_RESOURCE}" \
+  "${LOCATION}"
+```
+
+If multiple Projects with the same name are visible, query all matches and
+select by account, resource group, and subscription instead of taking `[0]`:
+
+```bash
+az resource list \
+  --resource-type Microsoft.CognitiveServices/accounts/projects \
+  --query "[?ends_with(name, '/${FOUNDRY_PROJECT}')].{name:name,id:id,resourceGroup:resourceGroup,location:location}" \
+  --output table
+```
+
+Verify the returned endpoint has this exact shape:
+
+```text
+https://<account>.services.ai.azure.com/api/projects/<project>
+```
+
+Then continue with identity and role verification in sections 7 through 11.
+Do not run the resource creation sections for an existing Project.
 
 ## 3. Choose names
 
@@ -221,6 +321,19 @@ PROJECT_STATE="$(
 test "${PROJECT_STATE}" = "Succeeded"
 ```
 
+List account deployments when diagnosing model selection:
+
+```bash
+az cognitiveservices account deployment list \
+  --resource-group "${RESOURCE_GROUP}" \
+  --name "${FOUNDRY_RESOURCE}" \
+  --query "[].{deployment:name,model:properties.model.name,version:properties.model.version,sku:sku.name,state:properties.provisioningState}" \
+  --output table
+```
+
+This command proves which self-deployed model names exist. It does not prove
+that a service-managed model is enabled in the Project region.
+
 ## 7. Resolve identity object IDs without Microsoft Graph
 
 Decode the deployment identity's object ID from an ARM access token. This
@@ -266,7 +379,7 @@ PROJECT_PRINCIPAL_ID="$(
 The examples need two permission planes:
 
 | Role | Why |
-|---|---|
+| --- | --- |
 | `Cognitive Services Contributor` | Create and manage the Foundry account, Project, and Project connections |
 | `Cognitive Services User` | Call the AIServices Agent data-plane APIs, including Agent create/read/invoke |
 

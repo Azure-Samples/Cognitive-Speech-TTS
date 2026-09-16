@@ -12,11 +12,7 @@ PORT="${SHARED_MCP_E2E_PORT:-18003}"
 CONTAINER_NAME="voice-agent-shared-mcp-local"
 HANDOFF_CONNECTION="${HANDOFF_E2E_CONNECTION:-finance-handoff-local-e2e}"
 OTP_CONNECTION="${OTP_E2E_CONNECTION:-finance-otp-officer-local-e2e}"
-HANDOFF_AGENT="${HANDOFF_E2E_AGENT:-finance-example-local-e2e}"
-OTP_AGENT="${OTP_E2E_AGENT:-finance-otp-officer-local-e2e}"
 KEEP_RUNNING="${SHARED_MCP_E2E_KEEP_RUNNING:-1}"
-HANDOFF_PYTHON="${HANDOFF_SAMPLE_PYTHON:-}"
-OTP_PYTHON="${OTP_SAMPLE_PYTHON:-}"
 GENERATED_CONFIG_DIR="${ROOT}/config/generated"
 HANDOFF_CONFIG="${GENERATED_CONFIG_DIR}/example1.local.env"
 OTP_CONFIG="${GENERATED_CONFIG_DIR}/example2.local.env"
@@ -38,30 +34,10 @@ cleanup() {
 }
 trap cleanup EXIT INT TERM
 
-for command_name in azd curl devtunnel docker openssl python3; do
+for command_name in az curl devtunnel docker openssl python3; do
   command -v "${command_name}" >/dev/null 2>&1 ||
     die "${command_name} is required"
 done
-if [[ -z "${HANDOFF_PYTHON}" ]]; then
-  HANDOFF_PYTHON="$(
-    [[ -x "${HANDOFF_SAMPLE}/.venv/bin/python" ]] &&
-      printf '%s' "${HANDOFF_SAMPLE}/.venv/bin/python" ||
-      command -v python3
-  )"
-fi
-if [[ -z "${OTP_PYTHON}" ]]; then
-  OTP_PYTHON="$(
-    [[ -x "${OTP_SAMPLE}/.venv/bin/python" ]] &&
-      printf '%s' "${OTP_SAMPLE}/.venv/bin/python" ||
-      command -v python3
-  )"
-fi
-"${HANDOFF_PYTHON}" -c \
-  "import azure.ai.projects, azure.identity, dotenv, websockets" ||
-  die "install the example1 Python requirements"
-"${OTP_PYTHON}" -c \
-  "import azure.ai.projects, azure.identity, dotenv, websockets" ||
-  die "install the example2 Python requirements"
 
 mkdir -p "${RUN_ROOT}" "${LOCAL_STATE_ROOT}"
 umask 077
@@ -99,21 +75,28 @@ if ! devtunnel port show "${TUNNEL_ID}" -p "${PORT}" --json >/dev/null 2>&1; the
     --protocol http >/dev/null
 fi
 
-PROJECT_ENDPOINT="$(
-  SAMPLE_DIR="${HANDOFF_SAMPLE}" "${HANDOFF_PYTHON}" - <<'PY'
+PROJECT_ENDPOINT="${AZURE_AI_PROJECT_ENDPOINT:-}"
+if [[ -z "${PROJECT_ENDPOINT}" ]]; then
+  PROJECT_ENDPOINT="$(
+  SAMPLE_DIR="${HANDOFF_SAMPLE}" python3 - <<'PY'
 import os
 from pathlib import Path
-from dotenv import dotenv_values
 
-value = dotenv_values(Path(os.environ["SAMPLE_DIR"]) / ".env").get(
-    "AZURE_AI_PROJECT_ENDPOINT"
-)
-if value:
-    print(value)
+path = Path(os.environ["SAMPLE_DIR"]) / ".env"
+if path.is_file():
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        key, separator, value = line.partition("=")
+        if separator and key.strip() == "AZURE_AI_PROJECT_ENDPOINT":
+            print(value.strip().strip("\"'"))
+            break
 PY
-)"
+  )"
+fi
 [[ "${PROJECT_ENDPOINT}" =~ ^https://[^[:space:]]+/api/projects/[^/[:space:]]+$ ]] ||
-  die "configure AZURE_AI_PROJECT_ENDPOINT in the example1 .env file"
+  die "set AZURE_AI_PROJECT_ENDPOINT or configure it in the example1 .env file"
 
 "${ROOT}/scripts/package.sh"
 
@@ -170,68 +153,23 @@ STATUS="$(
 [[ "${STATUS}" == "401" ]] ||
   die "public MCP route returned HTTP ${STATUS}, expected 401"
 
-AUTH_SCHEME="$(printf '%s%s' Bear er)"
-AZURE_DEV_USER_AGENT=microsoft_foundry_skill \
-  azd ai connection create "${HANDOFF_CONNECTION}" \
-    --project-endpoint "${PROJECT_ENDPOINT}" \
-    --kind remote-tool \
-    --target "${BASE_URL}/mcp/finance-handoff" \
-    --auth-type custom-keys \
-    --custom-key "Authorization=${AUTH_SCHEME} ${TOKEN}" \
-    --force \
-    --no-prompt
-AZURE_DEV_USER_AGENT=microsoft_foundry_skill \
-  azd ai connection create "${OTP_CONNECTION}" \
-    --project-endpoint "${PROJECT_ENDPOINT}" \
-    --kind remote-tool \
-    --target "${BASE_URL}/mcp/finance-otp-officer" \
-    --auth-type custom-keys \
-    --custom-key "Authorization=${AUTH_SCHEME} ${TOKEN}" \
-    --force \
-    --no-prompt
+SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
+  python3 -m shared_mcp.probe \
+    --url "${BASE_URL}/mcp/finance-handoff" \
+    --agent-json "${HANDOFF_SAMPLE}/agent.json"
+SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
+  python3 -m shared_mcp.probe \
+    --url "${BASE_URL}/mcp/finance-otp-officer" \
+    --agent-json "${OTP_SAMPLE}/agent.json"
 
-mkdir -p "${GENERATED_CONFIG_DIR}"
-umask 077
-{
-  printf 'VOICE_AGENT_MCP_SERVER_URL=%s/mcp/finance-handoff\n' "${BASE_URL}"
-  printf 'VOICE_AGENT_MCP_CONNECTION_ID=%s\n' "${HANDOFF_CONNECTION}"
-} > "${HANDOFF_CONFIG}"
-{
-  printf 'VOICE_AGENT_MCP_SERVER_URL=%s/mcp/finance-otp-officer\n' "${BASE_URL}"
-  printf 'VOICE_AGENT_MCP_CONNECTION_ID=%s\n' "${OTP_CONNECTION}"
-} > "${OTP_CONFIG}"
-
-(
-  cd "${HANDOFF_SAMPLE}"
-  VOICE_AGENT_NAME="${HANDOFF_AGENT}" \
-  VOICE_AGENT_MCP_CONFIG="${HANDOFF_CONFIG}" \
-    "${HANDOFF_PYTHON}" sample.py publish |
-      tee "${RUN_ROOT}/example1-publish.json"
-  VOICE_AGENT_NAME="${HANDOFF_AGENT}" \
-  VOICE_AGENT_MCP_CONFIG="${HANDOFF_CONFIG}" \
-    "${HANDOFF_PYTHON}" sample.py run \
-      --message "Hello, who is calling?" \
-      --expect-handoff \
-      --expect-mcp \
-      --evidence-file "${RUN_ROOT}/example1-run.json" |
-      tee "${RUN_ROOT}/example1-run.log"
-)
-
-(
-  cd "${OTP_SAMPLE}"
-  VOICE_AGENT_NAME="${OTP_AGENT}" \
-  VOICE_AGENT_MCP_CONFIG="${OTP_CONFIG}" \
-    "${OTP_PYTHON}" sample.py publish |
-      tee "${RUN_ROOT}/example2-publish.json"
-  VOICE_AGENT_NAME="${OTP_AGENT}" \
-  VOICE_AGENT_MCP_CONFIG="${OTP_CONFIG}" \
-    "${OTP_PYTHON}" sample.py run \
-      --message "Hello, I need to reach my loan officer." \
-      --message "12345007" \
-      --expect-mcp \
-      --evidence-file "${RUN_ROOT}/example2-run.json" |
-      tee "${RUN_ROOT}/example2-run.log"
-)
+AZURE_AI_PROJECT_ENDPOINT="${PROJECT_ENDPOINT}" \
+SHARED_MCP_TOKEN="${TOKEN}" \
+SHARED_MCP_FINANCE_HANDOFF_URL="${BASE_URL}/mcp/finance-handoff" \
+SHARED_MCP_FINANCE_OTP_OFFICER_URL="${BASE_URL}/mcp/finance-otp-officer" \
+FINANCE_HANDOFF_MCP_CONNECTION_ID="${HANDOFF_CONNECTION}" \
+FINANCE_OTP_MCP_CONNECTION_ID="${OTP_CONNECTION}" \
+MCP_CONFIG_VARIANT=local \
+  "${ROOT}/scripts/configure-agent.sh"
 
 echo "e2e_local=passed artifacts=${RUN_ROOT}"
 echo "fixed_tunnel_id=${TUNNEL_ID}"

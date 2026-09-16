@@ -1,4 +1,5 @@
 .venv/
+.local-stack/
 samples/.env
 samples/.env.tip
 samples/__pycache__/
