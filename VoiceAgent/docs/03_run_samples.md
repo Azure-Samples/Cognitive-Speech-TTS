@@ -112,11 +112,11 @@ The recommended setup entry point is:
 
 ```bash
 cd "$VOICE_AGENT_ROOT"
-./scripts/setup-local-finance-examples.sh \
+./scripts/setup-local-examples.sh \
   --project-endpoint "$AZURE_AI_PROJECT_ENDPOINT"
 ```
 
-`setup-local-finance-examples.sh` checks required command-line tools, installs
+`setup-local-examples.sh` checks required command-line tools, installs
 Dev Tunnel when missing, creates or reuses the three Python environments,
 installs the Local UI Node dependencies, runs/builds the browser code, and
 creates the three local `.env` files. Use `--check` to inspect readiness
@@ -239,21 +239,21 @@ processes from earlier runs:
 ```bash
 cd "$VOICE_AGENT_ROOT"
 PIP_INDEX_URL="${PIP_INDEX_URL}" \
-  ./scripts/manage-local-finance-mcp-and-ui.sh restart
+  ./scripts/manage-local-mcp-and-ui.sh restart
 ```
 
-`manage-local-finance-mcp-and-ui.sh` owns the local runtime lifecycle. It
+`manage-local-mcp-and-ui.sh` owns the local runtime lifecycle. It
 stops stale repository-owned MCP, Dev Tunnel, and Local UI processes; starts
 the MCP E2E and Local UI; waits for both health endpoints; reloads the template
 catalog; and requires successful MCP probes for both templates before reporting
-`local_finance_mcp_and_ui=ready`.
+`local_mcp_and_ui=ready`.
 
 Runtime PID and log files are stored under ignored
-`.local-finance-mcp-and-ui/` state. Use:
+`.local-mcp-and-ui/` state. Use:
 
 ```bash
-./scripts/manage-local-finance-mcp-and-ui.sh status
-./scripts/manage-local-finance-mcp-and-ui.sh stop
+./scripts/manage-local-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh stop
 ```
 
 To run only MCP without the Local UI, use the lower-level command below.
@@ -545,7 +545,7 @@ For cross-layer diagnosis, use the shared
 
 ```bash
 cd VoiceAgent
-./scripts/manage-local-finance-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh status
 python skills/debug-local-session/scripts/analyze_session.py --list
 python skills/debug-local-session/scripts/analyze_session.py <session-id>
 ```

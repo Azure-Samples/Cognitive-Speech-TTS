@@ -13,11 +13,11 @@ CHECK_ONLY=0
 
 usage() {
   cat <<'EOF'
-Usage: ./scripts/setup-local-finance-examples.sh [options]
+Usage: ./scripts/setup-local-examples.sh [options]
 
-Prepare the two Finance sample CLIs and Local UI on one development machine:
-check required tools, install dependencies, build the browser bundle, and
-create or update local .env files.
+Prepare the configured Voice Agent sample CLIs and Local UI on one development
+machine: check required tools, install dependencies, build the browser bundle,
+and create or update local .env files.
 
 Options:
   --project-endpoint URL  Write the Foundry Project endpoint to new local .env files.
@@ -297,8 +297,8 @@ docker info >/dev/null ||
 
 if [[ "${missing_config}" == "0" ]]; then
   echo "local_setup=ready"
-  echo "next=${ROOT}/scripts/manage-local-finance-mcp-and-ui.sh restart"
+  echo "next=${ROOT}/scripts/manage-local-mcp-and-ui.sh restart"
 else
   echo "local_setup=installed configuration=required"
-  echo "rerun with: ./scripts/setup-local-finance-examples.sh --project-endpoint https://<account>.services.ai.azure.com/api/projects/<project>"
+  echo "rerun with: ./scripts/setup-local-examples.sh --project-endpoint https://<account>.services.ai.azure.com/api/projects/<project>"
 fi

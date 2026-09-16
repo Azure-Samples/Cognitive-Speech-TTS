@@ -25,8 +25,8 @@ documents own procedures.
 | --- | --- |
 | Select a subscription, find an existing Project endpoint, create a Project, or verify `gpt-realtime` mode and region support | [01: Subscription and Foundry Project](./01_setup_subscription.md) |
 | Build through a Python package mirror, install or authenticate Dev Tunnel, create MCP connections, or diagnose missing `*.local.env` files | [02: MCP settings and E2E](./02_mcp_settings.md) |
-| Install/check the two sample virtual environments, prepare the Local UI environment, or create `.env` files | [`setup-local-finance-examples.sh`](../scripts/setup-local-finance-examples.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
-| Start, restart, stop, or inspect the local MCP + Dev Tunnel + Local UI processes | [`manage-local-finance-mcp-and-ui.sh`](../scripts/manage-local-finance-mcp-and-ui.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
+| Install/check the sample virtual environments, prepare the Local UI environment, or create `.env` files | [`setup-local-examples.sh`](../scripts/setup-local-examples.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
+| Start, restart, stop, or inspect the local MCP + Dev Tunnel + Local UI processes | [`manage-local-mcp-and-ui.sh`](../scripts/manage-local-mcp-and-ui.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
 | Diagnose a session that reached the Voice WebSocket | [04: Debug a local UI session](./04_debug_session.md) and [`skills/debug-local-session/`](../skills/debug-local-session/) |
 
 The local MCP E2E path uses the identity from `az login` for Project discovery
@@ -137,7 +137,7 @@ For the first run, complete these in order:
 
 ```bash
 cd VoiceAgent
-./scripts/manage-local-finance-mcp-and-ui.sh restart
+./scripts/manage-local-mcp-and-ui.sh restart
 ```
 
 The command safely stops stale MCP, Dev Tunnel, and Local UI processes owned
@@ -147,8 +147,8 @@ template MCP probes. It prints the Local UI URL when the full stack is ready.
 Use the same script for lifecycle operations:
 
 ```bash
-./scripts/manage-local-finance-mcp-and-ui.sh status
-./scripts/manage-local-finance-mcp-and-ui.sh stop
+./scripts/manage-local-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh stop
 ```
 
 The local workflow is fully ready only when all three layers pass:

@@ -1,7 +1,7 @@
 ---
 name: debug-local-session
 description: >-
-  Debug the Finance Voice Agent stack across local setup, Foundry Project and
+  Debug the customer Voice Agent sample stack across local setup, Foundry Project and
   model deployment, Agent publication/version, RemoteTool connection, shared
   MCP deployment/routes, Local UI bridge, and recorded sessions. Use for setup
   failures, wrong Project/model, publish errors, disabled Try it now, MCP auth
@@ -12,7 +12,7 @@ description: >-
   failing boundary.
 ---
 
-# Debug the Finance Voice Agent stack
+# Debug the customer Voice Agent sample stack
 
 Work from `VoiceAgent/`. Read [references/system-map.md](references/system-map.md)
 before diagnosing Project, deployment, connection, MCP, or UI ownership.
@@ -30,16 +30,16 @@ endpoint.
 2. Check local process boundaries:
 
    ```bash
-   ./scripts/manage-local-finance-mcp-and-ui.sh status
+   ./scripts/manage-local-mcp-and-ui.sh status
    curl -fsS http://127.0.0.1:18003/healthz
    curl -fsS http://127.0.0.1:18098/healthz
    ```
 
-   Read `.local-finance-mcp-and-ui/mcp.log` and
-   `.local-finance-mcp-and-ui/local-ui.log` when a process is not ready.
+   Read `.local-mcp-and-ui/mcp.log` and
+   `.local-mcp-and-ui/local-ui.log` when a process is not ready.
 
 3. If setup, publication, or **Try it now** fails before a recording exists:
-   - Run `./scripts/setup-local-finance-examples.sh --check`.
+   - Run `./scripts/setup-local-examples.sh --check`.
    - Confirm all three `.env` files select the intended Project.
    - Confirm `model_type` and `model` identify an available model deployment.
    - Inspect `shared_mcp/config/generated/example*.local.env`; never print

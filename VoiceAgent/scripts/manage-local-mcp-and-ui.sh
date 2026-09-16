@@ -4,7 +4,7 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MCP_ROOT="${ROOT}/shared_mcp"
 UI_ROOT="${ROOT}/samples/local_UI"
-STATE_ROOT="${ROOT}/.local-finance-mcp-and-ui"
+STATE_ROOT="${ROOT}/.local-mcp-and-ui"
 MCP_PID_FILE="${STATE_ROOT}/mcp.pid"
 UI_PID_FILE="${STATE_ROOT}/local-ui.pid"
 MCP_LOG="${STATE_ROOT}/mcp.log"
@@ -18,10 +18,10 @@ ACTION="${1:-restart}"
 
 usage() {
   cat <<'EOF'
-Usage: ./scripts/manage-local-finance-mcp-and-ui.sh [action]
+Usage: ./scripts/manage-local-mcp-and-ui.sh [action]
 
-Manage the complete local runtime for the Finance examples: the shared MCP
-container, named Dev Tunnel host, and Local UI.
+Manage the complete local runtime for the configured Voice Agent examples: the
+shared MCP container, named Dev Tunnel host, and Local UI.
 
 Actions:
   start, restart  Replace stale repository-owned processes and start MCP + UI.
@@ -100,7 +100,7 @@ stop_stack() {
   stop_pid_file "${MCP_PID_FILE}"
   stop_stale_repo_processes
   docker rm -f voice-agent-shared-mcp-local >/dev/null 2>&1 || true
-  echo "local_finance_mcp_and_ui=stopped"
+  echo "local_mcp_and_ui=stopped"
 }
 
 wait_for_http() {
@@ -209,7 +209,7 @@ start_stack() {
     "${UI_LOG}"
   verify_template_probes
 
-  echo "local_finance_mcp_and_ui=ready"
+  echo "local_mcp_and_ui=ready"
   echo "local_ui_url=http://localhost:${UI_PORT}"
   echo "mcp_health=http://127.0.0.1:${MCP_PORT}/healthz"
   echo "mcp_log=${MCP_LOG}"

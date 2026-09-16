@@ -18,6 +18,6 @@ post-tool response failure, use the shared
 
 ```bash
 cd VoiceAgent
-./scripts/manage-local-finance-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh status
 python skills/debug-local-session/scripts/analyze_session.py --list
 ```

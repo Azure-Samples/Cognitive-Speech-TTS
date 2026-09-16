@@ -1,4 +1,4 @@
-# Finance Voice Agent debug system map
+# Voice Agent sample debug system map
 
 ## Read this when
 
@@ -109,10 +109,10 @@ under `shared_mcp/state/local/token`; do not print, commit, or paste it.
 
 ## Local process ownership
 
-`scripts/setup-local-finance-examples.sh` prepares dependencies, builds the UI,
+`scripts/setup-local-examples.sh` prepares dependencies, builds the UI,
 and creates local `.env` files.
 
-`scripts/manage-local-finance-mcp-and-ui.sh` manages the runtime:
+`scripts/manage-local-mcp-and-ui.sh` manages the runtime:
 
 - MCP Docker container;
 - named Dev Tunnel host;
@@ -122,7 +122,7 @@ and creates local `.env` files.
 State and logs:
 
 ```text
-.local-finance-mcp-and-ui/
+.local-mcp-and-ui/
   mcp.pid
   mcp.log
   local-ui.pid
@@ -136,8 +136,8 @@ leaves its tunnel host running.
 
 | Boundary | Evidence |
 | --- | --- |
-| Local dependencies/auth | `setup-local-finance-examples.sh --check` |
-| MCP/UI processes | `manage-local-finance-mcp-and-ui.sh status`, state logs |
+| Local dependencies/auth | `setup-local-examples.sh --check` |
+| MCP/UI processes | `manage-local-mcp-and-ui.sh status`, state logs |
 | Local MCP process | `http://127.0.0.1:18003/healthz`, Docker status |
 | Public MCP/auth/tools | Local UI template probe JSON; authenticated HTTP 200 |
 | Project selection | UI config/cookie, session `meta.json`, sample `.env` |
@@ -154,10 +154,10 @@ Run from `VoiceAgent/`. These commands do not print the MCP bearer token.
 
 ```bash
 # Local processes and their configured Local UI URL.
-./scripts/manage-local-finance-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh status
 
 # Dependency, environment, and authentication readiness.
-./scripts/setup-local-finance-examples.sh --check
+./scripts/setup-local-examples.sh --check
 
 # Local MCP health.
 curl -fsS http://127.0.0.1:18003/healthz
