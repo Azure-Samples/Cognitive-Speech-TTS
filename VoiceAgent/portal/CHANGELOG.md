@@ -3,6 +3,35 @@
 This is the downstream port log, not the full upstream repository history.
 Keep the upstream pin and intentional differences in every port entry.
 
+## 2026-09-16 — Public-release review fixes
+
+**Upstream pin unchanged:** `e713a37c4cdb3282157cbaf46b6d425bcd984c05`.
+These are local safety/publication changes, not a new import.
+
+- Added complete third-party notices for the bundled js-yaml, React, React DOM,
+  and Scheduler code. Build/watch commands preserve license comments and point
+  both bundles to the shipped notice file.
+- Replaced the private clone URL with the neutral `voice-agent-demo` source
+  identifier, and removed internal implementation/PR/design references from
+  comments. Source commit, branch, path, raw upstream hashes, and drift checking
+  remain intact. Maintainers resolve the repository using private records.
+- Redact known credential fields inside JSON-encoded tool arguments/results,
+  including nested/double-encoded content. Omit malformed/oversized/deep JSON
+  tool data safely; preserve ordinary text results and the original forwarded
+  protocol frames.
+- Added an explicit, default-off generated-session storage choice. Apply it
+  through the existing session override, preserving generation/draft contracts
+  and immutable versions rather than silently rewriting service resources.
+  Existing-agent storage choices and manual overrides remain available.
+- Replaced automatic latest-conversation fallback in both persisted viewers
+  with an explicit recent-ID/known-ID picker. Captured IDs still open directly,
+  and transcript, trace, audio playback/download, and New session remain available.
+- Added release-artifact, redaction, generation-storage, and both-viewer browser
+  regression tests. Clarified synthetic demo data and the WebRTC STUN dependency.
+- Rebuilt both browser bundles and refreshed the local checksum baseline.
+  This changes current files only; it does not rewrite already published Git
+  history or establish the source owner's redistribution approval.
+
 ## 2026-09-16 — Require an Azure Foundry project
 
 **Upstream pin unchanged:** `e713a37c4cdb3282157cbaf46b6d425bcd984c05`.

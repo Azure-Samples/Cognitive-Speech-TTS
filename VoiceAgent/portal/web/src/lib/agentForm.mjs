@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // UI draft state, not a second wire schema. serviceContract.js remains the only
-// serializer. Field ownership follows Vienna's VoiceAgentDefinitionValidator.
+// serializer. Field ownership follows the voice-agent definition contract.
 
 import { defaultVoiceFor, modelGroups } from "../config.js";
 import { DEFAULT_AVATAR_PRESET_ID, buildAvatarDefinition } from "./avatar.mjs";

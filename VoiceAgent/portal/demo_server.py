@@ -64,7 +64,7 @@ except ImportError:
 
 STATIC_DIR = Path(__file__).parent / "static"
 
-# Header the Agents service reads for the connect-time per-session override (design 3.1.4).
+# Header the Agents service reads for the connect-time per-session override.
 VOICE_OVERRIDE_HEADER = "x-ms-voice-session-override"
 STRUCTURED_INPUT_QUERY_PARAMETER = "structured_input"
 STRUCTURED_INPUT_HEADER = "x-ms-voice-structured-inputs"
@@ -100,6 +100,7 @@ async def _request_config(request: web.Request) -> AgentsConfig:
 _ASSET_FILENAMES = (
     "bundle.js", "bundle.css", "styles.css", "pcm-capture-worklet.js",
     "webrtc-bundle.js", "webrtc-bundle.css",
+    "THIRD_PARTY_NOTICES.txt",
 )
 
 
@@ -703,7 +704,10 @@ def parse_args(argv=None):
 def main() -> None:
     args = parse_args()
     if any(not (STATIC_DIR / name).is_file() for name in _ASSET_FILENAMES):
-        raise SystemExit("Missing browser assets. Run `npm ci` then `npm run build:all` in the portal/web directory.")
+        raise SystemExit(
+            "Missing browser assets or third-party notices. Restore the shipped static files; "
+            "to rebuild JavaScript/CSS, run `npm ci` then `npm run build:all` in portal/web."
+        )
     try:
         app = build_app(args)
     except ValueError as exc:

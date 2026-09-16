@@ -2,7 +2,7 @@
 // One chat message bubble. Type drives color + alignment, mirroring the Voice Live
 // sample's getMessageClassNames (user=blue/right, assistant=gray/left,
 // status=yellow/center, error=red/center, event=faint/center). MCP tool calls and
-// approval requests (design §6) render as structured cards; an approval card shows
+// approval requests render as structured cards; an approval card shows
 // Approve/Reject until answered (mirrors chat-interface.tsx).
 
 import { useEffect, useRef, useState } from "react";
@@ -748,7 +748,7 @@ export function MessageBubble({ message, allMessages = [], onApproval }) {
     );
   }
 
-  // A client-executed `function` tool (design §6.1): Voice Live forwarded the call here and this
+  // A client-executed `function` tool: Voice Live forwarded the call here and this
   // browser produced the output, so the card shows both sides of that exchange.
   if (type === "function_call" && functionCall) {
     const status = functionCall.status || "in_progress";

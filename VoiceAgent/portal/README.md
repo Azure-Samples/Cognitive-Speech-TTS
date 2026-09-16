@@ -105,9 +105,23 @@ session**, and grant microphone permission. Press **Ctrl+C** to stop.
 - **Save conversations** defaults off for newly configured agents. Enable it
   deliberately to use **View persisted** and audio downloads. Existing agents
   retain their stored policy; session settings can override it.
+- **Save generated conversations** also defaults off. Generation can return a
+  different stored policy, so the portal applies your choice as an explicit
+  **session override** when connecting to that result. The preference survives
+  agent refresh/selection within the current studio tab; it is not written into
+  Azure or included in copied agent URLs. After reloading or opening another page,
+  the agent is an existing agent and uses its stored policy. Use **Edit definition**
+  to change that policy permanently, or **Session settings** for a single call.
+- **View persisted** and the WebRTC review still open a captured conversation
+  directly. If no ID was captured, choose a recent ID or paste a known historical
+  ID and click **Open conversation**. No transcript, tool result, or audio is
+  fetched just because a shared agent has a newer conversation.
 
 The standalone WebRTC page is **http://127.0.0.1:9527/webrtc** and uses the same
-configured Foundry project.
+configured Foundry project. Its media helper uses Google's public STUN server
+(`stun:stun.l.google.com:19302`) for network discovery; ensure that dependency is
+appropriate for your environment. Avatar ICE settings still come from the
+configured service. Use fictitious identity/contact details in the digit demo.
 
 ### Optional configuration
 
@@ -135,7 +149,10 @@ in YAML, screenshots, or logs.
 
 `--record-sessions` opts in to recording voice protocol events under
 `session-logs/`. Audio payloads are elided and common credential fields are
-redacted, but **transcripts, prompts, and tool data may still be sensitive**.
+redacted, including JSON-encoded tool arguments/results and nested JSON tool
+content. Invalid, oversized, or excessively nested JSON tool data is omitted
+rather than recorded unsafely. Ordinary text results remain readable, so
+**transcripts, prompts, and free-text tool data may still be sensitive**.
 Recording is separate from the agent's Azure `store` policy and remains off by
 default. Do not commit or share these logs. The **Local session logs** link
 opens the included viewer.
@@ -195,7 +212,9 @@ local hashes as described in [PORTING.md](PORTING.md).
   finish the session, and allow time for Azure persistence.
 
 Upstream Microsoft copyright notices and bundled third-party license comments
-are retained. See the repository [license](../../LICENSE.md). The private
+are retained. Full bundled-dependency notices ship with the browser assets in
+[THIRD_PARTY_NOTICES.txt](static/THIRD_PARTY_NOTICES.txt); keep that file with
+both bundles when redistributing them. See the repository [license](../../LICENSE.md). The private
 upstream did not supply a standalone demo license; maintainers must confirm
 redistribution approval before public publication. No upstream screenshots,
 internal test reports, credentials, or deployment scripts are included.

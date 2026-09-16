@@ -294,6 +294,15 @@ class LiveProxyTests(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn("SENSITIVE", text)
         self.assertEqual(self.calls, [])
 
+    async def test_bundled_notices_are_served_without_using_azure_credentials(self):
+        response = await self.client.get("/static/demo/THIRD_PARTY_NOTICES.txt")
+        self.assertEqual(response.status, 200)
+        text = await response.text()
+        self.assertIn("Vitaly Puzrin", text)
+        self.assertIn("Facebook, Inc.", text)
+        self.cfg._credential.get_token.assert_not_called()
+        self.assertEqual(self.calls, [])
+
     async def test_real_upstream_websocket_text_binary_and_headers(self):
         path = VOICE_PATH + "?api-version=v1&structured_input=%7B%22name%22%3A%22Ada%22%7D&voiceOverride=alloy"
         async with self.client.ws_connect(path) as ws:

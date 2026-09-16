@@ -117,7 +117,7 @@ export function buildVoiceDefinition({
     definition.structured_inputs = structuredInputs;
   }
   if (greeting) definition.greeting = greeting;
-  // Sub-agents (design: subagent_config): existing agents the voice agent can forward turns to.
+  // Sub-agents: existing agents the voice agent can forward turns to.
   // Each entry carries its own response_policy so concurrently running specialists can use
   // independent acknowledgement, gap-fill, and progress behavior.
   if (subagents && subagents.length) {
@@ -263,7 +263,7 @@ export function buildHostedAgentVoiceBody({
 }
 
 // A plain prompt (text) AgentDefinition — the kind used for a sub-agent the voice agent forwards to
-// (design: subagent_config). Mirrors the E2E `createSubagent` payload (kind: 'prompt', model,
+// (subagent_config). Uses a prompt-agent payload (kind: 'prompt', model,
 // instructions). Create one of these, then attach it by name under a voice agent's sub-agents.
 export function buildCreatePromptAgentBody({ name, model, instructions, description }) {
   return {
@@ -280,20 +280,17 @@ export function buildCreatePromptAgentBody({ name, model, instructions, descript
 // The guided-authoring body: POST /agents:generate
 //   { kind: "voice", name, use_case, goal?, model_type?, model?, description?, draft?, tools? }.
 //
-// Contract (post agentic-creation refactor — Vienna PR 2231935 / Voice Live PR 38478):
+// Guided-authoring request contract:
 //   - `kind` is the route discriminator for the shared /agents:generate endpoint; always "voice" here.
 //   - `name` is the only other REQUIRED field. That is the
 //     `azd voice-agent create --name X` minimum.
-//   - `use_case` is optional: an arbitrary non-empty string (<=128 chars) when present. The old enum
-//     whitelist was dropped — stage 1 does not vary the generated definition by use_case.
+//   - `use_case` is an optional, descriptive non-empty string (<=128 chars), not an enum.
 //   - `goal` is optional; omitting it still produces a working agent.
 //   - `model_type` is optional (the service defaults to `managed`). `model` is required ONLY when
 //     `model_type=self_deployed` — the service never invents a customer's BYOM deployment name.
 //     Both are omitted from the body when unset, so the server-side defaults are actually exercised
 //     rather than masked by a client-side value.
-//   - `description` and `draft` are optional. Their fallbacks are decided by VOICE LIVE
-//     (user-supplied wins, otherwise a fixed default) — Vienna is a pure pass-through, so omitting
-//     them here exercises the orchestrator's resolution path.
+//   - `description` and `draft` are optional; omit them to use the service defaults.
 //   - `agent_type` was REMOVED from the contract; persona is derived from `goal` + `use_case`.
 export function buildGenerateAgentBody({
   name,

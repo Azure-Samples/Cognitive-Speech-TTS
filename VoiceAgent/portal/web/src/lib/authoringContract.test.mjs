@@ -19,7 +19,7 @@ import {
 const valid = { name: "clinic-line", useCase: "inbound line for a dental clinic" };
 
 describe("contract constants", () => {
-  it("pins the limits Vienna's validator enforces", () => {
+  it("pins the limits the service's validator enforces", () => {
     // Transcribed from ValidationMessages.cs. A silent drift here is the whole failure
     // mode this module exists to prevent, so the numbers are asserted, not derived.
     assert.equal(LIMITS.name, 63);
@@ -84,7 +84,7 @@ describe("describeRejection", () => {
   });
 
   it("applies the DNS label rule rather than length alone", () => {
-    // Vienna validates the name with IsValidDnsName, so a short but malformed name is
+    // Agent names must be valid DNS labels, so a short but malformed name is
     // rejected there. Checking length only would let it through to a 400.
     assert.ok(NAME_PATTERN.test("a1"));
     assert.ok(NAME_PATTERN.test("clinic-line-2"));
@@ -151,7 +151,7 @@ describe("describeRejection", () => {
   });
 
   it("reports the first failure in the order the service checks", () => {
-    // Two problems at once should surface the name, because that is what Vienna rejects
+    // Two problems at once should surface the name, because that is what the service rejects
     // first -- otherwise fixing the reported field just reveals another rejection.
     const reason = describeRejection({ name: "", useCase: "a".repeat(LIMITS.useCase + 1) });
 

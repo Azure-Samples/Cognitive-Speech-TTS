@@ -2,12 +2,8 @@
 // The wire contract for POST /agents:generate, mirrored so the form can state the
 // same limits the service enforces instead of guessing at them.
 //
-// Every value here is transcribed from Vienna's GenerateVoiceAgentRequestValidator
-// and ValidationMessages (Agents/EntryPoints/Api/Controllers/V2/Validators/). Vienna
-// is the layer that rejects a caller's input and names the field; Voice Live sits
-// behind it and enforces its own, usually looser, bounds. When Vienna's numbers move,
-// move these with them -- a form that advertises a limit the service does not hold to
-// sends the user into a rejection they were told would not happen.
+// Match the supported request constraints so validation feedback is useful
+// before submission. Update these bounds when the public service contract changes.
 
 /* Field bounds. `name` is validated as a DNS label rather than by length alone, so the
  * number here is only the length half of that rule -- see NAME_PATTERN. */
@@ -19,7 +15,7 @@ export const LIMITS = {
   description: 512,
 };
 
-/* Vienna: IsValidDnsName -- alphanumeric at both ends, hyphens allowed in between. */
+/* DNS labels: alphanumeric at both ends, hyphens allowed in between. */
 export const NAME_PATTERN = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
 
 /* `kind` is a required discriminator with exactly one accepted value, so it is a fact
@@ -27,7 +23,7 @@ export const NAME_PATTERN = /^[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
 export const KIND = "voice";
 
 /* `model_type` is optional and extensible. Omitting it is a distinct, documented
- * choice -- Vienna's contract says the authoring service then uses `managed` and
+ * choice -- the service's contract says the authoring service then uses `managed` and
  * resolves the model itself -- so it is offered as its own option rather than hidden
  * behind a checkbox that does not say what it does. */
 export const MODEL_TYPE_OPTIONS = [
@@ -64,8 +60,8 @@ export const USE_CASE_GROUPS = [
   },
 ];
 
-/* The whole accepted set, not a suggestion list: both Vienna and Voice Live reject
- * anything else. `hosted_agent` is absent on purpose -- it wraps a customer's existing
+/* Supported generation model sources, not a suggestion list.
+ * `hosted_agent` is absent on purpose -- it wraps a customer's existing
  * text agent, which owns its prompt and tools, so there is nothing to generate. */
 export const MODEL_TYPES = ["managed", "self_deployed"];
 
@@ -75,7 +71,7 @@ export const MODEL_TYPE_SELF_DEPLOYED = "self_deployed";
 /**
  * Why the request would be rejected, or null when it would be accepted.
  *
- * Mirrors the order Vienna's validator checks in, so the first complaint the user sees
+ * Mirrors the order the service's validator checks in, so the first complaint the user sees
  * here is the first one the service would have made.
  */
 export function describeRejection({ name, useCase, goal, description, modelType, model }) {
@@ -96,7 +92,7 @@ export function describeRejection({ name, useCase, goal, description, modelType,
   if (description && description.length > LIMITS.description) {
     return `Description must be ${LIMITS.description} characters or fewer.`;
   }
-  // Vienna: "Optional model identifier. Required when model_type is self_deployed."
+  // A deployment name is required only when using the self-deployed model source.
   if (modelType && !MODEL_TYPES.includes(modelType)) {
     return `model_type must be one of: ${MODEL_TYPES.join(", ")}.`;
   }

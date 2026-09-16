@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
-// Digit-accuracy demo (design §6.1 — client-executed `function` tools).
+// Digit-accuracy demo.
 //
 // Creates the demo's A/B pair in one click. Both agents get the same intake prompt, model, voice,
 // and greeting; the only difference is that the verified one also declares the
@@ -92,7 +92,7 @@ export function DigitDemoConfig({
         <summary>How to try it</summary>
         <ol className="demo-steps">
           <li>Choose each agent in the playground and connect.</li>
-          <li>Give your name, a 10-digit phone number, and an 8-digit customer ID.</li>
+          <li>Use a fictitious name, a sample 10-digit phone number, and a made-up 8-digit customer ID. Do not use real customer data.</li>
           <li>Compare the read-back and the amber <b>Client function call</b> card.</li>
         </ol>
         <p className="field-hint">Uses the model, voice, echo cancellation, avatar, and storage settings in your current configuration.</p>

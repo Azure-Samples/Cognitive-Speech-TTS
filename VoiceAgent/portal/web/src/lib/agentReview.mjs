@@ -109,7 +109,7 @@ export function summaryChips(definition) {
   const chips = [];
   if (definition.model) chips.push(["model", definition.model]);
   if (definition.model_type) chips.push(["hosting", definition.model_type]);
-  /* Voice arrives flattened by Vienna's compatibility layer, but a direct Voice
+  /* Voice arrives flattened by the service's compatibility layer, but a direct Voice
    * Live response still nests it. Read both so this panel does not depend on
    * which side of that normalisation the caller sat on. */
   const voice = typeof output.voice === "string" ? output.voice : (output.voice || {}).name;

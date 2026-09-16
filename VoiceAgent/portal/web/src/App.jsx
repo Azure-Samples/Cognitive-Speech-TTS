@@ -35,11 +35,11 @@ import { HandoffGraphPanel } from "./components/HandoffGraphPanel.jsx";
 import { SessionControls } from "./components/SessionControls.jsx";
 import { StudioHeader } from "./components/StudioHeader.jsx";
 
-function forPortal(cfg, agent) {
+function forPortal(cfg, agent, sessionStores) {
   return agent ? {
     ...agent,
-    // Vienna always resolves model_type=hosted_agent through the cascaded
-    // Voice Live bridge, so session voice overrides must use Azure voices.
+    ...(sessionStores?.has(agent.name) ? { sessionStoreDefault: sessionStores.get(agent.name) } : {}),
+    // Hosted agents use the cascaded voice path; voice overrides must use Azure voices.
     cascaded: agent.inferenceMode === "hosted_agent" || isCascaded(cfg, agent.model),
   } : null;
 }
@@ -62,6 +62,9 @@ export function App() {
    * token; leaving the Generate tab bumps the counter, so a response that lands after
    * the user moved on is dropped instead of repopulating the review they abandoned. */
   const generateToken = useRef(0);
+  // A generation preference is a session override, never an unsupported field
+  // on /agents:generate or a silent rewrite of the service's returned version.
+  const generatedSessionStores = useRef(new Map());
   const session = useVoiceSession();
   const { setClientFunctions } = session;
   const connectedRef = useRef(session.isConnected);
@@ -128,7 +131,7 @@ export function App() {
         }
         try {
           const listed = await loadVoiceAgents(cfg);
-          const portalAgents = listed.map((item) => forPortal(cfg, item));
+          const portalAgents = listed.map((item) => forPortal(cfg, item, generatedSessionStores.current));
           setAgents(portalAgents);
           // The Templates tab runs a template by opening this page with the agent it was
           // published as, so an agent named in the URL is a selection, not a filter.
@@ -156,7 +159,7 @@ export function App() {
    * this review step exists to prevent, so the review is dropped rather than left to
    * look authoritative. */
   const selectAndRememberAgent = (selected, { keepReview = false } = {}) => {
-    const portalAgent = forPortal(cfg, selected);
+    const portalAgent = forPortal(cfg, selected, generatedSessionStores.current);
     if (!portalAgent) return;
     setAgents((current) => [
       portalAgent,
@@ -187,7 +190,7 @@ export function App() {
   const onRefreshAgents = async () => {
     setAgentListState({ loading: true, error: "" });
     try {
-      const listed = (await loadVoiceAgents(cfg)).map((item) => forPortal(cfg, item));
+      const listed = (await loadVoiceAgents(cfg)).map((item) => forPortal(cfg, item, generatedSessionStores.current));
       setAgents(listed);
       setAgent((current) => (
         current ? listed.find((item) => item.name === current.name) || null : null
@@ -264,9 +267,9 @@ export function App() {
   // the instructions, audio stack, and defaults. Post agentic-creation refactor only `useCase` is
   // required: `model`/`inferenceMode` are optional (the service defaults to a managed
   // gpt-realtime), and `description`/`draft` fall back to values chosen by VOICE LIVE, not by
-  // Vienna or this client. See buildGenerateAgentBody for the full contract.
+  // the service or this client. See buildGenerateAgentBody for the full contract.
   const onGenerateAgent = async ({
-    name: requestedName, model, modelType, useCase, goal, tools, description, draft,
+    name: requestedName, model, modelType, useCase, goal, tools, description, draft, store = false,
   }) => {
     const name = requestedName?.trim() || newAgentName("web-voice-gen");
     const body = buildGenerateAgentBody({
@@ -275,7 +278,7 @@ export function App() {
     const path = withApiVersion(cfg, "/agents:generate");
     session.logApi("POST", path);
     // Wall-clock from here rather than a server-reported duration: the caller is
-    // waiting on the whole round trip, and Vienna does not report its own.
+    // waiting on the whole round trip, and the service does not report its own.
     // A failure must not leave the previous definition on screen beside it.
     setGenerated(null);
     const startedAt = Date.now();
@@ -309,6 +312,7 @@ export function App() {
       isConnected: connectedRef.current,
     });
     if (!apply) return data;
+    generatedSessionStores.current.set(data.name || name, store === true);
 
     const identity = {
       name: data.name || name,
@@ -320,7 +324,8 @@ export function App() {
     setGenerated({ definition: def, identity, elapsedMs });
 
     const genModel = def.model;
-    const voice = def.audio && def.audio.output && def.audio.output.voice && def.audio.output.voice.name;
+    const outputVoice = def.audio?.output?.voice;
+    const voice = typeof outputVoice === "string" ? outputVoice : outputVoice?.name;
     selectAndRememberAgent(asVoiceAgent(data) || {
       name: data.name || name,
       model: genModel,
@@ -330,7 +335,8 @@ export function App() {
       // when model_type is omitted the service resolves it, and connect needs the resolved value to
       // pick the right model family.
       inferenceMode: def.model_type === "self_deployed" ? "deployment" : "model",
-      store: true,
+      store: def.store === true,
+      definition: def,
       generated: true,
       instructions: def.instructions,
       avatar: def.avatar || null,

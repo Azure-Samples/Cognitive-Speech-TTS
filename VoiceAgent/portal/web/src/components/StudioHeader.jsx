@@ -28,6 +28,7 @@ export function StudioHeader({ cfg, disabled, onBackendChange }) {
           <a href="/">Studio</a>
           <a href="/webrtc">WebRTC</a>
           <a href="/static/demo/sessions.html">Local session logs</a>
+          <a href="/static/demo/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer">Licenses</a>
         </span>
       </div>
     ) : null}

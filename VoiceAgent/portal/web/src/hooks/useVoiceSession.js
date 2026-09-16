@@ -133,7 +133,7 @@ export function useVoiceSession() {
   const latestInputVoiceAtRef = useRef(null);
   const activeInputVoiceAtRef = useRef(null);
   const lastAssistantSpeechEndAtRef = useRef(null);
-  // Client-executed `function` tools (design §6.1). `clientFunctionsRef` is the name -> handler
+  // Client-executed `function` tools. `clientFunctionsRef` is the name -> handler
   // registry the app installs; the rest is the per-session state needed to answer a call exactly
   // once, from the transcript history the client has actually received.
   const clientFunctionsRef = useRef({});
@@ -208,7 +208,7 @@ export function useVoiceSession() {
     currentAssistantId.current = null;
   }, []);
 
-  // ---- MCP tool helpers (design §6): surface tool listing, calls, and approval in the chat ----
+  // ---- MCP tool helpers: surface tool listing, calls, and approval in the chat ----
   const asText = (v) => (v == null ? undefined : typeof v === "string" ? v : JSON.stringify(v));
 
   // Add/refresh an `mcp_call` bubble keyed by the call item id, merging in any new fields.
@@ -345,7 +345,7 @@ export function useVoiceSession() {
   );
   const clearMessages = useCallback(() => setMessages([]), []);
 
-  // ---- client-executed function tools (design §6.1) ----
+  // ---- client-executed function tools ----
   // Voice Live declares a `function` tool to the model but does NOT run it: it forwards the
   // `function_call` here and relays whatever `function_call_output` this client sends back. The
   // app installs handlers with setClientFunctions; a call for an unregistered name is answered
@@ -676,7 +676,7 @@ export function useVoiceSession() {
     }
   }, [logError, logStatus]);
 
-  // ---- WebRTC media transport (design features/webrtc_voice_first_agent_demo/design.md) ----
+  // ---- WebRTC media transport ----
   // The browser peers directly with Voice Live: mic + agent audio ride RTP and the voice-live-events
   // data channel is peer-to-peer; only the rtc.call.sdp.* signaling crosses the bridged control WS.
   const cleanupWebRtc = useCallback(() => {
@@ -875,7 +875,7 @@ export function useVoiceSession() {
         const rtcErr = evt.error || {};
         const rtcCode = rtcErr.code || rtcErr.type || "";
         if (isTerminalRtcError(rtcCode)) {
-          // Terminal (design §4.4): the call is dead — tear down the peer; a fresh connect is needed.
+          // Terminal: the call is dead — tear down the peer; a fresh connect is needed.
           logError("WebRTC error (terminal): " + JSON.stringify(rtcErr));
           setStatus({ text: "webrtc error: " + (rtcErr.message || rtcCode || "see log"), kind: "err" });
           cleanupWebRtc();
@@ -887,7 +887,7 @@ export function useVoiceSession() {
         break;
       }
       case "conversation.created": {
-        // The voice orchestrator auto-creates the conversation and is its sole writer (design §4.4);
+        // The voice orchestrator auto-creates the conversation and is its sole writer;
         // it surfaces the id here so the client can read the persisted turns back.
         if (evt.conversation_id) {
           setConversationId(evt.conversation_id);
@@ -1140,7 +1140,7 @@ export function useVoiceSession() {
         break;
       }
 
-      // ---- MCP tools (design §6): listing, the call lifecycle, and approval requests ----
+      // ---- MCP tools: listing, the call lifecycle, and approval requests ----
       case "mcp_list_tools.in_progress":
         logEvent("mcp_list_tools.in_progress");
         break;
@@ -1172,7 +1172,7 @@ export function useVoiceSession() {
         logEvent(t);
         break;
 
-      // ---- client-executed function tools (design §6.1) ----
+      // ---- client-executed function tools ----
       case "response.function_call_arguments.delta":
         if (evt.item_id || evt.call_id) {
           noteFunctionCall({
@@ -1504,7 +1504,7 @@ export function useVoiceSession() {
     recordUserTranscript(trimmed, "typed text (no speech recognition)");
   }, [addMessage, beginTurn, markTurn, recordFrame, recordUserTranscript]);
 
-  // Answer an MCP approval request (design §6.2): send the `mcp_approval_response` item upstream and
+  // Answer an MCP approval request: send the `mcp_approval_response` item upstream and
   // let Voice Live run (or skip) the tool. Do NOT send `response.create` here or when the call
   // completes: Voice Live owns post-tool response scheduling, and a client request would race or
   // duplicate the automatically generated answer.

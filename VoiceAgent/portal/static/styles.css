@@ -630,11 +630,11 @@ button.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
 .msg.event .bubble { background: transparent; color: var(--muted); font-size: 0.74rem;
                      font-family: ui-monospace, Menlo, Consolas, monospace; padding: 0.15rem 0.4rem; }
 
-/* MCP tool call + approval cards (design §6) */
+/* MCP tool call + approval cards */
 .msg.mcp_approval, .msg.mcp_call, .msg.handoff, .msg.function_call { justify-content: center; }
 .msg.mcp_approval .bubble { background: #f3e8ff; border: 1px solid #d8b4fe; max-width: 92%; }
 .msg.mcp_call .bubble { background: #e6fffb; border: 1px solid #99f6e4; max-width: 92%; }
-/* Client-executed `function` tool (design §6.1): amber, so a call this browser answered is
+/* Client-executed `function` tool: amber, so a call this browser answered is
    distinguishable at a glance from a service-executed MCP call. */
 .msg.function_call .bubble { background: #fff7ed; border: 1px solid #fdba74; max-width: 92%; }
 .msg.handoff .bubble { background: #eef2ff; border: 1px solid #a5b4fc; max-width: 92%; }

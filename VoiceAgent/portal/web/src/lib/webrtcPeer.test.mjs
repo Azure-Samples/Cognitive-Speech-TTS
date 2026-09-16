@@ -44,7 +44,7 @@ test("ignores non-array input and servers without urls", () => {
   assert.deepEqual(withTurnTcpFallback([{ username: "x" }]), []);
 });
 
-test("classifies terminal vs recoverable rtc.call.error codes (design §4.4)", () => {
+test("classifies terminal vs recoverable rtc.call.error codes", () => {
   for (const code of ["missing_sdp", "session_timeout", "message_too_large"]) {
     assert.equal(isTerminalRtcError(code), true, code);
   }

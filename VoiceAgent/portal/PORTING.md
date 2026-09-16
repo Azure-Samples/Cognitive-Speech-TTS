@@ -4,7 +4,7 @@
 
 | Field | Value |
 | --- | --- |
-| Repository | `voice-first-agent-dev` (access-controlled Azure DevOps repository; URL in `UPSTREAM.json`) |
+| Source identifier | `voice-agent-demo` (resolve the repository through maintainer-only records) |
 | Branch | `main` |
 | Full repository commit | `e713a37c4cdb3282157cbaf46b6d425bcd984c05` |
 | Commit time | `2026-09-15T23:50:17Z` |
@@ -23,6 +23,8 @@ configuration and credentials were not copied.
 
 `UPSTREAM.json` is the source of truth:
 
+- `upstream.source_id`: neutral source alias; private repository URLs and access
+  instructions belong in maintainer-only records, not this public repository.
 - `upstream.commit`: immutable full repository commit used for the port.
 - `upstream.last_path_commit`: last commit touching the demo, which can be
   older than the repository commit.
@@ -56,6 +58,8 @@ python tools\upstream_status.py --source "<source-checkout>" --ref origin/main -
 The tool verifies the pinned source hashes, compares the chosen committed
 source tree (including omitted files), and reports local added/removed/changed
 files. It warns if the source worktree is dirty; that worktree is never copied.
+It does not need a clone URL in the public manifest: resolve `voice-agent-demo`
+using maintainer-only records and supply that checkout with `--source`.
 It exits `1` with `--check` for drift or an advanced upstream revision, and `2`
 for an invalid manifest/Git operation.
 
@@ -117,5 +121,11 @@ for an invalid manifest/Git operation.
   allowlists, and no authenticated redirects to another endpoint.
 - No shutdown resource deletion; Azure storage and local event recording are
   opt-in. Keep ignored local files/logs out of the tracked manifest.
+- Preserve explicit session storage choices for generated results without adding
+  unsupported generation API fields or silently rewriting stored agent versions.
+- Require a captured or explicitly selected conversation ID before loading
+  historical transcript, tool, or audio data.
+- Keep full third-party notices beside the generated assets. Do not reintroduce
+  private clone URLs, implementation source paths, or private PR references.
 - No server-side arbitrary MCP probing or retrieval of connection secrets.
 - Preserve protocol/authoring regressions and the real local browser smoke test.

@@ -158,7 +158,7 @@ describe("summaryChips", () => {
   const voiceOf = (chips) => (chips.find(([label]) => label === "voice") || [])[1];
 
   it("reads the voice whether it is nested or already flattened", () => {
-    // Vienna's compatibility layer flattens `voice` to a string; a direct Voice
+    // the service's compatibility layer flattens `voice` to a string; a direct Voice
     // Live response still nests it under `.name`. Both reach this panel.
     const nested = summaryChips({
       ...definition,

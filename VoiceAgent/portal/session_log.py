@@ -36,6 +36,9 @@ _DELTA_TYPES = re.compile(r"\.delta$")
 _UNSAFE_RUN_ID_CHARS = re.compile(r"[^A-Za-z0-9_-]+")
 
 _MAX_FIELD = 400
+_MAX_JSON_FIELD = 64 * 1024
+_MAX_REDACTION_DEPTH = 16
+_JSON_TOOL_FIELDS = frozenset({"arguments", "output", "result"})
 _SECRET_KEYS = frozenset({
     "authorization", "api_key", "api-key", "apikey", "access_token",
     "refresh_token", "token", "password", "secret", "client_secret",
@@ -59,14 +62,38 @@ def _safe_run_component(value: str) -> str:
     return component[:80] or "session"
 
 
-def _clip(value: Any) -> Any:
-    """Keep a frame readable without letting one field carry a whole prompt."""
-    if isinstance(value, str) and len(value) > _MAX_FIELD:
-        return value[:_MAX_FIELD] + f"…(+{len(value) - _MAX_FIELD} chars)"
+def _clip(value: Any, *, _depth: int = 0, _tool_data: bool = False) -> Any:
+    """Sanitize a log-only copy, including JSON strings used by tool protocols.
+
+    Never modify the actual frame forwarded to the service/browser. Plain-text
+    tool results remain readable, but may still contain sensitive free text.
+    """
+    if _depth >= _MAX_REDACTION_DEPTH:
+        return "<omitted: nesting limit>"
     if isinstance(value, dict):
-        return {k: "<redacted>" if k.lower() in _SECRET_KEYS else _clip(v) for k, v in value.items()}
+        return {
+            k: "<redacted>" if k.lower() in _SECRET_KEYS else _clip(
+                v, _depth=_depth + 1, _tool_data=_tool_data or k.lower() in _JSON_TOOL_FIELDS
+            )
+            for k, v in value.items()
+        }
     if isinstance(value, list):
-        return [_clip(v) for v in value[:20]]
+        return [_clip(v, _depth=_depth + 1, _tool_data=_tool_data) for v in value[:20]]
+    if isinstance(value, str):
+        if _tool_data and value.lstrip().startswith(("{", "[", '"')):
+            # Redact BEFORE clipping: otherwise a truncated JSON object is no
+            # longer parseable and its leading credential fields can leak.
+            if len(value) > _MAX_JSON_FIELD:
+                return "<omitted: oversized JSON tool data>"
+            try:
+                decoded = json.loads(value)
+            except (ValueError, RecursionError):
+                return "<omitted: invalid JSON tool data>"
+            value = json.dumps(
+                _clip(decoded, _depth=_depth + 1, _tool_data=True), ensure_ascii=False
+            )
+        if len(value) > _MAX_FIELD:
+            return value[:_MAX_FIELD] + f"…(+{len(value) - _MAX_FIELD} chars)"
     return value
 
 
@@ -199,7 +226,7 @@ class SessionRecorder:
             self._line(direction, f"conversation={conv}")
 
         # The tool sequence is the thing worth reading first, so it gets named explicitly --
-        # this mirrors how the v5 MCP server log is read (`tool=… ok=…`).
+        # keep the timeline readable across tool implementations.
         if "mcp_call" in event_type or "function_call" in event_type:
             item = frame.get("item") or {}
             name = (str(frame.get("name") or "")

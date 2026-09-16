@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
-// Client-executed `function` tools (design §6.1). Voice Live declares the tool to the model but
+// Client-executed `function` tools. Voice Live declares the tool to the model but
 // never runs it: it forwards a `function_call` to whoever holds the session WebSocket and relays
 // that peer's `function_call_output` back into the conversation. These helpers are the pure part
 // of that contract -- argument parsing, output shaping, and the two frames to send -- so the

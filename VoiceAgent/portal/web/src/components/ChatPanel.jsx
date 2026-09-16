@@ -2,7 +2,7 @@
 // Right column: header (status badge + session id + conversation id + stop/clear) and the chat
 // panel (scrolling message bubbles + a text composer). The conversation id surfaces the
 // server-side conversation the voice orchestrator writes; "View persisted" opens that conversation
-// in a new, full-height browser tab (static/persisted.html) — design §4.4.
+// in a new, full-height browser tab (static/persisted.html)
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MessageBubble } from "./MessageBubble.jsx";
@@ -201,7 +201,7 @@ export function ChatPanel({ session, agent, cfg }) {
   const agentName = agent && agent.name;
 
   // Open the server-persisted conversation in a new tab (full height). The page resolves the
-  // conversation itself (uses the live id when present, else the agent's latest).
+  // conversation itself (uses the live id when present, otherwise asks for an ID).
   const openPersisted = () => {
     if (!agentName) return;
     const q = new URLSearchParams({ agent: agentName });

@@ -269,7 +269,7 @@ function UserView({ turns, segAudioUrl }) {
   );
 }
 
-export function MiniPortal({ items, conversation, responsesById, conversationId, warn, onRestart, wholeAudioUrl, onLoadRecording, segAudioUrl }) {
+export function MiniPortal({ items, conversation, responsesById, conversationId, warn, onRestart, onChooseConversation, wholeAudioUrl, onLoadRecording, segAudioUrl }) {
   const [tab, setTab] = useState("trajectories");
   const turns = useMemo(() => buildTurns(items), [items]);
   const nodes = useMemo(
@@ -300,6 +300,7 @@ export function MiniPortal({ items, conversation, responsesById, conversationId,
           >trace ↗ App Insights</span>
         </div>
         <div className="mp-topbar-right">
+          <button onClick={onChooseConversation}>Choose conversation</button>
           <button onClick={onLoadRecording} disabled={!conversationId}>Load recording</button>
           <button className="wrtc-start" onClick={onRestart}>New session</button>
         </div>

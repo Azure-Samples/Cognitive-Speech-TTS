@@ -25,6 +25,7 @@ export function Sidebar({ cfg, session, authorMode, onAuthorModeChange, onCreate
   const [draft, setDraft] = useState(() => createAgentDraft(cfg));
   const [generateDraft, setGenerateDraft] = useState({
     name: "", goal: "", useCase: "", description: "", modelType: "", model: "", draft: false,
+    store: cfg.defaultStore === true,
   });
   const [section, setSection] = useState("agent");
   const [generateSection, setGenerateSection] = useState("brief");

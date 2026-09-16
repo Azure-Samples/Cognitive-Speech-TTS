@@ -29,10 +29,10 @@ export function SessionControls({
   useEffect(() => {
     // Do not carry an override from one model family (or edited version) into another.
     setVoiceOverride("");
-    setStoreOverride("");
+    setStoreOverride(typeof agent?.sessionStoreDefault === "boolean" ? String(agent.sessionStoreDefault) : "");
     setStructuredInput("");
     setCopyUrlState({ text: "", kind: "", url: "" });
-  }, [agent?.name, agent?.version]);
+  }, [agent?.name, agent?.version, agent?.sessionStoreDefault]);
 
   useEffect(() => {
     if (agent?.clientReferenceEc) setTransport("websocket");
@@ -95,6 +95,12 @@ export function SessionControls({
         </button>
       </div>
       {agentListState.error ? <div className="form-feedback err" role="alert">{agentListState.error}</div> : null}
+      {typeof agent?.sessionStoreDefault === "boolean" ? (
+        <p className="field-hint" role="status">
+          Generated-session storage: {storeOverride === "" ? "use stored agent policy" : storeOverride === "true" ? "save transcript and audio" : "do not save"}.
+          {" "}Change it in Session settings. The agent's stored definition is unchanged.
+        </p>
+      ) : null}
       {copyUrlState.text ? (
         <div className={`copy-agent-url-status ${copyUrlState.kind}`} role="status">
           <strong>{copyUrlState.text}</strong>

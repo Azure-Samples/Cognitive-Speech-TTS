@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
-// Digit-accuracy demo (client-executed `function` tool, design §6.1).
+// Digit-accuracy demo using a client-executed `function` tool.
 //
 // The scenario: an audio-native LLM hears digits badly. A caller says a phone number or a
 // customer id and the model confidently reads back the wrong digits. The client, meanwhile,

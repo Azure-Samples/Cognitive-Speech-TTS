@@ -13,7 +13,7 @@ export function asVoiceAgent(resource) {
   const definition = latest?.definition;
   if (!resource?.name || definition?.kind !== "voice") return null;
 
-  // Vienna normalizes current definitions to a flat voice string, while older
+  // the service normalizes current definitions to a flat voice string, while older
   // deployed versions return { type, name }. Both must remain selectable.
   const outputVoice = definition.audio?.output?.voice;
   const voice = typeof outputVoice === "string" ? outputVoice : outputVoice?.name || "";

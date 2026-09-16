@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
-// Sub-agents configuration (subagents design §3.1), a section parallel to Tools. Lets the user attach
+// Sub-agents configuration, a section parallel to Tools. Lets the user attach
 // one or more EXISTING sibling text agents that the voice agent can forward turns to
 // (forward_to_subagent), and set each specialist's response-delivery policy:
 //   - immediate_ack        — speak a short "let me check…" before forwarding (fills the otherwise

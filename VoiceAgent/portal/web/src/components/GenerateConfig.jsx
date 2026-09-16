@@ -30,6 +30,9 @@ export function GenerateConfig({ value, update, disabled, hosted, toolCount, onT
           <small>Shared with your manual configuration</small></span>
         <Icon name="chevron" />
       </button>
+      <Toggle label="Save generated conversations" checked={value.store} disabled={disabled || hosted}
+        description="Explicit storage override for sessions started from this generated result in this tab. Edit its YAML to change the agent's stored default."
+        onChange={(checked) => update("store", checked)} />
       <details className="advanced-details">
         <summary>Generation options</summary>
         <Field label="Generation model source">

@@ -1,5 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
-// Tool configuration (design §6), grouped into three independent tool kinds the user can attach to
+// Tool configuration, grouped into three independent tool kinds the user can attach to
 // the agent being created:
 //   1. MCP        — a Voice Live-executed MCP tool; sub-options select the AUTH (direct URL with
 //                   no-auth/OAuth, or a project connection with no-auth/api-key/Entra).
@@ -51,7 +51,7 @@ export function ToolsConfig({ cfg, disabled, onChange }) {
   const [mcpAllowed, setMcpAllowed] = useState(""); // optional allowed_tools allowlist
   const [mcpPreset, setMcpPreset] = useState(""); // selected auth preset (fills the fields below)
 
-  // Apply a one-click MCP auth preset (design §6.2): fill mode + url/connection + label so each
+  // Apply a one-click MCP auth preset: fill mode + url/connection + label so each
   // auth mode (no-auth, OAuth, API-key/CustomKeys, Entra/ProjectManagedIdentity) is one selection.
   const applyPreset = (value) => {
     setMcpPreset(value);

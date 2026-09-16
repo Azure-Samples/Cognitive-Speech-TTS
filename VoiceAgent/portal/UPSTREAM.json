@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
   "upstream": {
-    "repository": "https://speedme.visualstudio.com/TextToSpeech/_git/voice-first-agent-dev",
     "branch": "main",
     "commit": "e713a37c4cdb3282157cbaf46b6d425bcd984c05",
     "commit_date": "2026-09-15T23:50:17Z",
     "path": "tests/voice-agent-tests/voice-agents-tests-dashboard/voice_demo",
     "last_path_commit": "72ce62dc3af4f81fce86fb213855e229901c69e6",
-    "synced_on": "2026-09-16"
+    "synced_on": "2026-09-16",
+    "source_id": "voice-agent-demo"
   },
   "files": [
     {
@@ -26,7 +26,7 @@
       "path": "demo_server.py",
       "upstream_sha256": "ab131e77c4b308289532f9f4842ea2e6476b19b259236c118a394d8048be34e6",
       "action": "modified",
-      "ported_sha256": "3adf128aae12da0064617742f1efb4cec4130141248e90fcbb46ba9d46bb0c95"
+      "ported_sha256": "1a332db738fc94be1e9d3484cd97ad821c498c77c95825fa10899c46cc678e1d"
     },
     {
       "path": "foundry_trace.py",
@@ -50,7 +50,7 @@
       "path": "session_log.py",
       "upstream_sha256": "b059678a2b9643b90f97225823f92d06c400e15283ddfe0f53b33b2b7f154edc",
       "action": "modified",
-      "ported_sha256": "56ffea675726439b5deec5b6aa7b80af3540a820d32df6394c7f997a6a63432e"
+      "ported_sha256": "640f4827bfbc4ba757e61f6707cad5ea5cf9465c15112a798b7c340207a8fc0e"
     },
     {
       "path": "static/acs-phone.png",
@@ -74,7 +74,7 @@
       "path": "static/bundle.js",
       "upstream_sha256": "15eedb3c6078e1eff22a4553e8e6c35ece5dfcc26173e42027cb9f00e479fd2d",
       "action": "generated",
-      "ported_sha256": "0d8d549a315f6ff532f1882c51de317e220c50da8fc3c5815dcb0451ad5df2ad"
+      "ported_sha256": "0081c758386ebab65f89b4e37787db6adc867a053549ebb3dfb9a4ac3e12da98"
     },
     {
       "path": "static/index.html",
@@ -91,8 +91,8 @@
     {
       "path": "static/persisted.html",
       "upstream_sha256": "8f5a5abd31505e8aeea7e719cdde92d38bf98720e26212d6a7cc35c5e90c2620",
-      "action": "copied",
-      "ported_sha256": "8f5a5abd31505e8aeea7e719cdde92d38bf98720e26212d6a7cc35c5e90c2620"
+      "action": "modified",
+      "ported_sha256": "6bf073f7242045439d9aa3a8fc924ea94693bbb6845366edb1d8e87a8cf3c92a"
     },
     {
       "path": "static/sessions.html",
@@ -103,8 +103,8 @@
     {
       "path": "static/styles.css",
       "upstream_sha256": "ec31f90f5916e8cfdd1769a9a985c3ea36d3dc335abd177f18b7afb43db3b242",
-      "action": "copied",
-      "ported_sha256": "ec31f90f5916e8cfdd1769a9a985c3ea36d3dc335abd177f18b7afb43db3b242"
+      "action": "modified",
+      "ported_sha256": "e6823994fff8eb800e108e690ead1eb8c1905ec55c49a1a808dcf80c14436714"
     },
     {
       "path": "static/teams-phone-foundry-add-number.png",
@@ -128,7 +128,7 @@
       "path": "static/webrtc-bundle.js",
       "upstream_sha256": "9bf423de937301eccb57082dd0c9d1eeca2e92645b70560758ce761882640ef4",
       "action": "generated",
-      "ported_sha256": "9c213da24ad35a5325f77ea79cdda06a021afef09b2951822bc811480a8f4328"
+      "ported_sha256": "3b7beb5c194911ebe8d41c66c5f2953f53023015793fce13152dc1d0bedd099f"
     },
     {
       "path": "static/webrtc.html",
@@ -182,19 +182,19 @@
       "path": "web/package.json",
       "upstream_sha256": "591bc01ce32193a93d1dda6e871c9c5a2e40266ecfaf3e0e46f7c9b47c061ae7",
       "action": "modified",
-      "ported_sha256": "30a7c5a4f3d7a58ce015253a33b7bcf749bfaca391c679b4b7d6620cb799dc4f"
+      "ported_sha256": "a7217c2e072eed6fbc03c2be201056a9ca4a0182576589e97904cf52a00739e9"
     },
     {
       "path": "web/playwright.config.mjs",
       "upstream_sha256": "08ed56d74d10a0c54e6b15621de05a10af6df6ffb0b77416d0adcc135f9ccc43",
       "action": "modified",
-      "ported_sha256": "56ff0d287713367758f4d2928bafce5bb3dfaa6db83df9773a7abd627c8b3bf1"
+      "ported_sha256": "aeb6c468b40c9b0d2cc90aacb9c91b2172601c1afda39561fb1571d2685e60f1"
     },
     {
       "path": "web/src/App.jsx",
       "upstream_sha256": "8d2720acdacaa0d13393f46bfdc0bf4ba44cf728987fea0fab909dfd7e5664b8",
       "action": "modified",
-      "ported_sha256": "e98aa4ca0e9e1d2378a76d1084695dc0b844a6de1b357b277b1ec3834185992c"
+      "ported_sha256": "36812378385d2d1c57609784b0cf4d2d526e73537db4c684daf271dfedfa8f84"
     },
     {
       "path": "web/src/components/AgentConfig.jsx",
@@ -212,7 +212,7 @@
       "path": "web/src/components/ChatPanel.jsx",
       "upstream_sha256": "731cac33bda673a4aa593c38499fb36612d088fce530d4b3027c73a9edeb1267",
       "action": "modified",
-      "ported_sha256": "f1dc78768e4a4048f43e51256d2bc70851db27b4534b9b2f887d8bb03733d88d"
+      "ported_sha256": "963f865fd3dab6d3aa195a43f7b1e34f943b6300d0e3a73fa3ca88a8c233473b"
     },
     {
       "path": "web/src/components/ConfigControls.jsx",
@@ -223,14 +223,14 @@
     {
       "path": "web/src/components/DigitDemoConfig.jsx",
       "upstream_sha256": "868a1f228ee5746ceac13f71cd63d540ce463e762a796d7c46ae51328e4b5b9b",
-      "action": "copied",
-      "ported_sha256": "868a1f228ee5746ceac13f71cd63d540ce463e762a796d7c46ae51328e4b5b9b"
+      "action": "modified",
+      "ported_sha256": "42ab73964e3b81ee023386748f3bb0175d13bca7229e00892aadf61cb625a394"
     },
     {
       "path": "web/src/components/GenerateConfig.jsx",
       "upstream_sha256": "c70f982ffadcb407fc3a9a4a67d416e37223c30a1f95be40479024edb4521bd3",
-      "action": "copied",
-      "ported_sha256": "c70f982ffadcb407fc3a9a4a67d416e37223c30a1f95be40479024edb4521bd3"
+      "action": "modified",
+      "ported_sha256": "e72d3e11567a9b4d3f6211d9dea08db5a7c0c8aaaa0dca2dc2ddf18fb590ce7d"
     },
     {
       "path": "web/src/components/HandoffGraphPanel.jsx",
@@ -241,8 +241,8 @@
     {
       "path": "web/src/components/MessageBubble.jsx",
       "upstream_sha256": "0edde4199131f3fceaf0d423801fcf974920a84127e0ca0a99faa54c5e2b5cc3",
-      "action": "copied",
-      "ported_sha256": "0edde4199131f3fceaf0d423801fcf974920a84127e0ca0a99faa54c5e2b5cc3"
+      "action": "modified",
+      "ported_sha256": "d61a618aeedac5e1aa865ec9db42c2df5825724bad34036b6cfa3992fdd648d9"
     },
     {
       "path": "web/src/components/ReviewPanel.jsx",
@@ -253,14 +253,14 @@
     {
       "path": "web/src/components/SessionControls.jsx",
       "upstream_sha256": "a1d7850c7b52892cb9509f1578f505e6999972b0b6ba216f9356b20e5dadbe7b",
-      "action": "copied",
-      "ported_sha256": "a1d7850c7b52892cb9509f1578f505e6999972b0b6ba216f9356b20e5dadbe7b"
+      "action": "modified",
+      "ported_sha256": "1e8cf2e4d08095e5964af16e38e27ee2f3024019b355d81920e0d74e5ad4b10a"
     },
     {
       "path": "web/src/components/Sidebar.jsx",
       "upstream_sha256": "05ebb4ad50e2eaa33dbe439d5e455c80e0b904ac427dec7f4cf29607727b3b4b",
-      "action": "copied",
-      "ported_sha256": "05ebb4ad50e2eaa33dbe439d5e455c80e0b904ac427dec7f4cf29607727b3b4b"
+      "action": "modified",
+      "ported_sha256": "ed5e4caecb84e9c733c65451d6ae5bd7d34e4433f74941acb4ae932030e29c1b"
     },
     {
       "path": "web/src/components/StructuredInputsConfig.jsx",
@@ -272,19 +272,19 @@
       "path": "web/src/components/StudioHeader.jsx",
       "upstream_sha256": "a1edb727af92ee4b30dc32268cfb274bf020ecc04ded868c62b994964f7bcca4",
       "action": "modified",
-      "ported_sha256": "dd75c141c26dbdcfc4b3154a06abb3f370bb82d1f9ee3404ffcb7e3fde04132b"
+      "ported_sha256": "bb4fb742d09bc95858b5bbf6211cdb0d64b5cf78ecc60bfaf815d7f1e38c801c"
     },
     {
       "path": "web/src/components/SubagentsConfig.jsx",
       "upstream_sha256": "986cbf0f3fa59a8d82509712b8c09985df31afeda15433f982faa1300b17fdec",
       "action": "modified",
-      "ported_sha256": "7452687662efa05fb5ca8248f4d4527e4d252560bee062bfdf5d5692fe69b56a"
+      "ported_sha256": "743cdeeb8b51962f952073a61a5df34e74f28502bed593374e57761bdbe4fb5c"
     },
     {
       "path": "web/src/components/ToolsConfig.jsx",
       "upstream_sha256": "810ff0db2fd7a2f39c71cc0a941f50151bb0098a170c0dafc12aaef74c6520a7",
-      "action": "copied",
-      "ported_sha256": "810ff0db2fd7a2f39c71cc0a941f50151bb0098a170c0dafc12aaef74c6520a7"
+      "action": "modified",
+      "ported_sha256": "823dfcc1508dcfcb34a99854e9705578c64f5d680da75cccf87f86c42a155965"
     },
     {
       "path": "web/src/config.js",
@@ -295,14 +295,14 @@
     {
       "path": "web/src/hooks/useVoiceSession.js",
       "upstream_sha256": "46e0492434d47d9dabb03bdceb8b718bf1f9ae8d7a7797f87dbec6135cb33b24",
-      "action": "copied",
-      "ported_sha256": "46e0492434d47d9dabb03bdceb8b718bf1f9ae8d7a7797f87dbec6135cb33b24"
+      "action": "modified",
+      "ported_sha256": "069f115638b4520ede491341c7a2dfe665264517482a01ee551407753979fb8b"
     },
     {
       "path": "web/src/lib/agentCatalog.mjs",
       "upstream_sha256": "f7cf387b3d0a34182c81ad94361bfe0a9c1ce352b133cba2f95ae0a7c4d3f3d8",
-      "action": "copied",
-      "ported_sha256": "f7cf387b3d0a34182c81ad94361bfe0a9c1ce352b133cba2f95ae0a7c4d3f3d8"
+      "action": "modified",
+      "ported_sha256": "c7bd837511fdf04ff5668755cfe0798ce0947e633892033db0be1e989be5bf23"
     },
     {
       "path": "web/src/lib/agentCatalog.test.mjs",
@@ -325,8 +325,8 @@
     {
       "path": "web/src/lib/agentForm.mjs",
       "upstream_sha256": "b12e91bf3c7d50ddb9f4466297f5a0fc66567edafe0bfeef1fae43eb97c24237",
-      "action": "copied",
-      "ported_sha256": "b12e91bf3c7d50ddb9f4466297f5a0fc66567edafe0bfeef1fae43eb97c24237"
+      "action": "modified",
+      "ported_sha256": "df8346258a01cbfa9d1478b781ea262f85fd242d00613eca18247fb2c2a118cb"
     },
     {
       "path": "web/src/lib/agentForm.test.mjs",
@@ -337,14 +337,14 @@
     {
       "path": "web/src/lib/agentReview.mjs",
       "upstream_sha256": "745d7499c905450ce2435f24a1c84e777fa1e797ef188652f5c801683f83b38c",
-      "action": "copied",
-      "ported_sha256": "745d7499c905450ce2435f24a1c84e777fa1e797ef188652f5c801683f83b38c"
+      "action": "modified",
+      "ported_sha256": "97d371be315e1b056c06281b97dc78a624bc0b637f8d03461f8f9af41d510c40"
     },
     {
       "path": "web/src/lib/agentReview.test.mjs",
       "upstream_sha256": "42e1b679a540acd8b8266d409a5179739bd7a10698b0dd5713c2fe3eac9fabb3",
-      "action": "copied",
-      "ported_sha256": "42e1b679a540acd8b8266d409a5179739bd7a10698b0dd5713c2fe3eac9fabb3"
+      "action": "modified",
+      "ported_sha256": "578989e8258eb6b424cd01415e19c58d623cf150771f205c1b875115fb91824b"
     },
     {
       "path": "web/src/lib/agentUrl.mjs",
@@ -373,14 +373,14 @@
     {
       "path": "web/src/lib/authoringContract.mjs",
       "upstream_sha256": "b8912cd79d5da9a75f1770ef34a0b924365e8f74d0ece287ff536e93fbc4037b",
-      "action": "copied",
-      "ported_sha256": "b8912cd79d5da9a75f1770ef34a0b924365e8f74d0ece287ff536e93fbc4037b"
+      "action": "modified",
+      "ported_sha256": "abd564962d7e4a9068551b819dcc67bca823988d9b9c3acc4f5ae0cdd6c16b55"
     },
     {
       "path": "web/src/lib/authoringContract.test.mjs",
       "upstream_sha256": "27ffd00528e04b96bc345ba47226ca375bfd431241d60bee6a28d69361534fc0",
-      "action": "copied",
-      "ported_sha256": "27ffd00528e04b96bc345ba47226ca375bfd431241d60bee6a28d69361534fc0"
+      "action": "modified",
+      "ported_sha256": "84144977b70fb2a4c3f11a03f192be34438ff701cf6f0340d6a669e4322ed688"
     },
     {
       "path": "web/src/lib/avatar.mjs",
@@ -409,8 +409,8 @@
     {
       "path": "web/src/lib/clientFunctions.mjs",
       "upstream_sha256": "19c2fbe156f8d6fca992de92391425157c383ba3e4f96b447fe70b1b6ff4ea3f",
-      "action": "copied",
-      "ported_sha256": "19c2fbe156f8d6fca992de92391425157c383ba3e4f96b447fe70b1b6ff4ea3f"
+      "action": "modified",
+      "ported_sha256": "32f48510542049f85e1b699fbeefdb1da308943b99416f10704b471c8296edfa"
     },
     {
       "path": "web/src/lib/clientFunctions.test.mjs",
@@ -421,8 +421,8 @@
     {
       "path": "web/src/lib/digitDemo.mjs",
       "upstream_sha256": "9a984c4516ff23d1a3e0812cccddd7bb1c1d4276c270563b379b5b6fc9f87afe",
-      "action": "copied",
-      "ported_sha256": "9a984c4516ff23d1a3e0812cccddd7bb1c1d4276c270563b379b5b6fc9f87afe"
+      "action": "modified",
+      "ported_sha256": "65897a0424a6e6cdf83ee1f06240406fad337270e5eb390f7692cc0739618811"
     },
     {
       "path": "web/src/lib/digitDemo.test.mjs",
@@ -476,7 +476,7 @@
       "path": "web/src/lib/serviceContract.js",
       "upstream_sha256": "b34877b4a42bcc29e279c507624c03d8bdd07e10daad70b9e904874c7dc3e83e",
       "action": "modified",
-      "ported_sha256": "ac20cbda50dc223e3a65310e5f4eabddc51bbff53f1be86f93957b8c0fb0ebe3"
+      "ported_sha256": "2491cec7082c0bfc8ec9df262aa5066d0ea2de93b53e23c24d6364f95bca577e"
     },
     {
       "path": "web/src/lib/serviceContract.test.mjs",
@@ -511,14 +511,14 @@
     {
       "path": "web/src/lib/webrtcPeer.mjs",
       "upstream_sha256": "65547345c1700bbe0ed22715ce8f8fe00431b740d196f95a4fdf1f7c730feda1",
-      "action": "copied",
-      "ported_sha256": "65547345c1700bbe0ed22715ce8f8fe00431b740d196f95a4fdf1f7c730feda1"
+      "action": "modified",
+      "ported_sha256": "309fb145f4ada472f36687de22b9a0fdb60201d50b24c93381de80361ea52f69"
     },
     {
       "path": "web/src/lib/webrtcPeer.test.mjs",
       "upstream_sha256": "d5332626d552751bfaf84580dbce051fcdcba3b516624a6f8c39515a045f5db8",
-      "action": "copied",
-      "ported_sha256": "d5332626d552751bfaf84580dbce051fcdcba3b516624a6f8c39515a045f5db8"
+      "action": "modified",
+      "ported_sha256": "046d7e7dca0d2cf6da473f0d208d1e3a6490117c8d4f9c508487ac3c707945b4"
     },
     {
       "path": "web/src/main.jsx",
@@ -553,14 +553,14 @@
     {
       "path": "web/src/webrtc/components/MiniPortal.jsx",
       "upstream_sha256": "407b4909609a8fb9f16d8333c2a1af35942acbf95f4f1edda30d8487eefd58ed",
-      "action": "copied",
-      "ported_sha256": "407b4909609a8fb9f16d8333c2a1af35942acbf95f4f1edda30d8487eefd58ed"
+      "action": "modified",
+      "ported_sha256": "28f62ef9e4a9102aa8c564df09fc8ccfa995eaeceb655c535b0df19a138f59c4"
     },
     {
       "path": "web/src/webrtc/components/PersistedShowcase.jsx",
       "upstream_sha256": "d661f215b339250132d833f8f8a8f840e597664a1bd6d6e45da01c0e8e7921cc",
-      "action": "copied",
-      "ported_sha256": "d661f215b339250132d833f8f8a8f840e597664a1bd6d6e45da01c0e8e7921cc"
+      "action": "modified",
+      "ported_sha256": "e534c0b3ae41b3aa009983c86a6b5fc3fed98347d34d0c67fe523c0f68b26d65"
     },
     {
       "path": "web/src/webrtc/components/PlayerBar.jsx",
@@ -612,16 +612,19 @@
     ".env.example": "2ab9152e5e820bde80fe7b10ab91f30d395d1f28721e01f35c7a5c8ad929dfab",
     ".gitattributes": "37b4aee4dbaae0b544cf4bb9df38d8a143b2d9532aaee35b3c3b4229b8e7b684",
     ".gitignore": "a8e6035c9993ed10e122411defc4e7a712dfc46d9b9e47361edb87434092eb71",
-    "CHANGELOG.md": "a18679f13768f3cef488c6262f9e594381f61b7ce231b1cf3fce5427c92ddab3",
-    "PORTING.md": "f6db894e03e708657ca1617e7a9f823db4f5bbd319f937b7248770a5b1992d83",
-    "README.md": "6b60574ac78ec73d3cbf94066bca11809c77ec87d570e531a719824213d29a86",
-    "VALIDATION.md": "25ea8e7bd9720003731d19495dbabd2fe35d3f9ed5f6787969e2a61e357b1967",
+    "CHANGELOG.md": "829d63f84d21e6c1bddf58ff8f83c6fa6ae568679040dd7980d7ccbb23244922",
+    "PORTING.md": "d83d9a5c2c587c6d40e257e7824173c16333373a4fc8301dd7c6a37f17312d81",
+    "README.md": "a58156bb5faae0ea4846caff0d0e394f7f1404d442aed8f4fd9bf2078388c60d",
+    "VALIDATION.md": "4530a2458395fbc15828116496f920faf2d6a51eb2deaf38559f38f2fbaba584",
+    "static/THIRD_PARTY_NOTICES.txt": "dd2178f381f664cc2350671295133f29651557fa701743621fa91aecde0da575",
     "tests/serve_portal.py": "b5948ef712aeb69efcffcc6de8cbefda3785edee65fd702e99713b3ef4956bfb",
-    "tests/test_portal.py": "428e8ba0a125fb0a3993e36a6f4be0151c848b760c7ad0ba44f061a1702d96d6",
+    "tests/test_portal.py": "07d2d32a67c84c9a506716f55cf9dc433509b690d7bd3cb92edd23dfc5280511",
+    "tests/test_public_release.py": "0ac6d06f371db3020c74b98cc48878209d323a9960569884043b4c01dc78a306",
     "tests/test_upstream_status.py": "89a5a2cb179035691ec146471796a22003af3491766660e23801423571928a57",
     "tools/upstream_status.py": "33a3db3d851a038c9a9b1d594d512ce467a421f2bcfe3509ee5576e6f40ff98c",
     "web/playwright.local.config.mjs": "d28cb12c77881b0eb00c6821e9762aa55efcb3d9a37f20737d3dba4d23469f6a",
     "web/tests/local.spec.mjs": "972a5a8dfc6d3ca73d6856cea68b9c82d1091866522b79778dd65eeda6e22a78",
+    "web/tests/privacy.spec.mjs": "b5c201b1d6538368c521b1eb1c4ce9d4e42a18816e8bb541a6da5db80c7b220b",
     "web/tests/run-portal.mjs": "7adca8878ffffc80a5b4450001ccdb9b21f28836e5033fc5363bea18888c9541"
   }
 }

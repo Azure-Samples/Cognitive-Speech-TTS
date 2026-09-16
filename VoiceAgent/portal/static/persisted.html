@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- Copyright (c) Microsoft. All rights reserved.
-  Standalone, full-height viewer for a voice agent's server-persisted conversation
-  (design §4.4). Opened in a new tab from the demo's "View persisted" button with
+  Standalone, full-height viewer for a voice agent's server-persisted conversation. Opened in a new tab from the demo's "View persisted" button with
   ?agent=<name>&conversation=<conv_id>. Reads the turns back through the demo backend's
   read-only proxies that MIRROR the service API paths
   (/agents/{agent}/endpoint/protocols/voice/conversations[/{id}/items|/audio|...], with a
@@ -76,12 +75,24 @@
     <h1>Persisted conversation</h1>
     <code id="conv">…</code>
     <span class="spacer"></span>
-    <button id="recordBtn" type="button" title="Build + play the merged stereo recording (user-left / agent-right). Available after the session ends; built once, then served from the same URL.">▶ Merged recording</button>
+    <button id="chooseBtn" type="button">Choose conversation</button>
+    <button id="recordBtn" type="button" disabled title="Build + play the merged stereo recording (user-left / agent-right). Available after the session ends; built once, then served from the same URL.">▶ Merged recording</button>
     <button id="refresh" type="button">Refresh</button>
   </header>
   <main>
     <div id="apilog" class="apilog"><div class="hdr">Agents service API calls</div></div>
     <div id="meta" class="meta">Loading…</div>
+    <section id="conversationPicker" class="meta" hidden aria-label="Choose a saved conversation">
+      <p>Select a saved conversation explicitly. A shared agent may contain other users' sessions.</p>
+      <form id="conversationForm">
+        <label for="conversationChoice">Conversation ID</label>
+        <input id="conversationChoice" list="conversationChoices" autocomplete="off" required
+          placeholder="Choose a recent ID or paste an older ID" />
+        <datalist id="conversationChoices"></datalist>
+        <button type="submit">Open conversation</button>
+      </form>
+      <p id="conversationChoiceStatus" role="status"></p>
+    </section>
     <div id="recording" class="recording" hidden></div>
     <div id="turns"></div>
   </main>
@@ -96,7 +107,11 @@
     const recordingEl = document.getElementById("recording");
     const apilogEl = document.getElementById("apilog");
     let currentConv = requestedConv || null;
-    let resolvedByFallback = false;
+    let loadRevision = 0;
+    const pickerEl = document.getElementById("conversationPicker");
+    const choiceEl = document.getElementById("conversationChoice");
+    const choiceStatusEl = document.getElementById("conversationChoiceStatus");
+    const recordBtn = document.getElementById("recordBtn");
 
     // Service-contract bits the browser must send so requests match the service (filled from /config;
     // safe defaults until then). `api-version` goes on every call; `Foundry-Features` on fetch() calls.
@@ -177,7 +192,7 @@
     }
 
     // Tool-execution + MCP-approval item types the server persists as their own conversation items
-    // (design §6), rendered alongside the message turns.
+    //, rendered alongside the message turns.
     const TOOL_TYPES = new Set([
       "function_call", "function_call_output", "mcp_call", "mcp_approval_request", "mcp_approval_response",
     ]);
@@ -226,7 +241,7 @@
 
     function metricsBadges(vm) {
       if (!vm) return "";
-      // voice_metrics (design §4.4): per-turn ttft/ttfa/itl/duration + barge-in interruption.
+      // voice_metrics: per-turn ttft/ttfa/itl/duration + barge-in interruption.
       const ms = (v) => (v == null ? null : v + " ms");
       const out = [];
       if (vm.ttft_ms != null) out.push('<span class="badge">⏱ ttft ' + esc(ms(vm.ttft_ms)) + "</span>");
@@ -241,7 +256,7 @@
     }
 
     function render(items) {
-      // Render message turns AND the tool-execution / MCP-approval items the server persists (design §6),
+      // Render message turns AND the tool-execution / MCP-approval items the server persists,
       // in stored order.
       const renderable = (items || []).filter((i) => i.type === "message" || TOOL_TYPES.has(i.type));
       if (renderable.length === 0) {
@@ -274,18 +289,27 @@
       }).join("");
     }
 
-    async function resolveConversationId() {
-      if (requestedConv) return requestedConv;
-      // Fallback: no live conversation id was passed, so pick the agent's most recent conversation.
-      // On a SHARED agent this may be ANOTHER user's session — the caller surfaces a warning.
-      resolvedByFallback = true;
+    async function loadConversationChoices(revision) {
+      pickerEl.hidden = false;
+      choiceStatusEl.textContent = "Loading recent conversation IDs…";
       const r = await apiFetch("GET", convsPath());
       const d = await r.json();
       if (!r.ok) throw new Error(d.error || ("HTTP " + r.status));
-      // Raw service response (pass-through): { data: [ ...conversations ] }.
+      if (revision !== loadRevision) return;
       const convs = (d.data || []).slice()
         .sort((a, b) => new Date(b.created_at || 0) - new Date(a.created_at || 0));
-      return convs[0] && convs[0].id;
+      const options = document.getElementById("conversationChoices");
+      options.replaceChildren();
+      for (const conv of convs) {
+        if (!conv.id) continue;
+        const option = document.createElement("option");
+        option.value = conv.id;
+        option.textContent = conv.created_at ? String(conv.created_at) : conv.id;
+        options.appendChild(option);
+      }
+      choiceStatusEl.textContent = options.children.length
+        ? "Choose a recent ID or paste another ID, then press Open conversation."
+        : "No recent conversations found. You can still paste a known conversation ID.";
     }
 
     async function loadAllItems(conv) {
@@ -306,38 +330,38 @@
     }
 
     async function load() {
+      const revision = ++loadRevision;
       metaEl.className = "meta";
       metaEl.textContent = "Loading…";
       turnsEl.innerHTML = "";
+      recordingEl.hidden = true;
+      recordBtn.disabled = true;
       if (!agent) { metaEl.className = "meta err"; metaEl.textContent = "Missing ?agent=<name>."; return; }
       try {
-        const cid = await resolveConversationId();
+        const cid = currentConv;
         convEl.textContent = cid || "—";
-        currentConv = cid || null;
-        recordingEl.hidden = true;
         if (!cid) {
-          metaEl.textContent = "No persisted conversation found for this agent yet.";
+          metaEl.textContent = "Choose a conversation before loading transcript, tools, or audio.";
+          await loadConversationChoices(revision);
           return;
         }
+        pickerEl.hidden = true;
         // Follow the service's cursor contract so long conversations are shown in chronological order,
         // not truncated to the default 20-item descending page.
         const items = await loadAllItems(cid);
+        if (revision !== loadRevision) return;
         const n = items.filter((i) => i.type === "message").length;
         const nTools = items.filter((i) => TOOL_TYPES.has(i.type)).length;
         metaEl.textContent = "agent: " + agent + "  •  " + n + " turn" + (n === 1 ? "" : "s") +
           (nTools ? "  •  " + nTools + " tool/approval item" + (nTools === 1 ? "" : "s") : "") +
           " persisted (server is sole writer)";
-        if (resolvedByFallback) {
-          metaEl.className = "meta warn";
-          metaEl.textContent = "\u26a0 No live conversation id was passed — showing this agent's MOST RECENT " +
-            "persisted conversation (id " + esc(cid) + "), which on a SHARED agent may be another user's. " +
-            "Start a turn first so the demo captures conversation.created, then reopen View persisted.  —  " +
-            metaEl.textContent;
-        }
         render(items);
+        recordBtn.disabled = false;
       } catch (e) {
+        if (revision !== loadRevision) return;
         metaEl.className = "meta err";
         metaEl.textContent = String(e);
+        if (!currentConv) choiceStatusEl.textContent = "Could not list conversations. You can still paste a known ID.";
       }
     }
 
@@ -349,11 +373,14 @@
       }
       recordingEl.hidden = false;
       recordingEl.innerHTML = '<div class="rmeta">Building merged stereo recording (user-left / agent-right)…</div>';
+      const revision = loadRevision;
+      const conversation = currentConv;
       try {
-        const r = await apiFetch("GET", audioPath(currentConv));
+        const r = await apiFetch("GET", audioPath(conversation));
         const d = await r.json().catch(() => ({}));
+        if (revision !== loadRevision) return;
         if (r.status === 409) {
-          // The merged export is only available after the session ends (design §4.5). This is the RAW
+          // The merged export is only available after the session ends. This is the RAW
           // service 409 body, so read the message defensively across the possible error shapes.
           const msg = (d && (d.message || (d.error && (d.error.message || d.error)) || d.detail || d.title))
             || "The session is still in progress — the merged recording is available once the call ends.";
@@ -373,7 +400,7 @@
         const rec = d || {};
         const layout = rec.channel_layout || {};
         const dur = rec.duration_ms != null ? (rec.duration_ms / 1000).toFixed(1) + "s" : "?";
-        const contentUrl = svc(audioContentPath(currentConv));
+        const contentUrl = svc(audioContentPath(conversation));
         recordingEl.innerHTML =
           '<div class="rmeta">Merged recording — ' + esc(rec.format || "wav") + " · " +
             esc(String(rec.channels || 2)) + " ch (left: " + esc(layout.left || "user") +
@@ -381,13 +408,26 @@
           '<audio controls preload="none" src="' + esc(contentUrl) + '"></audio>' +
           '<div><a href="' + esc(contentUrl) + '" download="' + esc(currentConv) + '.wav">\u2b07 Download WAV</a></div>';
       } catch (e) {
+        if (revision !== loadRevision) return;
         recordingEl.innerHTML = '<div class="rmeta err">' + esc(String(e)) + "</div>";
       }
     }
 
     document.getElementById("refresh").addEventListener("click", load);
-    document.getElementById("recordBtn").addEventListener("click", loadRecording);
-    convEl.textContent = requestedConv || "(resolving…)";
+    recordBtn.addEventListener("click", loadRecording);
+    document.getElementById("chooseBtn").addEventListener("click", () => {
+      currentConv = null;
+      choiceEl.value = "";
+      load();
+    });
+    document.getElementById("conversationForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const chosen = choiceEl.value.trim();
+      if (!chosen) return;
+      currentConv = chosen;
+      load();
+    });
+    convEl.textContent = requestedConv || "(choose a conversation)";
     loadServiceConfig().then(load);
   </script>
 </body>
