@@ -1,5 +1,0 @@
-# Local browser proxy and tests. Regenerate with:
-# pip-compile requirements-dev.in --output-file requirements-dev.txt --resolver=backtracking --no-strip-extras --no-emit-index-url --no-header
-# Keep the validated Pytest 8 baseline for this standalone sample.
-pytest>=8.3.0,<9
-websockets>=14.2

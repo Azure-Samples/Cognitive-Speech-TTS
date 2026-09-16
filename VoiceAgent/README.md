@@ -2,13 +2,6 @@
 
 Voice agents now are available in all Foundry Agent regions including South India
 
-> For a standalone **Knowledge + Avatar + Voice** browser sample, see
-> [Voice Live with Foundry IQ](samples/voice-live-foundry-iq-avatar/README.md).
-> It uses public Azure Voice Live and `invocations_ws`, Python 3.13, and its own
-> requirements. Follow its README instead of the Projects SDK setup below;
-> it does not use the bundled Projects SDK wheel or PortAudio. Avatar is optional,
-> with an explicit enable setting.
-
 For a creation-first walkthrough without a local UI, see
 [Create an agent with Knowledge IQ, custom photo avatar, and Personal Voice](samples/create-agent-with-iq-avatar-voice/README.md).
 It covers consent-based asset preparation, standard or Personal Voice with an
@@ -73,7 +66,6 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/basic_voice_agent.py` | Create and version a basic agent, or connect to an existing agent, then converse through the microphone. |
 | `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |
 | `samples/voice_agent_with_foundry_iq.py` | Create a Foundry IQ agent, converse through the microphone, and display tool arguments/output. |
-| [Voice Live with Foundry IQ](samples/voice-live-foundry-iq-avatar/README.md) | Standalone public Voice Live browser sample: Knowledge MCP grounding, Azure standard voice, and optional built-in Avatar. Uses its own setup and tests. |
 | `samples/voice_agent_with_local_function.py` | Execute `add_numbers` in the client, return its output, and hear the response. |
 | `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
 | `samples/example1_finance_with_handoff/` | Publish a generic Finance English Realtime handoff graph with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
