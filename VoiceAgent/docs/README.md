@@ -140,7 +140,11 @@ both Agents, and runs smoke tests.
 `deploy.sh` deploys the shared MCP image to Azure Container Apps and creates
 the two Foundry connections and generated configs. It does not create the
 Foundry Project, deploy the realtime model, or publish the two Agents. Publish
-from the example CLI or local UI after deployment.
+from the example CLI after deployment. The checked-in local UI template
+catalog intentionally targets the local E2E token/config workflow; using a
+different MCP deployment requires a custom template config with a server-side
+token file so the UI can authenticate and upsert the selected Project
+connection.
 
 Both paths validate authenticated MCP `initialize`, `tools/list`, and the
 required tool inventory before declaring the MCP ready.

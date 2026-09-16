@@ -31,6 +31,12 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _validate_project_endpoint("https://<account>/api/projects/<project>")
         with self.assertRaises(ValueError):
+            _validate_project_endpoint("https://evil.example/api/projects/stolen")
+        with self.assertRaises(ValueError):
+            _validate_project_endpoint(
+                "https://account.services.ai.azure.com.evil.example/api/projects/stolen"
+            )
+        with self.assertRaises(ValueError):
             _validate_agent_name("invalid agent name")
 
     def test_materializes_each_sample_without_environment_leakage(self) -> None:

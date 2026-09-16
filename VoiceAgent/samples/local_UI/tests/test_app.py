@@ -39,6 +39,12 @@ class HelperTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_project_endpoint("https://<account>/api/projects/<project>")
         with self.assertRaises(ValueError):
+            validate_project_endpoint("https://evil.example/api/projects/stolen")
+        with self.assertRaises(ValueError):
+            validate_project_endpoint(
+                "https://account.services.ai.azure.com.evil.example/api/projects/stolen"
+            )
+        with self.assertRaises(ValueError):
             validate_agent_name("invalid agent name")
 
     def test_template_agent_name_always_has_generated_prefix(self) -> None:

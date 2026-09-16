@@ -45,6 +45,10 @@ MCP_PROBE_TIMEOUT_SECONDS = 15
 MCP_PROTOCOL_VERSION = "2025-06-18"
 PROJECT_COOKIE = "voice_agent_local_ui_project"
 AGENT_NAME = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]{0,62}$")
+FOUNDRY_PROJECT_HOST = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.services\.ai\.azure\.com$",
+    re.IGNORECASE,
+)
 TEMPLATE_AGENT_PREFIX = "gft-"
 TEMPLATE_AGENT_NAME = re.compile(
     r"^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$"
@@ -70,14 +74,21 @@ def validate_project_endpoint(value: str) -> str:
     parts = [part for part in parsed.path.split("/") if part]
     if (
         parsed.scheme != "https"
-        or not parsed.netloc
-        or len(parts) < 3
-        or parts[-2] != "projects"
+        or not parsed.hostname
+        or not FOUNDRY_PROJECT_HOST.fullmatch(parsed.hostname)
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parts[:2] != ["api", "projects"]
+        or len(parts) != 3
+        or parsed.query
+        or parsed.fragment
         or "<" in endpoint
         or ">" in endpoint
     ):
         raise ValueError(
-            "Project endpoint must be HTTPS and end in /api/projects/<project-name>."
+            "Project endpoint must be an Azure Foundry URL in the form "
+            "https://<account>.services.ai.azure.com/api/projects/<project-name>."
         )
     return endpoint
 

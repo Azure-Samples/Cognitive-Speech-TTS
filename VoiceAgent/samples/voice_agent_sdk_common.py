@@ -39,6 +39,10 @@ HANDOFF_EVENTS = {
     "session.handoff.completed",
     "session.handoff.aborted",
 }
+FOUNDRY_PROJECT_HOST = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.services\.ai\.azure\.com$",
+    re.IGNORECASE,
+)
 
 
 def _load_settings(sample_dir: Path) -> dict[str, str]:
@@ -118,15 +122,22 @@ def _validate_project_endpoint(endpoint: str) -> str:
     parts = [part for part in parsed.path.split("/") if part]
     if (
         parsed.scheme != "https"
-        or not parsed.netloc
-        or len(parts) < 3
-        or parts[-2] != "projects"
+        or not parsed.hostname
+        or not FOUNDRY_PROJECT_HOST.fullmatch(parsed.hostname)
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parts[:2] != ["api", "projects"]
+        or len(parts) != 3
+        or parsed.query
+        or parsed.fragment
         or "<" in value
         or ">" in value
     ):
         raise ValueError(
-            "AZURE_AI_PROJECT_ENDPOINT must be HTTPS and end in "
-            "/api/projects/<project-name>."
+            "AZURE_AI_PROJECT_ENDPOINT must be an Azure Foundry URL in the "
+            "form https://<account>.services.ai.azure.com/api/projects/"
+            "<project-name>."
         )
     return value
 

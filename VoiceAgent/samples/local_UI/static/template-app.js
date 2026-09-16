@@ -587,10 +587,12 @@ async function testTemplateMcp() {
   $("mcp-test-state").className = "";
   $("mcp-test-state").textContent = "Checking MCP reachability…";
   refreshActionState();
+  let recovery = null;
   try {
     const result = await api(
       `/api/templates/${encodeURIComponent(templateId)}/mcp/probe`,
     );
+    recovery = result;
     if (state.template?.id !== templateId) return;
     if (!result.ok) throw new Error(result.error || "MCP is not reachable.");
     state.mcpReady = true;
@@ -601,6 +603,9 @@ async function testTemplateMcp() {
     state.mcpReady = false;
     $("mcp-test-state").className = "bad";
     $("mcp-test-state").textContent = `MCP check failed: ${error.message}`;
+    $("mcp-start-command").textContent = recovery?.start_command
+      || "cd VoiceAgent/shared_mcp && ./scripts/e2e-local.sh";
+    $("mcp-guide-link").href = recovery?.guide_url || "/guide/run-samples";
     $("mcp-start-guide").hidden = false;
   } finally {
     if (state.template?.id === templateId) {

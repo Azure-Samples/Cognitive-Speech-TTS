@@ -21,8 +21,8 @@
         <h2>No template catalog</h2>
         <p id="unavailable-reason" class="muted"></p>
         <p class="muted tiny-inline">
-          The catalog is read from <code>docs/voice_agent/01_template_infa/01_template_v1/templates</code>
-          in the repository this dashboard is checked out beside.
+          The catalog is read from
+          <code>VoiceAgent/samples/local_UI/templates.config.json</code>.
         </p>
       </div>
     </section>
@@ -87,8 +87,8 @@
                     Run the local E2E and leave it running. Then reload Templates
                     and test again.
                   </p>
-                  <code>cd shared_mcp &amp;&amp; ./scripts/e2e-local.sh</code>
-                  <a href="/guide/run-samples" target="_blank" rel="noreferrer">
+                  <code id="mcp-start-command">cd VoiceAgent/shared_mcp &amp;&amp; ./scripts/e2e-local.sh</code>
+                  <a id="mcp-guide-link" href="/guide/run-samples" target="_blank" rel="noreferrer">
                     Open the local MCP setup guide
                   </a>
                 </aside>
