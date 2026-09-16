@@ -124,8 +124,8 @@ endpoint.
 Always confirm these joins instead of validating each component in isolation:
 
 1. UI-selected Project = Project where the Agent version is published.
-2. Agent `model_type: managed` + `model: gpt-realtime` = a Project region and
-   subscription eligible for the service-managed Voice Agent model.
+2. Agent `model_type: managed` + its exact versioned `model` identifier = a
+  model enabled for that Project and region.
 3. Agent `project_connection_id` = a RemoteTool connection in the same Project.
 4. Connection target = the route in the generated example config.
 5. Connection bearer credential = `SHARED_MCP_TOKEN` used by the active MCP
@@ -139,7 +139,9 @@ Always confirm these joins instead of validating each component in isolation:
 
 - Treat each `sample.py publish` or UI **Try it now** as a new immutable Agent
   version; verify the exact version rather than the Agent name alone.
-- The checked-in Finance definitions use service-managed `gpt-realtime`.
+- The checked-in Finance definitions default to service-managed
+  `gpt-realtime-2.1`. If unsupported, verify `gpt-realtime-1.5`, then another
+  exact managed identifier enabled for the selected Project.
   Account deployment inventory is not the readiness gate for this mode.
 - The local MCP path is Docker `:18003` -> named Dev Tunnel -> Foundry
   RemoteTool connection. The Azure path is Container App -> RemoteTool

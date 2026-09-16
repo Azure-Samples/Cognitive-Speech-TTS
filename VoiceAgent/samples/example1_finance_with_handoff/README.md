@@ -8,7 +8,8 @@ For the complete local MCP serving, publication, and UI workflow, use
 
 This sample publishes a generic Finance English Realtime profile through
 the preview `azure-ai-projects` unified Agents API and runs a text-only Voice
-WebSocket smoke test. The profile uses service-managed `gpt-realtime` with a 13-node,
+WebSocket smoke test. The profile defaults to service-managed
+`gpt-realtime-2.1` with a 13-node,
 24-edge `handoff` graph. Because `handoff` is not in the pinned typed
 `VoiceAgentDefinition`, publication uses the SDK's raw-body `create_version`
 overload and verifies that the graph survives readback.
@@ -79,9 +80,10 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example1.local.env
 Use the Project endpoint created by the subscription setup guide. The selected
 MCP config must have been generated for that same Project.
 
-The portable definition uses `model_type: managed` and
-`VOICE_AGENT_MODEL=gpt-realtime`. The selected Project region and subscription
-must be enabled for the service-managed Voice Agent model.
+The portable definition uses `model_type: managed` and defaults to
+`VOICE_AGENT_MODEL=gpt-realtime-2.1`. If the Project does not support that
+exact model, try `gpt-realtime-1.5`, then another versioned managed identifier
+confirmed for the Project. Keep the same value in the Local UI `.env`.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
@@ -164,6 +166,6 @@ handoff, MCP, and post-tool response evidence.
   a separate customer-owned step.
 - The included filesystem state store is for a single-replica sample, not
   production durability.
-- The committed definition uses service-managed `gpt-realtime`.
+- The committed definition uses service-managed `gpt-realtime-2.1`.
 - Re-running publish creates another immutable Agent version.
 - Cleanup is intentionally manual to avoid deleting an unrelated Agent.

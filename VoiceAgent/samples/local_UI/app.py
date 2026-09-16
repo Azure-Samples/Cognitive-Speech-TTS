@@ -797,9 +797,11 @@ class AppConfig:
         credential_mode: str = "default",
         template_config: Path = DEFAULT_TEMPLATE_CONFIG,
         data_dir: Path | None = None,
+        voice_model: str = "",
     ) -> None:
         self.endpoint = validate_project_endpoint(endpoint) if endpoint else ""
         self.credential_mode = credential_mode.strip().lower() or "default"
+        self.voice_model = voice_model.strip()
         if self.credential_mode not in {"default", "cli"}:
             raise ValueError("Credential mode must be 'default' or 'cli'.")
         self.catalog = TemplateCatalog(template_config)
@@ -1358,9 +1360,16 @@ async def templates_env(request: web.Request) -> web.Response:
 
 
 async def get_template(request: web.Request) -> web.Response:
-    detail = get_config(request).catalog.detail(request.match_info["template_id"])
+    config = get_config(request)
+    detail = config.catalog.detail(request.match_info["template_id"])
     if detail is None:
         raise web.HTTPNotFound(text="Unknown template.")
+    if config.voice_model:
+        detail["model"] = config.voice_model
+        for group in detail.get("config_groups") or []:
+            for item in group.get("items") or []:
+                if item.get("label") == "Model":
+                    item["value"] = config.voice_model
     return web.json_response(detail)
 
 
@@ -1506,7 +1515,7 @@ async def publish_template(request: web.Request) -> web.Response:
             )
         definition = materialize_template(
             document,
-            model=str(body.get("model") or ""),
+            model=str(body.get("model") or config.voice_model),
             voice=str(body.get("voice") or ""),
             mcp_server_url=source.mcp_server_url,
             mcp_connection_id=connection_name,
@@ -1792,6 +1801,7 @@ def main() -> None:
         args.credential_mode,
         args.template_config,
         args.data_dir,
+        os.getenv("VOICE_AGENT_MODEL", ""),
     )
     access_logger = configure_file_logging(args.data_dir.resolve())
     LOGGER.info(

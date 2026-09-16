@@ -502,6 +502,40 @@ class HttpSmokeTests(unittest.IsolatedAsyncioTestCase):
             "synthetic-token",
         )
 
+    async def test_template_publish_uses_configured_voice_model(self) -> None:
+        self.config.voice_model = "gpt-realtime-2.1-mini"
+        endpoint = "https://account.services.ai.azure.com/api/projects/customer"
+        await self.client.post("/api/project", json={"endpoint": endpoint})
+        with tempfile.TemporaryDirectory() as directory:
+            token_file = Path(directory) / "token"
+            token_file.write_text("synthetic-token\n", encoding="utf-8")
+            self._configure_template_mcp(
+                server_url="https://tools.example/mcp",
+                connection_id="fixed-local-mcp",
+                token_file=token_file,
+            )
+            with (
+                patch("app.sdk_create_mcp_connection"),
+                patch("app.sdk_publish_template") as publish,
+            ):
+                publish.return_value = {
+                    "name": "gft-finance-example-model-test",
+                    "version": "1",
+                    "definition": {},
+                }
+                response = await self.client.post(
+                    "/api/templates/finance-example/publish",
+                    json={"name": "finance-example-model-test"},
+                )
+
+        self.assertEqual(response.status, 201, await response.text())
+        self.assertEqual(
+            publish.call_args.kwargs["definition"]["model"],
+            "gpt-realtime-2.1-mini",
+        )
+        detail = await self.client.get("/api/templates/finance-example")
+        self.assertEqual((await detail.json())["model"], "gpt-realtime-2.1-mini")
+
     async def test_template_publish_requires_generated_local_token(self) -> None:
         endpoint = "https://account.services.ai.azure.com/api/projects/customer"
         await self.client.post("/api/project", json={"endpoint": endpoint})

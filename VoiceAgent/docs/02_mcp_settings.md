@@ -47,8 +47,21 @@ for real customer data.
 
 Prerequisites:
 
-- Docker
+- Docker Engine or Docker Desktop, accessible to the current user
+- Docker Buildx with support for additional build contexts
 - Bash
+
+Verify both the daemon and builder before packaging:
+
+```bash
+docker info
+docker buildx version
+docker buildx build --help | grep -q -- '--build-context'
+```
+
+If `docker buildx version` fails, install the Buildx CLI plugin for the current
+Docker distribution. If the final check fails, upgrade Buildx. Both
+`setup-local-examples.sh` and `package.sh` enforce these checks before a build.
 
 Build the runtime image and run all MCP tests inside the image:
 
@@ -84,7 +97,7 @@ create a public MCP address, Project connections, or generated template config.
 Prerequisites:
 
 - Azure CLI authenticated with `az login`
-- Docker
+- Docker Engine or Docker Desktop with Buildx
 - Python 3.10 or later
 - OpenSSL and `curl`
 - Dev Tunnel CLI authenticated with a Microsoft or GitHub identity
@@ -109,24 +122,45 @@ directory.
 
 ### Authenticate Dev Tunnel
 
-Start with the normal interactive flow:
+Use an identity provider approved by the customer's organization. The local
+workflow technically supports either Microsoft Entra or GitHub, but that does
+not make the two identities equivalent under customer policy.
+
+Run login and verification from the same `shared_mcp` directory used by E2E.
+On the onboarding Linux host, Dev Tunnel resolved different saved identities
+from different working directories. The setup and E2E scripts therefore also
+run all Dev Tunnel identity and tunnel commands from this directory.
 
 ```bash
-devtunnel user login
-devtunnel user show
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
 ```
 
-If an organization's Entra Conditional Access policy returns:
+For a remote or headless terminal, use the explicit Microsoft Entra
+device-code flow:
 
-```text
-Your sign-in was successful but does not meet the criteria to access this resource.
+```bash
+devtunnel user login --entra --use-device-code-auth
+devtunnel user show --json
 ```
 
-use a GitHub identity for Dev Tunnel development:
+The verification output must contain `"status": "Logged in"`. Do not use the
+command's exit code as the authentication gate: current Dev Tunnel CLI builds
+also exit zero with `{"status":"Not logged in"}`. The repository setup and
+E2E scripts parse this JSON status before reporting readiness.
+
+If the organization permits GitHub for Dev Tunnel development, its headless
+flow is:
 
 ```bash
 devtunnel user login --github --use-device-code-auth
-devtunnel user show
+devtunnel user show --json
+```
+
+In particular, this can be an alternative when an Entra Conditional Access
+policy returns:
+
+```text
+Your sign-in was successful but does not meet the criteria to access this resource.
 ```
 
 This changes only the Dev Tunnel identity. Azure resource operations still use
@@ -141,14 +175,22 @@ token stored in the Project connection.
 
 ### Run E2E
 
-Set `AZURE_AI_PROJECT_ENDPOINT` or configure it in the example1 `.env` as
-shown in [03: Run samples and local UI](./03_run_samples.md), then run:
+Complete normal setup once from the `VoiceAgent` directory. Setup generates a
+random tunnel ID for this machine and records it in ignored local state;
+`--check` verifies but does not create that ID:
+
+```bash
+./scripts/setup-local-examples.sh \
+   --project-endpoint "${AZURE_AI_PROJECT_ENDPOINT}"
+```
+
+Then run:
 
 ```bash
 az account show --output table
-devtunnel user show
 
 cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
+devtunnel user show --json
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}" \
    ./scripts/e2e-local.sh
 ```
@@ -175,10 +217,19 @@ Use the discovery procedure in
 [01: Existing Project fast path](./01_setup_subscription.md#existing-project-fast-path)
 when the endpoint or subscription is unknown.
 
-The first run creates and records the tunnel ID in
-`state/local/devtunnel-id`; later runs reuse that tunnel, its fixed URL, the
-token in `state/local/token`, and the two connection names. Evidence is written
-under `state/e2e/<UTC-run-id>/`.
+Setup creates `state/local/devtunnel-id` once with a random 16-hex suffix. The
+file is ignored by Git and all later E2E and management runs on this checkout
+reuse that ID, its fixed URL, the token in `state/local/token`, and the two
+connection names. E2E never silently replaces the recorded ID.
+
+If the fixed ID is no longer visible to the authenticated identity but its
+name conflicts during creation, first sign in with the identity that owns it.
+To intentionally reset this machine's tunnel identity, remove only
+`state/local/devtunnel-id` and rerun normal setup; review and update any system
+that retained the old tunnel URL. An explicitly supplied
+`SHARED_MCP_TUNNEL_ID` is also never replaced automatically.
+
+Run evidence is written under `state/e2e/<UTC-run-id>/`.
 
 The container and tunnel remain active after the tests so downstream Agents
 can call both MCP routes. Press `Ctrl+C` to stop hosting them. The named tunnel
@@ -238,6 +289,7 @@ Press Ctrl+C to stop the local MCP container and dev tunnel.
 | --- | --- | --- |
 | `devtunnel is required` | CLI is missing or its install directory is not on `PATH` | Install it, add the reported directory such as `~/bin` to `PATH`, and verify `devtunnel --version` |
 | Dev Tunnel sign-in does not meet access criteria | Entra Conditional Access rejected that auth flow | Use `devtunnel user login --github --use-device-code-auth`, or use Azure hosting if customer policy prohibits Dev Tunnel |
+| The fixed Dev Tunnel ID conflicts with an unavailable tunnel | The ID belongs to another identity or stale external state | Sign in with its owner; to intentionally reset the machine ID, remove `state/local/devtunnel-id`, rerun normal setup, and update consumers of the old URL |
 | `configure AZURE_AI_PROJECT_ENDPOINT` | Example 1 `.env` is missing or still contains the placeholder | Discover the endpoint with Azure CLI and copy it into both sample `.env` files |
 | Project not found in active Azure CLI subscription | Endpoint and active subscription do not match | Run `az account set` with the exact subscription name or ID |
 | UI says `The local MCP config is not ready` | E2E has not reached connection/config generation, or a prior failed run left an offline config | Run E2E to the final success lines, keep it running, then select **Reload** in Templates |

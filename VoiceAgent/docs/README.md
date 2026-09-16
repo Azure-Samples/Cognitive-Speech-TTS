@@ -23,7 +23,7 @@ documents own procedures.
 
 | Need or failure | Source of truth |
 | --- | --- |
-| Select a subscription, find an existing Project endpoint, create a Project, or verify `gpt-realtime` mode and region support | [01: Subscription and Foundry Project](./01_setup_subscription.md) |
+| Select a subscription, find or create a Project, or verify the exact managed realtime model and region support | [01: Subscription and Foundry Project](./01_setup_subscription.md) |
 | Build through a Python package mirror, install or authenticate Dev Tunnel, create MCP connections, or diagnose missing `*.local.env` files | [02: MCP settings and E2E](./02_mcp_settings.md) |
 | Install/check the sample virtual environments, prepare the Local UI environment, or create `.env` files | [`setup-local-examples.sh`](../scripts/setup-local-examples.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
 | Start, restart, stop, or inspect the local MCP + Dev Tunnel + Local UI processes | [`manage-local-mcp-and-ui.sh`](../scripts/manage-local-mcp-and-ui.sh) and [03: Run samples and Local UI](./03_run_samples.md) |

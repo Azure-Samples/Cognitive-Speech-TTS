@@ -71,8 +71,8 @@ same-named tools with different schemas:
 - Docker.
 - Azure CLI authenticated with `az login`.
 - Dev Tunnel CLI authenticated with a Microsoft or GitHub identity.
-- Access to a Microsoft Foundry Project with a compatible `gpt-realtime`
-  model.
+- Access to a Microsoft Foundry Project with a compatible versioned managed
+  realtime model.
 - Permission to create Project connections and publish Voice Agents.
 
 Azure Developer CLI is not required for this local workflow. It is required
@@ -91,15 +91,33 @@ Verify that the Docker daemon, Azure identity, and Dev Tunnel identity are
 ready before continuing:
 
 ```bash
-docker info >/dev/null
+docker info
+docker buildx version
 az account show --output none
-devtunnel user show
+
+cd "$VOICE_AGENT_ROOT/shared_mcp"
+devtunnel user show --json
 ```
 
-If `docker info` fails, start Docker Desktop or the Docker daemon for the
-current operating system before retrying. If `devtunnel` is missing or login
-is rejected by Conditional Access, follow the install and GitHub device-code
-steps in [02: MCP settings and E2E](./02_mcp_settings.md#install-dev-tunnel-cli-on-linux-or-wsl).
+Do not discard `docker info` stderr. If it reports that it cannot connect to
+the daemon without a permission error, start Docker Desktop or the Docker
+daemon for the current operating system. On Linux, if it reports `permission
+denied` for `/var/run/docker.sock` while an administrator can run Docker, ask
+an administrator to grant the current user Docker access:
+
+```bash
+sudo usermod -aG docker "$USER"
+```
+
+Start a new login session after the group change, then verify `docker info`
+without `sudo`. Membership in the `docker` group grants root-level host
+control; use the organization's approved rootless Docker or administrator-run
+alternative when that access is not acceptable. The setup script performs
+this Docker access check before installing Python or Node dependencies.
+
+If `devtunnel` is missing or authentication fails, follow the install and
+device-code steps in
+[02: MCP settings and E2E](./02_mcp_settings.md#install-dev-tunnel-cli-on-linux-or-wsl).
 
 ## Create all three Python environments
 
@@ -119,8 +137,11 @@ cd "$VOICE_AGENT_ROOT"
 `setup-local-examples.sh` checks required command-line tools, installs
 Dev Tunnel when missing, creates or reuses the three Python environments,
 installs the Local UI Node dependencies, runs/builds the browser code, and
-creates the three local `.env` files. Use `--check` to inspect readiness
-without installing or changing environments.
+creates the three local `.env` files. On the first normal setup it also
+generates `shared_mcp/state/local/devtunnel-id`; later setup, E2E, and manager
+runs reuse that fixed local ID. The file is ignored by Git. Use `--check` to
+inspect readiness without installing, generating the ID, or changing
+environments.
 
 When reusing an older sample `.env`, setup migrates MCP selection to the
 canonical `VOICE_AGENT_MCP_CONFIG` file and removes legacy direct MCP URL and
@@ -197,12 +218,15 @@ AZURE_CREDENTIAL_MODE=cli
 The samples use the standard service-managed Voice Agent model:
 
 ```dotenv
-VOICE_AGENT_MODEL=gpt-realtime
+VOICE_AGENT_MODEL=gpt-realtime-2.1
 ```
 
-`model_type: managed` remains in each committed `agent.json`. The Project's
-subscription and region must be enabled for this service-managed model. This
-customer workflow does not require a customer-created model deployment.
+`model_type: managed` remains in each committed `agent.json`. Start with the
+default `gpt-realtime-2.1`. If that exact model is unsupported, set
+`VOICE_AGENT_MODEL=gpt-realtime-1.5` in both Finance sample `.env` files and
+the Local UI `.env`, then retry publication. If the Project exposes another
+managed variant, use its exact identifier instead. This workflow does not
+require a customer-created model deployment.
 
 The checked-in `.env.example` files already select the canonical local MCP
 configs:
@@ -260,7 +284,7 @@ The command performs all of the following:
 3. Starts `voice-agent-shared-mcp-local` on local port `18003`.
    The named `voice-agent-shared-mcp-state` Docker volume preserves active
    business call state across container restarts.
-4. Creates or reuses the named Dev Tunnel recorded in
+4. Creates or reuses the setup-initialized named Dev Tunnel recorded in
    `state/local/devtunnel-id`.
 5. Creates or reuses the bearer token recorded in `state/local/token`.
 6. Verifies public health and that unauthenticated MCP requests return HTTP
@@ -549,7 +573,7 @@ recordings.
 | Dev Tunnel sign-in says the account does not meet access criteria | Entra Conditional Access rejected the flow | Use GitHub device-code login as documented in guide 02, or use Azure hosting if policy prohibits Dev Tunnel |
 | A sample command cannot import its requirements | That scenario's `.venv` was not created | Install that scenario's requirements; the UI `.venv` is not a substitute |
 | E2E cannot find the Project | The active Azure CLI subscription is wrong or the endpoint was guessed | Select the exact subscription and discover the Project through Azure CLI as documented in guide 01 |
-| `Model 'gpt-realtime' is not supported in managed mode in this region` | The selected Project region or subscription is not enabled for the standard service-managed Voice Agent model | Confirm preview/region eligibility with the Voice Agent service owner or use an eligible Project; do not change the sample's managed model mode |
+| `Model '<name>' is not supported in managed mode in this region` | The exact managed model identifier is unavailable in the selected Project, or the Project is not eligible | Try the documented versioned fallback (`gpt-realtime-2.1`, then `gpt-realtime-1.5`), use another exact identifier confirmed for that Project, or move to an eligible Project; do not switch to self-deployed mode merely to bypass the error |
 | Published Agent cannot list MCP tools | Local container or tunnel host stopped | Restart `shared_mcp/scripts/e2e-local.sh` and leave it running |
 | Tool returns `unknown_call` after a runtime replacement | The call started before state persistence was enabled, or the Docker state volume was removed | End that Voice Agent session and reconnect; keep the named state volume for later restarts |
 | HTTP 401 from a direct MCP request | Request omitted the bearer token | Expected for unauthenticated probes; Foundry supplies it from the connection |

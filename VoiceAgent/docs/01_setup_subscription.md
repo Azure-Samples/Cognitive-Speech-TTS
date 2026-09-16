@@ -19,8 +19,8 @@ After completing the criteria below, continue with
 - The deployment user has both management-plane and Agent data-plane access.
 - The Project managed identity has Agent data-plane access.
 - `PROJECT_ENDPOINT`, `PROJECT_ID`, and `FOUNDRY_SCOPE` are populated.
-- The Finance definitions' `model_type` and `model` match a mode available to
-  the Project.
+- The Finance definitions' `model_type` and exact `model` identifier match a
+  mode available to the Project.
 
 ## 1. Confirm preview and region eligibility
 
@@ -30,24 +30,29 @@ from this repository: the current repository overview names `swedencentral`
 and `francecentral`, but availability can change and customer subscriptions can
 have different enablement.
 
-Do not silently substitute a normal prompt Agent or another model when
-`kind: voice` or managed `gpt-realtime` is unavailable.
+Do not silently substitute a normal prompt Agent or change to self-deployed
+mode when `kind: voice` or the requested managed realtime model is unavailable.
 
-The two Finance definitions use the standard service-managed Voice Agent model:
+The two Finance definitions default to this versioned service-managed Voice
+Agent model:
 
 ```json
 "model_type": "managed",
-"model": "gpt-realtime"
+"model": "gpt-realtime-2.1"
 ```
 
-This does not reference a customer-created account deployment. The
-subscription and Project region must be eligible for the service-managed
-`gpt-realtime` Voice Agent model.
+This does not reference a customer-created account deployment. Managed model
+identifiers vary by Project. Start with `gpt-realtime-2.1`. If publication
+reports it unsupported, explicitly set `VOICE_AGENT_MODEL=gpt-realtime-1.5`
+and retry. If neither is enabled, use another exact managed identifier
+confirmed for that Project, such as `gpt-realtime-2.1-mini`; do not use the
+unversioned `gpt-realtime` alias as a compatibility fallback.
 
-If publication says `Model 'gpt-realtime' is not supported in managed mode in
-this region`, stop and use a Project in an eligible region or ask the Voice
-Agent service owner to confirm preview eligibility. Do not change the sample's
-standard managed model mode to work around an eligibility failure.
+Set the same `VOICE_AGENT_MODEL` value in both Finance sample `.env` files and
+the Local UI `.env`. If every confirmed versioned identifier fails, use a
+Project in an eligible region or ask the Voice Agent service owner to confirm
+the subscription-region-model combination. Do not change the sample to
+self-deployed mode to work around a managed-model failure.
 
 ## 2. Install tools and sign in
 
@@ -94,6 +99,22 @@ Do this before creating resources when the customer already has a Foundry
 Project. Project names are nested ARM resource names, so a plain
 `az resource list --name <project>` can return no result even when the Project
 exists.
+
+When the Project name is unknown, enumerate all Projects in the active
+subscription first:
+
+```bash
+az resource list \
+  --resource-type Microsoft.CognitiveServices/accounts/projects \
+  --query "[].{name:name,resourceGroup:resourceGroup,location:location,id:id}" \
+  --output table
+```
+
+Select only a Project whose account, resource group, workload owner, purpose,
+and confirmed Voice Agent region match the customer setup. Resource discovery
+does not prove that an unrelated Project is approved for this workload. Ask
+the customer for the intended Project ARM ID when those criteria do not select
+one unambiguously.
 
 ```bash
 FOUNDRY_PROJECT="<existing-project-name>"
@@ -408,20 +429,44 @@ the replacement must include the corresponding management actions and
 
 ## 9. Verify roles and provisioning
 
-```bash
-az role assignment list \
-  --assignee-object-id "${USER_OBJECT_ID}" \
-  --scope "${FOUNDRY_SCOPE}" \
-  --include-inherited \
-  --query "[].{role:roleDefinitionName,scope:scope}" \
-  --output table
+Use ARM REST for role verification. Unlike `az role assignment list`, these
+queries do not ask Microsoft Graph to resolve principal display information.
+The principal filter includes assignments inherited from parent scopes.
 
-az role assignment list \
-  --assignee-object-id "${PROJECT_PRINCIPAL_ID}" \
-  --scope "${FOUNDRY_SCOPE}" \
-  --include-inherited \
-  --query "[].{role:roleDefinitionName,scope:scope}" \
-  --output table
+```bash
+AUTHORIZATION_API_VERSION="2022-04-01"
+
+role_definition_id() {
+  local role_name="$1"
+  az rest \
+    --method get \
+    --url "https://management.azure.com${FOUNDRY_SCOPE}/providers/Microsoft.Authorization/roleDefinitions?api-version=${AUTHORIZATION_API_VERSION}" \
+    --url-parameters "\$filter=roleName eq '${role_name}'" \
+    --query "value[0].id" \
+    --output tsv
+}
+
+principal_role_definition_ids() {
+  local principal_id="$1"
+  az rest \
+    --method get \
+    --url "https://management.azure.com${FOUNDRY_SCOPE}/providers/Microsoft.Authorization/roleAssignments?api-version=${AUTHORIZATION_API_VERSION}" \
+    --url-parameters "\$filter=principalId eq '${principal_id}'" \
+    --query "value[].properties.roleDefinitionId" \
+    --output tsv
+}
+
+CONTRIBUTOR_ROLE_ID="$(role_definition_id "Cognitive Services Contributor")"
+USER_ROLE_ID="$(role_definition_id "Cognitive Services User")"
+USER_ROLE_IDS="$(principal_role_definition_ids "${USER_OBJECT_ID}")"
+PROJECT_ROLE_IDS="$(principal_role_definition_ids "${PROJECT_PRINCIPAL_ID}")"
+
+: "${CONTRIBUTOR_ROLE_ID:?Could not resolve Cognitive Services Contributor}"
+: "${USER_ROLE_ID:?Could not resolve Cognitive Services User}"
+
+grep -Fxiq "${CONTRIBUTOR_ROLE_ID}" <<<"${USER_ROLE_IDS}"
+grep -Fxiq "${USER_ROLE_ID}" <<<"${USER_ROLE_IDS}"
+grep -Fxiq "${USER_ROLE_ID}" <<<"${PROJECT_ROLE_IDS}"
 
 az cognitiveservices account project show \
   --resource-group "${RESOURCE_GROUP}" \
@@ -429,31 +474,6 @@ az cognitiveservices account project show \
   --project-name "${FOUNDRY_PROJECT}" \
   --query "{state:properties.provisioningState,endpoint:properties.endpoints.\"AI Foundry API\",id:id,principalId:identity.principalId}" \
   --output json
-```
-
-Require all expected role assignments:
-
-```bash
-USER_ROLES="$(
-  az role assignment list \
-    --assignee-object-id "${USER_OBJECT_ID}" \
-    --scope "${FOUNDRY_SCOPE}" \
-    --include-inherited \
-    --query "[].roleDefinitionName" \
-    --output tsv
-)"
-PROJECT_ROLES="$(
-  az role assignment list \
-    --assignee-object-id "${PROJECT_PRINCIPAL_ID}" \
-    --scope "${FOUNDRY_SCOPE}" \
-    --include-inherited \
-    --query "[].roleDefinitionName" \
-    --output tsv
-)"
-
-grep -Fxq "Cognitive Services Contributor" <<<"${USER_ROLES}"
-grep -Fxq "Cognitive Services User" <<<"${USER_ROLES}"
-grep -Fxq "Cognitive Services User" <<<"${PROJECT_ROLES}"
 ```
 
 Role assignments can take several minutes to propagate. Wait and retry the

@@ -7,6 +7,8 @@ HANDOFF_ROOT="${SAMPLES_ROOT}/example1_finance_with_handoff"
 OTP_ROOT="${SAMPLES_ROOT}/example2_finance_with_OTP_and_Officer_Search"
 UI_ROOT="${SAMPLES_ROOT}/local_UI"
 UI_WEB_ROOT="${UI_ROOT}/web"
+MCP_LOCAL_STATE_ROOT="${ROOT}/shared_mcp/state/local"
+TUNNEL_ID_FILE="${MCP_LOCAL_STATE_ROOT}/devtunnel-id"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 PROJECT_ENDPOINT="${AZURE_AI_PROJECT_ENDPOINT:-}"
 CHECK_ONLY=0
@@ -17,7 +19,7 @@ Usage: ./scripts/setup-local-examples.sh [options]
 
 Prepare the configured Voice Agent sample CLIs and Local UI on one development
 machine: check required tools, install dependencies, build the browser bundle,
-and create or update local .env files.
+create or update local .env files, and initialize its fixed Dev Tunnel ID.
 
 Options:
   --project-endpoint URL  Write the Foundry Project endpoint to new local .env files.
@@ -122,6 +124,64 @@ ensure_devtunnel() {
   command -v devtunnel >/dev/null 2>&1 ||
     die "Dev Tunnel installed but is not on PATH. Add the directory reported by the installer and rerun setup."
   echo "devtunnel=$(devtunnel --version)"
+}
+
+check_docker_access() {
+  local docker_output=""
+  if docker_output="$(docker info 2>&1)"; then
+    echo "docker_daemon=ready"
+    return 0
+  fi
+
+  printf '%s\n' "${docker_output}" >&2
+  if grep -Eqi 'permission denied.*docker\.sock|docker\.sock.*permission denied' <<<"${docker_output}"; then
+    die "Docker is running, but the current user cannot access its socket. On Linux, add the user to the docker group and start a new login session, then rerun setup."
+  fi
+  die "Docker is installed but its daemon is unavailable. Start Docker Desktop or the Docker daemon, then rerun setup."
+}
+
+check_docker_buildx() {
+  local buildx_version=""
+  if ! buildx_version="$(docker buildx version 2>&1)"; then
+    printf '%s\n' "${buildx_version}" >&2
+    die "Docker Buildx is required. Install the Buildx CLI plugin and rerun setup."
+  fi
+  docker buildx build --help 2>&1 | grep -q -- '--build-context' ||
+    die "Docker Buildx does not support --build-context. Upgrade Buildx and rerun setup."
+  echo "docker_buildx=${buildx_version}"
+}
+
+new_tunnel_id() {
+  local user_part=""
+  user_part="$(
+    printf '%s' "${USER:-local}" |
+      tr '[:upper:]_' '[:lower:]-' |
+      tr -cd 'a-z0-9-' |
+      cut -c1-24
+  )"
+  printf 'voice-agent-mcp-%s-%s\n' \
+    "${user_part:-local}" \
+    "$(openssl rand -hex 8)"
+}
+
+ensure_tunnel_id() {
+  local source="reused"
+  local tunnel_id=""
+  if [[ ! -s "${TUNNEL_ID_FILE}" ]]; then
+    if [[ "${CHECK_ONLY}" == "1" ]]; then
+      echo "ACTION_REQUIRED: run setup once to generate ${TUNNEL_ID_FILE}" >&2
+      return 1
+    fi
+    mkdir -p "${MCP_LOCAL_STATE_ROOT}"
+    umask 077
+    new_tunnel_id > "${TUNNEL_ID_FILE}"
+    source="generated"
+  fi
+  tunnel_id="$(<"${TUNNEL_ID_FILE}")"
+  [[ "${tunnel_id}" =~ ^[a-z0-9][a-z0-9-]{2,59}$ ]] ||
+    die "${TUNNEL_ID_FILE} must contain a 3-60 character lowercase DNS label"
+  chmod 600 "${TUNNEL_ID_FILE}"
+  echo "devtunnel_id=${tunnel_id} source=${source}"
 }
 
 ensure_env_file() {
@@ -272,18 +332,35 @@ check_installed_environments() {
 
 check_authentication() {
   local failed=0
+  local devtunnel_user_json=""
   if az account show --output none >/dev/null 2>&1; then
     echo "azure_cli_auth=ready"
   else
     echo "ACTION_REQUIRED: run az login and select the intended subscription" >&2
     failed=1
   fi
-  if devtunnel user show >/dev/null 2>&1; then
+  devtunnel_user_json="$(
+    cd "${ROOT}/shared_mcp" && devtunnel user show --json 2>/dev/null || true
+  )"
+  if DEVTUNNEL_USER_JSON="${devtunnel_user_json}" python3 - <<'PY'
+import json
+import os
+
+try:
+    user = json.loads(os.environ["DEVTUNNEL_USER_JSON"])
+except (json.JSONDecodeError, TypeError):
+    raise SystemExit(1)
+raise SystemExit(0 if user.get("status") == "Logged in" else 1)
+PY
+  then
     echo "devtunnel_auth=ready"
   else
-    echo "ACTION_REQUIRED: run devtunnel user login" >&2
-    echo "If Entra Conditional Access rejects it, run:" >&2
-    echo "  devtunnel user login --github --use-device-code-auth" >&2
+    echo "ACTION_REQUIRED: authenticate Dev Tunnel from ${ROOT}/shared_mcp" >&2
+    echo "For Microsoft Entra device-code authentication, run:" >&2
+    echo "  cd ${ROOT}/shared_mcp && devtunnel user login --entra --use-device-code-auth" >&2
+    echo "For GitHub device-code authentication, run:" >&2
+    echo "  cd ${ROOT}/shared_mcp && devtunnel user login --github --use-device-code-auth" >&2
+    echo "Then verify from that directory with: devtunnel user show" >&2
     failed=1
   fi
   return "${failed}"
@@ -291,6 +368,11 @@ check_authentication() {
 
 check_base_tools
 ensure_devtunnel
+check_docker_access
+check_docker_buildx
+
+missing_config=0
+ensure_tunnel_id || missing_config=1
 
 if [[ "${CHECK_ONLY}" == "0" ]]; then
   install_python_environment "${HANDOFF_ROOT}" "finance-handoff"
@@ -312,15 +394,11 @@ if [[ "${CHECK_ONLY}" == "0" ]]; then
   ensure_env_file "${UI_ROOT}" "18098"
 fi
 
-missing_config=0
 check_installed_environments || missing_config=1
 check_env_file "${HANDOFF_ROOT}/.env" || missing_config=1
 check_env_file "${OTP_ROOT}/.env" || missing_config=1
 check_env_file "${UI_ROOT}/.env" || missing_config=1
 check_authentication || missing_config=1
-
-docker info >/dev/null ||
-  die "Docker is installed but its daemon is unavailable"
 
 if [[ "${missing_config}" == "0" ]]; then
   echo "local_setup=ready"

@@ -77,14 +77,15 @@ The Python wire contract uses:
 ```json
 {
   "model_type": "managed",
-  "model": "gpt-realtime"
+  "model": "gpt-realtime-2.1"
 }
 ```
 
-`managed` means the Voice Agent service owns model resolution. Do not use an
-account deployment list as proof for this mode. Publication errors stating
-that the managed model is unsupported belong to Project region/subscription
-eligibility, not MCP.
+`managed` means the Voice Agent service owns model resolution, but the exact
+model identifier must be enabled for the Project. If `gpt-realtime-2.1` is
+unsupported, try `gpt-realtime-1.5`, then another exact managed identifier
+confirmed for that Project. Do not use an account deployment list as proof for
+managed mode. This failure is not MCP.
 
 ## MCP route relationship
 

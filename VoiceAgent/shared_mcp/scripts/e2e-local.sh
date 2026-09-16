@@ -25,6 +25,13 @@ die() {
   exit 1
 }
 
+devtunnel_cli() {
+  (
+    cd "${ROOT}"
+    devtunnel "$@"
+  )
+}
+
 cleanup() {
   if [[ -n "${TUNNEL_PID}" ]] && kill -0 "${TUNNEL_PID}" >/dev/null 2>&1; then
     kill "${TUNNEL_PID}"
@@ -39,6 +46,21 @@ for command_name in az curl devtunnel docker openssl python3; do
     die "${command_name} is required"
 done
 
+DEVTUNNEL_USER_JSON="$(devtunnel_cli user show --json 2>/dev/null || true)"
+if ! DEVTUNNEL_USER_JSON="${DEVTUNNEL_USER_JSON}" python3 - <<'PY'
+import json
+import os
+
+try:
+    user = json.loads(os.environ["DEVTUNNEL_USER_JSON"])
+except (json.JSONDecodeError, TypeError):
+    raise SystemExit(1)
+raise SystemExit(0 if user.get("status") == "Logged in" else 1)
+PY
+then
+  die "Dev Tunnel is not authenticated for ${ROOT}. Run 'cd ${ROOT} && devtunnel user login --entra --use-device-code-auth' or use --github, then retry."
+fi
+
 mkdir -p "${RUN_ROOT}" "${LOCAL_STATE_ROOT}"
 umask 077
 if [[ ! -s "${TOKEN_FILE}" ]]; then
@@ -47,30 +69,37 @@ fi
 TOKEN="$(<"${TOKEN_FILE}")"
 
 TUNNEL_ID="${SHARED_MCP_TUNNEL_ID:-}"
-if [[ -z "${TUNNEL_ID}" && -s "${TUNNEL_ID_FILE}" ]]; then
-  TUNNEL_ID="$(<"${TUNNEL_ID_FILE}")"
-fi
+TUNNEL_ID_SOURCE="explicit"
 if [[ -z "${TUNNEL_ID}" ]]; then
-  USER_PART="$(
-    printf '%s' "${USER:-local}" |
-      tr '[:upper:]_' '[:lower:]-' |
-      tr -cd 'a-z0-9-' |
-      cut -c1-24
-  )"
-  TUNNEL_ID="voice-agent-mcp-${USER_PART:-local}-$(openssl rand -hex 2)"
+  [[ -s "${TUNNEL_ID_FILE}" ]] ||
+    die "Dev Tunnel ID is not initialized. Run ${ROOT}/../scripts/setup-local-examples.sh once, then retry."
+  TUNNEL_ID="$(<"${TUNNEL_ID_FILE}")"
+  TUNNEL_ID_SOURCE="setup"
 fi
 [[ "${TUNNEL_ID}" =~ ^[a-z0-9][a-z0-9-]{2,59}$ ]] ||
   die "SHARED_MCP_TUNNEL_ID must be a 3-60 character lowercase DNS label"
-printf '%s\n' "${TUNNEL_ID}" > "${TUNNEL_ID_FILE}"
 
-if ! devtunnel show "${TUNNEL_ID}" --json >/dev/null 2>&1; then
-  devtunnel create "${TUNNEL_ID}" \
-    --allow-anonymous \
-    --expiration 30d \
-    --description "Voice Agent shared local MCP" >/dev/null
+if ! devtunnel_cli show "${TUNNEL_ID}" --json >/dev/null 2>&1; then
+  CREATE_OUTPUT=""
+  if ! CREATE_OUTPUT="$(
+    devtunnel_cli create "${TUNNEL_ID}" \
+      --allow-anonymous \
+      --expiration 30d \
+      --description "Voice Agent shared local MCP" 2>&1
+  )"; then
+    printf '%s\n' "${CREATE_OUTPUT}" >&2
+    if grep -Eqi 'conflict with existing entity|already exists' <<<"${CREATE_OUTPUT}"; then
+      if [[ "${TUNNEL_ID_SOURCE}" == "explicit" ]]; then
+        die "SHARED_MCP_TUNNEL_ID=${TUNNEL_ID} conflicts with a tunnel unavailable to this identity. Sign in with its owner or choose a different explicit ID."
+      fi
+      die "The fixed Dev Tunnel ID ${TUNNEL_ID} conflicts with a tunnel unavailable to this identity. Sign in with its owner. To intentionally initialize a different ID for this machine, remove ${TUNNEL_ID_FILE} and rerun setup-local-examples.sh."
+    fi
+    die "could not inspect or create Dev Tunnel ${TUNNEL_ID}"
+  fi
 fi
-if ! devtunnel port show "${TUNNEL_ID}" -p "${PORT}" --json >/dev/null 2>&1; then
-  devtunnel port create "${TUNNEL_ID}" \
+
+if ! devtunnel_cli port show "${TUNNEL_ID}" -p "${PORT}" --json >/dev/null 2>&1; then
+  devtunnel_cli port create "${TUNNEL_ID}" \
     -p "${PORT}" \
     --protocol http >/dev/null
 fi
@@ -115,10 +144,12 @@ for _ in $(seq 1 30); do
 done
 curl -fsS "http://127.0.0.1:${PORT}/healthz" >/dev/null
 
-devtunnel host \
-  "${TUNNEL_ID}" \
-  --allow-anonymous \
-  >"${RUN_ROOT}/devtunnel.log" 2>&1 &
+(
+  cd "${ROOT}"
+  exec devtunnel host \
+    "${TUNNEL_ID}" \
+    --allow-anonymous
+) >"${RUN_ROOT}/devtunnel.log" 2>&1 &
 TUNNEL_PID=$!
 
 BASE_URL=""

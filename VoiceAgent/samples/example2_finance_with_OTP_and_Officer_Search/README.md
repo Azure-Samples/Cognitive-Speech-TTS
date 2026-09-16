@@ -8,7 +8,7 @@ For the complete local MCP serving, publication, and UI workflow, use
 
 This sample publishes a customer-neutral, flat, MCP-only Finance Voice Agent
 through the preview `azure-ai-projects` unified Agents API and runs a text-only
-Voice WebSocket smoke test. It uses service-managed `gpt-realtime`,
+Voice WebSocket smoke test. It defaults to service-managed `gpt-realtime-2.1`,
 American English, and business tools for OTP, loan-offer discussion, explicit interest,
 loan-officer selection, callback, and call disposition.
 
@@ -79,9 +79,10 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example2.local.env
 Use the Project endpoint created by the subscription setup guide. The selected
 MCP config must have been generated for that same Project.
 
-The portable definition uses `model_type: managed` and
-`VOICE_AGENT_MODEL=gpt-realtime`. The selected Project region and subscription
-must be enabled for the service-managed Voice Agent model.
+The portable definition uses `model_type: managed` and defaults to
+`VOICE_AGENT_MODEL=gpt-realtime-2.1`. If the Project does not support that
+exact model, try `gpt-realtime-1.5`, then another versioned managed identifier
+confirmed for the Project. Keep the same value in the Local UI `.env`.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
