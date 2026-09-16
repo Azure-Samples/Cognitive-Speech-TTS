@@ -150,11 +150,12 @@ def _validate_agent_name(agent_name: str) -> str:
 
 
 def _validate_model_type(model_type: str) -> str:
-    if model_type not in {"managed", "self-deployed"}:
+    normalized = model_type.replace("-", "_")
+    if normalized not in {"managed", "self_deployed"}:
         raise ValueError(
-            "VOICE_AGENT_MODEL_TYPE must be 'managed' or 'self-deployed'."
+            "VOICE_AGENT_MODEL_TYPE must be 'managed' or 'self_deployed'."
         )
-    return model_type
+    return normalized
 
 
 def _validate_mcp_settings(server_url: str, connection_id: str) -> None:

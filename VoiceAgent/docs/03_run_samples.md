@@ -185,7 +185,7 @@ VOICE_AGENT_MODEL=gpt-realtime
 
 ```dotenv
 # Customer-created Foundry model deployment.
-VOICE_AGENT_MODEL_TYPE=self-deployed
+VOICE_AGENT_MODEL_TYPE=self_deployed
 VOICE_AGENT_MODEL=<exact-deployment-name>
 ```
 

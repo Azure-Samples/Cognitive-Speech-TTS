@@ -80,11 +80,11 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example1.local.env
 Use the Project endpoint created by the subscription setup guide. The selected
 MCP config must have been generated for that same Project.
 
-The portable default is `VOICE_AGENT_MODEL_TYPE=managed` with
-`VOICE_AGENT_MODEL=gpt-realtime`. If the Project instead has a customer-created
-voice-capable deployment, set `VOICE_AGENT_MODEL_TYPE=self-deployed` and set
-`VOICE_AGENT_MODEL` to its exact deployment name. Do not edit `agent.json` for
-a machine-specific deployment.
+The portable default is `VOICE_AGENT_MODEL_TYPE=self_deployed` with
+`VOICE_AGENT_MODEL=gpt-realtime`, referring to a customer-created deployment
+whose exact deployment name is `gpt-realtime`. For a different deployment,
+keep `VOICE_AGENT_MODEL_TYPE=self_deployed` and set `VOICE_AGENT_MODEL` to its
+exact name. Do not edit `agent.json` for a machine-specific deployment.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.

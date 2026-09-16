@@ -40,7 +40,8 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             _validate_agent_name("invalid agent name")
         self.assertEqual(_validate_model_type("managed"), "managed")
-        self.assertEqual(_validate_model_type("self-deployed"), "self-deployed")
+        self.assertEqual(_validate_model_type("self_deployed"), "self_deployed")
+        self.assertEqual(_validate_model_type("self-deployed"), "self_deployed")
         with self.assertRaises(ValueError):
             _validate_model_type("deployment")
 
@@ -72,7 +73,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             ),
             (
                 "second-agent",
-                "self-deployed",
+                "self_deployed",
                 "second-model",
                 "https://second.example/mcp",
                 "second-connection",
@@ -114,7 +115,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         self.assertEqual(first_name, "first-agent")
         self.assertEqual(second_name, "second-agent")
         self.assertEqual(first["model_type"], "managed")
-        self.assertEqual(second["model_type"], "self-deployed")
+        self.assertEqual(second["model_type"], "self_deployed")
         self.assertEqual(first["model"], "first-model")
         self.assertEqual(second["model"], "second-model")
         self.assertEqual(
@@ -272,6 +273,33 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                 "end_call",
             ],
         )
+
+    def test_sample_env_defaults_match_committed_model_mode(self) -> None:
+        samples = Path(__file__).resolve().parent
+        for directory in (
+            "example1_finance_with_handoff",
+            "example2_finance_with_OTP_and_Officer_Search",
+        ):
+            sample = samples / directory
+            definition = json.loads(
+                (sample / "agent.json").read_text(encoding="utf-8")
+            )["definition"]
+            defaults = {
+                key.strip(): value.strip()
+                for line in (sample / ".env.example").read_text(
+                    encoding="utf-8"
+                ).splitlines()
+                if line and not line.startswith("#") and "=" in line
+                for key, value in [line.split("=", 1)]
+            }
+            self.assertEqual(
+                defaults["VOICE_AGENT_MODEL_TYPE"],
+                definition["model_type"],
+            )
+            self.assertEqual(
+                defaults["VOICE_AGENT_MODEL"],
+                definition["model"],
+            )
 
     def test_counts_handoff_and_mcp_call_evidence(self) -> None:
         printer = EventPrinter(verbose=False)
