@@ -2,7 +2,7 @@
 
 Start with the [architecture and documentation index](../../docs/README.md).
 For the complete local MCP serving, publication, and UI workflow, use
-[02: Start and run the samples](../../docs/02_run_samples.md).
+[03: Start and run the samples](../../docs/03_run_samples.md).
 
 ## Conclusion
 
@@ -59,7 +59,7 @@ export AZURE_AI_PROJECT_ENDPOINT="https://<account>.services.ai.azure.com/api/pr
 This deploys the customer-owned container and creates the route-specific
 Foundry connection. The bearer token is stored in the Container App and the
 Project connection, never in `agent.json` or this sample directory. See
-`../../docs/03_mcp_settings.md` for local packaging and deployment details.
+`../../docs/02_mcp_settings.md` for local packaging and deployment details.
 
 ## Configure
 

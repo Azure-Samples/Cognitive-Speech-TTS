@@ -1667,7 +1667,7 @@ async def templates_index(_: web.Request) -> web.FileResponse:
 
 
 async def examples_guide(_: web.Request) -> web.FileResponse:
-    return web.FileResponse(DOCS_DIR / "02_run_samples.md")
+    return web.FileResponse(DOCS_DIR / "03_run_samples.md")
 
 
 async def close_app(app: web.Application) -> None:

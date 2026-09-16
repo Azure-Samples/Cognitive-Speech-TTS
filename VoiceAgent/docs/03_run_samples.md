@@ -1,4 +1,4 @@
-# 02 - Start and run the Finance samples
+# 03 - Start and run the Finance samples
 
 ## Conclusion
 
@@ -40,7 +40,7 @@ public HTTPS URL even when the MCP implementation runs on a developer machine.
 
 For component-specific detail, use:
 
-- [MCP implementation, local hosting, and Azure deployment](./03_mcp_settings.md)
+- [MCP implementation, local hosting, and Azure deployment](./02_mcp_settings.md)
 - [Local UI startup and configuration](../samples/local_UI/README.md)
 - [Example 1: Finance with Handoff](../samples/example1_finance_with_handoff/README.md)
 - [Example 2: Finance with OTP and Officer Search](../samples/example2_finance_with_OTP_and_Officer_Search/README.md)
@@ -471,5 +471,5 @@ of the local files.
 - The local E2E uses one MCP container replica.
 - Dev Tunnel is a development bridge, not a production ingress.
 
-See [03: MCP settings](./03_mcp_settings.md) for packaging, infrastructure,
+See [02: MCP settings](./02_mcp_settings.md) for packaging, infrastructure,
 security, modification, and persistence details.

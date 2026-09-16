@@ -7,7 +7,7 @@ Agent from a sample template.
 
 Use the [architecture and documentation index](../../docs/README.md) for the
 system overview. For the complete local MCP, Agent publication, and UI order,
-use [02: Start and run the samples](../../docs/02_run_samples.md).
+use [03: Start and run the samples](../../docs/03_run_samples.md).
 
 ## What the UI includes
 
@@ -38,7 +38,7 @@ test scheduler and left-side Create/Generate authoring form.
 These prerequisites are enough to open published Agents in **Live session**.
 Using **Templates** and **Try it now** also requires the Docker, Azure CLI,
 Azure Developer CLI, and Dev Tunnel setup in the
-[02: Start and run the samples](../../docs/02_run_samples.md).
+[03: Start and run the samples](../../docs/03_run_samples.md).
 
 ## Configure and run
 

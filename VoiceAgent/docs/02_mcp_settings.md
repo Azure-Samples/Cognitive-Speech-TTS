@@ -1,4 +1,4 @@
-# 03 - MCP settings, deployment, and development
+# 02 - MCP settings, deployment, and development
 
 ## Conclusion
 
@@ -9,8 +9,8 @@ Container Apps and create the two Foundry Project connections required by the
 Agents.
 
 Use the [architecture and documentation index](./README.md) for the system
-overview. Use [02: Start and run the samples](./02_run_samples.md) when
-running MCP, Agent publication, and UI in sequence.
+overview. After the MCP is ready, continue with
+[03: Start and run the samples](./03_run_samples.md).
 
 The container exposes two separate Streamable HTTP routes because the samples
 have overlapping tool names with different schemas:

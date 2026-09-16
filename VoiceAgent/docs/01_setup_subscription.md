@@ -9,7 +9,7 @@ provisioning, identifiers, role assignments, preview eligibility, and region
 availability are all verified.
 
 After completing the criteria below, continue with
-[02: Start and run the samples](./02_run_samples.md).
+[02: MCP settings, deployment, and development](./02_mcp_settings.md).
 
 ## Completion criteria
 
@@ -388,7 +388,8 @@ Use the `${PROJECT_ENDPOINT}` produced above as
 
 Continue in exactly one scenario README:
 
-- [02: Start and run the samples](./02_run_samples.md)
+- [02: MCP settings, deployment, and development](./02_mcp_settings.md)
+- [03: Start and run the samples](./03_run_samples.md)
 - [Example 1: Finance with Handoff](../samples/example1_finance_with_handoff/README.md)
 - [Example 2: Finance with OTP and Officer Search](../samples/example2_finance_with_OTP_and_Officer_Search/README.md)
 - [Local UI](../samples/local_UI/README.md)

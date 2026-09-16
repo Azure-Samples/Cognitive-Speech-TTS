@@ -12,7 +12,7 @@ Voice Agent endpoint. It is not a local Voice Live/orchestrator stack.
 
 Use the [architecture and documentation index](./README.md) for the component
 map, the [local UI guide](../samples/local_UI/README.md) for startup, and
-[03: MCP settings](./03_mcp_settings.md) when local evidence assigns the
+[02: MCP settings](./02_mcp_settings.md) when local evidence assigns the
 failure to MCP hosting or a business tool.
 
 ## Before a session recording exists

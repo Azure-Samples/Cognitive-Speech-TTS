@@ -6,8 +6,8 @@ This directory is the ordered documentation entry point for the two
 self-contained Finance Voice Agent examples:
 
 1. [Set up the subscription and Foundry Project](./01_setup_subscription.md).
-2. [Start and run the samples](./02_run_samples.md).
-3. [Configure, run, deploy, or change the shared MCP](./03_mcp_settings.md).
+2. [Configure, start, deploy, or change the shared MCP](./02_mcp_settings.md).
+3. [Start and run the samples and local UI](./03_run_samples.md).
 4. [Debug a local UI session](./04_debug_session.md).
 
 The scenario-specific source of truth remains with each example:
@@ -109,7 +109,7 @@ credential to call the selected MCP route.
 ## Fastest complete local workflow
 
 After the one-time prerequisites in
-[02: Start and run the samples](./02_run_samples.md):
+[03: Start and run the samples](./03_run_samples.md):
 
 ```bash
 cd VoiceAgent/shared_mcp
