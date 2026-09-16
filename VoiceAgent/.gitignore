@@ -1,5 +1,5 @@
 .venv/
-.local-stack/
+.local-finance-mcp-and-ui/
 samples/.env
 samples/.env.tip
 samples/__pycache__/

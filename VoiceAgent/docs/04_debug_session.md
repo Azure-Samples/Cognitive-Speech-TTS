@@ -15,6 +15,20 @@ map, the [local UI guide](../samples/local_UI/README.md) for startup, and
 [02: MCP settings](./02_mcp_settings.md) when local evidence assigns the
 failure to MCP hosting or a business tool.
 
+## Canonical debugging Skill
+
+The reusable debugging implementation is:
+
+```text
+VoiceAgent/skills/debug-local-session/
+  SKILL.md
+  scripts/analyze_session.py
+```
+
+Use [`skills/debug-local-session/`](../skills/debug-local-session/) for both
+Agent instructions and the analyzer. Do not look under
+`samples/local_UI/skills`; the Skill is shared at the `VoiceAgent` level.
+
 ## Before a session recording exists
 
 If **Try it now** is disabled or Agent publication fails before a Voice

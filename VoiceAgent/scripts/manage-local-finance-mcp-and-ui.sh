@@ -4,17 +4,32 @@ set -Eeuo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MCP_ROOT="${ROOT}/shared_mcp"
 UI_ROOT="${ROOT}/samples/local_UI"
-STATE_ROOT="${ROOT}/.local-stack"
+STATE_ROOT="${ROOT}/.local-finance-mcp-and-ui"
 MCP_PID_FILE="${STATE_ROOT}/mcp.pid"
-UI_PID_FILE="${STATE_ROOT}/dashboard.pid"
+UI_PID_FILE="${STATE_ROOT}/local-ui.pid"
 MCP_LOG="${STATE_ROOT}/mcp.log"
-UI_LOG="${STATE_ROOT}/dashboard.log"
+UI_LOG="${STATE_ROOT}/local-ui.log"
 MCP_PORT="${SHARED_MCP_E2E_PORT:-18003}"
 UI_HOST="${LOCAL_UI_HOST:-127.0.0.1}"
 UI_PORT="${LOCAL_UI_PORT:-18098}"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 UI_PYTHON="${LOCAL_UI_PYTHON:-${UI_ROOT}/.venv/bin/python}"
 ACTION="${1:-restart}"
+
+usage() {
+  cat <<'EOF'
+Usage: ./scripts/manage-local-finance-mcp-and-ui.sh [action]
+
+Manage the complete local runtime for the Finance examples: the shared MCP
+container, named Dev Tunnel host, and Local UI.
+
+Actions:
+  start, restart  Replace stale repository-owned processes and start MCP + UI.
+  status          Report MCP and Local UI readiness and the Local UI URL.
+  stop            Stop repository-owned MCP, tunnel, UI, and local container.
+  -h, --help      Show this help.
+EOF
+}
 
 die() {
   echo "ERROR: $*" >&2
@@ -85,7 +100,7 @@ stop_stack() {
   stop_pid_file "${MCP_PID_FILE}"
   stop_stale_repo_processes
   docker rm -f voice-agent-shared-mcp-local >/dev/null 2>&1 || true
-  echo "local_stack=stopped"
+  echo "local_finance_mcp_and_ui=stopped"
 }
 
 wait_for_http() {
@@ -188,17 +203,17 @@ start_stack() {
   printf '%s\n' "${ui_pid}" > "${UI_PID_FILE}"
 
   wait_for_http \
-    "Dashboard" \
+    "Local UI" \
     "http://${UI_HOST}:${UI_PORT}/healthz" \
     "${ui_pid}" \
     "${UI_LOG}"
   verify_template_probes
 
-  echo "local_stack=ready"
-  echo "dashboard_url=http://localhost:${UI_PORT}"
+  echo "local_finance_mcp_and_ui=ready"
+  echo "local_ui_url=http://localhost:${UI_PORT}"
   echo "mcp_health=http://127.0.0.1:${MCP_PORT}/healthz"
   echo "mcp_log=${MCP_LOG}"
-  echo "dashboard_log=${UI_LOG}"
+  echo "local_ui_log=${UI_LOG}"
 }
 
 status_stack() {
@@ -208,7 +223,7 @@ status_stack() {
     mcp_status="ready"
   curl -fsS "http://${UI_HOST}:${UI_PORT}/healthz" >/dev/null 2>&1 &&
     ui_status="ready"
-  echo "mcp=${mcp_status} dashboard=${ui_status} dashboard_url=http://localhost:${UI_PORT}"
+  echo "mcp=${mcp_status} local_ui=${ui_status} local_ui_url=http://localhost:${UI_PORT}"
 }
 
 case "${ACTION}" in
@@ -222,7 +237,11 @@ case "${ACTION}" in
   status)
     status_stack
     ;;
+  -h|--help)
+    usage
+    ;;
   *)
-    die "usage: $0 [restart|start|stop|status]"
+    usage >&2
+    exit 1
     ;;
 esac

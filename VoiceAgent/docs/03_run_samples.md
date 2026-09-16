@@ -108,6 +108,20 @@ virtual environments. Create the environment for each component that you plan
 to run. MCP hosting itself uses the Docker image and Python standard library;
 it does not require either Finance sample virtual environment.
 
+The recommended setup entry point is:
+
+```bash
+cd "$VOICE_AGENT_ROOT"
+./scripts/setup-local-finance-examples.sh \
+  --project-endpoint "$AZURE_AI_PROJECT_ENDPOINT"
+```
+
+`setup-local-finance-examples.sh` checks required command-line tools, installs
+Dev Tunnel when missing, creates or reuses the three Python environments,
+installs the Local UI Node dependencies, runs/builds the browser code, and
+creates the three local `.env` files. Use `--check` to inspect readiness
+without installing or changing environments.
+
 Set a package index once when the default PyPI file host is unavailable:
 
 ```bash
@@ -224,16 +238,25 @@ processes from earlier runs:
 
 ```bash
 cd "$VOICE_AGENT_ROOT"
-PIP_INDEX_URL="${PIP_INDEX_URL}" ./scripts/local-stack.sh restart
+PIP_INDEX_URL="${PIP_INDEX_URL}" \
+  ./scripts/manage-local-finance-mcp-and-ui.sh restart
 ```
 
-It waits for MCP and Dashboard health, reloads the template catalog, and
-requires successful MCP probes for both templates before reporting
-`local_stack=ready`. Runtime PID and log files are stored under ignored
-`.local-stack/` state. Use `./scripts/local-stack.sh stop` or `status` for
-later lifecycle operations.
+`manage-local-finance-mcp-and-ui.sh` owns the local runtime lifecycle. It
+stops stale repository-owned MCP, Dev Tunnel, and Local UI processes; starts
+the MCP E2E and Local UI; waits for both health endpoints; reloads the template
+catalog; and requires successful MCP probes for both templates before reporting
+`local_finance_mcp_and_ui=ready`.
 
-To run only MCP without the Dashboard, use the lower-level command below.
+Runtime PID and log files are stored under ignored
+`.local-finance-mcp-and-ui/` state. Use:
+
+```bash
+./scripts/manage-local-finance-mcp-and-ui.sh status
+./scripts/manage-local-finance-mcp-and-ui.sh stop
+```
+
+To run only MCP without the Local UI, use the lower-level command below.
 
 Run:
 
@@ -511,7 +534,7 @@ The Templates page should:
 - allow **Try it now**;
 - open the newly published Agent in Live session.
 
-The Dashboard caches the template catalog. If E2E started after the Dashboard,
+The Local UI caches the template catalog. If E2E started after the Local UI,
 select **Reload** before **Test MCP** or **Try it now**. Readiness is complete
 only when both template probes report HTTP 200 and list the expected tools.
 
@@ -529,7 +552,7 @@ only when both template probes report HTTP 200 and list the expected tools.
 | Tool returns `unknown_call` after a runtime replacement | The call started before state persistence was enabled, or the Docker state volume was removed | End that Voice Agent session and reconnect; keep the named state volume for later restarts |
 | HTTP 401 from a direct MCP request | Request omitted the bearer token | Expected for unauthenticated probes; Foundry supplies it from the connection |
 | Generated config is missing | Local E2E has not completed connection setup | Run `e2e-local.sh` to its final success lines; in an already open UI, select Templates **Reload** |
-| UI Build says `The local MCP config is not ready` | One of the generated config files or `state/local/token` is missing, or the Dashboard cached its catalog before E2E completed | Keep a successful E2E process running, verify all three files, then select Templates **Reload** |
+| UI Build says `The local MCP config is not ready` | One of the generated config files or `state/local/token` is missing, or the Local UI cached its catalog before E2E completed | Keep a successful E2E process running, verify all three files, then select Templates **Reload** |
 | UI publish says connection not found | UI selected a different Foundry Project | Select the same Project configured in the examples and rerun/reload |
 | UI publish reports Agent write permission denied | UI used the wrong Azure identity | Set `AZURE_CREDENTIAL_MODE=cli`, run `az login` with the intended identity, and restart UI |
 | Port 18003 is already allocated | An older E2E/container is still running | Stop the older owning script/container, then start the canonical E2E |

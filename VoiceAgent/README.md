@@ -78,8 +78,8 @@ bundled `azure-ai-voiceagents` wheel described by the common setup above.
 
 Reusable AI coding skills are under `skills/`:
 
-- `debug-local-session` resolves and analyzes recordings created by
-  `samples/local_UI`.
+- [`debug-local-session`](skills/debug-local-session/) resolves and analyzes
+  recordings created by `samples/local_UI`.
 - `voice-agent-private-preview` creates and tests private-preview voice agents.
 - `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
   and returns its MCP URL and Foundry project connection ID.

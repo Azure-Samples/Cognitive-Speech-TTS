@@ -25,8 +25,9 @@ documents own procedures.
 | --- | --- |
 | Select a subscription, find an existing Project endpoint, create a Project, or verify `gpt-realtime` mode and region support | [01: Subscription and Foundry Project](./01_setup_subscription.md) |
 | Build through a Python package mirror, install or authenticate Dev Tunnel, create MCP connections, or diagnose missing `*.local.env` files | [02: MCP settings and E2E](./02_mcp_settings.md) |
-| Create the two sample virtual environments, prepare the UI environment, start services in order, or choose a UI port | [03: Run samples and local UI](./03_run_samples.md) |
-| Diagnose a session that reached the Voice WebSocket | [04: Debug a local UI session](./04_debug_session.md) |
+| Install/check the two sample virtual environments, prepare the Local UI environment, or create `.env` files | [`setup-local-finance-examples.sh`](../scripts/setup-local-finance-examples.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
+| Start, restart, stop, or inspect the local MCP + Dev Tunnel + Local UI processes | [`manage-local-finance-mcp-and-ui.sh`](../scripts/manage-local-finance-mcp-and-ui.sh) and [03: Run samples and Local UI](./03_run_samples.md) |
+| Diagnose a session that reached the Voice WebSocket | [04: Debug a local UI session](./04_debug_session.md) and [`skills/debug-local-session/`](../skills/debug-local-session/) |
 
 The local MCP E2E path uses the identity from `az login` for Project discovery
 and connection creation. It does not publish Agents and does not require
@@ -136,18 +137,18 @@ For the first run, complete these in order:
 
 ```bash
 cd VoiceAgent
-./scripts/local-stack.sh restart
+./scripts/manage-local-finance-mcp-and-ui.sh restart
 ```
 
-The command safely stops stale MCP, Dev Tunnel, and Dashboard processes owned
-by this repository; starts a fresh MCP E2E and Dashboard; then verifies both
-template MCP probes. It prints the Dashboard URL when the full stack is ready.
+The command safely stops stale MCP, Dev Tunnel, and Local UI processes owned
+by this repository; starts a fresh MCP E2E and Local UI; then verifies both
+template MCP probes. It prints the Local UI URL when the full stack is ready.
 
 Use the same script for lifecycle operations:
 
 ```bash
-./scripts/local-stack.sh status
-./scripts/local-stack.sh stop
+./scripts/manage-local-finance-mcp-and-ui.sh status
+./scripts/manage-local-finance-mcp-and-ui.sh stop
 ```
 
 The local workflow is fully ready only when all three layers pass:
@@ -156,7 +157,7 @@ The local workflow is fully ready only when all three layers pass:
   `local_runtime=ready`, then remains running.
 2. Sample CLI: each scenario's `sample.py publish` and `sample.py check`
   report matching requested/readback fingerprints.
-3. Dashboard: **Reload** clears any pre-E2E catalog cache, **Test MCP** reports
+3. Local UI: **Reload** clears any pre-E2E catalog cache, **Test MCP** reports
   HTTP 200 for the selected template, and **Try it now** publishes a `gft-`
   Agent version.
 
