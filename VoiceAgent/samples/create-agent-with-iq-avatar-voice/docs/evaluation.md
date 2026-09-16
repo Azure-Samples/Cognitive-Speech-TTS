@@ -1,65 +1,54 @@
-# Evaluation methods and results
+# Evaluation results
 
 Last updated: September 16, 2026.
 
-Keep offline validation, manual workflow acceptance, and scored Knowledge results separate.
+## Knowledge evaluation
 
-## Recorded results
+**The latest 252-question evaluation achieved 219 PASS / 33 FAIL (86.90%).**
 
-The offline suite and CLI smoke checks were rerun after documentation cleanup on September 16, 2026. The Foundry result below remains the owner's previously confirmed manual acceptance.
+The benchmark covers Theodore Roosevelt questions across 30 quiz groups, using `gpt-4o` with Foundry IQ in Foundry Portal text interactions. A declined answer counts as FAIL when the benchmark expects an answer.
 
-| Check | Result | Scope |
-| --- | --- | --- |
-| Creator offline suite | **49 passed; 0 skipped** | Configuration, typed models, lifecycle, CLI, and actual bundled SDK/in-memory HTTP contract tests using synthetic responses; no Azure calls |
-| Direct CLI smoke checks | **8 expected outcomes passed** | Help; four valid configurations; two unresolved templates and one invalid model rejected with exit code 2; no create command or Azure calls |
-| Foundry Knowledge + Personal Voice + custom photo avatar | **PASS — owner-confirmed manual acceptance** | The owner confirmed completing the full workflow in Foundry; this is a manual result, not an automated cloud run |
+The totals below include these updates and measure final-answer correctness.
 
-The exact creator CLI has not been independently rerun live against the owner's existing agent.
-
-The recorded offline run used bundled Azure AI Projects 2.7.0b1 and OpenAI 3.14.1; see the [SDK build record](../../../dist/README.md).
-
-## Run offline checks
-
-From the sample directory with its dependencies installed:
-
-```bash
-python -m unittest -v test_create_agent.py
-python create_agent.py --help
-python create_agent.py validate --config agent.local.json
-```
-
-Both unchanged templates (`agent.example.json` and `agent.personal.example.json`) must fail validation because they contain placeholders. Completed configurations should pass without credentials or network calls. The four combinations cover standard voice and Personal Voice, each with and without a custom photo avatar, all with Knowledge enabled.
-
-The HTTP contract tests use the actual bundled SDK, fake credentials, and an in-memory transport, with sockets and DNS blocked. They check request serialization and response handling, not live service behavior. Report missing-SDK skips as **SKIPPED**, not passed.
-
-## Recommended evaluation
-
-These are suggested checks for future runs, not additional measured results.
-
-- **Knowledge answers:** freeze and version the ingested source documents, such as [voice-agent-overview.md](../../sample_foundry_iq_doc/voice-agent-overview.md). Include questions supported by the documents and questions they cannot answer; expect an appropriate unknown response for the latter.
-- **Grounding and citations:** check that retrieval ran and the retrieved passages support the answer. Verify that each citation supports its associated claim; a source link alone is not enough.
-- **Media:** manually check the selected Personal Voice, custom photo likeness, audible playback, audio/video synchronization, microphone input, and interruption. Received media bytes alone do not establish successful playback.
-
-## Summarize results
-
-A manual **PASS** is a valid result. An aggregate summary is sufficient; original questions, answers, and logs do not need to be supplied or published.
-
-For a scored run, define the rubric and treatment of ambiguous questions before testing. Report only counts or rates supported by collected data:
-
-- Record total scheduled, passed, failed, and incomplete cases. If there are retries, separate first-attempt outcomes from final outcomes.
-- State each criterion and denominator: expected answer or appropriate abstention / all scheduled questions; grounded-answer accuracy / answerable questions; correct unknown responses / unanswerable questions; citation correctness / responses requiring citations.
-- Show numerator and denominator for each rate, keep failures and incomplete cases visible, and report **N/A** for a zero denominator. Do not infer percentages from manual acceptance.
-
-For future evaluations, fill in the available fields below; leave unmeasured fields as **not measured**.
-
-| Summary field | What to record |
+| Metric | Result |
 | --- | --- |
-| Date and scope | Run date; offline, manual, or scored evaluation |
-| Configuration | Anonymous configuration label/revision, relevant model/SDK versions, and selected voice/avatar options |
-| Corpus | Source-document version or snapshot label |
-| Scored counts | Scheduled, passed, failed, incomplete; criteria and denominators; first-attempt versus final results if retried |
-| Manual result and known limits | PASS/FAIL or not completed for the checks performed; limitations and remaining checks |
+| Questions evaluated | 252 |
+| PASS | 219 |
+| FAIL | 33 |
+| Incomplete | 0 |
+| Pass rate | 86.90% (219 / 252) |
 
-## Privacy and consent
+### Failure breakdown
 
-Keep `store=false`; do not enable conversation recording just to fill a result summary. Use only consented Personal Voice and photo assets with authorized access. If recording is separately approved, apply retention and access controls. Share only sanitized summaries, never real credentials, personal identifiers, consent media, recordings, or restricted source content.
+The final 33 failed answers fall into these observed categories:
+
+| Category | FAIL count |
+| --- | --- |
+| Declined to answer | 15 |
+| Incorrect facts, entities, places, numbers or timing | 5 |
+| Answered a different question or misread the intended target | 2 |
+| Incomplete, overly general or missing required details | 11 |
+| **Total** | **33** |
+
+Declined and incomplete answers account for **26 of 33 failures (78.79%)**. Knowledge coverage, retrieval and use of retrieved details are the main areas for follow-up; these are possible contributors rather than confirmed causes.
+
+## Foundry Portal functional result
+
+| Scenario | Result |
+| --- | --- |
+| Knowledge + Personal Voice + custom photo avatar workflow in Foundry Portal | **PASS** |
+
+## Python creator checks
+
+Recorded on September 16, 2026, using bundled Azure AI Projects 2.7.0b1 and OpenAI 3.14.1; see the [SDK build record](../../../dist/README.md).
+
+| Check | Result | Coverage |
+| --- | --- | --- |
+| Offline test suite | **49 passed; 0 skipped** | Configuration, typed models, lifecycle, CLI and bundled SDK HTTP contracts with synthetic in-memory responses |
+| Direct CLI smoke checks | **8 expected outcomes passed** | Help; four valid configurations; two unresolved templates and one invalid model correctly rejected with exit code 2 |
+
+Commands for the Python checks are in [Run Python offline checks](../README.md#run-python-offline-checks).
+
+## Data handling
+
+This document contains aggregate results and failure themes. Keep original questions, responses, logs, credentials and personal media in their authorized locations. The Python templates use `store=false`; review applicable storage, access and retention settings for Portal-created agents. Recording requires separate approval.
