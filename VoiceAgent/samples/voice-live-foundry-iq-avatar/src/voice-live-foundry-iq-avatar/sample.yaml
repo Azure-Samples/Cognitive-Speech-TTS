@@ -1,0 +1,6 @@
+name: Voice Live — Foundry IQ
+
+description: A minimal invocations_ws hosted agent for grounded speech and text using Azure Voice Live with a standard voice and a Foundry IQ knowledge-base MCP endpoint, with an experimental opt-in built-in Avatar.
+
+build: "python -m pip install -r requirements.txt -r requirements-dev.txt"
+validate: "python -m py_compile main.py provision_kb.py e2e_local.py chat_client/proxy.py && python -m pytest -q"

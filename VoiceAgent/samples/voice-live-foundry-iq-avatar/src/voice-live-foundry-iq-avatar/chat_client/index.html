@@ -1,0 +1,713 @@
+<!--
+  Voice Live Hello World — standalone browser client.
+
+  Connects directly to the agent's WebSocket endpoint and runs the same
+  wire protocol as the chat_client portal:
+
+    Browser → Server (binary): raw PCM16 mic chunks at 24 kHz mono.
+    Browser → Server (text)  : JSON {type:"text", content:"..."}.
+    Server → Browser (binary): 8-byte (sample_rate u32LE, channels u32LE)
+                               header + PCM16 audio.
+    Server → Browser (text)  : JSON control events
+                               (session_started, user_speech_*, transcription,
+                                bot_text {delta,final,text}, response_done, error).
+
+  How to use
+  ----------
+  Local dev (no auth):
+    1. Run the agent:  `python main.py`  (listens on :8088/invocations_ws)
+    2. Serve this folder:
+         cd chat_client && python -m http.server 8080
+       (Most browsers refuse mic access from `file://`.)
+    3. Open http://localhost:8080/ — the default URL is
+       ws://localhost:8088/invocations_ws.
+
+  Foundry-hosted:
+    Browsers cannot set custom WebSocket headers, and the Foundry gateway
+    requires `Authorization: Bearer <token>` (no query-param fallback).
+    Run the bundled `proxy.py` in another terminal to bridge the gap:
+      python proxy.py --foundry <project-endpoint> --agent voice-live-foundry-iq-avatar
+    then point the WebSocket URL at ws://localhost:8765/invocations_ws.
+    (Or use the CLI: `python e2e_local.py --foundry <project-endpoint>`.)
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Voice Live Foundry IQ</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    margin: 0; padding: 16px; max-width: 960px; margin-inline: auto;
+  }
+  h1 { font-size: 1.2rem; margin: 0 0 12px; }
+  fieldset { border: 1px solid #8884; border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+  legend { padding: 0 6px; font-weight: 600; }
+  label { display: block; font-size: 0.85rem; margin-bottom: 4px; }
+  input[type=text], input[type=password], textarea {
+    width: 100%; box-sizing: border-box; padding: 6px 8px;
+    border: 1px solid #8886; border-radius: 6px; font: inherit;
+  }
+  textarea { min-height: 60px; resize: vertical; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: end; }
+  .row > * { flex: 1 1 220px; }
+  button {
+    padding: 8px 14px; border-radius: 6px; border: 1px solid #8886;
+    background: #2d7cd6; color: white; font: inherit; cursor: pointer;
+  }
+  button.secondary { background: transparent; color: inherit; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #status { font-weight: 600; }
+  .status-pill {
+    display: inline-block; padding: 2px 10px; border-radius: 999px;
+    background: #8883; font-size: 0.85rem;
+  }
+  .status-pill.connected { background: #1a8a3a; color: white; }
+  .status-pill.error { background: #b53030; color: white; }
+  #log {
+    height: 220px; overflow: auto; font-family: ui-monospace, monospace;
+    font-size: 0.8rem; background: #0001; padding: 8px; border-radius: 6px;
+    white-space: pre-wrap;
+  }
+  .bubble { padding: 8px 12px; border-radius: 12px; margin: 6px 0; max-width: 80%; }
+  .user   { background: #2d7cd6; color: white; margin-left: auto; text-align: right; }
+  .bot    { background: #8882; }
+  #convo  { display: flex; flex-direction: column; min-height: 100px; }
+  .muted  { opacity: 0.6; font-size: 0.8rem; }
+  .banner {
+    border: 1px solid #b53030; background: #b5303018; color: inherit;
+    padding: 10px 14px; border-radius: 8px; margin-bottom: 12px;
+    font-size: 0.9rem;
+  }
+  .banner strong { color: #b53030; }
+</style>
+</head>
+<body>
+<h1>Voice Live Foundry IQ — standalone client</h1>
+
+<div class="banner" id="authBanner">
+  <strong>Browsers can't set the Foundry <code>Authorization</code> header.</strong>
+  To talk to a hosted agent from this page, run the bundled local proxy
+  in another terminal:
+  <pre style="margin:6px 0 0; white-space:pre-wrap;">python proxy.py --foundry https://&lt;account&gt;.services.ai.azure.com/api/projects/&lt;project&gt; --agent voice-live-foundry-iq-avatar</pre>
+  then point the WebSocket URL below at
+  <code>ws://localhost:8765/invocations_ws</code>. The proxy injects
+  <code>Authorization: Bearer &lt;az token&gt;</code> on your behalf.
+  Direct Foundry data-plane URLs are blocked here because the browser can't
+  authenticate them; authenticated <code>wss://</code> reverse proxies remain valid.
+</div>
+
+<fieldset>
+  <legend>Connection</legend>
+  <div class="row">
+    <div style="flex: 1 1 360px;">
+      <label for="wsUrl">WebSocket URL</label>
+      <input id="wsUrl" type="text"
+             placeholder="ws://localhost:8088/invocations_ws" />
+    </div>
+  </div>
+  <p class="muted">
+    This page is intended for <strong>local dev</strong> against the
+    sample running on <code>:8088</code>. Foundry-hosted agents require
+    an <code>Authorization: Bearer &lt;token&gt;</code> header, which a
+    browser cannot set on a WebSocket — use
+    <code>python e2e_local.py --foundry &lt;project-endpoint&gt;</code>
+    or front this page with a small proxy that injects the header.
+  </p>
+  <div class="row" style="margin-top: 8px;">
+    <div>
+      <button id="btnStart">Start mic + connect</button>
+      <button id="btnMute" class="secondary" disabled>Mute mic</button>
+      <button id="btnStop" class="secondary" disabled>Stop</button>
+      <span class="status-pill" id="status">idle</span>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend>Type to the agent</legend>
+  <div class="row">
+    <textarea id="textInput" placeholder="Say hello in one short sentence."></textarea>
+    <div style="flex: 0 0 auto;">
+      <button id="btnSend" disabled>Send</button>
+    </div>
+  </div>
+</fieldset>
+
+<fieldset id="avatarPanel" hidden>
+  <legend>Avatar</legend>
+  <video id="avatarVideo" controls autoplay playsinline style="width:100%; max-height:420px;"></video>
+  <p class="muted"><span id="avatarStatus">waiting for media</span> · <span id="avatarBytes">0</span> bytes received</p>
+  <p class="muted">Received bytes can include idle animation. Check the spoken answer and lip sync. Interruption is best-effort: late video fragments have no response ID.</p>
+</fieldset>
+
+<fieldset>
+  <legend>Conversation</legend>
+  <div id="convo"></div>
+</fieldset>
+
+<fieldset>
+  <legend>Event log</legend>
+  <div id="log"></div>
+</fieldset>
+
+<script type="module">
+const SR = 24_000;
+const CHUNK_SAMPLES = 2400; // 100 ms @ 24 kHz
+
+const $ = (id) => document.getElementById(id);
+
+// The bundled proxy serves this page on :8765 and accepts WebSockets on the
+// same origin. A separately served static page defaults to the local agent.
+function defaultWsUrl() {
+  const override = new URLSearchParams(window.location.search).get("ws");
+  if (override) return override;
+  const loc = window.location;
+  if ((loc.protocol === "http:" || loc.protocol === "https:")
+      && loc.port === "8765") {
+    const scheme = loc.protocol === "https:" ? "wss:" : "ws:";
+    return `${scheme}//${loc.host}/invocations_ws`;
+  }
+  return "ws://localhost:8088/invocations_ws";
+}
+$("wsUrl").value = defaultWsUrl();
+const elStatus = $("status");
+const elLog    = $("log");
+const elConvo  = $("convo");
+
+let ws = null;
+let micCtx = null, micNode = null, micStream = null;
+let playCtx = null;
+let playTime = 0;          // next absolute time to schedule output
+let userBubble = null;
+let botBubble  = null;
+let botBuffer  = "";
+let doneTimer  = null;       // pending "listening" flip after response_done
+let playSources = [];        // currently scheduled audio source nodes
+let micMuted   = false;      // when true, drop mic frames before sending
+
+let starting = false;
+let sessionReady = false;
+let reauthRequired = false;
+let stopRequested = false;
+
+const AVATAR_MIME = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
+const MAX_AVATAR_QUEUE_BYTES = 32 * 1024 * 1024;
+const MAX_AVATAR_BUFFER_SECONDS = 60;
+const AVATAR_RETAIN_SECONDS = 5;
+let avatarEnabled = false, avatarFailed = false;
+let avatarMedia = null, avatarBuffer = null, avatarEvents = null, avatarUrl = null;
+let avatarQueue = [], avatarQueueBytes = 0, avatarBytes = 0;
+let avatarDoneTime = null, avatarSeekToLive = false;
+
+function setStatus(text, cls) {
+  elStatus.textContent = text;
+  elStatus.className = "status-pill" + (cls ? " " + cls : "");
+}
+function log(line, kind = "") {
+  const ts = new Date().toLocaleTimeString();
+  elLog.textContent += `[${ts}] ${kind ? "(" + kind + ") " : ""}${line}\n`;
+  elLog.scrollTop = elLog.scrollHeight;
+}
+function addBubble(cls, text) {
+  const div = document.createElement("div");
+  div.className = "bubble " + cls;
+  div.textContent = text;
+  elConvo.appendChild(div);
+  elConvo.scrollTop = elConvo.scrollHeight;
+  return div;
+}
+
+// ---- Audio playback (PCM16 → AudioBuffer scheduling) ----------------------
+function ensurePlayCtx(sampleRate) {
+  if (!playCtx || playCtx.sampleRate !== sampleRate) {
+    if (playCtx) try { playCtx.close(); } catch {}
+    playCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate });
+    playTime = playCtx.currentTime;
+  }
+}
+function playPcm(uint8, sampleRate, channels) {
+  ensurePlayCtx(sampleRate);
+  const i16 = new Int16Array(uint8.buffer, uint8.byteOffset, uint8.byteLength / 2);
+  const frames = i16.length / channels;
+  const buf = playCtx.createBuffer(channels, frames, sampleRate);
+  for (let c = 0; c < channels; c++) {
+    const ch = buf.getChannelData(c);
+    for (let i = 0; i < frames; i++) ch[i] = i16[i * channels + c] / 32768;
+  }
+  const src = playCtx.createBufferSource();
+  src.buffer = buf;
+  src.connect(playCtx.destination);
+  const now = playCtx.currentTime;
+  if (playTime < now) playTime = now;
+  src.start(playTime);
+  playTime += buf.duration;
+  playSources.push(src);
+  src.onended = () => {
+    const i = playSources.indexOf(src);
+    if (i >= 0) playSources.splice(i, 1);
+  };
+}
+
+// Stop and drop all queued playback (e.g. when user interrupts the bot).
+function cancelPlayback() {
+  for (const s of playSources) { try { s.stop(); } catch {} }
+  playSources = [];
+  if (playCtx) playTime = playCtx.currentTime;
+}
+
+// ---- Optional Avatar playback (fMP4 with its own audio track) -------------
+function releaseAvatarMedia() {
+  avatarEvents?.abort();
+  avatarEvents = null;
+  const video = $("avatarVideo");
+  video.pause();
+  video.removeAttribute("src");
+  video.load();
+  if (avatarUrl) URL.revokeObjectURL(avatarUrl);
+  avatarUrl = avatarMedia = avatarBuffer = null;
+  avatarQueue = [];
+  avatarQueueBytes = 0;
+  avatarDoneTime = null;
+  avatarSeekToLive = false;
+}
+
+function failAvatar(message) {
+  releaseAvatarMedia();
+  avatarFailed = true;
+  $("avatarStatus").textContent = "playback error: " + message;
+  log("Avatar: " + message, "error");
+}
+
+function updateAvatarPlayback() {
+  const video = $("avatarVideo");
+  if (avatarDoneTime !== null && video.currentTime >= avatarDoneTime - 0.05) {
+    avatarDoneTime = null;
+    if (!reauthRequired) setStatus("listening", "connected");
+  }
+}
+
+function drainAvatarQueue() {
+  if (!avatarBuffer || avatarBuffer.updating || avatarFailed) return;
+  const video = $("avatarVideo");
+  try {
+    const ranges = avatarBuffer.buffered;
+    if (avatarSeekToLive && ranges.length) {
+      video.currentTime = Math.max(ranges.start(ranges.length - 1), ranges.end(ranges.length - 1) - 0.01);
+      avatarSeekToLive = false;
+      const media = avatarMedia;
+      void video.play().catch((error) => {
+        if (avatarMedia !== media || error.name === "AbortError") return;
+        if (error.name === "NotAllowedError") {
+          $("avatarStatus").textContent = "select Play to enable Avatar audio";
+        } else {
+          failAvatar(String(error));
+        }
+      });
+    }
+    if (ranges.length && ranges.end(ranges.length - 1) - video.currentTime > MAX_AVATAR_BUFFER_SECONDS) {
+      throw new Error("buffer limit reached; reconnect to resume");
+    }
+    const removeBefore = video.currentTime - AVATAR_RETAIN_SECONDS;
+    if (ranges.length && removeBefore > ranges.start(0) + 1) {
+      avatarBuffer.remove(0, removeBefore);
+      return;
+    }
+    // A marker captures the playback boundary before later idle fragments.
+    while (avatarQueue.length && avatarQueue[0] === null) {
+      avatarQueue.shift();
+      avatarDoneTime = ranges.length ? ranges.end(ranges.length - 1) : video.currentTime;
+      updateAvatarPlayback();
+    }
+    if (!avatarQueue.length) return;
+    const chunk = avatarQueue.shift();
+    avatarQueueBytes -= chunk.byteLength;
+    avatarBuffer.appendBuffer(chunk);
+  } catch (error) {
+    failAvatar(String(error));
+  }
+}
+
+function setupAvatarMedia() {
+  if (!window.MediaSource || !MediaSource.isTypeSupported(AVATAR_MIME)) {
+    throw new Error("this browser does not support the Avatar media format");
+  }
+  const video = $("avatarVideo");
+  avatarEvents = new AbortController();
+  const options = { signal: avatarEvents.signal };
+  const media = new MediaSource();
+  avatarMedia = media;
+  media.addEventListener("sourceopen", () => {
+    if (avatarMedia !== media) return;
+    try {
+      avatarBuffer = media.addSourceBuffer(AVATAR_MIME);
+      avatarBuffer.addEventListener("updateend", drainAvatarQueue, options);
+      avatarBuffer.addEventListener("error", () => failAvatar("media decoding failed"), options);
+      drainAvatarQueue();
+    } catch (error) {
+      failAvatar(String(error));
+    }
+  }, { ...options, once: true });
+  video.addEventListener("playing", () => {
+    $("avatarStatus").textContent = "playing media — verify speech and lip sync";
+  }, options);
+  video.addEventListener("waiting", () => {
+    $("avatarStatus").textContent = "waiting for media";
+  }, options);
+  video.addEventListener("timeupdate", updateAvatarPlayback, options);
+  video.addEventListener("error", () => failAvatar("media playback failed"), options);
+  avatarUrl = URL.createObjectURL(media);
+  video.src = avatarUrl;
+  video.muted = false;
+  void video.play().catch((error) => {
+    if (avatarMedia !== media || error.name === "AbortError") return;
+    if (error.name === "NotAllowedError") {
+      $("avatarStatus").textContent = "select Play to enable Avatar audio";
+    } else {
+      failAvatar(String(error));
+    }
+  });
+}
+
+function handleAvatarChunk(delta) {
+  avatarEnabled = true;
+  $("avatarPanel").hidden = false;
+  if (avatarFailed) return;
+  try {
+    const raw = atob(delta);
+    if (!raw.length) return;
+    if (avatarQueueBytes + raw.length > MAX_AVATAR_QUEUE_BYTES) {
+      throw new Error("queue limit reached; reconnect to resume");
+    }
+    const chunk = Uint8Array.from(raw, (character) => character.charCodeAt(0));
+    avatarBytes += chunk.byteLength;
+    $("avatarBytes").textContent = String(avatarBytes);
+    avatarQueue.push(chunk);
+    avatarQueueBytes += chunk.byteLength;
+    if (!avatarMedia) setupAvatarMedia();
+    drainAvatarQueue();
+  } catch (error) {
+    failAvatar(String(error));
+  }
+}
+
+function interruptAvatar() {
+  if (!avatarEnabled || avatarFailed || !avatarBuffer?.buffered.length) return;
+  $("avatarVideo").pause();
+  avatarQueue = [];
+  avatarQueueBytes = 0;
+  avatarDoneTime = null;
+  // Preserve the initialization segment; incoming fMP4 continues this stream.
+  avatarSeekToLive = true;
+  drainAvatarQueue();
+}
+
+// ---- Mic capture (24 kHz mono PCM16) --------------------------------------
+async function startMic(onChunk) {
+  micStream = await navigator.mediaDevices.getUserMedia({
+    audio: { sampleRate: SR, channelCount: 1, echoCancellation: true, noiseSuppression: true },
+  });
+  micCtx = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: SR });
+  const source = micCtx.createMediaStreamSource(micStream);
+  // ScriptProcessor is deprecated but works everywhere; for a sample it's fine.
+  // Buffer size MUST be a power of two between 256 and 16384. CHUNK_SAMPLES
+  // (2400 = 100 ms @ 24 kHz) isn't, so we pick the nearest legal size and
+  // re-chunk to CHUNK_SAMPLES below.
+  micNode = micCtx.createScriptProcessor(2048, 1, 1);
+  source.connect(micNode);
+  micNode.connect(micCtx.destination); // required in some browsers
+  let leftover = new Float32Array(0);
+  micNode.onaudioprocess = (ev) => {
+    const f32 = ev.inputBuffer.getChannelData(0);
+    const merged = new Float32Array(leftover.length + f32.length);
+    merged.set(leftover, 0); merged.set(f32, leftover.length);
+    let i = 0;
+    while (i + CHUNK_SAMPLES <= merged.length) {
+      const slice = merged.subarray(i, i + CHUNK_SAMPLES);
+      const i16 = new Int16Array(CHUNK_SAMPLES);
+      for (let j = 0; j < CHUNK_SAMPLES; j++) {
+        const s = Math.max(-1, Math.min(1, slice[j]));
+        i16[j] = s < 0 ? s * 0x8000 : s * 0x7fff;
+      }
+      onChunk(i16.buffer);
+      i += CHUNK_SAMPLES;
+    }
+    leftover = merged.subarray(i);
+  };
+}
+function stopMic() {
+  try { micNode && micNode.disconnect(); } catch {}
+  try { micStream && micStream.getTracks().forEach(t => t.stop()); } catch {}
+  try { micCtx && micCtx.close(); } catch {}
+  micNode = micStream = micCtx = null;
+}
+
+// ---- WebSocket message handling -------------------------------------------
+function handleEvent(msg) {
+  switch (msg.type) {
+    case "session_started":
+      avatarEnabled = msg.avatar_enabled === true || avatarEnabled;
+      $("avatarPanel").hidden = !avatarEnabled;
+      sessionReady = true;
+      log("Voice Live session: " + (msg.session_id || ""), "event");
+      setStatus("listening", "connected");
+      $("btnSend").disabled = false;
+      { const b = $("authBanner"); if (b) b.style.display = "none"; }
+      break;
+    case "user_speech_started":
+      log("User started speaking", "event");
+      setStatus("user speaking", "connected");
+      // Barge-in: cancel any queued bot audio and any pending
+      // "listening" flip from a still-playing previous response.
+      if (doneTimer) { clearTimeout(doneTimer); doneTimer = null; }
+      cancelPlayback();
+      interruptAvatar();
+      // Reserve the user bubble slot now so it stays above the bot reply,
+      // even though the transcription text only arrives after VAD stops.
+      userBubble = addBubble("user", "\u2026");
+      break;
+    case "user_speech_stopped":
+      log("User stopped speaking", "event");
+      setStatus("thinking\u2026", "connected");
+      break;
+    case "transcription":
+      if (msg.text) {
+        if (!userBubble) userBubble = addBubble("user", "");
+        userBubble.textContent = msg.text;
+        userBubble = null;
+      }
+      break;
+    case "bot_text":
+      if (msg.delta) {
+        if (!botBubble) { botBubble = addBubble("bot", ""); botBuffer = ""; }
+        botBuffer += msg.delta;
+        botBubble.textContent = botBuffer;
+        setStatus("AI speaking", "connected");
+      }
+      if (msg.final) {
+        if (!botBuffer && msg.text) addBubble("bot", msg.text);
+        botBubble = null;
+        botBuffer = "";
+      }
+      break;
+    case "video_data":
+      handleAvatarChunk(msg.delta || "");
+      break;
+    case "mcp_status":
+      log(`Knowledge MCP ${msg.operation}: ${msg.status}`, "event");
+      break;
+    case "reauth_required":
+      reauthRequired = true;
+      log(msg.message || "Reconnect to refresh Search authorization.", "event");
+      setStatus("reconnect required", "error");
+      $("btnSend").disabled = true;
+      stopMic();
+      break;
+    case "response_done":
+      botBubble = null; botBuffer = "";
+      if (msg.kind === "greeting" && msg.status !== "completed") break;
+      if (avatarEnabled) {
+        if (!avatarFailed) {
+          avatarQueue.push(null);
+          drainAvatarQueue();
+        }
+        break;
+      }
+      // response_done fires when all audio has been *delivered*, but the
+      // browser may still be playing buffered audio scheduled out to
+      // `playTime`. Flip status to "listening" only after that finishes.
+      {
+        if (doneTimer) clearTimeout(doneTimer);
+        const remainingMs = playCtx
+          ? Math.max(0, (playTime - playCtx.currentTime) * 1000)
+          : 0;
+        doneTimer = setTimeout(() => {
+          doneTimer = null;
+          if (!reauthRequired) setStatus("listening", "connected");
+        }, remainingMs + 50);
+      }
+      break;
+    case "error":
+      log("ERROR: " + (msg.message || JSON.stringify(msg)), "error");
+      setStatus("error", "error");
+      break;
+    default:
+      log("event " + msg.type + " " + JSON.stringify(msg));
+  }
+}
+
+function buildUrl() {
+  return $("wsUrl").value.trim();
+}
+
+function isDirectFoundryUrl(raw) {
+  try {
+    const url = new URL(raw);
+    return /(^|\.)services\.ai\.azure\.com$/i.test(url.hostname)
+      && /\/api\/projects\/[^/]+\/agents\/[^/]+\/endpoint\/protocols\/invocations_ws\/?$/i
+        .test(url.pathname);
+  } catch {
+    return false;
+  }
+}
+
+function resetClient(statusText = "disconnected", statusClass = "") {
+  sessionReady = false;
+  if (doneTimer) window.clearTimeout(doneTimer);
+  doneTimer = null;
+  stopMic();
+  cancelPlayback();
+  releaseAvatarMedia();
+  avatarEnabled = avatarFailed = false;
+  avatarBytes = 0;
+  $("avatarPanel").hidden = true;
+  $("avatarStatus").textContent = "waiting for media";
+  $("avatarBytes").textContent = "0";
+  setMuted(false);
+  $("btnStart").disabled = starting;
+  $("btnStop").disabled = true;
+  $("btnSend").disabled = true;
+  $("btnMute").disabled = true;
+  setStatus(statusText, statusClass);
+}
+
+async function start() {
+  if (starting || ws) return;
+  const url = buildUrl();
+  if (isDirectFoundryUrl(url)) {
+    const msg = "Direct Foundry URLs aren't supported from the browser — "
+      + "the Authorization header can't be set. Run `python proxy.py "
+      + "--foundry <endpoint> --agent <name>` and point this page at "
+      + "ws://localhost:8765/invocations_ws.";
+    log(msg, "error");
+    setStatus("unsupported", "error");
+    alert(msg);
+    return;
+  }
+  starting = true;
+  sessionReady = false;
+  reauthRequired = false;
+  stopRequested = false;
+  $("btnStart").disabled = true;
+  $("btnStop").disabled = false;
+  $("btnSend").disabled = true;
+  $("btnMute").disabled = true;
+  log("Connecting: " + url);
+  setStatus("connecting…");
+
+  ensurePlayCtx(SR);
+  if (playCtx.state === "suspended") {
+    void playCtx.resume().catch((e) => log("Audio playback resume failed: " + e, "error"));
+  }
+
+  let socket = null;
+  try {
+    socket = new WebSocket(url);
+    ws = socket;
+    socket.binaryType = "arraybuffer";
+    socket.onmessage = (ev) => {
+      if (ws !== socket) return;
+      if (ev.data instanceof ArrayBuffer) {
+        if (avatarEnabled) return;
+        if (ev.data.byteLength <= 8) return;
+        const view = new DataView(ev.data);
+        const sr = view.getUint32(0, true);
+        const ch = view.getUint32(4, true);
+        playPcm(new Uint8Array(ev.data, 8), sr, ch);
+      } else {
+        try { handleEvent(JSON.parse(ev.data)); }
+        catch { log("non-JSON text frame: " + ev.data, "error"); }
+      }
+    };
+    await new Promise((resolve, reject) => {
+      socket.onopen = resolve;
+      socket.onerror = () => reject(new Error("WebSocket handshake failed"));
+      socket.onclose = (e) => reject(
+        new Error("WebSocket closed during startup (code " + e.code + ")"),
+      );
+    });
+    log("WebSocket open", "event");
+
+    socket.onerror = () => log("WebSocket error", "error");
+    socket.onclose = (e) => {
+      log("WebSocket closed code=" + e.code + " reason=" + (e.reason || ""), "event");
+      if (ws !== socket) return;
+      ws = null;
+      if (starting) {
+        sessionReady = false;
+        setStatus(
+          reauthRequired ? "reconnect required" : "disconnected",
+          reauthRequired ? "error" : "",
+        );
+        return;
+      }
+      resetClient(
+        reauthRequired ? "reconnect required" : "disconnected",
+        reauthRequired ? "error" : "",
+      );
+    };
+
+    await startMic((buf) => {
+      if (micMuted) return;
+      if (ws === socket && socket.readyState === WebSocket.OPEN) socket.send(buf);
+    });
+    if (ws !== socket || socket.readyState !== WebSocket.OPEN) {
+      throw new Error("WebSocket closed while microphone access was pending");
+    }
+    $("btnStop").disabled = false;
+    $("btnMute").disabled = false;
+    setStatus(
+      sessionReady ? "listening" : "connecting\u2026",
+      sessionReady ? "connected" : "",
+    );
+  } catch (error) {
+    if (ws === socket) ws = null;
+    if (socket) try { socket.close(); } catch {}
+    if (stopRequested) {
+      resetClient("idle");
+      return;
+    }
+    resetClient("error", "error");
+    throw error;
+  } finally {
+    starting = false;
+    if (!ws) $("btnStart").disabled = false;
+  }
+}
+
+function stop() {
+  stopRequested = true;
+  const socket = ws;
+  ws = null;
+  if (socket) try { socket.close(); } catch {}
+  resetClient("idle");
+}
+
+function setMuted(muted) {
+  micMuted = muted;
+  if (micStream) {
+    for (const t of micStream.getAudioTracks()) t.enabled = !muted;
+  }
+  const btn = $("btnMute");
+  btn.textContent = muted ? "Unmute mic" : "Mute mic";
+  if (muted) log("mic muted", "event");
+  else log("mic unmuted", "event");
+}
+
+$("btnStart").addEventListener("click", () => {
+  start().catch((e) => { log("start failed: " + e, "error"); setStatus("error", "error"); });
+});
+$("btnStop").addEventListener("click", stop);
+$("btnMute").addEventListener("click", () => setMuted(!micMuted));
+$("btnSend").addEventListener("click", () => {
+  const t = $("textInput").value.trim();
+  if (!t || !ws || ws.readyState !== WebSocket.OPEN) return;
+  ws.send(JSON.stringify({ type: "text", content: t }));
+  addBubble("user", t);
+  $("textInput").value = "";
+});
+</script>
+</body>
+</html>

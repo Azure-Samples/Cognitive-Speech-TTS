@@ -1,0 +1,26 @@
+[
+  {
+    "id": "night-patterns",
+    "title": "Reading settlement patterns after sunset",
+    "content": "Nighttime satellite images turn scattered illumination into a rough map of human settlement. Dense networks of steady lights often follow cities, roads, and coastlines, while broad dark regions can indicate water, deserts, mountains, or places with few residents. Brightness is not a direct population count because lighting technology, cloud cover, and observation conditions also affect what a sensor records.",
+    "source_url": "https://science.nasa.gov/earth/earth-at-night/"
+  },
+  {
+    "id": "natural-night-light",
+    "title": "Natural light in nighttime observations",
+    "content": "A bright feature in a night image is not necessarily electric lighting. Aurora, lightning, moonlit clouds, fires, and reflected atmospheric glow can all contribute. Analysts compare locations, shapes, colors, and repeated observations to separate temporary natural events from persistent human-made sources.",
+    "source_url": "https://www.swpc.noaa.gov/phenomena/aurora"
+  },
+  {
+    "id": "change-over-time",
+    "title": "Why researchers compare many nights",
+    "content": "A sequence of nighttime observations can reveal changes that one image cannot. Researchers may study expanding illumination around a city, temporary darkness after a storm, or gradual shifts in outdoor lighting. Reliable comparisons account for seasonal effects, clouds, sensor differences, and stray light before drawing conclusions about activity on the ground.",
+    "source_url": "https://www.earthdata.nasa.gov/topics/human-dimensions/nighttime-lights"
+  },
+  {
+    "id": "lights-at-sea",
+    "title": "Interpreting lights away from land",
+    "content": "Clusters of light over dark ocean water can mark vessels, offshore infrastructure, or fishing operations that use lamps. Their position and movement help distinguish them from fixed coastal settlements. Night-light observations can support broader maritime analysis, but they should be combined with other data because not every vessel carries a visible light source and clouds can hide activity.",
+    "source_url": "https://www.ncei.noaa.gov/products/nighttime-lights"
+  }
+]

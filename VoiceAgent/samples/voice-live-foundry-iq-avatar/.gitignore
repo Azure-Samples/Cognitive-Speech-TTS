@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.azure/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+logs/
+*.log
+*.wav
+*.pcm
+*.mp4
+*.webm
