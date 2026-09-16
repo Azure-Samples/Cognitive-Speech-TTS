@@ -78,7 +78,8 @@ Reusable AI coding skills are under `skills/`:
 
 - [`debug-local-session`](skills/debug-local-session/) resolves and analyzes
   recordings created by `samples/local_UI`.
-- `voice-agent-private-preview` creates and tests private-preview voice agents.
+- [`voice-agent-preview`](skills/voice-agent-preview/) creates and tests Voice
+  Agents with the current preview SDK.
 - `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
   and returns its MCP URL and Foundry project connection ID.
 - `provision-foundry-toolbox` creates an Azure AI Search index from local files
