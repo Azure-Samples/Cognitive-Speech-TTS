@@ -9,6 +9,14 @@ Voice agents now are available in all Foundry Agent regions including South Indi
 > it does not use the bundled Projects SDK wheel or PortAudio. Avatar is optional,
 > with an explicit enable setting.
 
+For a creation-first walkthrough without a local UI, see
+[Create an agent with Knowledge IQ, custom photo avatar, and Personal Voice](samples/create-agent-with-iq-avatar-voice/README.md).
+It covers consent-based asset preparation, standard or Personal Voice with an
+optional custom photo avatar, native agent IDs, Portal handoff, and evaluation.
+The sample owner confirmed the full workflow in Foundry; offline SDK/CLI checks
+and manual acceptance are documented separately.
+Follow its minimal setup rather than installing microphone dependencies below.
+
 The setup below is for the Python samples. For .NET, use the standalone
 [C# voice agent sample](samples/CSharp/README.md) and the bundled
 `Azure.AI.Projects.Agents` 3.0.0-beta.3 preview SDK. The C# sample requires
@@ -60,6 +68,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 
 | File | Lifecycle |
 | --- | --- |
+| [Creation-first Knowledge, custom photo avatar and Personal Voice](samples/create-agent-with-iq-avatar-voice/README.md) | Validate/create/read back native configuration with standard or Personal Voice and optional custom photo avatar. Includes Knowledge setup, consent workflow, Portal and evaluation guidance. No UI; includes owner-confirmed Foundry acceptance and separate offline test results. |
 | `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
 | `samples/basic_voice_agent.py` | Create and version a basic agent, or connect to an existing agent, then converse through the microphone. |
 | `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |

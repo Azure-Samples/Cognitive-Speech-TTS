@@ -1,0 +1,4 @@
+# Run from VoiceAgent; use the exact SDK build documented in dist/README.md.
+# No realtime extra, Voice Live SDK, microphone, or UI dependencies.
+./dist/azure_ai_projects-2.7.0b1-py3-none-any.whl
+azure-identity==1.25.3

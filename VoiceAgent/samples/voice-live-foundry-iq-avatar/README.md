@@ -19,6 +19,8 @@ The implementation extends the official [`invocations_ws/hello-world`](https://g
 > [!WARNING]
 > Local knowledge-answer and unknown-answer tests have passed. Avatar is an experimental opt-in: service transport tests have passed, and local manual browser validation has passed with Ava and automatic greeting enabled, covering playback, audio/video synchronization, and interruption. These checks do not establish cross-browser or long-running reliability. Hosted deployment and cloud E2E validation have not been completed.
 
+For the creation-first workflow, see [Create an agent with Knowledge IQ, custom photo avatar, and Personal Voice](../create-agent-with-iq-avatar-voice/README.md) and its [evaluation record](../create-agent-with-iq-avatar-voice/docs/evaluation.md). That independent native-agent sample supports standard or Personal Voice configuration with an optional owner-consented custom photo avatar, identifiers, and Portal handoff. Its offline SDK checks and owner-confirmed full workflow in Foundry are documented separately. It does not require this browser UI. This browser sample still uses standard voice and built-in Lisa; its runtime and validation scope are unchanged.
+
 ## What the sample demonstrates
 
 - A Python hosted agent using `InvocationAgentServerHost` and `@app.ws_handler`.
