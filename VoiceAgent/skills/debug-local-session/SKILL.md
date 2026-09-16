@@ -41,7 +41,9 @@ endpoint.
 3. If setup, publication, or **Try it now** fails before a recording exists:
    - Run `./scripts/setup-local-examples.sh --check`.
    - Confirm all three `.env` files select the intended Project.
-   - Confirm `model_type` and `model` identify an available model deployment.
+   - Confirm `model_type` and `model` identify an available model deployment
+     in the account that owns that Project; a deployment in a sibling account
+     is not automatically visible.
    - Inspect `shared_mcp/config/generated/example*.local.env`; never print
      `shared_mcp/state/local/token`.
    - Call both Local UI template probe endpoints. An MCP is ready only after
@@ -122,8 +124,8 @@ endpoint.
 Always confirm these joins instead of validating each component in isolation:
 
 1. UI-selected Project = Project where the Agent version is published.
-2. Agent `model_type` + `model` = an eligible managed model or exact
-   self-deployed deployment in that Project/account.
+2. Agent `model_type: managed` + `model: gpt-realtime` = a Project region and
+   subscription eligible for the service-managed Voice Agent model.
 3. Agent `project_connection_id` = a RemoteTool connection in the same Project.
 4. Connection target = the route in the generated example config.
 5. Connection bearer credential = `SHARED_MCP_TOKEN` used by the active MCP
@@ -137,8 +139,8 @@ Always confirm these joins instead of validating each component in isolation:
 
 - Treat each `sample.py publish` or UI **Try it now** as a new immutable Agent
   version; verify the exact version rather than the Agent name alone.
-- The checked-in Finance definitions use `model_type: self_deployed`; `model`
-  is the exact deployment name, not the underlying model family.
+- The checked-in Finance definitions use service-managed `gpt-realtime`.
+  Account deployment inventory is not the readiness gate for this mode.
 - The local MCP path is Docker `:18003` -> named Dev Tunnel -> Foundry
   RemoteTool connection. The Azure path is Container App -> RemoteTool
   connection. Do not mix generated `.local.env` and `.shared.env`.

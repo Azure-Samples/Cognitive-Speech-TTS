@@ -76,15 +76,15 @@ The Python wire contract uses:
 
 ```json
 {
-  "model_type": "self_deployed",
-  "model": "<exact deployment name>"
+  "model_type": "managed",
+  "model": "gpt-realtime"
 }
 ```
 
-`model_type` selects how Foundry interprets `model`. For `self_deployed`,
-`model` is the account deployment name, not the underlying model family.
-Confirm deployment name and `Succeeded` state before attributing publication
-failure to MCP.
+`managed` means the Voice Agent service owns model resolution. Do not use an
+account deployment list as proof for this mode. Publication errors stating
+that the managed model is unsupported belong to Project region/subscription
+eligibility, not MCP.
 
 ## MCP route relationship
 
@@ -168,16 +168,6 @@ curl -fsS \
   http://127.0.0.1:18098/api/templates/finance-example/mcp/probe
 curl -fsS \
   http://127.0.0.1:18098/api/templates/finance-with-otp-and-officer-search/mcp/probe
-```
-
-Confirm a self-deployed model name and state:
-
-```bash
-az cognitiveservices account deployment list \
-  --resource-group "$RESOURCE_GROUP" \
-  --name "$FOUNDRY_RESOURCE" \
-  --query "[].{name:name,state:properties.provisioningState,model:properties.model.name}" \
-  --output table
 ```
 
 Verify the published Agent version using the same materialized settings:

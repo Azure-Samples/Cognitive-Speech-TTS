@@ -33,25 +33,21 @@ have different enablement.
 Do not silently substitute a normal prompt Agent or another model when
 `kind: voice` or managed `gpt-realtime` is unavailable.
 
-The two Finance definitions currently declare:
+The two Finance definitions use the standard service-managed Voice Agent model:
 
 ```json
-"model_type": "self_deployed",
+"model_type": "managed",
 "model": "gpt-realtime"
 ```
 
-That requires a successful account deployment named `gpt-realtime`. If a
-customer wants the service-managed model instead, both definitions must use
-`model_type: managed`, and the subscription and Project region must support it.
-If publication says `Model 'gpt-realtime' is not supported in managed mode in
-this region`, the definition is still requesting managed mode; switch it back
-to `self_deployed` for an existing deployment or use an eligible managed-model
-Project region. Do not change only the model name.
+This does not reference a customer-created account deployment. The
+subscription and Project region must be eligible for the service-managed
+`gpt-realtime` Voice Agent model.
 
-```json
-"model_type": "self_deployed",
-"model": "<existing-deployment-name>"
-```
+If publication says `Model 'gpt-realtime' is not supported in managed mode in
+this region`, stop and use a Project in an eligible region or ask the Voice
+Agent service owner to confirm preview eligibility. Do not change the sample's
+standard managed model mode to work around an eligibility failure.
 
 ## 2. Install tools and sign in
 
@@ -321,18 +317,10 @@ PROJECT_STATE="$(
 test "${PROJECT_STATE}" = "Succeeded"
 ```
 
-List account deployments when diagnosing model selection:
-
-```bash
-az cognitiveservices account deployment list \
-  --resource-group "${RESOURCE_GROUP}" \
-  --name "${FOUNDRY_RESOURCE}" \
-  --query "[].{deployment:name,model:properties.model.name,version:properties.model.version,sku:sku.name,state:properties.provisioningState}" \
-  --output table
-```
-
-This command proves which self-deployed model names exist. It does not prove
-that a service-managed model is enabled in the Project region.
+Account deployment lists describe customer-created deployments. They do not
+prove whether the service-managed Voice Agent model is enabled. Use the
+publication and session gates in [03: Start and run the samples](./03_run_samples.md)
+after preview eligibility and region support are confirmed.
 
 ## 7. Resolve identity object IDs without Microsoft Graph
 

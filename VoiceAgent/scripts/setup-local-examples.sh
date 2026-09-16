@@ -129,6 +129,7 @@ ensure_env_file() {
   local env_file="${directory}/.env"
   local example_file="${directory}/.env.example"
   local ui_port="$2"
+  local mcp_config="${3:-}"
 
   if [[ ! -f "${env_file}" ]]; then
     cp "${example_file}" "${env_file}"
@@ -138,23 +139,39 @@ ensure_env_file() {
     echo "reused=${env_file}"
   fi
 
-  ENV_FILE="${env_file}" PROJECT_ENDPOINT="${PROJECT_ENDPOINT}" UI_PORT="${ui_port}" python3 - <<'PY'
+  ENV_FILE="${env_file}" \
+  PROJECT_ENDPOINT="${PROJECT_ENDPOINT}" \
+  UI_PORT="${ui_port}" \
+  MCP_CONFIG="${mcp_config}" \
+    python3 - <<'PY'
 import os
 from pathlib import Path
 
 path = Path(os.environ["ENV_FILE"])
 lines = path.read_text(encoding="utf-8").splitlines()
 values = {}
+remove = set()
 if os.environ["PROJECT_ENDPOINT"]:
     values["AZURE_AI_PROJECT_ENDPOINT"] = os.environ["PROJECT_ENDPOINT"]
     values["AZURE_CREDENTIAL_MODE"] = "cli"
 if os.environ["UI_PORT"]:
     values["LOCAL_UI_PORT"] = os.environ["UI_PORT"]
+if os.environ["MCP_CONFIG"]:
+    values["VOICE_AGENT_MCP_CONFIG"] = os.environ["MCP_CONFIG"]
+    remove.update(
+        {
+            "VOICE_AGENT_MCP_SERVER_URL",
+            "VOICE_AGENT_MCP_CONNECTION_ID",
+            "VOICE_AGENT_MODEL_TYPE",
+        }
+    )
 
 seen = set()
 updated = []
 for line in lines:
     key, separator, _ = line.partition("=")
+    if separator and key in remove:
+        continue
     if separator and key in values:
         updated.append(f"{key}={values[key]}")
         seen.add(key)
@@ -254,10 +271,12 @@ check_installed_environments() {
 }
 
 check_authentication() {
+  local failed=0
   if az account show --output none >/dev/null 2>&1; then
     echo "azure_cli_auth=ready"
   else
     echo "ACTION_REQUIRED: run az login and select the intended subscription" >&2
+    failed=1
   fi
   if devtunnel user show >/dev/null 2>&1; then
     echo "devtunnel_auth=ready"
@@ -265,7 +284,9 @@ check_authentication() {
     echo "ACTION_REQUIRED: run devtunnel user login" >&2
     echo "If Entra Conditional Access rejects it, run:" >&2
     echo "  devtunnel user login --github --use-device-code-auth" >&2
+    failed=1
   fi
+  return "${failed}"
 }
 
 check_base_tools
@@ -280,8 +301,14 @@ if [[ "${CHECK_ONLY}" == "0" ]]; then
   npm --prefix "${UI_WEB_ROOT}" test
   npm --prefix "${UI_WEB_ROOT}" run build
 
-  ensure_env_file "${HANDOFF_ROOT}" ""
-  ensure_env_file "${OTP_ROOT}" ""
+  ensure_env_file \
+    "${HANDOFF_ROOT}" \
+    "" \
+    "../../shared_mcp/config/generated/example1.local.env"
+  ensure_env_file \
+    "${OTP_ROOT}" \
+    "" \
+    "../../shared_mcp/config/generated/example2.local.env"
   ensure_env_file "${UI_ROOT}" "18098"
 fi
 
@@ -290,7 +317,7 @@ check_installed_environments || missing_config=1
 check_env_file "${HANDOFF_ROOT}/.env" || missing_config=1
 check_env_file "${OTP_ROOT}/.env" || missing_config=1
 check_env_file "${UI_ROOT}/.env" || missing_config=1
-check_authentication
+check_authentication || missing_config=1
 
 docker info >/dev/null ||
   die "Docker is installed but its daemon is unavailable"
@@ -301,4 +328,5 @@ if [[ "${missing_config}" == "0" ]]; then
 else
   echo "local_setup=installed configuration=required"
   echo "rerun with: ./scripts/setup-local-examples.sh --project-endpoint https://<account>.services.ai.azure.com/api/projects/<project>"
+  exit 1
 fi

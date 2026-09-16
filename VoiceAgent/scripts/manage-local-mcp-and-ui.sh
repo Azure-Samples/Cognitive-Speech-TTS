@@ -228,6 +228,7 @@ status_stack() {
 
 case "${ACTION}" in
   restart|start)
+    "${ROOT}/scripts/setup-local-examples.sh" --check
     stop_stack
     start_stack
     ;;

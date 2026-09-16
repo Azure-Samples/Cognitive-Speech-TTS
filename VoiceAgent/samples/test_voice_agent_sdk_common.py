@@ -17,7 +17,6 @@ from voice_agent_sdk_common import (
     _load_settings,
     _realtime_url,
     _validate_agent_name,
-    _validate_model_type,
     _validate_project_endpoint,
     load_materialized_agent,
 )
@@ -39,11 +38,6 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             )
         with self.assertRaises(ValueError):
             _validate_agent_name("invalid agent name")
-        self.assertEqual(_validate_model_type("managed"), "managed")
-        self.assertEqual(_validate_model_type("self_deployed"), "self_deployed")
-        self.assertEqual(_validate_model_type("self-deployed"), "self_deployed")
-        with self.assertRaises(ValueError):
-            _validate_model_type("deployment")
 
     def test_materializes_each_sample_without_environment_leakage(self) -> None:
         template = {
@@ -66,14 +60,12 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         environments = [
             (
                 "first-agent",
-                "managed",
                 "first-model",
                 "https://first.example/mcp",
                 "first-connection",
             ),
             (
                 "second-agent",
-                "self_deployed",
                 "second-model",
                 "https://second.example/mcp",
                 "second-connection",
@@ -84,7 +76,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             root = Path(directory)
             sample_dirs = []
             for index, values in enumerate(environments):
-                agent_name, model_type, model, server_url, connection_id = values
+                agent_name, model, server_url, connection_id = values
                 sample_dir = root / str(index)
                 sample_dir.mkdir()
                 (sample_dir / "agent.json").write_text(
@@ -97,7 +89,6 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                             "AZURE_AI_PROJECT_ENDPOINT="
                             "https://account.services.ai.azure.com/api/projects/project",
                             f"VOICE_AGENT_NAME={agent_name}",
-                            f"VOICE_AGENT_MODEL_TYPE={model_type}",
                             f"VOICE_AGENT_MODEL={model}",
                             f"VOICE_AGENT_MCP_SERVER_URL={server_url}",
                             f"VOICE_AGENT_MCP_CONNECTION_ID={connection_id}",
@@ -115,7 +106,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         self.assertEqual(first_name, "first-agent")
         self.assertEqual(second_name, "second-agent")
         self.assertEqual(first["model_type"], "managed")
-        self.assertEqual(second["model_type"], "self_deployed")
+        self.assertEqual(second["model_type"], "managed")
         self.assertEqual(first["model"], "first-model")
         self.assertEqual(second["model"], "second-model")
         self.assertEqual(
@@ -253,12 +244,12 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             },
         )
 
-        self.assertEqual(finance["model_type"], "self_deployed")
+        self.assertEqual(finance["model_type"], "managed")
         self.assertEqual(finance["model"], "gpt-realtime")
         self.assertEqual(len(finance["handoff"]["nodes"]), 13)
         self.assertEqual(len(finance["handoff"]["edges"]), 24)
 
-        self.assertEqual(otp_officer_search["model_type"], "self_deployed")
+        self.assertEqual(otp_officer_search["model_type"], "managed")
         self.assertEqual(otp_officer_search["model"], "gpt-realtime")
         self.assertNotIn("handoff", otp_officer_search)
         self.assertEqual(
@@ -292,10 +283,8 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                 if line and not line.startswith("#") and "=" in line
                 for key, value in [line.split("=", 1)]
             }
-            self.assertEqual(
-                defaults["VOICE_AGENT_MODEL_TYPE"],
-                definition["model_type"],
-            )
+            self.assertEqual(definition["model_type"], "managed")
+            self.assertNotIn("VOICE_AGENT_MODEL_TYPE", defaults)
             self.assertEqual(
                 defaults["VOICE_AGENT_MODEL"],
                 definition["model"],
@@ -324,7 +313,6 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         self.assertEqual(summary["handoff_events"], 1)
         self.assertEqual(summary["mcp_events"], 2)
         self.assertEqual(summary["mcp_call_events"], 1)
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -122,6 +122,11 @@ installs the Local UI Node dependencies, runs/builds the browser code, and
 creates the three local `.env` files. Use `--check` to inspect readiness
 without installing or changing environments.
 
+When reusing an older sample `.env`, setup migrates MCP selection to the
+canonical `VOICE_AGENT_MCP_CONFIG` file and removes legacy direct MCP URL and
+connection overrides. This prevents an old connection from another Project
+from overriding the connection created by the current E2E.
+
 Set a package index once when the default PyPI file host is unavailable:
 
 ```bash
@@ -189,32 +194,15 @@ AZURE_AI_PROJECT_ENDPOINT=https://<account>.services.ai.azure.com/api/projects/<
 AZURE_CREDENTIAL_MODE=cli
 ```
 
-Choose the model mode that exists in that Project:
+The samples use the standard service-managed Voice Agent model:
 
 ```dotenv
-# Service-managed Voice Agent model.
-VOICE_AGENT_MODEL_TYPE=managed
 VOICE_AGENT_MODEL=gpt-realtime
 ```
 
-```dotenv
-# Customer-created Foundry model deployment.
-VOICE_AGENT_MODEL_TYPE=self_deployed
-VOICE_AGENT_MODEL=<exact-deployment-name>
-```
-
-`model_type` and the deployment name are separate. Do not change `agent.json`
-for one machine: set both values in each sample `.env`. If publication rejects
-`model_type=managed` but the Project has a compatible deployment, list the
-account deployments and use the exact deployment name:
-
-```bash
-az cognitiveservices account deployment list \
-  --resource-group "$RESOURCE_GROUP" \
-  --name "$FOUNDRY_RESOURCE" \
-  --query "[].{name:name,state:properties.provisioningState,model:properties.model.name}" \
-  --output table
-```
+`model_type: managed` remains in each committed `agent.json`. The Project's
+subscription and region must be enabled for this service-managed model. This
+customer workflow does not require a customer-created model deployment.
 
 The checked-in `.env.example` files already select the canonical local MCP
 configs:
@@ -561,7 +549,7 @@ recordings.
 | Dev Tunnel sign-in says the account does not meet access criteria | Entra Conditional Access rejected the flow | Use GitHub device-code login as documented in guide 02, or use Azure hosting if policy prohibits Dev Tunnel |
 | A sample command cannot import its requirements | That scenario's `.venv` was not created | Install that scenario's requirements; the UI `.venv` is not a substitute |
 | E2E cannot find the Project | The active Azure CLI subscription is wrong or the endpoint was guessed | Select the exact subscription and discover the Project through Azure CLI as documented in guide 01 |
-| `Model 'gpt-realtime' is not supported in managed mode in this region` | The published definition requests managed mode instead of the checked-in self-deployed deployment mode | Confirm an account deployment named `gpt-realtime` is `Succeeded`, keep `model_type: self_deployed`, and republish; otherwise use an eligible managed-model Project as documented in guide 01 |
+| `Model 'gpt-realtime' is not supported in managed mode in this region` | The selected Project region or subscription is not enabled for the standard service-managed Voice Agent model | Confirm preview/region eligibility with the Voice Agent service owner or use an eligible Project; do not change the sample's managed model mode |
 | Published Agent cannot list MCP tools | Local container or tunnel host stopped | Restart `shared_mcp/scripts/e2e-local.sh` and leave it running |
 | Tool returns `unknown_call` after a runtime replacement | The call started before state persistence was enabled, or the Docker state volume was removed | End that Voice Agent session and reconnect; keep the named state volume for later restarts |
 | HTTP 401 from a direct MCP request | Request omitted the bearer token | Expected for unauthenticated probes; Foundry supplies it from the connection |
