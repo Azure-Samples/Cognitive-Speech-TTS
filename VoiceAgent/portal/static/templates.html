@@ -9,7 +9,7 @@
 <body>
   <header class="local-template-header">
     <a class="local-template-brand" href="/">Voice agent <span>playground</span></a>
-    <nav aria-label="Local UI pages">
+    <nav aria-label="Portal pages">
       <a href="/">Live session</a>
       <span>Templates</span>
     </nav>
@@ -22,7 +22,7 @@
         <p id="unavailable-reason" class="muted"></p>
         <p class="muted tiny-inline">
           The catalog is read from
-          <code>VoiceAgent/samples/local_UI/templates.config.json</code>.
+          <code>VoiceAgent/portal/templates.config.json</code>.
         </p>
       </div>
     </section>
@@ -72,6 +72,10 @@
           </div>
           <div class="side-body">
             <p class="launch-intro">Publish with the template defaults and start talking.</p>
+            <p class="muted tiny">
+              New Agents use the <code>local-only-</code> prefix because their
+              MCP connection depends on this machine's Dev Tunnel runtime.
+            </p>
             <div class="publish-fields">
               <div id="publish-mcp-fields" hidden>
                 <div class="mcp-check-heading">
@@ -81,6 +85,25 @@
                 <p id="mcp-test-state" role="status">
                   Select a template to test its MCP service.
                 </p>
+                <div id="mcp-token-config" class="mcp-token-config" hidden>
+                  <label for="mcp-token">
+                    MCP bearer token
+                    <small>Submitted once; never stored by the dashboard.</small>
+                  </label>
+                  <div class="mcp-token-row">
+                    <input
+                      id="mcp-token"
+                      type="password"
+                      autocomplete="off"
+                      spellcheck="false"
+                      maxlength="16384"
+                      placeholder="Paste the token for this MCP pack"
+                    />
+                    <button id="btn-configure-mcp" type="button">
+                      Connect Project
+                    </button>
+                  </div>
+                </div>
                 <aside id="mcp-start-guide" class="mcp-start-guide" role="note" hidden>
                   <strong>Start the local MCP first</strong>
                   <p>

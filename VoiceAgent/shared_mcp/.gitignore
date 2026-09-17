@@ -1,6 +1,7 @@
 .azure/*
 !.azure/deployment-plan.md
 .env
+.venv/
 config/generated/
 state/
 __pycache__/

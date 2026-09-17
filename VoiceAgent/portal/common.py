@@ -16,7 +16,7 @@ from dataclasses import dataclass, field
 from typing import Any
 from urllib.parse import quote, urlsplit
 
-from azure.identity import DefaultAzureCredential
+from azure.identity import AzureCliCredential, DefaultAzureCredential
 
 TOKEN_SCOPE = "https://ai.azure.com/.default"
 FOUNDRY_FEATURES = "VoiceAgents=V1Preview"
@@ -82,6 +82,7 @@ def build_voice_config(voice: str) -> dict[str, str]:
 @dataclass
 class AgentsConfig:
     host: str
+    credential_mode: str = "default"
     account: str = field(init=False)
     project: str = field(init=False)
     subscription: str = ""
@@ -96,14 +97,27 @@ class AgentsConfig:
 
     def __post_init__(self) -> None:
         self.host = validate_project_endpoint(self.host)
+        self.credential_mode = self.credential_mode.strip().lower() or "default"
+        if self.credential_mode not in {"default", "cli"}:
+            raise ValueError("Credential mode must be 'default' or 'cli'.")
         parts = urlsplit(self.host)
         self.account = parts.hostname.split(".", 1)[0]
         self.project = parts.path.rsplit("/", 1)[-1]
 
     @classmethod
-    def from_endpoint(cls, endpoint: str | None = None) -> AgentsConfig:
+    def from_endpoint(
+        cls,
+        endpoint: str | None = None,
+        *,
+        credential_mode: str | None = None,
+    ) -> AgentsConfig:
         return cls(
             host=endpoint if endpoint is not None else os.getenv("AZURE_VOICE_AGENTS_ENDPOINT", ""),
+            credential_mode=(
+                credential_mode
+                if credential_mode is not None
+                else os.getenv("AZURE_CREDENTIAL_MODE", "default")
+            ),
             voice_model=os.getenv("AZURE_VOICE_AGENTS_MODEL", "gpt-realtime"),
             voice=os.getenv("AZURE_VOICE_AGENTS_VOICE", DEFAULT_AZURE_VOICE),
             subscription=os.getenv("AZURE_SUBSCRIPTION_ID", ""),
@@ -127,11 +141,42 @@ class AgentsConfig:
         with self._lock:
             if refresh or self._token is None or time.time() >= self._token_expires_on - 300:
                 if self._credential is None:
-                    self._credential = DefaultAzureCredential(exclude_interactive_browser_credential=True)
+                    self._credential = (
+                        AzureCliCredential()
+                        if self.credential_mode == "cli"
+                        else DefaultAzureCredential(
+                            exclude_interactive_browser_credential=True
+                        )
+                    )
                 token = self._credential.get_token(TOKEN_SCOPE)
                 self._token = token.token
                 self._token_expires_on = float(token.expires_on)
         return self._token
+
+    def credential(self):
+        """Return the shared lazy credential for SDK and management-plane operations."""
+        with self._lock:
+            if self._credential is None:
+                self._credential = (
+                    AzureCliCredential()
+                    if self.credential_mode == "cli"
+                    else DefaultAzureCredential(
+                        exclude_interactive_browser_credential=True
+                    )
+                )
+            return self._credential
+
+    def for_endpoint(self, endpoint: str) -> AgentsConfig:
+        """Create a same-settings config for a browser-selected Foundry project."""
+        return AgentsConfig(
+            host=endpoint,
+            credential_mode=self.credential_mode,
+            subscription="",
+            resource_group="",
+            api_version=self.api_version,
+            voice_model=self.voice_model,
+            voice=self.voice,
+        )
 
     def auth_headers(self) -> dict[str, str]:
         return {"Authorization": f"Bearer {self.get_token()}"}

@@ -2,10 +2,11 @@
 set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+MCP_ROOT="${ROOT}/shared_mcp"
 SAMPLES_ROOT="${ROOT}/samples"
 HANDOFF_ROOT="${SAMPLES_ROOT}/example1_finance_with_handoff"
 OTP_ROOT="${SAMPLES_ROOT}/example2_finance_with_OTP_and_Officer_Search"
-UI_ROOT="${SAMPLES_ROOT}/local_UI"
+UI_ROOT="${ROOT}/portal"
 UI_WEB_ROOT="${UI_ROOT}/web"
 MCP_LOCAL_STATE_ROOT="${ROOT}/shared_mcp/state/local"
 TUNNEL_ID_FILE="${MCP_LOCAL_STATE_ROOT}/devtunnel-id"
@@ -17,13 +18,14 @@ usage() {
   cat <<'EOF'
 Usage: ./scripts/setup-local-examples.sh [options]
 
-Prepare the configured Voice Agent sample CLIs and Local UI on one development
+Prepare the configured Voice Agent sample CLIs and portal on one development
 machine: check required tools, install dependencies, build the browser bundle,
 create or update local .env files, and initialize its fixed Dev Tunnel ID.
+The local MCP setup uses native Python and does not require or inspect Docker.
 
 Options:
   --project-endpoint URL  Write the Foundry Project endpoint to new local .env files.
-  --pip-index-url URL     Python package index for venv and Docker builds.
+  --pip-index-url URL     Python package index for virtual environments.
   --check                 Check prerequisites and local files without installing.
   -h, --help              Show this help.
 
@@ -85,7 +87,6 @@ check_base_tools() {
   require_command openssl "Install OpenSSL and rerun setup."
   require_command node "Install Node.js and rerun setup."
   require_command npm "Install npm and rerun setup."
-  require_command docker "Install Docker Desktop or Docker Engine and rerun setup."
   require_command az "Install Azure CLI and rerun setup."
 
   python3 - <<'PY'
@@ -97,7 +98,6 @@ print(f"python={sys.version.split()[0]}")
 PY
   echo "node=$(node --version)"
   echo "npm=$(npm --version)"
-  echo "docker=$(docker --version)"
   echo "azure_cli=$(az version --query '"'"'azure-cli'"'"' --output tsv)"
 }
 
@@ -124,31 +124,6 @@ ensure_devtunnel() {
   command -v devtunnel >/dev/null 2>&1 ||
     die "Dev Tunnel installed but is not on PATH. Add the directory reported by the installer and rerun setup."
   echo "devtunnel=$(devtunnel --version)"
-}
-
-check_docker_access() {
-  local docker_output=""
-  if docker_output="$(docker info 2>&1)"; then
-    echo "docker_daemon=ready"
-    return 0
-  fi
-
-  printf '%s\n' "${docker_output}" >&2
-  if grep -Eqi 'permission denied.*docker\.sock|docker\.sock.*permission denied' <<<"${docker_output}"; then
-    die "Docker is running, but the current user cannot access its socket. On Linux, add the user to the docker group and start a new login session, then rerun setup."
-  fi
-  die "Docker is installed but its daemon is unavailable. Start Docker Desktop or the Docker daemon, then rerun setup."
-}
-
-check_docker_buildx() {
-  local buildx_version=""
-  if ! buildx_version="$(docker buildx version 2>&1)"; then
-    printf '%s\n' "${buildx_version}" >&2
-    die "Docker Buildx is required. Install the Buildx CLI plugin and rerun setup."
-  fi
-  docker buildx build --help 2>&1 | grep -q -- '--build-context' ||
-    die "Docker Buildx does not support --build-context. Upgrade Buildx and rerun setup."
-  echo "docker_buildx=${buildx_version}"
 }
 
 new_tunnel_id() {
@@ -190,6 +165,7 @@ ensure_env_file() {
   local example_file="${directory}/.env.example"
   local ui_port="$2"
   local mcp_config="${3:-}"
+  local project_key="${4:-AZURE_AI_PROJECT_ENDPOINT}"
 
   if [[ ! -f "${env_file}" ]]; then
     cp "${example_file}" "${env_file}"
@@ -201,6 +177,7 @@ ensure_env_file() {
 
   ENV_FILE="${env_file}" \
   PROJECT_ENDPOINT="${PROJECT_ENDPOINT}" \
+  PROJECT_KEY="${project_key}" \
   UI_PORT="${ui_port}" \
   MCP_CONFIG="${mcp_config}" \
     python3 - <<'PY'
@@ -212,10 +189,10 @@ lines = path.read_text(encoding="utf-8").splitlines()
 values = {}
 remove = set()
 if os.environ["PROJECT_ENDPOINT"]:
-    values["AZURE_AI_PROJECT_ENDPOINT"] = os.environ["PROJECT_ENDPOINT"]
+    values[os.environ["PROJECT_KEY"]] = os.environ["PROJECT_ENDPOINT"]
     values["AZURE_CREDENTIAL_MODE"] = "cli"
 if os.environ["UI_PORT"]:
-    values["LOCAL_UI_PORT"] = os.environ["UI_PORT"]
+    values["DEMO_PORT"] = os.environ["UI_PORT"]
 if os.environ["MCP_CONFIG"]:
     values["VOICE_AGENT_MCP_CONFIG"] = os.environ["MCP_CONFIG"]
     remove.update(
@@ -273,14 +250,17 @@ path = Path(os.environ["ENV_FILE"])
 endpoint = ""
 for raw_line in path.read_text(encoding="utf-8").splitlines():
     key, separator, value = raw_line.partition("=")
-    if separator and key.strip() == "AZURE_AI_PROJECT_ENDPOINT":
+    if separator and key.strip() in {
+        "AZURE_AI_PROJECT_ENDPOINT",
+        "AZURE_VOICE_AGENTS_ENDPOINT",
+    }:
         endpoint = value.strip()
         break
 if not endpoint or "<account>" in endpoint or "<project>" in endpoint:
     raise SystemExit(1)
 PY
   then
-    echo "ACTION_REQUIRED: set AZURE_AI_PROJECT_ENDPOINT in ${env_file}" >&2
+    echo "ACTION_REQUIRED: set a Foundry Project endpoint in ${env_file}" >&2
     return 1
   fi
   return 0
@@ -304,6 +284,10 @@ check_python_environment() {
 check_installed_environments() {
   local failed=0
   check_python_environment \
+    "${MCP_ROOT}/.venv/bin/python" \
+    "shared-mcp-native" \
+    "import mcp, redis, uvicorn" || failed=1
+  check_python_environment \
     "${HANDOFF_ROOT}/.venv/bin/python" \
     "finance-handoff" \
     "import azure.ai.projects, azure.identity, dotenv, websockets" || failed=1
@@ -313,16 +297,16 @@ check_installed_environments() {
     "import azure.ai.projects, azure.identity, dotenv, websockets" || failed=1
   check_python_environment \
     "${UI_ROOT}/.venv/bin/python" \
-    "local-ui" \
+    "portal" \
     "import aiohttp, azure.ai.projects, azure.identity, dotenv, requests, websockets" || failed=1
   if [[ ! -d "${UI_WEB_ROOT}/node_modules" ]]; then
     echo "ACTION_REQUIRED: run npm ci in ${UI_WEB_ROOT}" >&2
     failed=1
   else
-    echo "node_environment=local-ui ready"
+    echo "node_environment=portal ready"
   fi
-  if [[ ! -s "${UI_ROOT}/static/dashboard-bundle.js" ]]; then
-    echo "ACTION_REQUIRED: build the Local UI browser bundle" >&2
+  if [[ ! -s "${UI_ROOT}/static/bundle.js" ]]; then
+    echo "ACTION_REQUIRED: build the portal browser bundle" >&2
     failed=1
   else
     echo "browser_bundle=ready"
@@ -368,20 +352,19 @@ PY
 
 check_base_tools
 ensure_devtunnel
-check_docker_access
-check_docker_buildx
 
 missing_config=0
 ensure_tunnel_id || missing_config=1
 
 if [[ "${CHECK_ONLY}" == "0" ]]; then
+  install_python_environment "${MCP_ROOT}" "shared-mcp-native"
   install_python_environment "${HANDOFF_ROOT}" "finance-handoff"
   install_python_environment "${OTP_ROOT}" "finance-otp-officer"
-  install_python_environment "${UI_ROOT}" "local-ui"
+  install_python_environment "${UI_ROOT}" "portal"
 
   npm --prefix "${UI_WEB_ROOT}" ci
   npm --prefix "${UI_WEB_ROOT}" test
-  npm --prefix "${UI_WEB_ROOT}" run build
+  npm --prefix "${UI_WEB_ROOT}" run build:all
 
   ensure_env_file \
     "${HANDOFF_ROOT}" \
@@ -391,7 +374,7 @@ if [[ "${CHECK_ONLY}" == "0" ]]; then
     "${OTP_ROOT}" \
     "" \
     "../../shared_mcp/config/generated/example2.local.env"
-  ensure_env_file "${UI_ROOT}" "18098"
+  ensure_env_file "${UI_ROOT}" "18098" "" "AZURE_VOICE_AGENTS_ENDPOINT"
 fi
 
 check_installed_environments || missing_config=1

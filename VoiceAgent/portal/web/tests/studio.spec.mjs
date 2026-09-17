@@ -392,7 +392,7 @@ test("session overrides affect only the WebSocket and controls lock while connec
   expect(url.searchParams.get("store")).toBe("false");
   expect(api.versions).toHaveLength(0);
   await expect(page.getByLabel("Session agent", { exact: true })).toBeDisabled();
-  await expect(page.getByLabel("Agent backend", { exact: true })).toBeDisabled();
+  await expect(page.getByLabel("Foundry project", { exact: true })).toBeDisabled();
   const creationPanel = page.getByRole("button", { name: /Agent Creation.*Expand panel/ });
   await expect(creationPanel).toHaveAttribute("aria-expanded", "false");
   await creationPanel.click();
@@ -555,10 +555,26 @@ test("the digit demo client handler executes and renders its comparison", async 
   expect(api.messages.filter((message) => message.type === "response.create")).toHaveLength(1);
 });
 
-test("backend selection still reloads the requested project", async ({ page }) => {
+test("project search switches to the selected Foundry project", async ({ page }) => {
+  const api = await mountStudio(page);
+  const picker = page.getByLabel("Foundry project", { exact: true });
+  await picker.fill("another-project");
+  await page.getByRole("option", { name: /another-project/ }).click();
+  await expect.poll(() => api.projectSelections).toEqual([
+    "https://another.services.ai.azure.com/api/projects/another-project",
+  ]);
+});
+
+test("workflow MCP cards test reachability and show response scheduling", async ({ page }) => {
   await mountStudio(page);
-  await page.getByLabel("Agent backend", { exact: true }).selectOption("another-project");
-  await expect(page).toHaveURL(/\/demo\/\?backend=another-project$/);
+  await page.getByLabel("Session agent", { exact: true }).selectOption("mcp-handoff-agent");
+  await page.getByRole("button", { name: /Agent Debug.*Expand panel/ }).click();
+  await page.locator(".gnode").nth(1).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toContainText("scheduling: when_idle");
+  await dialog.getByRole("button", { name: "Test", exact: true }).click();
+  await expect(dialog.locator(".probe-status")).toContainText("ok · 12 ms");
+  await expect(dialog.locator(".probe-status")).toHaveAttribute("title", "fixture-mcp 1");
 });
 
 test("the standalone WebRTC page keeps its independent layout", async ({ page }) => {
@@ -566,7 +582,7 @@ test("the standalone WebRTC page keeps its independent layout", async ({ page })
   await page.goto("/static/demo/webrtc.html");
   await expect(page.locator(".wrtc-shell")).toBeVisible();
   await expect(page.locator(".studio")).toHaveCount(0);
-  await expect(page.locator(".wrtc-field select option")).toHaveCount(4);
+  await expect(page.locator(".wrtc-field select option")).toHaveCount(5);
   expect(api.errors).toEqual([]);
 });
 

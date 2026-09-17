@@ -6,6 +6,7 @@ import asyncio
 import json
 import os
 from pathlib import Path
+import stat
 import sys
 import subprocess
 import tempfile
@@ -56,7 +57,9 @@ class ConfigurationTests(unittest.TestCase):
                 common.AgentsConfig.from_endpoint()
             with self.assertRaises(ValueError):
                 common.AgentsConfig(host="")
-            app = server.build_app(server.parse_args(["--project-endpoint", ENDPOINT]))
+            app = server.build_app(server.parse_args([
+                "--project-endpoint", ENDPOINT, "--no-record-sessions",
+            ]))
             cfg = app[server.DEFAULT_CONFIG_KEY]
             self.assertEqual(cfg.host, ENDPOINT)
             self.assertEqual(cfg.project, "sample-project")
@@ -72,10 +75,41 @@ class ConfigurationTests(unittest.TestCase):
             args = server.parse_args([])
             self.assertEqual(args.project_endpoint, ENDPOINT)
             self.assertEqual(args.port, 9527)
+            self.assertTrue(args.record_sessions)
+            self.assertEqual(args.credential_mode, "default")
+            self.assertEqual(args.template_config.name, "templates.config.json")
             self.assertFalse(hasattr(args, "mode"))
             with patch.dict(os.environ, {"DEMO_PORT": "9531"}):
                 self.assertEqual(server.parse_args([]).port, 9531)
                 self.assertEqual(server.parse_args(["--port", "9532"]).port, 9532)
+
+    def test_cli_credential_mode_and_rotating_debug_log(self):
+        credential = Mock()
+        with patch.object(common, "AzureCliCredential", return_value=credential):
+            cfg = common.AgentsConfig.from_endpoint(
+                ENDPOINT,
+                credential_mode="cli",
+            )
+            self.assertIs(cfg.credential(), credential)
+            cfg.close()
+        credential.close.assert_called_once()
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            try:
+                server.configure_file_logging(root)
+                server.LOGGER.info("debug-log-test")
+                for handler in server.LOGGER.handlers:
+                    handler.flush()
+                log = root / "server.log"
+                self.assertTrue(log.is_file())
+                self.assertEqual(stat.S_IMODE(root.stat().st_mode), 0o700)
+                self.assertEqual(stat.S_IMODE(log.stat().st_mode), 0o600)
+                self.assertIn("debug-log-test", log.read_text(encoding="utf-8"))
+            finally:
+                for handler in server.LOGGER.handlers:
+                    handler.close()
+                server.LOGGER.handlers.clear()
 
     def test_cli_without_endpoint_exits_with_setup_guidance(self):
         result = subprocess.run(
@@ -186,7 +220,9 @@ class LiveProxyTests(unittest.IsolatedAsyncioTestCase):
         self.upstream = TestServer(upstream, host="127.0.0.1")
         await self.upstream.start_server()
         self.addAsyncCleanup(self.upstream.close)
-        self.app = server.build_app(server.parse_args(["--project-endpoint", ENDPOINT]))
+        self.app = server.build_app(server.parse_args([
+            "--project-endpoint", ENDPOINT, "--no-record-sessions",
+        ]))
         self.cfg = self.app[server.DEFAULT_CONFIG_KEY]
         # Test-only injection: production endpoint validation does NOT allow HTTP/loopback.
         self.cfg.host = str(self.upstream.make_url("/api/projects/sample-project"))
@@ -240,13 +276,40 @@ class LiveProxyTests(unittest.IsolatedAsyncioTestCase):
             self.assertIn(response.status, (400, 403, 404))
         self.assertEqual(self.calls, [])
 
-    async def test_removed_internal_endpoints_and_recording_default(self):
+    async def test_mcp_probe_rejects_browser_supplied_urls_and_recording_default(self):
         response = await self.client.post("/api/mcp/probe", json={"server_url": "http://169.254.169.254"})
-        self.assertEqual(response.status, 501)
+        self.assertEqual(response.status, 400)
+        self.assertIn("Agent name", (await response.json())["error"])
         response = await self.client.get("/api/demo/sessions")
         self.assertEqual((await response.json())["available"], False)
         self.assertIsNone(self.app[server.SESSION_LOG_ROOT])
         self.assertEqual(self.calls, [])
+
+    async def test_project_discovery_and_selection_are_browser_scoped(self):
+        selected = "https://other.services.ai.azure.com/api/projects/other-project"
+        projects = [{
+            "name": "other-project",
+            "account": "other",
+            "label": "other-project · other",
+            "endpoint": selected,
+            "subscription_id": "sub",
+            "resource_group": "rg",
+        }]
+        with patch.object(server, "discover_projects", return_value=projects):
+            response = await self.client.get("/api/projects")
+        self.assertEqual(response.status, 200)
+        self.assertEqual((await response.json())["projects"], projects)
+
+        response = await self.client.post("/api/project", json={"endpoint": selected})
+        self.assertEqual(response.status, 200)
+        switched = await self.client.get("/config")
+        payload = await switched.json()
+        self.assertEqual(payload["backend"], "other-project")
+        self.assertEqual(payload["host"], selected)
+        self.assertFalse(payload["traceEnabled"])
+        template_config = await self.client.get("/api/config")
+        self.assertEqual((await template_config.json())["project"], "other-project")
+        self.assertEqual((await self.client.get("/healthz")).status, 200)
 
     async def test_shutdown_never_deletes_created_azure_agents(self):
         response = await self.client.post("/agents/test/versions", json={"definition": DEFINITION})

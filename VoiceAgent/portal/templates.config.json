@@ -3,26 +3,30 @@
   "templates": [
     {
       "id": "finance-example",
-      "folder": "../example1_finance_with_handoff",
+      "folder": "../samples/example1_finance_with_handoff",
       "name": "Example 1: Finance with Handoff",
       "category": "Financial services",
       "summary": "A multi-stage outbound lending workflow with live handoff visibility.",
       "accent_color": "#147d64",
       "mcp": {
-        "config_file": "../../shared_mcp/config/generated/example1.local.env",
-        "token_file": "../../shared_mcp/state/local/token"
+        "config_file": "../shared_mcp/config/generated/example1.local.env",
+        "token_file": "../shared_mcp/state/local/token",
+        "source_label": "Local shared_mcp Dev Tunnel",
+        "source_reference": "VoiceAgent/shared_mcp"
       }
     },
     {
       "id": "finance-with-otp-and-officer-search",
-      "folder": "../example2_finance_with_OTP_and_Officer_Search",
+      "folder": "../samples/example2_finance_with_OTP_and_Officer_Search",
       "name": "Example 2: Finance with OTP and Officer Search",
       "category": "Mortgage",
       "summary": "Verify a caller by OTP, discuss financing, and find the requested loan officer.",
       "accent_color": "#50c9ce",
       "mcp": {
-        "config_file": "../../shared_mcp/config/generated/example2.local.env",
-        "token_file": "../../shared_mcp/state/local/token"
+        "config_file": "../shared_mcp/config/generated/example2.local.env",
+        "token_file": "../shared_mcp/state/local/token",
+        "source_label": "Local shared_mcp Dev Tunnel",
+        "source_reference": "VoiceAgent/shared_mcp"
       }
     }
   ]

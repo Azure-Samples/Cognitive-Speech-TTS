@@ -1,10 +1,16 @@
 # Shared Finance MCP source
 
-This directory contains the single Docker image and the two isolated MCP
-business packs used by the Finance examples:
+This directory contains one native Python MCP server with two isolated business
+packs used by the Finance examples:
 
 - `/mcp/finance-handoff`
 - `/mcp/finance-otp-officer`
+
+The local runtime is always native Python plus Dev Tunnel. Local setup, E2E,
+and lifecycle scripts do not require or invoke Docker. The separate
+`scripts/package.sh` command remains available only for explicitly building
+and testing the optional container image; Azure Container Apps deployment uses
+the remote build configured in `azure.yaml`.
 
 For startup, local hosting, Azure deployment, configuration, and modification
 instructions, use [02: MCP settings](../docs/02_mcp_settings.md).

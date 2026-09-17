@@ -49,7 +49,7 @@ confirmed for that Project, such as `gpt-realtime-2.1-mini`; do not use the
 unversioned `gpt-realtime` alias as a compatibility fallback.
 
 Set the same `VOICE_AGENT_MODEL` value in both Finance sample `.env` files and
-the Local UI `.env`. If every confirmed versioned identifier fails, use a
+the portal `.env`. If every confirmed versioned identifier fails, use a
 Project in an eligible region or ask the Voice Agent service owner to confirm
 the subscription-region-model combination. Do not change the sample to
 self-deployed mode to work around a managed-model failure.
@@ -513,7 +513,7 @@ Continue in exactly one scenario README:
 - [03: Start and run the samples](./03_run_samples.md)
 - [Example 1: Finance with Handoff](../samples/example1_finance_with_handoff/README.md)
 - [Example 2: Finance with OTP and Officer Search](../samples/example2_finance_with_OTP_and_Officer_Search/README.md)
-- [Local UI](../samples/local_UI/README.md)
+- [Voice Agent portal](../portal/README.md)
 - [Finance examples architecture and documentation index](./README.md)
 
 Those directories are self-contained after subscription setup. They own their

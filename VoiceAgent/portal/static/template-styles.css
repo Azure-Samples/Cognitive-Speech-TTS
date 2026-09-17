@@ -1,6 +1,4 @@
-/* Templates tab. Ported from docs/voice_agent/01_template_infa/01_template_v1/web/styles.css,
-   minus the Foundry shell chrome, the instance pane and the in-page call widget: this page runs
-   inside the dashboard, and a run is a Demo-tab session. */
+/* Standalone Local UI Templates page hosted inside the source dashboard. */
 
 :root {
   --bg: #faf9f8;
@@ -373,6 +371,28 @@ code { background: var(--line-soft); padding: 1px 5px; border-radius: 3px; font-
 #btn-test-mcp:disabled { cursor: not-allowed; opacity: .6; }
 #mcp-test-state.good { color: #176b4e; }
 #mcp-test-state.bad { color: #a33b34; }
+.mcp-token-config {
+  display: grid;
+  gap: 6px;
+  padding: 9px;
+  border: 1px solid #a7d8c5;
+  border-radius: 8px;
+  background: #f7fffc;
+}
+.mcp-token-config[hidden] { display: none; }
+.mcp-token-row { display: flex; gap: 6px; align-items: center; }
+.mcp-token-row input { flex: 1 1 auto; }
+#btn-configure-mcp {
+  flex: 0 0 auto;
+  padding: 7px 9px;
+  border: 1px solid #16856b;
+  border-radius: 6px;
+  background: #16856b;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+#btn-configure-mcp:disabled { cursor: not-allowed; opacity: .6; }
 .mcp-start-guide {
   display: grid;
   gap: 6px;

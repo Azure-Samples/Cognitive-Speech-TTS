@@ -1,6 +1,6 @@
 # Create a Foundry agent with Knowledge IQ, Andrew Dragon HD, and Harry Business
 
-Prepare Knowledge and use the prebuilt **Andrew Dragon HD** voice with the **Standard Harry / Business** avatar, then create the agent in **Foundry Portal** or with Python. The Python template includes both selections at creation time. Custom photo avatars and Personal Voice are optional alternatives, with preparation and configuration steps below. Both paths finish with a voice conversation in the portal. No local UI, microphone library, hosted container or browser proxy is needed.
+Prepare Knowledge and use the prebuilt **Andrew Dragon HD** voice with the **Standard Harry / Business** avatar, then create the agent in **Foundry Portal** or with Python. The Python template includes both selections at creation time. Custom photo avatars and Personal Voice are optional alternatives, with preparation and configuration steps below. Both paths finish with a voice conversation in the portal. No local browser proxy, microphone library, or hosted container is needed.
 
 > **Results:** the Knowledge evaluation achieved **219 PASS / 18 FAIL (92.41%)** on 237 knowledge-covered questions. See [evaluation results](docs/evaluation.md) for the scoring scope, Foundry Portal workflow and Python creator checks.
 
@@ -386,7 +386,7 @@ This parameter resolved visibility in the [recorded Portal check](docs/evaluatio
 - [Foundry IQ overview and portal workflow](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-foundry-iq)
 - [Foundry IQ project connection](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect)
 - [Standard avatar list](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/standard-avatars)
-- [Harry Business preset values in this repository](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/6d5c9d8c71e5c1234bbce541c0378fb6e3a8277a/VoiceAgent/samples/local_UI/web/src/lib/avatar.mjs#L7)
+- [Harry Business preset values in this repository](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/6d5c9d8c71e5c1234bbce541c0378fb6e3a8277a/VoiceAgent/portal/web/src/lib/avatar.mjs#L7)
 - [Photo-avatar creation](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/custom-photo-avatar-create)
 - [Personal Voice creation and preview](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/personal-voice-create-voice)
 - [Voice Live personal-voice configuration](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/voice-live-how-to-customize)

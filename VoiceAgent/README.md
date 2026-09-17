@@ -1,363 +1,129 @@
-# Voice agents preview
+# Voice Agent examples
 
-Voice agents now are available in all Foundry Agent regions including South India
+## Start here
 
-For a Portal-first walkthrough with an optional Python creator, see
-[Create an agent with Knowledge IQ, Andrew Dragon HD, and Harry Business](samples/create-agent-with-iq-avatar-voice/README.md).
-Prepare Knowledge, use the prebuilt Andrew Dragon HD voice and Standard Harry
-Business avatar, then create the agent in Foundry Portal or with Python and
-try it in the Portal. The Python template includes both selections. Custom photo
-avatars and Personal Voice are optional; a no-avatar baseline is also supported.
-The walkthrough includes Knowledge evaluation results, Portal functional checks
-and Python test results. The Portal path needs no local setup; the Python creator
-uses its own minimal setup, without microphone libraries.
+This directory is the entry point for the Voice Agent portal, runnable samples,
+the Finance reference workflow, and its shared MCP service. Detailed setup and
+operation instructions live with the component that owns them; this file routes
+users and coding agents to the correct entry point.
 
-The setup below is for the Python samples. For .NET, use the standalone
-[C# voice agent sample](samples/CSharp/README.md) and the bundled
-`Azure.AI.Projects.Agents` 3.0.0-beta.3 preview SDK. The C# sample requires
-.NET 8 or later, but does not require Python or audio-device dependencies.
+> [!IMPORTANT]
+> **On Windows, use WSL2 for this repository.** Do not run the repository
+> setup or runtime workflow from native PowerShell or Command Prompt, and do
+> not use a checkout mounted under `/mnt/c/`. Start WSL2, clone the repository
+> into the WSL Linux filesystem (for example, `~/src/Cognitive-Speech-TTS`),
+> and run all repository commands from WSL. Use the Windows browser to open
+> the resulting `localhost` UI and grant microphone permission.
 
-## Local web portal
+For an unqualified request such as **"run the UI"** or **"start the portal"**,
+use [`portal/`](portal/README.md). It is the general Voice Agent UI and runs on
+`http://127.0.0.1:9527` by default. Do not start the Finance MCP stack unless
+the request mentions Finance, Templates, or the shared MCP.
 
-The [Voice Agent portal](portal/README.md) provides a browser-based agent editor,
-YAML version editing, a voice playground, and a standalone WebRTC page. Configure
-your own preview-enabled Azure Foundry project to use it locally. Its
-[upstream pin](portal/UPSTREAM.json) and
-[local change log](portal/CHANGELOG.md) track the standalone port.
+## Choose an entry point
 
-## Prerequisites
+| Goal | Start here | What it owns |
+| --- | --- | --- |
+| Run the general Voice Agent UI | [`portal/README.md`](portal/README.md) | Agent editor, YAML version editing, Templates, voice playground, and standalone WebRTC page |
+| Run Python or .NET samples | [`samples/README.md`](samples/README.md) | Common Python setup, microphone samples, REST lifecycle, IQ, Toolbox, local functions, downloads, and the C# sample |
+| Run the complete Finance workflow | [`docs/README.md`](docs/README.md) | Ordered subscription, MCP, sample, portal, and debugging guides |
+| Work on or deploy the Finance MCP | [`shared_mcp/README.md`](shared_mcp/README.md) | Shared MCP image, Finance routes, local Dev Tunnel hosting, and Azure Container Apps deployment |
+| Create an IQ + voice + avatar Agent | [`samples/create-agent-with-iq-avatar-voice/README.md`](samples/create-agent-with-iq-avatar-voice/README.md) | Portal-first Andrew Dragon HD, Harry Business, Knowledge IQ, and optional Python creation |
+| Inspect the bundled preview SDK | [`dist/README.md`](dist/README.md) | Python wheel and .NET package provenance, checksums, and build records |
+| Use the coding-agent workflows | [`skills/`](skills/) | Voice Agent creation, IQ/Toolbox provisioning, and local-session debugging |
 
-- Python 3.10 or later.
-- An Azure AI Foundry project endpoint:
-  `https://<account>.services.ai.azure.com/api/projects/<project>`.
-- Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
-- This repository includes the `azure-ai-projects` wheel built from the
-  [Azure SDK for Python voice-agent-pupr branch](https://github.com/Azure/azure-sdk-for-python/tree/xitzhang/voice-agent-pupr/sdk/ai/azure-ai-projects).
-  See [the SDK build record](dist/README.md) for its source commit and checksum.
-- A microphone, speakers or headset, and PortAudio for the audio samples.
+## Instructions for coding agents
 
-## Set up
+When the user asks to run or debug something from this directory:
 
-Run from this directory:
+1. Verify that commands will run on Linux. For a Windows user, require a WSL2
+   checkout in the WSL filesystem. If the checkout is under `/mnt/c/` or the
+   terminal is native Windows, stop and guide the user to clone and reopen the
+   repository in WSL2 before continuing.
+2. Select the component from the table above and read its `README.md` before
+   running commands.
+3. Treat **UI** without a qualifier as the general [`portal/`](portal/README.md).
+4. Treat **Finance UI**, **portal Templates with Finance**, or
+   **shared MCP UI** as the workflow documented in
+   [`docs/03_run_samples.md`](docs/03_run_samples.md).
+5. Reuse an existing component-local `.env` and virtual environment when they
+   are valid. Never copy credentials or endpoints between unrelated `.env`
+   files without the user's intent.
+6. Start servers as long-running processes, verify their `/healthz` endpoint,
+   and report the browser URL and log location. Do not report success merely
+   because a process was spawned.
+7. Do not silently fall back to mock data or a different Azure Project when
+   authentication, endpoint, model, or preview checks fail.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r samples\requirements.txt
-Copy-Item samples\.env.example samples\.env
-```
-
-The single `pip install` command installs every sample dependency, including
-the bundled preview 2.7.0b1 wheel under `dist/` with its `[realtime]`
-dependencies. No Azure SDK source checkout or Voice Live SDK is required.
-
-These samples require the bundled SDK, not a PyPI build with the same version
-number. If reusing an environment that already has `azure-ai-projects` 2.7.0b1,
-replace it explicitly:
-
-```powershell
-python -m pip install --force-reinstall --no-deps .\dist\azure_ai_projects-2.7.0b1-py3-none-any.whl
-python -m pip install -r samples\requirements.txt
-```
-
-Set the project endpoint in `samples/.env`:
-
-```dotenv
-AZURE_VOICE_AGENTS_ENDPOINT=https://<account>.services.ai.azure.com/api/projects/<project>
-AZURE_VOICE_AGENTS_MODEL=gpt-realtime
-```
-
-## Samples
-
-For the self-contained Finance examples, shared MCP container, local UI,
-architecture, and debugging workflow, start with the
-[Finance examples documentation index](docs/README.md).
-
-| File | Lifecycle |
-| --- | --- |
-| [Knowledge, Andrew Dragon HD and Harry Business](samples/create-agent-with-iq-avatar-voice/README.md) | Prebuilt Andrew + Standard Harry Business by default; optional custom photo avatar and Personal Voice workflows. Shared Portal setup, Portal agent creation (recommended), or Python validate/create/read-back. Includes Portal interaction and evaluation results. No local UI. |
-| `samples/simple_rest_lifecycle.py` | Create a simple agent with REST, or retrieve an existing agent. |
-| `samples/basic_voice_agent.py` | Create and version a basic agent, or connect to an existing agent, then converse through the microphone. |
-| `samples/voice_agent_with_mcp.py` | Create an MCP agent, converse through the microphone, and display tool arguments/output. |
-| `samples/voice_agent_with_foundry_iq.py` | Create a Foundry IQ agent, converse through the microphone, and display tool arguments/output. |
-| `samples/voice_agent_with_local_function.py` | Execute `add_numbers` in the client, return its output, and hear the response. |
-| `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
-| `samples/example1_finance_with_handoff/` | Publish a generic Finance English Realtime handoff graph with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
-| `samples/example2_finance_with_OTP_and_Officer_Search/` | Publish a flat Finance Agent for OTP verification and loan-officer search with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
-| [Finance examples documentation](docs/README.md) | Set up a subscription, run the two Finance samples, configure their shared MCP, and debug local UI sessions. |
-| `samples/download_conversation_artifacts.py` | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
-| `samples/download_conversation_traces.py` | Download correlated Application Insights rows by conversation id. |
-| [C# voice agent sample](samples/CSharp/README.md) | Create and manage a temporary agent or use an existing agent, stream audio over WebSocket, and read persisted conversations and recordings with the .NET SDK. |
-
-The two Finance directory samples use their own `requirements.txt` files.
-They install a pinned vNext `azure-ai-projects` source build and do not use the
-bundled `azure-ai-voiceagents` wheel described by the common setup above.
-
-Reusable AI coding skills are under `skills/`:
-
-- [`debug-local-session`](skills/debug-local-session/) resolves and analyzes
-  recordings created by `samples/local_UI`.
-- [`voice-agent-preview`](skills/voice-agent-preview/) creates and tests Voice
-  Agents with the current preview SDK.
-- `provision-foundry-iq` creates a Foundry IQ knowledge base from local files
-  and returns its MCP URL and Foundry project connection ID.
-- `provision-foundry-toolbox` creates an Azure AI Search index from local files
-  and returns the new Foundry Toolbox name and immutable version.
-
-## Run the agent samples
-
-Run a sample without an agent-name argument to create a new agent. Pass an
-existing agent name to skip creation and use its stored model, audio,
-instructions, and tools:
-
-```powershell
-python samples\<sample-name>.py
-python samples\<sample-name>.py <agent-name>
-```
-
-You can alternatively set `AZURE_VOICE_AGENTS_AGENT_NAME` in `.env`.
-
-### Simple REST creation
-
-The REST sample puts the agent name in the URL and sends the description and
-definition to the same version-creation endpoint used by the SDK:
+For the default portal route, follow [`portal/README.md`](portal/README.md) to
+prepare `portal/.env` and its `.venv`, start `portal/demo_server.py`, then
+verify:
 
 ```text
-POST <project-endpoint>/agents/<agent-name>/versions?api-version=v1
-Authorization: Bearer <Microsoft Entra token>
-Foundry-Features: VoiceAgents=V1Preview
-Content-Type: application/json
+GET http://127.0.0.1:9527/healthz
 ```
 
-```powershell
-python samples\simple_rest_lifecycle.py
+For the complete Finance route, follow the ordered
+[`docs/README.md`](docs/README.md) workflow. The normal lifecycle commands are:
+
+```bash
+./scripts/setup-local-examples.sh --project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+./scripts/manage-local-mcp-and-ui.sh restart
+./scripts/manage-local-mcp-and-ui.sh status
+./scripts/manage-local-mcp-and-ui.sh stop
 ```
 
-### Basic agent: create, version, and microphone chat
+Do not run those Finance commands until their Linux/WSL2 prerequisites and
+Azure/Dev Tunnel authentication are ready.
 
-The basic sample uses `VoiceAgentDefinition` and the audio/tool models from
-`azure.ai.projects.models`. It creates an agent version through
-`AIProjectClient` with preview features enabled:
+## Platform support
 
-```python
-from azure.ai.projects.aio import AIProjectClient
+The supported repository working environment is Linux. On a Windows computer,
+use **WSL2 for the entire repository workflow**, including the portal, samples,
+MCP, deployment, and validation commands:
 
-async with AIProjectClient(
-    endpoint=endpoint,
-    credential=credential,
-    allow_preview=True,
-) as client:
-    version = await client.agents.create_version(
-        agent_name=agent_name,
-        definition=definition,
-    )
-```
+1. Start a supported WSL2 Linux distribution.
+2. Clone this repository again into the WSL filesystem, for example under
+   `~/src/`. Do not run the workflow from a Windows checkout mounted under
+   `/mnt/c/`.
+3. Install and authenticate Git, Python, Node.js, Azure CLI, Azure Developer
+   CLI when deploying, and Dev Tunnel CLI inside WSL. Windows-side CLI login
+   state is not assumed to be shared.
+4. The local setup, MCP E2E, and lifecycle scripts use native Python and never
+   invoke Docker. Install Docker only when deliberately running the separate
+   `shared_mcp/scripts/package.sh` image-packaging command; Azure Container
+   Apps deployment uses a remote build.
+5. Open the WSL checkout with VS Code Remote - WSL and run all commands from
+   its WSL terminal.
+6. Open the resulting `localhost` URL in the Windows browser; browser
+   microphone permission remains on the Windows side.
 
-To update the definition, call `client.agents.create_version` again with the
-same agent name. The returned version identifier is `version.version`.
-Retrieve an existing agent with `client.agents.get(agent_name=agent_name)`.
-The same Projects client opens the Voice Agent realtime session:
+Some individual component documents retain native PowerShell commands because
+their code can run independently on Windows. They are not the recommended or
+supported end-to-end repository workflow. Native Windows execution, WSL1, and
+running the checkout from `/mnt/c/` are outside the supported path.
 
-```python
-async with client.realtime.connect(agent_name=agent_name) as connection:
-    # The SDK accepts PCM bytes and handles base64 encoding.
-    await connection.input_audio_buffer.append(audio=pcm_bytes)
-    async for event in connection:
-        # Handle transcripts, audio, and tool events.
-        ...
-```
+## Directory map
 
-The SDK owns authentication, the agent WebSocket URL, and the
-`Foundry-Features: VoiceAgents=V1Preview` header. No private URL overrides or
-Voice Live SDK imports are needed. The agent's stored definition controls the
-session; the samples do not send a replacement `session.update`.
-
-See the upstream [Voice Agent SDK samples](https://github.com/Azure/azure-sdk-for-python/tree/f84c5330f4246892455f33fccdf9503a774ecf66/sdk/ai/azure-ai-projects/samples/agents/voice)
-for additional realtime usage.
-
-Audio output uses a voice-name string and a separate `voice_type`, for example
-`VoiceAgentAudioOutputConfig(voice="en-US-AvaNeural",
-voice_type=VoiceType.AZURE_STANDARD)`.
-
-Microphone samples use `RealtimeServerEventType` from `azure.ai.projects.models`
-for event dispatch, including `SESSION_CREATED` and `RESPONSE_OUTPUT_AUDIO_DELTA`.
-They follow the new Voice Agent protocol, without legacy audio-event aliases.
-
-```powershell
-python samples\basic_voice_agent.py
-```
-
-### MCP with live microphone audio
-
-The MCP tool references a Foundry project connection that stores the target and
-authentication configuration:
-
-```json
-{
-  "type": "mcp",
-  "server_label": "my-mcp-server",
-  "project_connection_id": "<project-connection-id>",
-  "require_approval": "never"
-}
-```
-
-Do not put MCP credentials in the agent definition.
-
-Create a Foundry project connection for the MCP server, then set:
-
-```dotenv
-AZURE_VOICE_AGENTS_MCP_CONNECTION_ID=<project-connection-id>
-AZURE_VOICE_AGENTS_MCP_SERVER_LABEL=my-mcp-server
-```
-
-Run:
-
-```powershell
-python samples\voice_agent_with_mcp.py
-```
-
-Speak a request that the MCP tools can answer. Press Ctrl-C to finish. The
-sample prints the persisted conversation id.
-
-### Foundry IQ with live microphone audio
-
-A Foundry IQ knowledge base is represented as an MCP tool with its
-knowledge-base URL and project connection:
-
-```json
-{
-  "type": "mcp",
-  "server_label": "foundry-iq",
-  "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=<version>",
-  "project_connection_id": "<project-connection-id>",
-  "require_approval": "never"
-}
-```
-
-Create a Foundry IQ knowledge base and a project connection that can access it:
-
-```dotenv
-AZURE_VOICE_AGENTS_FOUNDRY_IQ_URL=https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=<version>
-AZURE_VOICE_AGENTS_FOUNDRY_IQ_CONNECTION_ID=<project-connection-id>
-```
-
-Run:
-
-```powershell
-python samples\voice_agent_with_foundry_iq.py
-```
-
-Ask a question covered by the knowledge base. Use a headset to reduce echo;
-talk over the agent to test barge-in and press Ctrl-C to finish.
-
-### Client-executed local function
-
-A `function` tool is executed by the connected client. The client receives the
-function name and JSON arguments and runs local application code. After the
-function-call response's `response.done` event, it sends a typed
-`RealtimeConversationItemFunctionCallOutput` and requests the model's follow-up
-response. Waiting avoids a concurrent-response error.
-
-```powershell
-python samples\voice_agent_with_local_function.py
-```
-
-Say: **“Add 5 and 7. You must use the add_numbers function.”** The sample
-prints the arguments, executes Python locally, prints `{"sum": 12.0}`, returns
-the result to the session, and plays the spoken answer.
-
-### Foundry Toolbox
-
-A `toolbox` tool references a versioned Foundry Toolbox:
-
-```json
-{
-  "type": "toolbox",
-  "toolbox_name": "voice-agent-toolbox-azure-search",
-  "toolbox_version": "1"
-}
-```
-
-Toolbox calls are surfaced through MCP events, allowing clients to display the
-tool name, arguments, and structured output.
-
-The local `.env` uses the existing
-`voice-agent-toolbox-azure-search` toolbox, version `1`.
-
-```powershell
-python samples\voice_agent_with_toolbox.py
-```
-
-## Tracing and evaluation in Azure AI Foundry
-
-When the conversation ends, click the URL printed in the terminal log to view
-the trace in the Azure AI Foundry portal and run evaluations.
-
-## Download conversation and audio
-
-Microphone samples capture the top-level `conversation_id` from the
-`session.created` event and print it when the session ends. They do not
-automatically read persisted data. Copy the printed agent name and conversation
-id and run:
-
-```powershell
-python samples\download_conversation_artifacts.py <agent-name> <conversation-id>
-```
-
-The downloader waits for persistence to complete and writes:
-
-```text
-voice-agent-output/<conversation-id>/
-├── conversation.json
-├── merged.wav
-└── turns/
-    ├── 001_user_<item-id>.wav
-    ├── 002_agent_<item-id>.wav
-    └── ...
-```
-
-- `conversation.json` contains the conversation envelope, responses, ordered
-  items, and audio metadata.
-- `turns/` contains every persisted user and assistant audio segment.
-- `merged.wav` is the final stereo recording: caller on the left channel and
-  agent on the right.
-
-Set `AZURE_VOICE_AGENTS_OUTPUT_DIR` in `.env` to change the output directory.
-For bring-your-own storage, the JSON manifest records the returned blob URIs
-(`blob_uri`) instead of downloading WAV data through the service.
-
-The downloader uses `client.agent_endpoint_conversations` for conversation
-metadata, item/response listing, and audio downloads. With `allow_preview=True`,
-these operations automatically send the voice-agent preview header.
-
-Conversation and audio download requires the agent to have been created with
-`store=true`. All agents created by these samples enable it.
-
-## Validate without Azure access
-
-With the sample dependencies installed, run from this directory:
-
-```powershell
-python -m compileall -q samples skills
-python -m unittest discover -s tests -v
-```
-
-The tests exercise the bundled SDK's WebSocket handshake, authentication and
-preview headers, PCM serialization, event decoding, function-call ordering,
-agent versioning, and conversation/audio downloads. Only network and microphone
-boundaries are mocked; the tests use the real Projects SDK. They do not create
-Azure resources or open the microphone.
-
-## Troubleshooting
-
-| Symptom | Action |
+| Path | Purpose |
 | --- | --- |
-| `401` or `403` | Sign in again and confirm project access. |
-| `404` during create or connect | Confirm preview enablement and region support. |
-| Model not found | Set a voice-capable managed model or Foundry deployment. |
-| MCP or Foundry IQ call fails | Verify the connection target, credential, and service reachability. |
-| Microphone sample cannot start | Install PortAudio and `pyaudio`, then confirm microphone permission. |
-| Trace query returns `403` | Grant the signed-in identity permission to query the Application Insights resource or its linked Log Analytics workspace. |
+| [`portal/`](portal/) | General local Voice Agent portal and WebRTC UI |
+| [`samples/`](samples/) | Python, .NET, and Finance samples |
+| [`docs/`](docs/) | Finance architecture, setup, operation, and debugging guides |
+| [`shared_mcp/`](shared_mcp/) | Shared Finance MCP source, native runtime, optional container, IaC, and deployment scripts |
+| [`scripts/`](scripts/) | Finance local setup and process lifecycle entry points |
+| [`dist/`](dist/) | Bundled preview Python and .NET SDK artifacts |
+| [`skills/`](skills/) | Reusable coding-agent workflows |
+| [`tests/`](tests/) | Offline contracts for the common Projects SDK samples |
 
-Never place access tokens, API keys, or connection secrets in source files.
-Use Foundry project connections or environment-based credentials.
+## Security and environment boundaries
+
+- Configure only Azure resources and identities the customer is authorized to
+  use.
+- Never place access tokens, API keys, connection secrets, or customer data in
+  source files.
+- Use Foundry Project connections or environment-based credentials.
+- The portal and samples use Azure Foundry; running the local portal does not run
+  the Azure voice service locally.
+- Review each component's persistence and recording behavior before using
+  sensitive prompts, audio, transcripts, or tool output.

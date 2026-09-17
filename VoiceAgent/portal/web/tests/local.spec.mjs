@@ -43,7 +43,7 @@ test("Foundry-only portal creates, edits, connects and reads persisted data thro
   await expect(page.locator(".selected-agent-meta")).toContainText("v2");
   await expect(page.getByRole("button", { name: "View trace" })).toBeDisabled();
   await page.getByRole("button", { name: "Connect & start session" }).click();
-  await expect(page.locator(".connection-status")).toContainText("ready - listening");
+  await expect(page.locator(".connection-status")).toContainText("listening");
   await page.getByRole("textbox", { name: "Message your agent" }).fill("Hello from the real local browser");
   await page.getByRole("button", { name: "Send", exact: true }).click();
   await expect(page.getByText("Fixture response from the simulated Foundry service.", { exact: true })).toBeVisible();
@@ -69,7 +69,34 @@ test("guided authoring uses the configured Foundry service response", async ({ p
   await expect(page.locator(".review-definition")).toContainText("Generated definition from the test fixture.");
 });
 
-test("WebRTC uses the Foundry project directly and session logs remain opt-in", async ({ page }) => {
+test("Templates tab detects both sample projects and returns to the existing studio", async ({ page }) => {
+  await page.route("**/api/templates/*/mcp/probe", (route) => route.fulfill({
+    status: 200,
+    contentType: "application/json",
+    body: JSON.stringify({
+      ok: false,
+      reached: false,
+      error: "Synthetic browser test: local MCP is not running.",
+      start_command: "cd VoiceAgent/shared_mcp && ./scripts/e2e-local.sh",
+      guide_url: "/guide/run-samples",
+    }),
+  }));
+
+  await page.goto("/");
+  await expect(page.getByRole("navigation", { name: "Portal pages" })).toBeVisible();
+  await page.getByRole("link", { name: "Templates", exact: true }).click();
+  await expect(page).toHaveURL(/\/templates$/);
+  await expect(page.getByText("2 available", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Example 1: Finance with Handoff/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Example 2: Finance with OTP and Officer Search/ })).toBeVisible();
+  await expect(page.locator("#detail-name")).toHaveText("Example 1: Finance with Handoff");
+  await expect(page.locator("#graph-wrap svg")).toBeVisible();
+  await expect(page.locator("#mcp-token-config")).toBeHidden();
+  await page.getByRole("link", { name: "Live session", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Voice agent studio" })).toBeVisible();
+});
+
+test("WebRTC uses the Foundry project directly and session logs can be disabled", async ({ page }) => {
   await page.goto("/webrtc");
   await expect(page.getByRole("heading", { name: "Start a voice session" })).toBeVisible();
   await page.getByRole("combobox", { name: "Agent", exact: true }).selectOption("fixture-agent");

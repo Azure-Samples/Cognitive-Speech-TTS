@@ -12,7 +12,7 @@ Use the [architecture and documentation index](./README.md) for the system
 overview. After the MCP is ready, continue with
 [03: Start and run the samples](./03_run_samples.md).
 
-The container exposes two separate Streamable HTTP routes because the samples
+The server exposes two separate Streamable HTTP routes because the samples
 have overlapping tool names with different schemas:
 
 | Sample | MCP route | Generated config |
@@ -27,8 +27,8 @@ only liveness status.
 
 | Goal | Command | Port / reachability | What remains running |
 | --- | --- | --- | --- |
-| Build the image and run container tests | `./scripts/package.sh` | No listener | Nothing |
-| Run the complete local Foundry path | `./scripts/e2e-local.sh` | Local `18003` plus a public named Dev Tunnel | Container and tunnel host |
+| Run the complete local Foundry path | `./scripts/e2e-local.sh` | Local `18003` plus a public named Dev Tunnel | Native Python server and tunnel host |
+| Optionally build the image and run container tests | `./scripts/package.sh` | No listener | Nothing |
 | Deploy customer-owned Azure hosting | `AZURE_AI_PROJECT_ENDPOINT=... ./scripts/deploy.sh` | Azure Container App HTTPS URL | Azure resources |
 
 ## Important sample limitation
@@ -43,7 +43,7 @@ from the committed fictional fixture.
 Do not use this fake matcher, the fictional OTP, or the filesystem state store
 for real customer data.
 
-## Package locally
+## Optional Docker packaging
 
 Prerequisites:
 
@@ -60,8 +60,9 @@ docker buildx build --help | grep -q -- '--build-context'
 ```
 
 If `docker buildx version` fails, install the Buildx CLI plugin for the current
-Docker distribution. If the final check fails, upgrade Buildx. Both
-`setup-local-examples.sh` and `package.sh` enforce these checks before a build.
+Docker distribution. If the final check fails, upgrade Buildx. Only
+`package.sh` enforces these checks. Local setup, E2E, and lifecycle commands do
+not inspect, require, or invoke Docker.
 
 Build the runtime image and run all MCP tests inside the image:
 
@@ -90,14 +91,14 @@ is not a Microsoft-operated service.
 
 ## Run the complete local MCP E2E
 
-This is the only supported local workflow for publishing the Finance templates
-or selecting **Try it now** in the local UI. Building the image alone does not
-create a public MCP address, Project connections, or generated template config.
+This is the supported local workflow for publishing the Finance templates or
+selecting **Try it now** in the portal. It always uses native Python; building
+the optional image alone does not create a public MCP address, Project
+connections, or generated template config.
 
 Prerequisites:
 
 - Azure CLI authenticated with `az login`
-- Docker Engine or Docker Desktop with Buildx
 - Python 3.10 or later
 - OpenSSL and `curl`
 - Dev Tunnel CLI authenticated with a Microsoft or GitHub identity
@@ -195,16 +196,17 @@ PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}" \
    ./scripts/e2e-local.sh
 ```
 
-The script requires authenticated `az` and `devtunnel` CLIs. It:
+The script requires authenticated `az` and `devtunnel` CLIs. By default it:
 
-- packages the image and starts `voice-agent-shared-mcp-local` on port `18003`;
+- runs the MCP tests from `shared_mcp/.venv`;
+- starts `python -m shared_mcp.server` on port `18003`;
 - creates or reuses a named Dev Tunnel and local bearer token;
 - verifies public health and unauthenticated HTTP 401 behavior;
 - creates or updates two `RemoteTool` Project connections through Azure CLI;
 - writes `config/generated/example1.local.env` and `example2.local.env`;
 - verifies authenticated `initialize` and `tools/list` against both public MCP
    routes and checks each route against its sample `agent.json` tool contract;
-- remains running so the sample CLIs or local UI can publish and invoke Agents.
+- remains running so the sample CLIs or portal can publish and invoke Agents.
 
 Project connection creation uses the active Azure CLI subscription. If the
 Project is not found, select its exact subscription and retry:
@@ -231,18 +233,18 @@ that retained the old tunnel URL. An explicitly supplied
 
 Run evidence is written under `state/e2e/<UTC-run-id>/`.
 
-The container and tunnel remain active after the tests so downstream Agents
+The native server and tunnel remain active after the tests so downstream Agents
 can call both MCP routes. Press `Ctrl+C` to stop hosting them. The named tunnel
 itself is retained, so the next run restores the same address. For CI, set
 `SHARED_MCP_E2E_KEEP_RUNNING=0`; the script then exits immediately and cleans
-up its local container and tunnel host process. The isolated Foundry Agents,
+up its local Python server and tunnel host process. The isolated Foundry Agents,
 connections, and named tunnel are retained, but the MCP endpoint is naturally
 unavailable while no local host process is running.
 
-The fixed local container mounts the named Docker volume
-`voice-agent-shared-mcp-state` at `/app/state`. Active call IDs and OTP session
-state therefore survive a container restart. Removing that volume invalidates
-in-progress calls; start a new Voice Agent session afterward.
+The native runtime stores active call IDs and OTP state under
+`state/local/runtime/`. State survives a native process restart. Removing that
+directory invalidates in-progress calls; start a new Voice Agent session
+afterward.
 
 The script also writes the current non-secret route and connection mappings:
 
@@ -251,7 +253,7 @@ config/generated/example1.local.env
 config/generated/example2.local.env
 ```
 
-The sample CLIs and local UI read those files when publishing. While the E2E
+The sample CLIs and portal read those files when publishing. While the E2E
 script is still running, publish or invoke either sample from another terminal:
 
 ```bash
@@ -280,7 +282,8 @@ fixed_tunnel_id=...
 example1_config=...
 example2_config=...
 local_runtime=ready base_url=https://...
-Press Ctrl+C to stop the local MCP container and dev tunnel.
+mcp_runtime=native
+Press Ctrl+C to stop the local MCP runtime and dev tunnel.
 ```
 
 ### Local E2E failures seen during setup
@@ -303,7 +306,6 @@ Prerequisites:
 
 - Azure CLI authenticated with `az login`
 - Azure Developer CLI authenticated with `azd auth login`
-- Docker
 - Permission to create a resource group, Container Registry, Log Analytics,
   Container Apps resources, and an `AcrPull` role assignment
 - Permission to create connections in the target Foundry Project
@@ -317,8 +319,9 @@ cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
 The first run creates a unique azd environment and may ask for subscription
 and location. Set `AZURE_SUBSCRIPTION_ID`, `AZURE_LOCATION`, and optionally
 `AZURE_ENV_NAME` for a non-interactive run. Unlike local E2E, this path needs
-`azd` because `azd up` provisions the Azure infrastructure and stores its
-outputs. If Conditional Access rejects `azd auth login`, use an authentication
+`azd` because `azd up` provisions the Azure infrastructure, performs the
+configured remote container build, and stores its outputs. Local Docker is not
+required. If Conditional Access rejects `azd auth login`, use an authentication
 method approved by the customer's administrator; GitHub Dev Tunnel login does
 not authenticate Azure Developer CLI.
 
@@ -367,7 +370,7 @@ Create a package under `app/shared_mcp/`, then:
 
 1. expose a `register(mcp)` function like the existing `pack.py` files;
 2. add a route and registration call in `app/shared_mcp/server.py`;
-3. add data and state environment variables to the Docker and Container Apps
+3. add data and state environment variables to the native and Container Apps
    configuration when required;
 4. add the new Agent definition and generated-config mapping;
 5. extend `configure-agent.sh`, `e2e-local.sh`, and `deploy.sh`;
@@ -380,12 +383,12 @@ separate routes whenever same-named tools have different schemas or state.
 ### Validate a change
 
 ```bash
-# Python contracts.
+# Native Python contracts.
 cd VoiceAgent
-PYTHONPATH=shared_mcp/app \
-  python -m unittest discover -s shared_mcp/tests -v
+PYTHONPATH=shared_mcp/app shared_mcp/.venv/bin/python \
+  -m unittest discover -s shared_mcp/tests -v
 
-# Docker test target and runtime image.
+# Optional isolated container-image test and packaging command.
 cd shared_mcp
 ./scripts/package.sh
 
@@ -434,7 +437,7 @@ not create or host a local tunnel.
 ## Architecture and persistence
 
 The service preserves the existing Finance business state machines and tool
-schemas. One container hosts both packs but isolates their MCP inventories by
+schemas. One server hosts both packs but isolates their MCP inventories by
 route, preventing same-named tools from overwriting one another.
 
 Azure deployment intentionally fixes `minReplicas` and `maxReplicas` at one.

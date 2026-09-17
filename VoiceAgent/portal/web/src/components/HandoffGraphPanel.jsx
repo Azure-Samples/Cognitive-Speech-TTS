@@ -14,25 +14,95 @@ function signature(tool) {
   return tool.kind === "function" ? "(no arguments)" : "";
 }
 
-// The public sample does not retrieve project-connection secrets or probe arbitrary
-// MCP URLs from the server. Tool execution belongs to an explicitly started live session.
-function McpToolCard({ tool }) {
+/* An MCP tool's declaration cannot tell you whether the server answers: the URL is written by the
+ * author, the credential lives in the project connection the service holds, and the allowed_tools
+ * list is a claim about what the server exposes. Test calls the server for real and reports which
+ * of those three is wrong, because "the agent silently does nothing" usually means one of them is. */
+function McpToolCard({ tool, agentName, enableProbe, showServerUrl }) {
+  const [result, setResult] = useState(null);
+  const [running, setRunning] = useState(false);
+
+  useEffect(() => setResult(null), [agentName, tool.serverLabel]);
+
+  const test = async () => {
+    setRunning(true);
+    setResult({ state: "running", text: "testing…" });
+    const startedAt = performance.now();
+    try {
+      const resp = await fetch("/api/mcp/probe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ agent: agentName, server_label: tool.serverLabel }),
+      });
+      const data = await resp.json();
+      const roundTrip = Math.round(performance.now() - startedAt);
+      if (data.ok) {
+        setResult({
+          state: "good",
+          text: `ok · ${data.latency_ms} ms (init ${data.initialize_ms} + tools/list ${data.tools_ms})`
+            + ` · ${data.tools.length} tools · ${roundTrip} ms round trip`,
+          detail: data.server_name ? `${data.server_name} ${data.server_version}` : "",
+        });
+      } else if (data.connection_only) {
+        setResult({
+          state: "warn",
+          text: "project connection · no direct MCP URL is available to test",
+        });
+      } else if (data.no_mcp) {
+        setResult({
+          state: "warn",
+          text: "published as a function tool — the agent carries the declaration itself,"
+            + " so there is no MCP endpoint to call",
+        });
+      } else if (data.reached) {
+        setResult({
+          state: "warn",
+          text: `reachable · HTTP ${data.http_status} in ${data.latency_ms} ms · ${data.error}`,
+        });
+      } else {
+        setResult({ state: "bad", text: `unreachable · ${data.error || `HTTP ${resp.status}`}` });
+      }
+    } catch (error) {
+      setResult({ state: "bad", text: `failed · ${error.message}` });
+    } finally {
+      setRunning(false);
+    }
+  };
+
   return (
     <div className="tool-card">
       <div className="tool-card-head">
         <span className="kind-chip mcp">MCP</span>
         <code>{tool.serverLabel || "mcp"}</code>
         <span className="tool-count">{tool.allowedTools.length || "all"} tools</span>
+        {enableProbe ? (
+          <button type="button" className="probe-btn" onClick={test} disabled={running || !agentName}>
+            {running ? "testing…" : "Test"}
+          </button>
+        ) : null}
       </div>
       <div className="tool-card-meta">
-        {tool.serverUrl ? <span className="tool-url" title={tool.serverUrl}>{tool.serverUrl}</span> : null}
-        {tool.projectConnectionId ? <span className="tool-conn">connection: {tool.projectConnectionId}</span> : null}
+        {showServerUrl && tool.serverUrl
+          ? <span className="tool-url" title={tool.serverUrl}>{tool.serverUrl}</span>
+          : null}
+        {tool.projectConnectionId
+          ? <span className="tool-conn">connection: {tool.projectConnectionId}</span>
+          : null}
         <span className="tool-flag">approval: {tool.requireApproval}</span>
+        {tool.responseScheduling
+          ? <span className="tool-flag">scheduling: {tool.responseScheduling}</span>
+          : null}
       </div>
-      <div className="probe-status">Test tool execution in a live session. Server-side probing is not included.</div>
-      {tool.allowedTools.length ? <ul className="tool-name-list">
-        {tool.allowedTools.map((name) => <li key={name}><code>{name}</code></li>)}
-      </ul> : null}
+      {result ? (
+        <div className={`probe-status ${result.state}`} title={result.detail || ""}>{result.text}</div>
+      ) : enableProbe ? (
+        <div className="probe-status">not tested — the server is called live when you press Test</div>
+      ) : null}
+      {tool.allowedTools.length ? (
+        <ul className="tool-name-list">
+          {tool.allowedTools.map((name) => <li key={name}><code>{name}</code></li>)}
+        </ul>
+      ) : null}
     </div>
   );
 }
@@ -61,7 +131,9 @@ function FunctionToolCard({ tool }) {
 /* A modal rather than a panel under the diagram: a node's prompt runs to hundreds of words and its
  * tools each need a URL, an allow-list and a test result beside them. In a column that also holds
  * the graph that reads through a slot; over the page it reads as a page. */
-function NodeModal({ node, graph, agentName, onClose, onOpenNode }) {
+function NodeModal({
+  node, graph, agentName, enableMcpProbe, showMcpServerUrl, onClose, onOpenNode,
+}) {
   const specs = node.toolSpecs || [];
   const mcp = specs.filter((tool) => tool.kind === "mcp");
   const functions = specs.filter((tool) => tool.kind !== "mcp");
@@ -111,7 +183,13 @@ function NodeModal({ node, graph, agentName, onClose, onOpenNode }) {
               <h4>Tools ({specs.length})</h4>
               {specs.length ? null : <p className="node-modal-empty">This node carries no tools.</p>}
               {mcp.map((tool) => (
-                <McpToolCard key={tool.serverLabel || tool.label} tool={tool} agentName={agentName} />
+                <McpToolCard
+                  key={tool.serverLabel || tool.label}
+                  tool={tool}
+                  agentName={agentName}
+                  enableProbe={enableMcpProbe}
+                  showServerUrl={showMcpServerUrl}
+                />
               ))}
               {functions.map((tool) => <FunctionToolCard key={tool.label} tool={tool} />)}
             </section>
@@ -139,7 +217,10 @@ function NodeModal({ node, graph, agentName, onClose, onOpenNode }) {
   );
 }
 
-export function HandoffGraphPanel({ graph, activeNodeId, takenEdgeIds, trail, agentName }) {
+export function HandoffGraphPanel({
+  graph, activeNodeId, takenEdgeIds, trail, agentName, enableMcpProbe = true,
+  showMcpServerUrl = true,
+}) {
   const [selectedId, setSelectedId] = useState(null);
 
   const { widest, width, height } = useMemo(() => graphSize(graph.nodes), [graph]);
@@ -268,6 +349,8 @@ export function HandoffGraphPanel({ graph, activeNodeId, takenEdgeIds, trail, ag
           node={selected}
           graph={graph}
           agentName={agentName}
+          enableMcpProbe={enableMcpProbe}
+          showMcpServerUrl={showMcpServerUrl}
           onClose={() => setSelectedId(null)}
           onOpenNode={(id) => setSelectedId(id)}
         />

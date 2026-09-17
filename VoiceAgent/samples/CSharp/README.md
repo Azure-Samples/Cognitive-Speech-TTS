@@ -25,7 +25,7 @@ No microphone, speaker, PortAudio, or Python installation is needed. This
 sample sends a text turn and receives audio, then streams an audio turn using
 a file or the temporary agent's first response. It does not play audio through
 your speakers. For interactive microphone chat, use the
-[Python samples](../../README.md#run-the-agent-samples).
+[Python samples](../README.md#run-the-agent-samples).
 
 ## Set up and run
 
