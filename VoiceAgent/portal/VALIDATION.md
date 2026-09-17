@@ -18,7 +18,7 @@ workflow UI are now portal-owned.
 | Debug artifacts | Data directory mode `0700`, rotating `server.log` mode `0600`, session root ready |
 | Portal-owned template assets | HTML, JavaScript, graph renderer, CSS, Project picker, and workflow MCP UI present and covered by tests |
 | Template Agent naming | New names use `local-only-`; 63-character boundary and duplicate-prefix handling covered |
-| Source synchronization | PR 41103 commit `8818588...` accepted; source changes `0`, exact mapping drift `0`, MCP source changes `0` |
+| Source synchronization | PR 41103 commit `feb7ee1...` accepted; source changes `0`, exact mapping drift `0`, MCP source changes `0` |
 | Consolidated setup workflow | Finance environments, portal Python/Node/build, portal `.env`, Azure CLI, and Dev Tunnel reported ready |
 | Consolidated lifecycle workflow | Native Python MCP and portal started without Docker; both template probes passed with 18 and 8 tools respectively |
 | Template discovery | Exactly `finance-example` and `finance-with-otp-and-officer-search`; no catalog errors |
