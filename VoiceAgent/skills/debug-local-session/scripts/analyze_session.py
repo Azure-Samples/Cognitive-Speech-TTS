@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Locate and summarize one Voice Agent local UI session recording."""
+"""Locate and summarize one Voice Agent portal session recording."""
 
 from __future__ import annotations
 
@@ -23,15 +23,21 @@ IDENTITY_FIELDS = (
 def default_data_dir() -> Path:
     return Path(
         os.getenv(
-            "LOCAL_UI_DATA_DIR",
-            str(Path.home() / ".voice-agent-local-ui"),
+            "VOICE_PORTAL_DATA_DIR",
+            str(Path.home() / ".voice-agent-portal"),
         )
     ).expanduser()
 
 
 def sessions_dir(data_dir: Path) -> Path:
     resolved = data_dir.expanduser().resolve()
-    return resolved if resolved.name == "sessions" else resolved / "sessions"
+    if resolved.name in {"sessions", "demo-sessions"}:
+        return resolved
+    portal_sessions = resolved / "sessions"
+    dashboard_sessions = resolved / "demo-sessions"
+    if dashboard_sessions.is_dir() and not portal_sessions.is_dir():
+        return dashboard_sessions
+    return portal_sessions
 
 
 def load_meta(path: Path) -> dict[str, Any] | None:

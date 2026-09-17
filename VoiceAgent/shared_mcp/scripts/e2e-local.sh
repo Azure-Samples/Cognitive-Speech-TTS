@@ -9,7 +9,8 @@ RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)"
 RUN_ROOT="${ROOT}/state/e2e/${RUN_ID}"
 LOCAL_STATE_ROOT="${ROOT}/state/local"
 PORT="${SHARED_MCP_E2E_PORT:-18003}"
-CONTAINER_NAME="voice-agent-shared-mcp-local"
+NATIVE_PYTHON="${SHARED_MCP_PYTHON:-${ROOT}/.venv/bin/python}"
+NATIVE_PID=""
 HANDOFF_CONNECTION="${HANDOFF_E2E_CONNECTION:-finance-handoff-local-e2e}"
 OTP_CONNECTION="${OTP_E2E_CONNECTION:-finance-otp-officer-local-e2e}"
 KEEP_RUNNING="${SHARED_MCP_E2E_KEEP_RUNNING:-1}"
@@ -37,14 +38,19 @@ cleanup() {
     kill "${TUNNEL_PID}"
     wait "${TUNNEL_PID}" 2>/dev/null || true
   fi
-  docker rm -f "${CONTAINER_NAME}" >/dev/null 2>&1 || true
+  if [[ -n "${NATIVE_PID}" ]] && kill -0 "${NATIVE_PID}" >/dev/null 2>&1; then
+    kill "${NATIVE_PID}"
+    wait "${NATIVE_PID}" 2>/dev/null || true
+  fi
 }
 trap cleanup EXIT INT TERM
 
-for command_name in az curl devtunnel docker openssl python3; do
+for command_name in az curl devtunnel openssl python3; do
   command -v "${command_name}" >/dev/null 2>&1 ||
     die "${command_name} is required"
 done
+[[ -x "${NATIVE_PYTHON}" ]] ||
+  die "native MCP environment is missing; run ${ROOT}/../scripts/setup-local-examples.sh"
 
 DEVTUNNEL_USER_JSON="$(devtunnel_cli user show --json 2>/dev/null || true)"
 if ! DEVTUNNEL_USER_JSON="${DEVTUNNEL_USER_JSON}" python3 - <<'PY'
@@ -127,22 +133,41 @@ fi
 [[ "${PROJECT_ENDPOINT}" =~ ^https://[^[:space:]]+/api/projects/[^/[:space:]]+$ ]] ||
   die "set AZURE_AI_PROJECT_ENDPOINT or configure it in the example1 .env file"
 
-"${ROOT}/scripts/package.sh"
-
-docker run --rm -d \
-  --name "${CONTAINER_NAME}" \
-  -p "${PORT}:8000" \
-  -v voice-agent-shared-mcp-state:/app/state \
-  -e SHARED_MCP_TOKEN="${TOKEN}" \
-  voice-agent-shared-mcp:local >/dev/null
+NATIVE_STATE_ROOT="${LOCAL_STATE_ROOT}/runtime"
+mkdir -p \
+  "${NATIVE_STATE_ROOT}/finance-handoff" \
+  "${NATIVE_STATE_ROOT}/finance-otp-officer" \
+  "${NATIVE_STATE_ROOT}/auth"
+PYTHONPATH="${ROOT}/app" \
+  "${NATIVE_PYTHON}" -m unittest discover -s "${ROOT}/tests" -v
+env \
+  PYTHONPATH="${ROOT}/app" \
+  SHARED_MCP_TOKEN="${TOKEN}" \
+  SHARED_MCP_HOST="127.0.0.1" \
+  SHARED_MCP_PORT="${PORT}" \
+  FINANCE_MCP_DATA_DIR="${ROOT}/data/finance_handoff" \
+  FINANCE_OFFICER_DATA_DIR="${ROOT}/data/finance_otp_officer" \
+  FINANCE_OTP_MCP_DATA_DIR="${ROOT}/data/finance_otp_officer" \
+  FINANCE_MCP_STATE_DIR="${NATIVE_STATE_ROOT}/finance-handoff" \
+  FINANCE_OTP_MCP_STATE_DIR="${NATIVE_STATE_ROOT}/finance-otp-officer" \
+  FINANCE_OTP_MCP_AUTH_DIR="${NATIVE_STATE_ROOT}/auth" \
+  "${NATIVE_PYTHON}" -m shared_mcp.server \
+  >"${RUN_ROOT}/native-mcp.log" 2>&1 &
+NATIVE_PID=$!
 
 for _ in $(seq 1 30); do
+  if ! kill -0 "${NATIVE_PID}" >/dev/null 2>&1; then
+    die "native MCP exited before becoming ready; see ${RUN_ROOT}/native-mcp.log"
+  fi
   if curl -fsS "http://127.0.0.1:${PORT}/healthz" >/dev/null 2>&1; then
     break
   fi
   sleep 1
 done
 curl -fsS "http://127.0.0.1:${PORT}/healthz" >/dev/null
+if ! kill -0 "${NATIVE_PID}" >/dev/null 2>&1; then
+  die "native MCP exited during startup; see ${RUN_ROOT}/native-mcp.log"
+fi
 
 (
   cd "${ROOT}"
@@ -185,11 +210,11 @@ STATUS="$(
   die "public MCP route returned HTTP ${STATUS}, expected 401"
 
 SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
-  python3 -m shared_mcp.probe \
+  "${NATIVE_PYTHON}" -m shared_mcp.probe \
     --url "${BASE_URL}/mcp/finance-handoff" \
     --agent-json "${HANDOFF_SAMPLE}/agent.json"
 SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
-  python3 -m shared_mcp.probe \
+  "${NATIVE_PYTHON}" -m shared_mcp.probe \
     --url "${BASE_URL}/mcp/finance-otp-officer" \
     --agent-json "${OTP_SAMPLE}/agent.json"
 
@@ -203,11 +228,12 @@ MCP_CONFIG_VARIANT=local \
   "${ROOT}/scripts/configure-agent.sh"
 
 echo "e2e_local=passed artifacts=${RUN_ROOT}"
+echo "mcp_runtime=native"
 echo "fixed_tunnel_id=${TUNNEL_ID}"
 echo "example1_config=${HANDOFF_CONFIG}"
 echo "example2_config=${OTP_CONFIG}"
 if [[ "${KEEP_RUNNING}" == "1" ]]; then
   echo "local_runtime=ready base_url=${BASE_URL}"
-  echo "Press Ctrl+C to stop the local MCP container and dev tunnel."
-  wait "${TUNNEL_PID}"
+  echo "Press Ctrl+C to stop the local MCP runtime and dev tunnel."
+  wait -n "${TUNNEL_PID}" "${NATIVE_PID}"
 fi

@@ -11,9 +11,11 @@ import argparse
 import asyncio
 import ipaddress
 import json
+import logging
 import os
 import urllib.parse
 import uuid
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import requests
@@ -28,6 +30,21 @@ try:
     from .session_log import SessionRecorder, list_sessions, read_events, read_session
 except ImportError:
     from session_log import SessionRecorder, list_sessions, read_events, read_session
+
+try:
+    from .template_portal import (
+        DEFAULT_TEMPLATE_CONFIG,
+        discover_projects,
+        install_template_routes,
+        probe_published_mcp,
+    )
+except ImportError:
+    from template_portal import (
+        DEFAULT_TEMPLATE_CONFIG,
+        discover_projects,
+        install_template_routes,
+        probe_published_mcp,
+    )
 
 try:
     from .common import (
@@ -85,21 +102,43 @@ class ProjectWebSocketConnect(websockets.connect):
         return exc
 
 DEFAULT_CONFIG_KEY = web.AppKey("voice_demo_default_config", AgentsConfig)
+PROJECT_CONFIGS_KEY = web.AppKey("voice_portal_project_configs", dict)
 # None disables recording; the demo still runs, it just leaves nothing behind.
 SESSION_LOG_ROOT = web.AppKey("voice_demo_session_log_root", object)
 LIVE_SOCKETS_KEY = web.AppKey("voice_portal_live_sockets", set)
+PROJECT_COOKIE = "voice_agent_portal_project"
+LOGGER = logging.getLogger("voice_agent_portal")
 
 async def _request_config(request: web.Request) -> AgentsConfig:
-    cfg = request.app[DEFAULT_CONFIG_KEY]
+    default = request.app[DEFAULT_CONFIG_KEY]
+    endpoint = request.cookies.get(PROJECT_COOKIE, "").strip()
+    if endpoint:
+        try:
+            endpoint = validate_project_endpoint(endpoint)
+        except ValueError:
+            endpoint = default.host
+    else:
+        endpoint = default.host
+    if endpoint == default.host:
+        cfg = default
+    else:
+        configs = request.app[PROJECT_CONFIGS_KEY]
+        cfg = configs.get(endpoint)
+        if cfg is None:
+            cfg = default.for_endpoint(endpoint)
+            configs[endpoint] = cfg
     requested = (request.query.get("backend") or "").strip()
     if requested and requested != cfg.backend:
-        raise web.HTTPBadRequest(text="This portal only uses its configured Azure Foundry project.")
+        raise web.HTTPBadRequest(
+            text="The requested backend is not the browser-selected Foundry project."
+        )
     return cfg
 
 
 _ASSET_FILENAMES = (
     "bundle.js", "bundle.css", "styles.css", "pcm-capture-worklet.js",
     "webrtc-bundle.js", "webrtc-bundle.css",
+    "templates.html", "template-app.js", "template-graph.js", "template-styles.css",
     "THIRD_PARTY_NOTICES.txt",
 )
 
@@ -171,7 +210,7 @@ def _log_api(request: web.Request, cfg: AgentsConfig) -> str:
     mirror the service path templates AND the browser now sends the real query string, so the logged
     line is the exact service request line (method + path + query). Returns the path for callers."""
     api_path = _redact_sensitive_query_values(request.path_qs)
-    print(f"[api:{cfg.backend}] -> {request.method} {api_path}")
+    LOGGER.info("[api:%s] -> %s %s", cfg.backend, request.method, api_path)
     return api_path
 
 
@@ -224,7 +263,10 @@ async def service_proxy(request: web.Request) -> web.StreamResponse:
         resp = await asyncio.to_thread(_forward_to_service, request.method, url, params, headers, body)
     except Exception as exc:
         # Authentication exceptions can contain credential details; do not echo them.
-        print(f"[proxy] {type(exc).__name__}; check Azure sign-in, project access and connectivity.")
+        LOGGER.error(
+            "[proxy] %s; check Azure sign-in, project access and connectivity.",
+            type(exc).__name__,
+        )
         return web.json_response({
             "error": "Cannot reach the configured Azure project. Check az login, preview access, and the endpoint.",
         }, status=502)
@@ -278,8 +320,7 @@ async def demo_session_events(request: web.Request) -> web.Response:
 
 
 async def mcp_probe(request: web.Request) -> web.Response:
-    # No server-side arbitrary URL probing or retrieval of connection secrets.
-    return web.json_response({"error": "MCP probing is not included in this local public sample. Test tools in a live session."}, status=501)
+    return await probe_published_mcp(request)
 
 
 def _mcp_auth_presets(cfg: AgentsConfig) -> list:
@@ -342,7 +383,7 @@ async def config(request: web.Request) -> web.Response:
         "host": cfg.host,
         "project": f"{cfg.account}@{cfg.project}",
         "traceEnabled": bool(cfg.subscription and cfg.resource_group),
-        "mcpProbeEnabled": False,
+        "mcpProbeEnabled": True,
         "notice": (
             "Azure Foundry project — requests use your server-side identity and may incur charges. "
             "Preview feature availability depends on your project. Created agents are retained."
@@ -458,7 +499,7 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
     except ValueError as exc:
         raise web.HTTPBadRequest(text=str(exc)) from exc
     except Exception as exc:
-        print(f"[bridge] authentication failed: {type(exc).__name__}")
+        LOGGER.error("[bridge] authentication failed: %s", type(exc).__name__)
         raise web.HTTPBadGateway(text="Azure authentication failed. Check az login and project access.") from None
 
     browser_ws = web.WebSocketResponse(max_msg_size=16 * 1024 * 1024)
@@ -473,8 +514,13 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
     # Keep voiceOverride and structured_input out of the public upstream URL; their values are
     # carried in headers instead. The remaining service query parameters keep their native shape.
     url, session_id = build_upstream_ws_url(cfg, request.rel_url.raw_path, request.rel_url.query)
-    print(f"[bridge] browser connected; upstream {url.split('?')[0]} "
-          f"(agent={agent_name}, voiceOverride={voice_override or '(none)'}, session={session_id})")
+    LOGGER.info(
+        "[bridge] browser connected; upstream %s (agent=%s, voiceOverride=%s, session=%s)",
+        url.split("?")[0],
+        agent_name,
+        voice_override or "(none)",
+        session_id,
+    )
 
     recorder = None
     log_root = request.app.get(SESSION_LOG_ROOT)
@@ -493,9 +539,9 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
                     if k != "voiceOverride"
                 }),
             )
-            print(f"[bridge] recording -> {recorder.dir}")
+            LOGGER.info("[bridge] recording -> %s", recorder.dir)
         except Exception as exc:  # noqa: BLE001 - a session must run even if it cannot be recorded
-            print(f"[bridge] recorder unavailable: {type(exc).__name__}: {exc}")
+            LOGGER.error("[bridge] recorder unavailable: %s", type(exc).__name__)
 
     bridge_error = ""
     upstream_close_code = 1000
@@ -550,7 +596,7 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
                 await asyncio.gather(t1, t2, return_exceptions=True)
     except Exception as exc:  # noqa: BLE001 - surface bridge errors to the page
         bridge_error = type(exc).__name__
-        print(f"[bridge] error: {bridge_error}")
+        LOGGER.error("[bridge] error: %s", bridge_error)
         if not browser_ws.closed:
             await browser_ws.send_json({
                 "type": "error",
@@ -573,7 +619,7 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
         if recorder:
             recorder.close(bridge_error)
         request.app[LIVE_SOCKETS_KEY].discard(browser_ws)
-        print("[bridge] closed")
+        LOGGER.info("[bridge] closed")
     return browser_ws
 
 
@@ -626,8 +672,48 @@ async def security_headers(request: web.Request, response: web.StreamResponse) -
 
 
 async def health(request: web.Request) -> web.Response:
-    cfg = request.app[DEFAULT_CONFIG_KEY]
+    cfg = await _request_config(request)
     return web.json_response({"status": "ok", "project": cfg.project})
+
+
+async def list_foundry_projects(request: web.Request) -> web.Response:
+    cfg = await _request_config(request)
+    try:
+        projects = await asyncio.to_thread(discover_projects, cfg, cfg.host)
+    except Exception as error:
+        return web.json_response(
+            {"error": f"{type(error).__name__}: {error}"},
+            status=502,
+        )
+    return web.json_response({
+        "current_endpoint": cfg.host,
+        "projects": projects,
+    })
+
+
+async def select_foundry_project(request: web.Request) -> web.Response:
+    try:
+        body = await request.json()
+        if not isinstance(body, dict):
+            raise ValueError("Expected a JSON object.")
+        endpoint = validate_project_endpoint(str(body.get("endpoint") or ""))
+    except (json.JSONDecodeError, ValueError) as error:
+        raise web.HTTPBadRequest(text=str(error)) from error
+    default = request.app[DEFAULT_CONFIG_KEY]
+    if endpoint != default.host and endpoint not in request.app[PROJECT_CONFIGS_KEY]:
+        request.app[PROJECT_CONFIGS_KEY][endpoint] = default.for_endpoint(endpoint)
+    response = web.json_response({
+        "endpoint": endpoint,
+        "project": endpoint.rsplit("/", 1)[-1],
+    })
+    response.set_cookie(
+        PROJECT_COOKIE,
+        endpoint,
+        httponly=True,
+        samesite="Strict",
+        max_age=30 * 24 * 60 * 60,
+    )
+    return response
 
 
 async def on_shutdown(app: web.Application) -> None:
@@ -638,18 +724,46 @@ async def on_shutdown(app: web.Application) -> None:
 async def on_cleanup(app: web.Application) -> None:
     # Created Azure agents are NEVER deleted automatically.
     await asyncio.to_thread(app[DEFAULT_CONFIG_KEY].close)
+    for cfg in app[PROJECT_CONFIGS_KEY].values():
+        await asyncio.to_thread(cfg.close)
+
+
+def configure_file_logging(data_dir: Path) -> None:
+    data_dir.mkdir(parents=True, exist_ok=True, mode=0o700)
+    data_dir.chmod(0o700)
+    server_log = data_dir / "server.log"
+    file_handler = RotatingFileHandler(
+        server_log,
+        maxBytes=5 * 1024 * 1024,
+        backupCount=3,
+        encoding="utf-8",
+    )
+    server_log.chmod(0o600)
+    formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s %(message)s")
+    file_handler.setFormatter(formatter)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter)
+    LOGGER.handlers.clear()
+    LOGGER.setLevel(logging.INFO)
+    LOGGER.addHandler(file_handler)
+    LOGGER.addHandler(stream_handler)
+    LOGGER.propagate = False
 
 
 def build_app(args) -> web.Application:
-    cfg = AgentsConfig.from_endpoint(args.project_endpoint)
+    cfg = AgentsConfig.from_endpoint(
+        args.project_endpoint,
+        credential_mode=args.credential_mode,
+    )
     if args.model:
         cfg.voice_model = args.model
     if args.voice:
         cfg.voice = args.voice
     app = web.Application(middlewares=[local_boundary], client_max_size=2 * 1024 * 1024)
     app[DEFAULT_CONFIG_KEY] = cfg
+    app[PROJECT_CONFIGS_KEY] = {}
     app[LIVE_SOCKETS_KEY] = set()
-    root = Path(__file__).parent / "session-logs" if args.record_sessions else None
+    root = args.data_dir / "sessions" if args.record_sessions else None
     if root is not None:
         root.mkdir(parents=True, exist_ok=True)
     app[SESSION_LOG_ROOT] = root
@@ -658,10 +772,19 @@ def build_app(args) -> web.Application:
     for path in ("/webrtc", "/webrtc/", "/demo/webrtc", "/demo/webrtc/"):
         app.router.add_get(path, webrtc_index)
     app.router.add_get("/healthz", health)
+    app.router.add_get("/api/projects", list_foundry_projects)
+    app.router.add_post("/api/project", select_foundry_project)
     app.router.add_get("/config", config)
     app.router.add_get("/deployments", deployments)
     app.router.add_get("/foundry-trace", foundry_trace)
     app.router.add_post("/api/mcp/probe", mcp_probe)
+    install_template_routes(
+        app,
+        cfg=cfg,
+        config_resolver=_request_config,
+        model_override=args.model or "",
+        template_config_path=args.template_config,
+    )
     app.router.add_get("/api/demo/sessions", demo_sessions)
     app.router.add_get("/api/demo/sessions/{run_id}", demo_session_detail)
     app.router.add_get("/api/demo/sessions/{run_id}/events", demo_session_events)
@@ -682,15 +805,64 @@ def parse_args(argv=None):
         description="Local Voice Agent portal for your Azure Foundry project",
         allow_abbrev=False,  # Do not interpret the removed --mode as --model.
     )
-    parser.add_argument("--project-endpoint", default=os.getenv("AZURE_VOICE_AGENTS_ENDPOINT", ""),
+    parser.add_argument("--project-endpoint", default=(
+                            os.getenv("AZURE_AI_PROJECT_ENDPOINT")
+                            or os.getenv("AZURE_VOICE_AGENTS_ENDPOINT", "")
+                        ),
                         help="Your HTTPS Azure Foundry project endpoint; also read from AZURE_VOICE_AGENTS_ENDPOINT.")
-    parser.add_argument("--port", type=int, default=int(os.getenv("DEMO_PORT", "9527")))
-    parser.add_argument("--bind", choices=("127.0.0.1", "::1", "localhost"), default="127.0.0.1",
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=int(os.getenv("DEMO_PORT", "9527")),
+    )
+    parser.add_argument("--bind", "--host", dest="bind",
+                        choices=("127.0.0.1", "::1", "localhost"),
+                        default=os.getenv("VOICE_PORTAL_HOST", "127.0.0.1"),
                         help="Loopback only. Remote hosting requires a separate authentication/security design.")
-    parser.add_argument("--model", default=None, help="Default managed voice model.")
+    parser.add_argument(
+        "--credential-mode",
+        choices=("default", "cli"),
+        default=os.getenv("AZURE_CREDENTIAL_MODE", "default"),
+    )
+    parser.add_argument(
+        "--data-dir",
+        type=Path,
+        default=Path(
+            os.getenv("VOICE_PORTAL_DATA_DIR")
+            or str(Path.home() / ".voice-agent-portal")
+        ).expanduser(),
+    )
+    parser.add_argument(
+        "--template-config",
+        type=Path,
+        default=Path(
+            os.getenv("VOICE_PORTAL_TEMPLATE_CONFIG")
+            or str(DEFAULT_TEMPLATE_CONFIG)
+        ).expanduser(),
+    )
+    parser.add_argument(
+        "--model",
+        default=os.getenv("VOICE_AGENT_MODEL"),
+        help="Default managed voice model.",
+    )
     parser.add_argument("--voice", default=None, help="Default voice name.")
-    parser.add_argument("--record-sessions", action="store_true",
-                        help="Opt in to local voice-session event logs (may contain transcripts/tool data).")
+    recording = parser.add_mutually_exclusive_group()
+    recording.add_argument(
+        "--record-sessions",
+        dest="record_sessions",
+        action="store_true",
+        help="Record local voice-session debug logs (default).",
+    )
+    recording.add_argument(
+        "--no-record-sessions",
+        dest="record_sessions",
+        action="store_false",
+        help="Disable local voice-session debug logs.",
+    )
+    parser.set_defaults(
+        record_sessions=os.getenv("VOICE_PORTAL_RECORD_SESSIONS", "true").lower()
+        not in {"0", "false", "no"}
+    )
     args = parser.parse_args(argv)
     if not 1 <= args.port <= 65535:
         parser.error("--port must be between 1 and 65535")
@@ -698,11 +870,17 @@ def parse_args(argv=None):
         args.project_endpoint = validate_project_endpoint(args.project_endpoint)
     except ValueError as exc:
         parser.error(str(exc))
+    args.data_dir = args.data_dir.resolve()
+    if not args.template_config.is_absolute():
+        args.template_config = Path(__file__).parent / args.template_config
+    args.template_config = args.template_config.resolve()
     return args
 
 
 def main() -> None:
+    os.umask(0o077)
     args = parse_args()
+    configure_file_logging(args.data_dir)
     if any(not (STATIC_DIR / name).is_file() for name in _ASSET_FILENAMES):
         raise SystemExit(
             "Missing browser assets or third-party notices. Restore the shipped static files; "
@@ -713,12 +891,17 @@ def main() -> None:
     except ValueError as exc:
         raise SystemExit(f"Configuration error: {exc}") from None
     cfg = app[DEFAULT_CONFIG_KEY]
-    print(f"Project  : {cfg.host}")
-    print("Azure calls use your identity and may incur charges. Agents are retained on shutdown.")
+    LOGGER.info("Project  : %s", cfg.host)
+    LOGGER.info(
+        "Azure calls use your identity and may incur charges. Agents are retained on shutdown."
+    )
     if args.record_sessions:
-        print("Local event recording enabled; session-logs may contain conversation/tool data. Do not publish them.")
+        LOGGER.warning(
+            "Local event recording enabled in %s; logs may contain conversation/tool data.",
+            args.data_dir / "sessions",
+        )
     host = f"[{args.bind}]" if ":" in args.bind else args.bind
-    print(f"Open     : http://{host}:{args.port}  (Ctrl+C to stop)")
+    LOGGER.info("Open     : http://%s:%s  (Ctrl+C to stop)", host, args.port)
     # Default access logs would disclose raw structured input query parameters.
     web.run_app(app, host=args.bind, port=args.port, print=None, access_log=None)
 

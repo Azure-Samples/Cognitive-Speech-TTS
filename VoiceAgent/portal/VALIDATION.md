@@ -1,3 +1,35 @@
+# Templates tab validation
+
+Validated on **September 17, 2026** on Linux with Python **3.13**, Node.js
+**22**, npm, and headless Chromium. The upstream pin remains
+`e713a37c4cdb3282157cbaf46b6d425bcd984c05`; the Templates tab and Finance
+workflow UI are now portal-owned.
+
+| Check | Result |
+| --- | --- |
+| Portal Python environment, compilation, and `pip check` | Passed |
+| `npm run build:all` | Studio and standalone WebRTC bundles built |
+| `npm test` | **201 passed**, including the synchronized project-picker tests |
+| `python -m unittest discover -s tests -v` | **53 passed**, including catalog, source-sync, Project switching, credential mode, and log-permission tests |
+| `npm run test:ui` | **44 passed**, including Project search and workflow MCP probe coverage |
+| `npm run test:local` | **6 passed**, including the two-tab and two-template browser regression |
+| Actual portal on `127.0.0.1:9527` | Studio navigation, two template cards, selected detail, workflow graph, Project search/switch, Agent list, and all template endpoints verified |
+| Real Azure Resource Graph / selected Project | **944 visible Projects**; isolated browser switch kept Studio, Templates, health, REST, and Agent listing on the same Project |
+| Debug artifacts | Data directory mode `0700`, rotating `server.log` mode `0600`, session root ready |
+| Portal-owned template assets | HTML, JavaScript, graph renderer, CSS, Project picker, and workflow MCP UI present and covered by tests |
+| Template Agent naming | New names use `local-only-`; 63-character boundary and duplicate-prefix handling covered |
+| Source synchronization | PR 41103 commit `8818588...` accepted; source changes `0`, exact mapping drift `0`, MCP source changes `0` |
+| Consolidated setup workflow | Finance environments, portal Python/Node/build, portal `.env`, Azure CLI, and Dev Tunnel reported ready |
+| Consolidated lifecycle workflow | Native Python MCP and portal started without Docker; both template probes passed with 18 and 8 tools respectively |
+| Template discovery | Exactly `finance-example` and `finance-with-otp-and-officer-search`; no catalog errors |
+
+**304 portal tests passed.** No template was published during live verification,
+so no Azure Agent or project connection was created or modified. The MCP
+probe was substituted at the browser boundary for deterministic UI validation;
+live MCP readiness still depends on `VoiceAgent/shared_mcp/scripts/e2e-local.sh`.
+The former standalone Finance UI directory was removed after setup, lifecycle,
+debug tooling, documentation, and portal ownership were migrated.
+
 # Public-release fixes validation
 
 Validated on **September 16, 2026** after the public-release review fixes, on Windows with Python **3.12.10**, Node.js

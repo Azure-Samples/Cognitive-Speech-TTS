@@ -1,8 +1,6 @@
-// Templates tab: the read-only template catalog, ported from
-// docs/voice_agent/01_template_infa/01_template_v1/web/app.js (Templates page only).
-//
-// Every template has one fixed, published source agent. Voice preview talks to that agent directly;
-// publishing creates a separate agent by copying the source's latest definition.
+// Templates tab from the standalone Local UI. The server-side allowlist loads
+// local agent.json definitions, validates MCP readiness, and publishes a new
+// independent Agent before handing it to the Live session page.
 
 import { WorkflowGraph } from "./template-graph.js?v=20260915-1";
 
@@ -16,6 +14,7 @@ const state = {
   publishedAgent: "",
   mcpReady: false,
   mcpChecking: false,
+  mcpConfiguring: false,
   projectConfigured: false,
   projectName: "",
 };
@@ -250,6 +249,9 @@ function toolCard(tool, server, agentName) {
       if (data.ok) {
         status.className = "probe-status good";
         status.textContent = `ok · ${data.latency_ms} ms · ${data.tools.length} tools on the server`;
+      } else if (data.connection_only) {
+        status.className = "probe-status warn";
+        status.textContent = "project connection · no direct MCP URL is available to test";
       } else if (data.no_mcp) {
         status.className = "probe-status warn";
         status.textContent = "published as a function tool — the agent carries the declaration itself, "
@@ -306,9 +308,17 @@ function showNode(graph, detail, nodeId) {
   const node = detail?.graph.nodes.find((n) => n.id === nodeId);
   if (!node) return;
 
+  const byKey = new Map(
+    (detail.tools || []).map((tool) => [`${tool.server || ""}\u0000${tool.name}`, tool]),
+  );
   const byName = new Map((detail.tools || []).map((tool) => [tool.name, tool]));
   const serverById = new Map((detail.tool_servers || []).map((server) => [server.id, server]));
-  const used = (node.tools || []).map((name) => byName.get(name) || { name, kind: "function" });
+  const refs = node.tool_refs || (node.tools || []).map((name) => ({ name, server: "" }));
+  const used = refs.map((ref) => (
+    byKey.get(`${ref.server || ""}\u0000${ref.name}`)
+      || byName.get(ref.name)
+      || { name: ref.name, server: ref.server || "", kind: "function" }
+  ));
   const outgoing = detail.graph.edges.filter((edge) => edge.from === nodeId);
 
   const title = make(
@@ -337,7 +347,11 @@ function showNode(graph, detail, nodeId) {
     { className: "node-modal-section" },
     make("h4", { textContent: `Tools (${used.length})` }),
     used.length ? null : make("p", { className: "node-modal-empty", textContent: "This node carries no tools." }),
-    ...used.map((tool) => toolCard(tool, serverById.get(tool.server), detail.agent_name)),
+    ...used.map((tool) => toolCard(
+      tool,
+      serverById.get(tool.server),
+      state.publishedAgent,
+    )),
   );
 
   const edges = outgoing.length
@@ -474,6 +488,8 @@ async function selectTemplate(templateId) {
   renderIssues($("lint-body"), detail.issues);
   $("yaml-body").textContent = detail.yaml;
   $("publish-mcp-fields").hidden = !detail.requires_mcp;
+  $("mcp-token").value = "";
+  $("mcp-token-config").hidden = !detail.mcp?.allow_user_token;
   state.mcpReady = !detail.requires_mcp;
   state.mcpChecking = false;
   $("mcp-start-guide").hidden = true;
@@ -557,6 +573,7 @@ function setBuildLocked(locked) {
   $("btn-voice").disabled = locked || !(state.publishedAgent || canPublish());
   $("btn-publish").disabled = locked || !canPublish();
   $("btn-test-mcp").disabled = locked || state.mcpChecking;
+  $("btn-configure-mcp").disabled = locked || state.mcpConfiguring;
   for (const card of document.querySelectorAll("#template-list .template-card")) {
     card.disabled = locked;
   }
@@ -573,12 +590,20 @@ function refreshActionState() {
   $("btn-voice").disabled = !(state.publishedAgent || canPublish());
   $("btn-publish").disabled = !canPublish();
   $("btn-test-mcp").disabled = !state.template?.requires_mcp || state.mcpChecking;
+  $("btn-configure-mcp").disabled = (
+    state.mcpConfiguring
+    || $("mcp-token").value.trim() === ""
+  );
 }
 
 function mcpProbeSummary(result) {
   const endpoint = result?.server_url || "unknown endpoint";
   let status = "unreachable";
-  if (result?.ok) {
+  if (result?.project_connection_auth) {
+    status = `reachable; authentication delegated to Project connection (HTTP ${result.http_status || "unknown"})`;
+  } else if (result?.connection_exists === false && result?.reached) {
+    status = `endpoint reachable; Project connection missing in ${result.backend || "selected backend"}`;
+  } else if (result?.ok) {
     status = `authenticated and ready (HTTP ${result.http_status || 200})`;
   } else if (result?.auth_gate) {
     status = `authentication failed (HTTP ${result.http_status || "unknown"})`;
@@ -595,6 +620,15 @@ function mcpProbeSummary(result) {
     );
   }
   if (Array.isArray(result?.tools)) details.push(`Tools: ${result.tools.length}`);
+  if (result?.connection_exists === true) {
+    details.push(
+      `Project connection: ${result.connection_target_matches ? "ready" : "target mismatch"}`,
+    );
+  } else if (result?.connection_exists === false) {
+    details.push(
+      `Project connection: ${result.connection_will_be_configured ? "will be configured on Publish" : "missing"}`,
+    );
+  }
   if (result?.checked_at) details.push(`Checked: ${result.checked_at}`);
   return details.join(" · ");
 }
@@ -618,6 +652,9 @@ async function testTemplateMcp() {
     );
     recovery = result;
     if (state.template?.id !== templateId) return;
+    if (template.mcp?.allow_user_token) {
+      $("mcp-token-config").hidden = result.connection_exists === true;
+    }
     if (!result.ok) throw new Error(result.error || "MCP is not reachable.");
     state.mcpReady = true;
     $("mcp-test-state").className = "good";
@@ -628,14 +665,57 @@ async function testTemplateMcp() {
     $("mcp-test-state").className = "bad";
     const summary = recovery ? `${mcpProbeSummary(recovery)} · ` : "";
     $("mcp-test-state").textContent = `${summary}Error: ${error.message}`;
+    if (template.mcp?.allow_user_token) {
+      $("mcp-token-config").hidden = false;
+      $("mcp-start-guide").hidden = true;
+    }
     $("mcp-start-command").textContent = recovery?.start_command
       || "cd VoiceAgent/shared_mcp && ./scripts/e2e-local.sh";
     $("mcp-guide-link").href = recovery?.guide_url || "/guide/run-samples";
-    $("mcp-start-guide").hidden = false;
+    if (!template.mcp?.allow_user_token) {
+      $("mcp-start-guide").hidden = false;
+    }
   } finally {
     if (state.template?.id === templateId) {
       state.mcpChecking = false;
       $("btn-test-mcp").textContent = "Test MCP";
+      refreshActionState();
+    }
+  }
+}
+
+async function configureTemplateMcp() {
+  const template = state.template;
+  if (!template?.mcp?.allow_user_token || state.mcpConfiguring) return;
+  const token = $("mcp-token").value.trim();
+  if (!token) return;
+  const templateId = template.id;
+  $("mcp-token").value = "";
+  state.mcpConfiguring = true;
+  $("mcp-test-state").className = "";
+  $("mcp-test-state").textContent = "Validating token and configuring the selected Project connection…";
+  refreshActionState();
+  try {
+    await api(
+      `/api/templates/${encodeURIComponent(templateId)}/mcp/configure`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token }),
+      },
+    );
+    if (state.template?.id !== templateId) return;
+    $("mcp-token-config").hidden = true;
+    await testTemplateMcp();
+  } catch (error) {
+    if (state.template?.id !== templateId) return;
+    state.mcpReady = false;
+    $("mcp-token-config").hidden = false;
+    $("mcp-test-state").className = "bad";
+    $("mcp-test-state").textContent = `Connection setup failed: ${error.message}`;
+  } finally {
+    if (state.template?.id === templateId) {
+      state.mcpConfiguring = false;
       refreshActionState();
     }
   }
@@ -709,6 +789,8 @@ activateTabs($("page-templates"));
 $("btn-voice").addEventListener("click", () => startVoiceChat());
 $("btn-publish").addEventListener("click", () => publishMyAgent(false));
 $("btn-test-mcp").addEventListener("click", () => testTemplateMcp());
+$("btn-configure-mcp").addEventListener("click", () => configureTemplateMcp());
+$("mcp-token").addEventListener("input", () => refreshActionState());
 $("build-progress-close").addEventListener("click", () => {
   $("build-progress").hidden = true;
   setBuildLocked(false);

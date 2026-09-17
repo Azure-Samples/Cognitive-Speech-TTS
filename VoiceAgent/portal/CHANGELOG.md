@@ -3,6 +3,65 @@
 This is the downstream port log, not the full upstream repository history.
 Keep the upstream pin and intentional differences in every port entry.
 
+## 2026-09-17 — Add the local sample Templates tab
+
+**Upstream pin unchanged:** `e713a37c4cdb3282157cbaf46b6d425bcd984c05`.
+This began as a local integration of the Finance sample UI. Shared behavior is
+now owned by the source dashboard's `template_view`; portal owns only the
+standalone/public adapters until the next source pin is recorded.
+
+**Accepted multi-root sync baseline:** advanced from
+`e713a37c4cdb3282157cbaf46b6d425bcd984c05` to
+`88185887035f63a6b81114d7b38305532ebb6ad0` from PR 41103 after all 26
+`voice_demo`, `template_view`, template-test, and Finance sample mappings were
+reviewed. The PR's removal of unrelated UMW/demo media is outside the declared
+portal sync roots.
+
+- Kept the existing studio as the first **Live session** tab and added the
+  Finance **Templates** page as the second tab.
+- Integrated the Finance template HTML, JavaScript, graph renderer, and CSS.
+  Graph and style assets are byte-identical to source; the app and HTML differ
+  only for static paths, Project config, setup guidance, and return-to-studio.
+- Added a portal-local allowlist that detects
+  `example1_finance_with_handoff` and
+  `example2_finance_with_OTP_and_Officer_Search`, while rejecting template
+  source paths outside `VoiceAgent/samples/` and MCP paths outside
+  `VoiceAgent/shared_mcp/`.
+- Ported template reload/detail, MCP readiness checks, fixed project connection
+  creation, Agent publication, and return-to-studio behavior. Tokens remain
+  server-side, MCP probes reject private/reserved destinations, and the portal
+  continues to use its single configured Foundry project.
+- Added catalog/route/asset regression tests and a source-change tracker that
+  maps both `voice_demo` and `template_view`, including current source
+  working-tree changes. Added the public `azure-ai-projects` dependency used by
+  the template publication path.
+- The tracker also maps the source template allowlist and both Finance
+  `agent.json` inputs to their portal/public-sample counterparts, and requires
+  review of shared `docs/voice_agent/11_mcp_server` changes.
+- Added the searchable Foundry Project picker and Resource Graph
+  discovery. Project selection is scoped to a same-site, HttpOnly browser
+  cookie and consistently controls Studio, Templates, Agent REST/WebSocket,
+  traces, MCP tests, and publishing.
+- Added the workflow MCP Test card, including three-state
+  reachability, latency, server identity, allowed tools, and response scheduling.
+- Added explicit credential mode, template config, data directory, bind-host,
+  endpoint alias, and one-command runner support. Local session debug recording
+  now defaults on with an explicit opt-out; a
+  permission-restricted rotating server log captures redacted portal/bridge
+  diagnostics while raw HTTP access logging remains disabled.
+- Consolidated the former standalone Finance UI into portal while keeping
+  source `template_view` as the shared browser/core source of truth.
+- Preserved MCP server identity for duplicate tool names, enabled per-tool
+  checks only against the newly published Agent, rejected private MCP targets
+  on direct publish requests, and enforced the 63-character Agent-name limit.
+- Renamed Template-published Agents from `gft-*` to `local-only-*` so their
+  names disclose that the MCP connection depends on this machine's Dev Tunnel
+  and native runtime.
+- Added a shared `connection_mode` contract. The source dashboard uses
+  one-time `user_provided` credentials to configure Envoy-backed Project
+  connections without server-side token retention, while portal keeps the
+  default `managed` Local Dev Tunnel connection workflow.
+
 ## 2026-09-16 — Public-release review fixes
 
 **Upstream pin unchanged:** `e713a37c4cdb3282157cbaf46b6d425bcd984c05`.

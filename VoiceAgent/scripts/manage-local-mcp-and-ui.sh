@@ -3,17 +3,17 @@ set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MCP_ROOT="${ROOT}/shared_mcp"
-UI_ROOT="${ROOT}/samples/local_UI"
+UI_ROOT="${ROOT}/portal"
 STATE_ROOT="${ROOT}/.local-mcp-and-ui"
 MCP_PID_FILE="${STATE_ROOT}/mcp.pid"
-UI_PID_FILE="${STATE_ROOT}/local-ui.pid"
+UI_PID_FILE="${STATE_ROOT}/portal.pid"
 MCP_LOG="${STATE_ROOT}/mcp.log"
-UI_LOG="${STATE_ROOT}/local-ui.log"
+UI_LOG="${STATE_ROOT}/portal.log"
 MCP_PORT="${SHARED_MCP_E2E_PORT:-18003}"
-UI_HOST="${LOCAL_UI_HOST:-127.0.0.1}"
-UI_PORT="${LOCAL_UI_PORT:-18098}"
+UI_HOST="${VOICE_PORTAL_HOST:-127.0.0.1}"
+UI_PORT="${DEMO_PORT:-18098}"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
-UI_PYTHON="${LOCAL_UI_PYTHON:-${UI_ROOT}/.venv/bin/python}"
+UI_PYTHON="${VOICE_PORTAL_PYTHON:-${UI_ROOT}/.venv/bin/python}"
 ACTION="${1:-restart}"
 
 usage() {
@@ -21,12 +21,13 @@ usage() {
 Usage: ./scripts/manage-local-mcp-and-ui.sh [action]
 
 Manage the complete local runtime for the configured Voice Agent examples: the
-shared MCP container, named Dev Tunnel host, and Local UI.
+shared MCP runtime, named Dev Tunnel host, and portal.
+The MCP runtime always uses native Python and does not require Docker.
 
 Actions:
   start, restart  Replace stale repository-owned processes and start MCP + UI.
-  status          Report MCP and Local UI readiness and the Local UI URL.
-  stop            Stop repository-owned MCP, tunnel, UI, and local container.
+  status          Report MCP and portal readiness and the portal URL.
+  stop            Stop repository-owned MCP runtime, tunnel, and portal.
   -h, --help      Show this help.
 EOF
 }
@@ -78,7 +79,9 @@ stop_stale_repo_processes() {
     cwd="$(readlink "${proc}/cwd" 2>/dev/null || true)"
     command_line="$(tr '\0' ' ' < "${proc}/cmdline" 2>/dev/null || true)"
     if {
-      [[ "${cwd}" == "${UI_ROOT}" && "${command_line}" == *"app.py"* ]]
+      [[ "${cwd}" == "${UI_ROOT}" \
+        && "${command_line}" == *"demo_server.py"* \
+        && "${command_line}" == *"--port ${UI_PORT}"* ]]
     } || {
       [[ "${cwd}" == "${MCP_ROOT}" && "${command_line}" == *"e2e-local.sh"* ]]
     }; then
@@ -99,8 +102,7 @@ stop_stack() {
   stop_pid_file "${UI_PID_FILE}"
   stop_pid_file "${MCP_PID_FILE}"
   stop_stale_repo_processes
-  docker rm -f voice-agent-shared-mcp-local >/dev/null 2>&1 || true
-  echo "local_mcp_and_ui=stopped"
+  echo "local_mcp_and_portal=stopped"
 }
 
 wait_for_http() {
@@ -165,11 +167,10 @@ PY
 }
 
 start_stack() {
-  command -v docker >/dev/null 2>&1 || die "docker is required"
   command -v curl >/dev/null 2>&1 || die "curl is required"
   command -v setsid >/dev/null 2>&1 || die "setsid is required"
   [[ -x "${UI_PYTHON}" ]] ||
-    die "Local UI environment is missing; create ${UI_ROOT}/.venv first"
+    die "Portal environment is missing; create ${UI_ROOT}/.venv first"
   if ! command -v devtunnel >/dev/null 2>&1 && [[ -x "${HOME}/bin/devtunnel" ]]; then
     export PATH="${HOME}/bin:${PATH}"
   fi
@@ -180,40 +181,45 @@ start_stack() {
     "${MCP_ROOT}/config/generated/example1.local.env" \
     "${MCP_ROOT}/config/generated/example2.local.env"
 
-  setsid env \
-    PATH="${PATH}" \
-    PIP_INDEX_URL="${PIP_INDEX_URL}" \
-    SHARED_MCP_E2E_PORT="${MCP_PORT}" \
-    "${MCP_ROOT}/scripts/e2e-local.sh" \
-    >"${MCP_LOG}" 2>&1 < /dev/null &
+  (
+    cd "${MCP_ROOT}"
+    exec setsid env \
+      PATH="${PATH}" \
+      PIP_INDEX_URL="${PIP_INDEX_URL}" \
+      SHARED_MCP_E2E_PORT="${MCP_PORT}" \
+      ./scripts/e2e-local.sh
+  ) >"${MCP_LOG}" 2>&1 < /dev/null &
   local mcp_pid=$!
   printf '%s\n' "${mcp_pid}" > "${MCP_PID_FILE}"
 
   wait_for_http "MCP" "http://127.0.0.1:${MCP_PORT}/healthz" "${mcp_pid}" "${MCP_LOG}"
   wait_for_mcp_config "${mcp_pid}"
 
-  setsid env \
-    LOCAL_UI_HOST="${UI_HOST}" \
-    LOCAL_UI_PORT="${UI_PORT}" \
-    "${UI_PYTHON}" "${UI_ROOT}/app.py" \
-    --host "${UI_HOST}" \
-    --port "${UI_PORT}" \
-    >"${UI_LOG}" 2>&1 < /dev/null &
+  (
+    cd "${UI_ROOT}"
+    exec setsid env \
+      VOICE_PORTAL_HOST="${UI_HOST}" \
+      DEMO_PORT="${UI_PORT}" \
+      "${UI_PYTHON}" demo_server.py \
+      --bind "${UI_HOST}" \
+      --port "${UI_PORT}" \
+      --credential-mode cli
+  ) >"${UI_LOG}" 2>&1 < /dev/null &
   local ui_pid=$!
   printf '%s\n' "${ui_pid}" > "${UI_PID_FILE}"
 
   wait_for_http \
-    "Local UI" \
+    "Portal" \
     "http://${UI_HOST}:${UI_PORT}/healthz" \
     "${ui_pid}" \
     "${UI_LOG}"
   verify_template_probes
 
-  echo "local_mcp_and_ui=ready"
-  echo "local_ui_url=http://localhost:${UI_PORT}"
+  echo "local_mcp_and_portal=ready"
+  echo "portal_url=http://localhost:${UI_PORT}"
   echo "mcp_health=http://127.0.0.1:${MCP_PORT}/healthz"
   echo "mcp_log=${MCP_LOG}"
-  echo "local_ui_log=${UI_LOG}"
+  echo "portal_log=${UI_LOG}"
 }
 
 status_stack() {
@@ -223,7 +229,7 @@ status_stack() {
     mcp_status="ready"
   curl -fsS "http://${UI_HOST}:${UI_PORT}/healthz" >/dev/null 2>&1 &&
     ui_status="ready"
-  echo "mcp=${mcp_status} local_ui=${ui_status} local_ui_url=http://localhost:${UI_PORT}"
+  echo "mcp=${mcp_status} mcp_runtime=native portal=${ui_status} portal_url=http://localhost:${UI_PORT}"
 }
 
 case "${ACTION}" in

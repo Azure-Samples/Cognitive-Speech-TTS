@@ -140,6 +140,8 @@ export function App() {
             const match = portalAgents.find((item) => item.name === requested);
             if (match) setAgent(match);
             else session.logError(`Agent '${requested}' is not in backend '${cfg.backend}'`);
+          } else if (portalAgents.length) {
+            setAgent(portalAgents[0]);
           }
           setAgentListState({ loading: false, error: "" });
         } catch (e) {
@@ -178,13 +180,6 @@ export function App() {
     setAgent(selected);
     window.history.replaceState(null, "", withSelectedAgent(window.location.href, selected?.name));
     setGenerated(null);
-  };
-
-  const onBackendChange = (backend) => {
-    if (!backend || backend === cfg.backend) return;
-    const url = new URL(window.location.href);
-    url.searchParams.set("backend", backend);
-    window.location.assign(url.toString());
   };
 
   const onRefreshAgents = async () => {
@@ -349,7 +344,7 @@ export function App() {
 
   return (
     <div className="studio">
-      <StudioHeader cfg={cfg} disabled={session.isConnected} onBackendChange={onBackendChange} />
+      <StudioHeader cfg={cfg} disabled={session.isConnected} />
       <div className="shell">
         <aside className="studio-side-column" aria-label="Agent creation and debugging">
           <section className={`studio-panel studio-config-panel${configurationCollapsed ? " is-collapsed" : ""}`}>

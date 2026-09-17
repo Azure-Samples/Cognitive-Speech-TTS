@@ -247,14 +247,14 @@ change. The deliverable is deployment-ready source and commands.
     MCP events;
   - `finance-otp-officer-local-e2e` version 3 passed with 4 MCP events and
     successful fictional OTP authentication;
-  - both active Agents target the persistent local Docker service through
+  - both active Agents target the persistent local native service through
     route-specific Foundry connections.
 - Fixed local closure:
   - a persisted named Dev Tunnel and port provide one stable public HTTPS
     address for the local container;
   - the bearer token and connection names are reused transparently;
   - both CLI samples read `example1.local.env` / `example2.local.env`;
-  - the local UI reads those same files through `mcp.config_file`;
+  - the portal reads those same files through `mcp.config_file`;
   - UI publication reused the existing connections without receiving a token;
   - both UI-published Agents completed their MCP smoke flows.
 - `az bicep build` completed successfully.

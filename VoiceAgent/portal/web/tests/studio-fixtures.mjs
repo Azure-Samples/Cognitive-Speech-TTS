@@ -56,12 +56,40 @@ const voiceDefinition = (model, voice, clientReferenceEc = false) => ({
 export async function mountStudio(page, configPatch = {}, path = "/demo/") {
   const api = {
     creates: [], generates: [], versions: [], sockets: [], messages: [], errors: [],
+    projectSelections: [],
     rejectCreate: false, createGate: null, generateGate: null, autoReply: false,
   };
   const entries = [
     resource("realtime-agent", voiceDefinition("gpt-realtime", { type: "azure-standard", name: "en-US-AvaNeural" })),
     resource("echo-agent", voiceDefinition("gpt-realtime", { type: "azure-standard", name: "en-US-AvaNeural" }, true)),
     resource("cascaded-agent", voiceDefinition("gpt-4.1", "en-US-AndrewNeural")),
+    resource("mcp-handoff-agent", {
+      ...voiceDefinition("gpt-realtime", "en-US-AvaNeural"),
+      handoff: {
+        nodes: [{
+          id: "tools",
+          description: "Use the fixture MCP.",
+          config: {
+            instructions: "Call lookup.",
+            tools: [{
+              type: "mcp",
+              server_label: "fixture-mcp",
+              server_url: "https://mcp.example/tools",
+              project_connection_id: "fixture-connection",
+              allowed_tools: ["lookup"],
+              require_approval: "never",
+              response_scheduling: "when_idle",
+            }],
+          },
+        }],
+        edges: [{
+          id: "entry-tools",
+          source: "$entrypoint",
+          target: "tools",
+          description: "Use tools.",
+        }],
+      },
+    }),
     resource("billing-specialist", { kind: "prompt", model: "gpt-4.1", instructions: "Handle billing." }, { description: "Resolves billing" }),
     resource("hosted-target", { kind: "hosted", protocol_versions: [{ protocol: "invocations_ws", version: "1.0.0" }] },
       { metadata: { voiceLiveCompatible: "true", bridgeProtocolVersion: "1.0" }, status: "active" }),
@@ -77,6 +105,34 @@ export async function mountStudio(page, configPatch = {}, path = "/demo/") {
     if (url.hostname !== "127.0.0.1") return route.abort();
     const json = (body, status = 200) => route.fulfill({ status, contentType: "application/json", body: JSON.stringify(body) });
     if (url.pathname === "/config") return json({ ...CONFIG, ...configPatch });
+    if (url.pathname === "/api/projects") return json({
+      current_endpoint: CONFIG.host,
+      projects: [
+        { name: CONFIG.backend, account: "sample-account", endpoint: CONFIG.host },
+        {
+          name: "another-project",
+          account: "another-account",
+          endpoint: "https://another.services.ai.azure.com/api/projects/another-project",
+        },
+      ],
+    });
+    if (url.pathname === "/api/project" && request.method() === "POST") {
+      const body = request.postDataJSON();
+      api.projectSelections.push(body.endpoint);
+      return json({
+        endpoint: body.endpoint,
+        project: body.endpoint.split("/").at(-1),
+      });
+    }
+    if (url.pathname === "/api/mcp/probe") return json({
+      ok: true,
+      latency_ms: 12,
+      initialize_ms: 7,
+      tools_ms: 5,
+      tools: ["lookup"],
+      server_name: "fixture-mcp",
+      server_version: "1",
+    });
     if (url.pathname === "/deployments") return json({
       realtime: [{ deployment: "my-realtime", model: "gpt-realtime" }],
       cascaded: [{ deployment: "my-cascaded", model: "gpt-4.1" }],

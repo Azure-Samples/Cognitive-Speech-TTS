@@ -1,7 +1,6 @@
-/* Draws a handoff graph: layer -> row, order -> column.
+/* Local UI handoff graph: layer -> row, order -> column.
    Nodes carry their tool whitelist and tool_choice, edges their routing condition.
-   Ported from docs/voice_agent/01_template_infa/01_template_v1/web/graph.js; the live-call
-   methods are dropped because a template runs in the Demo tab, not on this page. */
+   Live-call state stays in the dashboard Demo tab. */
 
 const NS = "http://www.w3.org/2000/svg";
 const W = 168;

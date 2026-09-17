@@ -156,7 +156,9 @@ async def create_test_app():
     )
     for item in patches:
         item.start()
-    app = portal.build_app(portal.parse_args(["--project-endpoint", ENDPOINT]))
+    app = portal.build_app(portal.parse_args([
+        "--project-endpoint", ENDPOINT, "--no-record-sessions",
+    ]))
     app[portal.DEFAULT_CONFIG_KEY]._credential = FixtureCredential()
 
     async def cleanup(_app):

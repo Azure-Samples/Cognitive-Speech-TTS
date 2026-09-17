@@ -22,6 +22,14 @@ class ReleaseArtifactTests(unittest.TestCase):
         self.assertRegex(upstream["commit"], r"^[0-9a-f]{40}$")
         self.assertTrue(upstream["path"].endswith("/voice_demo"))
 
+    def test_stack_manager_launches_from_owned_directories(self):
+        script = (
+            ROOT.parent / "scripts/manage-local-mcp-and-ui.sh"
+        ).read_text(encoding="utf-8")
+        self.assertIn('cd "${MCP_ROOT}"', script)
+        self.assertIn('cd "${UI_ROOT}"', script)
+        self.assertIn("exec setsid env", script)
+
     def test_shipped_notices_cover_browser_dependencies(self):
         notice = (ROOT / "static/THIRD_PARTY_NOTICES.txt").read_text(encoding="utf-8")
         self.assertIn("Copyright (C) 2011-2015 by Vitaly Puzrin", notice)

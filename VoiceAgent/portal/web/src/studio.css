@@ -90,9 +90,9 @@
   flex: 0 0 auto;
   min-height: 76px;
   padding: 16px 28px;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto minmax(320px, 1fr);
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
   background: #fff;
   border-bottom: 1px solid var(--line);
@@ -111,9 +111,113 @@
 .studio-brand h1 { font-size: 24px; letter-spacing: -0.5px; font-weight: 650; }
 .studio-brand h1 span { font-weight: 400; color: #78857d; }
 .studio-brand p { font-size: 14px; color: var(--muted); margin-top: 1px; letter-spacing: 0.15px; }
+.portal-page-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  background: #f1f4f0;
+}
+.portal-page-nav a,
+.portal-page-nav span {
+  min-width: 108px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #6b7873;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+}
+.portal-page-nav span { color: #fff; background: #147d64; }
+.portal-page-nav a:hover { color: #224e3b; background: #e6ece8; }
 .studio-backend { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .studio-backend label { font-size: 14px; color: var(--muted); white-space: nowrap; }
-.studio-backend select { width: min(31vw, 330px); min-height: 44px; padding-block: 7px; font-size: 16px; }
+.studio-backend { justify-self: end; align-items: flex-start; }
+.project-search { position: relative; width: min(38vw, 440px); }
+.project-search-row { display: flex; gap: 7px; }
+.project-search input {
+  min-width: 0;
+  min-height: 42px;
+  flex: 1 1 auto;
+  padding: 8px 12px;
+  border: 1px solid #cbd6d1;
+  border-radius: 8px;
+  color: var(--text);
+  background: #f7f9f7;
+  font-size: 14px;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.project-search input:focus {
+  outline: none;
+  border-color: #147d64;
+  background: #fff;
+  box-shadow: 0 0 0 3px #147d6420;
+}
+.project-search input[aria-invalid="true"] { border-color: #b54b4b; }
+.project-switch {
+  min-height: 42px;
+  padding: 8px 13px;
+  border: 1px solid #147d64;
+  border-radius: 8px;
+  color: #fff;
+  background: #147d64;
+  font-weight: 700;
+  cursor: pointer;
+}
+.project-switch:hover:not(:disabled) { background: #0f6c55; }
+.project-switch:disabled {
+  border-color: #bdc9c4;
+  color: #7d8a85;
+  background: #e8eeeb;
+  cursor: not-allowed;
+}
+.project-search-hint {
+  display: block;
+  min-height: 17px;
+  margin-top: 4px;
+  color: #6c7b75;
+  font-size: 11px;
+  line-height: 1.35;
+}
+.project-search-hint.error { color: #a63d3d; }
+.project-results {
+  position: absolute;
+  z-index: 30;
+  top: 46px;
+  left: 0;
+  right: 74px;
+  max-height: 310px;
+  overflow-y: auto;
+  padding: 5px;
+  border: 1px solid #cbd6d1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 12px 28px #163c3026;
+}
+.project-result {
+  width: 100%;
+  display: grid;
+  gap: 2px;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 6px;
+  color: var(--text);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.project-result:hover,
+.project-result[aria-selected="true"] { background: #eaf5f1; }
+.project-result-name { font-size: 13px; font-weight: 700; }
+.project-result-account {
+  overflow: hidden;
+  color: #6c7b75;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.project-results-empty { display: block; padding: 10px; color: #6c7b75; font-size: 12px; }
 .studio .shell { height: auto; flex: 1; min-height: 0; display: flex; gap: 20px; padding: 20px 24px 24px; }
 .studio-side-column {
   flex: 0 0 clamp(430px, 43%, 620px);
@@ -493,12 +597,17 @@
   .editor-scroll { overflow: visible; }
   .playground-column { height: 840px; flex: 0 0 auto; }
   .studio .editor-tab { flex: 1; }
-  .studio-backend select { width: min(44vw, 330px); }
+  .studio-header { grid-template-columns: 1fr auto; }
+  .studio-backend { width: auto; }
+  .project-search { width: min(50vw, 440px); }
+  .portal-page-nav { order: 3; width: 100%; justify-content: center; }
   .session-identifiers dl { width: min(400px, 80vw); }
 }
 @media (max-width: 520px) {
-  .studio-header { padding: 14px 16px; flex-wrap: wrap; gap: 14px; }
+  .studio-header { padding: 14px 16px; grid-template-columns: 1fr; gap: 14px; }
   .studio-backend { width: 100%; justify-content: space-between; }
+  .project-search { width: 100%; }
+  .portal-page-nav a, .portal-page-nav span { min-width: 0; flex: 1; }
   .studio-backend select { width: min(65vw, 300px); }
   .studio .shell { padding: 10px; gap: 12px; }
   .studio-panel-header-button { padding-inline: 14px; }

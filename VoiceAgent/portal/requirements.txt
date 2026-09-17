@@ -1,4 +1,5 @@
 azure-identity>=1.19,<2
+azure-ai-projects>=2.3,<3
 requests>=2.32.4,<3
 websockets>=15,<16
 aiohttp>=3.12.15,<4

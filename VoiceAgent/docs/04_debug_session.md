@@ -1,4 +1,4 @@
-# 04 - Debug a local UI session
+# 04 - Debug a portal session
 
 ## Conclusion
 
@@ -11,7 +11,7 @@ This UI is local, and its Voice WebSocket connects to the official Foundry
 Voice Agent endpoint.
 
 Use the [architecture and documentation index](./README.md) for the component
-map, the [local UI guide](../samples/local_UI/README.md) for startup, and
+map, the [portal guide](../portal/README.md) for startup, and
 [02: MCP settings](./02_mcp_settings.md) when local evidence assigns the
 failure to MCP hosting or a business tool.
 
@@ -27,7 +27,8 @@ VoiceAgent/skills/debug-local-session/
 
 Use [`skills/debug-local-session/`](../skills/debug-local-session/) for both
 Agent instructions and the analyzer. Do not look under
-`samples/local_UI/skills`; the Skill is shared at the `VoiceAgent` level.
+Do not look for a component-local Skill under `portal/`; the Skill is shared at
+the `VoiceAgent` level.
 
 ## Before a session recording exists
 
@@ -47,23 +48,23 @@ WebSocket attempt creates a session directory.
 
 ## Recording implementation
 
-[`app.py`](../samples/local_UI/app.py) creates a `SessionRecorder` before
+[`demo_server.py`](../portal/demo_server.py) creates a `SessionRecorder` before
 opening the upstream WebSocket, records both directions, and closes the
 recorder from `finally`.
-[`session_log.py`](../samples/local_UI/session_log.py) writes:
+[`session_log.py`](../portal/session_log.py) writes:
 
 ```text
 <data-dir>/
   server.log
   server.log.1
-  sessions/<UTC>-<local-ui-id>/
+  sessions/<UTC>-<web-id>/
     meta.json
     timeline.log
     events.jsonl
 ```
 
-The default `<data-dir>` is `~/.voice-agent-local-ui`. `LOCAL_UI_DATA_DIR` or
-`app.py --data-dir` overrides it. When another account or service starts the
+The default `<data-dir>` is `~/.voice-agent-portal`. `VOICE_PORTAL_DATA_DIR` or
+`demo_server.py --data-dir` overrides it. When another account or service starts the
 UI, its home directory may differ from the current shell's home directory.
 Check the running command or the startup line in `server.log` before declaring
 a recording missing.
@@ -98,7 +99,7 @@ python skills/debug-local-session/scripts/analyze_session.py --list
 # Resolve any exact session identity.
 python skills/debug-local-session/scripts/analyze_session.py sess_...
 python skills/debug-local-session/scripts/analyze_session.py conv_...
-python skills/debug-local-session/scripts/analyze_session.py local-ui-...
+python skills/debug-local-session/scripts/analyze_session.py web-...
 python skills/debug-local-session/scripts/analyze_session.py 20260916T...
 
 # Use the actual data directory when it was overridden.

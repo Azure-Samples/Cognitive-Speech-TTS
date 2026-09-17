@@ -3,7 +3,7 @@ name: debug-local-session
 description: >-
   Debug the customer Voice Agent sample stack across local setup, Foundry Project and
   model deployment, Agent publication/version, RemoteTool connection, shared
-  MCP deployment/routes, Local UI bridge, and recorded sessions. Use for setup
+  MCP deployment/routes, portal bridge, and recorded sessions. Use for setup
   failures, wrong Project/model, publish errors, disabled Try it now, MCP auth
   or tool failures, handoff aborts, silence, unexpected close, missing
   recordings, or any run/session/Voice Live/Foundry ID. Correlate local stack
@@ -17,7 +17,7 @@ description: >-
 Work from `VoiceAgent/`. Read [references/system-map.md](references/system-map.md)
 before diagnosing Project, deployment, connection, MCP, or UI ownership.
 
-The Local UI runs locally and connects to the official Foundry Voice Agent
+The portal runs locally and connects to the official Foundry Voice Agent
 endpoint.
 
 ## Workflow
@@ -36,7 +36,7 @@ endpoint.
    ```
 
    Read `.local-mcp-and-ui/mcp.log` and
-   `.local-mcp-and-ui/local-ui.log` when a process is not ready.
+   `.local-mcp-and-ui/portal.log` when a process is not ready.
 
 3. If setup, publication, or **Try it now** fails before a recording exists:
    - Run `./scripts/setup-local-examples.sh --check`.
@@ -46,16 +46,16 @@ endpoint.
      is not automatically visible.
    - Inspect `shared_mcp/config/generated/example*.local.env`; never print
      `shared_mcp/state/local/token`.
-   - Call both Local UI template probe endpoints. An MCP is ready only after
+   - Call both portal template probe endpoints. An MCP is ready only after
      authenticated HTTP 200 `initialize` and `tools/list` with all expected
      Agent tools.
    - Verify the selected Project contains the referenced RemoteTool connection
      before changing prompts or business logic.
 
 4. If a recording exists, determine the actual data directory.
-   - Prefer `--data-dir` from the running `app.py` command.
-   - Otherwise use `LOCAL_UI_DATA_DIR`.
-   - Otherwise use `~/.voice-agent-local-ui`.
+   - Prefer `--data-dir` from the running `demo_server.py` command.
+   - Otherwise use `VOICE_PORTAL_DATA_DIR`.
+   - Otherwise use `~/.voice-agent-portal`.
    - Do not assume the current shell user started the UI.
 
 5. Resolve the recording with the bundled analyzer:
@@ -65,7 +65,7 @@ endpoint.
    python skills/debug-local-session/scripts/analyze_session.py <session-id>
    ```
 
-   Accept a run ID, `local-ui-*`, `sess_*`, `conv_*`, or Agent name. Pass
+   Accept a run ID, `web-*`, `sess_*`, `conv_*`, or Agent name. Pass
    `--data-dir /path/to/data` for an override. If an Agent name matches
    multiple recordings, use an exact ID or add `--latest` only when the newest
    run is intentionally the target. Use `--json` for structured output.
@@ -91,7 +91,7 @@ endpoint.
    | `session.handoff.started` then `.aborted` | Target prepare/activation; use `frame.error.code`, edge, and target node |
    | MCP/function call `.failed` | Tool execution path; correlate tool/item ID with backend logs |
    | Tool `.completed` but no next response/handoff | Response continuation or scheduling |
-   | `bridge` error in meta/server log | Local UI proxy or network transport |
+   | `bridge` error in meta/server log | Portal proxy or network transport |
    | Normal close with no failure | No recorded infrastructure failure; business correctness remains unproven |
 
 8. Escalate only after fixing the local evidence.
@@ -168,7 +168,7 @@ Always confirm these joins instead of validating each component in isolation:
 Return a conclusion-first report:
 
 1. **Conclusion**: first failed transition and owning fault domain.
-2. **Session identity**: run ID, Agent, `local-ui-*`, `sess_*`, `conv_*`, UTC
+2. **Session identity**: run ID, Agent, `web-*`, `sess_*`, `conv_*`, UTC
    window, upstream, and final active node.
 3. **Evidence**: event type, offset, direction, edge/tool, error code, and
    artifact path/line.

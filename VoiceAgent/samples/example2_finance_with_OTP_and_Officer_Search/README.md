@@ -29,15 +29,15 @@ search, confirmation, and call completion. It has no handoff graph.
 
 Use [Example 1](../example1_finance_with_handoff/README.md) instead when the
 goal is to validate multi-node handoff topology, target activation, and
-stage-specific tool access. Both examples use the same Docker image, but this
+stage-specific tool access. Both examples use the same shared MCP service, but this
 example targets `/mcp/finance-otp-officer`.
 
 ## Prerequisites
 
 - Python 3.10 or later and Git.
 - Access to a Microsoft Foundry Project with a compatible realtime model.
-- Permission to deploy the included shared MCP container and create a Project
-  connection.
+- Permission to create a Project connection and either host the included MCP
+  locally through Dev Tunnel or deploy it to Azure Container Apps.
 - A local Azure identity with permission to manage and invoke Agents.
 
 If you have only a new Azure subscription, complete
@@ -82,7 +82,7 @@ MCP config must have been generated for that same Project.
 The portable definition uses `model_type: managed` and defaults to
 `VOICE_AGENT_MODEL=gpt-realtime-2.1`. If the Project does not support that
 exact model, try `gpt-realtime-1.5`, then another versioned managed identifier
-confirmed for the Project. Keep the same value in the Local UI `.env`.
+confirmed for the Project. Keep the same value in the portal `.env`.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
@@ -147,7 +147,7 @@ template dashboard also consumes that definition directly.
 ## Debug
 
 Use the shared [`debug-local-session` Skill](../../skills/debug-local-session/)
-for Project/model publication, OTP/officer MCP, Local UI, or recorded-session
+for Project/model publication, OTP/officer MCP, portal, or recorded-session
 failures:
 
 ```bash

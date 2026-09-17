@@ -26,19 +26,19 @@ and an internally hosted MCP service are not required at runtime.
 
 Use this example to validate a multi-stage Agent: it has 13 nodes, 24 handoff
 edges, stage-specific instructions, and restricted MCP tool access per node.
-The local UI displays both the authored graph and live handoff transitions.
+The portal displays both the authored graph and live handoff transitions.
 
 Use [Example 2](../example2_finance_with_OTP_and_Officer_Search/README.md)
 instead when the goal is a smaller flat MCP-only Agent without handoff
-topology. Both examples use the same Docker image, but this example targets
+topology. Both examples use the same shared MCP service, but this example targets
 `/mcp/finance-handoff`.
 
 ## Prerequisites
 
 - Python 3.10 or later and Git.
 - Access to a Microsoft Foundry Project with a compatible realtime model.
-- Permission to deploy the included shared MCP container and create a Project
-  connection.
+- Permission to create a Project connection and either host the included MCP
+  locally through Dev Tunnel or deploy it to Azure Container Apps.
 - A local Azure identity with permission to manage and invoke Agents.
 
 If you have only a new Azure subscription, complete
@@ -83,7 +83,7 @@ MCP config must have been generated for that same Project.
 The portable definition uses `model_type: managed` and defaults to
 `VOICE_AGENT_MODEL=gpt-realtime-2.1`. If the Project does not support that
 exact model, try `gpt-realtime-1.5`, then another versioned managed identifier
-confirmed for the Project. Keep the same value in the Local UI `.env`.
+confirmed for the Project. Keep the same value in the portal `.env`.
 
 `AZURE_CREDENTIAL_MODE=default` uses `DefaultAzureCredential`. Set it to `cli`
 only when local validation must use the identity selected by `az login`.
@@ -146,7 +146,7 @@ template dashboard also consumes that definition directly.
 ## Debug
 
 Use the shared [`debug-local-session` Skill](../../skills/debug-local-session/)
-for Project/model publication, handoff, MCP, Local UI, or recorded-session
+for Project/model publication, handoff, MCP, portal, or recorded-session
 failures:
 
 ```bash

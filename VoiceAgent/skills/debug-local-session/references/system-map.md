@@ -3,19 +3,19 @@
 ## Read this when
 
 Use this reference for Project, model deployment, Agent publication,
-RemoteTool connection, MCP deployment, Local UI, or cross-layer failures.
+RemoteTool connection, MCP deployment, portal, or cross-layer failures.
 
 ## Runtime topology
 
-This reference covers only the customer-facing sample Local UI and its
+This reference covers the Voice Agent portal and its
 official Foundry path.
 
 ```text
 browser
   |
-  | localhost / forwarded Local UI port
+  | localhost / forwarded portal port
   v
-Local UI Python server
+Portal Python server
   |-- Azure identity: lists Projects and publishes Agent versions
   |-- Voice WebSocket proxy + session recorder
   |
@@ -51,11 +51,12 @@ The repository does not hardcode one customer Project. Resolve the actual
 Project from:
 
 1. `meta.json` `backend` and `upstream` for an existing session;
-2. the Project selected in the Local UI;
-3. `AZURE_AI_PROJECT_ENDPOINT` in each sample and Local UI `.env`.
+2. the Project selected in the portal;
+3. `AZURE_AI_PROJECT_ENDPOINT` in each sample and
+   `AZURE_VOICE_AGENTS_ENDPOINT` in portal `.env`.
 
 The two sample `.env` files should normally target the same Project used by the
-UI. The Local UI may switch Projects and upsert the fixed connection there
+UI. The portal may switch Projects and upsert the fixed connection there
 before template publication, so never assume a connection created for one
 Project exists in another.
 
@@ -65,7 +66,7 @@ Agent publication is immutable:
 - Example 2 source:
   `samples/example2_finance_with_OTP_and_Officer_Search/agent.json`
 - CLI publication: each example's `sample.py`
-- UI publication: `samples/local_UI/app.py`
+- UI publication: `portal/demo_server.py`
 
 `sample.py check` verifies the current active version against materialized
 source settings. A matching Agent name does not prove a matching version.
@@ -117,7 +118,7 @@ and creates local `.env` files.
 
 - MCP Docker container;
 - named Dev Tunnel host;
-- Local UI process;
+- Portal process;
 - template MCP readiness checks.
 
 State and logs:
@@ -126,8 +127,8 @@ State and logs:
 .local-mcp-and-ui/
   mcp.pid
   mcp.log
-  local-ui.pid
-  local-ui.log
+  portal.pid
+  portal.log
 ```
 
 The lower-level `shared_mcp/scripts/e2e-local.sh` starts only the MCP path and
@@ -140,7 +141,7 @@ leaves its tunnel host running.
 | Local dependencies/auth | `setup-local-examples.sh --check` |
 | MCP/UI processes | `manage-local-mcp-and-ui.sh status`, state logs |
 | Local MCP process | `http://127.0.0.1:18003/healthz`, Docker status |
-| Public MCP/auth/tools | Local UI template probe JSON; authenticated HTTP 200 |
+| Public MCP/auth/tools | Portal template probe JSON; authenticated HTTP 200 |
 | Project selection | UI config/cookie, session `meta.json`, sample `.env` |
 | Model deployment | account deployment list, `model_type`, exact `model` |
 | Agent publication | `sample.py publish/check`, version and fingerprints |
@@ -154,7 +155,7 @@ leaves its tunnel host running.
 Run from `VoiceAgent/`. These commands do not print the MCP bearer token.
 
 ```bash
-# Local processes and their configured Local UI URL.
+# Local processes and their configured portal URL.
 ./scripts/manage-local-mcp-and-ui.sh status
 
 # Dependency, environment, and authentication readiness.
@@ -163,7 +164,7 @@ Run from `VoiceAgent/`. These commands do not print the MCP bearer token.
 # Local MCP health.
 curl -fsS http://127.0.0.1:18003/healthz
 
-# Use the Local UI URL printed by the status command.
+# Use the portal URL printed by the status command.
 curl -fsS http://127.0.0.1:18098/healthz
 curl -fsS \
   http://127.0.0.1:18098/api/templates/finance-example/mcp/probe
