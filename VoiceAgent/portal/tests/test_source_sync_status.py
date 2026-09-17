@@ -102,11 +102,11 @@ class SourceSyncStatusTests(unittest.TestCase):
         )
         source = manifest["source"]
         self.assertEqual(
-            "feb7ee1e1ab0cad98e630ba5f83a778fc3db1842",
+            "4fc0c0025112fadd534af84e43a88421d8fd08ec",
             source["base_commit"],
         )
         self.assertEqual(
-            "refs/heads/agents/add-voice-agent-template-prototypes",
+            "refs/heads/main",
             source["accepted_ref"],
         )
         self.assertEqual("2026-09-17", source["accepted_on"])

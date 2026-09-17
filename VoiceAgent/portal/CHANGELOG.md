@@ -12,7 +12,8 @@ standalone/public adapters until the next source pin is recorded.
 
 **Accepted multi-root sync baseline:** advanced from
 `e713a37c4cdb3282157cbaf46b6d425bcd984c05` to
-`feb7ee1e1ab0cad98e630ba5f83a778fc3db1842` from PR 41103 after all mapped
+`4fc0c0025112fadd534af84e43a88421d8fd08ec`, the final `main` merge commit
+for PR 41103, after all mapped
 `voice_demo`, `template_view`, template-test, and Finance sample mappings were
 reviewed. The PR's removal of unrelated UMW/demo media is outside the declared
 portal sync roots. The source-only ACA packaging regression is explicitly

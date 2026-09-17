@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": {
-    "base_commit": "feb7ee1e1ab0cad98e630ba5f83a778fc3db1842",
-    "accepted_ref": "refs/heads/agents/add-voice-agent-template-prototypes",
+    "base_commit": "4fc0c0025112fadd534af84e43a88421d8fd08ec",
+    "accepted_ref": "refs/heads/main",
     "accepted_on": "2026-09-17",
     "roots": {
       "voice_demo": "tests/voice-agent-tests/voice-agents-tests-dashboard/voice_demo",
