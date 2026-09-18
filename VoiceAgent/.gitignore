@@ -2,6 +2,7 @@
 .local-mcp-and-ui/
 samples/.env
 samples/.env.tip
+samples/subagent/**/.env
 samples/__pycache__/
 agent-reply-*.wav
 voice-agent-output/

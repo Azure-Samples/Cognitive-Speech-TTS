@@ -1,0 +1,6 @@
+# Exact preview build used by the subagent samples.
+azure-ai-projects @ https://pkgs.dev.azure.com/azure-sdk/29ec6040-b234-4e31-b139-33dc4287b756/_packaging/3572dbf9-b5ef-433b-9137-fc4d7768e7cc/pypi/download/azure-ai-projects/2.7a20260906001/azure_ai_projects-2.7.0a20260906001-py3-none-any.whl#sha256=24e206c4eaef34d1186ca3343f8bb29073a90bdd9228756cb4fbade87fdf4640
+aiohttp>=3.12.0,<4
+azure-identity==1.25.3
+PyAudio==0.2.14
+python-dotenv==1.2.2
