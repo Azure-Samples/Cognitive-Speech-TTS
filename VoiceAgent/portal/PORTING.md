@@ -77,13 +77,15 @@ explicit review targets for shared Envoy pack route, tool inventory,
 authentication, or deployment changes. Dashboard synchronization is not
 complete until both the dashboard changes and this MCP review are considered.
 
-`SOURCE_SYNC.json` currently accepts PR 41103 source commit
-`88185887035f63a6b81114d7b38305532ebb6ad0` on
-`refs/heads/agents/add-voice-agent-template-prototypes`. `UPSTREAM.json` keeps
+`SOURCE_SYNC.json` currently accepts PR 41103 merge commit
+`4fc0c0025112fadd534af84e43a88421d8fd08ec` on
+`refs/heads/main`. `UPSTREAM.json` keeps
 the immutable first-port `voice_demo` provenance at `e713a37...`; it is not the
 accepted multi-root synchronization baseline. Files removed by the PR outside
 the roots listed in `SOURCE_SYNC.json`—including unrelated demos and media—do
-not belong to the portal synchronization surface.
+not belong to the portal synchronization surface. The source dashboard's ACA
+image packaging regression is explicitly omitted because it has no standalone
+portal equivalent.
 
 **The tool never fetches, pulls, checks out, overwrites, or merges files.**
 
