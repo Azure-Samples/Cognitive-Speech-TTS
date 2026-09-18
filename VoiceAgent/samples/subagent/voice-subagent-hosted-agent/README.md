@@ -43,12 +43,6 @@ cp .env.example .env
 On Windows PowerShell, use `.venv\Scripts\Activate.ps1` and
 `Copy-Item .env.example .env`.
 
-The requirements pin **`azure-ai-projects==2.7.0a20260906001`** from the
-[public Azure SDK feed](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-python/pypi/simple/azure-ai-projects/),
-matching the prompt-basic sample. The direct wheel URL and SHA-256 select
-that exact development preview build without changing the package index for
-other dependencies. Its APIs may change; use this sample's own environment.
-
 Edit `.env`:
 
 - `PROJECT_ENDPOINT`: the project containing both agents.

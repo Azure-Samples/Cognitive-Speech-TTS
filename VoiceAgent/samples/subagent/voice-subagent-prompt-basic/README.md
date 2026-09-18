@@ -31,13 +31,6 @@ cp .env.example .env
 On Windows PowerShell, use `.venv\Scripts\Activate.ps1` and
 `Copy-Item .env.example .env`.
 
-The requirements pin **`azure-ai-projects==2.7.0a20260906001`** from the
-[public Azure SDK feed](https://pkgs.dev.azure.com/azure-sdk/public/_packaging/azure-sdk-for-python/pypi/simple/azure-ai-projects/).
-The direct wheel URL and SHA-256 select that exact build without changing the
-package index for other dependencies. This is a development preview build;
-its APIs may change. Use this sample's own virtual environment rather than
-upgrading another project's SDK.
-
 Edit `.env` with your project endpoint and deployment names.
 `SUBAGENT_MODEL_DEPLOYMENT` must be an existing text-model deployment in that
 project. Neither script deploys models.
