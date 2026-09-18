@@ -1,0 +1,3 @@
+../../../dist/azure_ai_projects-2.7.0b1-py3-none-any.whl[realtime]
+azure-identity==1.25.3
+python-dotenv==1.2.2
