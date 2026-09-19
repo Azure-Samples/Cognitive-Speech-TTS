@@ -1,11 +1,11 @@
-"""Offline contract tests against the bundled Projects SDK, not a client stub."""
+"""Offline contract tests against the released Projects SDK, not a client stub."""
 
 from __future__ import annotations
 
 import asyncio
 import base64
-import hashlib
 import importlib
+from importlib import metadata
 import io
 import json
 import os
@@ -21,10 +21,10 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
 from urllib.parse import parse_qs, urlparse
-from zipfile import ZipFile
 
 from aiohttp import WSMessage, WSMsgType
-from azure.ai.projects.aio import AIProjectClient, AsyncRealtimeConnection
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.aio.operations import AsyncBetaRealtimeConnection
 from azure.core.credentials import AccessToken
 from azure.core.exceptions import HttpResponseError
 from azure.core.pipeline.transport import AsyncHttpResponse, AsyncHttpTransport
@@ -199,53 +199,31 @@ def audio_metadata(item_id=None, blob_uri=None):
 
 
 class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
-    def test_bundled_wheel(self):
-        wheels = list((ROOT / "dist").glob("*.whl"))
-        self.assertEqual(len(wheels), 1)
-        wheel = wheels[0]
-        self.assertEqual(wheel.name, "azure_ai_projects-2.7.0b1-py3-none-any.whl")
+    def test_released_sdk_requirements(self):
         self.assertIn(
-            hashlib.sha256(wheel.read_bytes()).hexdigest(),
-            (ROOT / "dist" / "README.md").read_text(encoding="utf-8"),
+            "voice", metadata.metadata("azure-ai-projects").get_all("Provides-Extra")
         )
-        self.assertIn(
-            f"./dist/{wheel.name}[realtime]",
-            (ROOT / "samples" / "requirements.txt").read_text(encoding="utf-8"),
-        )
-        with ZipFile(wheel) as archive:
-            self.assertIsNone(archive.testzip())
-            self.assertTrue(
-                all(
-                    name.startswith(("azure/", "azure_ai_projects-2.7.0b1.dist-info/"))
-                    for name in archive.namelist()
-                ),
-                "Build the wheel from a clean SDK checkout without stale build outputs.",
-            )
-            self.assertIn(
-                "azure/ai/projects/aio/operations/_operations.py",
-                archive.namelist(),
-            )
-            for name in (
-                "azure/ai/projects/_realtime.py",
-                "azure/ai/projects/aio/_realtime.py",
-                "azure_ai_projects-2.7.0b1.dist-info/licenses/LICENSE",
-            ):
-                self.assertIn(name, archive.namelist())
-            self.assertIn(
-                b"Provides-Extra: realtime",
-                archive.read("azure_ai_projects-2.7.0b1.dist-info/METADATA"),
-            )
-            installed_root = Path(
-                importlib.import_module("azure.ai.projects").__file__
-            ).parent
-            for name in archive.namelist():
-                if name.startswith("azure/ai/projects/"):
-                    installed = installed_root / name.removeprefix("azure/ai/projects/")
-                    self.assertEqual(
-                        installed.read_bytes(),
-                        archive.read(name),
-                        f"Install the bundled SDK wheel: {name} differs.",
-                    )
+        voice_requirements = {
+            "requirements.txt",
+            "subagent/client/requirements.txt",
+            "subagent/voice-subagent-prompt-basic/requirements.txt",
+            "subagent/voice-subagent-hosted-agent/requirements.txt",
+        }
+        management_requirements = {
+            "create-agent-with-iq-avatar-voice/requirements.txt",
+            "example1_finance_with_handoff/requirements.txt",
+            "example2_finance_with_OTP_and_Officer_Search/requirements.txt",
+        }
+        for relative_path in sorted(voice_requirements | management_requirements):
+            path = ROOT / "samples" / relative_path
+            requirements = path.read_text(encoding="utf-8").splitlines()
+            projects = [
+                line for line in requirements
+                if "azure-ai-projects" in line or "azure_ai_projects" in line
+            ]
+            with self.subTest(path=relative_path):
+                extra = "[voice]" if relative_path in voice_requirements else ""
+                self.assertEqual(projects, [f"azure-ai-projects{extra}>=2.7.0"])
 
     def test_supporting_scripts_import(self):
         with patch.dict(os.environ, {"PYTHON_DOTENV_DISABLED": "1"}):
@@ -255,6 +233,22 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
             for path in sorted((ROOT / "skills").rglob("*.py")):
                 with self.subTest(path=str(path.relative_to(ROOT))):
                     runpy.run_path(str(path))
+
+    def test_subagent_scripts_import_and_build_definitions(self):
+        for path in sorted((ROOT / "samples" / "subagent").rglob("*.py")):
+            with (
+                self.subTest(path=str(path.relative_to(ROOT))),
+                patch.object(sys, "path", [str(path.parent), *sys.path]),
+                patch.dict(sys.modules),
+                patch.dict(os.environ, {"PYTHON_DOTENV_DISABLED": "1"}),
+            ):
+                sys.modules.pop("sample_utils", None)
+                namespace = runpy.run_path(str(path))
+                if "voice_definition" in namespace:
+                    definition = namespace["voice_definition"](
+                        "gpt-realtime", "subagent", "en-US-AvaNeural"
+                    )
+                    self.assertEqual(definition.as_dict()["kind"], "voice")
 
     async def test_trace_url_uses_only_voice_agent_bundle(self):
         trace_urls = importlib.import_module("foundry_trace_url")
@@ -336,7 +330,7 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
                     self.assertIs(raised.exception, capture_error)
                     result = None
         processor.assert_called_once()
-        self.assertIsInstance(processor.call_args.args[0], AsyncRealtimeConnection)
+        self.assertIsInstance(processor.call_args.args[0], AsyncBetaRealtimeConnection)
         processor.return_value.start_capture.assert_called_once()
         processor.return_value.start_playback.assert_called_once()
         processor.return_value.shutdown.assert_called_once()
@@ -351,7 +345,10 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
             ),
         )
         self.assertEqual(handshake.kwargs["params"]["api-version"], "v1")
-        self.assertIn("ai-projects/2.7.0b1", handshake.kwargs["params"]["x-ms-client-sdk"])
+        self.assertIn(
+            f"ai-projects/{metadata.version('azure-ai-projects')}",
+            handshake.kwargs["params"]["x-ms-client-sdk"],
+        )
         self.assertEqual(
             handshake.kwargs["headers"]["Foundry-Features"], "VoiceAgents=V1Preview"
         )
@@ -382,7 +379,7 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
             with self.subTest(sample=sample.__name__):
                 websocket = MagicMock()
                 websocket.send_str = AsyncMock()
-                connection = AsyncRealtimeConnection(websocket, MagicMock())
+                connection = AsyncBetaRealtimeConnection(websocket, MagicMock())
                 pyaudio = MagicMock()
                 scheduled = []
 
@@ -912,7 +909,7 @@ class ProjectsSDKSampleTests(unittest.IsolatedAsyncioTestCase):
         ) as client:
             with self.assertRaises(HttpResponseError) as raised:
                 await artifacts._wait_for_completed_conversation(
-                    client.agent_endpoint_conversations,
+                    client.beta.voice_agents.conversations,
                     AGENT_NAME,
                     CONVERSATION_ID,
                     timeout_seconds=1,

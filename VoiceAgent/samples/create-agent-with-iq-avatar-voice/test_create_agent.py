@@ -17,7 +17,7 @@ import create_agent as app
 
 ROOT = Path(__file__).resolve().parent
 try:
-    from azure.ai.projects import AIProjectClient, __version__ as sdk_version
+    from azure.ai.projects import AIProjectClient
     from azure.ai.projects.models import (
         AgentDetails, AgentVersionDetails, VoiceAgentAudioOutputConfig,
         VoiceAgentAvatarConfig, VoiceAgentDefinition,
@@ -26,11 +26,11 @@ try:
     from azure.core.pipeline.transport import HttpResponse, HttpTransport
 
     app.require_sdk()
-    SDK_AVAILABLE = sdk_version == "2.7.0b1"
+    SDK_AVAILABLE = True
 except (ImportError, app.ConfigurationError):
     SDK_AVAILABLE = False
 
-SDK_REQUIRED = unittest.skipUnless(SDK_AVAILABLE, "Exact bundled Projects SDK dependencies are unavailable")
+SDK_REQUIRED = unittest.skipUnless(SDK_AVAILABLE, "Projects SDK >=2.7.0 dependencies are unavailable")
 
 
 PERSONAL_MODELS = ("DragonLatestNeural", "DragonHDOmniLatestNeural")
@@ -449,15 +449,27 @@ class ConfigurationTests(unittest.TestCase):
             with self.subTest(key=key, value=value), self.assertRaises(app.ConfigurationError):
                 app.validate_config(settings)
 
-    def test_sdk_provenance_accepts_only_bundled_wheel(self):
-        digest = "f857a1281e2fa3414f25e02aed95dfe2275495027b0a764f38921a8589f15e75"
-        dist = MagicMock(version="2.7.0b1")
-        dist.read_text.return_value = json.dumps({"archive_info": {"hashes": {"sha256": digest}}})
-        with patch.object(app.metadata, "distribution", return_value=dist):
-            app.require_sdk()
-            dist.read_text.return_value = "{}"
-            with self.assertRaises(app.ConfigurationError):
+    def test_sdk_accepts_released_version_without_wheel_provenance(self):
+        for version in ("2.7.0", "2.7.1", "2.8.0", "2.10.0", "3.0.0"):
+            dist = MagicMock(version=version)
+            with self.subTest(version=version), patch.object(
+                app.metadata, "distribution", return_value=dist
+            ):
                 app.require_sdk()
+            dist.read_text.assert_not_called()
+
+    def test_sdk_rejects_unsupported_versions(self):
+        for version in ("2.7.0b1", "2.7.0rc1", "2.6.0", "invalid"):
+            with self.subTest(version=version), patch.object(
+                app.metadata, "distribution", return_value=MagicMock(version=version)
+            ), self.assertRaisesRegex(app.ConfigurationError, "azure-ai-projects>=2.7.0"):
+                app.require_sdk()
+
+    def test_sdk_reports_missing_package(self):
+        with patch.object(
+            app.metadata, "distribution", side_effect=app.metadata.PackageNotFoundError
+        ), self.assertRaisesRegex(app.ConfigurationError, "azure-ai-projects>=2.7.0"):
+            app.require_sdk()
 
     def test_duplicate_json_keys_rejected(self):
         with tempfile.TemporaryDirectory() as temp:
@@ -650,8 +662,9 @@ class HttpContractTests(unittest.TestCase):
     AGENT_GUID = "00000000-0000-0000-0000-000000000000"
     VERSION = "7"
     PREVIEW_HEADER = (
-        "WorkflowAgents=V1Preview,ExternalAgents=V1Preview,VoiceAgents=V1Preview,"
-        "DraftAgents=V1Preview,AgentsOptimization=V2Preview,ModelRouterControls=V1Preview"
+        "WorkflowAgents=V1Preview,ExternalAgents=V1Preview,DraftAgents=V1Preview,"
+        "VoiceAgents=V1Preview,DigitalWorker=V1Preview,GitHubCopilot=V1Preview,"
+        "Skills=V1Preview,AgentsOptimization=V2Preview,ModelRouterControls=V1Preview"
     )
 
     def setUp(self):

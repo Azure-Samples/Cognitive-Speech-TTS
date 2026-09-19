@@ -1,4 +1,4 @@
-# Finance Example Voice Agent - vNext SDK sample
+# Finance Example Voice Agent - Projects SDK sample
 
 Start with the [architecture and documentation index](../../docs/README.md).
 For the complete local MCP serving, publication, and UI workflow, use
@@ -7,15 +7,15 @@ For the complete local MCP serving, publication, and UI workflow, use
 ## Conclusion
 
 This sample publishes a generic Finance English Realtime profile through
-the preview `azure-ai-projects` unified Agents API and runs a text-only Voice
+the `azure-ai-projects` unified Agents API and runs a text-only Voice
 WebSocket smoke test. The profile defaults to service-managed
 `gpt-realtime-2.1` with a 13-node,
-24-edge `handoff` graph. Because `handoff` is not in the pinned typed
+24-edge `handoff` graph. Because `handoff` is not in the SDK 2.7.0 typed
 `VoiceAgentDefinition`, publication uses the SDK's raw-body `create_version`
 overload and verifies that the graph survives readback.
 
-The realtime client uses `azure-identity` plus `websockets`. The pinned SDK has
-no public high-level Voice Agent realtime connector.
+The realtime client uses `azure-identity` plus `websockets` directly rather than
+the SDK's high-level Voice Agent connector.
 
 The committed `agent.json` is a self-contained, customer-neutral wire
 definition with the matching Finance MCP tool contracts. The customer-owned
@@ -96,9 +96,8 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-The dependency is pinned to the exact vNext SDK source commit used to author
-this sample. It is not evidence that the same Voice Agent surface is available
-from a released PyPI wheel.
+The dependency requires `azure-ai-projects>=2.7.0`
+from PyPI. No Azure SDK source checkout is required.
 
 ## Publish and verify
 

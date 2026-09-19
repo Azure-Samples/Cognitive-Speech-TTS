@@ -29,7 +29,7 @@ the request mentions Finance, Templates, or the shared MCP.
 | Run the complete Finance workflow | [`docs/README.md`](docs/README.md) | Ordered subscription, MCP, sample, portal, and debugging guides |
 | Work on or deploy the Finance MCP | [`shared_mcp/README.md`](shared_mcp/README.md) | Shared MCP image, Finance routes, local Dev Tunnel hosting, and Azure Container Apps deployment |
 | Create an IQ + voice + avatar Agent | [`samples/create-agent-with-iq-avatar-voice/README.md`](samples/create-agent-with-iq-avatar-voice/README.md) | Portal-first Andrew Dragon HD, Harry Business, Knowledge IQ, and optional Python creation |
-| Inspect the bundled preview SDK | [`dist/README.md`](dist/README.md) | Python wheel and .NET package provenance, checksums, and build records |
+| Inspect SDK package information | [`dist/README.md`](dist/README.md) | Public Python SDK dependencies, historical build record, and bundled .NET package reference |
 | Use the coding-agent workflows | [`skills/`](skills/) | Voice Agent creation, IQ/Toolbox provisioning, and local-session debugging |
 
 ## Instructions for coding agents

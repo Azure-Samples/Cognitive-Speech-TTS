@@ -22,10 +22,8 @@ files.
 3. Copy `samples/.env.example` to `samples/.env` and populate only the values
    required by the selected scenario.
 4. From `VoiceAgent`, run `python -m pip install -r samples/requirements.txt`.
-  The requirements file installs the bundled preview
-  `azure-ai-projects` 2.7.0b1 wheel from `xitzhang/voice-agent-pupr`, its
-  `[realtime]` extra, and all other sample dependencies. Use this wheel, not a
-  same-version PyPI build.
+  The requirements file installs `azure-ai-projects` 2.7.0 or later
+  package from PyPI, its `[voice]` extra, and all other sample dependencies.
 5. Run the matching sample:
    - `python samples/simple_rest_lifecycle.py`
    - `python samples/basic_voice_agent.py`
@@ -75,11 +73,11 @@ files.
 
 - Add `Foundry-Features: VoiceAgents=V1Preview` to direct REST requests.
 - Use `azure.ai.projects.aio.AIProjectClient(allow_preview=True, ...)`.
-  Reuse this client for `client.realtime.connect(agent_name=agent_name)`.
+  Reuse this client for `client.beta.voice_agents.realtime.connect(agent_name=agent_name)`.
   The SDK supplies the WebSocket URL, authentication, and preview headers;
   do not use `azure-ai-voicelive` or override private connection methods.
   Send raw PCM bytes with `connection.input_audio_buffer.append(audio=pcm)`.
-  Conversation operations under `client.agent_endpoint_conversations` also
+  Conversation operations under `client.beta.voice_agents.conversations` also
   supply their preview header when `allow_preview=True`.
 - Use the project endpoint form
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
@@ -101,7 +99,7 @@ files.
 
 - Run `python -m compileall samples`.
 - Run `python -m unittest discover -s tests -v` for offline SDK contract tests.
-- Import every sample with the supplied preview wheel installed.
+- Import every sample with SDK 2.7.0 or later installed.
 - Validate this skill with the skill creator's `quick_validate.py`.
 - Scan the customer package for secrets, internal host names, local paths,
   private repository links, and placeholder values outside `.env.example`.

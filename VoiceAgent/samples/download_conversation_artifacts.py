@@ -14,7 +14,7 @@ from typing import Any
 
 import aiohttp
 from azure.ai.projects.aio import AIProjectClient
-from azure.ai.projects.aio.operations import AgentEndpointConversationsOperations
+from azure.ai.projects.aio.operations import BetaVoiceAgentsConversationsOperations
 from azure.ai.projects.models import VoiceConversation
 from azure.core.exceptions import HttpResponseError
 from azure.core.pipeline.transport import AioHttpTransport
@@ -59,7 +59,7 @@ async def _write_stream(stream: Any, path: Path) -> None:
 
 
 async def _wait_for_completed_conversation(
-    conversations: AgentEndpointConversationsOperations,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     timeout_seconds: float,
@@ -69,7 +69,7 @@ async def _wait_for_completed_conversation(
     last_status = "unknown"
     while asyncio.get_running_loop().time() < deadline:
         try:
-            conversation = await conversations.get_agent_conversation(
+            conversation = await conversations.get(
                 agent_name,
                 conversation_id,
             )
@@ -95,7 +95,7 @@ async def _wait_for_completed_conversation(
 
 
 async def _save_item_audio(
-    conversations: AgentEndpointConversationsOperations,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     items: list[dict[str, Any]],
@@ -110,7 +110,7 @@ async def _save_item_audio(
         if not item_id:
             continue
         try:
-            metadata = await conversations.get_agent_conversation_item_audio(
+            metadata = await conversations.get_audio_item(
                 agent_name,
                 conversation_id,
                 item_id,
@@ -136,7 +136,7 @@ async def _save_item_audio(
                 f"{metadata.blob_uri}"
             )
         else:
-            stream = await conversations.get_agent_conversation_item_audio_content(
+            stream = await conversations.download_audio_item(
                 agent_name,
                 conversation_id,
                 item_id,
@@ -155,7 +155,7 @@ async def _save_item_audio(
 
 
 async def _save_merged_audio(
-    conversations: AgentEndpointConversationsOperations,
+    conversations: BetaVoiceAgentsConversationsOperations,
     agent_name: str,
     conversation_id: str,
     output_path: Path,
@@ -165,7 +165,7 @@ async def _save_merged_audio(
     deadline = asyncio.get_running_loop().time() + timeout_seconds
     while asyncio.get_running_loop().time() < deadline:
         try:
-            metadata = await conversations.get_agent_conversation_audio(
+            metadata = await conversations.get_audio(
                 agent_name,
                 conversation_id,
             )
@@ -180,7 +180,7 @@ async def _save_merged_audio(
                     "metadata": metadata_json,
                 }
 
-            stream = await conversations.get_agent_conversation_audio_content(
+            stream = await conversations.download_audio(
                 agent_name,
                 conversation_id,
             )
@@ -220,7 +220,7 @@ async def download_conversation_artifacts(
     turns_dir = conversation_dir / "turns"
     turns_dir.mkdir(parents=True, exist_ok=True)
 
-    conversations = client.agent_endpoint_conversations
+    conversations = client.beta.voice_agents.conversations
     conversation = await _wait_for_completed_conversation(
         conversations,
         agent_name,
@@ -229,7 +229,7 @@ async def download_conversation_artifacts(
     )
     items = [
         _json_value(item)
-        async for item in conversations.list_agent_conversation_items(
+        async for item in conversations.list_items(
             agent_name,
             conversation_id,
             order="asc",
@@ -237,7 +237,7 @@ async def download_conversation_artifacts(
     ]
     responses = [
         _json_value(response)
-        async for response in conversations.list_agent_conversation_responses(
+        async for response in conversations.list_responses(
             agent_name,
             conversation_id,
             order="asc",

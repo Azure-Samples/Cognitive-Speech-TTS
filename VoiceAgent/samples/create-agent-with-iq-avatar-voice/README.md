@@ -145,7 +145,7 @@ python -c 'import create_agent; create_agent.require_sdk()'
 python create_agent.py --help
 ```
 
-For an existing verified installation, activate its environment and skip creation/install. Run the remaining commands from `VoiceAgent/samples/create-agent-with-iq-avatar-voice`. The requirements use the **bundled** `azure-ai-projects` 2.7.0b1 build, not an arbitrary package with the same version. Its source and checksum are in [dist/README.md](../../dist/README.md). No `[realtime]` extra, PyAudio or Voice Live SDK is needed. Transitive dependencies resolve from the wheel's metadata.
+For an existing verified installation of 2.7.0 or later, activate its environment and skip creation/install. Upgrade older installations with this sample's requirements first. Run the remaining commands from `VoiceAgent/samples/create-agent-with-iq-avatar-voice`. The requirements use `azure-ai-projects>=2.7.0` from PyPI. No `[voice]` extra, PyAudio or Voice Live SDK is needed. Transitive dependencies resolve from the package metadata.
 
 Sign in through Azure CLI or another supported `DefaultAzureCredential` identity before cloud commands. `validate` needs neither credentials nor network access. The CLI does not load or rewrite `.env` files.
 
@@ -272,7 +272,7 @@ In supported Voice Live tooling for the intended runtime resource, select the cr
 | `avatar.output_protocol` | Explicit `webrtc` or `websocket`; the template selects `webrtc` |
 | `store` | Explicitly `false` in the Python templates; enable storage only after deciding retention and access |
 
-Use the native field names from the [bundled SDK](../../dist/README.md), not a public Voice Live `session.update` object. Keep instructions requiring retrieval for factual questions, source references and an honest unknown answer when the corpus does not support a claim.
+Use the native field names from the [Projects SDK 2.7.0](https://pypi.org/project/azure-ai-projects/2.7.0/), not a public Voice Live `session.update` object. Keep instructions requiring retrieval for factual questions, source references and an honest unknown answer when the corpus does not support a claim.
 
 The creator also supports isolated checks, retaining Knowledge in every configuration:
 
@@ -334,7 +334,7 @@ python -m unittest -v test_create_agent.py
 python create_agent.py --help
 ```
 
-Tests use the actual bundled SDK with fake credentials and in-memory HTTP responses; no Azure request or microphone access is needed.
+Tests use the actual released SDK with fake credentials and in-memory HTTP responses; no Azure request or microphone access is needed.
 
 ## Try the agent in Foundry Portal
 
@@ -382,7 +382,7 @@ This parameter resolved visibility in the [recorded Portal check](docs/evaluatio
 
 ## Sources
 
-- [Bundled SDK source](https://github.com/Azure/azure-sdk-for-python/tree/f84c5330f4246892455f33fccdf9503a774ecf66/sdk/ai/azure-ai-projects)
+- [Projects SDK 2.7.0 source](https://github.com/Azure/azure-sdk-for-python/tree/azure-ai-projects_2.7.0/sdk/ai/azure-ai-projects)
 - [Foundry IQ overview and portal workflow](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/what-is-foundry-iq)
 - [Foundry IQ project connection](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/foundry-iq-connect)
 - [Standard avatar list](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/text-to-speech-avatar/standard-avatars)

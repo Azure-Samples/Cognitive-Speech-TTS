@@ -38,9 +38,8 @@ shared MCP, and portal workflow, start with the
 | [`download_conversation_artifacts.py`](download_conversation_artifacts.py) | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | [`download_conversation_traces.py`](download_conversation_traces.py) | Download correlated Application Insights rows by conversation ID. |
 
-The two Finance directory samples use their own `requirements.txt` files. They
-install a pinned vNext `azure-ai-projects` source build and do not use the
-bundled wheel described by the common setup below.
+The two Finance directory samples use their own `requirements.txt` files.
+All Python samples require `azure-ai-projects>=2.7.0` from PyPI.
 
 ## Common Python sample prerequisites
 
@@ -49,8 +48,7 @@ bundled wheel described by the common setup below.
   `https://<account>.services.ai.azure.com/api/projects/<project>`.
 - Azure CLI sign-in (`az login`) or another `DefaultAzureCredential` identity.
 - A microphone, speakers or headset, and PortAudio for the audio samples.
-- The bundled `azure-ai-projects` wheel under [`../dist/`](../dist/). See the
-  [SDK build record](../dist/README.md) for its source commit and checksum.
+- Azure AI Projects SDK 2.7.0 or later, installed by the requirements below.
 
 ## Common Python sample setup
 
@@ -74,26 +72,11 @@ cp samples/.env.example samples/.env
 ```
 
 The single `pip install` command installs every common Python sample
-dependency, including the bundled preview 2.7.0b1 wheel with its `[realtime]`
+dependency, including Projects SDK 2.7.0 or later with its `[voice]`
 dependencies. No Azure SDK source checkout or Voice Live SDK is required.
 
-These samples require the bundled SDK, not a PyPI build with the same version
-number. If an environment already has `azure-ai-projects` 2.7.0b1, replace it
-explicitly:
-
-PowerShell:
-
-```powershell
-python -m pip install --force-reinstall --no-deps .\dist\azure_ai_projects-2.7.0b1-py3-none-any.whl
-python -m pip install -r samples\requirements.txt
-```
-
-Linux, macOS, or WSL2:
-
-```bash
-.venv/bin/python -m pip install --force-reinstall --no-deps ./dist/azure_ai_projects-2.7.0b1-py3-none-any.whl
-.venv/bin/python -m pip install -r samples/requirements.txt
-```
+For an existing preview or source installation, rerun the requirements install
+command above to replace it with the released SDK.
 
 Set the Project endpoint in `samples/.env`:
 
@@ -161,7 +144,7 @@ Retrieve an existing Agent with `client.agents.get(agent_name=agent_name)`.
 The same Projects client opens the Voice Agent realtime session:
 
 ```python
-async with client.realtime.connect(agent_name=agent_name) as connection:
+async with client.beta.voice_agents.realtime.connect(agent_name=agent_name) as connection:
     await connection.input_audio_buffer.append(audio=pcm_bytes)
     async for event in connection:
         # Handle transcripts, audio, and tool events.
@@ -173,7 +156,7 @@ The SDK owns authentication, the Agent WebSocket URL, and the
 Voice Live SDK imports are needed. The Agent's stored definition controls the
 session; the samples do not send a replacement `session.update`.
 
-See the upstream [Voice Agent SDK samples](https://github.com/Azure/azure-sdk-for-python/tree/f84c5330f4246892455f33fccdf9503a774ecf66/sdk/ai/azure-ai-projects/samples/agents/voice)
+See the upstream [Voice Agent SDK samples](https://github.com/Azure/azure-sdk-for-python/tree/azure-ai-projects_2.7.0/sdk/ai/azure-ai-projects/samples/agents/voice)
 for additional realtime usage.
 
 Audio output uses a voice-name string and a separate `voice_type`, for example
@@ -333,7 +316,7 @@ The related workflows are under [`../skills/`](../skills/):
 - [`debug-local-session`](../skills/debug-local-session/) resolves and analyzes
   recordings created by the portal.
 - [`voice-agent-preview`](../skills/voice-agent-preview/) creates and tests
-  Voice Agents with the current preview SDK.
+  Voice Agents with Projects SDK 2.7.0 and its preview voice APIs.
 - `provision-foundry-iq` creates a Foundry IQ knowledge base from local files.
 - `provision-foundry-toolbox` creates an Azure AI Search index and Foundry
   Toolbox.
@@ -347,7 +330,7 @@ python -m compileall -q samples skills
 python -m unittest discover -s tests -v
 ```
 
-The tests exercise the bundled SDK's WebSocket handshake, authentication and
+The tests exercise the released SDK's WebSocket handshake, authentication and
 preview headers, PCM serialization, event decoding, function-call ordering,
 Agent versioning, and conversation/audio downloads. Only network and microphone
 boundaries are mocked; the tests use the real Projects SDK. They do not create

@@ -1,4 +1,4 @@
-# Finance with OTP and Officer Search - vNext SDK sample
+# Finance with OTP and Officer Search - Projects SDK sample
 
 Start with the [architecture and documentation index](../../docs/README.md).
 For the complete local MCP serving, publication, and UI workflow, use
@@ -7,7 +7,7 @@ For the complete local MCP serving, publication, and UI workflow, use
 ## Conclusion
 
 This sample publishes a customer-neutral, flat, MCP-only Finance Voice Agent
-through the preview `azure-ai-projects` unified Agents API and runs a text-only
+through the `azure-ai-projects` unified Agents API and runs a text-only
 Voice WebSocket smoke test. It defaults to service-managed `gpt-realtime-2.1`,
 American English, and business tools for OTP, loan-offer discussion, explicit interest,
 loan-officer selection, callback, and call disposition.
@@ -95,9 +95,8 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-The dependency is pinned to the exact vNext SDK source commit used to author
-this sample. It is not evidence that the same Voice Agent surface is available
-from a released PyPI wheel.
+The dependency requires `azure-ai-projects>=2.7.0`
+from PyPI. No Azure SDK source checkout is required.
 
 ## Publish and verify
 
