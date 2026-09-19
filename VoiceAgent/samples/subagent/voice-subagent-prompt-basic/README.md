@@ -93,7 +93,7 @@ Use the printed launch command, which includes your project endpoint and
 voice-agent name. No `.env` file is needed by the client; keep it for creation
 and deletion.
 
-The client uses the async Projects SDK's `project.realtime.connect()` for
+The client uses the async Projects SDK's `project.beta.voice_agents.realtime.connect()` for
 voice conversations, including microphone input and typed audio events.
 PyAudio still captures and plays audio locally; it belongs to the client
 environment, not this provisioning environment.

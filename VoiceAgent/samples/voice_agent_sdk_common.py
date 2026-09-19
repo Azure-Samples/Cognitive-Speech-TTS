@@ -1,4 +1,4 @@
-"""Shared preview-SDK publishing and text-runtime helpers for Voice Agent samples."""
+"""Shared Projects SDK publishing and text-runtime helpers for Voice Agent samples."""
 
 from __future__ import annotations
 
@@ -326,7 +326,7 @@ def publish_agent(
     mode: Literal["typed", "raw"],
     check_only: bool,
 ) -> dict[str, Any]:
-    """Publish or read back one Voice Agent with the pinned azure-ai-projects SDK."""
+    """Publish or read back one Voice Agent with the azure-ai-projects SDK."""
     settings = _load_settings(sample_dir)
     agent_name, description, definition = load_materialized_agent(
         sample_dir,

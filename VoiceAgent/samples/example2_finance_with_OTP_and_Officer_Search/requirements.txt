@@ -1,4 +1,4 @@
-azure-ai-projects @ git+https://github.com/Azure/azure-sdk-for-python.git@d5d87df0cd63e131bdbd70cea29b2e5c42999140#subdirectory=sdk/ai/azure-ai-projects
+azure-ai-projects>=2.7.0
 azure-identity>=1.15.0,<2.0.0
 python-dotenv>=1.0.1,<2.0.0
 websockets>=15.0,<16.0

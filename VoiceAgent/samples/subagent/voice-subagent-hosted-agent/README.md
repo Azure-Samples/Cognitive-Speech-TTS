@@ -103,7 +103,7 @@ Use the printed launch command, which includes your project endpoint and
 voice-agent name. No `.env` file is needed by the client; keep it for creation
 and deletion.
 
-The client uses `project.realtime.connect()` and the saved voice-agent
+The client uses `project.beta.voice_agents.realtime.connect()` and the saved voice-agent
 configuration. PyAudio captures and plays audio locally. It displays
 transcripts and subagent lifecycle events; press `Ctrl+C` to disconnect.
 

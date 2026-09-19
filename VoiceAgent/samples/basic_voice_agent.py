@@ -17,7 +17,8 @@ import uuid
 from typing import Any, Final, Optional
 
 import aiohttp
-from azure.ai.projects.aio import AIProjectClient, AsyncRealtimeConnection
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.aio.operations import AsyncBetaRealtimeConnection
 from azure.ai.projects.models import (
     RealtimeAudioFormatsAudioPcm,
     RealtimeServerEventType,
@@ -77,7 +78,7 @@ def audio_bytes(delta: Any) -> bytes:
 class AudioProcessor:
     """Capture microphone PCM and play response PCM with barge-in support."""
 
-    def __init__(self, connection: AsyncRealtimeConnection) -> None:
+    def __init__(self, connection: AsyncBetaRealtimeConnection) -> None:
         self.connection = connection
         self.loop: Optional[asyncio.AbstractEventLoop] = None
         self.audio = pyaudio.PyAudio()
@@ -179,7 +180,7 @@ async def run_microphone_session(
 
     conversation_id: Optional[str] = None
 
-    async with client.realtime.connect(agent_name=agent_name) as connection:
+    async with client.beta.voice_agents.realtime.connect(agent_name=agent_name) as connection:
         processor = AudioProcessor(connection)
         try:
             processor.start_playback()

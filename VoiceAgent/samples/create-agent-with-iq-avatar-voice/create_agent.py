@@ -200,23 +200,17 @@ def load_config(path: Path) -> dict[str, Any]:
 
 
 def require_sdk() -> None:
-    """Verify pip's wheel provenance before constructing any Azure client."""
-    expected = "f857a1281e2fa3414f25e02aed95dfe2275495027b0a764f38921a8589f15e75"
+    """Verify the minimum SDK version before constructing any Azure client."""
+    from packaging.version import InvalidVersion, Version
+
     try:
         dist = metadata.distribution("azure-ai-projects")
-        origin = json.loads(dist.read_text("direct_url.json") or "{}")
-        archive = origin.get("archive_info", {})
-        digest = archive.get("hashes", {}).get("sha256")
-        legacy_hash = archive.get("hash", "")
-        valid = dist.version == "2.7.0b1" and (
-            digest == expected or legacy_hash == f"sha256={expected}"
-        )
-    except (metadata.PackageNotFoundError, ValueError, AttributeError):
+        valid = Version(dist.version) >= Version("2.7.0")
+    except (metadata.PackageNotFoundError, InvalidVersion):
         valid = False
     if not valid:
         raise ConfigurationError(
-            "Install the exact bundled Projects wheel from VoiceAgent/dist using this sample's "
-            "requirements. A same-version PyPI or source installation is not this SDK build."
+            "Install azure-ai-projects>=2.7.0 from PyPI using this sample's requirements."
         )
 
 
