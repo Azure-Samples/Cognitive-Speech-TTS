@@ -274,6 +274,14 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
         )
         self.assertEqual(elevator_service["model_type"], "managed")
         self.assertEqual(elevator_service["model"], "gpt-realtime")
+        self.assertEqual(
+            "en-US-Ava:DragonHDLatestNeural",
+            elevator_service["audio"]["output"]["voice"]["name"],
+        )
+        self.assertEqual(
+            "azure-standard",
+            elevator_service["audio"]["output"]["voice"]["type"],
+        )
         self.assertEqual(len(elevator_service["handoff"]["nodes"]), 9)
         self.assertEqual(len(elevator_service["handoff"]["edges"]), 17)
         query_edge = next(

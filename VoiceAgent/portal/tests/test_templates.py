@@ -62,6 +62,10 @@ class TemplateCatalogTests(unittest.TestCase):
         )
         self.assertEqual(second["agent_name"], "finance-with-otp-and-officer-search")
         self.assertEqual(third["agent_name"], "elevator-service-example")
+        self.assertEqual(
+            "en-US-Ava:DragonHDLatestNeural",
+            third["voice"],
+        )
         self.assertEqual(len(third["graph"]["nodes"]), 10)
         self.assertEqual(len(third["graph"]["edges"]), 17)
         self.assertEqual(
