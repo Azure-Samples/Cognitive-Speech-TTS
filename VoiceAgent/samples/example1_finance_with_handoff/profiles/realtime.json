@@ -1,0 +1,23 @@
+{
+  "name": "finance-example-realtime",
+  "description": "Finance with Handoff using the managed GPT Realtime speech-to-speech pipeline.",
+  "definition": {
+    "model": "gpt-realtime-2.1",
+    "audio": {
+      "input": {
+        "transcription": {
+          "model": "whisper-1"
+        },
+        "turn_detection": {
+          "end_of_utterance_detection": null
+        }
+      },
+      "output": {
+        "voice": {
+          "type": "azure-standard",
+          "name": "en-IN-Diya:DragonHDLatestNeural"
+        }
+      }
+    }
+  }
+}

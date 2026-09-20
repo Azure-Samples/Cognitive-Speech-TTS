@@ -217,7 +217,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             "?api-version=v1&agent_session_id=session-id",
         )
 
-    def test_committed_finance_scenarios_match_expected_shapes(self) -> None:
+    def test_committed_directory_scenarios_match_expected_shapes(self) -> None:
         samples = Path(__file__).resolve().parent
         common_settings = {
             "AZURE_AI_PROJECT_ENDPOINT": (
@@ -251,6 +251,7 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                 "VOICE_AGENT_MCP_CONNECTION_ID": "elevator-service-connection",
             },
         )
+
 
         self.assertEqual(finance["model_type"], "managed")
         self.assertEqual(finance["model"], "gpt-realtime")
@@ -331,6 +332,127 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             },
         )
 
+    def test_example1_variants_share_workflow_and_pin_runtime(self) -> None:
+        sample_dir = (
+            Path(__file__).resolve().parent / "example1_finance_with_handoff"
+        )
+        settings = {
+            "AZURE_AI_PROJECT_ENDPOINT": (
+                "https://account.services.ai.azure.com/api/projects/project"
+            ),
+            "AZURE_CREDENTIAL_MODE": "default",
+            "VOICE_AGENT_NAME": "stale-env-agent",
+            "VOICE_AGENT_MODEL": "stale-env-model",
+            "VOICE_AGENT_MCP_SERVER_URL": "https://tools.example/mcp",
+            "VOICE_AGENT_MCP_CONNECTION_ID": "finance-connection",
+        }
+        with patch.dict(os.environ, {}, clear=True):
+            realtime_name, _, realtime = load_materialized_agent(
+                sample_dir,
+                settings,
+                agent_file="agent.realtime.json",
+                prefer_document_name=True,
+            )
+            cascade_name, _, cascade = load_materialized_agent(
+                sample_dir,
+                settings,
+                agent_file="agent.cascade-luna.json",
+                prefer_document_name=True,
+            )
+
+        self.assertEqual("finance-example-realtime", realtime_name)
+        self.assertEqual("finance-example-cascade-luna", cascade_name)
+        self.assertEqual(realtime["handoff"], cascade["handoff"])
+        self.assertEqual(
+            {
+                "type": "template",
+                "text": (
+                    "Hello, thank you for taking the call. "
+                    "This is Virtual Finance calling."
+                ),
+            },
+            realtime["greeting"],
+        )
+        edges = {
+            edge["id"]: edge for edge in realtime["handoff"]["edges"]
+        }
+        self.assertEqual(
+            (
+                "Thank you. This call is to introduce a personal loan offer. "
+                "Please hold for a moment while I bring up the call details."
+            ),
+            edges["entrypoint_to_dial_assess"]["transfer_message"],
+        )
+        self.assertEqual(
+            (
+                "Before I share the details, please hold while I confirm who "
+                "I'm speaking with."
+            ),
+            edges["dial_assess_to_rpc"]["transfer_message"],
+        )
+        rpc = next(
+            node
+            for node in realtime["handoff"]["nodes"]
+            if node["id"] == "rpc"
+        )
+        self.assertIn(
+            "Am I speaking with <calling_first_name>?",
+            " ".join(rpc["config"]["instructions"].split()),
+        )
+        end = next(
+            node
+            for node in realtime["handoff"]["nodes"]
+            if node["id"] == "end"
+        )
+        self.assertEqual(
+            {
+                "type": "system",
+                "name": "end_conversation",
+                "description": (
+                    "End the active conversation only after its business "
+                    "disposition has been recorded. First say one brief, "
+                    "context-appropriate closing sentence, then call "
+                    "end_conversation as a separate final output item in the "
+                    "same response with only a non-empty reason. Produce no "
+                    "content after the tool call."
+                ),
+            },
+            end["config"]["tools"][0],
+        )
+        self.assertEqual("gpt-realtime-2.1", realtime["model"])
+        self.assertEqual(
+            "whisper-1",
+            realtime["audio"]["input"]["transcription"]["model"],
+        )
+        self.assertIsNone(
+            realtime["audio"]["input"]["turn_detection"][
+                "end_of_utterance_detection"
+            ]
+        )
+        self.assertEqual(
+            "en-IN-Diya:DragonHDLatestNeural",
+            realtime["audio"]["output"]["voice"]["name"],
+        )
+        self.assertEqual("gpt-5.6-luna", cascade["model"])
+        self.assertEqual(
+            "azure-speech",
+            cascade["audio"]["input"]["transcription"]["model"],
+        )
+        self.assertEqual(
+            {
+                "model": "smart_end_of_turn_detection",
+                "threshold_level": "medium",
+                "timeout_ms": 2000,
+            },
+            cascade["audio"]["input"]["turn_detection"][
+                "end_of_utterance_detection"
+            ],
+        )
+        self.assertEqual(
+            "en-IN-Diya:DragonHDLatestNeural",
+            cascade["audio"]["output"]["voice"]["name"],
+        )
+
     def test_sample_env_defaults_match_committed_model_mode(self) -> None:
         samples = Path(__file__).resolve().parent
         for directory in (
@@ -352,10 +474,13 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
             }
             self.assertEqual(definition["model_type"], "managed")
             self.assertNotIn("VOICE_AGENT_MODEL_TYPE", defaults)
-            self.assertEqual(
-                defaults["VOICE_AGENT_MODEL"],
-                definition["model"],
-            )
+            if directory == "example1_finance_with_handoff":
+                self.assertNotIn("VOICE_AGENT_MODEL", defaults)
+            else:
+                self.assertEqual(
+                    defaults["VOICE_AGENT_MODEL"],
+                    definition["model"],
+                )
 
     def test_counts_handoff_and_mcp_call_evidence(self) -> None:
         printer = EventPrinter(verbose=False)
