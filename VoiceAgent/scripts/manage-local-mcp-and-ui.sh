@@ -146,11 +146,12 @@ import urllib.request
 base_url = sys.argv[1]
 with urllib.request.urlopen(f"{base_url}/api/templates?reload=1", timeout=30) as response:
     catalog = json.load(response)
-if len(catalog.get("templates") or []) != 3:
+if len(catalog.get("templates") or []) != 4:
     raise SystemExit(f"template catalog is not ready: {catalog}")
 
 for template_id in (
-    "finance-example",
+    "finance-example-realtime",
+    "finance-example-cascade-luna",
     "finance-with-otp-and-officer-search",
     "elevator-service-example",
 ):

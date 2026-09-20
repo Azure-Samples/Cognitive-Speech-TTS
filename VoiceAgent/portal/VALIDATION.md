@@ -30,6 +30,9 @@ live MCP readiness still depends on `VoiceAgent/shared_mcp/scripts/e2e-local.sh`
 The former standalone Finance UI directory was removed after setup, lifecycle,
 debug tooling, documentation, and portal ownership were migrated.
 
+> The current catalog supersedes this historical count by exposing Example 1
+> as separate Realtime and Cascade Luna cards backed by one shared base.
+
 # Public-release fixes validation
 
 Validated on **September 16, 2026** after the public-release review fixes, on Windows with Python **3.12.10**, Node.js

@@ -364,14 +364,11 @@ Publish or run either example from another terminal while E2E remains running:
 ```bash
 cd "$SAMPLES_ROOT/example1_finance_with_handoff"
 
-VOICE_AGENT_NAME=finance-example-local-e2e \
-  .venv/bin/python sample.py publish
+.venv/bin/python sample.py publish --variant all
 
-VOICE_AGENT_NAME=finance-example-local-e2e \
-  .venv/bin/python sample.py check
+.venv/bin/python sample.py check --variant all
 
-VOICE_AGENT_NAME=finance-example-local-e2e \
-  .venv/bin/python sample.py run \
+.venv/bin/python sample.py run --variant realtime \
     --message "Hello, who is calling?" \
     --expect-handoff \
     --expect-mcp

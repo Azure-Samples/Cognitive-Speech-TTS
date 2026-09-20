@@ -14,6 +14,7 @@ from aiohttp.test_utils import TestClient, TestServer
 import demo_server
 from template_portal import (
     McpProbeError,
+    MODEL_OVERRIDE_KEY,
     TemplateCatalog,
     template_agent_name,
 )
@@ -22,14 +23,15 @@ from template_portal import (
 ROOT = Path(__file__).resolve().parents[1]
 ENDPOINT = "https://sample.services.ai.azure.com/api/projects/sample-project"
 EXPECTED_TEMPLATES = [
-    "finance-example",
+    "finance-example-realtime",
+    "finance-example-cascade-luna",
     "finance-with-otp-and-officer-search",
     "elevator-service-example",
 ]
 
 
 class TemplateCatalogTests(unittest.TestCase):
-    def test_default_catalog_detects_both_sample_projects(self) -> None:
+    def test_default_catalog_detects_sample_projects(self) -> None:
         catalog = TemplateCatalog()
 
         self.assertEqual(
@@ -37,35 +39,73 @@ class TemplateCatalogTests(unittest.TestCase):
             EXPECTED_TEMPLATES,
         )
         self.assertEqual(catalog.errors, [])
-        first = catalog.detail("finance-example")
+        realtime = catalog.detail("finance-example-realtime")
+        cascade = catalog.detail("finance-example-cascade-luna")
         second = catalog.detail("finance-with-otp-and-officer-search")
         third = catalog.detail("elevator-service-example")
-        assert first is not None and second is not None and third is not None
-        self.assertGreater(len(first["graph"]["nodes"]), 1)
-        self.assertGreater(len(first["graph"]["edges"]), 1)
-        self.assertTrue(first["requires_mcp"])
+        assert realtime is not None and cascade is not None
+        assert second is not None and third is not None
+        self.assertGreater(len(realtime["graph"]["nodes"]), 1)
+        self.assertGreater(len(realtime["graph"]["edges"]), 1)
+        self.assertEqual(realtime["graph"], cascade["graph"])
+        self.assertTrue(realtime["requires_mcp"])
+        self.assertTrue(cascade["requires_mcp"])
         self.assertTrue(second["requires_mcp"])
         self.assertTrue(third["requires_mcp"])
-        self.assertEqual("managed", first["mcp"]["connection_mode"])
+        self.assertEqual("managed", realtime["mcp"]["connection_mode"])
+        self.assertEqual("managed", cascade["mcp"]["connection_mode"])
         self.assertEqual("managed", second["mcp"]["connection_mode"])
         self.assertEqual("managed", third["mcp"]["connection_mode"])
-        self.assertFalse(first["mcp"]["allow_user_token"])
+        self.assertFalse(realtime["mcp"]["allow_user_token"])
+        self.assertFalse(cascade["mcp"]["allow_user_token"])
         self.assertFalse(second["mcp"]["allow_user_token"])
         self.assertFalse(third["mcp"]["allow_user_token"])
         self.assertEqual(
             "Local shared_mcp Dev Tunnel",
-            first["mcp"]["source_label"],
+            realtime["mcp"]["source_label"],
         )
         self.assertEqual(
             "VoiceAgent/shared_mcp",
-            first["mcp"]["source_reference"],
+            realtime["mcp"]["source_reference"],
         )
+        self.assertTrue(realtime["runtime_locked"])
+        self.assertTrue(cascade["runtime_locked"])
+        self.assertEqual("gpt-realtime-2.1", realtime["model"])
+        self.assertEqual(
+            "en-IN-Diya:DragonHDLatestNeural",
+            realtime["voice"],
+        )
+        self.assertEqual("gpt-5.6-luna", cascade["model"])
+        self.assertEqual(
+            "en-IN-Diya:DragonHDLatestNeural",
+            cascade["voice"],
+        )
+        self.assertEqual(realtime["agent_name"], "finance-example-realtime")
+        self.assertEqual(
+            cascade["agent_name"],
+            "finance-example-cascade-luna",
+        )
+        for template_id in (
+            "finance-example-realtime",
+            "finance-example-cascade-luna",
+        ):
+            document = catalog.document(template_id)
+            assert document is not None
+            end = next(
+                node
+                for node in document["definition"]["handoff"]["nodes"]
+                if node["id"] == "end"
+            )
+            self.assertEqual(
+                "system",
+                end["config"]["tools"][0]["type"],
+            )
+            self.assertEqual(
+                "end_conversation",
+                end["config"]["tools"][0]["name"],
+            )
         self.assertEqual(second["agent_name"], "finance-with-otp-and-officer-search")
         self.assertEqual(third["agent_name"], "elevator-service-example")
-        self.assertEqual(
-            "en-US-Ava:DragonHDLatestNeural",
-            third["voice"],
-        )
         self.assertEqual(len(third["graph"]["nodes"]), 10)
         self.assertEqual(len(third["graph"]["edges"]), 17)
         self.assertEqual(
@@ -78,7 +118,7 @@ class TemplateCatalogTests(unittest.TestCase):
         )
         dial_assess = next(
             node
-            for node in first["graph"]["nodes"]
+            for node in realtime["graph"]["nodes"]
             if node["id"] == "dial_assess"
         )
         self.assertEqual(["start_call"], dial_assess["tools"])
@@ -186,7 +226,11 @@ class TemplateCatalogTests(unittest.TestCase):
 class TemplateRouteTests(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self) -> None:
         args = demo_server.parse_args([
-            "--project-endpoint", ENDPOINT, "--no-record-sessions",
+            "--project-endpoint",
+            ENDPOINT,
+            "--model",
+            "forced-global-model",
+            "--no-record-sessions",
         ])
         self.client = TestClient(TestServer(demo_server.build_app(args)))
         await self.client.start_server()
@@ -214,10 +258,14 @@ class TemplateRouteTests(unittest.IsolatedAsyncioTestCase):
             EXPECTED_TEMPLATES,
         )
 
-        detail = await self.client.get("/api/templates/finance-example")
+        detail = await self.client.get("/api/templates/finance-example-realtime")
         self.assertEqual(detail.status, 200)
         detail_payload = await detail.json()
-        self.assertEqual(detail_payload["agent_name"], "finance-example")
+        self.assertEqual(
+            detail_payload["agent_name"],
+            "finance-example-realtime",
+        )
+        self.assertTrue(detail_payload["runtime_locked"])
         self.assertGreater(len(detail_payload["graph"]["nodes"]), 1)
 
     async def test_template_assets_are_served_without_azure_credentials(self) -> None:
@@ -232,6 +280,21 @@ class TemplateRouteTests(unittest.IsolatedAsyncioTestCase):
 
         cfg = self.client.server.app[demo_server.DEFAULT_CONFIG_KEY]
         self.assertIsNone(cfg._credential)
+
+    async def test_locked_variants_ignore_global_model_override(self) -> None:
+        self.assertEqual(
+            "forced-global-model",
+            self.client.server.app[MODEL_OVERRIDE_KEY],
+        )
+        realtime = await (
+            await self.client.get("/api/templates/finance-example-realtime")
+        ).json()
+        cascade = await (
+            await self.client.get("/api/templates/finance-example-cascade-luna")
+        ).json()
+
+        self.assertEqual("gpt-realtime-2.1", realtime["model"])
+        self.assertEqual("gpt-5.6-luna", cascade["model"])
 
     async def test_unknown_template_and_asset_are_not_exposed(self) -> None:
         self.assertEqual(
@@ -322,7 +385,7 @@ class TemplateRouteTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_portal_rejects_browser_provided_mcp_tokens(self) -> None:
         response = await self.client.post(
-            "/api/templates/finance-example/mcp/configure",
+            "/api/templates/finance-example-realtime/mcp/configure",
             json={"token": "synthetic-token"},
         )
         self.assertEqual(409, response.status)

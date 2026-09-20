@@ -167,7 +167,9 @@ curl -fsS http://127.0.0.1:18003/healthz
 # Use the portal URL printed by the status command.
 curl -fsS http://127.0.0.1:18098/healthz
 curl -fsS \
-  http://127.0.0.1:18098/api/templates/finance-example/mcp/probe
+  http://127.0.0.1:18098/api/templates/finance-example-realtime/mcp/probe
+curl -fsS \
+  http://127.0.0.1:18098/api/templates/finance-example-cascade-luna/mcp/probe
 curl -fsS \
   http://127.0.0.1:18098/api/templates/finance-with-otp-and-officer-search/mcp/probe
 ```

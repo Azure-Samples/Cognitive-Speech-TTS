@@ -32,7 +32,7 @@ shared MCP, and portal workflow, start with the
 | [`voice_agent_with_toolbox.py`](voice_agent_with_toolbox.py) | Create a Toolbox Agent, converse through the microphone, and display tool activity. |
 | [Basic prompt subagent](subagent/voice-subagent-prompt-basic/README.md) | Create a poetry prompt subagent and a voice agent that delegates poem writing to it. |
 | [Hosted GitHub Copilot subagent](subagent/voice-subagent-hosted-agent/README.md) | Create a voice agent that delegates research, learning, and coding tasks to an existing hosted GitHub Copilot agent. |
-| [Finance with Handoff](example1_finance_with_handoff/README.md) | Publish a Finance Realtime handoff graph and run a text Voice WebSocket smoke test. |
+| [Finance with Handoff](example1_finance_with_handoff/README.md) | Publish Realtime and Cascade Luna variants of one shared Finance handoff graph and run text Voice WebSocket smoke tests. |
 | [Finance with OTP and Officer Search](example2_finance_with_OTP_and_Officer_Search/README.md) | Publish a flat Finance Agent for OTP verification and loan-officer search, then run a text smoke test. |
 | [Elevator Service with Safety, Zendesk, and Handoff](example3_elevator_service_with_safety_zendesk_and_handoff/README.md) | Publish an inbound field-service graph with deterministic safety checks, explicit Zendesk ticket confirmation, exact-ID status queries, and human-assistance routing. |
 | [C# voice agent sample](CSharp/README.md) | Create and manage a temporary Agent or use an existing Agent, stream audio over WebSocket, and read persisted conversations and recordings. |

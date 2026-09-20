@@ -460,6 +460,7 @@ class TemplateSource:
     source_reference: str
     mcp_config_path: Path | None
     mcp_token_file: Path | None
+    lock_runtime: bool
 
 
 class TemplateCatalog:
@@ -509,6 +510,9 @@ class TemplateCatalog:
                     raise ValueError("id must be a lowercase DNS label of at most 63 characters")
                 if template_id in seen:
                     raise ValueError("id is duplicated")
+                lock_runtime = entry.get("lock_runtime", False)
+                if not isinstance(lock_runtime, bool):
+                    raise ValueError("lock_runtime must be a boolean")
                 folder_value = str(entry.get("folder") or "").strip()
                 if not folder_value:
                     raise ValueError("folder is required")
@@ -592,6 +596,7 @@ class TemplateCatalog:
                     ).strip(),
                     mcp_config_path=mcp_config_path,
                     mcp_token_file=mcp_token_file,
+                    lock_runtime=lock_runtime,
                 )
                 document = self._load(source)
                 if list(iter_mcp_tools(document["definition"])):
@@ -711,6 +716,7 @@ class TemplateCatalog:
             "description": document.get("description") or source.summary,
             "model": definition.get("model") or "gpt-realtime",
             "voice": voice_name(definition),
+            "runtime_locked": source.lock_runtime,
             "instructions": definition.get("instructions") or "",
             "graph": graph,
             "agent_name": str(document.get("name") or source.id),
@@ -1010,11 +1016,14 @@ async def templates_env(request: web.Request) -> web.Response:
 
 
 async def get_template(request: web.Request) -> web.Response:
-    detail = _catalog(request).detail(request.match_info["template_id"])
-    if detail is None:
+    catalog = _catalog(request)
+    template_id = request.match_info["template_id"]
+    source = catalog.source(template_id)
+    detail = catalog.detail(template_id)
+    if source is None or detail is None:
         raise web.HTTPNotFound(text="Unknown template.")
     model_override = request.app[MODEL_OVERRIDE_KEY]
-    if model_override:
+    if model_override and not source.lock_runtime:
         detail["model"] = model_override
         for group in detail["config_groups"]:
             for item in group["items"]:
@@ -1307,8 +1316,12 @@ async def publish_template(request: web.Request) -> web.Response:
                 )
         definition = materialize_template(
             document,
-            model=str(body.get("model") or request.app[MODEL_OVERRIDE_KEY]),
-            voice=str(body.get("voice") or ""),
+            model=(
+                ""
+                if source.lock_runtime
+                else str(body.get("model") or request.app[MODEL_OVERRIDE_KEY])
+            ),
+            voice="" if source.lock_runtime else str(body.get("voice") or ""),
             mcp_server_url=source.mcp_server_url,
             mcp_connection_id=connection_name,
         )

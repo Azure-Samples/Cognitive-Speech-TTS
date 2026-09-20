@@ -4,8 +4,8 @@
 
 Every new example intended for the portal **must** follow this contract:
 
-1. keep a portable `agent.json` in one self-contained directory under
-   `VoiceAgent/samples/`;
+1. keep a portable `agent.json`, or generated `agent.<variant>.json` files backed
+   by one committed base, in a self-contained directory under `VoiceAgent/samples/`;
 2. add an explicit allowlist entry to
    `VoiceAgent/portal/templates.config.json`;
 3. keep MCP credentials out of source and choose one supported connection
@@ -40,6 +40,11 @@ VoiceAgent/samples/<example-name>/
 
 The portal reads only the allowlisted Agent document. It does not read the
 sample's `.env`, README, validation output, or Python dependencies.
+
+When one workflow has multiple runtime profiles, keep the workflow in one base
+document and generate each portable Agent document deterministically. Add one
+allowlist entry per generated file, give every variant a distinct Agent name,
+and add a `--check` mode plus tests that fail when generated files drift.
 
 The directory must remain under `VoiceAgent/samples/`, including after symlink
 resolution. The catalog rejects paths that escape this root.
@@ -126,6 +131,7 @@ Field rules:
 | `summary` | Optional; defaults to the Agent document's `description`. |
 | `accent_color` | Optional card accent; use a readable CSS color. |
 | `enabled` | Optional; defaults to `true`. Set `false` to retain an entry without exposing it. |
+| `lock_runtime` | Optional; defaults to `false`. Set `true` when sibling cards intentionally pin different model/audio pipelines and Portal overrides must not collapse them. |
 | `mcp` | Required only when the Agent definition contains MCP tools. |
 
 The portal reload button re-reads both this allowlist and every enabled

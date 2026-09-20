@@ -11,4 +11,11 @@ from voice_agent_sdk_common import sample_cli  # noqa: E402
 
 
 if __name__ == "__main__":
-    sample_cli(Path(__file__).resolve().parent, mode="raw")
+    sample_cli(
+        Path(__file__).resolve().parent,
+        mode="raw",
+        variants={
+            "realtime": "agent.realtime.json",
+            "cascade-luna": "agent.cascade-luna.json",
+        },
+    )
