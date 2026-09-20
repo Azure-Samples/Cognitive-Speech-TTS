@@ -2,9 +2,9 @@
 
 ## Conclusion
 
-Example 3 intentionally uses a persistent mock Zendesk backend. It creates and
-queries fictional tickets without requiring a Zendesk tenant, Azure Logic App,
-OAuth consent, API token, or customer cloud resources.
+Example 3 intentionally uses a replica-local filesystem-backed mock Zendesk
+backend. It creates and queries fictional tickets without requiring a Zendesk
+tenant, Azure Logic App, OAuth consent, API token, or customer cloud resources.
 
 The mock is a portability boundary, not a production Zendesk integration.
 Customers who need real tickets must replace the backend behind the existing
@@ -19,14 +19,16 @@ Example 3 Voice Agent
   -> shared_mcp /mcp/elevator-service
   -> mock_zendesk_create_ticket
      or mock_zendesk_get_ticket_status
-  -> persistent fictional ticket store
+  -> replica-local fictional ticket store
 ```
 
 The mock implementation is
 [`MockZendeskBackend`](../shared_mcp/app/shared_mcp/elevator_service/tickets.py).
-Its state uses `ELEVATOR_MCP_STATE_DIR` and survives an MCP process restart.
-The committed fixture includes a fictional ticket that can be queried without
-creating customer data.
+Its state uses `ELEVATOR_MCP_STATE_DIR` and survives a native MCP process
+restart while that directory remains. The Azure deployment currently places
+it under `/tmp`, so Container Apps replica or revision replacement can reset
+created tickets. The committed fixture includes a fictional ticket that can be
+queried without creating customer data.
 
 Tool results contain:
 

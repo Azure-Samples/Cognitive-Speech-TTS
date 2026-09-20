@@ -16,6 +16,7 @@ from shared_mcp.elevator_service.pack import register as register_elevator
 from shared_mcp.elevator_service.server import (
     build_service as build_elevator_service,
 )
+from shared_mcp.elevator_service.store import CallStore as ElevatorCallStore
 from shared_mcp.finance_handoff.config import ServerConfig as HandoffConfig
 from shared_mcp.finance_handoff.pack import register as register_handoff
 from shared_mcp.finance_handoff.server import build_service as build_handoff_service
@@ -126,6 +127,9 @@ class SharedMcpTests(unittest.TestCase):
         report_instructions = elevator_nodes["report_issue"]["config"][
             "instructions"
         ]
+        intent_router_instructions = elevator_nodes["intent_router"]["config"][
+            "instructions"
+        ]
         next_request_instructions = elevator_nodes["next_request"]["config"][
             "instructions"
         ]
@@ -177,6 +181,14 @@ class SharedMcpTests(unittest.TestCase):
             report_instructions,
         )
         self.assertIn(
+            "directly to human_handoff as an emergency",
+            intent_router_instructions,
+        )
+        self.assertIn(
+            "highest priority",
+            intent_router_instructions,
+        )
+        self.assertIn(
             "Your service ticket is [ticket_id]. Do you need",
             next_request_instructions,
         )
@@ -197,6 +209,10 @@ class SharedMcpTests(unittest.TestCase):
         )
         self.assertIn("spoken_message", human_handoff_instructions)
         self.assertIn("human_finalize", human_handoff_instructions)
+        self.assertIn(
+            "emergency for an explicit",
+            human_handoff_instructions,
+        )
         self.assertNotIn(
             "then go to finalize",
             human_handoff_instructions,
@@ -374,6 +390,66 @@ class SharedMcpTests(unittest.TestCase):
 
         self.assertTrue(started["ok"])
         self.assertIsNotNone(restarted)
+
+    def test_elevator_store_bounds_completed_call_retention(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            store = ElevatorCallStore(
+                root,
+                lock_stripes=2,
+                max_terminal_calls=2,
+            )
+            for index in range(3):
+                with store.locked(f"ended-{index}") as slot:
+                    slot.state = {
+                        "lifecycle": "ended",
+                        "updated_at": f"2099-01-01T00:00:0{index}+00:00",
+                    }
+
+            retained = sorted(path.name for path in root.glob("*.json"))
+
+        self.assertEqual(["ended-1.json", "ended-2.json"], retained)
+
+    def test_elevator_store_expires_abandoned_calls(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            store = ElevatorCallStore(
+                root,
+                max_state_age_seconds=1,
+            )
+            with store.locked("abandoned") as slot:
+                slot.state = {
+                    "lifecycle": "active",
+                    "updated_at": "2000-01-01T00:00:00+00:00",
+                }
+
+            retained = sorted(path.name for path in root.glob("*.json"))
+
+        self.assertEqual([], retained)
+
+    def test_elevator_store_does_not_resurrect_expired_call(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "expired.json").write_text(
+                json.dumps(
+                    {
+                        "lifecycle": "active",
+                        "updated_at": "2000-01-01T00:00:00+00:00",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            store = ElevatorCallStore(
+                root,
+                max_state_age_seconds=1,
+            )
+            with store.locked("expired") as slot:
+                loaded = slot.state
+
+            retained = sorted(path.name for path in root.glob("*.json"))
+
+        self.assertIsNone(loaded)
+        self.assertEqual([], retained)
 
     def test_elevator_service_uses_fictional_tickets_and_safety_gate(self) -> None:
         with tempfile.TemporaryDirectory() as directory:

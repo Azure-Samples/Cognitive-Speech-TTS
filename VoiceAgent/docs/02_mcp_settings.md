@@ -440,11 +440,11 @@ schemas. One server hosts both packs but isolates their MCP inventories by
 route, preventing same-named tools from overwriting one another.
 
 Azure deployment intentionally fixes `minReplicas` and `maxReplicas` at one.
-The sample stores call and OTP state on that replica's filesystem, which is
-enough for short demonstrations but is not durable across a revision or
-restart. A production implementation must use a customer-owned durable store,
-replace the fake name matcher, rotate credentials, and define its own network
-and retention policies.
+The sample stores call, OTP, and fictional elevator-ticket state on that
+replica's filesystem, which is enough for short demonstrations but is not
+durable across a revision or restart. A production implementation must use a
+customer-owned durable store, replace the fake integrations, rotate
+credentials, and define its own network and retention policies.
 
 ## Debug this layer
 

@@ -7,7 +7,7 @@ the preview `azure-ai-projects` unified Agents API. It demonstrates:
 
 - a 9-node, 17-edge handoff graph;
 - a deterministic five-question safety check;
-- persistent mock Zendesk create and exact-ID status-query contracts;
+- filesystem-backed mock Zendesk create and exact-ID status-query contracts;
 - caller-visible ticket review and explicit confirmation before creation;
 - caller-safe ticket responses;
 - browser human-follow-up fallback;
@@ -147,7 +147,9 @@ Example 3: Elevator Service with Safety, Zendesk, and Handoff
 Reload Templates after changing the allowlist or `agent.json`. The Portal
 publishes a `local-only-elevator-service-example` Agent in the selected Project.
 
-`/mcp/elevator-service` always uses persistent fictional ticket data. The
+`/mcp/elevator-service` always uses replica-local fictional ticket data. Local
+state survives a native MCP process restart while its state directory remains,
+but Azure Container Apps restarts or revisions can reset `/tmp` state. The
 `mock_zendesk_*` names make that boundary visible in the Agent definition and
 MCP inventory. To replace the mock with a customer-owned Zendesk adapter, keep
 the same backend contract and follow
@@ -177,7 +179,8 @@ call-control tools in the active graph node.
   MCP connection after the customer selects a Project.
 - Exact-ID ticket query is test-only until trusted caller and ticket-ownership
   authorization are added.
-- The filesystem state model is not production multi-region storage.
+- The filesystem state model is not durable across Azure Container Apps
+  replica or revision replacement and is not production multi-region storage.
 - `request_human_handoff` records follow-up; it is not a PSTN transfer.
 - Telephony transfer requires a real phone session and a compatible hosting
   runtime.

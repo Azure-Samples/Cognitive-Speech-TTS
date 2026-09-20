@@ -14,7 +14,9 @@ connection pre-created in a Microsoft test Project.
 
 The elevator-service route exposes explicitly named
 `mock_zendesk_create_ticket` and `mock_zendesk_get_ticket_status` tools backed
-by persistent fictional data. It never contacts a real Zendesk tenant.
+by replica-local filesystem-backed fictional data. It never contacts a real
+Zendesk tenant, and Azure Container Apps restarts or revisions can reset that
+data.
 Customers who need a real adapter should preserve the `ZendeskBackend`
 contract and follow the
 [Zendesk integration guide](../docs/integration_zendesk.md).
