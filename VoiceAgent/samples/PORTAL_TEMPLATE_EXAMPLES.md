@@ -14,6 +14,13 @@ Every new example intended for the portal **must** follow this contract:
 5. update source-sync mappings when the example is imported from an upstream
    repository.
 
+All examples shipped in this repository must use `connection_mode: managed`
+with the repository-owned `VoiceAgent/shared_mcp` runtime. They must work when
+the customer selects a newly created Foundry Project: the Portal creates or
+updates the required RemoteTool connection during publication. A checked-in
+example must never name a connection that is assumed to exist in a Microsoft
+test Project.
+
 The portal does not scan `samples/` automatically. A directory that is not
 allowlisted in `portal/templates.config.json` is not a portal Template.
 
@@ -154,11 +161,11 @@ Add a new MCP-backed example to `shared_mcp` before allowlisting it:
 4. generate a non-secret route config under `shared_mcp/config/generated/`;
 5. add route inventory and authenticated probe tests.
 
-### `existing` — preconfigured Project connection
+### `existing` — framework capability, not for checked-in examples
 
-Use this only when the selected Foundry Project already owns the required
-connection. Provide the public server URL and connection ID through the
-allowlist or a non-secret config file. Do not provide a local token file.
+This mode remains available for private Portal deployments where the selected
+Foundry Project already owns the required connection. Do not use it for any
+example checked into this repository.
 
 The portal may treat direct HTTP 401/403 as proof that the endpoint is
 reachable because authentication remains in the existing Project connection.

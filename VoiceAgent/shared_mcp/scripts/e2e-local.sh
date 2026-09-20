@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SAMPLES_ROOT="$(cd "${ROOT}/../samples" && pwd)"
 HANDOFF_SAMPLE="${SAMPLES_ROOT}/example1_finance_with_handoff"
 OTP_SAMPLE="${SAMPLES_ROOT}/example2_finance_with_OTP_and_Officer_Search"
+ELEVATOR_SAMPLE="${SAMPLES_ROOT}/example3_elevator_service_with_safety_zendesk_and_handoff"
 RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)"
 RUN_ROOT="${ROOT}/state/e2e/${RUN_ID}"
 LOCAL_STATE_ROOT="${ROOT}/state/local"
@@ -13,10 +14,12 @@ NATIVE_PYTHON="${SHARED_MCP_PYTHON:-${ROOT}/.venv/bin/python}"
 NATIVE_PID=""
 HANDOFF_CONNECTION="${HANDOFF_E2E_CONNECTION:-finance-handoff-local-e2e}"
 OTP_CONNECTION="${OTP_E2E_CONNECTION:-finance-otp-officer-local-e2e}"
+ELEVATOR_CONNECTION="${ELEVATOR_E2E_CONNECTION:-elevator-service-local-e2e}"
 KEEP_RUNNING="${SHARED_MCP_E2E_KEEP_RUNNING:-1}"
 GENERATED_CONFIG_DIR="${ROOT}/config/generated"
 HANDOFF_CONFIG="${GENERATED_CONFIG_DIR}/example1.local.env"
 OTP_CONFIG="${GENERATED_CONFIG_DIR}/example2.local.env"
+ELEVATOR_CONFIG="${GENERATED_CONFIG_DIR}/example3.local.env"
 TOKEN_FILE="${LOCAL_STATE_ROOT}/token"
 TUNNEL_ID_FILE="${LOCAL_STATE_ROOT}/devtunnel-id"
 TUNNEL_PID=""
@@ -137,6 +140,7 @@ NATIVE_STATE_ROOT="${LOCAL_STATE_ROOT}/runtime"
 mkdir -p \
   "${NATIVE_STATE_ROOT}/finance-handoff" \
   "${NATIVE_STATE_ROOT}/finance-otp-officer" \
+  "${NATIVE_STATE_ROOT}/elevator-service" \
   "${NATIVE_STATE_ROOT}/auth"
 PYTHONPATH="${ROOT}/app" \
   "${NATIVE_PYTHON}" -m unittest discover -s "${ROOT}/tests" -v
@@ -148,9 +152,11 @@ env \
   FINANCE_MCP_DATA_DIR="${ROOT}/data/finance_handoff" \
   FINANCE_OFFICER_DATA_DIR="${ROOT}/data/finance_otp_officer" \
   FINANCE_OTP_MCP_DATA_DIR="${ROOT}/data/finance_otp_officer" \
+  ELEVATOR_MCP_DATA_DIR="${ROOT}/data/elevator_service" \
   FINANCE_MCP_STATE_DIR="${NATIVE_STATE_ROOT}/finance-handoff" \
   FINANCE_OTP_MCP_STATE_DIR="${NATIVE_STATE_ROOT}/finance-otp-officer" \
   FINANCE_OTP_MCP_AUTH_DIR="${NATIVE_STATE_ROOT}/auth" \
+  ELEVATOR_MCP_STATE_DIR="${NATIVE_STATE_ROOT}/elevator-service" \
   "${NATIVE_PYTHON}" -m shared_mcp.server \
   >"${RUN_ROOT}/native-mcp.log" 2>&1 &
 NATIVE_PID=$!
@@ -202,12 +208,14 @@ for _ in $(seq 1 30); do
   sleep 1
 done
 curl -fsS "${BASE_URL}/healthz" >/dev/null
-STATUS="$(
-  curl -sS -o /dev/null -w '%{http_code}' \
-    "${BASE_URL}/mcp/finance-handoff"
-)"
-[[ "${STATUS}" == "401" ]] ||
-  die "public MCP route returned HTTP ${STATUS}, expected 401"
+for route in finance-handoff finance-otp-officer elevator-service; do
+  STATUS="$(
+    curl -sS -o /dev/null -w '%{http_code}' \
+      "${BASE_URL}/mcp/${route}"
+  )"
+  [[ "${STATUS}" == "401" ]] ||
+    die "public MCP route ${route} returned HTTP ${STATUS}, expected 401"
+done
 
 SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
   "${NATIVE_PYTHON}" -m shared_mcp.probe \
@@ -217,13 +225,19 @@ SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
   "${NATIVE_PYTHON}" -m shared_mcp.probe \
     --url "${BASE_URL}/mcp/finance-otp-officer" \
     --agent-json "${OTP_SAMPLE}/agent.json"
+SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
+  "${NATIVE_PYTHON}" -m shared_mcp.probe \
+    --url "${BASE_URL}/mcp/elevator-service" \
+    --agent-json "${ELEVATOR_SAMPLE}/agent.json"
 
 AZURE_AI_PROJECT_ENDPOINT="${PROJECT_ENDPOINT}" \
 SHARED_MCP_TOKEN="${TOKEN}" \
 SHARED_MCP_FINANCE_HANDOFF_URL="${BASE_URL}/mcp/finance-handoff" \
 SHARED_MCP_FINANCE_OTP_OFFICER_URL="${BASE_URL}/mcp/finance-otp-officer" \
+SHARED_MCP_ELEVATOR_SERVICE_URL="${BASE_URL}/mcp/elevator-service" \
 FINANCE_HANDOFF_MCP_CONNECTION_ID="${HANDOFF_CONNECTION}" \
 FINANCE_OTP_MCP_CONNECTION_ID="${OTP_CONNECTION}" \
+ELEVATOR_MCP_CONNECTION_ID="${ELEVATOR_CONNECTION}" \
 MCP_CONFIG_VARIANT=local \
   "${ROOT}/scripts/configure-agent.sh"
 
@@ -232,6 +246,7 @@ echo "mcp_runtime=native"
 echo "fixed_tunnel_id=${TUNNEL_ID}"
 echo "example1_config=${HANDOFF_CONFIG}"
 echo "example2_config=${OTP_CONFIG}"
+echo "example3_config=${ELEVATOR_CONFIG}"
 if [[ "${KEEP_RUNNING}" == "1" ]]; then
   echo "local_runtime=ready base_url=${BASE_URL}"
   echo "Press Ctrl+C to stop the local MCP runtime and dev tunnel."

@@ -24,6 +24,7 @@ ENDPOINT = "https://sample.services.ai.azure.com/api/projects/sample-project"
 EXPECTED_TEMPLATES = [
     "finance-example",
     "finance-with-otp-and-officer-search",
+    "elevator-service-example",
 ]
 
 
@@ -38,15 +39,19 @@ class TemplateCatalogTests(unittest.TestCase):
         self.assertEqual(catalog.errors, [])
         first = catalog.detail("finance-example")
         second = catalog.detail("finance-with-otp-and-officer-search")
-        assert first is not None and second is not None
+        third = catalog.detail("elevator-service-example")
+        assert first is not None and second is not None and third is not None
         self.assertGreater(len(first["graph"]["nodes"]), 1)
         self.assertGreater(len(first["graph"]["edges"]), 1)
         self.assertTrue(first["requires_mcp"])
         self.assertTrue(second["requires_mcp"])
+        self.assertTrue(third["requires_mcp"])
         self.assertEqual("managed", first["mcp"]["connection_mode"])
         self.assertEqual("managed", second["mcp"]["connection_mode"])
+        self.assertEqual("managed", third["mcp"]["connection_mode"])
         self.assertFalse(first["mcp"]["allow_user_token"])
         self.assertFalse(second["mcp"]["allow_user_token"])
+        self.assertFalse(third["mcp"]["allow_user_token"])
         self.assertEqual(
             "Local shared_mcp Dev Tunnel",
             first["mcp"]["source_label"],
@@ -56,12 +61,54 @@ class TemplateCatalogTests(unittest.TestCase):
             first["mcp"]["source_reference"],
         )
         self.assertEqual(second["agent_name"], "finance-with-otp-and-officer-search")
+        self.assertEqual(third["agent_name"], "elevator-service-example")
+        self.assertEqual(len(third["graph"]["nodes"]), 10)
+        self.assertEqual(len(third["graph"]["edges"]), 17)
+        self.assertEqual(
+            "Local shared_mcp Dev Tunnel",
+            third["mcp"]["source_label"],
+        )
+        self.assertEqual(
+            "VoiceAgent/shared_mcp",
+            third["mcp"]["source_reference"],
+        )
         dial_assess = next(
             node
             for node in first["graph"]["nodes"]
             if node["id"] == "dial_assess"
         )
         self.assertEqual(["start_call"], dial_assess["tools"])
+        report_issue = next(
+            node
+            for node in third["graph"]["nodes"]
+            if node["id"] == "report_issue"
+        )
+        self.assertEqual(
+            [
+                "record_issue",
+                "assess_safety",
+                "mock_zendesk_create_ticket",
+            ],
+            report_issue["tools"],
+        )
+        human_handoff = next(
+            node
+            for node in third["graph"]["nodes"]
+            if node["id"] == "human_handoff"
+        )
+        self.assertEqual(
+            ["request_human_handoff"],
+            human_handoff["tools"],
+        )
+        query_issue = next(
+            node
+            for node in third["graph"]["nodes"]
+            if node["id"] == "query_issue"
+        )
+        self.assertEqual(
+            ["mock_zendesk_get_ticket_status"],
+            query_issue["tools"],
+        )
 
     def test_template_agent_names_are_limited_to_63_characters(self) -> None:
         self.assertEqual(

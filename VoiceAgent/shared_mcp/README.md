@@ -1,10 +1,23 @@
-# Shared Finance MCP source
+# Shared Voice Agent MCP source
 
-This directory contains one native Python MCP server with two isolated business
-packs used by the Finance examples:
+This directory contains one native Python MCP server with three isolated
+business packs used by the customer-facing examples:
 
 - `/mcp/finance-handoff`
 - `/mcp/finance-otp-officer`
+- `/mcp/elevator-service`
+
+Every Portal example uses a `managed` connection. A customer may create a new
+Foundry Project, run or deploy this server, and let the Portal create the
+required RemoteTool connections in that Project. No example depends on a
+connection pre-created in a Microsoft test Project.
+
+The elevator-service route exposes explicitly named
+`mock_zendesk_create_ticket` and `mock_zendesk_get_ticket_status` tools backed
+by persistent fictional data. It never contacts a real Zendesk tenant.
+Customers who need a real adapter should preserve the `ZendeskBackend`
+contract and follow the
+[Zendesk integration guide](../docs/integration_zendesk.md).
 
 The local runtime is always native Python plus Dev Tunnel. Local setup, E2E,
 and lifecycle scripts do not require or invoke Docker. The separate

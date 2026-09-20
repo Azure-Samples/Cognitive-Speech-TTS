@@ -100,6 +100,10 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
               name: 'FINANCE_OTP_MCP_AUTH_DIR'
               value: '/tmp/shared-mcp/auth'
             }
+            {
+              name: 'ELEVATOR_MCP_STATE_DIR'
+              value: '/tmp/shared-mcp/elevator-service'
+            }
           ]
           resources: {
             cpu: json('0.5')
@@ -149,4 +153,3 @@ resource app 'Microsoft.App/containerApps@2024-03-01' = {
 output name string = app.name
 output fqdn string = app.properties.configuration.ingress.fqdn
 output principalId string = app.identity.principalId
-

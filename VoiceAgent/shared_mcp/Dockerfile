@@ -8,7 +8,9 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     FINANCE_OFFICER_DATA_DIR=/app/data/finance_otp_officer \
     FINANCE_OTP_MCP_DATA_DIR=/app/data/finance_otp_officer \
     FINANCE_MCP_STATE_DIR=/app/state/finance-handoff \
-    FINANCE_OTP_MCP_STATE_DIR=/app/state/finance-otp-officer
+    FINANCE_OTP_MCP_STATE_DIR=/app/state/finance-otp-officer \
+    ELEVATOR_MCP_DATA_DIR=/app/data/elevator_service \
+    ELEVATOR_MCP_STATE_DIR=/app/state/elevator-service
 
 WORKDIR /app
 
@@ -23,6 +25,7 @@ FROM base AS test
 COPY tests ./tests
 COPY --from=handoff_agent agent.json /sample-contracts/finance-handoff.json
 COPY --from=otp_agent agent.json /sample-contracts/finance-otp-officer.json
+COPY --from=elevator_agent agent.json /sample-contracts/elevator-service.json
 ENV SHARED_MCP_AGENT_CONTRACT_ROOT=/sample-contracts
 RUN python -m unittest discover -s tests -v
 

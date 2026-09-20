@@ -34,11 +34,12 @@ shared MCP, and portal workflow, start with the
 | [Hosted GitHub Copilot subagent](subagent/voice-subagent-hosted-agent/README.md) | Create a voice agent that delegates research, learning, and coding tasks to an existing hosted GitHub Copilot agent. |
 | [Finance with Handoff](example1_finance_with_handoff/README.md) | Publish a Finance Realtime handoff graph and run a text Voice WebSocket smoke test. |
 | [Finance with OTP and Officer Search](example2_finance_with_OTP_and_Officer_Search/README.md) | Publish a flat Finance Agent for OTP verification and loan-officer search, then run a text smoke test. |
+| [Elevator Service with Safety, Zendesk, and Handoff](example3_elevator_service_with_safety_zendesk_and_handoff/README.md) | Publish an inbound field-service graph with deterministic safety checks, explicit Zendesk ticket confirmation, exact-ID status queries, and human-assistance routing. |
 | [C# voice agent sample](CSharp/README.md) | Create and manage a temporary Agent or use an existing Agent, stream audio over WebSocket, and read persisted conversations and recordings. |
 | [`download_conversation_artifacts.py`](download_conversation_artifacts.py) | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | [`download_conversation_traces.py`](download_conversation_traces.py) | Download correlated Application Insights rows by conversation ID. |
 
-The two Finance directory samples use their own `requirements.txt` files.
+The three directory samples use their own `requirements.txt` files.
 All Python samples require `azure-ai-projects>=2.7.0` from PyPI.
 
 ## Common Python sample prerequisites
