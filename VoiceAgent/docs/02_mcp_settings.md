@@ -3,10 +3,9 @@
 ## Conclusion
 
 The [`VoiceAgent/shared_mcp/`](../shared_mcp/) directory contains the
-customer-owned MCP implementation used by both Finance Voice Agent samples.
-Run one command to build it locally or one command to deploy it to Azure
-Container Apps and create the two Foundry Project connections required by the
-Agents.
+customer-owned MCP implementation used by all three Portal examples. Run one
+command to build it locally or one command to deploy it to Azure Container Apps
+and create the three Foundry Project connections required by the Agents.
 
 Use the [architecture and documentation index](./README.md) for the system
 overview. After the MCP is ready, continue with
@@ -19,6 +18,7 @@ have overlapping tool names with different schemas:
 | --- | --- | --- |
 | `example1_finance_with_handoff` | `/mcp/finance-handoff` | `config/generated/example1.local.env` |
 | `example2_finance_with_OTP_and_Officer_Search` | `/mcp/finance-otp-officer` | `config/generated/example2.local.env` |
+| `example3_elevator_service_with_safety_zendesk_and_handoff` | `/mcp/elevator-service` | `config/generated/example3.local.env` |
 
 Both routes require the same bearer token. `/healthz` is public and contains
 only liveness status.
@@ -202,7 +202,7 @@ The script requires authenticated `az` and `devtunnel` CLIs. By default it:
 - starts `python -m shared_mcp.server` on port `18003`;
 - creates or reuses a named Dev Tunnel and local bearer token;
 - verifies public health and unauthenticated HTTP 401 behavior;
-- creates or updates two `RemoteTool` Project connections through Azure CLI;
+- creates or updates three `RemoteTool` Project connections through Azure CLI;
 - writes `config/generated/example1.local.env` and `example2.local.env`;
 - verifies authenticated `initialize` and `tools/list` against both public MCP
    routes and checks each route against its sample `agent.json` tool contract;
@@ -258,9 +258,8 @@ script is still running, publish or invoke either sample from another terminal:
 
 ```bash
 cd ../samples/example1_finance_with_handoff
-VOICE_AGENT_NAME=finance-example-local-e2e \
 VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example1.local.env \
-  python sample.py publish
+  python sample.py publish --variant all
 ```
 
 ```bash
@@ -441,11 +440,11 @@ schemas. One server hosts both packs but isolates their MCP inventories by
 route, preventing same-named tools from overwriting one another.
 
 Azure deployment intentionally fixes `minReplicas` and `maxReplicas` at one.
-The sample stores call and OTP state on that replica's filesystem, which is
-enough for short demonstrations but is not durable across a revision or
-restart. A production implementation must use a customer-owned durable store,
-replace the fake name matcher, rotate credentials, and define its own network
-and retention policies.
+The sample stores call, OTP, and fictional elevator-ticket state on that
+replica's filesystem, which is enough for short demonstrations but is not
+durable across a revision or restart. A production implementation must use a
+customer-owned durable store, replace the fake integrations, rotate
+credentials, and define its own network and retention policies.
 
 ## Debug this layer
 

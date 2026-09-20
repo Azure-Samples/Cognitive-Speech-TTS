@@ -38,7 +38,7 @@ fi
 azd up
 
 BASE_URL="$(azd env get-value SHARED_MCP_BASE_URL)"
-for route in finance-handoff finance-otp-officer; do
+for route in finance-handoff finance-otp-officer elevator-service; do
   STATUS="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 15 \
     "${BASE_URL}/mcp/${route}" || true)"
   [[ "${STATUS}" == "401" ]] ||
@@ -54,6 +54,11 @@ SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
     --url "${BASE_URL}/mcp/finance-otp-officer" \
     --agent-json \
       "${ROOT}/../samples/example2_finance_with_OTP_and_Officer_Search/agent.json"
+SHARED_MCP_TOKEN="${TOKEN}" PYTHONPATH="${ROOT}/app" \
+  python3 -m shared_mcp.probe \
+    --url "${BASE_URL}/mcp/elevator-service" \
+    --agent-json \
+      "${ROOT}/../samples/example3_elevator_service_with_safety_zendesk_and_handoff/agent.json"
 
 "${ROOT}/scripts/configure-agent.sh"
 

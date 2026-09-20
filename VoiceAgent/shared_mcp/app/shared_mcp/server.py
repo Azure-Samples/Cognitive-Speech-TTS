@@ -12,6 +12,7 @@ from mcp.server.fastmcp import FastMCP
 from mcp.server.transport_security import TransportSecuritySettings
 
 from .auth import BearerTokenGate
+from .elevator_service.pack import register as register_elevator_service
 from .finance_handoff.pack import register as register_finance_handoff
 from .finance_otp_officer.pack import register as register_finance_otp_officer
 
@@ -20,6 +21,7 @@ logger = logging.getLogger("shared_mcp")
 Receive = Callable[[], Awaitable[dict[str, Any]]]
 Send = Callable[[dict[str, Any]], Awaitable[None]]
 
+ELEVATOR_SERVICE_PATH = "/mcp/elevator-service"
 FINANCE_HANDOFF_PATH = "/mcp/finance-handoff"
 FINANCE_OTP_OFFICER_PATH = "/mcp/finance-otp-officer"
 
@@ -168,6 +170,12 @@ def build_app(config: HostConfig) -> SharedMcpApp:
     return SharedMcpApp(
         (
             _load_route(
+                ELEVATOR_SERVICE_PATH,
+                "elevator_service_mcp",
+                register_elevator_service,
+                config,
+            ),
+            _load_route(
                 FINANCE_HANDOFF_PATH,
                 "finance_handoff_mcp",
                 register_finance_handoff,
@@ -190,9 +198,10 @@ def main() -> int:
     )
     config = HostConfig.from_environment()
     logger.info(
-        "shared_mcp_start host=%s port=%s routes=%s,%s",
+        "shared_mcp_start host=%s port=%s routes=%s,%s,%s",
         config.host,
         config.port,
+        ELEVATOR_SERVICE_PATH,
         FINANCE_HANDOFF_PATH,
         FINANCE_OTP_OFFICER_PATH,
     )
@@ -207,4 +216,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

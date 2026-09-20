@@ -243,6 +243,14 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                 "VOICE_AGENT_MCP_CONNECTION_ID": "finance-otp-officer-search-connection",
             },
         )
+        _, _, elevator_service = load_materialized_agent(
+            samples / "example3_elevator_service_with_safety_zendesk_and_handoff",
+            {
+                **common_settings,
+                "VOICE_AGENT_NAME": "elevator-service-test",
+                "VOICE_AGENT_MCP_CONNECTION_ID": "elevator-service-connection",
+            },
+        )
 
         self.assertEqual(finance["model_type"], "managed")
         self.assertEqual(finance["model"], "gpt-realtime")
@@ -264,12 +272,71 @@ class VoiceAgentSdkCommonTests(unittest.TestCase):
                 "end_call",
             ],
         )
+        self.assertEqual(elevator_service["model_type"], "managed")
+        self.assertEqual(elevator_service["model"], "gpt-realtime")
+        self.assertEqual(
+            "en-US-Ava:DragonHDLatestNeural",
+            elevator_service["audio"]["output"]["voice"]["name"],
+        )
+        self.assertEqual(
+            "azure-standard",
+            elevator_service["audio"]["output"]["voice"]["type"],
+        )
+        self.assertEqual(len(elevator_service["handoff"]["nodes"]), 9)
+        self.assertEqual(len(elevator_service["handoff"]["edges"]), 17)
+        query_edge = next(
+            edge
+            for edge in elevator_service["handoff"]["edges"]
+            if edge["id"] == "intent_router_to_query_issue"
+        )
+        self.assertEqual("auto", query_edge["target_response"])
+        self.assertNotIn("transfer_message", query_edge)
+        report_issue = next(
+            node
+            for node in elevator_service["handoff"]["nodes"]
+            if node["id"] == "report_issue"
+        )
+        self.assertEqual(
+            [
+                "record_issue",
+                "assess_safety",
+                "mock_zendesk_create_ticket",
+            ],
+            report_issue["config"]["tools"][0]["allowed_tools"],
+        )
+        query_issue = next(
+            node
+            for node in elevator_service["handoff"]["nodes"]
+            if node["id"] == "query_issue"
+        )
+        self.assertEqual(
+            ["mock_zendesk_get_ticket_status"],
+            query_issue["config"]["tools"][0]["allowed_tools"],
+        )
+        human_handoff = next(
+            node
+            for node in elevator_service["handoff"]["nodes"]
+            if node["id"] == "human_handoff"
+        )
+        self.assertEqual(
+            ["request_human_handoff"],
+            human_handoff["config"]["tools"][0]["allowed_tools"],
+        )
+        self.assertNotIn(
+            "transfer_call",
+            {
+                tool.get("name")
+                for node in elevator_service["handoff"]["nodes"]
+                for tool in node["config"]["tools"]
+            },
+        )
 
     def test_sample_env_defaults_match_committed_model_mode(self) -> None:
         samples = Path(__file__).resolve().parent
         for directory in (
             "example1_finance_with_handoff",
             "example2_finance_with_OTP_and_Officer_Search",
+            "example3_elevator_service_with_safety_zendesk_and_handoff",
         ):
             sample = samples / directory
             definition = json.loads(

@@ -128,6 +128,7 @@ wait_for_mcp_config() {
       die "MCP E2E exited before writing config; see ${MCP_LOG}"
     if [[ -s "${MCP_ROOT}/config/generated/example1.local.env" \
       && -s "${MCP_ROOT}/config/generated/example2.local.env" \
+      && -s "${MCP_ROOT}/config/generated/example3.local.env" \
       && -s "${MCP_ROOT}/state/local/token" ]]; then
       return 0
     fi
@@ -145,12 +146,13 @@ import urllib.request
 base_url = sys.argv[1]
 with urllib.request.urlopen(f"{base_url}/api/templates?reload=1", timeout=30) as response:
     catalog = json.load(response)
-if len(catalog.get("templates") or []) != 2:
+if len(catalog.get("templates") or []) != 3:
     raise SystemExit(f"template catalog is not ready: {catalog}")
 
 for template_id in (
     "finance-example",
     "finance-with-otp-and-officer-search",
+    "elevator-service-example",
 ):
     with urllib.request.urlopen(
         f"{base_url}/api/templates/{template_id}/mcp/probe",
@@ -179,7 +181,8 @@ start_stack() {
   mkdir -p "${STATE_ROOT}"
   rm -f \
     "${MCP_ROOT}/config/generated/example1.local.env" \
-    "${MCP_ROOT}/config/generated/example2.local.env"
+    "${MCP_ROOT}/config/generated/example2.local.env" \
+    "${MCP_ROOT}/config/generated/example3.local.env"
 
   (
     cd "${MCP_ROOT}"

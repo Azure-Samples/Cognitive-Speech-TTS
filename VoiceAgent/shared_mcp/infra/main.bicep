@@ -71,6 +71,6 @@ output AZURE_CONTAINER_REGISTRY_ENDPOINT string = registry.outputs.loginServer
 output AZURE_CONTAINER_REGISTRY_NAME string = registry.outputs.name
 output AZURE_CONTAINER_APP_NAME string = app.outputs.name
 output SHARED_MCP_BASE_URL string = 'https://${app.outputs.fqdn}'
+output SHARED_MCP_ELEVATOR_SERVICE_URL string = 'https://${app.outputs.fqdn}/mcp/elevator-service'
 output SHARED_MCP_FINANCE_HANDOFF_URL string = 'https://${app.outputs.fqdn}/mcp/finance-handoff'
 output SHARED_MCP_FINANCE_OTP_OFFICER_URL string = 'https://${app.outputs.fqdn}/mcp/finance-otp-officer'
-

@@ -28,6 +28,21 @@
         "source_label": "Local shared_mcp Dev Tunnel",
         "source_reference": "VoiceAgent/shared_mcp"
       }
+    },
+    {
+      "id": "elevator-service-example",
+      "folder": "../samples/example3_elevator_service_with_safety_zendesk_and_handoff",
+      "name": "Example 3: Elevator Service with Safety, Zendesk, and Handoff",
+      "category": "Field service",
+      "summary": "Assess elevator safety, confirm and create Zendesk tickets, query status, and route human assistance.",
+      "accent_color": "#d97706",
+      "mcp": {
+        "connection_mode": "managed",
+        "config_file": "../shared_mcp/config/generated/example3.local.env",
+        "token_file": "../shared_mcp/state/local/token",
+        "source_label": "Local shared_mcp Dev Tunnel",
+        "source_reference": "VoiceAgent/shared_mcp"
+      }
     }
   ]
 }

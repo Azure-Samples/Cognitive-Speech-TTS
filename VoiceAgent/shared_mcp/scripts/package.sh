@@ -25,6 +25,8 @@ docker buildx build --load \
     handoff_agent="${ROOT}/../samples/example1_finance_with_handoff" \
   --build-context \
     otp_agent="${ROOT}/../samples/example2_finance_with_OTP_and_Officer_Search" \
+  --build-context \
+    elevator_agent="${ROOT}/../samples/example3_elevator_service_with_safety_zendesk_and_handoff" \
   --target test \
   -t voice-agent-shared-mcp:test \
   "${ROOT}"
