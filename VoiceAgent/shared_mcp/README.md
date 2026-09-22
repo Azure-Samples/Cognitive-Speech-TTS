@@ -7,6 +7,16 @@ business packs used by the customer-facing examples:
 - `/mcp/finance-otp-officer`
 - `/mcp/elevator-service`
 
+Each route accepts both MCP transports required by this sample stack:
+
+- Streamable HTTP for Portal readiness probes and current MCP clients.
+- Legacy HTTP+SSE for Foundry RemoteTool runtimes that first `GET` an SSE
+	endpoint and then `POST` messages to its session URL.
+
+Do not remove either transport based only on a successful Portal probe. A
+Streamable HTTP probe can pass while a handoff target still fails to activate
+through legacy SSE.
+
 Every Portal example uses a `managed` connection. A customer may create a new
 Foundry Project, run or deploy this server, and let the Portal create the
 required RemoteTool connections in that Project. No example depends on a
@@ -46,6 +56,21 @@ instructions, use [02: MCP settings](../docs/02_mcp_settings.md).
 For the complete execution order, use
 [03: Start and run the samples](../docs/03_run_samples.md).
 
+## Validate transport changes
+
+Run the focused shared MCP suite from this directory with the application on
+`PYTHONPATH`:
+
+```bash
+PYTHONPATH=app .venv/bin/python -m unittest discover \
+	-s tests -p 'test_shared_mcp.py' -v
+```
+
+The suite verifies bearer enforcement, Streamable HTTP behavior, and the
+legacy SSE `endpoint` event used by Foundry RemoteTool. A successful Portal
+template probe is an additional live Streamable HTTP check, not a substitute
+for the legacy SSE regression.
+
 For any Project connection, MCP authentication, missing tool call, or
 post-tool response failure, use the shared
 [`debug-local-session` Skill](../skills/debug-local-session/) and start with:
@@ -55,3 +80,10 @@ cd VoiceAgent
 ./scripts/manage-local-mcp-and-ui.sh status
 python skills/debug-local-session/scripts/analyze_session.py --list
 ```
+
+For `handoff_target_activation_failed` or `handoff_target_prepare_timeout`,
+correlate the session timestamp with the newest
+`state/e2e/<UTC-run>/native-mcp.log`. The healthy Foundry sequence is `GET 200`,
+message `POST 202`, `ListToolsRequest`, and then `CallToolRequest` when the node
+invokes a tool. `.local-mcp-and-ui/mcp.log` is manager/startup output and may
+not contain the HTTP requests needed for this diagnosis.

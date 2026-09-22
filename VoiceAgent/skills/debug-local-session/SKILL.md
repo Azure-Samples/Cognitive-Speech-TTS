@@ -35,8 +35,11 @@ endpoint.
    curl -fsS http://127.0.0.1:18098/healthz
    ```
 
-   Read `.local-mcp-and-ui/mcp.log` and
-   `.local-mcp-and-ui/portal.log` when a process is not ready.
+  Read `.local-mcp-and-ui/mcp.log` and
+  `.local-mcp-and-ui/portal.log` when a process is not ready. For requests
+  that reached the native MCP runtime, read the `native-mcp.log` under the
+  newest `shared_mcp/state/e2e/<UTC-run>/` directory; the manager log contains
+  startup output but is not the authoritative HTTP access log.
 
 3. If setup, publication, or **Try it now** fails before a recording exists:
    - Run `./scripts/setup-local-examples.sh --check`.
@@ -55,8 +58,22 @@ endpoint.
 4. If a recording exists, determine the actual data directory.
    - Prefer `--data-dir` from the running `demo_server.py` command.
    - Otherwise use `VOICE_PORTAL_DATA_DIR`.
-   - Otherwise use `~/.voice-agent-portal`.
+  - Otherwise use `<portal-process-HOME>/.voice-agent-portal`, where
+    `<portal-process-HOME>` comes from `/proc/<portal-pid>/environ`; do not
+    substitute the portal working directory.
    - Do not assume the current shell user started the UI.
+
+   For the manager-owned portal, resolve only the allowed fields without
+   printing its complete environment:
+
+   ```bash
+   portal_pid="$(<.local-mcp-and-ui/portal.pid)"
+   tr '\0' '\n' < "/proc/${portal_pid}/environ" |
+     sed -n '/^HOME=/p;/^VOICE_PORTAL_DATA_DIR=/p;/^VOICE_PORTAL_RECORD_SESSIONS=/p'
+   ```
+
+   If `VOICE_PORTAL_DATA_DIR` is unset, use the reported `HOME` plus
+   `/.voice-agent-portal`.
 
 5. Resolve the recording with the bundled analyzer:
 
@@ -89,6 +106,10 @@ endpoint.
    | No `session.created` | Credential, WebSocket, Foundry route, or session bootstrap |
    | Early `error` such as `tool_connection_unresolved` | Published definition, Project connection, or Vienna materialization |
    | `session.handoff.started` then `.aborted` | Target prepare/activation; use `frame.error.code`, edge, and target node |
+  | Closed session with `HANDOFF_INCOMPLETE` | Target preparation never emitted a terminal event; correlate the started offset with Foundry trace and native MCP access log |
+  | Handoff abort plus MCP `GET ... 400 Missing session ID` | Foundry used legacy HTTP+SSE against a Streamable-HTTP-only route |
+  | Handoff prepare timeout plus MCP `GET 200`, but no message `POST` | Legacy SSE did not return a usable `endpoint` event or public message URL |
+  | MCP `GET 200`, message `POST 202`, `ListToolsRequest`, then handoff completed | Target MCP transport and tool discovery succeeded |
    | MCP/function call `.failed` | Tool execution path; correlate tool/item ID with backend logs |
    | Tool `.completed` but no next response/handoff | Response continuation or scheduling |
    | `bridge` error in meta/server log | Portal proxy or network transport |
@@ -102,6 +123,40 @@ endpoint.
      attempt or target preparation involving it.
    - Preserve the failed recording, then run a control with the same
      Agent/version. Do not restart or redeploy before preserving evidence.
+
+## Handoff transport triage
+
+For `handoff_target_activation_failed` or `handoff_target_prepare_timeout`, do
+not stop after confirming health or the Portal template probe. The probe uses
+Streamable HTTP, while Foundry RemoteTool can use legacy HTTP+SSE against the
+same route.
+
+1. Get the failed handoff timestamp and target node from `events.jsonl`.
+2. Find the active native MCP artifact from the manager log or the newest
+   `shared_mcp/state/e2e/<UTC-run>/native-mcp.log`.
+3. Match Foundry requests by timestamp and public client address. A successful
+   legacy sequence is:
+
+   ```text
+   GET  /mcp/<route>                                  200
+   POST /mcp/<route>/messages/?session_id=<id>        202
+   Processing request of type ListToolsRequest
+   Processing request of type CallToolRequest         # only when a tool runs
+   ```
+
+4. Interpret the first deviation:
+   - `GET 400 Missing session ID`: the route handled legacy SSE as stateful
+     Streamable HTTP.
+   - `GET 200` followed by a 30-second handoff timeout and no message `POST`:
+     the SSE stream did not expose a usable `endpoint` event.
+   - message `POST 401` or `404`: Project connection credential or SSE session
+     mismatch.
+   - `ListToolsRequest` without the required tool: wrong route or inventory.
+   - `CallToolRequest` with a business error: transport succeeded; debug the
+     tool implementation and state.
+
+Never print `shared_mcp/state/local/token`. Use the Portal probe for the
+Streamable HTTP control and the native access log for the Foundry transport.
 
 ## Evidence quality rules
 
@@ -143,7 +198,7 @@ Always confirm these joins instead of validating each component in isolation:
   `gpt-realtime-2.1`. If unsupported, verify `gpt-realtime-1.5`, then another
   exact managed identifier enabled for the selected Project.
   Account deployment inventory is not the readiness gate for this mode.
-- The local MCP path is Docker `:18003` -> named Dev Tunnel -> Foundry
+- The local MCP path is native Python `:18003` -> named Dev Tunnel -> Foundry
   RemoteTool connection. The Azure path is Container App -> RemoteTool
   connection. Do not mix generated `.local.env` and `.shared.env`.
 - The UI is a local credentialed proxy and recorder. Foundry, not the browser,

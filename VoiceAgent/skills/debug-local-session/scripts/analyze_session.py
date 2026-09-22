@@ -220,6 +220,23 @@ def event_faults(
     return protocol_errors, handoffs, tool_failures
 
 
+def incomplete_handoffs(handoffs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    terminal_ids = {
+        str(event.get("handoff_id") or "")
+        for event in handoffs
+        if event.get("type") in {
+            "session.handoff.completed",
+            "session.handoff.aborted",
+        }
+    }
+    return [
+        event
+        for event in handoffs
+        if event.get("type") == "session.handoff.started"
+        and str(event.get("handoff_id") or "") not in terminal_ids
+    ]
+
+
 def server_log_matches(
     data_dir: Path,
     meta: dict[str, Any],
@@ -324,6 +341,17 @@ def classify(
         )
     if not meta.get("ended_at"):
         return "RECORDING_INCOMPLETE", "recording has no ended_at marker"
+    dangling = incomplete_handoffs(handoffs)
+    if dangling:
+        first = dangling[0]
+        edge = first.get("edge_id") or (
+            f"{first.get('from_node_id')}->{first.get('to_node_id')}"
+        )
+        return (
+            "HANDOFF_INCOMPLETE",
+            f"handoff {edge} started at {elapsed(first.get('t'))} but no "
+            "completed or aborted event was recorded before session close",
+        )
     return (
         "NO_RECORDED_FAILURE",
         "no bridge, protocol, handoff, or tool failure is present in the recording",
@@ -369,6 +397,7 @@ def build_report(data_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
     events, malformed = load_events(events_path)
     item_names = build_item_names(events)
     protocol_errors, handoffs, tool_failures = event_faults(events, item_names)
+    dangling_handoffs = incomplete_handoffs(handoffs)
     status, conclusion = classify(
         meta,
         events,
@@ -398,6 +427,7 @@ def build_report(data_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
             "handoff_aborted": sum(
                 event["type"] == "session.handoff.aborted" for event in handoffs
             ),
+            "handoff_incomplete": len(dangling_handoffs),
             "tool_failures": len(tool_failures),
         },
         "first_fault": first_fault(
@@ -408,6 +438,7 @@ def build_report(data_dir: Path, meta: dict[str, Any]) -> dict[str, Any]:
         ),
         "protocol_errors": protocol_errors,
         "handoffs": handoffs,
+        "incomplete_handoffs": dangling_handoffs,
         "tool_failures": tool_failures,
         "server_log_matches": server_log_matches(data_dir, meta),
         "paths": {
@@ -503,6 +534,15 @@ def print_report(report: dict[str, Any]) -> None:
             )
             if event.get("message"):
                 print(f"    {event['message']}")
+
+    if report["incomplete_handoffs"]:
+        print("Incomplete handoffs:")
+        for event in report["incomplete_handoffs"][:20]:
+            print(
+                f"  {elapsed(event.get('t'))} "
+                f"{event.get('from_node_id')} -> {event.get('to_node_id')} "
+                f"edge={event.get('edge_id')} line={event.get('line')}"
+            )
 
     if report["protocol_errors"]:
         print("Service errors:")

@@ -32,7 +32,7 @@ selected Foundry Project
                     |
                     v
           local deployment:
-            Docker :18003 -> named Dev Tunnel
+            native Python :18003 -> named Dev Tunnel
           or Azure deployment:
             Container App HTTPS ingress
                     |
@@ -116,7 +116,7 @@ and creates local `.env` files.
 
 `scripts/manage-local-mcp-and-ui.sh` manages the runtime:
 
-- MCP Docker container;
+- native Python MCP process;
 - named Dev Tunnel host;
 - Portal process;
 - template MCP readiness checks.
@@ -126,9 +126,12 @@ State and logs:
 ```text
 .local-mcp-and-ui/
   mcp.pid
-  mcp.log
+  mcp.log       # manager/startup output
   portal.pid
   portal.log
+
+shared_mcp/state/e2e/<UTC-run>/
+  native-mcp.log  # authoritative MCP HTTP/tool activity
 ```
 
 The lower-level `shared_mcp/scripts/e2e-local.sh` starts only the MCP path and
@@ -140,8 +143,8 @@ leaves its tunnel host running.
 | --- | --- |
 | Local dependencies/auth | `setup-local-examples.sh --check` |
 | MCP/UI processes | `manage-local-mcp-and-ui.sh status`, state logs |
-| Local MCP process | `http://127.0.0.1:18003/healthz`, Docker status |
-| Public MCP/auth/tools | Portal template probe JSON; authenticated HTTP 200 |
+| Local MCP process | `http://127.0.0.1:18003/healthz`, manager PID/status |
+| Public MCP/auth/tools | Portal template probe JSON for Streamable HTTP; `native-mcp.log` for Foundry legacy HTTP+SSE |
 | Project selection | UI config/cookie, session `meta.json`, sample `.env` |
 | Model deployment | account deployment list, `model_type`, exact `model` |
 | Agent publication | `sample.py publish/check`, version and fingerprints |
@@ -173,6 +176,12 @@ curl -fsS \
 curl -fsS \
   http://127.0.0.1:18098/api/templates/finance-with-otp-and-officer-search/mcp/probe
 ```
+
+The Portal probes prove authenticated Streamable HTTP `initialize` and
+`tools/list`. They do not prove the legacy HTTP+SSE sequence used by every
+Foundry RemoteTool runtime. For a handoff activation failure, correlate the
+session timestamp with `native-mcp.log` and require `GET 200`, message
+`POST 202`, and `ListToolsRequest` before declaring the transport healthy.
 
 Verify the published Agent version using the same materialized settings:
 
