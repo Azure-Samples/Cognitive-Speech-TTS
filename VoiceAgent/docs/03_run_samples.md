@@ -69,7 +69,9 @@ same-named tools with different schemas:
 
 - Python 3.10 or later.
 - Azure CLI authenticated with `az login`.
-- Dev Tunnel CLI authenticated with a Microsoft or GitHub identity.
+- A GitHub identity that can authenticate Dev Tunnel by device code. The setup
+  script installs a repository-local CLI when needed, but never performs the
+  interactive login automatically.
 - Access to a Microsoft Foundry Project with a compatible versioned managed
   realtime model.
 - Permission to create Project connections and publish Voice Agents.
@@ -91,9 +93,8 @@ ready before continuing:
 
 ```bash
 az account show --output none
-
-cd "$VOICE_AGENT_ROOT/shared_mcp"
-devtunnel user show --json
+cd "$VOICE_AGENT_ROOT"
+./scripts/setup-local-examples.sh --check
 ```
 
 The local workflow does not require or invoke Docker. Install Docker only when
@@ -119,13 +120,32 @@ cd "$VOICE_AGENT_ROOT"
 ```
 
 `setup-local-examples.sh` checks required command-line tools, installs
-Dev Tunnel when missing, creates or reuses the three Python environments,
+repository-local Node.js 22 and Dev Tunnel CLIs when missing, creates or reuses
+the component Python environments,
 installs the portal Node dependencies, runs/builds the browser code, and
 creates the three local `.env` files. On the first normal setup it also
 generates `shared_mcp/state/local/devtunnel-id`; later setup, E2E, and manager
 runs reuse that fixed local ID. The file is ignored by Git. Use `--check` to
 inspect readiness without installing, generating the ID, or changing
 environments.
+
+Repository-local tools live under ignored `.local-mcp-and-ui/tools/`; setup and
+`manage-local-mcp-and-ui.sh` add them to their own `PATH`, so later lifecycle
+commands work in a fresh shell. On minimal Debian/Ubuntu Python installations
+where `venv` exists but `ensurepip` does not, setup creates each `.venv` with
+`--without-pip` and bootstraps `pip` inside that environment. Do not install
+`python3.12-venv` with `sudo` merely to run this workflow.
+
+The repository-local Dev Tunnel CLI is intentionally not added to the user's
+interactive shell. Complete its one-time device-code login through the wrapper:
+
+```bash
+./scripts/login-devtunnel.sh
+./scripts/setup-local-examples.sh --check
+```
+
+The wrapper uses GitHub and guarantees that identity state is resolved from the
+`shared_mcp` working directory used by E2E.
 
 When reusing an older sample `.env`, setup migrates MCP selection to the
 canonical `VOICE_AGENT_MCP_CONFIG` file and removes legacy direct MCP URL and
@@ -144,6 +164,10 @@ commands:
 ```bash
 export PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 ```
+
+The commands below are a manual alternative for hosts with a complete Python
+installation. Prefer `setup-local-examples.sh` on minimal Linux/WSL hosts;
+direct `python3 -m venv` requires that interpreter's `ensurepip` support.
 
 Install each example's Python dependencies before the first run:
 
@@ -402,26 +426,20 @@ VOICE_AGENT_MCP_CONFIG=../../shared_mcp/config/generated/example1.local.env \
 
 ## Load and publish the examples from the portal
 
-Run the MCP E2E first and leave it running. Then open another terminal:
+The manager has already started the portal and MCP together. Do not run
+`demo_server.py` in another terminal. Open:
 
-```bash
-cd "$VOICE_AGENT_ROOT/portal"
-.venv/bin/python demo_server.py --credential-mode cli --bind 127.0.0.1 --port 9527
+```text
+http://localhost:18098
 ```
-
-Choose another free port with `--port`, for example `--port 9530`. The browser
-URL and forwarded port must use the same value.
-
-If the UI runs on the same computer as the browser, open
-`http://localhost:9527` directly.
 
 If it runs in a VS Code Remote-SSH host:
 
-1. Verify `curl -sS http://127.0.0.1:9527/healthz` in the remote terminal.
+1. Verify `curl -sS http://127.0.0.1:18098/healthz` in the remote terminal.
 2. Open the VS Code **PORTS** view in that same Remote-SSH window.
-3. Forward remote port `9527`.
+3. Forward remote port `18098`.
 4. Open the exact **Forwarded Address** shown by VS Code; the local port may
-   differ if `9527` is already occupied.
+  differ if `18098` is already occupied.
 
 Use `localhost` or the forwarded HTTPS address so browser microphone access
 has a secure context.
@@ -484,9 +502,8 @@ Expected:
 Inspect the persistent tunnel:
 
 ```bash
-tunnel_id=$(<shared_mcp/state/local/devtunnel-id)
-devtunnel show "$tunnel_id"
-devtunnel port show "$tunnel_id" -p 18003
+./scripts/setup-local-examples.sh --check
+./scripts/manage-local-mcp-and-ui.sh status
 ```
 
 ### Generated config
@@ -546,8 +563,8 @@ recordings.
 | Symptom | Cause | Resolution |
 | --- | --- | --- |
 | `files.pythonhosted.org` TLS or connection failure during setup | The host cannot reach the configured Python package index | Set `PIP_INDEX_URL` to a customer-approved mirror and rerun setup |
-| `devtunnel is required` | Dev Tunnel CLI is missing or not on `PATH` | Install it and add its reported directory, commonly `~/bin`, to `PATH` |
-| Dev Tunnel sign-in says the account does not meet access criteria | Entra Conditional Access rejected the flow | Use GitHub device-code login as documented in guide 02, or use Azure hosting if policy prohibits Dev Tunnel |
+| `devtunnel is required` | Repository-local Dev Tunnel CLI is missing | Run normal `setup-local-examples.sh` without `--check` |
+| Dev Tunnel is not logged in | GitHub device-code login has not completed | Run `./scripts/login-devtunnel.sh`, complete the browser prompt, then run setup `--check` |
 | A sample command cannot import its requirements | That scenario's `.venv` was not created | Install that scenario's requirements; the UI `.venv` is not a substitute |
 | E2E cannot find the Project | The active Azure CLI subscription is wrong or the endpoint was guessed | Select the exact subscription and discover the Project through Azure CLI as documented in guide 01 |
 | `Model '<name>' is not supported in managed mode in this region` | The exact managed model identifier is unavailable in the selected Project, or the Project is not eligible | Try the documented versioned fallback (`gpt-realtime-2.1`, then `gpt-realtime-1.5`), use another exact identifier confirmed for that Project, or move to an eligible Project; do not switch to self-deployed mode merely to bypass the error |

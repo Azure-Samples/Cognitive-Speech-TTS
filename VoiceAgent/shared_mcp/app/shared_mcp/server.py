@@ -63,7 +63,8 @@ class HostConfig:
 @dataclass(frozen=True)
 class LoadedRoute:
     path: str
-    app: Any
+    streamable_app: Any
+    sse_app: Any
     lifespan_app: Any
 
 
@@ -86,21 +87,36 @@ class SharedMcpApp:
             await self._respond(send, 404, {"error": "not found"})
             return
 
-        path = scope.get("path", "").rstrip("/") or "/"
+        request_path = scope.get("path", "") or "/"
+        path = request_path.rstrip("/") or "/"
         if path == "/healthz":
             await self._respond(send, 200, {"status": "ok"})
             return
 
         route = self._routes.get(path)
+        relative_path = "/"
+        if route is None:
+            for candidate in self._routes.values():
+                if request_path.startswith(candidate.path + "/"):
+                    route = candidate
+                    relative_path = request_path[len(candidate.path):]
+                    break
         if route is None:
             await self._respond(send, 404, {"error": "not found"})
             return
-        await route.app(
+        headers = dict(scope.get("headers") or [])
+        use_legacy_sse = (
+            scope.get("method") == "GET"
+            and b"mcp-session-id" not in headers
+        ) or relative_path != "/"
+        app = route.sse_app if use_legacy_sse else route.streamable_app
+        root_path = scope.get("root_path", "").rstrip("/") + route.path
+        await app(
             {
                 **scope,
-                "path": "/",
-                "raw_path": b"/",
-                "root_path": route.path,
+                "path": relative_path,
+                "raw_path": relative_path.encode(),
+                "root_path": root_path,
             },
             receive,
             send,
@@ -153,16 +169,19 @@ def _load_route(
 ) -> LoadedRoute:
     mcp = FastMCP(name)
     mcp.settings.streamable_http_path = "/"
+    mcp.settings.sse_path = "/"
+    mcp.settings.message_path = "/messages/"
     mcp.settings.transport_security = TransportSecuritySettings(
         enable_dns_rebinding_protection=bool(config.allowed_hosts),
         allowed_hosts=list(config.allowed_hosts),
     )
     register(mcp)
-    app = mcp.streamable_http_app()
+    streamable_app = mcp.streamable_http_app()
     return LoadedRoute(
         path=path,
-        app=BearerTokenGate(app, config.token),
-        lifespan_app=app,
+        streamable_app=BearerTokenGate(streamable_app, config.token),
+        sse_app=BearerTokenGate(mcp.sse_app(), config.token),
+        lifespan_app=streamable_app,
     )
 
 

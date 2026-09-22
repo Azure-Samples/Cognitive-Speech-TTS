@@ -243,13 +243,27 @@ class SessionRecorder:
             self._line(direction, f"{event_type}{f' tool={name}' if name else ''}")
             return
 
-        if event_type == "error" or event_type.endswith(".failed"):
-            message = ((frame.get("error") or {}).get("message")
-                       if isinstance(frame.get("error"), dict) else None)
-            detail = str(message or frame.get("error") or "")[:300]
+        response = frame.get("response") or {}
+        response_failed = (
+            event_type == "response.done"
+            and isinstance(response, dict)
+            and response.get("status") == "failed"
+        )
+        if event_type == "error" or event_type.endswith(".failed") or response_failed:
+            error = frame.get("error")
+            if response_failed:
+                status_details = response.get("status_details") or {}
+                error = (
+                    status_details.get("error")
+                    if isinstance(status_details, dict)
+                    else status_details
+                )
+            message = error.get("message") if isinstance(error, dict) else None
+            detail = str(message or error or "")[:300]
             self.meta["errors"].append({"t": round(time.monotonic() - self._started, 3),
                                         "type": event_type, "message": detail})
-            self._line(direction, f"{event_type} {detail}")
+            status = " failed" if response_failed else ""
+            self._line(direction, f"{event_type}{status} {detail}")
             self._write_meta()
             return
 

@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 MCP_ROOT="${ROOT}/shared_mcp"
 UI_ROOT="${ROOT}/portal"
 STATE_ROOT="${ROOT}/.local-mcp-and-ui"
+LOCAL_TOOLS_ROOT="${STATE_ROOT}/tools"
 MCP_PID_FILE="${STATE_ROOT}/mcp.pid"
 UI_PID_FILE="${STATE_ROOT}/portal.pid"
 MCP_LOG="${STATE_ROOT}/mcp.log"
@@ -15,6 +16,8 @@ UI_PORT="${DEMO_PORT:-18098}"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 UI_PYTHON="${VOICE_PORTAL_PYTHON:-${UI_ROOT}/.venv/bin/python}"
 ACTION="${1:-restart}"
+
+export PATH="${LOCAL_TOOLS_ROOT}/node/bin:${LOCAL_TOOLS_ROOT}/devtunnel/bin:${HOME}/bin:${PATH}"
 
 usage() {
   cat <<'EOF'

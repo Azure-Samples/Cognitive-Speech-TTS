@@ -67,7 +67,7 @@ except (json.JSONDecodeError, TypeError):
 raise SystemExit(0 if user.get("status") == "Logged in" else 1)
 PY
 then
-  die "Dev Tunnel is not authenticated for ${ROOT}. Run 'cd ${ROOT} && devtunnel user login --entra --use-device-code-auth' or use --github, then retry."
+  die "Dev Tunnel is not authenticated for ${ROOT}. Run '${ROOT}/../scripts/login-devtunnel.sh', complete the GitHub device-code login, then retry."
 fi
 
 mkdir -p "${RUN_ROOT}" "${LOCAL_STATE_ROOT}"

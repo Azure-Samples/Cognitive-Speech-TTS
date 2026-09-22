@@ -57,9 +57,33 @@ else:
     )
 
 
-async def _request(app: object, method: str, path: str, token: str = "") -> int:
+async def _request(
+    app: object,
+    method: str,
+    path: str,
+    token: str = "",
+    extra_headers: tuple[tuple[bytes, bytes], ...] = (),
+) -> int:
+    status, _ = await _request_detail(
+        app,
+        method,
+        path,
+        token,
+        extra_headers,
+    )
+    return status
+
+
+async def _request_detail(
+    app: object,
+    method: str,
+    path: str,
+    token: str = "",
+    extra_headers: tuple[tuple[bytes, bytes], ...] = (),
+    wait_for: bytes = b"",
+) -> tuple[int, bytes]:
     messages: list[dict[str, object]] = []
-    headers = []
+    headers = list(extra_headers)
     if token:
         headers.append(
             (b"authorization", b"Bear" + b"er " + token.encode())
@@ -69,12 +93,18 @@ async def _request(app: object, method: str, path: str, token: str = "") -> int:
     async def receive() -> dict[str, object]:
         nonlocal received
         if received:
+            if wait_for:
+                await asyncio.wait_for(body_ready.wait(), timeout=1)
             return {"type": "http.disconnect"}
         received = True
         return {"type": "http.request", "body": b"", "more_body": False}
 
     async def send(message: dict[str, object]) -> None:
         messages.append(message)
+        if wait_for and wait_for in message.get("body", b""):
+            body_ready.set()
+
+    body_ready = asyncio.Event()
 
     await app(
         {
@@ -95,7 +125,61 @@ async def _request(app: object, method: str, path: str, token: str = "") -> int:
     start = next(
         message for message in messages if message["type"] == "http.response.start"
     )
-    return int(start["status"])
+    body = b"".join(
+        message.get("body", b"")
+        for message in messages
+        if message["type"] == "http.response.body"
+    )
+    return int(start["status"]), body
+
+
+async def _request_with_lifespan(
+    app: object,
+    method: str,
+    path: str,
+    token: str = "",
+    extra_headers: tuple[tuple[bytes, bytes], ...] = (),
+    wait_for: bytes = b"",
+) -> tuple[int, bytes]:
+    incoming: asyncio.Queue[dict[str, object]] = asyncio.Queue()
+    outgoing: asyncio.Queue[dict[str, object]] = asyncio.Queue()
+
+    async def receive() -> dict[str, object]:
+        return await incoming.get()
+
+    async def send(message: dict[str, object]) -> None:
+        await outgoing.put(message)
+
+    lifespan = asyncio.create_task(
+        app(
+            {
+                "type": "lifespan",
+                "asgi": {"version": "3.0", "spec_version": "2.0"},
+                "state": {},
+            },
+            receive,
+            send,
+        )
+    )
+    await incoming.put({"type": "lifespan.startup"})
+    started = await outgoing.get()
+    if started["type"] != "lifespan.startup.complete":
+        raise RuntimeError(str(started.get("message") or started["type"]))
+    try:
+        return await _request_detail(
+            app,
+            method,
+            path,
+            token,
+            extra_headers,
+            wait_for,
+        )
+    finally:
+        await incoming.put({"type": "lifespan.shutdown"})
+        stopped = await outgoing.get()
+        if stopped["type"] != "lifespan.shutdown.complete":
+            raise RuntimeError(str(stopped.get("message") or stopped["type"]))
+        await lifespan
 
 
 class SharedMcpTests(unittest.TestCase):
@@ -625,6 +709,36 @@ class SharedMcpTests(unittest.TestCase):
         ):
             for method in ("GET", "POST", "DELETE"):
                 self.assertEqual(asyncio.run(_request(app, method, path)), 401)
+
+    def test_authenticated_sse_get_returns_legacy_message_endpoint(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state = Path(directory)
+            environment = {
+                "SHARED_MCP_TOKEN": TOKEN,
+                "FINANCE_MCP_STATE_DIR": str(state / "handoff"),
+                "FINANCE_OTP_MCP_STATE_DIR": str(state / "otp"),
+                "FINANCE_OTP_MCP_AUTH_DIR": str(state / "auth"),
+            }
+            with patch.dict("os.environ", environment, clear=False):
+                app = build_app(HostConfig.from_environment(environment))
+
+            status, body = asyncio.run(
+                _request_with_lifespan(
+                    app,
+                    "GET",
+                    FINANCE_HANDOFF_PATH,
+                    TOKEN,
+                    ((b"accept", b"text/event-stream"),),
+                    b"event: endpoint",
+                )
+            )
+
+        self.assertEqual(status, 200)
+        self.assertIn(b"event: endpoint", body)
+        self.assertIn(
+            b"/mcp/finance-handoff/messages/?session_id=",
+            body,
+        )
 
     def test_bearer_gate_accepts_the_configured_token(self) -> None:
         async def downstream(

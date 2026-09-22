@@ -101,13 +101,28 @@ Prerequisites:
 - Azure CLI authenticated with `az login`
 - Python 3.10 or later
 - OpenSSL and `curl`
-- Dev Tunnel CLI authenticated with a Microsoft or GitHub identity
+- Dev Tunnel CLI authenticated with GitHub for this local workflow
 - Permission to create connections in the target Foundry Project
 
 The local workflow uses Azure CLI for Project discovery and connection
 creation. It does not require Azure Developer CLI or `azd auth login`.
 
 ### Install Dev Tunnel CLI on Linux or WSL
+
+The recommended full setup installs a repository-local CLI automatically when
+`devtunnel` is not already available:
+
+```bash
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent
+./scripts/setup-local-examples.sh \
+   --project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+```
+
+The executable is stored under the ignored `.local-mcp-and-ui/tools/` state,
+and both setup and lifecycle scripts discover it automatically. Do not add that
+directory to the interactive shell `PATH`. The manual system/user-local install
+below is optional and remains useful when `devtunnel` is needed outside this
+repository.
 
 ```bash
 curl -sL https://aka.ms/DevTunnelCliInstall | bash
@@ -123,52 +138,35 @@ directory.
 
 ### Authenticate Dev Tunnel
 
-Use an identity provider approved by the customer's organization. The local
-workflow technically supports either Microsoft Entra or GitHub, but that does
-not make the two identities equivalent under customer policy.
+Use GitHub device-code authentication for this local MCP workflow. Azure
+resource operations still use the separate identity selected by `az login`;
+the GitHub identity authenticates only the Dev Tunnel host.
 
 Run login and verification from the same `shared_mcp` directory used by E2E.
 On the onboarding Linux host, Dev Tunnel resolved different saved identities
 from different working directories. The setup and E2E scripts therefore also
 run all Dev Tunnel identity and tunnel commands from this directory.
 
-```bash
-cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
-```
-
-For a remote or headless terminal, use the explicit Microsoft Entra
-device-code flow:
+When setup installed the repository-local CLI, use the repository wrapper. It
+selects the correct executable and working directory in a fresh shell:
 
 ```bash
-devtunnel user login --entra --use-device-code-auth
-devtunnel user show --json
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent
+./scripts/login-devtunnel.sh
+./scripts/setup-local-examples.sh --check
 ```
+
+The wrapper is the supported login entry point. It selects the repository-local
+executable and the `shared_mcp` working directory, including on a remote or
+headless host.
 
 The verification output must contain `"status": "Logged in"`. Do not use the
 command's exit code as the authentication gate: current Dev Tunnel CLI builds
 also exit zero with `{"status":"Not logged in"}`. The repository setup and
 E2E scripts parse this JSON status before reporting readiness.
 
-If the organization permits GitHub for Dev Tunnel development, its headless
-flow is:
-
-```bash
-devtunnel user login --github --use-device-code-auth
-devtunnel user show --json
-```
-
-In particular, this can be an alternative when an Entra Conditional Access
-policy returns:
-
-```text
-Your sign-in was successful but does not meet the criteria to access this resource.
-```
-
-This changes only the Dev Tunnel identity. Azure resource operations still use
-the identity selected by `az login`. External customers can create and host a
-tunnel with their own supported Microsoft or GitHub account. A customer tenant
-or network policy can still prohibit Dev Tunnel; in that case use the Azure
-Container Apps deployment path instead.
+A customer policy can prohibit GitHub or Dev Tunnel entirely; in that case use
+the Azure Container Apps deployment path instead of changing identity providers.
 
 The script creates the tunnel with anonymous network reachability so Foundry
 can call it. The MCP routes are not anonymous: they still require the bearer
@@ -189,11 +187,8 @@ Then run:
 
 ```bash
 az account show --output table
-
-cd /path/to/Cognitive-Speech-TTS/VoiceAgent/shared_mcp
-devtunnel user show --json
-PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}" \
-   ./scripts/e2e-local.sh
+./scripts/setup-local-examples.sh --check
+./scripts/manage-local-mcp-and-ui.sh restart
 ```
 
 The script requires authenticated `az` and `devtunnel` CLIs. By default it:
@@ -289,8 +284,8 @@ Press Ctrl+C to stop the local MCP runtime and dev tunnel.
 
 | Error | Meaning | Resolution |
 | --- | --- | --- |
-| `devtunnel is required` | CLI is missing or its install directory is not on `PATH` | Install it, add the reported directory such as `~/bin` to `PATH`, and verify `devtunnel --version` |
-| Dev Tunnel sign-in does not meet access criteria | Entra Conditional Access rejected that auth flow | Use `devtunnel user login --github --use-device-code-auth`, or use Azure hosting if customer policy prohibits Dev Tunnel |
+| `devtunnel is required` | Repository-local CLI is missing | Run normal `setup-local-examples.sh` without `--check` |
+| Dev Tunnel is not logged in | GitHub device-code login has not completed | Run `./scripts/login-devtunnel.sh`, complete the GitHub browser prompt, then run setup `--check` |
 | The fixed Dev Tunnel ID conflicts with an unavailable tunnel | The ID belongs to another identity or stale external state | Sign in with its owner; to intentionally reset the machine ID, remove `state/local/devtunnel-id`, rerun normal setup, and update consumers of the old URL |
 | `configure AZURE_AI_PROJECT_ENDPOINT` | Example 1 `.env` is missing or still contains the placeholder | Discover the endpoint with Azure CLI and copy it into both sample `.env` files |
 | Project not found in active Azure CLI subscription | Endpoint and active subscription do not match | Run `az account set` with the exact subscription name or ID |

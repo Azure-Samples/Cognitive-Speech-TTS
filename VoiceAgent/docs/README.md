@@ -131,25 +131,24 @@ credential to call the selected MCP route.
 
 ## Fastest complete local workflow
 
-For the first run, complete these in order:
-
-1. Select the exact subscription and discover or create the Project endpoint
-  in [01: Subscription and Foundry Project](./01_setup_subscription.md).
-2. Create both Finance virtual environments, the portal environment, and
-  all three `.env` files in
-  [03: Start and run the samples](./03_run_samples.md).
-3. Install and authenticate Dev Tunnel as described in
-  [02: MCP settings and E2E](./02_mcp_settings.md).
-4. Start E2E and wait for its final success lines:
+Select the exact subscription and Project endpoint first. Then run this entire
+sequence from `VoiceAgent`; do not start the portal separately:
 
 ```bash
-cd VoiceAgent
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent
+az login
+./scripts/setup-local-examples.sh \
+  --project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+./scripts/login-devtunnel.sh
+./scripts/setup-local-examples.sh --check
 ./scripts/manage-local-mcp-and-ui.sh restart
 ```
 
-The command safely stops stale MCP, Dev Tunnel, and portal processes owned
-by this repository; starts a fresh MCP E2E and portal; then verifies both
-template MCP probes. It prints the portal URL when the full stack is ready.
+The login wrapper uses GitHub device-code authentication. The final command
+safely replaces stale repository-owned processes, starts native MCP, Dev
+Tunnel, and portal, then verifies all four template MCP probes. It succeeds
+only after printing `local_mcp_and_portal=ready`. Open
+`http://localhost:18098`.
 
 Use the same script for lifecycle operations:
 

@@ -20,6 +20,37 @@ use [`portal/`](portal/README.md). It is the general Voice Agent UI and runs on
 `http://127.0.0.1:9527` by default. Do not start the Finance MCP stack unless
 the request mentions Finance, Templates, or the shared MCP.
 
+## Portal + local MCP quickstart
+
+Use this path when the portal must publish or run the checked-in Templates.
+It is the recommended end-to-end Linux/WSL workflow:
+
+```bash
+cd /path/to/Cognitive-Speech-TTS/VoiceAgent
+az login
+./scripts/setup-local-examples.sh \
+   --project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+./scripts/login-devtunnel.sh
+./scripts/setup-local-examples.sh --check
+./scripts/manage-local-mcp-and-ui.sh restart
+```
+
+`login-devtunnel.sh` uses GitHub device-code authentication. Follow the printed
+`https://github.com/login/device` prompt. Azure operations continue to use the
+separate identity selected by `az login`.
+
+Success requires `local_mcp_and_portal=ready`. Open
+**http://localhost:18098**, then verify with:
+
+```bash
+./scripts/manage-local-mcp-and-ui.sh status
+curl -fsS http://127.0.0.1:18003/healthz
+curl -fsS http://127.0.0.1:18098/healthz
+```
+
+Port `9527` is only for a portal-only session without the managed local MCP
+lifecycle. Do not run a second manual portal after this quickstart.
+
 ## Choose an entry point
 
 | Goal | Start here | What it owns |
@@ -73,8 +104,14 @@ For the complete Finance route, follow the ordered
 ./scripts/manage-local-mcp-and-ui.sh stop
 ```
 
-Do not run those Finance commands until their Linux/WSL2 prerequisites and
-Azure/Dev Tunnel authentication are ready.
+The setup command installs Node.js 22 and the Dev Tunnel CLI under the ignored
+`.local-mcp-and-ui/tools/` directory when they are missing. It also supports
+minimal Linux Python installations that provide `venv` but omit `ensurepip`:
+each component environment receives its own bootstrapped `pip`. No `sudo` or
+system package change is required for those three tools. Azure CLI must already
+be installed and authenticated; Dev Tunnel device-code authentication remains
+an explicit user action because setup must not authenticate as an identity the
+user did not choose.
 
 ## Platform support
 
@@ -86,9 +123,10 @@ MCP, deployment, and validation commands:
 2. Clone this repository again into the WSL filesystem, for example under
    `~/src/`. Do not run the workflow from a Windows checkout mounted under
    `/mnt/c/`.
-3. Install and authenticate Git, Python, Node.js, Azure CLI, Azure Developer
-   CLI when deploying, and Dev Tunnel CLI inside WSL. Windows-side CLI login
-   state is not assumed to be shared.
+3. Install Git, Python 3.10+, and Azure CLI inside WSL, then authenticate Azure
+   CLI. The local setup script can install repository-local Node.js 22 and Dev
+   Tunnel CLI copies. Azure Developer CLI is needed only for deployment.
+   Windows-side CLI login state is not assumed to be shared.
 4. The local setup, MCP E2E, and lifecycle scripts use native Python and never
    invoke Docker. Install Docker only when deliberately running the separate
    `shared_mcp/scripts/package.sh` image-packaging command; Azure Container
