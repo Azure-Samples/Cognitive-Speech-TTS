@@ -26,6 +26,22 @@ mode selector. A missing or invalid project endpoint stops startup with setup
 instructions; authentication/network errors never switch to mock responses.
 Running the portal locally does not run the Azure voice service locally.
 
+> [!IMPORTANT]
+> To use **Templates** with the repository's local MCP, do not follow the
+> portal-only commands below. Start the complete stack from `VoiceAgent/`:
+>
+> ```bash
+> ./scripts/setup-local-examples.sh \
+>   --project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+> ./scripts/login-devtunnel.sh
+> ./scripts/setup-local-examples.sh --check
+> ./scripts/manage-local-mcp-and-ui.sh restart
+> ```
+>
+> The login uses GitHub device code. Open `http://localhost:18098` only after
+> the manager prints `local_mcp_and_portal=ready`. The rest of this page's
+> `9527` commands are for portal-only use.
+
 ## Set up
 
 From the repository root, in PowerShell:
@@ -186,6 +202,8 @@ redacted, including JSON-encoded tool arguments/results and nested JSON tool
 content. Invalid, oversized, or excessively nested JSON tool data is omitted
 rather than recorded unsafely. Ordinary text results remain readable, so
 **transcripts, prompts, and free-text tool data may still be sensitive**.
+Protocol error events and `response.done` events with `status: failed` are
+promoted into the session summary and timeline.
 Recording is separate from the agent's Azure `store` policy. Do not commit or
 share these logs. The **Local session logs** link
 opens the included viewer.

@@ -594,6 +594,8 @@ async def bridge(request: web.Request) -> web.WebSocketResponse:
                     if not task.done():
                         task.cancel()
                 await asyncio.gather(t1, t2, return_exceptions=True)
+    except websockets.exceptions.ConnectionClosedOK:
+        LOGGER.info("[bridge] upstream closed normally")
     except Exception as exc:  # noqa: BLE001 - surface bridge errors to the page
         bridge_error = type(exc).__name__
         LOGGER.error("[bridge] error: %s", bridge_error)

@@ -18,6 +18,8 @@ from urllib.parse import parse_qs, urlsplit
 
 from aiohttp import WSMsgType, web
 from aiohttp.test_utils import TestClient, TestServer
+from websockets.exceptions import ConnectionClosedOK
+from websockets.frames import Close
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -398,6 +400,38 @@ class LiveProxyTests(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(message.data, 1001)
             self.assertEqual(message.extra, "Conversation ended by agent")
 
+    async def test_normal_upstream_close_during_browser_send_is_not_an_error(self):
+        close = Close(1001, "Conversation ended by agent")
+
+        class ClosingUpstream:
+            close_code = close.code
+            close_reason = close.reason
+
+            def __aiter__(self):
+                return self
+
+            async def __anext__(self):
+                await asyncio.sleep(10)
+                raise StopAsyncIteration
+
+            async def send(self, _data):
+                raise ConnectionClosedOK(close, close, True)
+
+        class ClosingConnect:
+            async def __aenter__(self):
+                return ClosingUpstream()
+
+            async def __aexit__(self, _exc_type, _exc, _traceback):
+                return False
+
+        with patch.object(server, "ProjectWebSocketConnect", return_value=ClosingConnect()):
+            async with self.client.ws_connect(VOICE_PATH) as ws:
+                await ws.send_json({"type": "input_audio_buffer.append", "audio": "fixture"})
+                message = await ws.receive(timeout=3)
+                self.assertEqual(message.type, WSMsgType.CLOSE)
+                self.assertEqual(message.data, 1001)
+                self.assertEqual(message.extra, "Conversation ended by agent")
+
     async def test_bad_structured_input_fails_before_authentication(self):
         response = await self.client.get(VOICE_PATH + "?structured_input=[]")
         self.assertEqual(response.status, 400)
@@ -406,6 +440,46 @@ class LiveProxyTests(unittest.IsolatedAsyncioTestCase):
 
 
 class RecordingTests(unittest.TestCase):
+    def test_recorder_promotes_failed_response_done_to_session_error(self):
+        with tempfile.TemporaryDirectory() as directory:
+            recorder = SessionRecorder(
+                Path(directory),
+                web_id="failed-response",
+                agent="sample",
+                backend="live",
+                upstream="wss://example.invalid",
+            )
+            recorder.record("down", json.dumps({
+                "type": "response.done",
+                "response": {
+                    "status": "failed",
+                    "status_details": {
+                        "type": "failed",
+                        "error": {
+                            "message": "No tool call found for function call output.",
+                            "type": "invalid_request_error",
+                        },
+                    },
+                },
+            }))
+            recorder.record("down", json.dumps({
+                "type": "response.done",
+                "response": {"status": "completed"},
+            }))
+            recorder.close()
+
+            session = read_session(Path(directory), recorder.run_id)
+            self.assertEqual(len(session["errors"]), 1)
+            self.assertEqual(session["errors"][0]["type"], "response.done")
+            self.assertEqual(
+                session["errors"][0]["message"],
+                "No tool call found for function call output.",
+            )
+            self.assertIn(
+                "response.done failed No tool call found for function call output.",
+                session["timeline"],
+            )
+
     def test_opt_in_recorder_redacts_known_secrets_and_elides_audio(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

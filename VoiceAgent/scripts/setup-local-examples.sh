@@ -11,9 +11,15 @@ UI_ROOT="${ROOT}/portal"
 UI_WEB_ROOT="${UI_ROOT}/web"
 MCP_LOCAL_STATE_ROOT="${ROOT}/shared_mcp/state/local"
 TUNNEL_ID_FILE="${MCP_LOCAL_STATE_ROOT}/devtunnel-id"
+LOCAL_TOOLS_ROOT="${ROOT}/.local-mcp-and-ui/tools"
+LOCAL_NODE_ROOT="${LOCAL_TOOLS_ROOT}/node"
+LOCAL_DEVTUNNEL_ROOT="${LOCAL_TOOLS_ROOT}/devtunnel"
+PYTHON_BOOTSTRAP_ROOT="${LOCAL_TOOLS_ROOT}/python-bootstrap"
 PIP_INDEX_URL="${PIP_INDEX_URL:-https://pypi.org/simple}"
 PROJECT_ENDPOINT="${AZURE_AI_PROJECT_ENDPOINT:-}"
 CHECK_ONLY=0
+
+export PATH="${LOCAL_NODE_ROOT}/bin:${LOCAL_DEVTUNNEL_ROOT}/bin:${HOME}/bin:${PATH}"
 
 usage() {
   cat <<'EOF'
@@ -23,11 +29,13 @@ Prepare the configured Voice Agent sample CLIs and portal on one development
 machine: check required tools, install dependencies, build the browser bundle,
 create or update local .env files, and initialize its fixed Dev Tunnel ID.
 The local MCP setup uses native Python and does not require or inspect Docker.
+Missing Node.js 22 and Dev Tunnel CLIs are installed under the ignored
+.local-mcp-and-ui/tools directory; system-wide installation is not required.
 
 Options:
   --project-endpoint URL  Write the Foundry Project endpoint to new local .env files.
   --pip-index-url URL     Python package index for virtual environments.
-  --check                 Check prerequisites and local files without installing.
+  --check                 Check prerequisites and local files without installing anything.
   -h, --help              Show this help.
 
 Environment equivalents:
@@ -86,8 +94,8 @@ check_base_tools() {
   require_command python3 "Install Python 3.10 or later and rerun setup."
   require_command curl "Install curl and rerun setup."
   require_command openssl "Install OpenSSL and rerun setup."
-  require_command node "Install Node.js and rerun setup."
-  require_command npm "Install npm and rerun setup."
+  require_command sha256sum "Install coreutils and rerun setup."
+  require_command tar "Install tar and rerun setup."
   require_command az "Install Azure CLI and rerun setup."
 
   python3 - <<'PY'
@@ -97,34 +105,99 @@ if sys.version_info < (3, 10):
     raise SystemExit("ERROR: Python 3.10 or later is required")
 print(f"python={sys.version.split()[0]}")
 PY
-  echo "node=$(node --version)"
+  echo "azure_cli=$(az version --query '"azure-cli"' --output tsv)"
+}
+
+node_is_ready() {
+  local major=""
+  command -v node >/dev/null 2>&1 || return 1
+  command -v npm >/dev/null 2>&1 || return 1
+  major="$(node --version | sed -E 's/^v([0-9]+).*/\1/')"
+  [[ "${major}" =~ ^[0-9]+$ && "${major}" -ge 22 ]]
+}
+
+install_local_node() {
+  local download_root=""
+  local filename=""
+  local expected_sha=""
+  local actual_sha=""
+
+  download_root="$(mktemp -d "${LOCAL_TOOLS_ROOT}/node-download.XXXXXX")"
+  curl --proto '=https' --tlsv1.2 -fsSL \
+    https://nodejs.org/dist/latest-v22.x/SHASUMS256.txt \
+    -o "${download_root}/SHASUMS256.txt"
+  filename="$(
+    awk '$2 ~ /^node-v22\.[0-9]+\.[0-9]+-linux-x64\.tar\.xz$/ {print $2; exit}' \
+      "${download_root}/SHASUMS256.txt"
+  )"
+  [[ -n "${filename}" ]] || die "could not resolve the latest Node.js 22 Linux x64 archive"
+  expected_sha="$(
+    awk -v filename="${filename}" '$2 == filename {print $1}' \
+      "${download_root}/SHASUMS256.txt"
+  )"
+  curl --proto '=https' --tlsv1.2 -fsSL \
+    "https://nodejs.org/dist/latest-v22.x/${filename}" \
+    -o "${download_root}/${filename}"
+  actual_sha="$(sha256sum "${download_root}/${filename}" | awk '{print $1}')"
+  [[ "${actual_sha}" == "${expected_sha}" ]] ||
+    die "Node.js archive checksum verification failed"
+
+  rm -rf "${LOCAL_NODE_ROOT}.new"
+  tar -xJf "${download_root}/${filename}" -C "${download_root}"
+  mv "${download_root}/${filename%.tar.xz}" "${LOCAL_NODE_ROOT}.new"
+  rm -rf "${LOCAL_NODE_ROOT}"
+  mv "${LOCAL_NODE_ROOT}.new" "${LOCAL_NODE_ROOT}"
+  rm -rf "${download_root}"
+  hash -r
+}
+
+ensure_node() {
+  mkdir -p "${LOCAL_TOOLS_ROOT}"
+  if node_is_ready; then
+    echo "node=$(node --version)"
+    echo "npm=$(npm --version)"
+    return 0
+  fi
+  [[ "${CHECK_ONLY}" == "0" ]] ||
+    die "Node.js 22+ and npm are missing. Run setup without --check to install them locally."
+
+  install_local_node
+  node_is_ready || die "Node.js was installed locally but is not usable"
+  echo "node=$(node --version) source=repo-local"
   echo "npm=$(npm --version)"
-  echo "azure_cli=$(az version --query '"'"'azure-cli'"'"' --output tsv)"
 }
 
 ensure_devtunnel() {
-  if ! command -v devtunnel >/dev/null 2>&1 && [[ -x "${HOME}/bin/devtunnel" ]]; then
-    export PATH="${HOME}/bin:${PATH}"
-  fi
+  local version=""
   if command -v devtunnel >/dev/null 2>&1; then
-    echo "devtunnel=$(devtunnel --version)"
+    version="$(devtunnel --version | sed -n '1p')"
+    echo "devtunnel=${version}"
     return 0
   fi
   [[ "${CHECK_ONLY}" == "0" ]] ||
     die "devtunnel is missing. Run setup without --check to install it."
 
-  local installer
-  installer="$(mktemp)"
-  curl -L https://aka.ms/DevTunnelCliInstall -o "${installer}"
-  bash "${installer}"
-  rm -f "${installer}"
+  local install_root=""
+  local installer=""
+  install_root="$(mktemp -d "${LOCAL_TOOLS_ROOT}/devtunnel-install.XXXXXX")"
+  installer="${install_root}/install.sh"
+  curl --proto '=https' --tlsv1.2 -fsSL \
+    https://aka.ms/DevTunnelCliInstall \
+    -o "${installer}"
+  HOME="${install_root}/home" bash "${installer}"
+  [[ -x "${install_root}/home/bin/devtunnel" ]] ||
+    die "Dev Tunnel installer did not create the expected executable"
+  mkdir -p "${LOCAL_DEVTUNNEL_ROOT}/bin"
+  install -m 0755 \
+    "${install_root}/home/bin/devtunnel" \
+    "${LOCAL_DEVTUNNEL_ROOT}/bin/devtunnel"
+  rm -rf "${install_root}"
+  hash -r
 
-  if ! command -v devtunnel >/dev/null 2>&1 && [[ -x "${HOME}/bin/devtunnel" ]]; then
-    export PATH="${HOME}/bin:${PATH}"
-  fi
   command -v devtunnel >/dev/null 2>&1 ||
-    die "Dev Tunnel installed but is not on PATH. Add the directory reported by the installer and rerun setup."
-  echo "devtunnel=$(devtunnel --version)"
+    die "Dev Tunnel was installed locally but is not usable"
+  version="$(devtunnel --version | sed -n '1p')"
+  echo "devtunnel=${version} source=repo-local"
 }
 
 new_tunnel_id() {
@@ -226,10 +299,25 @@ install_python_environment() {
   local directory="$1"
   local label="$2"
   local python="${directory}/.venv/bin/python"
+  local get_pip="${PYTHON_BOOTSTRAP_ROOT}/get-pip.py"
 
   if [[ ! -x "${python}" ]]; then
-    python3 -m venv "${directory}/.venv" ||
-      die "could not create ${label} venv; install the Python venv package for this interpreter"
+    rm -rf "${directory}/.venv"
+    if python3 -c 'import ensurepip' >/dev/null 2>&1; then
+      python3 -m venv "${directory}/.venv"
+    else
+      python3 -m venv --without-pip "${directory}/.venv" ||
+        die "could not create ${label} venv with the available Python interpreter"
+    fi
+  fi
+  if ! "${python}" -m pip --version >/dev/null 2>&1; then
+    mkdir -p "${PYTHON_BOOTSTRAP_ROOT}"
+    if [[ ! -s "${get_pip}" ]]; then
+      curl --proto '=https' --tlsv1.2 -fsSL \
+        https://bootstrap.pypa.io/get-pip.py \
+        -o "${get_pip}"
+    fi
+    "${python}" "${get_pip}"
   fi
   "${python}" -m pip install \
     --index-url "${PIP_INDEX_URL}" \
@@ -345,20 +433,21 @@ PY
     echo "devtunnel_auth=ready"
   else
     echo "ACTION_REQUIRED: authenticate Dev Tunnel from ${ROOT}/shared_mcp" >&2
-    echo "For Microsoft Entra device-code authentication, run:" >&2
-    echo "  cd ${ROOT}/shared_mcp && devtunnel user login --entra --use-device-code-auth" >&2
-    echo "For GitHub device-code authentication, run:" >&2
-    echo "  cd ${ROOT}/shared_mcp && devtunnel user login --github --use-device-code-auth" >&2
-    echo "Then verify from that directory with: devtunnel user show" >&2
+    echo "For the required GitHub device-code authentication, run:" >&2
+    echo "  cd ${ROOT} && ./scripts/login-devtunnel.sh" >&2
+    echo "Then verify with: ./scripts/setup-local-examples.sh --check" >&2
     failed=1
   fi
   return "${failed}"
 }
 
 check_base_tools
+ensure_node
 ensure_devtunnel
 
 missing_config=0
+missing_endpoint=0
+missing_auth=0
 ensure_tunnel_id || missing_config=1
 
 if [[ "${CHECK_ONLY}" == "0" ]]; then
@@ -388,17 +477,23 @@ if [[ "${CHECK_ONLY}" == "0" ]]; then
 fi
 
 check_installed_environments || missing_config=1
-check_env_file "${HANDOFF_ROOT}/.env" || missing_config=1
-check_env_file "${OTP_ROOT}/.env" || missing_config=1
-check_env_file "${ELEVATOR_ROOT}/.env" || missing_config=1
-check_env_file "${UI_ROOT}/.env" || missing_config=1
-check_authentication || missing_config=1
+check_env_file "${HANDOFF_ROOT}/.env" || { missing_endpoint=1; missing_config=1; }
+check_env_file "${OTP_ROOT}/.env" || { missing_endpoint=1; missing_config=1; }
+check_env_file "${ELEVATOR_ROOT}/.env" || { missing_endpoint=1; missing_config=1; }
+check_env_file "${UI_ROOT}/.env" || { missing_endpoint=1; missing_config=1; }
+check_authentication || { missing_auth=1; missing_config=1; }
 
 if [[ "${missing_config}" == "0" ]]; then
   echo "local_setup=ready"
   echo "next=${ROOT}/scripts/manage-local-mcp-and-ui.sh restart"
 else
   echo "local_setup=installed configuration=required"
-  echo "rerun with: ./scripts/setup-local-examples.sh --project-endpoint https://<account>.services.ai.azure.com/api/projects/<project>"
+  if [[ "${missing_endpoint}" == "1" ]]; then
+    echo "next=./scripts/setup-local-examples.sh --project-endpoint https://<account>.services.ai.azure.com/api/projects/<project>"
+  elif [[ "${missing_auth}" == "1" ]]; then
+    echo "next=complete the authentication action above, then run ./scripts/setup-local-examples.sh --check"
+  else
+    echo "next=resolve the ACTION_REQUIRED lines above, then run ./scripts/setup-local-examples.sh --check"
+  fi
   exit 1
 fi

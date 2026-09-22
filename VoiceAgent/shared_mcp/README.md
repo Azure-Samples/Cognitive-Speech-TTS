@@ -27,6 +27,19 @@ and lifecycle scripts do not require or invoke Docker. The separate
 and testing the optional container image; Azure Container Apps deployment uses
 the remote build configured in `azure.yaml`.
 
+For the normal portal + local MCP workflow, run from `VoiceAgent/`:
+
+```bash
+./scripts/setup-local-examples.sh \
+	--project-endpoint "https://<account>.services.ai.azure.com/api/projects/<project>"
+./scripts/login-devtunnel.sh
+./scripts/setup-local-examples.sh --check
+./scripts/manage-local-mcp-and-ui.sh restart
+```
+
+The login wrapper uses GitHub device-code authentication. Do not start
+`e2e-local.sh` separately when the manager owns the stack.
+
 For startup, local hosting, Azure deployment, configuration, and modification
 instructions, use [02: MCP settings](../docs/02_mcp_settings.md).
 
