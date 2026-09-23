@@ -12,10 +12,12 @@ standalone/public adapters until the next source pin is recorded.
 
 **Accepted multi-root sync baseline:** advanced from
 `e713a37c4cdb3282157cbaf46b6d425bcd984c05` to
-`88185887035f63a6b81114d7b38305532ebb6ad0` from PR 41103 after all 26
+`4fc0c0025112fadd534af84e43a88421d8fd08ec`, the final `main` merge commit
+for PR 41103, after all mapped
 `voice_demo`, `template_view`, template-test, and Finance sample mappings were
 reviewed. The PR's removal of unrelated UMW/demo media is outside the declared
-portal sync roots.
+portal sync roots. The source-only ACA packaging regression is explicitly
+omitted from the standalone portal.
 
 - Kept the existing studio as the first **Live session** tab and added the
   Finance **Templates** page as the second tab.
