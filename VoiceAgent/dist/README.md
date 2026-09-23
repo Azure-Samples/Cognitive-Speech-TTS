@@ -5,8 +5,22 @@ from PyPI, using the `[voice]` extra for SDK voice connections. No Python
 wheels are bundled. Use the requirements files under `samples/` to install
 the public package.
 
-The bundled .NET package is unchanged. See the
-[C# package provenance](../samples/CSharp/README.md) for its source and checksum.
+The .NET sample installs the published
+[`Azure.AI.Projects`](https://www.nuget.org/packages/Azure.AI.Projects/3.0.0-beta.3)
+and [`Azure.AI.Projects.Agents`](https://www.nuget.org/packages/Azure.AI.Projects.Agents/3.0.0-beta.3)
+3.0.0-beta.3 preview SDK packages from NuGet.org. No .NET packages are bundled. See the
+[C# setup instructions](../samples/CSharp/README.md) for package and restore details.
+
+## Historical .NET preview build record
+
+The removed bundled package used the same `3.0.0-beta.3` version as the public
+release but was a separate preview build. It is no longer a sample dependency.
+
+- Source archive: `Azure.AI.Projects.Agents.3.0.0-beta.3-voice-samples.zip`
+- Package: `Azure.AI.Projects.Agents.3.0.0-beta.3.nupkg`
+- SDK repository commit recorded in package: `4c94d5d53db51d0fd8089a341ccbe11d4ff9f65d`
+- SHA-256: `16f5214c679488943d103a32b7a0fff1321e08815f50400bf14c3f62f3e62329`
+- License: MIT
 
 ## Historical Python preview build record
 

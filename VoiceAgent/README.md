@@ -60,7 +60,7 @@ lifecycle. Do not run a second manual portal after this quickstart.
 | Run the complete Finance workflow | [`docs/README.md`](docs/README.md) | Ordered subscription, MCP, sample, portal, and debugging guides |
 | Work on or deploy the Finance MCP | [`shared_mcp/README.md`](shared_mcp/README.md) | Shared MCP image, Finance routes, local Dev Tunnel hosting, and Azure Container Apps deployment |
 | Create an IQ + voice + avatar Agent | [`samples/create-agent-with-iq-avatar-voice/README.md`](samples/create-agent-with-iq-avatar-voice/README.md) | Portal-first Andrew Dragon HD, Harry Business, Knowledge IQ, and optional Python creation |
-| Inspect SDK package information | [`dist/README.md`](dist/README.md) | Public Python SDK dependencies, historical build record, and bundled .NET package reference |
+| Inspect SDK package information | [`dist/README.md`](dist/README.md) | Public Python and .NET SDK dependencies and historical preview build records |
 | Use the coding-agent workflows | [`skills/`](skills/) | Voice Agent creation, IQ/Toolbox provisioning, and local-session debugging |
 
 ## Instructions for coding agents
@@ -150,7 +150,7 @@ running the checkout from `/mnt/c/` are outside the supported path.
 | [`docs/`](docs/) | Finance architecture, setup, operation, and debugging guides |
 | [`shared_mcp/`](shared_mcp/) | Shared Finance MCP source, native runtime, optional container, IaC, and deployment scripts |
 | [`scripts/`](scripts/) | Finance local setup and process lifecycle entry points |
-| [`dist/`](dist/) | Bundled preview Python and .NET SDK artifacts |
+| [`dist/`](dist/) | Public SDK package information and historical preview build records |
 | [`skills/`](skills/) | Reusable coding-agent workflows |
 | [`tests/`](tests/) | Offline contracts for the common Projects SDK samples |
 

@@ -1,7 +1,9 @@
 # Foundry voice agent C# sample
 
-This standalone console application uses the bundled
-`Azure.AI.Projects.Agents` **3.0.0-beta.3** preview SDK. It is adapted
+This standalone console application uses the published
+[`Azure.AI.Projects`](https://www.nuget.org/packages/Azure.AI.Projects/3.0.0-beta.3)
+and [`Azure.AI.Projects.Agents`](https://www.nuget.org/packages/Azure.AI.Projects.Agents/3.0.0-beta.3)
+**3.0.0-beta.3** preview SDK packages. It is adapted
 from the SDK's `Sample_VoiceAgent.cs` test fixture; no Azure SDK source checkout,
 NUnit, or internal test framework is required.
 
@@ -99,24 +101,25 @@ unexpected session closure fail the run.
 After building, use `dotnet run --no-build -- --help` to display configuration
 without connecting to Azure.
 
-## Bundled SDK
+## NuGet SDK packages
 
-[`NuGet.Config`](NuGet.Config) maps `Azure.AI.Projects.Agents` exclusively to
-`VoiceAgent/dist` and restores other dependencies from NuGet.org. A
-sample-local `.packages` cache prevents a same-version package in your global
-NuGet cache from replacing this voice-enabled build. Use the explicit
-`--configfile .\NuGet.Config` restore command above to avoid inherited feed
-settings, and do not override the package sources or cache path. Restore
-requires access to NuGet.org for the public dependencies.
+[`VoiceAgentSamples.csproj`](VoiceAgentSamples.csproj) pins both
+`Azure.AI.Projects` and `Azure.AI.Projects.Agents` to the published
+**3.0.0-beta.3** preview release. `AIProjectClient.ProjectsRealtimeClient`
+opens the voice session using OpenAI's `RealtimeSessionClient` command and
+event APIs. `AgentAdministrationClient` manages agents, and
+`BetaVoiceAgentsConversations` retrieves persisted conversations and recordings.
 
-| Item | Value |
-| --- | --- |
-| Source archive | `Azure.AI.Projects.Agents.3.0.0-beta.3-voice-samples.zip` |
-| Package | [`Azure.AI.Projects.Agents.3.0.0-beta.3.nupkg`](../../dist/Azure.AI.Projects.Agents.3.0.0-beta.3.nupkg) |
-| SHA-256 | `16f5214c679488943d103a32b7a0fff1321e08815f50400bf14c3f62f3e62329` |
-| SDK repository commit recorded in package | `4c94d5d53db51d0fd8089a341ccbe11d4ff9f65d` |
-| License | MIT |
+The project also pins the published `Azure.AI.Extensions.OpenAI`
+**3.0.0-beta.1** dependency rather than relying on the alpha minimum declared
+by the Projects packages. `Azure.Identity` provides authentication.
 
-The bundled package is unchanged from the archive. Its declared dependencies
-include `Azure.Core` 1.62.0 and `OpenAI` 2.12.0; the console project also
-references `Azure.Identity` for authentication.
+[`NuGet.Config`](NuGet.Config) restores all dependencies from NuGet.org.
+Its sample-local `.packages/nuget.org` cache keeps the published SDK separate
+from the former bundled build, which used the same version in `.packages`.
+No local `.nupkg` or Azure SDK source checkout is required.
+
+If you previously ran the bundled preview sample, rerun the restore and build
+commands above before using `dotnet run --no-build`. Use the explicit
+`--configfile .\NuGet.Config` restore command and keep its isolated cache path
+so the old bundled package cannot be reused.
