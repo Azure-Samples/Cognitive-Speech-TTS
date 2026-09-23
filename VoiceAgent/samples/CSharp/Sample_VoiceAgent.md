@@ -1,8 +1,8 @@
 # Use a Foundry voice agent with REST and realtime APIs
 
-This sample configures and manages a voice agent over REST, exchanges OpenAI Realtime GA events over its Foundry WebSocket endpoint, uses an Azure neural voice with a runtime pitch update, streams PCM audio, and reads persisted conversations and recordings.
+This sample uses the published `Azure.AI.Projects` and `Azure.AI.Projects.Agents` 3.0.0-beta.3 packages to configure and manage a voice agent over REST, exchange OpenAI Realtime GA events over its Foundry WebSocket endpoint, use an Azure neural voice with a runtime pitch update, stream PCM audio, and read persisted conversations and recordings.
 
-See [README.md](README.md) for prerequisites, the bundled SDK, environment
+See [README.md](README.md) for prerequisites, the NuGet SDK packages, environment
 variables, and commands to build and run the standalone console application.
 Both temporary-agent and existing-agent sessions persist transcripts and audio
 with `Store = true`. The temporary agent is deleted when the run finishes.
@@ -12,6 +12,8 @@ Set `FOUNDRY_VOICE_AGENT_NAME` to run against an existing voice agent. In that m
 When creating a temporary agent, set `FOUNDRY_VOICE_MODEL_TYPE` to `managed` for a service-managed model such as `gpt-realtime`. Set `FOUNDRY_VOICE_MODEL_NAME` to select a voice model independently of the text model used by other samples; otherwise, the sample uses `FOUNDRY_MODEL_NAME`. If the model type is omitted, the selected name is treated as a self-deployed Foundry model deployment.
 
 The temporary agent uses `en-US-AvaNeural` with `azure-standard` speech synthesis and 24 kHz PCM16 mono audio. Set `FOUNDRY_VOICE_INPUT_AUDIO_PATH` to supply input in that format. When it is omitted, the temporary-agent sample streams its first spoken response back as input, so the audio-streaming path still runs without a microphone or an audio file. Set `FOUNDRY_VOICE_OUTPUT_AUDIO_PATH` to choose the output file; otherwise, a uniquely named file is written to the temporary directory.
+
+Create an `AIProjectClient` with your project endpoint and credential, then use its `AgentAdministrationClient` property for agent management. The executable sample suppresses `AAIP001`, `AAIP002`, and `OPENAI002` for these preview APIs.
 
 1. Create a managed or self-deployed voice agent. Set `Store` to `true` when its conversations and audio should be available through the Foundry REST APIs.
 
@@ -71,48 +73,46 @@ ClientResult disableResult = await agentsClient.DisableAgentAsync(agentName);
 ClientResult enableResult = await agentsClient.EnableAgentAsync(agentName);
 ```
 
-1. Connect to the agent's real-time endpoint, add a text turn, and stream the PCM16 audio response. The raw event payload remains available through `Data` for forward compatibility.
+1. Connect through `AIProjectClient.ProjectsRealtimeClient`, add a text turn, and stream the PCM16 audio response. `RealtimeSessionClientOptions.QueryString` selects the agent version and enables persistence. The `ReceiveUpdatesAsync(RequestOptions)` protocol overload exposes raw events through `GetRawResponse().Content`, preserving Foundry-specific fields without reserializing OpenAI models.
 
 ```C# Snippet:Sample_VoiceAgent_Realtime
-VoiceAgentWebSocket realtimeClient = agentsClient.GetVoiceAgentWebSocket();
+ProjectsRealtimeClient realtimeClient = projectClient.ProjectsRealtimeClient;
 using CancellationTokenSource timeout = new(TimeSpan.FromMinutes(5));
-AgentEndpointConversations conversationsClient = agentsClient.GetAgentEndpointConversations();
+BetaVoiceAgentsConversations conversationsClient = agentsClient.GetBetaVoiceAgentEndpointConversations();
 HashSet<string> newConversationIds = new();
 bool hasGreeting = agentVersion.Definition is VoiceAgentDefinition voiceDefinition
     && voiceDefinition.Greeting is not null;
+RealtimeSessionClientOptions connectionOptions = new()
+{
+    QueryString = $"agent_version={Uri.EscapeDataString(agentVersion.Version)}&store=true"
+};
 
-await using VoiceAgentSession session = await realtimeClient.StartSessionAsync(
+using RealtimeSessionClient session = await realtimeClient.StartSessionAsync(
     agentName,
-    new VoiceAgentConnectionOptions { AgentVersion = agentVersion.Version, Store = true },
-    timeout.Token);
+    intent: null,
+    options: connectionOptions,
+    cancellationToken: timeout.Token);
 newConversationIds.Add(await WaitForSessionReadyAsync(session, hasGreeting, timeout.Token));
 
-await session.AddItemAsync(BinaryData.FromObjectAsJson(new
-{
-    type = "message",
-    role = "user",
-    content = new[] { new { type = "input_text", text = "Say hello in one sentence." } }
-}), cancellationToken: timeout.Token);
+await session.AddItemAsync(
+    RealtimeItem.CreateUserMessageItem("Say hello in one sentence."),
+    cancellationToken: timeout.Token);
 await session.StartResponseAsync(cancellationToken: timeout.Token);
 
 using MemoryStream responseAudio = new();
 bool responseCompleted = false;
-await foreach (VoiceAgentSessionMessage update in session.ReceiveUpdatesAsync(timeout.Token))
+await foreach (ClientResult update in ReceiveSessionUpdatesAsync(session, timeout.Token))
 {
-    if (update.MessageType != WebSocketMessageType.Text)
-    {
-        continue;
-    }
-
-    using JsonDocument document = JsonDocument.Parse(update.Data);
-    LogRealtimeEvent(update.EventType, document.RootElement);
-    if (update.EventType == RealtimeServerEventType.ResponseOutputAudioDelta)
+    using JsonDocument document = JsonDocument.Parse(update.GetRawResponse().Content);
+    RealtimeServerUpdateKind eventType = GetEventType(document.RootElement);
+    LogRealtimeEvent(eventType, document.RootElement);
+    if (eventType == RealtimeServerUpdateKind.ResponseOutputAudioDelta)
     {
         byte[] audioChunk = Convert.FromBase64String(document.RootElement.GetProperty("delta").GetString()
             ?? throw new InvalidOperationException("The audio delta was null."));
         await responseAudio.WriteAsync(audioChunk, 0, audioChunk.Length, timeout.Token);
     }
-    else if (update.EventType == RealtimeServerEventType.ResponseDone)
+    else if (eventType == RealtimeServerUpdateKind.ResponseDone)
     {
         responseCompleted = !IsCancelledResponse(document.RootElement);
         break;
@@ -134,19 +134,23 @@ Console.WriteLine($"Received {responseAudio.Length} bytes of PCM response audio.
 1. Change the Azure voice pitch for the active session. This does not change the stored agent definition. The sample only applies this update to the temporary Azure-voice agent it created.
 
 ```C# Snippet:Sample_VoiceAgent_UpdatePitch
-await session.ConfigureSessionAsync(BinaryData.FromObjectAsJson(new
+await session.SendCommandAsync(BinaryData.FromObjectAsJson(new
 {
-    type = "realtime",
-    audio = new
+    type = "session.update",
+    session = new
     {
-        output = new
+        type = "realtime",
+        audio = new
         {
-            voice = "en-US-AvaNeural",
-            voice_type = "azure-standard",
-            pitch = "+10%"
+            output = new
+            {
+                voice = "en-US-AvaNeural",
+                voice_type = "azure-standard",
+                pitch = "+10%"
+            }
         }
     }
-}), timeout.Token);
+}), new RequestOptions { CancellationToken = timeout.Token });
 ```
 
 1. Send a follow-up turn that asks the agent to end the conversation, which exercises the `end_conversation` system tool registered on the agent definition end-to-end.
@@ -157,25 +161,18 @@ await session.ConfigureSessionAsync(BinaryData.FromObjectAsJson(new
 // function_call item and reflects the outcome in the response, without the client having
 // to submit a function_call_output (system tools are handled entirely server-side, unlike
 // custom/user-defined function tools).
-await session.AddItemAsync(BinaryData.FromObjectAsJson(new
-{
-    type = "message",
-    role = "user",
-    content = new[] { new { type = "input_text", text = "Please say a brief goodbye and then end our conversation." } }
-}), cancellationToken: timeout.Token);
+await session.AddItemAsync(
+    RealtimeItem.CreateUserMessageItem("Please say a brief goodbye and then end our conversation."),
+    cancellationToken: timeout.Token);
 await session.StartResponseAsync(cancellationToken: timeout.Token);
 
 responseCompleted = false;
-await foreach (VoiceAgentSessionMessage update in session.ReceiveUpdatesAsync(timeout.Token))
+await foreach (ClientResult update in ReceiveSessionUpdatesAsync(session, timeout.Token))
 {
-    if (update.MessageType != WebSocketMessageType.Text)
-    {
-        continue;
-    }
-
-    using JsonDocument document = JsonDocument.Parse(update.Data);
-    LogRealtimeEvent(update.EventType, document.RootElement);
-    if (update.EventType == RealtimeServerEventType.ResponseDone)
+    using JsonDocument document = JsonDocument.Parse(update.GetRawResponse().Content);
+    RealtimeServerUpdateKind eventType = GetEventType(document.RootElement);
+    LogRealtimeEvent(eventType, document.RootElement);
+    if (eventType == RealtimeServerUpdateKind.ResponseDone)
     {
         responseCompleted = !IsCancelledResponse(document.RootElement);
         break;
@@ -192,10 +189,11 @@ if (!responseCompleted)
 ```C# Snippet:Sample_VoiceAgent_AudioStreaming
 if (!string.IsNullOrEmpty(inputAudioPath) || deleteAgent)
 {
-    await using VoiceAgentSession audioSession = await realtimeClient.StartSessionAsync(
+    using RealtimeSessionClient audioSession = await realtimeClient.StartSessionAsync(
         agentName,
-        new VoiceAgentConnectionOptions { AgentVersion = agentVersion.Version, Store = true },
-        timeout.Token);
+        intent: null,
+        options: connectionOptions,
+        cancellationToken: timeout.Token);
     newConversationIds.Add(await WaitForSessionReadyAsync(audioSession, hasGreeting, timeout.Token));
     using Stream inputPcm = string.IsNullOrEmpty(inputAudioPath)
         ? new MemoryStream(responseAudio.ToArray())
@@ -208,7 +206,7 @@ if (!string.IsNullOrEmpty(inputAudioPath) || deleteAgent)
         outputPcm,
         appendTrailingSilence: true,
         cancellationToken: timeout.Token);
-    await audioSession.CloseAsync(timeout.Token);
+    await CloseSessionAsync(audioSession, timeout.Token);
     if (outputPcm.Length == 0)
     {
         throw new InvalidOperationException("The streaming response did not contain audio.");
@@ -221,7 +219,7 @@ if (!string.IsNullOrEmpty(inputAudioPath) || deleteAgent)
 
 ```C# Snippet:Sample_VoiceAgent_StreamAudio
 public static async Task<string?> StreamAudioTurnAsync(
-    VoiceAgentSession session,
+    RealtimeSessionClient session,
     Stream inputPcm,
     Stream outputPcm,
     bool appendTrailingSilence = false,
@@ -266,22 +264,19 @@ public static async Task<string?> StreamAudioTurnAsync(
     async Task<string?> ReceiveOutputAsync()
     {
         string? conversationId = null;
-        await foreach (VoiceAgentSessionMessage update in session.ReceiveUpdatesAsync(cancellationToken))
+        await foreach (ClientResult update in ReceiveSessionUpdatesAsync(session, cancellationToken))
         {
-            if (update.MessageType != WebSocketMessageType.Text)
-            {
-                continue;
-            }
-            using JsonDocument document = JsonDocument.Parse(update.Data);
-            LogRealtimeEvent(update.EventType, document.RootElement);
+            using JsonDocument document = JsonDocument.Parse(update.GetRawResponse().Content);
+            RealtimeServerUpdateKind eventType = GetEventType(document.RootElement);
+            LogRealtimeEvent(eventType, document.RootElement);
             conversationId = GetConversationId(document.RootElement) ?? conversationId;
-            if (update.EventType == RealtimeServerEventType.ResponseOutputAudioDelta)
+            if (eventType == RealtimeServerUpdateKind.ResponseOutputAudioDelta)
             {
                 byte[] audioChunk = Convert.FromBase64String(document.RootElement.GetProperty("delta").GetString()
                     ?? throw new InvalidOperationException("The audio delta was null."));
                 await outputPcm.WriteAsync(audioChunk, 0, audioChunk.Length, cancellationToken);
             }
-            else if (update.EventType == RealtimeServerEventType.ResponseDone)
+            else if (eventType == RealtimeServerUpdateKind.ResponseDone)
             {
                 if (IsCancelledResponse(document.RootElement))
                 {
@@ -295,7 +290,9 @@ public static async Task<string?> StreamAudioTurnAsync(
 }
 ```
 
-1. Use the generated Foundry conversation client to retrieve conversations persisted by an agent configured with `Store = true`.
+The executable sample's `ReceiveSessionUpdatesAsync` helper uses the SDK's protocol overload and handles empty WebSocket close frames so premature closure still reports a sample error. `CloseSessionAsync` closes the SDK session's WebSocket before reading persisted data. `GetEventType` reads the raw event's `type` into `RealtimeServerUpdateKind`; the other event helpers retain Foundry conversation IDs and report service errors.
+
+1. Use `BetaVoiceAgentsConversations` to retrieve conversations persisted by an agent configured with `Store = true`.
 
 ```C# Snippet:Sample_VoiceAgent_Conversations
 foreach (string conversationId in newConversationIds)
@@ -345,7 +342,7 @@ foreach (string conversationId in newConversationIds)
 
 ```C# Snippet:Sample_VoiceAgent_ReadConversation
 private static async Task<string> ReadPersistedConversationAsync(
-    AgentEndpointConversations conversationsClient,
+    BetaVoiceAgentsConversations conversationsClient,
     string agentName,
     string conversationId,
     CancellationToken cancellationToken = default)
@@ -356,7 +353,7 @@ private static async Task<string> ReadPersistedConversationAsync(
         conversationId,
         cancellationToken);
     VoiceConversation conversation = conversationResult;
-    Console.WriteLine($"Created at {conversation.CreatedAt}; status: {conversation.Status} (GetAgentConversation status: {(int)conversationResult.GetRawResponse().Status})");
+    Console.WriteLine($"Created at {conversation.CreatedOn}; status: {conversation.Status} (GetAgentConversation status: {(int)conversationResult.GetRawResponse().Status})");
 
     await foreach (VoiceResponse response in conversationsClient.GetAgentConversationResponsesAsync(
         agentName,
@@ -430,17 +427,17 @@ private static string DescribeItem(RealtimeItem item) => item switch
 
 ```C# Snippet:Sample_VoiceAgent_ReadAudio
 private static async Task DownloadConversationAudioAsync(
-    AgentEndpointConversations conversationsClient,
+    BetaVoiceAgentsConversations conversationsClient,
     string agentName,
     string conversationId,
     Stream destination,
     CancellationToken cancellationToken = default)
 {
-    ClientResult<VoiceRecordingResponse> recordingResult = await conversationsClient.GetAgentConversationAudioAsync(
+    ClientResult<VoiceRecording> recordingResult = await conversationsClient.GetAgentConversationAudioAsync(
         agentName,
         conversationId,
         cancellationToken);
-    VoiceRecordingResponse recording = recordingResult;
+    VoiceRecording recording = recordingResult;
     Console.WriteLine($"{recording.Format}, {recording.SampleRate} Hz, {recording.Channels} channels (GetAgentConversationAudio status: {(int)recordingResult.GetRawResponse().Status})");
 
     if (recording.BlobUri is not null)
@@ -463,20 +460,20 @@ private static async Task DownloadConversationAudioAsync(
 }
 
 private static async Task DownloadConversationItemAudioAsync(
-    AgentEndpointConversations conversationsClient,
+    BetaVoiceAgentsConversations conversationsClient,
     string agentName,
     string conversationId,
     string itemId,
     Stream destination,
     CancellationToken cancellationToken = default)
 {
-    ClientResult<VoiceItemAudioResponse> audioResult = await conversationsClient.GetAgentConversationItemAudioAsync(
+    ClientResult<VoiceAudioItem> audioResult = await conversationsClient.GetAgentConversationAudioItemAsync(
         agentName,
         conversationId,
         itemId,
         cancellationToken);
-    VoiceItemAudioResponse audio = audioResult;
-    Console.WriteLine($"{audio.Role}: {audio.DurationMs} (GetAgentConversationItemAudio status: {(int)audioResult.GetRawResponse().Status})");
+    VoiceAudioItem audio = audioResult;
+    Console.WriteLine($"{audio.Role}: {audio.DurationMs} (GetAgentConversationAudioItem status: {(int)audioResult.GetRawResponse().Status})");
 
     if (audio.BlobUri is not null)
     {
@@ -484,12 +481,12 @@ private static async Task DownloadConversationItemAudioAsync(
         return;
     }
 
-    ClientResult<BinaryData> contentResult = await conversationsClient.GetAgentConversationItemAudioContentAsync(
+    ClientResult<BinaryData> contentResult = await conversationsClient.GetAgentConversationAudioItemContentAsync(
         agentName,
         conversationId,
         itemId,
         cancellationToken);
-    Console.WriteLine($"GetAgentConversationItemAudioContent status: {(int)contentResult.GetRawResponse().Status}");
+    Console.WriteLine($"GetAgentConversationAudioItemContent status: {(int)contentResult.GetRawResponse().Status}");
     byte[] bytes = ((BinaryData)contentResult).ToArray();
     if (bytes.Length == 0)
     {
