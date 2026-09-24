@@ -19,7 +19,8 @@ import uuid
 from typing import Any, Final, Optional
 
 import aiohttp
-from azure.ai.projects.aio import AIProjectClient, AsyncRealtimeConnection
+from azure.ai.projects.aio import AIProjectClient
+from azure.ai.projects.aio.operations import AsyncBetaRealtimeConnection
 from azure.ai.projects.models import (
     RealtimeAudioFormatsAudioPcm,
     RealtimeConversationItemType,
@@ -91,7 +92,7 @@ def format_mcp_value(value: Any) -> str:
 class AudioProcessor:
     """Capture microphone PCM and play response PCM with barge-in support."""
 
-    def __init__(self, connection: AsyncRealtimeConnection) -> None:
+    def __init__(self, connection: AsyncBetaRealtimeConnection) -> None:
         self.connection = connection
         self.loop: Optional[asyncio.AbstractEventLoop] = None
         self.audio = pyaudio.PyAudio()
@@ -196,7 +197,7 @@ async def run_microphone_session(
     printed_arguments: set[str] = set()
     printed_outputs: set[str] = set()
 
-    async with client.realtime.connect(agent_name=agent_name) as connection:
+    async with client.beta.voice_agents.realtime.connect(agent_name=agent_name) as connection:
         processor = AudioProcessor(connection)
         try:
             processor.start_playback()

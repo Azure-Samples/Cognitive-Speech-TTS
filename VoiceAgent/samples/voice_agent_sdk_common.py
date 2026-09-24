@@ -1,4 +1,4 @@
-"""Shared preview-SDK publishing and text-runtime helpers for Voice Agent samples."""
+"""Shared Projects SDK publishing and text-runtime helpers for Voice Agent samples."""
 
 from __future__ import annotations
 
@@ -39,6 +39,10 @@ HANDOFF_EVENTS = {
     "session.handoff.completed",
     "session.handoff.aborted",
 }
+FOUNDRY_PROJECT_HOST = re.compile(
+    r"^[a-z0-9](?:[a-z0-9-]{0,62}[a-z0-9])?\.services\.ai\.azure\.com$",
+    re.IGNORECASE,
+)
 
 
 def _load_settings(sample_dir: Path) -> dict[str, str]:
@@ -47,6 +51,25 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         for key, value in dotenv_values(sample_dir / ".env").items()
         if value is not None
     }
+    mcp_config_value = (
+        os.getenv("VOICE_AGENT_MCP_CONFIG")
+        or file_values.get("VOICE_AGENT_MCP_CONFIG")
+        or ""
+    ).strip()
+    mcp_config_values: dict[str, str] = {}
+    if mcp_config_value:
+        mcp_config_path = Path(mcp_config_value).expanduser()
+        if not mcp_config_path.is_absolute():
+            mcp_config_path = sample_dir / mcp_config_path
+        if not mcp_config_path.is_file():
+            raise RuntimeError(
+                f"VOICE_AGENT_MCP_CONFIG does not exist: {mcp_config_path}"
+            )
+        mcp_config_values = {
+            key: str(value)
+            for key, value in dotenv_values(mcp_config_path).items()
+            if value is not None
+        }
     names = {
         "AZURE_AI_PROJECT_ENDPOINT",
         "AZURE_CREDENTIAL_MODE",
@@ -55,10 +78,17 @@ def _load_settings(sample_dir: Path) -> dict[str, str]:
         "VOICE_AGENT_MCP_SERVER_URL",
         "VOICE_AGENT_MCP_CONNECTION_ID",
     }
-    return {
-        name: (os.getenv(name) or file_values.get(name) or "").strip()
-        for name in names
-    }
+    settings: dict[str, str] = {}
+    for name in names:
+        configured_value = (
+            mcp_config_values.get(name, "")
+            if name.startswith("VOICE_AGENT_MCP_")
+            else ""
+        )
+        settings[name] = (
+            os.getenv(name) or configured_value or file_values.get(name) or ""
+        ).strip()
+    return settings
 
 
 def _sync_credential(settings: Mapping[str, str]) -> Any:
@@ -92,15 +122,22 @@ def _validate_project_endpoint(endpoint: str) -> str:
     parts = [part for part in parsed.path.split("/") if part]
     if (
         parsed.scheme != "https"
-        or not parsed.netloc
-        or len(parts) < 3
-        or parts[-2] != "projects"
+        or not parsed.hostname
+        or not FOUNDRY_PROJECT_HOST.fullmatch(parsed.hostname)
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.port is not None
+        or parts[:2] != ["api", "projects"]
+        or len(parts) != 3
+        or parsed.query
+        or parsed.fragment
         or "<" in value
         or ">" in value
     ):
         raise ValueError(
-            "AZURE_AI_PROJECT_ENDPOINT must be HTTPS and end in "
-            "/api/projects/<project-name>."
+            "AZURE_AI_PROJECT_ENDPOINT must be an Azure Foundry URL in the "
+            "form https://<account>.services.ai.azure.com/api/projects/"
+            "<project-name>."
         )
     return value
 
@@ -194,29 +231,50 @@ def _walk_mcp_tools(value: Any) -> list[dict[str, Any]]:
     return tools
 
 
-def load_materialized_agent(
+def _load_agent_document(
     sample_dir: Path,
-    settings: Mapping[str, str] | None = None,
-) -> tuple[str, str, dict[str, Any]]:
-    """Load a sanitized template and inject environment-specific references."""
-    settings = settings or _load_settings(sample_dir)
-    template_path = sample_dir / "agent.json"
+    agent_file: str,
+) -> tuple[Path, dict[str, Any]]:
+    sample_root = sample_dir.resolve()
+    template_path = (sample_root / agent_file).resolve()
+    if not template_path.is_relative_to(sample_root):
+        raise RuntimeError("Agent definition file must remain inside the sample directory.")
     document = json.loads(template_path.read_text(encoding="utf-8"))
     if not isinstance(document, dict) or not isinstance(document.get("definition"), dict):
         raise RuntimeError(f"{template_path} must contain a definition object.")
+    return template_path, document
+
+
+def load_materialized_agent(
+    sample_dir: Path,
+    settings: Mapping[str, str] | None = None,
+    *,
+    agent_file: str = "agent.json",
+    prefer_document_name: bool = False,
+) -> tuple[str, str, dict[str, Any]]:
+    """Load a sanitized template and inject environment-specific references."""
+    settings = settings or _load_settings(sample_dir)
+    template_path, document = _load_agent_document(sample_dir, agent_file)
 
     definition = document["definition"]
     if definition.get("kind") != "voice":
         raise RuntimeError(f"{template_path} must contain kind=voice.")
 
-    agent_name_value = (
-        settings.get("VOICE_AGENT_NAME") or str(document.get("name") or "")
-    ).strip()
+    configured_name = (
+        os.getenv("VOICE_AGENT_NAME", "")
+        if prefer_document_name
+        else settings.get("VOICE_AGENT_NAME", "")
+    )
+    agent_name_value = (configured_name or str(document.get("name") or "")).strip()
     if not agent_name_value:
         raise RuntimeError("Set VOICE_AGENT_NAME or provide name in agent.json.")
     agent_name = _validate_agent_name(agent_name_value)
 
-    model = settings.get("VOICE_AGENT_MODEL", "").strip()
+    model = (
+        os.getenv("VOICE_AGENT_MODEL", "")
+        if prefer_document_name
+        else settings.get("VOICE_AGENT_MODEL", "")
+    ).strip()
     if model:
         definition["model"] = model
 
@@ -259,6 +317,11 @@ def _validate_readback(
             "Published version model does not match the requested model: "
             f"{observed.get('model')!r} != {expected.get('model')!r}."
         )
+    if observed.get("model_type") != expected.get("model_type"):
+        raise RuntimeError(
+            "Published version model type does not match the requested model type: "
+            f"{observed.get('model_type')!r} != {expected.get('model_type')!r}."
+        )
     if require_handoff and not isinstance(observed.get("handoff"), dict):
         raise RuntimeError("Published Finance version lost its handoff graph.")
 
@@ -283,12 +346,16 @@ def publish_agent(
     *,
     mode: Literal["typed", "raw"],
     check_only: bool,
+    agent_file: str = "agent.json",
+    prefer_document_name: bool = False,
 ) -> dict[str, Any]:
-    """Publish or read back one Voice Agent with the pinned azure-ai-projects SDK."""
+    """Publish or read back one Voice Agent with the azure-ai-projects SDK."""
     settings = _load_settings(sample_dir)
     agent_name, description, definition = load_materialized_agent(
         sample_dir,
         settings,
+        agent_file=agent_file,
+        prefer_document_name=prefer_document_name,
     )
     endpoint = _validate_project_endpoint(
         _required(settings, "AZURE_AI_PROJECT_ENDPOINT")
@@ -336,6 +403,7 @@ def publish_agent(
         "version": version_id,
         "definition_mode": mode,
         "kind": observed.get("kind"),
+        "model_type": observed.get("model_type"),
         "model": observed.get("model"),
         "mcp_connections": sorted(
             {
@@ -548,12 +616,21 @@ async def run_text_session(
     expect_mcp: bool,
     expect_handoff: bool,
     evidence_file: Path | None,
+    agent_file: str = "agent.json",
+    prefer_document_name: bool = False,
 ) -> dict[str, Any]:
     settings = _load_settings(sample_dir)
     endpoint = _validate_project_endpoint(
         _required(settings, "AZURE_AI_PROJECT_ENDPOINT")
     )
-    agent_name = _validate_agent_name(_required(settings, "VOICE_AGENT_NAME"))
+    if prefer_document_name:
+        _, document = _load_agent_document(sample_dir, agent_file)
+        agent_name = _validate_agent_name(
+            os.getenv("VOICE_AGENT_NAME")
+            or str(document.get("name") or "")
+        )
+    else:
+        agent_name = _validate_agent_name(_required(settings, "VOICE_AGENT_NAME"))
     session_id = f"sdk-sample-{uuid.uuid4().hex}"
     url = _realtime_url(endpoint, agent_name, session_id)
     printer = EventPrinter(verbose)
@@ -641,7 +718,12 @@ def _add_runtime_arguments(
     parser.add_argument("--evidence-file", type=Path)
 
 
-def sample_cli(sample_dir: Path, *, mode: Literal["typed", "raw"]) -> None:
+def sample_cli(
+    sample_dir: Path,
+    *,
+    mode: Literal["typed", "raw"],
+    variants: Mapping[str, str] | None = None,
+) -> None:
     parser = argparse.ArgumentParser(
         description=(
             "Publish, verify, or run this Voice Agent with the preview "
@@ -649,11 +731,11 @@ def sample_cli(sample_dir: Path, *, mode: Literal["typed", "raw"]) -> None:
         )
     )
     commands = parser.add_subparsers(dest="command", required=True)
-    commands.add_parser(
+    publish_parser = commands.add_parser(
         "publish",
         help="Create and enable an immutable Agent version, then read it back.",
     )
-    commands.add_parser(
+    check_parser = commands.add_parser(
         "check",
         help="Read and validate the latest published Agent version.",
     )
@@ -667,14 +749,40 @@ def sample_cli(sample_dir: Path, *, mode: Literal["typed", "raw"]) -> None:
         help="Run one or more text turns against the published Voice Agent.",
     )
     _add_runtime_arguments(run_parser, allow_messages=True)
+    variant_files = dict(variants or {})
+    default_variant = next(iter(variant_files), "")
+    if variant_files:
+        publish_choices = [*variant_files, "all"]
+        for command_parser in (publish_parser, check_parser):
+            command_parser.add_argument(
+                "--variant",
+                choices=publish_choices,
+                default=default_variant,
+            )
+        for command_parser in (connect_parser, run_parser):
+            command_parser.add_argument(
+                "--variant",
+                choices=list(variant_files),
+                default=default_variant,
+            )
     args = parser.parse_args()
 
     if args.command in {"publish", "check"}:
-        publish_agent(
-            sample_dir,
-            mode=mode,
-            check_only=args.command == "check",
+        selected_variants = (
+            list(variant_files)
+            if variant_files and args.variant == "all"
+            else [args.variant]
+            if variant_files
+            else [""]
         )
+        for variant in selected_variants:
+            publish_agent(
+                sample_dir,
+                mode=mode,
+                check_only=args.command == "check",
+                agent_file=variant_files.get(variant, "agent.json"),
+                prefer_document_name=bool(variant_files),
+            )
         return
 
     if args.timeout <= 0:
@@ -689,5 +797,10 @@ def sample_cli(sample_dir: Path, *, mode: Literal["typed", "raw"]) -> None:
             expect_mcp=args.expect_mcp,
             expect_handoff=args.expect_handoff,
             evidence_file=args.evidence_file,
+            agent_file=variant_files.get(
+                getattr(args, "variant", ""),
+                "agent.json",
+            ),
+            prefer_document_name=bool(variant_files),
         )
     )

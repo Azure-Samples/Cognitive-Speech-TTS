@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Demo session log</title>
+<link rel="stylesheet" href="/static/demo/styles.css" />
+<style>
+  body { padding: 1rem 1.25rem; }
+  h1 { font-size: 1.05rem; margin: 0 0 0.75rem; }
+  .bar { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.9rem; flex-wrap: wrap; }
+  .bar input { flex: 1 1 22rem; padding: 0.45rem; border: 1px solid var(--gray-300); border-radius: 6px;
+               font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.85rem; }
+  .layout { display: grid; grid-template-columns: minmax(16rem, 24rem) minmax(0, 1fr); gap: 1rem;
+            align-items: start; }
+  .runs { max-height: 78vh; overflow-y: auto; border: 1px solid var(--gray-200); border-radius: 8px; }
+  .run { padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--gray-100); cursor: pointer; font-size: 0.8rem; }
+  .run:hover { background: var(--gray-50); }
+  .run.active { background: var(--blue-100); }
+  .run b { display: block; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.76rem; }
+  .run .sub { color: var(--muted); font-size: 0.72rem; overflow-wrap: anywhere; }
+  .run .tags { display: flex; gap: 0.3rem; margin-top: 0.25rem; flex-wrap: wrap; }
+  .tag { font-size: 0.68rem; background: var(--gray-100); border-radius: 999px; padding: 0.05rem 0.4rem; }
+  .tag.err { background: var(--red-100); color: #c5221f; }
+  .detail { border: 1px solid var(--gray-200); border-radius: 8px; padding: 0.8rem; }
+  .kv { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 0.2rem 0.7rem; font-size: 0.8rem; }
+  .kv span:nth-child(odd) { color: var(--muted); }
+  .kv code { font-family: ui-monospace, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 6px;
+        padding: 0.6rem; font-size: 0.74rem; line-height: 1.5; max-height: 46vh; overflow: auto; }
+  .empty { color: var(--muted); font-size: 0.85rem; }
+
+  /* Event browser: the raw frames, which the live page never shows in full. */
+  .ev-bar { display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap; margin: 0.5rem 0; }
+  .ev-bar input, .ev-bar select { padding: 0.3rem 0.4rem; border: 1px solid var(--gray-300);
+                                  border-radius: 5px; font-size: 0.76rem; }
+  .ev-bar input { flex: 1 1 12rem; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .ev-chip { font-size: 0.7rem; background: var(--gray-100); border-radius: 999px;
+             padding: 0.1rem 0.5rem; cursor: pointer; border: 1px solid transparent; }
+  .ev-chip:hover { border-color: var(--gray-300); }
+  .ev-list { border: 1px solid var(--gray-200); border-radius: 6px; max-height: 46vh; overflow: auto; }
+  .ev { display: grid; grid-template-columns: 4.5rem 3rem minmax(0, 1fr); gap: 0.5rem;
+        padding: 0.25rem 0.5rem; border-bottom: 1px solid var(--gray-100); cursor: pointer;
+        font-size: 0.74rem; font-family: ui-monospace, Menlo, Consolas, monospace; }
+  .ev:hover { background: var(--gray-50); }
+  .ev .t { color: var(--muted); text-align: right; }
+  .ev .d { font-weight: 600; }
+  .ev .d.up { color: #b45309; }
+  .ev .d.down { color: #1a73e8; }
+  .ev-body { grid-column: 1 / -1; }
+  .ev-body pre { max-height: 24rem; margin: 0.3rem 0 0.2rem; }
+  @media (max-width: 700px) { .layout { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+  <h1>Demo session log</h1>
+  <p><a href="/">Return to studio</a>. Local recording is enabled by default; disable it with <code>--no-record-sessions</code>.</p>
+  <div class="bar">
+    <input id="q" placeholder="filter by session / conversation / run id / agent…" />
+    <button id="reload">Reload</button>
+    <span id="log-root" class="empty"></span>
+  </div>
+  <div class="layout">
+    <div class="runs" id="runs"></div>
+    <div class="detail" id="detail"><p class="empty">Pick a run on the left.</p></div>
+  </div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let runs = [];
+let activeId = "";
+
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+}[c]));
+
+async function load() {
+  const q = $("q").value.trim();
+  const resp = await fetch(`/api/demo/sessions?limit=200${q ? `&q=${encodeURIComponent(q)}` : ""}`);
+  const data = await resp.json();
+  $("log-root").textContent = data.available ? data.root : (data.reason || "unavailable");
+  runs = data.sessions || [];
+  $("runs").innerHTML = runs.length
+    ? runs.map((r) => `
+        <div class="run${r.run_id === activeId ? " active" : ""}" data-id="${esc(r.run_id)}">
+          <b>${esc(r.run_id)}</b>
+          <div class="sub">${esc(r.agent || "(no agent)")} · ${esc(r.started_at || "").slice(11, 19)} · ${r.duration_s ?? "?"}s</div>
+          <div class="sub">${esc(r.session_id || "—")}</div>
+          <div class="tags">
+            <span class="tag">${(r.tool_calls || []).length} tool events</span>
+            <span class="tag">${(r.counts || {}).down ?? 0} down</span>
+            ${(r.errors || []).length ? `<span class="tag err">${r.errors.length} errors</span>` : ""}
+          </div>
+        </div>`).join("")
+    : `<p class="empty" style="padding:.7rem">No recorded sessions${q ? " for that filter" : ""}.</p>`;
+  for (const el of document.querySelectorAll(".run")) {
+    el.onclick = () => show(el.dataset.id);
+  }
+  // A filter that matches exactly one run is almost always the one you came here to read.
+  if (runs.length === 1) show(runs[0].run_id);
+}
+
+async function show(runId) {
+  activeId = runId;
+  for (const el of document.querySelectorAll(".run")) el.classList.toggle("active", el.dataset.id === runId);
+  const resp = await fetch(`/api/demo/sessions/${encodeURIComponent(runId)}`);
+  if (!resp.ok) { $("detail").innerHTML = `<p class="empty">${esc(await resp.text())}</p>`; return; }
+  const d = await resp.json();
+  const tools = (d.tool_calls || []).map((t) => `${t.t}s  ${t.tool}:${t.phase}`).join("\n") || "(none)";
+  const errors = (d.errors || []).map((e) => `${e.t}s  ${e.type}  ${e.message}`).join("\n");
+  $("detail").innerHTML = `
+    <div class="kv">
+      <span>run</span><code>${esc(d.run_id)}</code>
+      <span>agent</span><code>${esc(d.agent || "—")} @ ${esc(d.backend || "—")}</code>
+      <span>web id</span><code>${esc(d.web_id || "—")}</code>
+      <span>session</span><code>${esc(d.session_id || "—")}</code>
+      <span>conversation</span><code>${esc(d.conversation_id || "—")}</code>
+      <span>active node</span><code>${esc(d.active_node_id || "—")}</code>
+      <span>duration</span><code>${d.duration_s ?? "?"}s · ${(d.counts || {}).up ?? 0} up / ${(d.counts || {}).down ?? 0} down · ${(d.counts || {}).audio_frames ?? 0} audio frames</code>
+      <span>directory</span><code>${esc(d.directory || "")}</code>
+    </div>
+    <h4>Tool sequence</h4><pre>${esc(tools)}</pre>
+    ${errors ? `<h4>Errors</h4><pre>${esc(errors)}</pre>` : ""}
+    <h4>Timeline</h4><pre>${esc(d.timeline || "(empty)")}</pre>
+    <h4>Events <span class="empty" id="ev-count"></span></h4>
+    <div class="ev-bar">
+      <input id="ev-filter" placeholder="filter by type substring, e.g. mcp_call" />
+      <select id="ev-dir">
+        <option value="">both</option>
+        <option value="down">down (service→browser)</option>
+        <option value="up">up (browser→service)</option>
+      </select>
+      <span class="ev-chip" data-preset="">all</span>
+      <span class="ev-chip" data-preset="mcp_call">mcp_call</span>
+      <span class="ev-chip" data-preset="function_call">function_call</span>
+      <span class="ev-chip" data-preset="session.">session.*</span>
+      <span class="ev-chip" data-preset="handoff">handoff</span>
+      <span class="ev-chip" data-preset="error">error</span>
+    </div>
+    <div class="ev-list" id="ev-list"></div>`;
+
+  await loadEvents(runId);
+}
+
+let allEvents = [];
+
+async function loadEvents(runId) {
+  const resp = await fetch(`/api/demo/sessions/${encodeURIComponent(runId)}/events?limit=20000`);
+  allEvents = resp.ok ? ((await resp.json()).events || []) : [];
+  const filter = $("ev-filter");
+  const dir = $("ev-dir");
+  const render = () => renderEvents(filter.value.trim().toLowerCase(), dir.value);
+  filter.oninput = render;
+  dir.onchange = render;
+  for (const chip of document.querySelectorAll(".ev-chip")) {
+    chip.onclick = () => { filter.value = chip.dataset.preset; render(); };
+  }
+  render();
+}
+
+function renderEvents(needle, dir) {
+  const shown = allEvents.filter((e) =>
+    (!dir || e.dir === dir) && (!needle || (e.type || "").toLowerCase().includes(needle)));
+  $("ev-count").textContent = `${shown.length} of ${allEvents.length} frames`
+    + " · audio and token deltas are elided at record time";
+  $("ev-list").innerHTML = shown.length
+    ? shown.map((e, i) => `
+        <div class="ev" data-i="${i}">
+          <span class="t">${(e.t ?? 0).toFixed(3)}</span>
+          <span class="d ${esc(e.dir)}">${esc(e.dir)}</span>
+          <span>${esc(e.type)}</span>
+        </div>`).join("")
+    : `<p class="empty" style="padding:.6rem">No frame matches.</p>`;
+  // The row expands in place: reading a frame should not lose your position in the stream.
+  for (const row of document.querySelectorAll(".ev")) {
+    row.onclick = () => {
+      const open = row.querySelector(".ev-body");
+      if (open) { open.remove(); return; }
+      const body = document.createElement("div");
+      body.className = "ev-body";
+      body.innerHTML = `<pre>${esc(JSON.stringify(shown[Number(row.dataset.i)].frame, null, 2))}</pre>`;
+      row.append(body);
+    };
+  }
+}
+
+$("reload").onclick = load;
+$("q").addEventListener("keydown", (e) => { if (e.key === "Enter") load(); });
+$("q").value = new URLSearchParams(location.search).get("q") || "";
+load();
+</script>
+</body>
+</html>

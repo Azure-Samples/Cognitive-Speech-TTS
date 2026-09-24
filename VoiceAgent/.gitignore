@@ -1,9 +1,10 @@
 .venv/
+.local-mcp-and-ui/
 samples/.env
 samples/.env.tip
+samples/subagent/**/.env
 samples/__pycache__/
 agent-reply-*.wav
 voice-agent-output/
-!dist/Azure.AI.Projects.Agents.3.0.0-beta.3.nupkg
 samples/CSharp/.packages/
 samples/CSharp/*.pcm

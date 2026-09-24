@@ -1,0 +1,4 @@
+# Keep checked-in text and the port's local SHA-256 baseline portable on Windows.
+* text=auto eol=lf
+*.png binary
+*.wav binary

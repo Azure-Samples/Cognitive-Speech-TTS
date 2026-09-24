@@ -1,0 +1,27 @@
+{
+  "name": "finance-example-cascade-luna",
+  "description": "Finance with Handoff using GPT-5.6 Luna, Azure Speech transcription, and Diya Dragon HD.",
+  "definition": {
+    "model": "gpt-5.6-luna",
+    "audio": {
+      "input": {
+        "transcription": {
+          "model": "azure-speech"
+        },
+        "turn_detection": {
+          "end_of_utterance_detection": {
+            "model": "smart_end_of_turn_detection",
+            "threshold_level": "medium",
+            "timeout_ms": 2000
+          }
+        }
+      },
+      "output": {
+        "voice": {
+          "type": "azure-standard",
+          "name": "en-IN-Diya:DragonHDLatestNeural"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+# Run from VoiceAgent; install Projects SDK 2.7.0 or later from PyPI.
+# No voice extra, Voice Live SDK, microphone, or UI dependencies.
+azure-ai-projects>=2.7.0
+azure-identity==1.25.3
+packaging>=24.0
