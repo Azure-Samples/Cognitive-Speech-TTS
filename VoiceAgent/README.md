@@ -59,6 +59,7 @@ AZURE_VOICE_AGENTS_MODEL=gpt-realtime
 | `samples/voice_agent_with_foundry_iq.py` | Create a Foundry IQ agent, converse through the microphone, and display tool arguments/output. |
 | `samples/voice_agent_with_local_function.py` | Execute `add_numbers` in the client, return its output, and hear the response. |
 | `samples/voice_agent_with_toolbox.py` | Create a Toolbox agent, converse through the microphone, and display tool arguments/output. |
+| [Documentation-generated voice web sample](samples/foundry-voice-webrtc/README.md) | Connect a browser to an existing voice agent with WebSocket audio or experimental WebRTC; standalone Python backend, Azure CLI authentication, and Azure session storage enabled. |
 | `samples/example1_finance_with_handoff/` | Publish a generic Finance English Realtime handoff graph with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
 | `samples/example2_finance_with_OTP_and_Officer_Search/` | Publish a flat Finance Agent for OTP verification and loan-officer search with the vNext `azure-ai-projects` SDK and run a text Voice WebSocket smoke test. |
 | [`setup_subscription.md`](setup_subscription.md) | Start with an Azure subscription and prepare the shared Foundry resource, Project, identities, RBAC, endpoint, and ARM ID before continuing in a self-contained example. |

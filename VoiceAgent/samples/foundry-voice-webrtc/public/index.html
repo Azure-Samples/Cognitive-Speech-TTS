@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>First Voice · Foundry agent</title><link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header><a class="brand" href="/">◉ <span>first voice</span></a><span class="tag">AZURE FOUNDRY <span> / </span> LIVE VOICE</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">YOUR FIRST VOICE AGENT</p><h1>A conversation.<br>Just a little more human.</h1><p>Speak naturally. Pause to hear a reply. Interrupt when you need to.</p></section>
+    <div class="workspace">
+      <section class="call-panel" aria-labelledby="call-title">
+        <div class="panel-top"><h2 id="call-title">Voice session</h2><span id="connection" class="badge">Offline</span></div>
+        <div class="transport-control"><label for="transport">Connection</label><select id="transport"><option value="websocket">WebSocket — audio over HTTPS</option><option value="webrtc">WebRTC — direct audio</option></select><p>WebSocket avoids STUN/TURN. Both modes need server access to Azure.</p></div>
+        <div id="orb" class="orb" aria-hidden="true"><span>◉</span></div>
+        <h3 id="status" role="status">Ready when you are</h3><p id="hint">Start a session to enable your microphone.</p>
+        <div class="controls"><button id="start" class="primary" disabled>Start conversation <span>↗</span></button><button id="mute" disabled aria-pressed="false">Mute mic</button><button id="stop" class="end" disabled>End</button></div>
+        <button id="play" class="play" hidden>Enable speaker audio</button>
+        <p id="error" class="error" role="alert" hidden></p>
+        <div class="session-details"><div><span>AGENT</span><strong id="agent">Not configured</strong></div><div><span>MEDIA</span><strong id="media">WebSocket · PCM16 / 24 kHz</strong></div></div>
+        <p class="privacy">Microphone audio is sent to Azure during a call. Azure conversation/audio storage is enabled. Clearing this page does not delete Azure-stored data. This app does not save transcripts locally.</p>
+      </section>
+      <section class="transcript-panel" aria-labelledby="transcript-title"><div class="panel-top"><h2 id="transcript-title">The conversation</h2><button id="clear" class="text-button">Clear</button></div><div id="transcript" role="log" aria-live="polite" aria-relevant="additions text"><div id="empty"><span>“</span><h3>Good conversations start with hello.</h3><p>Your words and the agent’s replies will appear here.</p></div></div><div class="transcript-footer"><span class="dot"></span> Live transcription <span id="elapsed">00:00</span></div></section>
+    </div>
+    <details id="setup"><summary>Quick setup & connection notes</summary><ol><li>Create a <strong>Voice</strong> agent in your Foundry project using the <a href="https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/prompt-voice-agent?pivots=portal" target="_blank" rel="noreferrer">Microsoft quickstart</a>. WebRTC requires additional transport availability.</li><li>Install Azure CLI, open a normal PowerShell window, and run <code>az login</code>. Use the tenant/subscription containing your project. Keep your project endpoint and agent name in <code>.env</code>. Agent Service requires <strong>Microsoft Entra ID, not a resource API key</strong>; no client secret is needed. Your signed-in account needs access to the Foundry project or agent.</li><li>For WebSocket, configure mono PCM16 audio at 24 kHz, server-side turn detection with automatic responses, and speech transcription in Foundry. Open this page on localhost, choose a connection, and allow the microphone.</li></ol><p>Bearer tokens stay on the backend. Run the server as the same Windows user who ran <code>az login</code>, with outbound network access. Check authentication and session startup with <code>python check_websocket.py</code>.</p></details>
+  </main>
+  <footer>Built for the first hello.<span>Foundry voice agents · Preview</span></footer>
+  <audio id="remote-audio" autoplay></audio>
+</body>
+</html>
