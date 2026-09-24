@@ -30,6 +30,7 @@ shared MCP, and portal workflow, start with the
 | [`voice_agent_with_foundry_iq.py`](voice_agent_with_foundry_iq.py) | Create a Foundry IQ Agent, converse through the microphone, and display tool activity. |
 | [`voice_agent_with_local_function.py`](voice_agent_with_local_function.py) | Execute `add_numbers` in the client, return its output, and hear the response. |
 | [`voice_agent_with_toolbox.py`](voice_agent_with_toolbox.py) | Create a Toolbox Agent, converse through the microphone, and display tool activity. |
+| [Documentation-generated voice web sample](foundry-voice-webrtc/README.md) | Connect a browser to an existing voice Agent with WebSocket audio or experimental WebRTC; standalone Python backend, Azure CLI authentication, and Azure session storage enabled. |
 | [Basic prompt subagent](subagent/voice-subagent-prompt-basic/README.md) | Create a poetry prompt subagent and a voice agent that delegates poem writing to it. |
 | [Hosted GitHub Copilot subagent](subagent/voice-subagent-hosted-agent/README.md) | Create a voice agent that delegates research, learning, and coding tasks to an existing hosted GitHub Copilot agent. |
 | [Finance with Handoff](example1_finance_with_handoff/README.md) | Publish Realtime and Cascade Luna variants of one shared Finance handoff graph and run text Voice WebSocket smoke tests. |
@@ -39,8 +40,10 @@ shared MCP, and portal workflow, start with the
 | [`download_conversation_artifacts.py`](download_conversation_artifacts.py) | Download conversation JSON, per-turn WAV files, and the merged stereo WAV. |
 | [`download_conversation_traces.py`](download_conversation_traces.py) | Download correlated Application Insights rows by conversation ID. |
 
-The three directory samples use their own `requirements.txt` files.
-All Python samples require `azure-ai-projects>=2.7.0` from PyPI.
+The Finance, Elevator, and documentation-generated voice web samples use their
+own `requirements.txt` files. The voice web sample uses a standalone HTTP/WebSocket
+backend and does not require the Projects SDK; follow its README for setup.
+The common Python SDK samples require `azure-ai-projects>=2.7.0` from PyPI.
 
 ## Common Python sample prerequisites
 
