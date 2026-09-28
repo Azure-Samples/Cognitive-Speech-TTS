@@ -196,6 +196,12 @@ async def converse(
                     value = getattr(event, "conversation_id", None)
                     if isinstance(value, str) and value.strip():
                         conversation_id = value
+                    if not conversation_id:
+                        raise DemoError(
+                            "Foundry did not return a conversation_id despite store=true. "
+                            "Stopping before microphone capture; check this project's "
+                            "conversation storage support."
+                        )
                     actual_format = event.session.audio.format
                     if actual_format and (actual_format.type, actual_format.rate) != (
                         "audio/pcm",
@@ -335,18 +341,11 @@ async def main(*, auto_delete: bool = False):
                     version = latest["version"]
                     print(f"Using existing agent: {name}, version {version}", flush=True)
                     await check_deployments(http, base, {"definition": definition})
-                if definition.get("store", False):
-                    print(
-                        "Conversation storage is enabled in Foundry; "
-                        "download instructions will be printed after the session closes.",
-                        flush=True,
-                    )
-                else:
-                    print(
-                        "Conversation storage is disabled in this agent; "
-                        "a persisted conversation ID may not be returned.",
-                        flush=True,
-                    )
+                print(
+                    "Requesting Foundry conversation storage for this session "
+                    "(store=true); download instructions will be printed after close.",
+                    flush=True,
+                )
                 delegation = definition.get("delegation") or {}
                 backend_model = (delegation.get("responses") or {}).get(
                     "model"
@@ -365,6 +364,8 @@ async def main(*, auto_delete: bool = False):
                         extra_query={
                             "api-version": API_VERSION,
                             "x-agent-version-override": str(version),
+                            # Override even an existing agent's saved store=false.
+                            "store": "true",
                         },
                         max_retries=0,
                         websocket_connection_options={
