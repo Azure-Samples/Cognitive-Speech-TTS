@@ -7,3 +7,6 @@ __pycache__/
 *.pyc
 *.log
 recordings/
+.copilot-azure/
+.vscode/
+infra/main.parameters.json
