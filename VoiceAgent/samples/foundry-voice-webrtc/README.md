@@ -73,6 +73,43 @@ Authentication uses `AzureCliCredential` and the scope
 `az login`. No resource API key or application client secret is used.
 See the [Foundry authentication matrix](https://learn.microsoft.com/en-us/azure/foundry/concepts/authentication-authorization-foundry).
 
+## Deploy to Azure Container Apps
+
+The included container uses Azure CLI authentication locally and automatically
+switches to the Container App's system-assigned managed identity in Azure. The
+local `.env` is excluded from the image and deployment build context.
+
+From this directory, sign in and run:
+
+```powershell
+az login
+.\deploy-azure.ps1 `
+  -ResourceGroup foundry-voice-agent-rg `
+  -Location canadacentral `
+  -AppName foundry-voice-agent `
+  -ServiceManagementReference YOUR-SERVICE-TREE-ID
+```
+
+The script reads `AZURE_AI_PROJECT_ENDPOINT`, `AZURE_VOICE_AGENT_NAME`, and the
+non-secret protocol settings from the existing `.env`. It deploys the Bicep
+infrastructure, cloud-builds the image in ACR, grants the managed identity
+`Azure AI Developer` on the matching Foundry resource, configures single-tenant
+Microsoft Entra sign-in, and writes the HTTPS origin to `PUBLIC_ORIGIN` in `.env`.
+The Service Tree ID is required by Microsoft tenant governance. If resource
+discovery is unavailable, pass `-FoundryResourceId` with the Foundry resource's
+full Azure resource ID.
+
+The tenant policy used by this sample forbids application client secrets, so the
+script configures secretless ID-token sign-in and leaves the token store disabled.
+Unauthenticated browser requests redirect to Microsoft Entra; `/health` remains
+public for probes. Restrict the registration to the intended tenant/users or
+groups. Every accepted caller can consume Foundry quota through the app identity.
+Container Apps terminates HTTPS and supports the browser WebSocket used here.
+
+The app is intentionally limited to one active call per replica, and the deployment
+sets a maximum of one replica. This is suitable for a controlled demo, not a
+multi-user production service.
+
 Windows users may optionally run `install-azure-cli.ps1` from an Administrator
 PowerShell session if organizational policy permits scripts. It downloads the
 official Microsoft x64 MSI, validates its Microsoft signature, and installs it

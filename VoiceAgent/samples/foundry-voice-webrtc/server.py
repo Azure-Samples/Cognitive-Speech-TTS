@@ -16,7 +16,7 @@ import aiohttp
 from aiohttp import web
 from dotenv import load_dotenv
 
-from auth import AuthenticationError, AzureCliTokenProvider, find_azure_cli
+from auth import AuthenticationError, AzureTokenProvider, authentication_mode, find_azure_cli
 
 ROOT = Path(__file__).resolve().parent
 LOGGER = logging.getLogger(__name__)
@@ -37,6 +37,7 @@ class Settings:
     api_version: str = "v1"
     features: str = "VoiceAgents=V1Preview"
     ice_servers: tuple = ()
+    public_origin: str = ""
 
     @property
     def setup_issues(self):
@@ -87,20 +88,31 @@ def load_settings():
     ice = json.loads(os.getenv("ICE_SERVERS_JSON", '[{"urls":"stun:stun.l.google.com:19302"}]'))
     if not isinstance(ice, list) or any(not isinstance(s, dict) or not s.get("urls") for s in ice):
         raise ValueError("ICE_SERVERS_JSON must be a JSON array of ICE server objects.")
+    public_origin = os.getenv("PUBLIC_ORIGIN", "").strip().rstrip("/")
+    if public_origin:
+        parsed = urlsplit(public_origin)
+        if (parsed.scheme != "https" or not parsed.hostname or parsed.username
+                or parsed.password or parsed.path or parsed.query or parsed.fragment):
+            raise ValueError("PUBLIC_ORIGIN must be an HTTPS origin without a path, query or fragment.")
     return Settings(os.getenv("AZURE_AI_PROJECT_ENDPOINT", "").strip().rstrip("/"),
                     os.getenv("AZURE_VOICE_AGENT_NAME", "").strip(),
                     os.getenv("AZURE_API_VERSION", "v1"),
-                    os.getenv("FOUNDRY_FEATURES", "VoiceAgents=V1Preview"), tuple(ice))
+                    os.getenv("FOUNDRY_FEATURES", "VoiceAgents=V1Preview"), tuple(ice),
+                    public_origin)
+
+
+def origin_allowed(host_value, scheme, origin, public_origin=""):
+    host = urlsplit(f"http://{host_value}").hostname
+    if host not in {"localhost", "127.0.0.1", "::1"}:
+        return bool(public_origin and origin == public_origin
+                    and host_value == urlsplit(public_origin).netloc)
+    return origin == f"{scheme}://{host_value}"
 
 
 def allowed_origin(request):
-    # Local development only: reject foreign Host / Origin to prevent cross-site use
-    # of the developer's Azure credentials (including DNS-rebinding attempts).
-    host = urlsplit(f"http://{request.host}").hostname
-    if host not in {"localhost", "127.0.0.1", "::1"}:
-        return False
-    origin = request.headers.get("Origin")
-    return origin == f"{request.scheme}://{request.host}"
+    cfg = request.app[SETTINGS]
+    return origin_allowed(request.host, request.scheme, request.headers.get("Origin"),
+                          cfg.public_origin)
 
 
 @web.middleware
@@ -118,11 +130,17 @@ async def security_headers(request, handler):
 
 async def public_config(request):
     cfg = request.app[SETTINGS]
+    auth_mode = authentication_mode()
     return web.json_response({"configured": cfg.configured, "agent": cfg.agent,
                               "iceServers": list(cfg.ice_servers),
-                              "authentication": "azure_cli", "azureCliInstalled": bool(find_azure_cli()),
+                              "authentication": auth_mode,
+                              "azureCliInstalled": auth_mode != "azure_cli" or bool(find_azure_cli()),
                               "setupIssues": cfg.setup_issues,
                               "transports": ["websocket", "webrtc"], "defaultTransport": "websocket"})
+
+
+async def health(request):
+    return web.json_response({"status": "ok"})
 
 
 async def asset(request):
@@ -327,14 +345,15 @@ async def bridge(request):
 
 SETTINGS = web.AppKey("settings", Settings)
 ACTIVE = web.AppKey("active", CallState)
-TOKENS = web.AppKey("tokens", AzureCliTokenProvider)
+TOKENS = web.AppKey("tokens", AzureTokenProvider)
 
 
 def create_app(settings=None, token_provider=None):
     app = web.Application(middlewares=[security_headers], client_max_size=MAX_FRAME)
     app[SETTINGS] = settings or load_settings()
-    app[TOKENS] = token_provider or AzureCliTokenProvider()
+    app[TOKENS] = token_provider or AzureTokenProvider()
     app[ACTIVE] = CallState()
+    app.router.add_get("/health", health)
     app.router.add_get("/api/config", public_config)
     app.router.add_get("/api/voice", bridge)
     app.router.add_get("/", asset)
@@ -345,4 +364,4 @@ def create_app(settings=None, token_provider=None):
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
     app = create_app()
-    web.run_app(app, host="127.0.0.1", port=int(os.getenv("PORT", "8080")))
+    web.run_app(app, host="0.0.0.0", port=int(os.getenv("PORT", "8080")))

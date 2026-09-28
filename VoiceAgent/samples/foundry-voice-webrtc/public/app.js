@@ -210,7 +210,7 @@ try {
     $('setup').open = true;
     state('One small setup first', 'Set your project and agent in .env, then sign in with az login.', 'Setup needed');
     showError((config.setupIssues || ['Complete the server .env settings.']).join(' '));
-  } else if (!config.azureCliInstalled) {
+  } else if (config.authentication === 'azure_cli' && !config.azureCliInstalled) {
     $('setup').open = true;
     showError('Install Azure CLI, then run az login in a normal PowerShell window. No API key or client secret is needed.');
   }
