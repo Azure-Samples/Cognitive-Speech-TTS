@@ -41,9 +41,8 @@ copied tokens are needed. If you have multiple signed-in subscriptions, set
 `AZURE_SUBSCRIPTION_ID` to select the right account without changing the CLI default.
 
 To use an existing GPT Live agent, set `AGENT_NAME=your-agent-name` in `.env`.
-Its latest version and saved model/instructions are used without creating,
-updating, or deleting the agent. The deployment variables below are ignored in
-this mode.
+Its latest version and saved configuration are used without creating, updating,
+or deleting the agent. The deployment variables below are ignored in this mode.
 
 Leave `AGENT_NAME` blank to create a new English-teacher agent, and configure both
 deployments:
@@ -70,11 +69,9 @@ Scrolling one pane does not move the others; full history remains after exit.
 New agents are kept by default; add `--auto-delete` to delete only an agent created
 by this run. Existing agents are never deleted, even with `--auto-delete`.
 
-Every connection requests Foundry conversation storage with `store=true`, even
-when an existing agent's saved storage setting is disabled. This session-level
-override does not modify the existing agent. If Foundry does not return a
-conversation ID, the sample stops before microphone capture rather than continuing
-without confirmed storage. After close,
+New agents are created with `store=True`. When `AGENT_NAME` is set, the existing
+agent's storage policy is left as-is; no session override or agent update is sent.
+After close, if a persisted conversation ID is returned,
 the sample prints the Foundry conversation ID and a command for the existing
 `samples/download_conversation_artifacts.py`; it does not download anything itself.
 Run that command from `VoiceAgent`, with `AZURE_VOICE_AGENTS_ENDPOINT` set to the
