@@ -12,6 +12,8 @@ In the Foundry portal, open your project, go to **Build > Agents**, select **Bui
 
 Voice Agent is now available in public preview. See the [voice agent documentation](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/voice-agent-pricing). Customers can start to build voice agent and get ready to production.
 
+For questions and feedback, contact the Voice Agent team at [voiceagent@microsoft.com](mailto:voiceagent@microsoft.com).
+
 
 ---
 
