@@ -2,8 +2,6 @@
 
 Build and launch an enterprise-ready voice agent in under two minutes. Choose speech-to-speech or cascaded pipelines powered by OpenAI, Microsoft AI, and Azure real-time models.  Extend your agent with Foundry tools, monitor and measure its performance, and connect inbound and outbound calls through Teams and Twilio. Create engaging conversations with voices optimized for call centers and lifelike avatars.
 
-For questions and feedback, contact the Voice Agent team at [voiceagent@microsoft.com](mailto:voiceagent@microsoft.com).
-
 [Open the Foundry portal](https://ai.azure.com/) | [Open the new Foundry portal](https://ai.azure.com/nextgen)
 
 In the Foundry portal, open your project, go to **Build > Agents**, select **Build an agent**, and choose **Voice** as the interaction mode.
@@ -13,6 +11,8 @@ In the Foundry portal, open your project, go to **Build > Agents**, select **Bui
 - [Use a subagent in a voice-based agent](https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/use-subagent-voice-first-agent): Delegate specialized requests to prompt or hosted subagents in the same Foundry project.
 
 Voice Agent is now available in public preview. See the [voice agent documentation](https://learn.microsoft.com/en-us/azure/foundry/agents/concepts/voice-agent-pricing). Customers can start to build voice agent and get ready to production.
+
+For questions and feedback, contact the Voice Agent team at [voiceagent@microsoft.com](mailto:voiceagent@microsoft.com).
 
 
 ---
