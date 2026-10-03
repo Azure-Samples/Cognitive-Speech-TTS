@@ -23,6 +23,7 @@ shared MCP, and portal workflow, start with the
 
 | Sample | Lifecycle |
 | --- | --- |
+| [Agent-based transcript refinement, summary, and translation](audio_file_rewrite/README.md) | Transcribe a WAV recording with mai-transcribe-2 and process it with a gpt-5.4 Voice Agent. Includes refinement and translation modes, guidance for adapting the instructions to summarization, and a 60-second input limit. Supports native Windows PowerShell. |
 | [Knowledge, Andrew Dragon HD, and Harry Business](create-agent-with-iq-avatar-voice/README.md) | Portal creation is recommended; optional Python validation/create/readback is included. Supports optional custom photo avatar and Personal Voice workflows. |
 | [`simple_rest_lifecycle.py`](simple_rest_lifecycle.py) | Create a simple Agent with REST, or retrieve an existing Agent. |
 | [`basic_voice_agent.py`](basic_voice_agent.py) | Create and version a basic Agent, or connect to an existing Agent, then converse through the microphone. |
