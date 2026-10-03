@@ -2,6 +2,8 @@
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  The REST API samples are just provided as referrence when SDK is not supported on the desired platform. 
 
+Explore [Voice Agent in Foundry Agent Service](VoiceAgent/README.md) for voice agent guides, portal links, and runnable samples.
+
 Below are latest updates from Azure TTS. It is updated regularly. 
 
 # Azure TTS Discord Channels
