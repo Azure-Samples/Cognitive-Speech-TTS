@@ -1,17 +1,6 @@
 # Voice Agent Samples in Foundry Agent Service
 
-Explore [Voice Agent in Foundry Agent Service](VoiceAgent/README.md) for voice agent guides, portal links, and runnable samples.
-
-## Voice Agent Blogs
-- 2026.09 [**Ship agents faster with expanded model choice, voice agents, and continuous optimization**](https://azure.microsoft.com/en-us/blog/ship-ai-agents-faster-with-new-capabilities-in-microsoft-foundry-expanded-model-choice-voice-agents-and-built-in-optimization/) — Overview of the latest Foundry Agents capabilities, including a Voice Agent video overview.
-- 2026.09 [**Introducing voice agents in Microsoft Foundry**](https://aka.ms/VoicefirstagentsSept2026) — Voice Agent public preview announcement.
-
-## Voice Agent Customer Stories
-- [**Astra Tech brings Voice Live API in Azure AI Foundry to its fintech-first app**](https://www.microsoft.com/en/customers/story/25412-astra-tech-azure-ai-foundry) — Astra Tech uses Voice Live in **botim** for a multilingual voice assistant that helps users complete tasks such as international money transfers. The story reports **300,000 monthly active users and 100,000 daily active users**.
-- [**Boosting patient satisfaction with healow Genie and Voice Live API in Azure AI Foundry**](https://www.microsoft.com/en/customers/story/25363-healow-azure-kubernetes-service) — The article describes a Voice Live pilot for **healow Genie**, covering appointment information, common questions, and voicemail callbacks. **Pilot:** It discusses anticipated benefits rather than measured improvements from a completed rollout.
-- [**Kansai Television: AI Hachiemon**](https://www.microsoft.com/en-us/ailab/case-study/kansai-television) — Microsoft AI Co-Innovation case study. Kansai Television built a conversational version of its mascot, **Hachiemon**, using Voice Live and Azure AI Foundry. Azure AI Speech Custom Voice recreates the character's distinctive voice for entertainment and interactive experiences.
-
-
+Explore [Voice Agent in Foundry Agent Service](https://github.com/microsoft/voice-agent) for voice agent guides, portal links, and runnable samples.
 
 
 # Azure Cognitive Service TTS Samples
