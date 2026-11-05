@@ -102,14 +102,21 @@ class SourceSyncStatusTests(unittest.TestCase):
         )
         source = manifest["source"]
         self.assertEqual(
-            "88185887035f63a6b81114d7b38305532ebb6ad0",
+            "4fc0c0025112fadd534af84e43a88421d8fd08ec",
             source["base_commit"],
         )
         self.assertEqual(
-            "refs/heads/agents/add-voice-agent-template-prototypes",
+            "refs/heads/main",
             source["accepted_ref"],
         )
         self.assertEqual("2026-09-17", source["accepted_on"])
+        omitted = {
+            item["source"]: item
+            for item in manifest["template_mappings"]
+            if item["action"] == "omitted"
+        }
+        self.assertIn("test_static_contract.py", omitted)
+        self.assertIn("ACA image packaging", omitted["test_static_contract.py"]["reason"])
 
 
 if __name__ == "__main__":
