@@ -9,6 +9,9 @@
 *.userosscache
 *.sln.docstates
 
+# Local Dev Tunnel CLI state and credential caches
+**/DevTunnels/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

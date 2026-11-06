@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.log
+recordings/
+.copilot-azure/
+.vscode/
+infra/main.parameters.json

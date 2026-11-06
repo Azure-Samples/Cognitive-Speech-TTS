@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "source": {
+    "base_commit": "88185887035f63a6b81114d7b38305532ebb6ad0",
+    "accepted_ref": "refs/heads/agents/add-voice-agent-template-prototypes",
+    "accepted_on": "2026-09-17",
+    "roots": {
+      "voice_demo": "tests/voice-agent-tests/voice-agents-tests-dashboard/voice_demo",
+      "template_view": "tests/voice-agent-tests/voice-agents-tests-dashboard/template_view",
+      "template_tests": "tests/voice-agent-tests/voice-agents-tests-dashboard/tests",
+      "template_config": "samples/voice-agent-templates/templates.config.json",
+      "template_example1": "samples/voice-agent-templates/example1_finance_with_handoff/agent.json",
+      "template_example2": "samples/voice-agent-templates/example2_finance_with_OTP_and_Officer_Search/agent.json"
+    }
+  },
+  "mcp_source": {
+    "base_commit": "9c3e2487f7af0e891f22bc3919c9cf0b83f40e36",
+    "root": "docs/voice_agent/11_mcp_server",
+    "review_targets": [
+      "template_portal.py",
+      "templates.config.json",
+      "../shared_mcp"
+    ],
+    "reason": "Review shared Envoy pack routes, tool inventories, authentication, and deployment changes when importing dashboard updates."
+  },
+  "template_mappings": [
+    {
+      "root": "template_view",
+      "source": "__init__.py",
+      "action": "omitted",
+      "reason": "The portal template adapter is a standalone module, not a Python package."
+    },
+    {
+      "root": "template_view",
+      "source": "catalog.py",
+      "destination": "template_portal.py",
+      "action": "adapted"
+    },
+    {
+      "root": "template_view",
+      "source": "routes.py",
+      "destination": "template_portal.py",
+      "action": "adapted"
+    },
+    {
+      "root": "template_view",
+      "source": "static/app.js",
+      "action": "omitted",
+      "reason": "Renamed to static/template-app.js in the source."
+    },
+    {
+      "root": "template_view",
+      "source": "static/graph.js",
+      "action": "omitted",
+      "reason": "Renamed to static/template-graph.js in the source."
+    },
+    {
+      "root": "template_view",
+      "source": "static/index.html",
+      "action": "omitted",
+      "reason": "Renamed to static/templates.html in the source."
+    },
+    {
+      "root": "template_view",
+      "source": "static/styles.css",
+      "action": "omitted",
+      "reason": "Renamed to static/template-styles.css in the source."
+    },
+    {
+      "root": "template_view",
+      "source": "static/templates.html",
+      "destination": "static/templates.html",
+      "action": "adapted"
+    },
+    {
+      "root": "template_view",
+      "source": "static/template-app.js",
+      "destination": "static/template-app.js",
+      "action": "adapted"
+    },
+    {
+      "root": "template_view",
+      "source": "static/template-graph.js",
+      "destination": "static/template-graph.js",
+      "action": "exact"
+    },
+    {
+      "root": "template_view",
+      "source": "static/template-styles.css",
+      "destination": "static/template-styles.css",
+      "action": "exact"
+    },
+    {
+      "root": "template_tests",
+      "source": "test_template_view.py",
+      "destination": "tests/test_templates.py",
+      "action": "adapted"
+    },
+    {
+      "root": "template_tests",
+      "source": "test_demo_contract.py",
+      "destination": "tests/test_public_release.py",
+      "action": "adapted"
+    }
+  ],
+  "additional_runtime_mappings": [
+    {
+      "source": "web/tests/privacy.spec.mjs",
+      "destination": "web/tests/privacy.spec.mjs",
+      "action": "exact"
+    }
+  ],
+  "sample_mappings": [
+    {
+      "root": "template_config",
+      "source": ".",
+      "destination": "templates.config.json",
+      "destination_root": "portal",
+      "action": "adapted"
+    },
+    {
+      "root": "template_example1",
+      "source": ".",
+      "destination": "samples/example1_finance_with_handoff/agent.json",
+      "destination_root": "voice_agent",
+      "action": "exact"
+    },
+    {
+      "root": "template_example2",
+      "source": ".",
+      "destination": "samples/example2_finance_with_OTP_and_Officer_Search/agent.json",
+      "destination_root": "voice_agent",
+      "action": "exact"
+    }
+  ]
+}

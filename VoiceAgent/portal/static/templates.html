@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Templates · Voice Agents</title>
+  <link rel="stylesheet" href="/static/template-styles.css?v=20260916-1" />
+</head>
+<body>
+  <header class="local-template-header">
+    <a class="local-template-brand" href="/">Voice agent <span>playground</span></a>
+    <nav aria-label="Portal pages">
+      <a href="/">Live session</a>
+      <span>Templates</span>
+    </nav>
+    <strong>Build from a proven starting point</strong>
+  </header>
+  <div class="shell">
+    <section id="page-unavailable" class="empty-page" hidden>
+      <div class="empty-card">
+        <h2>No template catalog</h2>
+        <p id="unavailable-reason" class="muted"></p>
+        <p class="muted tiny-inline">
+          The catalog is read from
+          <code>VoiceAgent/portal/templates.config.json</code>.
+        </p>
+      </div>
+    </section>
+
+    <section id="page-templates" class="page">
+      <div class="three-pane">
+        <section class="pane pane-list" aria-label="Templates">
+          <div class="pane-head">
+            <h2>Templates</h2>
+            <span class="count" id="template-count"></span>
+            <button class="btn ghost tiny-btn" id="reload" title="Re-read the templates from disk">Reload</button>
+          </div>
+          <div class="template-list" id="template-list"></div>
+          <p class="muted tiny" id="roots">—</p>
+        </section>
+
+        <section class="pane pane-detail" aria-label="Template detail">
+          <div class="detail-head">
+            <div>
+              <h2 id="detail-name">—</h2>
+              <p id="detail-desc" class="muted"></p>
+              <div id="detail-tags"></div>
+            </div>
+            <div class="detail-badges" id="detail-badges"></div>
+          </div>
+          <div class="tabs" role="tablist">
+            <button class="tab active" data-tab="graph">Workflow</button>
+            <button class="tab" data-tab="config">Configuration</button>
+            <button class="tab" data-tab="tools">Tools</button>
+            <button class="tab" data-tab="lint">Lint</button>
+            <button class="tab" data-tab="yaml">definition.json</button>
+          </div>
+          <div class="tab-body">
+            <div class="tab-panel active" data-panel="graph">
+              <div class="graph-wrap" id="graph-wrap"></div>
+            </div>
+            <div class="tab-panel" data-panel="config"><div id="config-body"></div></div>
+            <div class="tab-panel" data-panel="tools"><div id="tools-body"></div></div>
+            <div class="tab-panel" data-panel="lint"><div id="lint-body"></div></div>
+            <div class="tab-panel" data-panel="yaml"><pre id="yaml-body" class="yaml"></pre></div>
+          </div>
+        </section>
+
+        <section class="pane pane-side" aria-label="Use this template">
+          <div class="pane-head">
+            <h2>Try it now!</h2>
+          </div>
+          <div class="side-body">
+            <p class="launch-intro">Publish with the template defaults and start talking.</p>
+            <p class="muted tiny">
+              New Agents use the <code>local-only-</code> prefix because their
+              MCP connection depends on this machine's Dev Tunnel runtime.
+            </p>
+            <div class="publish-fields">
+              <div id="publish-mcp-fields" hidden>
+                <div class="mcp-check-heading">
+                  <strong>MCP service</strong>
+                  <button id="btn-test-mcp" type="button">Test MCP</button>
+                </div>
+                <p id="mcp-test-state" role="status">
+                  Select a template to test its MCP service.
+                </p>
+                <div id="mcp-token-config" class="mcp-token-config" hidden>
+                  <label for="mcp-token">
+                    MCP bearer token
+                    <small>Submitted once; never stored by the dashboard.</small>
+                  </label>
+                  <div class="mcp-token-row">
+                    <input
+                      id="mcp-token"
+                      type="password"
+                      autocomplete="off"
+                      spellcheck="false"
+                      maxlength="16384"
+                      placeholder="Paste the token for this MCP pack"
+                    />
+                    <button id="btn-configure-mcp" type="button">
+                      Connect Project
+                    </button>
+                  </div>
+                </div>
+                <aside id="mcp-start-guide" class="mcp-start-guide" role="note" hidden>
+                  <strong>Start the local MCP first</strong>
+                  <p>
+                    Run the local E2E and leave it running. Then reload Templates
+                    and test again.
+                  </p>
+                  <code id="mcp-start-command">cd VoiceAgent/shared_mcp &amp;&amp; ./scripts/e2e-local.sh</code>
+                  <a id="mcp-guide-link" href="/guide/run-samples" target="_blank" rel="noreferrer">
+                    Open the local MCP setup guide
+                  </a>
+                </aside>
+              </div>
+            </div>
+            <div class="action-stack">
+              <div class="voice-launch-group">
+                <button
+                  class="voice-launch"
+                  id="btn-voice"
+                  type="button"
+                  aria-label="Try it now"
+                  title="Publish and open this Agent"
+                  disabled
+                >
+                  <span class="voice-orbit orbit-one" aria-hidden="true"></span>
+                  <span class="voice-orbit orbit-two" aria-hidden="true"></span>
+                  <svg class="voice-mic" viewBox="0 0 32 32" aria-hidden="true">
+                    <rect x="11" y="4" width="10" height="17" rx="5"></rect>
+                    <path d="M7.5 15.5v1.25a8.5 8.5 0 0 0 17 0V15.5M16 25.25V29M11.5 29h9"></path>
+                  </svg>
+                </button>
+                <div class="voice-caption">
+                  <strong>Try it now</strong>
+                  <span>Publish, open, and start talking.</span>
+                </div>
+              </div>
+              <div class="action-divider"><span>or make it yours</span></div>
+              <button class="build-action" id="btn-publish" type="button" disabled>
+                <span class="build-spark" aria-hidden="true">✦</span>
+                <span class="build-copy">Publish my Agent from this template</span>
+                <span class="build-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+            <div class="result" id="tpl-result" hidden></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <div id="node-modal" class="node-modal" hidden></div>
+  <div id="build-progress" class="build-progress" hidden>
+    <div class="build-progress-backdrop"></div>
+    <section
+      class="build-progress-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="build-progress-title"
+      aria-describedby="build-progress-detail"
+    >
+      <div class="build-visual" aria-hidden="true">
+        <span class="build-core">✦</span>
+        <span class="build-ring ring-one"></span>
+        <span class="build-ring ring-two"></span>
+      </div>
+      <p class="build-eyebrow">Agent foundry</p>
+      <h2 id="build-progress-title">Building your voice agent</h2>
+      <p id="build-progress-detail" class="build-progress-detail" aria-live="polite">
+        Reading the published template…
+      </p>
+      <div
+        id="build-progress-bar"
+        class="build-progress-bar"
+        role="progressbar"
+        aria-label="Build progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="8"
+      >
+        <span id="build-progress-fill"></span>
+      </div>
+      <ol class="build-stages" aria-label="Build stages">
+        <li id="build-stage-copy">Copy template</li>
+        <li id="build-stage-publish">Publish agent</li>
+        <li id="build-stage-launch">Open voice demo</li>
+      </ol>
+      <button id="build-progress-close" class="build-progress-close" type="button" hidden>
+        Back to template
+      </button>
+    </section>
+  </div>
+  <script type="module" src="/static/template-app.js?v=20260916-2"></script>
+</body>
+</html>

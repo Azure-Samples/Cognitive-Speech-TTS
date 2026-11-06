@@ -1,0 +1,12 @@
+.env
+.env.*
+.git
+.gitignore
+.venv
+.vscode
+__pycache__
+*.pyc
+*.log
+recordings
+test*.py
+install-azure-cli.ps1

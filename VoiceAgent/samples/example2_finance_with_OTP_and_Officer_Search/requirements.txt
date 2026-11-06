@@ -1,0 +1,4 @@
+azure-ai-projects>=2.7.0
+azure-identity>=1.15.0,<2.0.0
+python-dotenv>=1.0.1,<2.0.0
+websockets>=15.0,<16.0

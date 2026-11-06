@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <!--
+    Standalone WebRTC voice experience. Separate host page + bundle (webrtc-bundle.js, built by
+    esbuild from web/src/webrtc/main.jsx) so it can be shipped/embedded on its own. Reuses the
+    shared demo styles plus a webrtc.css overlay for the distinct look.
+  -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voice Agent · WebRTC</title>
+    <link rel="stylesheet" href="/static/demo/styles.css?v=20260812-webrtc-standalone-7" />
+    <link rel="stylesheet" href="/static/demo/webrtc-bundle.css?v=20260812-webrtc-standalone-7" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/static/demo/webrtc-bundle.js?v=20260812-webrtc-standalone-7"></script>
+  </body>
+</html>

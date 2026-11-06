@@ -1,0 +1,10 @@
+.azure
+.env
+.env.*
+.git
+.pytest_cache
+__pycache__
+*.pyc
+config/generated
+state
+

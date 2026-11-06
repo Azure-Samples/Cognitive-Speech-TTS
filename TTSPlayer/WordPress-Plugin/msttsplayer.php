@@ -23,10 +23,6 @@ add_action( 'admin_init', 'ttsplayer_admin_init' );
 
 function get_ttsplayer_regions() {
     $regions = array(
-        "local",
-        "develop",
-        "centraluseuap",
-
         "australiaeast",
         "brazilsouth",
         "canadacentral",
@@ -100,29 +96,12 @@ function get_cog_voice_list_api_host($region) {
         $region = '';
     }
 
-    if ($region == 'local' || $region == 'develop') {
-        // https://dev.tts.speech-test.microsoft.com/synthesize/list/cognitive-service/voices
-        return 'dev.tts.speech-test.microsoft.com';
-    } else if ($region == 'centraluseuap') {
-        // https://centraluseuap.tts-frontend.speech.microsoft.com/synthesize/list/cognitive-service/voices
-        return 'centraluseuap.tts-frontend.speech.microsoft.com';
-    }
-
-    // https://jioindiawest.tts-frontend.speech.microsoft.com/synthesize/list/cognitive-service/voices
     return $region . '.tts-frontend.speech.microsoft.com';
 }
 
 function get_ttsplayer_api_hostname($region){
     if (!isset($region)) {
         $region = '';
-    }
-
-    if ($region == 'local') {
-        return 'localhost:44311';
-    } elseif ($region == 'develop') {
-        return 'develop.customvoice.api.speech-test.microsoft.com';
-    } else if ($region == 'centraluseuap') {
-        return 'centraluseuap.customvoice.api.speech.microsoft.com';
     }
 
     return $region . '.customvoice.api.speech.microsoft.com';

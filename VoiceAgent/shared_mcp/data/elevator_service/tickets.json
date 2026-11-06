@@ -1,0 +1,13 @@
+[
+  {
+    "ticket_id": "15",
+    "subject": "Elevator door intermittently fails to close",
+    "status": "open",
+    "priority": "normal",
+    "updated_at": "2026-09-18T09:00:00Z",
+    "estimated_visit": "Within 4 demo hours",
+    "address": "100 Example Avenue",
+    "postal_code": "98052",
+    "backend": "mock_zendesk"
+  }
+]

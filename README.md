@@ -1,13 +1,15 @@
+# Voice Agent Samples in Foundry Agent Service
+
+Explore [Voice Agent in Foundry Agent Service](https://github.com/microsoft/voice-agent) for voice agent guides, portal links, and runnable samples.
+
+
 # Azure Cognitive Service TTS Samples
 
 Microsoft Text to speech service now is officially supported by [Speech SDK](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk) now.  It is recommended way to use TTS in your service or apps.  The REST API samples are just provided as referrence when SDK is not supported on the desired platform. 
 
 Below are latest updates from Azure TTS. It is updated regularly. 
 
-# Azure TTS Discord Channels
-A space for developers and enthusiasts to collaborate and share feedbacks to Azure TTS. [Join Discord](https://discord.gg/r8HgUTUmWA)
-
-# Azure Cognitive Service TTS Customer Story 
+## Azure Cognitive Service TTS Customer Story
 * AT&T (Media and Entertainment) - [AT&T Launches Looney Tunes 5G Experience - YouTube](https://www.youtube.com/watch?v=MkeI7Aaf7hk)
 * Duolingo (Language Learning) - [Are you talking to me? Azure AI brings iconic characters to life with Custom Neural Voice - AI for Business (microsoft.com)](https://blogs.microsoft.com/ai-for-business/custom-neural-voice-ga/)
 * Progressive (Insurance) - [Progressive gives voice to Flo’s chatbot, and it’s as no-nonsense and reassuring as she is](https://news.microsoft.com/transform/progressive-gives-voice-to-flos-chatbot-and-its-as-no-nonsense-and-reassuring-as-she-is/)
@@ -32,7 +34,7 @@ A space for developers and enthusiasts to collaborate and share feedbacks to Azu
 * [Blizzard Challenge 2021](http://www.festvox.org/blizzard/blizzard2021.html): 1st place Winner in Spanish TTS Challenge
 * [Blizzard Challenge 2023](https://www.synsig.org/index.php/Blizzard_Challenge_2023): 1st place Winner in French audiobook TTS Challenge 
 
-# Azure Cognitive Service TTS Blog and News
+## Azure Cognitive Service TTS Blog and News
 
 Here lists the Azure Cognitive TTS product blog, customer stories and Microsoft TTS research news etc.
 * 2025.03 [March 2025: Azure AI Speech’s HD voices are generally available and more](https://techcommunity.microsoft.com/blog/azure-ai-services-blog/march-2025-azure-ai-speech%E2%80%99s-hd-voices-are-generally-available-and-more/4398951)

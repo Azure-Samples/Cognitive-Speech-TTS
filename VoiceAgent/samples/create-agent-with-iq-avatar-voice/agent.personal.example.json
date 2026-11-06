@@ -1,0 +1,47 @@
+{
+  "project_endpoint": "https://<account>.services.ai.azure.com/api/projects/<project>",
+  "agent_name": "<new-agent-name>",
+  "description": "Creation-first Foundry IQ agent with an Azure Personal Voice and a custom photo avatar.",
+  "definition": {
+    "kind": "voice",
+    "model_type": "managed",
+    "model": "gpt-realtime",
+    "instructions": "You are a concise knowledge assistant. Respond in English unless the user explicitly requests another language. Always call knowledge_base_retrieve for factual questions and answer only from the retrieved content. Include source references in text. If the knowledge base does not contain the answer, say I don't know. Do not invent facts or citations.",
+    "audio": {
+      "input": {
+        "format": {"type": "audio/pcm", "rate": 24000},
+        "turn_detection": {
+          "type": "server_vad",
+          "threshold": 0.5,
+          "prefix_padding_ms": 300,
+          "silence_duration_ms": 500
+        }
+      },
+      "output": {
+        "format": {"type": "audio/pcm", "rate": 24000},
+        "voice_type": "azure-personal",
+        "voice": "<personal-voice-name>",
+        "personal_voice_model": "DragonLatestNeural"
+      }
+    },
+    "avatar": {
+      "type": "photo_avatar",
+      "character": "<custom-photo-avatar-name>",
+      "customized": true,
+      "model": "vasa-1",
+      "output_protocol": "webrtc"
+    },
+    "output_modalities": ["text", "audio", "avatar"],
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "foundry-iq",
+        "server_url": "https://<search-service>.search.windows.net/knowledgebases/<knowledge-base>/mcp?api-version=<search-api-version>",
+        "project_connection_id": "<project-connection-name>",
+        "allowed_tools": ["knowledge_base_retrieve"],
+        "require_approval": "never"
+      }
+    ],
+    "store": false
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provision Foundry IQ"
+  short_description: "Create Foundry IQ from local documents"
+  default_prompt: "Use $provision-foundry-iq to create a Foundry IQ knowledge base from the sample document folder."

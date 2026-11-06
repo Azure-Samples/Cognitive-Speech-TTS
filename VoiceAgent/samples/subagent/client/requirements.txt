@@ -1,0 +1,5 @@
+azure-ai-projects[voice]>=2.7.0
+aiohttp>=3.12.0,<4
+azure-identity==1.25.3
+PyAudio==0.2.14
+python-dotenv==1.2.2

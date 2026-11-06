@@ -1,0 +1,4 @@
+interface:
+  display_name: "Provision Foundry Toolbox"
+  short_description: "Create an Azure AI Search Toolbox from documents"
+  default_prompt: "Use $provision-foundry-toolbox to create a Foundry Toolbox from the sample document folder."
