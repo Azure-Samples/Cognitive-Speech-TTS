@@ -17,7 +17,7 @@
     "watch:webrtc": "esbuild src/webrtc/main.jsx --bundle --sourcemap --format=iife --jsx=automatic --loader:.jsx=jsx --legal-comments=eof --banner:js=\"/*! Third-party notices: THIRD_PARTY_NOTICES.txt */\" --outfile=../static/webrtc-bundle.js --watch"
   },
   "dependencies": {
-    "js-yaml": "5.2.3",
+    "js-yaml": "5.4.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
