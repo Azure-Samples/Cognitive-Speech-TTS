@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "source": {
-    "base_commit": "88185887035f63a6b81114d7b38305532ebb6ad0",
-    "accepted_ref": "refs/heads/agents/add-voice-agent-template-prototypes",
+    "base_commit": "4fc0c0025112fadd534af84e43a88421d8fd08ec",
+    "accepted_ref": "refs/heads/main",
     "accepted_on": "2026-09-17",
     "roots": {
       "voice_demo": "tests/voice-agent-tests/voice-agents-tests-dashboard/voice_demo",
@@ -101,6 +101,12 @@
       "source": "test_demo_contract.py",
       "destination": "tests/test_public_release.py",
       "action": "adapted"
+    },
+    {
+      "root": "template_tests",
+      "source": "test_static_contract.py",
+      "action": "omitted",
+      "reason": "ACA image packaging regression belongs to the source dashboard deployment and has no standalone portal equivalent."
     }
   ],
   "additional_runtime_mappings": [
